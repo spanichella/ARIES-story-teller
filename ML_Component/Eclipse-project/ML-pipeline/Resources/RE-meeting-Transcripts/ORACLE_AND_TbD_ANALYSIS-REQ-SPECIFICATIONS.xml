@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<company>
+	<ADSORB id="1">
+		<docs_location>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/</docs_location>
+		<pathRScriptOracle>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/Script-to-create-test-dataset-Req-Specifications.r</pathRScriptOracle>
+		# path where oracle is located
+		<baseFolder>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/hassebjo</baseFolder>
+		# path oracle
+		<oracle_path>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/hassebjo/truth_set_ReqSpecification.txt</oracle_path>
+		# possible values "User Reviews" or "Requirement Specifications"
+		<dataType>Requirement Specifications</dataType>
+		# possible values "id"
+		<nameOfAttributeID>id</nameOfAttributeID>
+		# possible values "review" and "req_specification"
+		<nameOfAttributeText>req_specification</nameOfAttributeText>
+		# possible values "class"
+		<nameOfAttributeClass>class</nameOfAttributeClass>
+		<pathTbDRScript>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/MainScript.r</pathTbDRScript>
+		#path where training set files will be created
+		<documentsTrainingSet>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/hassebjo/training-set-Req-Specifications</documentsTrainingSet>
+		#path where test set files will be created
+		<documentsTestSet>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/hassebjo/test-set-Req-Specifications</documentsTestSet>
+		#path where simplified Oracle will be created
+		<simplifiedOracle_path>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/hassebjo/truth_set-simplified-Req-Specifications.csv</simplifiedOracle_path>
+	</ADSORB>
+</company>
+
+
+

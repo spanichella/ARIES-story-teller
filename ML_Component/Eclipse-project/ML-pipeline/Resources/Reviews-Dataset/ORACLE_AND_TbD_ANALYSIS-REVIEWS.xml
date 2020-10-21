@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<company>
+	<ADSORB id="1">
+		# path where R scripts are located
+		<docs_location>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/Resources/R-scripts/</docs_location>
+		<pathRScriptOracle>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/Resources/R-scripts/Script-to-create-test-dataset.r</pathRScriptOracle>
+		# path where oracle is located
+		<baseFolder>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/Resources/Reviews-Dataset</baseFolder>
+		# path oracle
+		<oracle_path>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/Resources/Reviews-Dataset/truth_set_ICSME2015.csv</oracle_path>
+		# possible values "User Reviews" or "Requirement Specifications"
+		<dataType>User Reviews</dataType>
+		# possible values "id"
+		<nameOfAttributeID>id</nameOfAttributeID>
+		# possible values "review" and "req_specification"
+		<nameOfAttributeText>review</nameOfAttributeText>
+		# possible values "class"
+		<nameOfAttributeClass>class</nameOfAttributeClass>
+		<pathTbDRScript>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/Resources/R-scripts/MainScript.r</pathTbDRScript>
+		#path where training set files will be created
+		<documentsTrainingSet>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/Resources/Reviews-Dataset/training-set</documentsTrainingSet>
+		#path where test set files will be created
+		<documentsTestSet>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/Resources/Reviews-Dataset/test-set</documentsTestSet>
+		#path where simplified Oracle will be created
+		<simplifiedOracle_path>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/Resources/Reviews-Dataset/truth_set-simplified.csv</simplifiedOracle_path>
+	</ADSORB>
+</company>
+
+
+
