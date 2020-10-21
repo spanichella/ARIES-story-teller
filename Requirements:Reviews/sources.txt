@@ -16,9 +16,14 @@ https://www.zora.uzh.ch/id/eprint/128926/1/paper.pdf [research paper] - download
 
 
 requirements specifications
+Natural Language Requirements Dataset: Needs processing, all doc/pdf files
+http://fmt.isti.cnr.it/nlreqdataset/
+
 
 Kaggle - Search Datasets
 https://www.kaggle.com/search?q=requirements+date%3A90+in%3Adatasets+datasetSize%3Amedium+datasetSize%3Alarge
+https://www.kaggle.com/iamsouvik/software-requirements-dataset
+
 
 PURE: A Dataset of Public Requirements Documents
 https://ieeexplore.ieee.org/document/8049173 [research paper] - downloaded
