@@ -1,0 +1,34 @@
+user reviews
+
+Android Apps Reviews Dataset [Github]
+https://github.com/amitt001/Android-App-Reviews-Dataset
+
+Google Play Store Apps User Reviews [kaggle]
+https://medium.com/@gosavibhushan36/analyzing-google-play-store-apps-user-reviews-dataset-using-spark-sql-and-dataframes-by-d92d5b80bfd3
+https://www.kaggle.com/lava18/google-play-store-apps
+
+Analyzing Reviews and Code of Mobile Apps for Better Release Planning
+https://www.zora.uzh.ch/id/eprint/128926/1/paper.pdf [research paper] - downloaded
+
+
+
+
+
+
+requirements specifications
+
+Kaggle - Search Datasets
+https://www.kaggle.com/search?q=requirements+date%3A90+in%3Adatasets+datasetSize%3Amedium+datasetSize%3Alarge
+
+PURE: A Dataset of Public Requirements Documents
+https://ieeexplore.ieee.org/document/8049173 [research paper] - downloaded
+http://fmt.isti.cnr.it/nlreqdataset/ [datasets]
+
+Predicting Vulnerable Components: Software Metrics vs Text Mining
+https://ieeexplore.ieee.org/abstract/document/6982351 [research paper] - downloaded
+https://seam.cs.umd.edu/webvuldata/studydata.html [replication dataset]
+
+RALIC Dataset (Social Networks and Collaborative Filtering for Large-Scale Requirements Elicitation)
+http://www0.cs.ucl.ac.uk/staff/S.Lim/soolinglim/Datasets.html [dataset]
+https://soolinglim.files.wordpress.com/2010/07/thesis_soolinglim.pdf [doctorate dissertation] - downloaded
+
