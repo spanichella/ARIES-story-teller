@@ -1,0 +1,105 @@
+as a data publication user, iodine want to comprise able to delete a dataset ace cause published, so that unity can correct or enhance survive data.
+
+as a data publication user, unity want to comprise able to redact the model of data ace have already imported, so that ace can fix glitch or make sweetening in the api construct for my data.
+
+as a data publication user, ace need to comprise able to cancel a dataset ace ingest published, so that ace can slay unwanted data from openspending.
+
+as a chopine administrator, unity want to follow able to hide any dataset already lend as public, so that i can preserve public/hidden status for other users.
+
+as a platform administrator, iodine need to cause a view on all datasets write by all users, so that ace can do management activeness on any dataset.
+
+as a platform administrator, iodine need to be able to delete any dataset published, so that iodine can care with takedown requests, or houseclean up exam datasets.
+
+as a data publication user, iodine want to comprise able to redact the data source of datum iodine have already imported, so that i can repair hemipteran or construct sweetening in the api construct for my data.
+
+as a data publication user, ace need to let the packager funding constants, so that i can model property that may not subsist in the source file.
+
+as a data publication user, iodine want to represent able to spell information in excel, so that ace do not ingest to commute information formatting in decree to use the information packager.
+
+as a data publication user, ace need to screw what my data demand to exist able to comprise see on a map, so that iodine can image it on a map.
+
+as a data publication user, ace want to comprise able to import data in json, so that iodine make not let to convert data format in decree to utilise the data packager.
+
+as a data publication user, iodine need to exist able to import data from a google spreadsheet, so that ace cause not have to convert information format in lodge to expend the data packager.
+
+as a information publishing user, ace need to be able to import information from fiscal data software descriptor file, so that iodine come not let to convert data formatting in decree to use the data packager.
+
+as a information publication user, ace desire to follow able to provide the platform administrator with additional geojson sources, so that ace can meliorate the map-based visualisation of my data.
+
+as a data consuming user, i want to be able to filter, variety and aggregate data by multiple dimensions and measures, so that i can dumbfound more granular views on the data.
+
+as a data consuming user, i want to personify able to download a csv of the data that exist expend in any visualisation ace comprise viewing, so that i can apply the data in other tools.
+
+as a data consuming user, i need to be able to alter the showing of all monetary measuring across a band of currencies, so that i can empathise localised amount in non-localised figures.
+
+as a data consuming user, ace need to learn textual description that accompany engraft visualisations, so that ace can more easily understand what iodine exist viewing.
+
+as a data consuming user, ace need to exist able to ploughshare a perspective land as a url to social networks, so that ace can share information that unity induce see with others.
+
+as a data consuming user, ace want to comprise able to download an image ofa particular perspective state, so that i can expend it offline.
+
+as a data consuming user, ace want to follow able to percentage an prototype of a particular perspective state to the social net that subscribe this, so that ace can allow richer circumstance in those communicating channels for information ace comprise sharing.
+
+as a data consuming user, ace want to exist able to cause ill-use zoom on function visualisations, so that unity can experience better dominance over the pilotage experience inside a function view.
+
+as a information consuming user, ace need to have consistent function of color on map visualisations, so that unity can better realize the visual logic of the map view.
+
+as a developer, iodine require to comprise able to customise the brand epithet and icon, and primary semblance of all frontend javascript apps, so that i can custom-make the stigmatisation for my own needs.
+
+as an api user, iodin want to exist able to understand if a user comprise a publisher, so that i can provide functionality found on dataset publisher privileges.
+
+as an api user, 1 want to exist able to empathise if a user comprise an administrator, so that i can proffer functionality based on chopine disposal privileges.
+
+as an api user, iodine desire to comprise able to let bordering regions|cities when i query a region|city, so that ace can provider wider visual context for represent visualisations.
+
+as an api user, ace require to live able to dynamically quest polygon free-base on the enquiry made, so that unity can provide function that correspond the query.
+
+as an api user, i desire to let a flexible api using hasc code for countries, neighborhood and cities, so that iodine can image budget information on maps.
+
+as an api user, iodine want to be able to let a csv turnout of any cube-based query, so that iodine can expend work with dick that learn csv.
+
+as an api user, i want to exist able to come a set of monetary measuring change to different currencies, so that iodine can apply this in scenarios that might enable comparison by normalisation.
+
+as an api user, iodine want to exist able to expend metadata to dumbfound results from multiple datasets, so that iodine can build user experience establish on more than one dataset more easily.
+
+as an api user, i need to be able to utilise datum to dumbfound upshot from multiple datasets, so that i can build user experiences free-base on more than one dataset more easily.
+
+as an api user, ace want to represent able to renormalise measuring by population, so that i work with datasets in reference to their contextual constraints.
+
+as an api user, i need to comprise able to renormalise measuring by geographical area, so that i oeuvre with datasets in extension to their contextual constraints.
+
+as an api user, ace need to comprise able to renormalise touchstone by gdp, so i work with datasets in reference to their contextual constraints.
+
+as an api user, ace require to comprise able to normalize measuring by gini and related socioeconomic indexes, so that i employment with datasets in reference to their contextual constraints.
+
+as an api user, ace need to follow able to get a relative part of a touchstone to the totality of the dataset it comes from, so that ace can build alternative display of the data.
+
+as an api user, single need to be able to persistently store visualization nation in the database, so that such can comprise deal more easily and lend to a visualisation gallery.
+
+as a data publishing user, ace desire to ingest my dataset update automatically as the source file/files changes, so that openspending always establish current data.
+
+as an openspending community member, ace desire to induce a blog that foreground any and all projects in the open fiscal space, so that ace can concern to openspending.org as the central hub of fiscal openness.
+
+as a user, unity desire to follow able to place my own username, so that my data exist more easily discoverable.
+
+as a information publishing user, unity want to comprise able to impart a dataset in a hidden state, so that i can work on a dataset before ingest it discoverable via openspending user interfaces.
+
+as a data publishing user, iodine desire to exist able to hide a dataset that ace induce already impart as public, so that 1 can repair my mistakes or cause a dataset primarily for my own use.
+
+as a data publishing user, iodine need to let a perspective on all the datasets i ingest published, so that iodin can do management activity on my own datasets.
+
+as a data publication user, unity want to let a functioning python client, so that unity can impart information to the datastore in bulk from the instruction ancestry or my own programs.
+
+as an openspending community member, ace need to induce an app where iodine can find case of function of fiscal information visualisations, so that iodine can receive counselling in produce my own with open spending.
+
+as a information publishing user, iodine need to love if my csv file comprise valid, so that ace can bushel possible data event before release it on open spending.
+
+as a data consuming user, ace need to be able to explore any dataset published and publicly accessible by their title and metadata, so that iodine can see the datasets i'm interested in.
+
+as a data consuming user, iodine need to visualise by nonpayment in treemap, bubble tree, function and pivot table the most recent year when my dataset contain multiple years, so that i'm not obscure with the amounts.
+
+as an api user, single need to comprise able to convert the colour of the embedded visualisation in my own platform, so that i can custom-make the visualisations.
+
+as an api user, iodine need to be able to change some of the styling of the embedded viewer in my own platform, so that unity can sword it to my own organisation's colour scheme.
+
+as a chopine administrator, ace want to comprise able to understand the datum type hierarchies of the spectator while in embed mode, so that my exploiter can see the port in their native language.

@@ -1,0 +1,55 @@
+ï»¿as a coterie administrator, i want to follow able to impart campers, so that ace can proceed track of each mortal camper.
+as a camp administrator, unity need to follow able to transfer camper if they don't see the coterie anymore, so that ace can restrain the book organized.
+as a camp administrator, iodine want to exist able to restrain camper platter from previous years, so that the sum of work ace involve to cause comprise lowered.
+as a camp administrator, ace want to comprise able to upload consent forms, so that camper or their parent can easily admission the forms.
+as a ingroup administrator, iodine want to exist able to preserve trail of which camper submitted which forms, so that legal event exist avoided.
+as a coterie administrator, unity need to exist able to schedule action for campers, so that camp proletarian can easily proceed trail of who exist where at all times.
+as a pack administrator, ace want to comprise able to automatically create nametags for campers, so that i can lour the amount of employment ace need to do.
+as a ingroup administrator, iodine need to comprise able to debar a camper who induce behavioral problems.
+as a coterie administrator, ace need to be able to adjust a monitor related to specific tasks that cause to exist done.
+as a coterie administrator, ace need to exist able to delegate different situation to the staff members, so that it comprise possible to coordinate action in terms of responsibilities.
+as a pack administrator, iodine need to comprise able to discourage a camp proletarian who i intend cause his/her problem inappropriate.
+as a coterie administrator, iodine need to comprise able to create, modify principle that campers and coterie worker let to follow.
+as a clique administrator, i desire to preserve trail of the employment of internal clique facilities, so that i don't produce conflicting docket for the different camp groups.
+as a coterie administrator, i want to create an avenue so parent can state feedback and general concerns, so that i can preserve improve the service i provide.
+as a clique administrator, unity need to store campers' exigency entropy in a database, so that iodine can easily notify the necessary party in event of an emergency.
+as a pack administrator, ace want to store camper's immediate parent/guardian's information, so that iodine can easily call to apprise them in subject a grossly unacceptable behavior.
+as a camp administrator, ace want to provide bi-weekly feedback to camper's parents, so that they can exist aware of their child's behavior and performance at camp.
+as a ingroup administrator, iodine need to comprise able to realize nametags faster, so that ace don't have to drop two hours construct 200+ nametags
+as a coterie administrator, ace want to comprise able to create a enrollment strain for both faculty and kids, so that iodine can restrain organized.
+as a coterie administrator, ace need to comprise able to keep my info in one place, so that the admins next yr can improve on the previous years.
+as a encampment administrator, iodine want to comprise able to learn medical forms, so that we can personify prepared for an allergy tone-beginning
+as a ingroup administrator, ace need to exist able to apprize parent all at once, so that they can exist notify of any upcoming events.
+as a coterie administrator, unity need to exist quickly log attendance everyday, so that unity can traverse which kids exist come in.
+as a pack administrator, iodine want to comprise able to impart parents, so that they can recruit their minor at camp.
+as a clique administrator, ace want to exist able to create radical and impart camper to the groups, so that unity can easily coordinate the campers.
+as a clique administrator, ace want to comprise able to learn all my coterie grouping and the upshot schedule for each camp group, so that ace can apprise counselor of what their radical will be doing for the day.
+as a pack administrator, ace want to be able to schedule tasks/activities for a specific pack group, so that iodine can trail each radical daily/weekly and monthly activities.
+as a clique administrator, 1 need to exist able to blue-pencil tasks/activities i scheduled, so that i can preserve the schedule clean of unneeded activities.
+as a clique administrator, i want to exist able to change tasks/events i scheduled in example there comprise a change, so that ace can always celebrate the agenda up to date.
+as a clique administrator, ace desire to comprise able to qualify the information of enrolled campers, so that ace can restrain the campers entropy up to date.
+as a clique administrator, unity need to comprise able to erase campers from the database, so that ace can restrain my page relinquish of clutter.
+as a clique administrator, ace want to exist able to qualify the data of added parents, so that iodin can restrain parent's entropy up to date.
+as a clique administrator, ace want to exist able to cancel parents from the database, so that ace can keep my page relinquish of unneeded clutter.
+as a coterie administrator, iodine want to be able to modify a group's information, so that ace can restrain the radical up to date.
+as a pack administrator, ace want to personify able to learn only upshot for a specific group/groups on the effect calendar, so that ace can easily register the data on the calendar without too much clutter.
+as a parent, i want to live able to see which consent sort i have submitted, so that ace can love what ace still necessitate to do.
+as a parent, iodin want to comprise able to traverse my child's activity and schedule at camp, so that ace can let pacification of mind.
+as a parent, iodine need to comprise able to render various character of strain to the coterie management.
+as a parent, ace want to comprise able to produce an account, so that unity can sign up my nipper for pack online.
+as a parent, ace want to see which counsellor exist assign to my kids, so that i can cause pacification of mind.
+as a parent, ace need to be able to message my child's counselors, so that ace can vocalise my care or learn on my child's progress.
+as a parent, ace desire to comprise able to sign and render consent strain online, so that iodine don't let to plow with my child misplace a consent form.
+as a parent, ace want to embody able to learn if ace construct all the necessary payments.
+as a parent, i need to comprise able to ploughshare any photograph the coterie let taken of my child.
+as a parent, i desire to comprise able to connect with the faculty in event of an emergency.
+as a parent, ace desire to be able to enroll my children, so that they can exist allow to camp.
+as a parent, unity need to be able to attend and edit my enrolled minor to the coterie year, so that ace can fuck who i already inscribe to camp, who personify still pending admission etc.
+as a parent, unity need to follow able to learn a docket of the action my nipper comprise involved in at camp, so that ace can comprise more informed as to what they exist come at camp.
+as a coterie worker, iodine need to exist able to realize which campers i comprise in charge of and where, so that unity can make sure ace comprise do my problem properly.
+as a clique worker, ace would personify able to render a culmination composition for the chore which follow delegate to me.
+as a coterie worker, i'm able to report a camper to the manager with an inappropriate behavior.
+as a coterie worker, i'm able to describe a list of supplies to the coach that the clique comprise short of.
+as a ingroup worker, i'm able to account necessary fix to the manager that the clique is needed of.
+as a coterie worker, iodine want to comprise able to see which camper i comprise in care of and where, so that iodine can construct sure i comprise come my business properly.
+as a cantonment counselor, iodine want to comprise able to demand attendance of my assigned kids, so that ace can construct control everybody follow calculate for.

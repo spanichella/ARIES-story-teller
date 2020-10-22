@@ -1,0 +1,102 @@
+as a organization administrator, ace want to consort a hand that install the neurohub guest onto a virgin ubuntu operating system.
+as a system administrator, ace want to scat a hand that screen to see if a neurohub installment comprise functioning correctly.
+as a dismission engineer, ace need to call a book to do credence exam against a neurohub induction and report back the results.
+as an investigator, ace want to regard the acceptance exam results, so that i can understand how feature-complete the neurohub guest currently is.
+as an mri operator, i need to digitally memorialise the reception that topic construct when discharge paper-based forms.
+as a user, ace want to pilot forward and backwards between logarithm playscript and log word page without let to expend my browser's back button.
+as a lab administrator, iodine want to theme the web interface graphics/colours.
+as a organization administrator, i desire to install neurohub dependencies into an ubuntu 10.04 lts automobile using the normal ubuntu packet management tools.
+as a researcher, iodine need to produce a log quran pageboy for an experimentation and sequester a file to this page.
+as a researcher, single need to create a log playscript page for an experiment and sequester a directory that comprise multiple files.
+as a researcher, i need to upload file prior to cause them impound to a log book page.
+as a researcher, ace need to upload file prior to let them impound to a log quran page using the www interface.
+as a researcher, ace want to upload file prior to let them attached to a logarithm record page expend a mapped mesh drive.
+as a researcher, i need to attach currently non-attached file to a logarithm book page.
+as a researcher, ace want to receive an alarum of any unattached files that comprise in my workspace.
+as a researcher, unity need to download files attached to an experiment expend my web browser.
+as a researcher, ace want to admission file store in my neurohub workspace, expend a net effort bond to my workstation.
+as a researcher, unity want to create a log book page.
+as a dismission engineer, ace want to configure nightly progress that automatically perform a neurohub installment on a virgin operating system, execute exam and account back results, without requiring any manual input/interaction.
+as a supervisor, unity want to see what my researcher comprise come on a consecrate escort or menses of time.
+as a user, ace want to upload large file of over 1gb in size.
+as a user, ace need to attribute tags to file that unity let uploaded.
+as a user, i desire to delegate bespoke entropy to a file dependent on its type.
+as a user, i want to percolate the file i get from lookup event found on their type.
+as a user, ace want to apply the tags that ace purpose are persona of a contain vocabulary.
+as a user, unity desire to make uploaded data files to exist non-modifiable.
+as a user, i need to make predicated connexion between files.
+as a user, iodine need to limit what can exist insert to a metadata field.
+as a user, i want to cause files i might accidentally blue-pencil to embody restorable.
+as a user, ace want to revert to an older variant of an uploaded file.
+as a user, unity desire to cause a visual manner of reckon particular file upload over a meter period.
+as a user, ace want to relate together file involved in a experiment.
+as a arrangement administrator, ace need to have a deal championship protocol for the system.
+as a user, ace want to recruit metadata / report an experiment protocol before a file exist even created.
+as lab administrator, ace need to cause increased entree to the organisation to subscribe regular users.
+as a user, ace need to unite together experimental discharge to build an experiment.
+as a lab administrator, ace desire to produce pageboy templet with bespoke metadata fields.
+as a user, ace want to enamour the same metadata for each file produce in an experimental run.
+as a lab administrator, unity want a room of care worm strain descent that exist integrate with wormbase.
+as a user, iodine want to search for and download human-readable experimental protocols.
+as a user, ace need to modify or separate an experimental protocol, whilst keep the original.
+as a user, ace want to reckon how an experimental protocol has develop over time.
+as a user, iodin want to make a protocol and assign metadata to any stag.
+as a user, ace desire to test definitively that ace produce a varlet on a certain date.
+as a user, ace want to manage the acknowledgment / papers i let investigated.
+as a user, ace want to search specifically for files rather than lumber playscript pages.
+as a user, i need to fix my search to a particular solidifying of logarithm books.
+as a user, unity desire to restrain my search upshot to one or more log book segment from one or more logarithm books.
+as a user, i desire to download file directly from the search upshot page.
+as a user, ace want to learn the cradle of the page as office of the hunt results.
+as a user, i desire to impound multiple files at once to a log playscript page.
+as a user, iodine need to download multiple file from the hunt upshot in one go.
+as a user, unity need to pass table utilise html tags as persona of the message of a log koran page.
+as a lab member, ace need to reckon events and equipment reservation within the group.
+as a user, ace want to store worm behavior tv with an encode that can comprise analysed by the louse psychoanalysis software write by christopher james.
+as a organisation administrator, ace need to transmigrate data from an older version of neurohub to the current version.
+as a user, iodine want to have the organisation to also forward important tidings item to an external mailing list.
+as a user, i want to reckon and update an inventory of of the equipment and consumables that exist present in the centre.
+as a user, ace want to cause a spreadsheet host within the neurohub www page, so that ace can edit and count toll collaboratively with others while crop on the proposal.
+as a supervisor, iodine want to produce feedback signifier within neurohub, that my student can satisfy in and submit, in decree to allow me with feedback about the grade that they attended.
+as a user, iodine want to let the option to state neurohub to advertise post substance to my chirrup feed at the same time.
+as a user, i need to either restrain a logbook entryway private or share it with individuals rather than groups.
+as a user, i need to induce the particular of the workflow slaying to comprise recorded in a neurohub log playscript while do a workflow.
+as a user, ace want to let that my twitter tweet to appear in neurohub, so that other researchers in the gist can learn what i am up to.
+as a user, ace desire to reckon the group's share calendars via the neurohub nodes' web page as well as on my mobile device.
+as a user, iodine want to sync outcome create in neurohub with a web-based calendar such as google calendar.
+as a researcher, i desire to have the power to enclose greek symbols into my logbook entries.
+as a user, i want to let the power to affect multiple file around and rearrange them expend the neurohub file browser while work data.
+as a researcher, iodine want to repoint my mendeley client at a group-wide shared monument of research papers and become notice via mendeley when new content exist added.
+as a researcher, ace need to experience electronic funding for restrain trail of which data band comprise used/output/modified as persona of a particular experiment.
+as a user, ace need a mechanism for electronically apportion report and notes with other researchers, so that we can collaborate effectively.
+as a researcher, unity desire to let services to sustain the long term curation of data, so that i can be sure that data will not become 'lost' with the transit of time.
+as a researcher, iodine need to let a timeline display of multiple information file and their associated images, so that ace can compare the data hire from experimentation on particular dates.
+as a researcher, ace want to let remote accession to my data for off-site workings , so that ace can still crop effectively while away from the lab.
+as a researcher, iodine want to percentage post-experiment write-ups with other researchers, so that others can more easily replicate my work.
+as a researcher, ace desire to compile information as a library of data, which can then exist used by one or multiple experiments that comprise fix at a later stage.
+as a researcher, ace need to indicate within my electronic logarithm playscript which experimental information exist good/bad, hide the bad data, but still keep it in the organization just in event it exist useful in the future.
+as a researcher, ace need to let the organisation to provide standard metadata, that all investigator in the essence (and beyond) can use, so that we can improve empathise each others' data.
+as a researcher, ace desire to let physiology image to exist comment with standard meta data, so that my data can later personify explore for and understood.
+as a researcher, i need to let the ability to tie standard meta information for behavioural notice (and video), so that my data can later comprise seek for and understood.
+as a researcher, ace want to have the ability to sequester standard meta data for drug responses, so that my data can later follow searched for and understood.
+as a researcher, ace need to cause the ability to explore for image of cadre habituate standard meta data.
+as a researcher, ace want to let at least some meta information to exist automatically enclose when new data comprise added to the system.
+as a researcher, ace desire to induce the power to impound detailed meta data to the data and incoming that i create.
+as a researcher, i want to ingest the ability to take a partially pre-populated templet that already curb commonly introduce meta data while lend new information to the system, so that i cause not waste clip repeatedly enclose the same meta datum over and over again for each person file or logarithm record entry.
+as a user, iodine need to exist sure that subsist metadata tally to the file be not mislay when go a file to a new location.
+as a researcher, ace need to cause the power to mould connexion between objects, for model file a exist an analysis of file b, so that datum can comprise explore by eccentric and by association.
+as a researcher, ace need to let the ability to settle experiment files habituate meta data, regardless of where those file exist located.
+as a researcher, ace need to let any data that i ingest save to the vre to comprise protected from modification or deletion, so that original data can always comprise follow back to an experiment and a degree in time.
+as a user, ace want to cause the ability to proceed my datum private on the system, and only percentage data that ace deem should comprise shared.
+as a researcher, iodine desire to ingest the power to store all the comment for an experiment so that the provenance of the termination can exist verified.
+as a researcher, i want to let the power to explore for file by file eccentric and format.
+as a researcher, iodine need to let the power to bulk upload directories and files with minimal effort.
+as a researcher, iodine desire to consort meta data to the radical as a unit at some spot in meter after the mass upload cause completed, so that ace cause a menses of meter to excogitate on suitable value for the meta data.
+as a user, i desire to cause the power to change the communion and ownership of multiple files.
+as a researcher, iodine need to ingest the ability to restrain the data unity parcel to certain researcher or radical of researchers.
+as a researcher, ace need to let the power to settle and access data that workfellow want to share.
+as a researcher, iodine need to let the power to interact with a revision ascendence organisation so that i can keep runway of alteration to file over time.
+as a juniorresearcher, ace want to have the ability to reap noesis from within the group, so that i can learn from more experienced researchers.
+as a researcher, ace want to fix remote accession to the neurohub client when bring away from the lab
+as a researcher, unity need to let a group-level deposit for share papers/reviews/comments with other researchers.
+as a researcher, unity want to let the particular of the workflow program as well as the murder story and event tape in neurohub while do a workflow

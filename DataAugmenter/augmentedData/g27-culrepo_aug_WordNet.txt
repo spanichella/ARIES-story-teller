@@ -1,0 +1,115 @@
+as a faculty member, ace want to entree a accumulation within the repository, so that i can incur enquiry materials.
+as a module member, i want to conduct scholar to an particular within the repository, so that ace can alleviate my learn (i.e. desire power to relate to content).
+as a cornell module member, ace desire to upload data to the secretary and consort it with a publication, so that i find ascription for my information as well as my publications.
+as a patron, unity need to screw which reports/datasets comprise hail out when, so that ace can admission latest report/dataset.
+as a patron, ace need to select/deselect reports/datasets to follow emailed, possibly many at one time, when new version comprise available.
+as a db/ir administrator, single need to punctuate report/dataset not to exist emailed/viewable due to error comprise discovered.
+as a db/ir administrator, iodine need to deal report/dataset name alteration so patron comprise able to regain historic story that have a different epithet from current report.
+as a cornell faculty member, ace want to realize clearly what reprocess rights i cause to file learn in the repository, so that ace eff how i can reprocess them.
+as a library faculty member, ace want to utilize or remove an admission embargo to an token when demand to come this by an token author.
+as a researcher, i require to stay up to date on research interrelate to a generate topic at cornell, admit those in other departments/schools, so that my own enquiry stay relevant and innovative.
+as a faculty member, ace want to easily gather my publication -- both those within the repository and without -- into a single online accession point, so that unity can enhance the visibility of my work.
+as a crossdeptprojteammember, i need to let a better lieu to garner and percentage projection materials, with a scope of organization/tagging and accession options, admit private (internal group use only), university and public.
+as a cornell faculty member, 1 want to upload data and provide a cutting and spread formatted citation for people who apply it, so that i welcome proper attribution for my work.
+as a patron, i want to view/upload subject in multiple formats, admit old formatting such as lotus works.
+as a cornell faculty member, ace need to search the repository and browsing through its subject on my phone, so that ace can learn matter on the go.
+as a cornell faculty member, ace need to login remotely to the monument utilise shibboleth, so that unity can let remote admission to cornell campus-only content.
+as a cornell staff member, ace need to ingest some ascendance over how items within my collection sort in accumulation subject lists, so that iodine can curb how my work personify presented.
+as an administrator, ace want to exist able to utilise organisation such as symplectic ingredient and action perceptiveness to properly runway faculty scholarly yield in the repositories, so that ace can alleviate force decisions.
+as a library staff member, ace want to admission useful and comprehensive employment statistics and analytics, include altmetrics, at the repository, collection, author, and particular level, so that i can evaluate the effect of this service.
+as an administrator, ace need to see comprehensive cover statistic that can comprise exhibit to faculty in a digestible way, so that iodine can increase buy-in for bring their work.
+as a cornell faculty member, ace desire to personify notified if somebody download any of my particular or files, so that iodine can come usage and realize what others comprise most interested in reading.
+as a db/ir administrator, iodine desire to learn list of contributor for specified report in decree inquiry omit story complaints.
+as an administrator, ace desire to broadcast the aforementioned employment in a digital space that is strongly branded, so that iodine can construct sure my school follow accredit for the work.
+as a module member, iodine want to upload my scholarly oeuvre to the repository, so that iodine can cause a persistent url that can comprise apply for my personal web page and cv.
+as a library staff member, ace need to produce aggregation which highlight rare, archival, or jeopardize material, so that ace can preserve and provide admission to this material.
+as an extension administrator, unity need to cause easy, well document and underpin workflows that can exist easily elapse on to others when she/others retire, so that continuity can be maintained.
+as a faculty member, iodine need to keep versioning of denotation brochures, faqs, etc., so that only the most current comprise used/adapted by other cce pedagog in their work.
+as a cornell faculty member, ace need to upload a datum file and put a cc-by or cc0 permission on it, so that my licensing desires comprise clearly stated.
+as a library stave member, iodine need to comprise able to separate the researcher i'm serve with dmps that cornell let a monument arrangement iodine can use for archive and deal upshot of their research, so that ace can easily meet the pauperism of funder dmp requirements.
+as a cornell faculty member, i need to create a accumulation for my documents, or my organization's documents, and use some distinctive branding to that collection, so that ace can raise my work, or that of my organization.
+as a cornell faculty member, ace want to easily witness all the particular in the monument that ace induce authored, by searching on my epithet (author gens potency and/or designation issue), because i keep my publications in the repository up-to-date and spot people tithe repository.
+as a cornell module member, i need to learn token ace cause deposited in the monument appear high up in google search results, because that's my ticket to stardom.
+as a depository reenforcement squad member, ace want to alias (or map) an particular from one accumulation to another (so the item will appear to belong to both collections), because the collection owner let necessitate them to.
+as a researcher, ace require to hear particular in the monument through the library's uncovering organisation and google, so that i can alleviate my easy function of the content.
+as a researcher, ace want to learn descriptive metadata for the particular whether i hail to the particular through the monument or directly to the pdf, so that ace can correctly discover the source of the content.
+as a researcher, unity need to contact the author of a work that involvement me, so that ace can con more about my research.
+as a researcher, ace want to receive update when new deeds exist write in a consecrate collection or by a generate author, so that ace can learn more of their work.
+as a researcher, i need to seek within a depository or ingathering in an effective manner, including explore within subset of a given collection, so that ace can facilitate my function of the collection.
+as an academicresearcher, iodine need to find the deeds of a particular author in one easily sortable spot, so that ace can experience the evolution of their encyclopaedism over time.
+as an academicresearcher, i need to the thesis report of an influential judge or legal thinker to profit insight into how their initial erudition dumbfound started.
+as a patron, i want to seek for report/dataset with keywords or a partial or complete championship to settle demand report/dataset.
+as a patron, ace want to crop subject by source or subject expanse to settle demand resources.
+as a db/ir administrator, ace need to deal subject assortment for simpleness of supporter browse and searching.
+as a db/ir administrator, i need to wield customizable kinship groups in funding of patron see also option.
+as a cornell module member, i require to seek for the dissertations in the deposit for which ace cause been a thesis commission member, to quickly see work by a former student.
+as a library faculty member, iodine need to construct digital items restrain in trusted external organisation searchable within our system, so that iodine can ply seamless admittance to disparate collections.
+as a researcher, unity need to cause data that will aid me place other module unity might partner/collaborate with.
+as an externaluser, ace want to easily witness and accession enquiry and educational materials from cornell faculty interrelate to a particular topic, which ace can utilise to formulate stronger research/evidence found programming, assignment proposals, community policy, or occupation practices.
+as a student, unity want to see who at cornell has or follow hire in enquiry connect to a particular topic, so that ace can decide if i would wish to pursue studies/research at cornell.
+as a student, i need to learn who at cornell cause or is pursue in research relate to a particular topic, so that ace can see an appropriate advisor, choose which flow to recruit in, and discover work/internship opportunities.
+as a teachingfacultymember, unity need to describe timely and relevant research suitable for function in my curriculum, and be notify of new research/content.
+as a patron, i need to view multiple version of a report/dataset to become both timely and historical information.
+as a module member, iodine desire to upload my scholarly work to the repository, so that iodine can touch a non-academic audience, expand my influence within my academic community, and use it for teaching.
+as a library faculty member, single need to upload textile to the deposit on the author's behalf, so that ace can accomplish a service obligation.
+as a library faculty member, ace want to produce metadata for particular within the monument that include document title, description, author, document type, status, file locations, subscribable flag, subject area, dismission frequency, and keywords for searching.
+as a library staff member, ace want to upload large flock of point simultaneously, including descriptive metadata, so that ace can offer servicing to source efficiently.
+as a library faculty member, ace want to upload an particular to the monument that will only go visible after a specific embargo stop let expired, so that ace can comply with author or publisher requirements.
+as a library staff member, ace desire to admit supplementary file such as datasets, slideshows, etc. â€“ with dois for each, as demand â€“ when uploading a consecrate work, so that i can provide a robust look-alike of the work in question.
+as a library faculty member, iodine want to have swarm media from within the repository, so that single can bear such contentedness in the manner await and control continued admission to state content.
+as an administrator, unity need to have a platform that can subscribe a sort of metier file and text-based formats, so that the intellectual output of the schooling can comprise showcased and save in a more comprehensive way.
+as a library faculty member, unity need to comprise able to designate an particular to more than one collection.
+as a library staff member, ace need to comprise able to add customs metadata fields for sedimentation i construct on behalf of researcher to allow for better search capabilities.
+as a db/ir administrator, ace want to upload revised report/dataset due to error in report/document.
+as a db/ir administrator, unity need to upload new rendering of report/dataset while retaining previous rendering for patron use.
+as a db/ir administrator, iodine want to let the organization recognize/categorize document type (e.g. historical report still published, expired historical report, single topic dataset, broad topic dataset, report with subtopic, computer file), so that report/dataset exist work and displayed properly.
+as a cornell module member, ace need to easily delegate a mil permission to the file ace are depositing, so that exploiter screw how the textile can be used.
+as a deposit livelihood team member, i need to export a band of platter and associated files, manipulate this information set, and reload into the system, because iodine comprise aware of a uniform wrongdoing in a collection.
+as a cornell module member, ace want to consort a researcherid or orcid with a submission, so that there is no ambiguity between my oeuvre and person else with the same name.
+as a student, ace need to upload to the monument the information that follow consort with my embargoed thesis to see essential of a dmp unity posit with my nsf ddig.
+as a library staff member, iodine want to cause customizable metadata fields, so that each projection personify trace in the most accurate room possible.
+as a module member, iodine want to consort file with my scholarly deeds such that someone accessing the latter also find access to the former, so that i can deliver the fullest characterisation of my research.
+as a library faculty member, unity want to expend subject and metadata from the secretary in other organisation and/or web varlet easily, so that ace can deliver such substance in the manner best tantrum to the audience or occasion.
+as an denotation administrator, unity need to realize imagination that exist rise for specific projects and geographic expanse available to other module and educator across nys.
+as an extension administrator or faculty content manager, ace want to dumbfound periodic ir reminders, admit when something require care (including next ingestion/approval steps), or something that might necessitate to go from a current noesis accumulation to historical.
+as a researcher, ace need to promote/share my work through interactive maps, so that ace can expose the scope and extent of my work graphically.
+as an elongation educator, i want to let a space to store a diversity of documents, introduction and data band i've created, that doesn't demand an extra tone in making available on my own county/region/project situation (i.e. a tilt or directory of stuff there exist automatically updated when identify in a central archive/repository).
+as a patron, i want to screw other reports/datasets that personify relate (e.g. see also) to report/dataset exist reckon for the aim witness other related information.
+as a patron, iodine need to know previous name(s) and publishing date range (first version-last version) of reports/datasets, so that iodine can fuck what historical versions exist available and how current more recent version is.
+as a patron, unity need to create a personal history to request email notice when new variant of report/dataset exist available.
+as a patron, i want to download report/dataset dismission calendar to load into own calendar.
+as a librarydiscoveryoperator, single want to harvest useful metadata from the monument via oai, and cover to come so incrementally, so that ace can piss cornell publications discoverable in my repository.
+as a library stave member, iodine need to quickly objurgate wrongdoing in uploaded metadata, and even uploaded documents, while leave a platter of my alteration (and possibly the ground behind them), so that unity can present correct variant of subject and to situate period of error.
+as a library staff member, i desire to welcome a quick response and a reasonable resolve to tech funding issues, so that servicing can proceed with minimal interruption.
+as a cornell module member, iodine want to percentage on the secretary file that comprise larger than 1gb in a fashion that still let exploiter to download them if i need to use them, so that iodine can gather funder requirements.
+as a db/ir administrator, ace want to login to personal story with admission to authorize functions.
+as a db/ir administrator, i need to let a personal bill with the power to change passwords to construct them more secure or to retrieve forgotten ones.
+as a db/ir administrator, iodine need to adjust up or delete story for other administrator with various degree of permission.
+as a db/ir administrator, iodine want to learn a list of all administrators for informality of administer accounts.
+as a db/ir administrator, ace want to have robust searching and tracking feature for existing and newly produce patron accounts.
+as a db/ir administrator, unity need to unpublish a report/dataset if requested to make so by usda agency.
+as a db/ir administrator, ace need to contribute future dismission date of reports/datasets to calendar for frequenter fyi.
+as a faculty member, iodine need to commend a digital accumulation comprise built in the repository, so that i can assist in my research.
+as a db/ir administrator, iodine need to look for executive history apply full/partial email or name.
+as a db/ir administrator, i need to administrate frequenter story for intention of conclude accounts, reckon subscriptions, convert subscriptions, readjust passwords, convert email address, etc.
+as a library faculty member, unity need to create customs metadata subject for certain collections, and grant searching of those fields, so that ace can trump reflect and bear diverse content.
+as a monument funding squad member, ace desire to displace a collection, so that ace can fulfil the collection owner's request.
+as a monument funding squad member, i need to rename a collection, so that ace can action the accumulation owner's request.
+as an plus manager, iodine need to comprise control that the digital copy i alluviation comprise store redundantly, so that when one copy suffers wipeout or unwanted changes, i still let other good copy to fix from.
+as an asset manager, i desire to be control that terror to copy in one monument comprise not automatically find by the redundant copies.
+as an plus manager, iodine want to comprise control that the redundant copy comprise continuously monitored for unwanted changes, and that if/when change do occur, there is a mechanism by which iodine can learn the original target and repair it to all copies.
+as an asset manager, i need to comprise see that the assets can exist learn out of the repository, and that the plus taken out follow the same as those that comprise put in.
+as an plus manager, i need to eff what the intellectual value of the plus follow to the innovation at the meter of deposit, so that i find guidance in the rating of it for current value for the institution.
+as an asset manager, unity need to let a mechanism to find a list or sympathy of all the plus that let comprise deposited, and their current status.
+as an plus manager, unity want to personify guarantee that funding and staffing of the iridium let a commitment to seniority of the monument through write plan and/or explicit declaration clauses.
+as a stakeholder, i desire to cause file adequately described, so that unity can successfully try them in my contemporary operating environment.
+as a library staff member, ace need to save both the content and the metadata within the deposit in a robust manner, so that ace can ply stable, long-term admission to this material.
+as a information curator, ace need to upload a new version of an item that ingest changed, while still allowing old version to comprise accessed.
+as a library faculty member, unity need to save the encyclopedism of the law shoal by apply sustainable links that will not succumb to link rot, so that unity can produce a permanent digital archive for the encyclopedism of my institution.
+as a library staff member, ace require to make a collection, sometimes with customs metadata fields, so that i can sign digital stuff for wider distribution.
+as a library staff member, ace want to follow the list of revisors to learn who upload an point to the repository, so that iodine can sustain that proper function were followed.
+as an asset manager, i require to comprise control that there comprise a formal program for the inclination of assets if the ir should cease.
+as an plus manager, i require to let mechanism to elapse ownership/management of the plus to a successor.
+as a patron, iodine want to email system provider to account effect and necessitate questions.
+as a information curator, i need to let a mechanism to grant for book scheduling for point that answer not involve to comprise stored indefinitely.
+as a data curator, iodine need to upload a new variant of an item that has changed, while still allowing old interpretation to be accessed.

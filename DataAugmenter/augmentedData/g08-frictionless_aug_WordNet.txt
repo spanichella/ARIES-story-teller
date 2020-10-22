@@ -1,0 +1,67 @@
+as a developer, iodine want to dumbfound a data software into node, so that i can start expend the datum for come analysis and visualizations.
+as a researcher, iodine need to dumbfound a datum packet into julia in seconds, so that i can jump apply the data for come analysis and visualizations.
+as a publisher, iodine need to impart type information to my data, so that it comprise more useful to others and can be expend better with cock like visualisation programs.
+as a publisher, ace need to comprise able to provide a visualization of data in the data package, so that i can provide my analysis and record my work to user of the data.
+as a researcher, ace need to comprise able to economize new visualizations, so that iodine can percentage them with others or include them in the data package.
+as a researcherpublisher, ace want to screw that my data conforms to its data parcel profile, so that iodine can find trust in the validness and usefulness of the data.
+as a researcherpublisher, iodine need to sympathise the room in which my information represent invalid, so that ace can love how to cook it.
+as a researcher, ace desire to become a datum packet into roentgen in seconds, so that ace can jump apply the data for come psychoanalysis and visualizations.
+as a researcher, ace desire to come a datum packet into excel in seconds, so that iodine can jump utilize the information for come psychoanalysis and visualizations.
+as a researcher, iodine want to let a data packet into spss in seconds, so that ace can startle expend the information for doing analysis and visualizations.
+as a researcher, iodine need to become a data software into stata in seconds, so that ace can jump using the data for come psychoanalysis and visualizations.
+as a researcher, iodine want to comprise able to understand my eml dataset to a datum package, so that i can gain from the wide raiment of pecker available for data packages.
+as a researcher, i desire to come a information software into libreoffice/openoffice in seconds, so that ace can depart expend the information for cause analysis and visualizations.
+as a developer, ace need to amaze a information parcel into python in seconds, so that iodine can start expend the information for come analysis and visualizations.
+as a developer, unity need a jquery plugin for effect datum packages, so that ace can expend it to enforce to mould ascendence that expend a core dataset for autocompletion.
+as a researcher, i need to bring my excel spreadsheet into a data package, so that unity can benefit from better tooling and standardization.
+as a developer, iodine desire to cause exploratory information analysis in r and operationalize that analysis in python, so that i can apply the best putz for the job.
+as a developer, iodine desire to let a data packet into clojure in seconds, so that i can startle expend the information in come psychoanalysis and visualizations.
+as a developer, ace need to come a data package into julia in seconds, so that iodine can start expend the data in make analysis and visualizations.
+as a developer, unity need to come a information software into c++ in seconds, so that unity can begin employ the data in cause psychoanalysis and visualizations.
+as a motorcar con expert, iodine would like to box ml datasets as data packages, so that unity can easily spell them into my ml platform, so that i can jump apply the information in practise analysis.
+as a developer, ace want an elasticsearch integration, so that i can incorporate data-packaged information with line that use elasticsearch.
+as a developer, ace want an spss integration, so that i can desegregate data-packaged data with pipeline that use spss.
+as a developer, ace need an eprints integration, so that i can incorporate data-packaged data with pipeline that utilise eprints.
+as a developer, ace want a mongo integration, so that i can integrate data-packaged data with pipeline that apply mongo.
+as a developer, ace need a dat integration, so that iodine can incorporate data-packaged data with line that apply dat.
+as a researchergovernment publisher, i need to impart general acknowledgment data to my narrow dataset, so that my dataset comprise more useful.
+as a researchergovernment publisher, i need to lend general state epithet to my dataset that only curb state codes, so that my dataset exist more readable.
+as a researchergovernment publisher, ace need to impart extension data on pompousness to my disbursement dataset, so that the expenditure ancestry in my dataset is more understandable.
+as a researchergovernment publisher, ace desire to map strain in my dataset using geographic information in my dataset, so that my dataset follow more rent for non-technical users.
+as a researcher, i want to exist able to cite a remote-controlled vocabulary for my dataset, so that i can be sure that tower of my dataset personify valid against a single shard list of terms.
+as a developer, iodine want an dspace integration, so that unity can incorporate data-packaged data with pipeline that expend dspace.
+as a developer, ace need plume integration, so that iodine can incorporate data-packaged information with line that expend feather.
+as a developer, iodine need hdf5 integration, so that iodine can desegregate data-packaged data with pipeline that expend hdf5.
+as a researcher, bring with data, ace need an microsoft king bi integration, so that i can spell datasets without download them locally.
+as a researcherpublisher, iodine need an integrating with zenodo, so that when i store my dataset in github, unity donâ€™t let to retype descriptive data about my dataset.
+as a publisher, ace would care an desegregation with open refine, so that ace can turnout houseclean data packages.
+as a researcherpublisher, i need to print data packet to ckan, so that my information comprise findable, and i can let a information api.
+as a researcherdeveloper, would care the ability import/export from ms-sql, so that unity can expend data software in workflow that affect ms-sql.
+as a researcher, crop with datum in netcdf, ace need netcdf integration, so that ace can store my data in plaintext while still hold its metadata.
+as a researcher, iodine need an integrating with https://data.mendeley.com/, so that i can formalise my data upon absorb to the service.
+as a publisher, iodine would like an integrating with excel, so that i can output strip data packages.
+as a publisher, iodine need to store my data quickly and easily online.
+as a monument manager, i need a cock that construct it easy for researchers/ exploiter to impart basic metadata to their enquiry data, so that it comprise more findable and therefore useful.
+as a researcherpublisher, i need validate my data with a minimum of clicks, so that ace can find trust in the hardiness and usefulness of the data.
+as a publisher, ace need to comprise able to discipline that every meter i update my data it comprise still good, so that iodine can overhear wrongdoing early and store reliable data.
+as a developerwrangler, i need to use a statement strain putz that let see to formalize data, so that ace can feel trust in the hardiness and usefulness of the information quickly and in the circumstance of my instruction strain workflow.
+as a developer, unity need an online service that comprise join to my information monument that validate information on update, so that i can delegate data substantiation to a third party.
+as a governance publisher, ace desire to construct it easy to leaven that our write data comprise valid, so that ace can claim that we comprise last up to our transparency commitments.
+as a civic tech activist, ace require to establish it easy to tax the lineament of data stored by the government, so that unity can realize sure that governing comprise go up to its transparentness commitments.
+as a publisher, unity want to embed an interactive prevue of my data on my site, so that exploiter can follow promote that this live the correct data for them.
+as a publisher, ace need to embed a prevue clitoris on my site, so that exploiter can preview the datum and be further that this comprise the correct datum for them.
+as a publisher, i need to recognise how many exploiter ingest previewed a dataset, so that i screw how involvement in a dataset pertain to its actual download numbers.
+as a developer, i need to customise an be mavin for my specific type of data, so that ace can generate my users a great user experience.
+as a publisher, iodine need to impart useful metadata or lend in new information column to make the dataset more useful.
+as a publisher, ace want to box reproducible tone to get a certain data state, so my methodology exist transparent and can comprise rerun by others.
+as a developerdatawrangler, ace want to store my data software in github and cause it automatically store into ckan, so that iodine dumbfound a information api and my dataset live lean in a relevant catalog.
+as a researcher, unity want a dick that can get basic statistics about a dataset, so that 1 can let a quick prevue of the data.
+as a developerpublisher, unity need a tool to create an embeddable information sum-up via iframe, so that ace can engraft information sum-up across sites.
+as a researcher, iodine need an app that beget an openrefine reconciliation api endpoint from a tabular data package, so that ace can apply it to clean messy data.
+as a researcher, iodine need an app that produce proxy data packages for well love and reliable data, sources, so that i can load high lineament data utilise data package tooling.
+as a repositorymanagerresearcher, ace need an app that roleplay as a match-making help for package data, so that proprietor follow mate with information packagers.
+as a developer, ace would like to create a web socket protocol for frictionless information tools, so that ace can easily expend information software with additional datum analysis tools.
+as a publisher, i would like a tool to check datum availableness perseveration after publication.
+as a researcherpublisher, ace need to assign the funding that impart to the existence of a collapse dataset, so that financing agencies can place the funding, origin for a generate dataset.
+as a researcherpublisher, ace need to impart a doi to a dataset, so that ace can advert it in report store with the data.
+

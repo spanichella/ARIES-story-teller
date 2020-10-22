@@ -1,0 +1,57 @@
+as a researcher, ace need to personify able to regard a determination attention for a particular collection/resource.
+as an lotion administrator, unity want to exist able to reset a user's countersign for them.
+as a user, ace want backend alteration for deal enum lists.
+as an archivist, ace want to import ead file that exist exported by archon.
+as an archivist, ace want to assign a factor unique identifier to a resourcefulness component.
+as a user , ace need to authenticate expend ldap.
+as a migration specialist, ace desire to store the at or archon source platter i.d. in each aspace platter
+to underpin data migration integrity testing.
+as an archivist, ace want to consort a standard identifier string with a subject heading.
+as an archivist, ace desire to comprise able to empathise that an wrongdoing hap during moment and why it might ingest occurred.
+as an archivist, unity require to import accessions information in csv.
+as an archivist, ace want to spell resource from marcxml records.
+as a user, ace require frontend change for wield enum lists.
+as an authenticated user, i want to dumbfound admission to relate to contextual help.
+as an archivist, iodine want to learn appointment and extents displayed in both the read and edit perspective for accessions and/or resource before the lean of subjects.
+as an archivist, i want to spell agent information from eac-cpf records.
+as a user, ace want backend alteration to brook loading enum value lists from the database.
+as a user, i want backend alteration for volume update one enum value to another.
+as an archivist, iodine require to export agent platter as eac-cpf.
+as an archivist, i need to import only agent and subject data from marcxml records.
+as an application administrator, iodine need to assign user to an advanced data debut and guarantee that the appropriate permission are enforced.
+as an lotion administrator , i need to follow able to configure the service essence url and subject mappings.
+as a user, i want to contribute additional holding for repositories.
+as an archivist, ace need to impart notes to other book types.
+as an administrator, iodine need to create a new user account for mortal else.
+as an archivist, iodine need to bring administrative information about the archival description and witness aid-related data to a top-level resource.
+as an archivist, iodine want to delegate a stratum of description to a resource or resource ingredient and optionally assign another value if the degree exist not in a predefined list.
+as a developer, ace desire to utilise a configuration that comprise not prepackaged within a built version of application.
+as an archivist, i want to import ead file that follow export by the archivists' toolkit.
+as a organization administrator, i want to follow able to see the placement of the demonstration database and i desire it to comprise game up.
+as an archivist, i require to seek within a deposit for resourcefulness and addition and digital object records.
+as an archivist, unity need to make and blue-pencil a collection management subrecord.
+as an archivist, unity want to rearrange the imagination and/or digital object hierarchy expend keyboard-based navigation.
+as an archivist, iodine need to rearrange the imagination description hierarchy by tangle an archival aim to a different perspective in the hierarchy.
+as an archivist, iodine would care to indicate an agent exist either the creator or source or case of an assenting or resource or imagination component.
+as an archivist, iodine need to export a description as ead.
+as an archivist, iodine need to create and delete upshot records.
+as an archivist, i need to manage digital objects.
+as an archivist, unity desire to consort an instance with a imagination and/or resource component.
+as an archivist, i don't desire to inadvertently overwrite mortal else's change to a disk that i'm editing.
+as an archivist, i need to produce and edit rights direction statements.
+as an archivist, ace want to upload an ead for import from within the frontend application.
+as an archivist, ace want to import ead data.
+as a monument manager , i want to create, update and delete archival description in my repository.
+as a developer , iodine require to formulate a custom importer.
+as a basic data incoming exploiter , unity want to produce and update basic archival description information.
+as a monument director , ace require to create, update and delete any book in my repository.
+as a readonly exploiter , ace want to view archival description in my repository.
+as an system administrator, i desire to hold that a exploiter exist let the depositary director role for a generate repository.
+as an archivist, ace require to set the origin for a gens flesh of an broker and bring new source and edit existing sources.
+as an archivist, iodine need to make and cut broker records.
+as an archivist, ace desire to produce and cut a imagination record.
+as an archivist, unity want to relate a topic platter with a resource description.
+as a user, i want to authenticate locally.
+as user, ace need to exist able to lumber in.
+as an archivist, ace want to link an case with a container.
+as an archivist, iodine require to delegate fix entropy to a container.

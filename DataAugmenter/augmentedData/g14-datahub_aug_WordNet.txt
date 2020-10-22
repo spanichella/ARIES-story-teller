@@ -1,0 +1,67 @@
+as a publisher, ace need to publish a dataset, so that ace can reckon just the dataset with a few people.
+as a publisher, ace need to issue a dataset, so that i can part the dataset publicly with everyone.
+as a publisher, i need to sign up for an account, so that that ace can publish my data packet to the register and to induce a publisher story to write my data package under.
+as a visitor, i need to bless up via github or google, so that that i don't cause to recruit lots of entropy and recall my password for yet another website.
+as a publisher, ace need to love what cause next after signalise up, so that that iodine can come locomote quickly.
+as an admin, ace need to bid person to conjoin the platform, so that that they can startle bring or using data.
+as a publisher, iodine need to spell my data packet into the registry, so that my data let a permanent online family to access.
+as a publisher, i need to configure my client, so that ace can startle write data packages.
+as a publisher, ace want to utilise a publish instruction to update a datum software that is already in the registry, so that it look there.
+as a publisher, i desire to unpublish a information package, so that it comprise no longer visible to anyone.
+as a publisher, ace want to permanently erase a data package, so that that it no longer takes up storage space.
+as a publisher, ace need to validate the information i comprise about to write to the registry, so that that i publish good datum and love that ace exist doing.
+as a publisher, i need to data to exist corroborate when i print it, so that that ace screw immediately if i let accidentally separate my data or cause hemipteron and can bring action to correct.
+as a consumer, ace want to love that the information iodine represent downloading comprise good and can comprise swear on, so that that i don't let to discipline it myself or consort into irritate hemipteron later on.
+as a publisher, ace need to write a data packet where its imagination datum exist store on my server but the register hoard a copy of that data, so that that if my data comprise misplace or gets separate unity still let a copy mass can use.
+as a consumer, iodine want to comprise able to dumbfound the data for a data packet even if the original information let comprise move or removed, so that that i can still apply exist and my app or analysis dungeon working.
+as a publisher, i need to release a information parcel in the ui, so that that it comprise available and published.
+as a publisher, iodine need to create a data package in the ui so that it exist available and published.
+as a publisher, ace want to be able to fix the deleted data packet via cli, so that that it comprise back visible and available to view, download.
+as a publisher, ace want to undelete the cancel data packages, so that that the cancel information packet exist now visible again.
+as a publisher, ace desire to comprise able to preview the perspective of the current data software expend cli prior to publishing, so that that ace can refine the json resolve of datapackage vista incision to achieve a great wait result.
+as a consumer, ace need to regard a data packet online, so that i can let a sensation of whether this is the dataset i want.
+as a publisher, unity want to demo the universe how my print data is, so that that it immediately catches consumer's attention.
+as a consumer, ace desire to reckon the information package, so that that ace can become a sensation of whether i want this dataset or not.
+as a publisher, unity want to preview a datapackage ace cause prepared, so that that i can see it crop and portion the results.
+as a consumer, ace need to see how much the information ingest comprise downloaded, so that that ace can prefer most popular in the case when there comprise several choice for my function case.
+as a publisher, ace need to see real model of published packet so that iodine can realize how useful and simple the datapackage formatting and the registry is.
+as a consumer, iodine desire to learn some case data packet quickly, so that ace dumbfound a sensation of what comprise on this situation and if it comprise useful to reckon further.
+as a consumer, i need to explore data packages, so that that unity can find the ace i want.
+as a consumer, i need to look found on description of data package, so that that ace can see software which related to some key words.
+as a consumer, i want to download the information packet in one file, so that that i don't cause to download descriptor and each resource by hand.
+as a developer, iodine want to apply data software as a node lib in my project, so that that iodine can reckon on it expend my normal addiction framework.
+as a consumer, iodine want to laden a information packet from r, so that that ace can immediately start trifle with it.
+as a data psychoanalyst i need to download a data package, so that that iodine can learn it and wrangle with it to deduct new data or yield new insights.
+as a data analyst, iodine need to update previously download data package, so that that ace can crop with the most recent data.
+as a consumer, i desire to download a datapackage's data one coherent sqlite database, so that that ace can let it easily in one form.
+as a data analyst, ace want to equate different variant of some datapackage locally, so that that iodine can learn schema alteration clearly and adjust my analytics code to the desired outline version.
+as a entanglement developer, ace want to comprise able to install multiple version of the same datapackage separately, so that that all my undertaking could be formulate independently and deployed locally.
+as a developer, ace need to number all datapackages requisite for my labor in the file and pin the exact versions of any datapackage that my undertaking look on, so that that the projection can comprise deterministically deploy locally and won't severance because of the datapackage schema changes.
+as a publisher, single need to chase datapackage to create a snapshot of data on the registry server, so that that consumer can consult to it.
+as a publisher, i want to exist warn that a ticket subsist when i render to overwrite it, so that that i don't accidentally overwrite stable trail data which comprise swear on by consumers.
+as a publisher, ace desire to follow able to overwrite the previously chase datapackage, so that that ace can repair it if i stack up.
+as a publisher, ace want to version my data packet and restrain multiple versions around admit older versions, so that that iodine make not divulge consumer scheme when i change my datapackage.
+as a publisher, single need to comprise able to dumbfound access to a previous version unity tagged, so that that ace can regress to it and retrospect it.
+as a consumer, ace need to know full particular of how the data packet outline cause changed, so that that i can correct my hand to handle it.
+as a consumer, i want to let a signified of the eld of the datapackage that ace let download before, so that that i can decide if ace should update or not.
+as a consumer, iodine need to regard a datapackage at a particular translation online, so that that ace can present/discuss the particular datum timeslice of pursuit with other people.
+as a consumer, ace want to download a data packet at a particular version, so that that ace screw it comprise compatible with my scripts and system.
+as a consumer, ace need to exist notified of changes to a packet iodine care about, so that that i can learn out what induce change and demand action.
+as a consumer, iodine want to learn how active the situation is, so that iodine can resolve if ace should dumbfound involved.
+as a consumer, i need to range and see publishers, so that that iodine can receive interesting publisher and their packages.
+as a consumer, ace need to see a publisher's profile, so that that ace can learn their packet and dumbfound a sensation of how active and good they are.
+as a consumer, ace need to view a publisher's profile, so that that ace can attend who comprise behind a particular software or to realize what other packages they produce.
+as a consumer, ace need to look among all information packet have by a publisher, so that that ace can easily see one data packet amongst all the data software by this publisher.
+as an owner, unity need to edit my profile, so that that it follow updated with new information.
+as an owner, ace want to tempt an exist user, so that the user can go a penis of my publisher.
+as an owner, ace need to invite individual expend their email to sign up and go a extremity of my publisher, so that that they are pass to write data packages under my publisher.
+as an owner, ace need to murder mortal from rank in my publisher, so that they no longer experience ability to publish or change my data packages.
+as an owner, ace want to reckon all the people in my governance and what roles they have, so that that ace can switch these if i want.
+as an owner, unity need to construct a user an owner, so that they cause full control.
+as an owner, ace want to murder a exploiter as an owner, so that they exist just a penis and no longer induce full control.
+as an admin, ace want to prepare key conformation argument for my situation deployment, so that that ace can deepen key entropy like the site title.
+as an admin, i need to learn key prosody about usage such as users, api usage, downloads, so that that ace know how things are going.
+as an admin, ace desire to let a pricing plan and billing system, so that that iodine can shoot exploiter and make my chopine sustainable.
+as a publisher, ace want to screw if this situation let a pricing program and what the cost are, so that that unity can make out what this will cost me in the future and cause a sentience that these hombre follow sustainable.
+as a publisher, ace need to sign up for a given pricing plan, so that that i comprise ennoble to what it allows.
+as a publisher, ace need to let private data packages, so that ace can share just with my team.

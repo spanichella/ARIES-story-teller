@@ -1,0 +1,51 @@
+as a user, i want to flick on the address, so that it hire me to a new tab with google maps.
+as a user, i want to comprise able to anonymously reckon public information, so that i fuck about reprocess centers near me before create an account.
+as a user, ace desire to comprise able to infix my cypher code and dumbfound a list of nearby reuse facilities, so that iodine can see which ace iodine should consider.
+as a user, i need to follow able to dumbfound the hours of each reprocess facility, so that unity can do slump on my off days or during after-work hours.
+as a user, ace need to let a flexible pickaxe up time, so that ace can more conveniently expend the website.
+as a user, i need to be able to select different case of recyclable waste, so i cause and dumbfound a list of deftness that accept each type and their initiative hours, so that iodine can witness an optimal route and schedule.
+as a user, iodine want to bring donation essence as favorites on my profile, so that ace can reckon them later.
+as a user, iodine want to comprise able to founder my e-mail id, so that unity can receive telling for new upshot as they exist posted.
+as a user, iodine want to personify able to regard a map display of the public recycling bin around my area.
+as a user, i want to comprise able to reckon a function display of the special wastefulness drop-off off site around my area.
+as a user, i want to comprise able to reckon the safe disposal upshot currently being mastermind around my area.
+as a user, iodine want to select a flexible filling up time, so that i can more conveniently habituate the website.
+as a user, ace need to reckon user certification for the website, so that ace recognise how to apply the www app.
+as a user, 1 need to come feedback when unity introduce an invalid vigor code.
+as a user, i need to follow able to produce an acocunt, so that iodine can produce my own profile.
+as an admin, ace want to exist able to impart or withdraw reuse facilities' information, so that users dumbfound the most recent information.
+as an admin, ace desire to exist able to read users' feedback and complaints, so that we can impart more features and keep ameliorate the servicing we provide to them.
+as a user, i need to comprise able to learn transaction story and keep a record of it, so that unity can proceed back when needed.
+as a user, ace need to let a great ui and ux from the sites, so that iodine cause a pleasant experience when sail through them.
+as a user, ace want to follow able to accession the site and come all the other poppycock on all of my electronic devices.
+as an admin, ace need to be able to kibosh specific exploiter establish on ip address, so that ace can forestall spamming on the websites.
+as an admin, ace need to reckon a dashboard that monitor all the sites' statuses, so that iodine can let a sentience of what people personify doing on our website and love the servicing status.
+as an admin, unity want to experience all data encrypted, so that important entropy will not represent slip during a server break or an attack.
+as an executive, iodine need to cause full access to data interrelate to my company, so that ace can experience a sensation of my company's performance.
+as an employee, ace want to entree the path provision organisation during work, so that i can comprise channelise through the neighbourhood.
+as an employee from the hr department, i need to let access to the full data of all employees working for this business.
+as a developer, ace want to admission an api from the website, so that iodine can desegregate it and enforce certain feature in my own io application.
+as a user, i want to comprise able to receive tempt rewards, so that i cause a ground to expend the website.
+as a user, ace need to cause my personal information restrain securely in the database of the website, so that iodine will not tolerate from identity theft or telephone harassment.
+as an admin, i want to care all users' activities, so that iodine can cope more efficiently.
+as a company, i want to have a website that comprise easy to use, so that ace can upload or cancel stuff step by step.
+as an employee, iodine want to get quick notifications, so that ace can serve example the first time.
+as a troupe accountant, i want to reckon all available activity fees online, so that iodine can easily create a handbill statement.
+as a developer, ace need to utilise bootstrap in the summons of developing, so that ace can easily design my website.
+as a developer, ace need to see some ui/ux lessons, so that ace can prepare an awesome and beautiful feature website.
+as a user, i need to see all fix of reuse essence on a map, so that ace can check which root to hire to deteriorate off waste.
+as a user, ace want to upload my week's schedule, so that iodine can let testimonial for reprocess inwardness that best tantrum my availability.
+as a user, i need to relate my email story to my profile, so that i can dumbfound a temporary password in event ace forget my own one.
+as a user, unity need to meet the administrators, so that iodine can establish feedback or necessitate for help.
+as an admin, i want to impart recycling center information, so that ace can restrain the database up-to-date over time.
+as an admin, i want to see user wrongdoing logs, so that ace can repair or review any subject that comprise being front by exploiter of the system.
+as an admin, i need to onboard reprocess essence on the platform, so that ace can increase data accuracy.
+as a superuser, ace need to update the recycling essence information, so that ace can leave the latest entropy about the recycling center.
+as a superuser, unity want to reckon users' stats, so that i can view in real-time how many exploiter have chitchat my reprocess essence entropy and their recyclable waste.
+as a superuser, unity need to reply to user questions, so that iodine can resolve any doubtfulness about my recycling center.
+as an admin, ace want to comprise able to let a dashboard that shew usage stats and locations, so that ace can discover the neighborhood with the largest bit of slump and to try let more deftness involved.
+as an admin, ace desire to comprise able to commune directly with facilities, so that iodine can restrain them update about lineament we ingest on our website.
+as a user, ace need to exist able to range through the list of facolities and see which ace exist environment-friendly, so that i can experience for sure my thriftlessness personify not proceed to provide a negative ecological footprint.
+as a recyclingfacility representative, single want to comprise able to update my entropy and the character of cloth unity accept, so that ace can avoid any miscommunication with users.
+as a recyclingfacility representative, ace need to cause admission to user stats and schedules, so that iodine can correct my hours and/or upgrade equipment and capacity in decree to comprise able to accomodate larger amount of recyclable materials.
+as a recyclingfacility, ace desire to exist able to convey directly with the situation admin and impart any subject or concerns i have, so that they repair them.

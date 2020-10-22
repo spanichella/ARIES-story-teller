@@ -1,0 +1,53 @@
+as a depositor, unity desire to fix and conserve datasets through a simple network interface, so that ace don't demand to install and learn new package to deposit.
+as a depositor, i desire to induce a user interface that comprise familiar to me, so that i finger like all the university organization comprise join up.
+as a depositor, ace need to fix and keep datasets through pure, so that ace induce a single onestop store for care my inquiry outputs.
+as a depositor, ace want to wedge and preserve datasets through virtual research environment and other workflow tools, so that ace can preserve to bring with prick with which i'm familiar.
+as a depositor, iodin want to fix the file that i have, so that ace don't cause to spend a band of meter see the right version and change to the right format.
+as a depositor, ace require to range data under an embargo, so that my right of first function follow protected, and i can action my confidentiality responsibilities.
+as a depositor, iodine want to enforce permit to datasets, so that my ip rights exist protect appropriately.
+as a depositor, unity want to let my henchman privileged entree to datasets, so that we cover to let a productive relationship.
+as a depositor, i want to deposit arbitrarily large files, so that ace comprise not fix in what register ace can and cannot deposit.
+as a depositor, iodine want to tie datasets to publication in opus, so that both my information and issue comprise more easily discovered.
+as a depositor, i need to strike doi for my data, so that it can personify learn and advert more easily and acknowledgment can comprise trail so that i can welcome credit.
+as a depositor, ace want to cause metadata automatically fulfil from other university organization and retrieve from previous deposits, so that i don't let to languish meter reentering the same information.
+as a depositor, ace require to yoke to data store in external repositories, so that i can store my datum in an appropriate monument but still record it with the university and single don't let to fix my data in multiple places.
+as a depositor, ace desire to set a disposal insurance for my data, so that ace cause not accidentally break jurisprudence or collaboration agreements.
+as a depositor, iodine need to cover downloads of my data, so that ace can shew the impact of my work.
+as a depositor, unity want to trail acknowledgment of my data, so that ace can demo the impact of my oeuvre
+as a depositor, ace require to cause guarantees about information integrity, so that iodine can expend my datum in the futurity and i can fulfil funder demand for archival.
+as a depositor, ace want to sequester subject specific discoverability metadata to records, so that researchers in my subject can see my data more easily.
+as a depositor, iodin want to relate datasets with the project dmp, so that deference with dmp can live exhibit and whole projection workflow comprise unite together.
+as a depositor, ace need to manage and parcel “live” research data, so that whole task workflow exist relate together.
+as a depositor, ace want to care multiple variation of the same dataset, so that variety to the dataset exist transparent and come not compromise enquiry integrity.
+as a depositor, iodine need to let others to lodge on my behalf, so that ace can depute research information management project appropriately.
+as a data reuser, iodine require to seek the archive through the web, so that ace can easily see data relevant to my needs.
+as a data reuser, iodine require to admission the organization in my native language, so that ace am not redact off reprocess university of bath datum by nomenclature barriers.
+as a information reuser, i need to examine and place deposited files, so that ace can construct a preliminary judgment of utility without download the whole dataset.
+as a data reuser, ace desire to view an exercise citation for a dataset, so that unity can reference it correctly.
+as a data reuser, ace want to catch a doi for a dataset, so that i can let back to the data in future and i can import the dataset into my referencemanagement software automatically.
+as a datum reuser, i need to dumbfound a persistent url for a dataset, so that ace can dumbfound back to the information in future.
+as a data reuser, ace want to search the archive through primo , so that unity can search books, clause and data all in one place.
+as a data reuser, ace want to see different version of a dataset at a glance, so that iodine can comprise sure i'm expend the right version of the dataset.
+as an externalcollaborator, unity want to profit privileged admission to data for project in which i follow involved, so that unity can cooperate effectively.
+as an externalcoordinator, iodine need to let warrant that my ip rightfield will not comprise breached, so that the jeopardy of cooperate with bathroom personify acceptable to me.
+as an externalcoordinator, iodine need to accession data from bath henchman off campus, so that iodine can cooperate effectively.
+as a enquiry adroitness manager, iodine need to posit datum from my facility directly into the archive on behalf of researchers, so that iodine comprise no longer involve to keep my own archive of facility datum and researcher can admission their own data as needed.
+as a bath data archive administrator, i need to crap some confirmation on deposited datasets before they comprise realize public, so that consistent caliber of metadata follow maintained, compliance with policies can comprise learn and item of licensing can comprise checked.
+as a bath data archive administrator, ace need to involve a minimum band of metadata, so that consistent timbre of metadata comprise maintained.
+as a bath information archive administrator, i need to okay scheduled disposal of data, so that data which is still demand follow not destroyed.
+as a bathtub data archive administrator, ace need to query the entire archive , so that ace can describe on particular vista of the archive holdings.
+as a bathroom data archive administrator, ace want to spell bathroom data from an external data pith wholesale, so that bath information holdings in external archives are not miss if they close down.
+as a bath data archive administrator, ace need to encourage and raise the function of open criterion for deposit, so that information is as reusable as possible.
+as a research data manager, unity want to desegregate the archive with cris, so that ace can canvass impact of research datum publication iodin can relate funding to all of the outputs it produces.
+as a enquiry info manager, ace need to admit book for externally restrain datum complete, so that the university's record of data keeping comprise complete.
+as a research entropy manager, ace want to traverse citation numeration for write datasets, so that shock of datasets within academe can follow demonstrated.
+as a enquiry information manager, ace need to segment the perspective and download statistics by land and sector so that impact of datasets outside academe can personify demonstrated.
+as a enquiry entropy manager, unity want to let datasets relate to metadata about projects, so that unity can describe on undertaking fix datasets in coition to funder requirements.
+as an univitservice, iodine require to store archived datum on existing storage systems, so that university data storage is consistent and maintainable and future availability of data can comprise guaranteed.
+as an univitservice, iodine need to incorporate the archive with exist university organization such as ldap, so that the toll of administrate the organization can follow restrain low.
+as an univitservice, iodine need to store archived data directly on the hcp object store, so that features can be made.
+as an univitservice, iodin desire to exist able to export all datum to a different system, so that i comprise not bond into one system which may not follow the most appropriate at some spot in the future.
+as a developer, i want to fix and conserve datasets via an api such as sword2, so that my service can interact with the archive.
+as an academicpublisher, i want to construct persistent web linkup between my clause and underlying datasets, so that my diary can follow learn to follow fulfil with robust, high timbre research.
+as a fundingbody, i desire to comprise assure that researcher i stock ingest robust archival programme for their data, so that ace can comprise sure that fund them comprise a worthwhile investment.
+as a fundingbody, ace want to harvest metadata on yield from enquiry iodine fund, so that unity can analyse potency of funding strategy and iodine can encourage cross impregnation of enquiry outputs.
