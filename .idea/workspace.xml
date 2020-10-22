@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e479c205-8c8f-4961-aad8-f3d1e79c6871" name="Default Changelist" comment="Added Augmentor Python Script" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Abendland\IntelijIDE\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jE4TlwOiLdj36mJAvTScSYt4Qi" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e479c205-8c8f-4961-aad8-f3d1e79c6871" name="Default Changelist" comment="" />
+      <created>1603355928313</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603355928313</updated>
+      <workItem from="1603355929662" duration="1448000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added Augmentor Python Script">
+      <created>1603356506347</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603356506347</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added Augmentor Python Script">
+      <created>1603356662019</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603356662019</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added Augmentor Python Script">
+      <created>1603357060869</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1603357060869</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Added Augmentor Python Script" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Augmentor Python Script" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="541" y="83" key="CommitChangelistDialog2" timestamp="1603357454480">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="541" y="83" key="CommitChangelistDialog2/-1920.29.1920.1020/3902.7.1858.1080/0.0.1920.1050@0.0.1920.1050" timestamp="1603357454480" />
+    <state x="553" y="258" key="Vcs.Push.Dialog.v2" timestamp="1603357465278">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="553" y="258" key="Vcs.Push.Dialog.v2/-1920.29.1920.1020/3902.7.1858.1080/0.0.1920.1050@0.0.1920.1050" timestamp="1603357465278" />
+  </component>
+</project>
