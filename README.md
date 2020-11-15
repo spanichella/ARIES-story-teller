@@ -16,4 +16,6 @@ There are currently 5 software developers, 2 Designers, 2 Slicers and 1 UX Desig
     - **NULL**: Neither functional nor non-functional
   - The Dataset contains 665 Lines of labeled text and strong semantical errors where manually fixed
   - The LOC is 100%, meaning the data has not been trimmed in any way
-  
+       
+       
+       
