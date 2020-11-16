@@ -136,7 +136,7 @@
 136	I mean, this is just one example, but let's sort of sell predefine them project setups to our customers.	F
 137	Yeah.	NULL
 138	This could be quite interesting.	NULL
-139	I'm not going to talk you out of it because you're, you're the business leader on this, but just think about the generalization, if, if it, if it is possible, if it makes sense?	 NULL
+139	I'm not going to talk you out of it because you're, you're the business leader on this, but just think about the generalization, if, if it, if it is possible, if it makes sense?	NULL
 140	But I get your point on that.	NULL
 141	Technically it should be possible to do so.	NULL
 142	Yeah.	NULL
@@ -202,7 +202,7 @@
 202	So they are just all on the top level and its like a pool of project managers and the top level and out of this pool, those, the entire structure or hierarchy of the business.	A
 203	Okay.	NULL
 204	But you would not assign to specific project managers or would you?	NULL
-205	Nah, I wouldn't, I wouldn't do this at the initial, at this point of phase one of our project, because I think we should keep it simple.	Null
+205	Nah, I wouldn't, I wouldn't do this at the initial, at this point of phase one of our project, because I think we should keep it simple.	NULL
 206	I mean, what, what are the odds that, that accompany assigned smokable project managers to such a survey tool anyways, right.	NULL
 207	Normally you would have like at most, maybe one project manager, which corresponds or communicates with the human resources department of the business and that's about it, right.	NULL
 208	You don't need a lot of, I mean, we, we talk, um, top level managers of a business here probably to be overkill if, if a business would have more than one managing this, this, this little, um, aspect of the business, right.	NULL
@@ -514,7 +514,8 @@
 513	I'm not sure.	NULL
 514	Maybe you can grasp this a bit better Janik, but, or maybe also you Mark as a UX specialist,	NULL
 515	I would have to collaborate on this, yeah.	NULL
-516	I just start wondering if it even makes sense that this, their manager platform is responsive, because does it make sense for a manager to manage all his employees create service and stuff on iPhone or iPad?	F&A
+516	I just start wondering if it even makes sense that this, their manager platform is responsive, because does it make sense for a manager to manage all his employees create service and stuff on iPhone or iPad?	F
+516	I just start wondering if it even makes sense that this, their manager platform is responsive, because does it make sense for a manager to manage all his employees create service and stuff on iPhone or iPad?	A
 517	On an iPad, I think, yes.	F
 518	I mean, think about, think about the manager who's often walking around or visiting different I don't know, departments, and instead of laptops, they have iPads.	NULL
 519	And then there is like a neat dashboard or something that he has on his iPad, which is like some starting screen, or I don't know.	F
