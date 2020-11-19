@@ -42,19 +42,22 @@ public class MainRequirementSpecificationsPipeline extends MainProgram {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		// here are located the "documents" folder and the  "utilities.R script"
-		String docs_location = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/";
+		//Fetch path of thi
+		String mainPath = MainRequirementSpecificationsPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/","");
+		//System.out.println("Your path is:"+mainPath);
+		//Set Path for R-script folder
+		String scripts_location = mainPath + "Resources/R-scripts/";
+		//Set Path for ReqSpec folder, where truth set is located
+		String docs_location = mainPath + "Resources/ReqSpec/";
 
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
 	    // PART 1. - ORACLE  - SOME PARAMETERS ARE ALSO USED BY THE OTHER STEPS (TEXT PREPROCESSING AND ML/PL-based prediction)
-		System.out.println("PART 1. - ORACLE Analysis - SOME Parameters ARE ALSO USED BY THE OTHER STEPS (TEXT PREPROCESSING AND ML/PL-based prediction)");
-		//local path to the R script "MainScript.r"
-			String pathRScriptOracle = docs_location+"Script-to-create-test-dataset-Req-Specifications.r";
-		// here are located the "documents" folder and the  "utilities.R script"
-			String baseFolder = docs_location+"hassebjo";
-		// path oracle 
-			String oracle_path = docs_location+"hassebjo/truth_set_ReqSpecification.txt";
-		// path threshold 
+		System.out.println("PART 1. - ORACLE Analysis - SOME Parameters ARE ALSO USED BY THE OTHER STEPS (TEXT PREPROCESSING AND ML/PL-based prediction)\n");
+			String pathRScriptOracle = scripts_location+"Script-to-create-test-dataset-Req-Specifications.r";
+			String baseFolder = docs_location;
+		// path truth-set
+			String oracle_path = docs_location+"truth_set_ReqSpecification.txt";
+		// path threshold TODO: this is the split of training/testset i think - marc
 			double threshold = 0.5;
 				
 		// Type of the data to classify
@@ -73,23 +76,23 @@ public class MainRequirementSpecificationsPipeline extends MainProgram {
 		mainRequirementSpecificationsPipeline.setOracle_path(oracle_path);
 		mainRequirementSpecificationsPipeline.setThreshold(threshold);
 
-		// We finally run the ORACLE analysis
+		// We  run the ORACLE analysis
 		OracleRequirementSpecificationsAnalyzer oracleRequirementSpecificationsAnalyzer = mainRequirementSpecificationsPipeline.runOracleAnalysis();
 		// END of 1. PART OF ORACLE 
-		System.out.println("\n END of PART 1. - ORACLE Analysis\n\n ");
+		System.out.println("\nEND of PART 1. - ORACLE Analysis\n\n ");
 		/**/
 	    // PART 2. - TbD Analysis - SOME OF THEM ARE ALSO USED BY THE OTHER STEPS (TEXT PREPROCESSING AND ML/PL-based prediction)
-		System.out.println("PART 2. - PART OF TbD Analysis - SOME Parameters ARE ALSO USED BY THE OTHER STEPS (TEXT PREPROCESSING AND ML/PL-based prediction)");
+		System.out.println("PART 2. - PART OF TbD Analysis - SOME Parameters ARE ALSO USED BY THE OTHER STEPS (TEXT PREPROCESSING AND ML/PL-based prediction)\n");
 		//local path to the R script "MainScript.r"
-		String pathTbDRScript = docs_location+"MainScript.r";
+		String pathTbDRScript = scripts_location+"MainScript.r";
 		// locations of training and test sets
-		String documentsTrainingSet = docs_location+"hassebjo/training-set-Req-Specifications";
-		String documentsTestSet = docs_location+"hassebjo/test-set-Req-Specifications";
+		String documentsTrainingSet = docs_location+"training-set-Req-Specifications";
+		String documentsTestSet = docs_location+"test-set-Req-Specifications";
 		// path oracle
-		String simplifiedOracle_path = docs_location+"hassebjo/truth_set-simplified-Req-Specifications.csv";
+		String simplifiedOracle_path = docs_location+"truth_set-simplified-Req-Specifications.csv";
 		
 		//we update parameters - used later to run TbD analysis
-		mainRequirementSpecificationsPipeline.setDocs_location(docs_location);
+		mainRequirementSpecificationsPipeline.setDocs_location(scripts_location);
 		mainRequirementSpecificationsPipeline.setPathTbDRScript(pathTbDRScript);
 		mainRequirementSpecificationsPipeline.setDocumentsTrainingSet(documentsTrainingSet);
 		mainRequirementSpecificationsPipeline.setDocumentsTestSet(documentsTestSet);
@@ -100,18 +103,18 @@ public class MainRequirementSpecificationsPipeline extends MainProgram {
 		System.out.println("\n END of PART 2. - TbD Analysis \n\n ");
 		// PART 3. - ML prediction 
 		System.out.println("PART 3. - ML prediction ");
-		String pathTrainingSet = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-req_specification/tdm_full_trainingSet_with_oracle_info.csv";
+		String pathTrainingSet = docs_location+"documents-preprocessed-req_specification/tdm_full_trainingSet_with_oracle_info.csv";
 		//path test set
-		String pathTestSet = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-req_specification/tdm_full_testSet_with_oracle_info.csv";
+		String pathTestSet = docs_location+"documents-preprocessed-req_specification/tdm_full_testSet_with_oracle_info.csv";
 		//path output model
-		String pathModel = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-req_specification/ML-method.model";
+		String pathModel = docs_location+"documents-preprocessed-req_specification/ML-method.model";
 		//path output model
-		String pathWholeDataset = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-req_specification/tdm_full_with_oracle_info_F.csv";
-		String machineLearningModel = "SMO";
-		
-		String pathResultsPrediction = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-req_specification/resultsPrediction-req_specification.txt.csv";
+		String pathWholeDataset = docs_location+"documents-preprocessed-req_specification/tdm_full_with_oracle_info_F.csv";
+		String machineLearningModel = "J48";
+		//TODO: output location
+		String pathResultsPrediction = docs_location+"resultsPrediction-req_specification.txt";
 		WekaClassifier wekaClassifier = new WekaClassifier(pathTrainingSet, pathTestSet, pathModel);
-		wekaClassifier.runSpecifiedMachineLearningModel(machineLearningModel,pathResultsPrediction); //default behaviour it does prediction with given training and test sets with J48
+		wekaClassifier.runSpecifiedMachineLearningModel(machineLearningModel,pathResultsPrediction);//default behaviour it does prediction with given training and test sets with J48
 		wekaClassifier.runSpecifiedModelWith10FoldStrategy(pathWholeDataset, pathModel,machineLearningModel,pathResultsPrediction);
 		System.out.println("\n END of PART 3. - ML prediction\n\n");
 		/**/

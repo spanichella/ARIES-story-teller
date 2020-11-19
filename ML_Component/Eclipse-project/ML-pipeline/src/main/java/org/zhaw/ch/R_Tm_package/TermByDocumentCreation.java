@@ -42,7 +42,7 @@ public class TermByDocumentCreation {
 		// if  args is not null, we use it for setting the various arguments
 		if(tbdArgs != null && tbdArgs.length==9)
 		{
-			System.out.println("\n\nEvaluation of  TermByDocument Args..."+tbdArgs.length+" \n");
+			//System.out.println("\n\nEvaluation of  TermByDocument Args..."+tbdArgs.length+" \n");
 			
 			pathTbDRScript = tbdArgs[0];
 			docs_location = tbdArgs[1];
@@ -58,7 +58,7 @@ public class TermByDocumentCreation {
 		String command = "/usr/local/bin/Rscript "+ pathTbDRScript+" "+docs_location+ " "+documentsTrainingSet+ " "+documentsTestSet+" "+simplifiedOracle_path+" "+nameOfAttributeID+" "+nameOfAttributeClass+ " "+nameOfAttributeTexttbd+ " "+oracleFolder;// path of command "/usr/local/bin/Rscript" identified using: "which Rscript" from command line
 		
 		//we print the command to execute
-		System.out.println(" \n \n Executing command (considering R script and arguments): \n "+command+" \n");
+		/*System.out.println(" \n \n Executing command (considering R script and arguments): \n "+command+" \n");
 		System.out.println("R script and arguments: ");
 		System.out.println("- base_folder2 <- args[1] ");
 		System.out.println("- trainingSetDirectory2 <- args[2]  ");
@@ -69,7 +69,7 @@ public class TermByDocumentCreation {
 		System.out.println("- nameOfAttributeText2  <- args[7]  \n");
 		System.out.println("- oracleFolder2  <- args[8]  \n");
 		
-		System.out.println("Rscript running  \n");
+		System.out.println("Rscript running  \n");*/
 		// -- Linux/Mac osx --
 		try {
 		    //Process process = Runtime.getRuntime().exec("ls /Users/panc/Desktop");

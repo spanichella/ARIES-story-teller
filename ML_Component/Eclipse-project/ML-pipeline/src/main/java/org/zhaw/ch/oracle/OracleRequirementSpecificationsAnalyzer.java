@@ -40,7 +40,7 @@ public class OracleRequirementSpecificationsAnalyzer extends Oracle{
 		// if  args is not null, we use it for setting the various arguments
 		if(args != null && args.length==4)
 		{
-			System.out.println("\n\nEvaluation of OracleArgs... \n");
+			//System.out.println("\n\nEvaluation of OracleArgs... \n");
 			
 			pathRScriptOracle = args[0];
 			baseFolder = args[1];
@@ -51,7 +51,7 @@ public class OracleRequirementSpecificationsAnalyzer extends Oracle{
 		//command to execute
 		String command = "/usr/local/bin/Rscript "+ pathRScriptOracle+" "+baseFolder+ " "+oracle_path+ " "+threshold+ " "+getNameOfAttributeID()+ " "+getNameOfAttributeText()+ " "+getNameOfAttributeClass();
 		
-		//we print the command to execute
+		/*we print the command to execute
 				System.out.println(" \n \n Executing command (considering R script and arguments): \n "+command+" \n");
 				System.out.println("R script and arguments: ");
 				System.out.println("- pathRScriptOracle <- args[1] ");
@@ -62,7 +62,7 @@ public class OracleRequirementSpecificationsAnalyzer extends Oracle{
 				System.out.println("- nameOfAttributeText2 <- args[6]  ");
 				System.out.println("- nameOfAttributeClass2 <- args[7]  ");
 				
-				System.out.println("Rscript running  \n");
+				System.out.println("Rscript running  \n");*/
 				// -- Linux/Mac osx --
 				try {
 				    //Process process = Runtime.getRuntime().exec("ls /Users/panc/Desktop");
