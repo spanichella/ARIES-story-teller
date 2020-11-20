@@ -8,9 +8,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 import weka.classifiers.Classifier;
 import weka.classifiers.bayes.NaiveBayes;
@@ -93,7 +96,7 @@ public class WekaClassifier extends MachineLearningClassifier {
 		
 			classifier.buildClassifier(train);
 			 // evaluate classifier and print some statistics
-			
+
 			 Evaluation eval = new Evaluation(train);
 			 weka.core.SerializationHelper.write(pathModel, classifier);
 			 eval.evaluateModel(classifier, test);
@@ -105,8 +108,8 @@ public class WekaClassifier extends MachineLearningClassifier {
 				System.out.println(eval.toMatrixString());
 				System.out.println(eval.toClassDetailsString());
 				System.out.println("AUC = " +eval.areaUnderROC(1));
-				
-				FileWriter fileWriter = new FileWriter(pathResultsPrediction);
+				String strDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm:ss"));
+				FileWriter fileWriter = new FileWriter(pathResultsPrediction+strDate+".txt");
 			    PrintWriter printWriter = new PrintWriter(fileWriter);
 				printWriter.println("training performance results of: " + classifier.getClass().getSimpleName() 
 				+ "\n---------------------------------");

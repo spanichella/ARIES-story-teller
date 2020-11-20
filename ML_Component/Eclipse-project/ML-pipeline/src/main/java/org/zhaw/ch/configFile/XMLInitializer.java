@@ -131,11 +131,65 @@ public class XMLInitializer {
             //simplifiedOracle_path
             Element simplifiedOracle_path = document.createElement("simplifiedOracle_path");
             if(type=="RS") {
-                simplifiedOracle_path.appendChild(document.createTextNode(basePath + baseFolder + "truth_set-simplified.csv"));
+                simplifiedOracle_path.appendChild(document.createTextNode(basePath + baseFolder + "truth_set-simplified-Req-Specifications.csv"));
             }else{
                 simplifiedOracle_path.appendChild(document.createTextNode(basePath + baseFolder + "truth_set-simplified.csv"));
             }
             ADSORB.appendChild(simplifiedOracle_path);
+
+            //strategy
+            //TODO: implement strategy
+            Element strategy = document.createElement("strategy");
+            strategy.appendChild(document.createTextNode("Training_and_test_set"));
+            ADSORB.appendChild(strategy);
+
+            //machineLearningModel
+            //TODO: implement machineLearningModel
+            Element machineLearningModel = document.createElement("machineLearningModel");
+            machineLearningModel.appendChild(document.createTextNode("J48"));
+            ADSORB.appendChild(machineLearningModel);
+
+            //pathModel
+            Element pathModel = document.createElement("pathModel");
+            if(type=="RS") {
+                pathModel.appendChild(document.createTextNode(basePath + baseFolder+"MLModel.model"));
+            }else{
+                pathModel.appendChild(document.createTextNode(basePath + baseFolder+"MLModel.model"));
+            }
+            ADSORB.appendChild(pathModel);
+
+            //pathResultsPrediction
+            //TODO: implement ResultPath
+            Element pathResultsPrediction = document.createElement("pathResultsPrediction");
+            pathResultsPrediction.appendChild(document.createTextNode(basePath + baseFolder+"result_"));
+            ADSORB.appendChild(pathResultsPrediction);
+
+            //pathTestSet
+            Element pathTestSet = document.createElement("pathTestSet");
+            if(type=="RS") {
+                pathTestSet.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-req_specification/tdm_full_testSet_with_oracle_info.csv"));
+            }else{
+                pathTestSet.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-review/tdm_full_testSet_with_oracle_info.csv"));
+            }
+            ADSORB.appendChild(pathTestSet);
+
+            //pathTrainingSet
+            Element pathTrainingSet = document.createElement("pathTrainingSet");
+            if(type=="RS") {
+                pathTrainingSet.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-req_specification/tdm_full_trainingSet_with_oracle_info.csv"));
+            }else{
+                pathTrainingSet.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-review/tdm_full_trainingSet_with_oracle_info.csv"));
+            }
+            ADSORB.appendChild(pathTrainingSet);
+
+            //pathWholeDataset
+            Element pathWholeDataset = document.createElement("pathWholeDataset");
+            if(type=="RS") {
+                pathWholeDataset.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-req_specification/tdm_full_with_oracle_info.csv"));
+            }else{
+                pathWholeDataset.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-review/tdm_full_with_oracle_info.csv"));
+            }
+            ADSORB.appendChild(pathWholeDataset);
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();

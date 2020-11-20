@@ -1,5 +1,6 @@
 package org.zhaw.ch.manager.pipeline;
 
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.zhaw.ch.configFile.ConfigFileReader;
 import org.zhaw.ch.ml.WekaClassifier;
 
@@ -12,11 +13,8 @@ public class ThirdPart {
     public void tp(ConfigFileReader configFileReader, String pathXMLConfigFile){
 
             configFileReader = new ConfigFileReader(pathXMLConfigFile, "ML_ANALYSIS");
-            //path output model
-            //String pathModel = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-review/ML-method.model";
+            //path where Model gets created
             String pathModel = configFileReader.getPathModel();
-
-            //String machineLearningModel = "SMO";
             String machineLearningModel = configFileReader.getMachineLearningModel();
             String strategy = configFileReader.getStrategy();
             String pathResultsPrediction = configFileReader.getPathResultsPrediction();
@@ -24,10 +22,8 @@ public class ThirdPart {
             if (strategy != null) {
                 System.out.println("PART 3. - ML prediction ");
                 if (strategy.equals("Training_and_test_set")) {
-                    //String pathTrainingSet = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-review/tdm_full_trainingSet_with_oracle_info.csv";
                     String pathTrainingSet = configFileReader.getPathTrainingSet();
                     //path test set
-                    //String pathTestSet = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-review/tdm_full_testSet_with_oracle_info.csv";
                     String pathTestSet = configFileReader.getPathTestSet();
                     wekaClassifier = new WekaClassifier(pathTrainingSet, pathTestSet, pathModel);
                     if (checkWehetherTestSetIsLabeled(pathTestSet) == true) {

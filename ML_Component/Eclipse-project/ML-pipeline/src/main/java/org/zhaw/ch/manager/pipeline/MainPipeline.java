@@ -78,7 +78,7 @@ public class MainPipeline extends MainProgram {
         /**/
         // PART 3. - ML prediction
         ThirdPart tp = new ThirdPart();
-        //tp.tp(configFileReader,pathXMLConfigFile);
+        tp.tp(configFileReader,pathXMLConfigFile);
 
     }
 

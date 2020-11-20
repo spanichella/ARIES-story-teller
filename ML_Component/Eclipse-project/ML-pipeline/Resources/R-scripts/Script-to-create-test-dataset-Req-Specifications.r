@@ -45,6 +45,7 @@ unlink(folder_test_set_files, recursive = TRUE)
 
 # We create training and test set folders where files will be created
 dir.create(folder_training_set_files, showWarnings = FALSE, recursive = TRUE)
+dir.create(folder_training_set_files, showWarnings = FALSE, recursive = TRUE)
 dir.create(folder_test_set_files, showWarnings = FALSE, recursive = TRUE)
 
 oracle_trainingSet_path<- "./trainingSet_truth_set-Req-Specifications.csv"

@@ -127,6 +127,8 @@ public class ConfigFileReader {
                             System.out.println("machineLearningModel: " + this.machineLearningModel);
                             this.pathResultsPrediction = eElement.getElementsByTagName("pathResultsPrediction").item(0).getTextContent();
                             System.out.println("pathResultsPrediction: " + this.pathResultsPrediction);
+
+                            //TODO: needs changes for maybe
                             if (strategy.equals("Training_and_test_set")) {
                                 this.pathTrainingSet = eElement.getElementsByTagName("pathTrainingSet").item(0).getTextContent();
                                 System.out.println(": " + this.pathTrainingSet);
@@ -137,7 +139,6 @@ public class ConfigFileReader {
                                 this.pathWholeDataset = eElement.getElementsByTagName("pathWholeDataset").item(0).getTextContent();
                                 System.out.println("pathWholeDataset: " + this.pathWholeDataset);
                             }
-                            //System.out.println(": " + this.);
                         }
                     }
                 }
