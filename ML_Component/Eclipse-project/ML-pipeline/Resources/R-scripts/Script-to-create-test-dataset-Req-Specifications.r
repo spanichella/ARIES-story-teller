@@ -1,3 +1,4 @@
+print("SCRIPT REQSPEC")
 args <- commandArgs(trailingOnly = TRUE)
 base_folder2 <- args[1]
 oracle_path2  <- args[2]

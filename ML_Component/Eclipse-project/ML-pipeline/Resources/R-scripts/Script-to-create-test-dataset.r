@@ -1,3 +1,4 @@
+print("SCRIPT USER REVIEW")
 args <- commandArgs(trailingOnly = TRUE)
 base_folder2 <- args[1]
 oracle_path2  <- args[2]
@@ -49,6 +50,7 @@ oracle_testSet_path<- "./testSet_truth_set.csv"
 simplified_oracle_path<- "./truth_set-simplified.csv"
 
 print("We read the oracle file")
+print(oracle_path)
 oracle <- read.csv(oracle_path)
 
 threshold<- 50/100# 50%

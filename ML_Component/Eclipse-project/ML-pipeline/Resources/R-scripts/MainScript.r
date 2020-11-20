@@ -59,6 +59,7 @@ if( (!is.na(trainingSetDirectory2)) && (!is.na(testSetDirectory2)) )
   #print("2) argument \"trainingSetDirectory\" given as argument to the R script ")
   #print("3) \"testSetDirectory\" given as argumet to the R script ")
   }
+
   if(!is.na(nameOfAttributeText2) && nameOfAttributeText2=="req_specification")
       {
       trainingSetDirectory<- paste(oracleFolder2,"/training-set-Req-Specifications",sep="")
@@ -71,7 +72,7 @@ dir.create(testSetDirectory, showWarnings = TRUE, recursive = TRUE)
 if(!is.na(simplifiedOracle2_path))
 {
   simplifiedOracle_path <- simplifiedOracle2_path
-  #print("4) argument \"simplifiedOracle2_path\" given as argumet to the R script ")
+  print("4) argument \"simplifiedOracle2_path\" given as argumet to the R script ")
 }
 
 #dir.create(simplifiedOracle_path, showWarnings = FALSE, recursive = TRUE)
@@ -81,6 +82,7 @@ if(length(args)==8)
 #print("All fine with the arguments..")
 #print("Reading oracle information from:")
 #print(simplifiedOracle_path)
+print("jejej")
 simplifiedOracle <- read.csv(simplifiedOracle_path)
 #print("First two lines of read oracle file are:")
 #print(simplifiedOracle[1:2,])

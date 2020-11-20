@@ -6,7 +6,7 @@
 		#path where the training set file was created
 		<pathTrainingSet>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/Resources/RE-meeting-Transp/documents-preprocessed-req_specification/tdm_full_trainingSet_with_oracle_info.csv</pathTrainingSet>
 		#path where the test set file was created
-		<pathTestSet>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-req_specification/tdm_full_testSet_with_oracle_info.csv</pathTestSet>
+		<pathTestSet>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/Resources/R-scripts/documents-preprocessed-req_specification/tdm_full_testSet_with_oracle_info.csv</pathTestSet>
 		#path where the model (pathModel) will be created
 		<pathModel>/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-req_specification/ML-method.model</pathModel>
 		#path whole dataset (for 10-fold validation)

@@ -1,6 +1,7 @@
 package org.zhaw.ch.manager.pipeline;
 
 import org.zhaw.ch.R_Tm_package.TermByDocumentCreation;
+import org.zhaw.ch.configFile.XMLInitializer;
 import org.zhaw.ch.ml.WekaClassifier;
 import org.zhaw.ch.oracle.OracleRequirementSpecificationsAnalyzer;
 import org.zhaw.ch.oracle.OracleUserReviewsAnalyzer;
@@ -42,11 +43,14 @@ public class MainRequirementSpecificationsPipeline extends MainProgram {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		//Fetch path of thi
+
+		//RS, UR
 		String mainPath = MainRequirementSpecificationsPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/","");
 		if(OS.contains("win")){
 			mainPath=mainPath.substring(1);
 		}
+		//Fetch path of thi
+
 		//Set Path for R-script folder
 		String scripts_location = mainPath + "Resources/R-scripts/";
 		//Set Path for ReqSpec folder, where truth set is located

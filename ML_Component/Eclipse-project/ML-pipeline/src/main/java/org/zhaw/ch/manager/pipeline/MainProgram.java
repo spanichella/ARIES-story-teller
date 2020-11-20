@@ -29,15 +29,10 @@ package org.zhaw.ch.manager.pipeline;
 public class MainProgram {
 	
 	protected String dataType;
-	
 	protected String classifierToolChain;
-	
 	protected String machineLearningModelName;
-	
 	protected String nameOfAttributeID;
-	
 	protected String nameOfAttributeText;
-	
 	protected String nameOfAttributeClass;
 	
 
