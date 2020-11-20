@@ -2,7 +2,8 @@
 if (!require(snakecase)){ install.packages("snakecase") }
 if (!require(data.table)){ install.packages("data.table") }
 if (!require(XML)){ install.packages("XML") }
-if (!require(dplyr)){ install.packages("dplyr") } 
+#crashes windows lol
+#if (!require(dplyr)){ install.packages("dplyr") }
 
 #pre_processing <- function(input, output, format){
 # input<- trainingSetDirectory

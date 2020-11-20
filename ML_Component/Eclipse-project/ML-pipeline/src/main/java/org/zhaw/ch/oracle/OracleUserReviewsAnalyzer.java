@@ -49,9 +49,10 @@ public class OracleUserReviewsAnalyzer extends Oracle{
 			threshold =  Double.parseDouble(args[3]);
 		
 		//command to execute
-		String command = "/usr/local/bin/Rscript "+ pathRScriptOracle+" "+baseFolder+ " "+oracle_path+ " "+threshold+ " "+getNameOfAttributeID()+ " "+getNameOfAttributeText()+ " "+getNameOfAttributeClass();
-		
-		//we print the command to execute
+		//String command = "/usr/local/bin/Rscript "+ pathRScriptOracle+" "+baseFolder+ " "+oracle_path+ " "+threshold+ " "+getNameOfAttributeID()+ " "+getNameOfAttributeText()+ " "+getNameOfAttributeClass();
+		String command = "Rscript "+ pathRScriptOracle+" "+baseFolder+ " "+oracle_path+ " "+threshold+ " "+getNameOfAttributeID()+ " "+getNameOfAttributeText()+ " "+getNameOfAttributeClass();
+
+			//we print the command to execute
 				/*System.out.println(" \n \n Executing command (considering R script and arguments): \n "+command+" \n");
 				System.out.println("R script and arguments: ");
 				System.out.println("- pathRScriptOracle <- args[1] ");

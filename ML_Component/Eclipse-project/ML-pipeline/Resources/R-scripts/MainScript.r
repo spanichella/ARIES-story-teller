@@ -21,6 +21,7 @@ if (!require(slam)){ install.packages("slam") }
 if (!require(snakecase)){ install.packages("snakecase") }
 if (!require(data.table)){ install.packages("data.table") }
 if (!require(XML)){ install.packages("XML") }
+if (!require(SnowballC)){ install.packages("SnowballC") }
 
 #load the libraries...
 print("Loading libraries....")
@@ -28,6 +29,7 @@ library(tm)
 library(stringr)
 library(stopwords)
 library(slam)
+library(SnowballC)
 
 base_folder <- "~/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/Resources/R-scripts/"
 
@@ -53,14 +55,15 @@ if( (!is.na(trainingSetDirectory2)) && (!is.na(testSetDirectory2)) )
   trainingSetDirectory<- paste(oracleFolder2,"/training-set",sep="")
   testSetDirectory<- paste(oracleFolder2,"/test-set",sep="")
   
-  if(!is.na(nameOfAttributeText2) && nameOfAttributeText2=="req_specification")
-    {
-    trainingSetDirectory<- paste(oracleFolder2,"/training-set-Req-Specifications",sep="")
-    testSetDirectory<- paste(oracleFolder2,"/test-set-Req-Specifications",sep="")
-    }
+
   #print("2) argument \"trainingSetDirectory\" given as argument to the R script ")
   #print("3) \"testSetDirectory\" given as argumet to the R script ")
   }
+  if(!is.na(nameOfAttributeText2) && nameOfAttributeText2=="req_specification")
+      {
+      trainingSetDirectory<- paste(oracleFolder2,"/training-set-Req-Specifications",sep="")
+      testSetDirectory<- paste(oracleFolder2,"/test-set-Req-Specifications",sep="")
+      }
 
 dir.create(trainingSetDirectory, showWarnings = TRUE, recursive = TRUE)
 dir.create(testSetDirectory, showWarnings = TRUE, recursive = TRUE)

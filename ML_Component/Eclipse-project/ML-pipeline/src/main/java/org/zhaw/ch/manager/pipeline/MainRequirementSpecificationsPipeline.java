@@ -35,7 +35,7 @@ public class MainRequirementSpecificationsPipeline extends MainProgram {
 	 private String documentsTestSet ;
 		// path oracle
 	 private String simplifiedOracle_path ;
-			
+	private static String OS = System.getProperty("os.name").toLowerCase();
 	
 	/**
 	 * @param args
@@ -44,7 +44,9 @@ public class MainRequirementSpecificationsPipeline extends MainProgram {
 	public static void main(String[] args) throws Exception {
 		//Fetch path of thi
 		String mainPath = MainRequirementSpecificationsPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/","");
-		//System.out.println("Your path is:"+mainPath);
+		if(OS.contains("win")){
+			mainPath.substring(1);
+		}
 		//Set Path for R-script folder
 		String scripts_location = mainPath + "Resources/R-scripts/";
 		//Set Path for ReqSpec folder, where truth set is located
@@ -114,8 +116,8 @@ public class MainRequirementSpecificationsPipeline extends MainProgram {
 		//TODO: output location
 		String pathResultsPrediction = docs_location+"resultsPrediction-req_specification.txt";
 		WekaClassifier wekaClassifier = new WekaClassifier(pathTrainingSet, pathTestSet, pathModel);
-		wekaClassifier.runSpecifiedMachineLearningModel(machineLearningModel,pathResultsPrediction);//default behaviour it does prediction with given training and test sets with J48
-		wekaClassifier.runSpecifiedModelWith10FoldStrategy(pathWholeDataset, pathModel,machineLearningModel,pathResultsPrediction);
+		wekaClassifier.runSpecifiedMachineLearningModel("NaiveBayes",pathResultsPrediction);//default behaviour it does prediction with given training and test sets with J48
+		//wekaClassifier.runSpecifiedModelWith10FoldStrategy(pathWholeDataset, pathModel,machineLearningModel,pathResultsPrediction);
 		System.out.println("\n END of PART 3. - ML prediction\n\n");
 		/**/
 	}

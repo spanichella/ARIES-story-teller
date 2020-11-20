@@ -12,8 +12,6 @@ import java.io.InputStreamReader;
  */
 
 public class TermByDocumentCreation {
-	
-	
 
 	public TermByDocumentCreation(String[] tbdArgs) {
 		this.main(tbdArgs);
@@ -55,9 +53,10 @@ public class TermByDocumentCreation {
 			String oracleFolder = tbdArgs[8]; 
 		
 		//command to execute
-		String command = "/usr/local/bin/Rscript "+ pathTbDRScript+" "+docs_location+ " "+documentsTrainingSet+ " "+documentsTestSet+" "+simplifiedOracle_path+" "+nameOfAttributeID+" "+nameOfAttributeClass+ " "+nameOfAttributeTexttbd+ " "+oracleFolder;// path of command "/usr/local/bin/Rscript" identified using: "which Rscript" from command line
-		
-		//we print the command to execute
+		//String command = "/usr/local/bin/Rscript "+ pathTbDRScript+" "+docs_location+ " "+documentsTrainingSet+ " "+documentsTestSet+" "+simplifiedOracle_path+" "+nameOfAttributeID+" "+nameOfAttributeClass+ " "+nameOfAttributeTexttbd+ " "+oracleFolder;// path of command "/usr/local/bin/Rscript" identified using: "which Rscript" from command line
+			String command = "Rscript "+ pathTbDRScript+" "+docs_location+ " "+documentsTrainingSet+ " "+documentsTestSet+" "+simplifiedOracle_path+" "+nameOfAttributeID+" "+nameOfAttributeClass+ " "+nameOfAttributeTexttbd+ " "+oracleFolder;// path of command "/usr/local/bin/Rscript" identified using: "which Rscript" from command line
+
+			//we print the command to execute
 		/*System.out.println(" \n \n Executing command (considering R script and arguments): \n "+command+" \n");
 		System.out.println("R script and arguments: ");
 		System.out.println("- base_folder2 <- args[1] ");
