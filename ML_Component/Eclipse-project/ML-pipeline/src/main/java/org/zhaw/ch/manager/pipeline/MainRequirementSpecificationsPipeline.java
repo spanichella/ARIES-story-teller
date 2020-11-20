@@ -45,7 +45,7 @@ public class MainRequirementSpecificationsPipeline extends MainProgram {
 		//Fetch path of thi
 		String mainPath = MainRequirementSpecificationsPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/","");
 		if(OS.contains("win")){
-			mainPath.substring(1);
+			mainPath=mainPath.substring(1);
 		}
 		//Set Path for R-script folder
 		String scripts_location = mainPath + "Resources/R-scripts/";
