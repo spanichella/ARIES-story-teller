@@ -2,31 +2,29 @@ package org.zhaw.ch.ml;
 
 
 /**
- * 
  * @author panc
- *
  */
-public abstract class  MachineLearningClassifier {
+public abstract class MachineLearningClassifier {
 
-	protected static String classifierToolChain;
-	
-	protected static String machineLearningModelName;
+    protected static String classifierToolChain;
 
-	public static String getClassifierToolChain() {
-		return classifierToolChain;
-	}
+    protected static String machineLearningModelName;
 
-	public void setClassifierToolChain(String classifierToolChain) {
-		this.classifierToolChain = classifierToolChain;
-	}
+    public static String getClassifierToolChain() {
+        return classifierToolChain;
+    }
 
-	public static String getMachineLearningModelName() {
-		return machineLearningModelName;
-	}
+    public void setClassifierToolChain(String classifierToolChain) {
+        this.classifierToolChain = classifierToolChain;
+    }
 
-	public void setMachineLearningModelName(String machineLearningModelName) {
-		this.machineLearningModelName = machineLearningModelName;
-	}
-	
-	
+    public static String getMachineLearningModelName() {
+        return machineLearningModelName;
+    }
+
+    public void setMachineLearningModelName(String machineLearningModelName) {
+        this.machineLearningModelName = machineLearningModelName;
+    }
+
+
 }

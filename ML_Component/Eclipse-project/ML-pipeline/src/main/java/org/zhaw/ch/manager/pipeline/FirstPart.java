@@ -8,32 +8,32 @@ public class FirstPart {
 
     ConfigFileReader configFileReader = null;
 
-    public void firstPart(ConfigFileReader configFileReader,String pathXMLConfigFile){
-    configFileReader = new ConfigFileReader(pathXMLConfigFile, "ORACLE_AND_TbD_ANALYSIS");
+    public void firstPart(ConfigFileReader configFileReader, String pathXMLConfigFile) {
+        configFileReader = new ConfigFileReader(pathXMLConfigFile, "ORACLE_AND_TbD_ANALYSIS");
 
-    // here are located the "documents" folder and the  "utilities.R script"
-    String docs_location = configFileReader.getDocs_location();
+        // here are located the "documents" folder and the  "utilities.R script"
+        String docs_location = configFileReader.getDocs_location();
 
-    //local path to the R script "MainScript.r"
-    String pathRScriptOracle = configFileReader.getPathRScriptOracle();
-    // here are located the "documents" folder and the  "utilities.R script"
-    String baseFolder = configFileReader.getBaseFolder();
-    // path oracle
-    String oracle_path = configFileReader.getOracle_path();
-    // path threshold
-    double threshold = 0.5;
+        //local path to the R script "MainScript.r"
+        String pathRScriptOracle = configFileReader.getPathRScriptOracle();
+        // here are located the "documents" folder and the  "utilities.R script"
+        String baseFolder = configFileReader.getBaseFolder();
+        // path oracle
+        String oracle_path = configFileReader.getOracle_path();
+        // path threshold
+        double threshold = 0.5;
 
-    // Type of the data to classify
-    String dataType = configFileReader.getDataType();
-    // Name of the column "ID" in the CSV file modeling the Oracle information - it will be used as argument of the main R script
-    String nameOfAttributeID = configFileReader.getNameOfAttributeID();
-    // Name of the column "review" in the CSV file modeling the Oracle information - it will be used as argument of the main R script
-    String nameOfAttributeText = configFileReader.getNameOfAttributeText();
-    // Name of the column "class" in the CSV file modeling the Oracle information - it will be used as argument of the main R script
-    String nameOfAttributeClass = configFileReader.getNameOfAttributeClass();
-    // PART 1. - ORACLE  - SOME PARAMETERS ARE ALSO USED BY THE OTHER STEPS (TEXT PREPROCESSING AND ML/PL-based prediction)
+        // Type of the data to classify
+        String dataType = configFileReader.getDataType();
+        // Name of the column "ID" in the CSV file modeling the Oracle information - it will be used as argument of the main R script
+        String nameOfAttributeID = configFileReader.getNameOfAttributeID();
+        // Name of the column "review" in the CSV file modeling the Oracle information - it will be used as argument of the main R script
+        String nameOfAttributeText = configFileReader.getNameOfAttributeText();
+        // Name of the column "class" in the CSV file modeling the Oracle information - it will be used as argument of the main R script
+        String nameOfAttributeClass = configFileReader.getNameOfAttributeClass();
+        // PART 1. - ORACLE  - SOME PARAMETERS ARE ALSO USED BY THE OTHER STEPS (TEXT PREPROCESSING AND ML/PL-based prediction)
 
-        if(dataType !=null) {
+        if (dataType != null) {
             System.out.println("PART 1. - ORACLE Analysis - SOME Parameters ARE ALSO USED BY THE OTHER STEPS (TEXT PREPROCESSING AND ML/PL-based prediction)");
 
             //we update parameters - used later to run oracle analysis

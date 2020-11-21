@@ -1,4 +1,3 @@
-print("SCRIPT REQSPEC")
 args <- commandArgs(trailingOnly = TRUE)
 base_folder2 <- args[1]
 oracle_path2  <- args[2]
@@ -11,9 +10,6 @@ if (!require(stringr)){ install.packages("stringr") }
 
 #load the libraries...
 library(stringr)
-
-#path inputs
-base_folder <- "/Users/marckramer/Repos/SWME_G2_HS20/ML_Component/Eclipse-project/ML-pipeline/Resources/ReqSpec/"
 
 if(!is.na(base_folder2))
 {
@@ -71,7 +67,7 @@ if(!is.na(threshold2))
 if(length(args)==6)
  {
   #print("All fine with the arguments..")
-   print("CSV file of the oracle being created...")
+   print("Creating oracle CSV file...")
    oracle <- list(nameOfAttributeID2=c(), nameOfAttributeText2=c(),nameOfAttributeClass2=c())
    names(oracle) <- c(nameOfAttributeID2, nameOfAttributeText2, nameOfAttributeClass2)
    #print("preliminar empty oracle")
@@ -116,11 +112,11 @@ oracle_testSet[[nameOfAttributeText2]]<- as.character(oracle_testSet[[nameOfAttr
 oracle_trainingSet[[nameOfAttributeClass2]]<- as.character(oracle_trainingSet[[nameOfAttributeClass2]])
 oracle_testSet[[nameOfAttributeClass2]]<- as.character(oracle_testSet[[nameOfAttributeClass2]])
 
-print("writing files of generated training- and test sets...")
+print("Writing files of generated training- and test-sets...")
 write.csv(oracle_trainingSet,oracle_trainingSet_path,row.names = FALSE)
 write.csv(oracle_testSet,oracle_testSet_path,row.names = FALSE)
 
-print("populating training set folder...")
+print("Generating training-set folder...")
 #we populate the folder of the training set
 i<- 1
 for(i in 1:length(oracle_trainingSet[[nameOfAttributeID2]]))
@@ -131,7 +127,7 @@ for(i in 1:length(oracle_trainingSet[[nameOfAttributeID2]]))
    }
 
 #we populate the folder of the test set
-print("populating test set folder...")
+print("Generating test set-folder...")
 i<- 1
 for(i in 1:length(oracle_testSet[[nameOfAttributeID2]]))
 {

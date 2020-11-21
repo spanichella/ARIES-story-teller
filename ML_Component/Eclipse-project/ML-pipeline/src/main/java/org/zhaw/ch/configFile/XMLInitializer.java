@@ -47,28 +47,28 @@ public class XMLInitializer {
 
             //docs_loc
             Element docs_loc = document.createElement("docs_location");
-            docs_loc.appendChild(document.createTextNode(basePath+"Resources/R-scripts/"));
+            docs_loc.appendChild(document.createTextNode(basePath + "Resources/R-scripts/"));
             ADSORB.appendChild(docs_loc);
 
             //pathRScriptOracle
             Element pathRScriptOracle = document.createElement("pathRScriptOracle");
-            if(type=="RS") {
+            if (type == "RS") {
                 pathRScriptOracle.appendChild(document.createTextNode(basePath + "Resources/R-scripts/Script-to-create-test-dataset-Req-Specifications.r"));
-            }else {
+            } else {
                 pathRScriptOracle.appendChild(document.createTextNode(basePath + "Resources/R-scripts/Script-to-create-test-dataset.r"));
             }
             ADSORB.appendChild(pathRScriptOracle);
 
             //baseFolder
             Element baseFolder1 = document.createElement("baseFolder");
-            baseFolder1.appendChild(document.createTextNode(basePath+baseFolder));
+            baseFolder1.appendChild(document.createTextNode(basePath + baseFolder));
             ADSORB.appendChild(baseFolder1);
 
             //oracle_path
             Element oracle_path = document.createElement("oracle_path");
-            if(type=="RS") {
+            if (type == "RS") {
                 oracle_path.appendChild(document.createTextNode(basePath + baseFolder + "truth_set_ReqSpecification.txt"));
-            }else{
+            } else {
                 oracle_path.appendChild(document.createTextNode(basePath + baseFolder + "truth_set_ICSME2015.csv"));
 
             }
@@ -76,9 +76,9 @@ public class XMLInitializer {
 
             //dataType
             Element dataType = document.createElement("dataType");
-            if(type=="RS") {
+            if (type == "RS") {
                 dataType.appendChild(document.createTextNode("Requirement Specifications"));
-            }else{
+            } else {
                 dataType.appendChild(document.createTextNode("User Reviews"));
 
             }
@@ -91,9 +91,9 @@ public class XMLInitializer {
 
             //nameOfAttributeText
             Element nameOfAttributeText = document.createElement("nameOfAttributeText");
-            if(type=="RS") {
+            if (type == "RS") {
                 nameOfAttributeText.appendChild(document.createTextNode("req_specification"));
-            }else{
+            } else {
                 nameOfAttributeText.appendChild(document.createTextNode("review"));
 
             }
@@ -106,14 +106,14 @@ public class XMLInitializer {
 
             //pathTbDRScript
             Element pathTbDRScript = document.createElement("pathTbDRScript");
-            pathTbDRScript.appendChild(document.createTextNode(basePath+"Resources/R-scripts/MainScript.r"));
+            pathTbDRScript.appendChild(document.createTextNode(basePath + "Resources/R-scripts/MainScript.r"));
             ADSORB.appendChild(pathTbDRScript);
 
             //documentsTrainingSet
             Element documentsTrainingSet = document.createElement("documentsTrainingSet");
-            if(type=="RS") {
+            if (type == "RS") {
                 documentsTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "training-set-Req-Specifications"));
-            }else{
+            } else {
                 documentsTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "training-set"));
 
             }
@@ -121,18 +121,18 @@ public class XMLInitializer {
 
             //documentsTestSet
             Element documentsTestSet = document.createElement("documentsTestSet");
-            if(type=="RS") {
+            if (type == "RS") {
                 documentsTestSet.appendChild(document.createTextNode(basePath + baseFolder + "test-set-Req-Specifications"));
-            }else{
+            } else {
                 documentsTestSet.appendChild(document.createTextNode(basePath + baseFolder + "test-set"));
             }
             ADSORB.appendChild(documentsTestSet);
 
             //simplifiedOracle_path
             Element simplifiedOracle_path = document.createElement("simplifiedOracle_path");
-            if(type=="RS") {
+            if (type == "RS") {
                 simplifiedOracle_path.appendChild(document.createTextNode(basePath + baseFolder + "truth_set-simplified-Req-Specifications.csv"));
-            }else{
+            } else {
                 simplifiedOracle_path.appendChild(document.createTextNode(basePath + baseFolder + "truth_set-simplified.csv"));
             }
             ADSORB.appendChild(simplifiedOracle_path);
@@ -151,55 +151,55 @@ public class XMLInitializer {
 
             //pathModel
             Element pathModel = document.createElement("pathModel");
-            if(type=="RS") {
-                pathModel.appendChild(document.createTextNode(basePath + baseFolder+"MLModel.model"));
-            }else{
-                pathModel.appendChild(document.createTextNode(basePath + baseFolder+"MLModel.model"));
+            if (type == "RS") {
+                pathModel.appendChild(document.createTextNode(basePath + baseFolder + "MLModel.model"));
+            } else {
+                pathModel.appendChild(document.createTextNode(basePath + baseFolder + "MLModel.model"));
             }
             ADSORB.appendChild(pathModel);
 
             //pathResultsPrediction
             //TODO: implement ResultPath
             Element pathResultsPrediction = document.createElement("pathResultsPrediction");
-            pathResultsPrediction.appendChild(document.createTextNode(basePath + baseFolder+"result_"));
+            pathResultsPrediction.appendChild(document.createTextNode(basePath + baseFolder + "result_"));
             ADSORB.appendChild(pathResultsPrediction);
 
             //pathTestSet
             Element pathTestSet = document.createElement("pathTestSet");
-            if(type=="RS") {
-                pathTestSet.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-req_specification/tdm_full_testSet_with_oracle_info.csv"));
-            }else{
-                pathTestSet.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-review/tdm_full_testSet_with_oracle_info.csv"));
+            if (type == "RS") {
+                pathTestSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_testSet_with_oracle_info.csv"));
+            } else {
+                pathTestSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_testSet_with_oracle_info.csv"));
             }
             ADSORB.appendChild(pathTestSet);
 
             //pathTrainingSet
             Element pathTrainingSet = document.createElement("pathTrainingSet");
-            if(type=="RS") {
-                pathTrainingSet.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-req_specification/tdm_full_trainingSet_with_oracle_info.csv"));
-            }else{
-                pathTrainingSet.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-review/tdm_full_trainingSet_with_oracle_info.csv"));
+            if (type == "RS") {
+                pathTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_trainingSet_with_oracle_info.csv"));
+            } else {
+                pathTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_trainingSet_with_oracle_info.csv"));
             }
             ADSORB.appendChild(pathTrainingSet);
 
             //pathWholeDataset
             Element pathWholeDataset = document.createElement("pathWholeDataset");
-            if(type=="RS") {
-                pathWholeDataset.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-req_specification/tdm_full_with_oracle_info.csv"));
-            }else{
-                pathWholeDataset.appendChild(document.createTextNode(basePath + baseFolder+"documents-preprocessed-review/tdm_full_with_oracle_info.csv"));
+            if (type == "RS") {
+                pathWholeDataset.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_with_oracle_info.csv"));
+            } else {
+                pathWholeDataset.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_with_oracle_info.csv"));
             }
             ADSORB.appendChild(pathWholeDataset);
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource domSource = new DOMSource(document);
-            StreamResult streamResult = new StreamResult(new File("/Users/marckramer/Repos/SWME_G2_HS20/ML_Component/Eclipse-project/ML-pipeline/Resources/XMLFiles/"+name+"XML.xml"));
+            StreamResult streamResult = new StreamResult(new File("/Users/marckramer/Repos/SWME_G2_HS20/ML_Component/Eclipse-project/ML-pipeline/Resources/XMLFiles/" + name + "XML.xml"));
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 
             transformer.transform(domSource, streamResult);
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.print(e);
         }
     }

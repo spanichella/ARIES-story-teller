@@ -10,43 +10,44 @@ import java.util.Scanner;
 
 public class ThirdPart {
 
-    public void tp(ConfigFileReader configFileReader, String pathXMLConfigFile){
+    public void tp(ConfigFileReader configFileReader, String pathXMLConfigFile) {
 
-            configFileReader = new ConfigFileReader(pathXMLConfigFile, "ML_ANALYSIS");
-            //path where Model gets created
-            String pathModel = configFileReader.getPathModel();
-            String machineLearningModel = configFileReader.getMachineLearningModel();
-            String strategy = configFileReader.getStrategy();
-            String pathResultsPrediction = configFileReader.getPathResultsPrediction();
-            WekaClassifier wekaClassifier = new WekaClassifier();
-            if (strategy != null) {
-                System.out.println("PART 3. - ML prediction ");
-                if (strategy.equals("Training_and_test_set")) {
-                    String pathTrainingSet = configFileReader.getPathTrainingSet();
-                    //path test set
-                    String pathTestSet = configFileReader.getPathTestSet();
-                    wekaClassifier = new WekaClassifier(pathTrainingSet, pathTestSet, pathModel);
-                    if (checkWehetherTestSetIsLabeled(pathTestSet) == true) {
-                        wekaClassifier.runSpecifiedMachineLearningModel(machineLearningModel, pathResultsPrediction); //default behaviour it does prediction with given training and test sets with J48
-                    } else {
-                        wekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(machineLearningModel, pathResultsPrediction); //default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
-                    }
+        configFileReader = new ConfigFileReader(pathXMLConfigFile, "ML_ANALYSIS");
+        //path where Model gets created
+        String pathModel = configFileReader.getPathModel();
+        String machineLearningModel = configFileReader.getMachineLearningModel();
+        String strategy = configFileReader.getStrategy();
+        String pathResultsPrediction = configFileReader.getPathResultsPrediction();
+        WekaClassifier wekaClassifier = new WekaClassifier();
+        if (strategy != null) {
+            System.out.println("PART 3. - ML prediction ");
+            if (strategy.equals("Training_and_test_set")) {
+                String pathTrainingSet = configFileReader.getPathTrainingSet();
+                //path test set
+                String pathTestSet = configFileReader.getPathTestSet();
+                wekaClassifier = new WekaClassifier(pathTrainingSet, pathTestSet, pathModel);
+                if (checkWehetherTestSetIsLabeled(pathTestSet) == true) {
+                    wekaClassifier.runSpecifiedMachineLearningModel(machineLearningModel, pathResultsPrediction); //default behaviour it does prediction with given training and test sets with J48
+                } else {
+                    wekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(machineLearningModel, pathResultsPrediction); //default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
                 }
-                if (strategy.equals("10-fold")) {
-                    //path pathWholeDataset
-                    //String pathWholeDataset = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-review/tdm_full_with_oracle_info_information giving.csv";
-                    String pathWholeDataset = configFileReader.getPathWholeDataset();
-                    try {
-                        wekaClassifier.runSpecifiedModelWith10FoldStrategy(pathWholeDataset, pathModel, machineLearningModel, pathResultsPrediction);
-                    }catch (Exception e){
-                        //TODO
-                    }
+            }
+            if (strategy.equals("10-fold")) {
+                //path pathWholeDataset
+                //String pathWholeDataset = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-review/tdm_full_with_oracle_info_information giving.csv";
+                String pathWholeDataset = configFileReader.getPathWholeDataset();
+                try {
+                    wekaClassifier.runSpecifiedModelWith10FoldStrategy(pathWholeDataset, pathModel, machineLearningModel, pathResultsPrediction);
+                } catch (Exception e) {
+                    System.out.print("Error: Could not run 10-fold strategy");
                 }
-                System.out.println("\n END of PART 3. - ML prediction\n\n");
-                /**/
+            }
+            System.out.println("\n END of PART 3. - ML prediction\n\n");
+            /**/
 
         }
     }
+
     private static boolean checkWehetherTestSetIsLabeled(String pathTestSet) {
         File file = new File(pathTestSet);
 

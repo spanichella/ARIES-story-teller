@@ -57,28 +57,28 @@ public class MainPipeline extends MainProgram {
         }*/
         String type = "UR";
         // set mainPath according to Operating System
-        String mainPath = MainRequirementSpecificationsPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/","");
-        if(OS.contains("win")){
-            mainPath=mainPath.substring(1);
+        String mainPath = MainRequirementSpecificationsPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/", "");
+        if (OS.contains("win")) {
+            mainPath = mainPath.substring(1);
         }
         XMLInitializer i = new XMLInitializer();
-        i.createXML(mainPath,type);
+        i.createXML(mainPath, type);
         String pathXMLConfigFile = "";
-        if(type=="RS") {
-             pathXMLConfigFile = mainPath+"Resources/XMLFiles/RequirementSpecificationsXML.xml";
-        }else if (type=="UR"){
-             pathXMLConfigFile = mainPath+"Resources/XMLFiles/UserReviewsXML.xml";
-        }else{
+        if (type == "RS") {
+            pathXMLConfigFile = mainPath + "Resources/XMLFiles/RequirementSpecificationsXML.xml";
+        } else if (type == "UR") {
+            pathXMLConfigFile = mainPath + "Resources/XMLFiles/UserReviewsXML.xml";
+        } else {
             System.out.println("type not recognized: use RS or UR");
             System.exit(1);
         }
         ConfigFileReader configFileReader = null;
         FirstPart fp = new FirstPart();
-        fp.firstPart(configFileReader,pathXMLConfigFile);
+        fp.firstPart(configFileReader, pathXMLConfigFile);
         /**/
         // PART 3. - ML prediction
         ThirdPart tp = new ThirdPart();
-        tp.tp(configFileReader,pathXMLConfigFile);
+        tp.tp(configFileReader, pathXMLConfigFile);
 
     }
 

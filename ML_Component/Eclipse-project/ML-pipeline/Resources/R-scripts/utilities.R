@@ -2,7 +2,7 @@
 if (!require(snakecase)){ install.packages("snakecase") }
 if (!require(data.table)){ install.packages("data.table") }
 if (!require(XML)){ install.packages("XML") }
-#crashes windows lol
+#dplyr crashes script on windows, script works without it as well
 #if (!require(dplyr)){ install.packages("dplyr") }
 
 #pre_processing <- function(input, output, format){

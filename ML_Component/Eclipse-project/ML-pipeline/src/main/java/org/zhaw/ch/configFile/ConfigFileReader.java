@@ -59,7 +59,7 @@ public class ConfigFileReader {
 
     public ConfigFileReader(String pathXMLConfigFile, String mode) {
 
-        System.out.println("We are loading the config File...");
+        System.out.println("Loading the config file...");
         Document doc = null;
         try {
             File fXmlFile = new File(pathXMLConfigFile);
