@@ -7,20 +7,28 @@ FILES_MAIN_PATH = "/repos/SWME_G2_HS20/datasets"
 
 TDM_TRUTH_SET_PATTERN = "/{dataset}/tdm_truth_set_{dataset}_with_oracle.csv"
 TXT_TRUTH_SET_PATTERN = "/{dataset}/truth_set_{dataset}-ReqSpec.txt"
+
+COMPLETE_TRUTH_SET_TDM = FILES_MAIN_PATH + TDM_TRUTH_SET_PATTERN.format(dataset="complete")
+COMPLETE_TRUTH_SET_TXT = FILES_MAIN_PATH + TXT_TRUTH_SET_PATTERN.format(dataset="complete")
+
 RECORDING_TRUTH_SET_TDM = FILES_MAIN_PATH + TDM_TRUTH_SET_PATTERN.format(dataset="recording")
 RECORDING_TRUTH_SET_TXT = FILES_MAIN_PATH + TXT_TRUTH_SET_PATTERN.format(dataset="recording")
 STORIES_TRUTH_SET_TDM = FILES_MAIN_PATH + TDM_TRUTH_SET_PATTERN.format(dataset="stories")
 STORIES_TRUTH_SET_TXT = FILES_MAIN_PATH + TXT_TRUTH_SET_PATTERN.format(dataset="stories")
+STUDY_TRUTH_SET_TDM = FILES_MAIN_PATH + TDM_TRUTH_SET_PATTERN.format(dataset="study")
+STUDY_TRUTH_SET_TXT = FILES_MAIN_PATH + TXT_TRUTH_SET_PATTERN.format(dataset="study")
 DATASETS_DICT = {
     "recording": {"TDM": RECORDING_TRUTH_SET_TDM, "TXT": RECORDING_TRUTH_SET_TXT},
-    "stories": {"TDM": STORIES_TRUTH_SET_TDM, "TXT": STORIES_TRUTH_SET_TXT}
-}
+    "stories": {"TDM": STORIES_TRUTH_SET_TDM, "TXT": STORIES_TRUTH_SET_TXT},
+    "study": {"TDM": STUDY_TRUTH_SET_TDM, "TXT": STUDY_TRUTH_SET_TXT}
+}  # "complete" dataset is added after generating it below
 VALUE_SEPARATOR_CHAR = "\t"
 SET_CSV_HEADERS = ["id", "req_specification", "class"]
 
 OUTPUT_PATH = REPO_PATH + "/output"
 OUTPUT_PATH_CSV = OUTPUT_PATH + "/csv_sets"
 OUTPUT_PATH_TDM = OUTPUT_PATH + "/csv_tdm"
+OUTPUT_PATH_COMPLETE = OUTPUT_PATH + "/complete_dataset"
 
 TDM_PATTERN = "tdm_{file_name}_with_oracle"
 TEST_SET_PATTERN = "test_set-{partition}_{dataset}"
@@ -149,5 +157,33 @@ def generate_csv_sets():
             write_tdm_file(dataset_key, set_file_key, set_file_path)
 
 
+def build_complete_dataset():
+    all_truth_set_txt_dict = get_truth_set_files_dict()
+    if os.path.exists(COMPLETE_TRUTH_SET_TXT):
+        os.remove(COMPLETE_TRUTH_SET_TXT)
+
+    complete_lines = []
+    line_counter = 1
+    for content_key in all_truth_set_txt_dict:
+        lines = all_truth_set_txt_dict[content_key]
+        for line in lines:
+            if not (line == "" or line == "\n"):
+                single_line_contents = line.split(VALUE_SEPARATOR_CHAR)
+                complete_line = VALUE_SEPARATOR_CHAR.join(
+                        [line_counter.__str__().strip(), single_line_contents[1].strip(),
+                         single_line_contents[2].strip()]
+                    ) + "\n"
+                complete_lines.append(complete_line)
+                line_counter = line_counter + 1
+
+    complete_file = open(COMPLETE_TRUTH_SET_TXT, "x")
+    for line in complete_lines:
+        complete_file.write(line)
+    complete_file.close()
+
+    DATASETS_DICT["complete"] = {"TDM": COMPLETE_TRUTH_SET_TDM, "TXT": COMPLETE_TRUTH_SET_TXT}
+
+
 if __name__ == "__main__":
+    build_complete_dataset()
     generate_csv_sets()
