@@ -11,6 +11,9 @@ TXT_TRUTH_SET_PATTERN = "/{dataset}/truth_set_{dataset}-ReqSpec.txt"
 COMPLETE_TRUTH_SET_TDM = FILES_MAIN_PATH + TDM_TRUTH_SET_PATTERN.format(dataset="complete")
 COMPLETE_TRUTH_SET_TXT = FILES_MAIN_PATH + TXT_TRUTH_SET_PATTERN.format(dataset="complete")
 
+COMBINED_TRUTH_SET_TDM = FILES_MAIN_PATH + TDM_TRUTH_SET_PATTERN.format(dataset="combined")
+COMBINED_TRUTH_SET_TXT = FILES_MAIN_PATH + TXT_TRUTH_SET_PATTERN.format(dataset="combined")
+
 RECORDING_TRUTH_SET_TDM = FILES_MAIN_PATH + TDM_TRUTH_SET_PATTERN.format(dataset="recording")
 RECORDING_TRUTH_SET_TXT = FILES_MAIN_PATH + TXT_TRUTH_SET_PATTERN.format(dataset="recording")
 STORIES_TRUTH_SET_TDM = FILES_MAIN_PATH + TDM_TRUTH_SET_PATTERN.format(dataset="stories")
@@ -21,7 +24,7 @@ DATASETS_DICT = {
     "recording": {"TDM": RECORDING_TRUTH_SET_TDM, "TXT": RECORDING_TRUTH_SET_TXT},
     "stories": {"TDM": STORIES_TRUTH_SET_TDM, "TXT": STORIES_TRUTH_SET_TXT},
     "study": {"TDM": STUDY_TRUTH_SET_TDM, "TXT": STUDY_TRUTH_SET_TXT}
-}  # "complete" dataset is added after generating it below
+}  # "complete" and "combined" datasets are added after generating them below
 VALUE_SEPARATOR_CHAR = "\t"
 SET_CSV_HEADERS = ["id", "req_specification", "class"]
 
@@ -157,15 +160,11 @@ def generate_csv_sets():
             write_tdm_file(dataset_key, set_file_key, set_file_path)
 
 
-def build_complete_dataset():
-    all_truth_set_txt_dict = get_truth_set_files_dict()
-    if os.path.exists(COMPLETE_TRUTH_SET_TXT):
-        os.remove(COMPLETE_TRUTH_SET_TXT)
-
+def add_new_dataset(source_dict, dataset_name, truth_set_txt_path, truth_set_tdm_path):
     complete_lines = []
     line_counter = 1
-    for content_key in all_truth_set_txt_dict:
-        lines = all_truth_set_txt_dict[content_key]
+    for content_key in source_dict:
+        lines = source_dict[content_key]
         for line in lines:
             if not (line == "" or line == "\n"):
                 single_line_contents = line.split(VALUE_SEPARATOR_CHAR)
@@ -176,14 +175,34 @@ def build_complete_dataset():
                 complete_lines.append(complete_line)
                 line_counter = line_counter + 1
 
-    complete_file = open(COMPLETE_TRUTH_SET_TXT, "x")
+    if os.path.exists(truth_set_txt_path):
+        os.remove(truth_set_txt_path)
+    complete_file = open(truth_set_txt_path, "x")
+
     for line in complete_lines:
         complete_file.write(line)
     complete_file.close()
 
-    DATASETS_DICT["complete"] = {"TDM": COMPLETE_TRUTH_SET_TDM, "TXT": COMPLETE_TRUTH_SET_TXT}
+    DATASETS_DICT[dataset_name] = {"TDM": truth_set_tdm_path, "TXT": truth_set_txt_path}
+
+
+def build_complete_dataset():
+    all_truth_set_txt_dict = get_truth_set_files_dict()
+    add_new_dataset(all_truth_set_txt_dict, "complete", COMPLETE_TRUTH_SET_TXT, COMPLETE_TRUTH_SET_TDM)
+
+
+def build_combined_dataset():
+    # only contains the new datasets "recording" and "stories"
+    all_truth_set_txt_dict = get_truth_set_files_dict()
+    relevant_truth_sets_dict = {
+        "recording": all_truth_set_txt_dict["recording"],
+        "stories": all_truth_set_txt_dict["stories"]
+    }
+
+    add_new_dataset(relevant_truth_sets_dict, "combined", COMBINED_TRUTH_SET_TXT, COMBINED_TRUTH_SET_TDM)
 
 
 if __name__ == "__main__":
     build_complete_dataset()
+    build_combined_dataset()
     generate_csv_sets()
