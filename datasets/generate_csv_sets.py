@@ -5,12 +5,12 @@ import random
 REPO_PATH = "/repos/python_playground"
 FILES_MAIN_PATH = "/repos/SWME_G2_HS20/datasets"
 
-COMBINED_TRUTH_SET_TXT = FILES_MAIN_PATH + "/combined/truth_set_combined-ReqSpec.txt"
+STORIES_TRUTH_SET_TXT = FILES_MAIN_PATH + "/stories/truth_set_stories-ReqSpec.txt"
 RECORDING_TRUTH_SET_TXT = FILES_MAIN_PATH + "/recording/truth_set_recording-ReqSpec.txt"
 VALUE_SEPARATOR_CHAR = "\t"
 SET_CSV_HEADERS = ["id", "req_specification", "class"]
 
-COMBINED_TRUTH_SET_TDM = FILES_MAIN_PATH + "/combined/tdm_truth_set_combined_with_oracle.csv"
+STORIES_TRUTH_SET_TDM = FILES_MAIN_PATH + "/stories/tdm_truth_set_stories_with_oracle.csv"
 RECORDING_TRUTH_SET_TDM = FILES_MAIN_PATH + "/recording/tdm_truth_set_recording_with_oracle.csv"
 
 OUTPUT_PATH = REPO_PATH + "/output"
@@ -32,7 +32,7 @@ def randomly(seq):
 
 
 def get_truthset_files_dicts():
-    combined_file = open(COMBINED_TRUTH_SET_TXT, "r")
+    combined_file = open(STORIES_TRUTH_SET_TXT, "r")
     combined_lines = combined_file.readlines()
     combined_file.close()
 
@@ -40,14 +40,14 @@ def get_truthset_files_dicts():
     recording_lines = recording_file.readlines()
     recording_file.close()
 
-    return {"recording": recording_lines, "combined": combined_lines}
+    return {"recording": recording_lines, "stories": combined_lines}
 
 
 def get_truthset_tdm_path(dataset):
     if dataset == "recording":
         return RECORDING_TRUTH_SET_TDM
-    elif dataset == "combined":
-        return COMBINED_TRUTH_SET_TDM
+    elif dataset == "stories":
+        return STORIES_TRUTH_SET_TDM
     else:
         return ""
 
