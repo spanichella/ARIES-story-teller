@@ -39,7 +39,6 @@ def randomly(seq):
 def get_truth_set_files_dict():
     truth_set_dict = {}
     for key in DATASETS_DICT:
-        print(key)
         file = open(DATASETS_DICT[key]["TXT"], "r")
         lines = file.readlines()
         file.close()
@@ -98,16 +97,16 @@ def write_training_and_test_sets(file_key, separated_content):
 
 
 def write_tdm_file(dataset, file_name, file_path):
-    tdm_truthset_path = get_truth_set_tdm_path(dataset)
-    tdm_truthset_file = open(tdm_truthset_path, "r")
-    tdm_truthset_lines = tdm_truthset_file.readlines()
-    tdm_truthset_file.close()
-    tdm_truthset_headers = tdm_truthset_lines[0].strip()
-    tdm_truthset_lines = tdm_truthset_lines[1:]  # first line is only headers
-    tdm_truthset_content_dict = {}
-    for tdm_truthset_line in tdm_truthset_lines:
-        truthset_line_number = tdm_truthset_line.split(",")[0]
-        tdm_truthset_content_dict[truthset_line_number] = tdm_truthset_line
+    tdm_truth_set_path = get_truth_set_tdm_path(dataset)
+    tdm_truth_set_file = open(tdm_truth_set_path, "r")
+    tdm_truth_set_lines = tdm_truth_set_file.readlines()
+    tdm_truth_set_file.close()
+    tdm_truth_set_headers = tdm_truth_set_lines[0].strip()
+    tdm_truth_set_lines = tdm_truth_set_lines[1:]  # first line is only headers
+    tdm_truth_set_content_dict = {}
+    for tdm_truth_set_line in tdm_truth_set_lines:
+        truth_set_line_number = tdm_truth_set_line.split(",")[0]
+        tdm_truth_set_content_dict[truth_set_line_number] = tdm_truth_set_line
 
     set_csv_file = open(file_path, "r")
     set_csv_lines = set_csv_file.readlines()
@@ -117,12 +116,12 @@ def write_tdm_file(dataset, file_name, file_path):
     set_tdm_lines = []
     for set_line in set_csv_lines:
         set_line_number = set_line.split(",")[SET_CSV_HEADERS.index("id")]
-        tdm_line = tdm_truthset_content_dict[set_line_number].strip()
+        tdm_line = tdm_truth_set_content_dict[set_line_number].strip()
         set_tdm_lines.append(tdm_line)
 
     set_tdm_file_name = TDM_PATTERN.format(file_name=file_name)
     set_tdm_file_path = OUTPUT_PATH_TDM + "/" + set_tdm_file_name + ".csv"
-    write_specific_csv_file(set_tdm_file_path, tdm_truthset_headers, set_tdm_lines)
+    write_specific_csv_file(set_tdm_file_path, tdm_truth_set_headers, set_tdm_lines)
 
 
 def generate_csv_sets():
