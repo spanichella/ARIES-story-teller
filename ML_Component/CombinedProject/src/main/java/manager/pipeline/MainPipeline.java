@@ -81,19 +81,6 @@ public class MainPipeline extends MainProgram {
     }
 
 
-    public void runTbDAnalysis(String nameOfAttributeID, String nameOfAttributeClass) {
-        String[] tbdArgs = new String[9];
-        tbdArgs[0] = this.pathTbDRScript;
-        tbdArgs[1] = this.pathRScripts;
-        tbdArgs[2] = this.pathTrainingSetDocuments;
-        tbdArgs[3] = this.pathTestSetDocuments; //we pass this as String argument, it will be converted later
-        tbdArgs[4] = this.pathSimplifiedTruthSet;
-        tbdArgs[5] = this.nameOfAttributeID;
-        tbdArgs[6] = this.nameOfAttributeClass;
-        tbdArgs[7] = this.nameOfAttributeText;
-        tbdArgs[8] = this.pathBaseFolder;
-        TermByDocumentCreation.main(tbdArgs);
-    }
 
     public String getPathRScripts() {
         return pathRScripts;

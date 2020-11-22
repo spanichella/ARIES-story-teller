@@ -33,15 +33,15 @@ public class ConfigFileReader {
     // path oracle
     private String pathSimplifiedTruthSet;
 
-    protected static String dataType;
+    private static String dataType;
 
-    protected static String nameOfAttributeID;
+    private static String nameOfAttributeID;
 
-    protected static String nameOfAttributeText;
+    private static String nameOfAttributeText;
 
-    protected static String nameOfAttributeClass;
+    private static String nameOfAttributeClass;
 
-    protected static String machineLearningModelName;
+    private static String machineLearningModelName;
 
     private static String pathTDMTrainingSet;
 
@@ -217,58 +217,58 @@ public class ConfigFileReader {
     }
 
 
-    public static void setPathTDMTestSet(String pathTDMTestSet) {
-        ConfigFileReader.pathTDMTestSet = pathTDMTestSet;
+    public  void setPathTDMTestSet(String pathTDMTestSet) {
+        this.pathTDMTestSet = pathTDMTestSet;
     }
 
 
-    public static String getPathModel() {
+    public  String getPathModel() {
         return pathModel;
     }
 
 
-    public static void setPathModel(String pathModel) {
-        ConfigFileReader.pathModel = pathModel;
+    public  void setPathModel(String pathModel) {
+        this.pathModel = pathModel;
     }
 
 
-    public static String getDataType() {
+    public  String getDataType() {
         return dataType;
     }
 
 
-    public static void setDataType(String dataType) {
-        ConfigFileReader.dataType = dataType;
+    public  void setDataType(String dataType) {
+        this.dataType = dataType;
     }
 
 
-    public static String getNameOfAttributeID() {
+    public  String getNameOfAttributeID() {
         return nameOfAttributeID;
     }
 
 
-    public static void setNameOfAttributeID(String nameOfAttributeID) {
-        ConfigFileReader.nameOfAttributeID = nameOfAttributeID;
+    public  void setNameOfAttributeID(String nameOfAttributeID) {
+        this.nameOfAttributeID = nameOfAttributeID;
     }
 
 
-    public static String getNameOfAttributeText() {
+    public  String getNameOfAttributeText() {
         return nameOfAttributeText;
     }
 
 
-    public static void setNameOfAttributeText(String nameOfAttributeText) {
-        ConfigFileReader.nameOfAttributeText = nameOfAttributeText;
+    public  void setNameOfAttributeText(String nameOfAttributeText) {
+        this.nameOfAttributeText = nameOfAttributeText;
     }
 
 
-    public static String getNameOfAttributeClass() {
+    public  String getNameOfAttributeClass() {
         return nameOfAttributeClass;
     }
 
 
-    public static void setNameOfAttributeClass(String nameOfAttributeClass) {
-        ConfigFileReader.nameOfAttributeClass = nameOfAttributeClass;
+    public void setNameOfAttributeClass(String nameOfAttributeClass) {
+        this.nameOfAttributeClass = nameOfAttributeClass;
     }
 
 

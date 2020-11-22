@@ -1,5 +1,6 @@
 package manager.pipeline;
 
+import R_Tm_package.TermByDocumentCreation;
 import configFile.ConfigFileReader;
 import oracle.OracleUserReviewsAnalyzer;
 
@@ -38,7 +39,7 @@ public class FileGeneration {
             mainPipeline.setPathSimplifiedTruthSet(configFileReader.getPathSimplifiedTruthSet());
 
             //run TbDAnalysis
-            mainPipeline.runTbDAnalysis(configFileReader.getNameOfAttributeID(), configFileReader.getNameOfAttributeClass());
+            TermByDocumentCreation.createTBD(configFileReader);
 
             System.out.println("\n END of PART 2. - TbD Analysis \n\n ");
         }

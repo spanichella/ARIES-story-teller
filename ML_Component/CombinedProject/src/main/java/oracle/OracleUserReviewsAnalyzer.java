@@ -49,7 +49,7 @@ public class OracleUserReviewsAnalyzer extends Oracle {
             //String command = "/usr/local/bin/Rscript "+ pathRScriptOracle+" "+baseFolder+ " "+oracle_path+ " "+threshold+ " "+getNameOfAttributeID()+ " "+getNameOfAttributeText()+ " "+getNameOfAttributeClass();
             //TODO
             String command = "Rscript " + pathRScriptOracle + " " + baseFolder + " " + oracle_path + " " + threshold + " " + getNameOfAttributeID() + " " + getNameOfAttributeText() + " " + getNameOfAttributeClass();
-
+            System.out.println("URRRRRRRRRRRRRRRRR"+pathRScriptOracle);
             //we print the command to execute
 				/*System.out.println(" \n \n Executing command (considering R script and arguments): \n "+command+" \n");
 				System.out.println("R script and arguments: ");

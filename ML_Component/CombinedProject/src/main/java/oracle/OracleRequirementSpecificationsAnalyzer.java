@@ -48,6 +48,7 @@ public class OracleRequirementSpecificationsAnalyzer extends Oracle {
             //command to execute
             //String command = "/usr/local/bin/Rscript "+ pathRScriptOracle+" "+baseFolder+ " "+oracle_path+ " "+threshold+ " "+getNameOfAttributeID()+ " "+getNameOfAttributeText()+ " "+getNameOfAttributeClass();
             String command = "Rscript " + pathRScriptOracle + " " + baseFolder + " " + oracle_path + " " + threshold + " " + getNameOfAttributeID() + " " + getNameOfAttributeText() + " " + getNameOfAttributeClass();
+            System.out.println("RSSSSSSSSSSSSSSSSSSSSSSSSS"+pathRScriptOracle);
 
 		/*we print the command to execute
 				System.out.println(" \n \n Executing command (considering R script and arguments): \n "+command+" \n");
