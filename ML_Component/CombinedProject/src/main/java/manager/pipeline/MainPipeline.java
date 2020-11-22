@@ -61,7 +61,7 @@ public class MainPipeline extends MainProgram {
         //Generate files for ML
         FileGeneration.oracleAnalysis(configFileReader);
         //ML predictions
-        ThirdPart.performMlAnalysis(configFileReader);
+        MlAnalysis.performMlAnalysis(configFileReader);
 
     }
 
