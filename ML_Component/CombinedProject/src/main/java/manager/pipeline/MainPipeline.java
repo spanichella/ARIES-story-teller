@@ -69,19 +69,15 @@ public class MainPipeline extends MainProgram {
     // loading arguments for various pipeline steps
     public MainPipeline(String dataType, String nameOfAttributeID, String nameOfAttributeText, String nameOfAttributeClass) {
         //loading data concerning the oracle
+        // TODO NOT NEEDED ANYWHERE
+
         this.dataType = dataType;
         this.nameOfAttributeID = nameOfAttributeID;
         this.nameOfAttributeText = nameOfAttributeText;
         this.nameOfAttributeClass = nameOfAttributeClass;
     }
 
-
-    public OracleUserReviewsAnalyzer runOracleAnalysis() {
-        return new OracleUserReviewsAnalyzer(this.dataType, this.nameOfAttributeID, this.nameOfAttributeText, this.nameOfAttributeClass, this.pathOracleRScript, this.pathBaseFolder, this.pathTruthSet, this.splitSetPercentage);
-    }
-
-
-
+    // TODO NOT NEEDED ANYWHERE
     public String getPathRScripts() {
         return pathRScripts;
     }

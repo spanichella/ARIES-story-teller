@@ -4,6 +4,7 @@ package oracle;
  * @author panc
  */
 public abstract class Oracle {
+    // TODO NOT NEEDED ANYWHERE
 
     protected static String dataType;
 
@@ -46,6 +47,8 @@ public abstract class Oracle {
     }
 
     public Oracle(String dataType, String nameOfAttributeID, String nameOfAttributeText, String nameOfAttributeClass) {
+        // TODO NOT NEEDED ANYWHERE
+
         this.dataType = dataType;
         this.nameOfAttributeID = nameOfAttributeID;
         this.nameOfAttributeText = nameOfAttributeText;
