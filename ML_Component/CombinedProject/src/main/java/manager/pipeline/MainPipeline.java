@@ -15,24 +15,24 @@ import oracle.OracleUserReviewsAnalyzer;
 public class MainPipeline extends MainProgram {
 
     // PART 1. - ORACLE PARAMETERS
-    private String docs_location;
+    private String pathRScripts;
     //local path to the R script "MainScript.r"
-    private String pathRScriptsFolder;
+    private String pathOracleRScript;
     // here are located the "documents" folder and the  "utilities.R script"
     private String pathBaseFolder;
     // path oracle
-    private String pathTruthFile;
+    private String pathTruthSet;
     // path threshold
-    private double threshold;
+    private double splitSetPercentage;
 
     //local path to the R script "MainScript.r"
     private String pathTbDRScript;
 
     // locations of training and test sets
-    private String documentsTrainingSet;
-    private String documentsTestSet;
+    private String pathTrainingSetDocuments;
+    private String pathTestSetDocuments;
     // path oracle
-    private String simplifiedOracle_path;
+    private String pathSimplifiedTruthSet;
 
     public static void main(String[] args) throws Exception {
 
@@ -77,17 +77,17 @@ public class MainPipeline extends MainProgram {
 
 
     public OracleUserReviewsAnalyzer runOracleAnalysis() {
-        return new OracleUserReviewsAnalyzer(this.dataType, this.nameOfAttributeID, this.nameOfAttributeText, this.nameOfAttributeClass, this.pathRScriptsFolder, this.pathBaseFolder, this.pathTruthFile, this.threshold);
+        return new OracleUserReviewsAnalyzer(this.dataType, this.nameOfAttributeID, this.nameOfAttributeText, this.nameOfAttributeClass, this.pathOracleRScript, this.pathBaseFolder, this.pathTruthSet, this.splitSetPercentage);
     }
 
 
     public void runTbDAnalysis(String nameOfAttributeID, String nameOfAttributeClass) {
         String[] tbdArgs = new String[9];
         tbdArgs[0] = this.pathTbDRScript;
-        tbdArgs[1] = this.docs_location;
-        tbdArgs[2] = this.documentsTrainingSet;
-        tbdArgs[3] = this.documentsTestSet; //we pass this as String argument, it will be converted later
-        tbdArgs[4] = this.simplifiedOracle_path;
+        tbdArgs[1] = this.pathRScripts;
+        tbdArgs[2] = this.pathTrainingSetDocuments;
+        tbdArgs[3] = this.pathTestSetDocuments; //we pass this as String argument, it will be converted later
+        tbdArgs[4] = this.pathSimplifiedTruthSet;
         tbdArgs[5] = this.nameOfAttributeID;
         tbdArgs[6] = this.nameOfAttributeClass;
         tbdArgs[7] = this.nameOfAttributeText;
@@ -95,20 +95,20 @@ public class MainPipeline extends MainProgram {
         TermByDocumentCreation.main(tbdArgs);
     }
 
-    public String getDocs_location() {
-        return docs_location;
+    public String getPathRScripts() {
+        return pathRScripts;
     }
 
-    public void setDocs_location(String docs_location) {
-        this.docs_location = docs_location;
+    public void setPathRScripts(String pathRScripts) {
+        this.pathRScripts = pathRScripts;
     }
 
-    public String getPathRScriptsFolder() {
-        return pathRScriptsFolder;
+    public String getPathOracleRScript() {
+        return pathOracleRScript;
     }
 
-    public void setPathRScriptsFolder(String pathRScriptsFolder) {
-        this.pathRScriptsFolder = pathRScriptsFolder;
+    public void setPathOracleRScript(String pathOracleRScript) {
+        this.pathOracleRScript = pathOracleRScript;
     }
 
     public String getPathBaseFolder() {
@@ -119,20 +119,20 @@ public class MainPipeline extends MainProgram {
         this.pathBaseFolder = pathBaseFolder;
     }
 
-    public String getPathTruthFile() {
-        return pathTruthFile;
+    public String getPathTruthSet() {
+        return pathTruthSet;
     }
 
-    public void setPathTruthFile(String pathTruthFile) {
-        this.pathTruthFile = pathTruthFile;
+    public void setPathTruthSet(String pathTruthSet) {
+        this.pathTruthSet = pathTruthSet;
     }
 
-    public double getThreshold() {
-        return threshold;
+    public double getSplitSetPercentage() {
+        return splitSetPercentage;
     }
 
-    public void setThreshold(double threshold) {
-        this.threshold = threshold;
+    public void setSplitSetPercentage(double splitSetPercentage) {
+        this.splitSetPercentage = splitSetPercentage;
     }
 
     public String getPathTbDRScript() {
@@ -143,27 +143,27 @@ public class MainPipeline extends MainProgram {
         this.pathTbDRScript = pathTbDRScript;
     }
 
-    public String getDocumentsTrainingSet() {
-        return documentsTrainingSet;
+    public String getPathTrainingSetDocuments() {
+        return pathTrainingSetDocuments;
     }
 
-    public void setDocumentsTrainingSet(String documentsTrainingSet) {
-        this.documentsTrainingSet = documentsTrainingSet;
+    public void setPathTrainingSetDocuments(String pathTrainingSetDocuments) {
+        this.pathTrainingSetDocuments = pathTrainingSetDocuments;
     }
 
-    public String getDocumentsTestSet() {
-        return documentsTestSet;
+    public String getPathTestSetDocuments() {
+        return pathTestSetDocuments;
     }
 
-    public void setDocumentsTestSet(String documentsTestSet) {
-        this.documentsTestSet = documentsTestSet;
+    public void setPathTestSetDocuments(String pathTestSetDocuments) {
+        this.pathTestSetDocuments = pathTestSetDocuments;
     }
 
-    public String getSimplifiedOracle_path() {
-        return simplifiedOracle_path;
+    public String getPathSimplifiedTruthSet() {
+        return pathSimplifiedTruthSet;
     }
 
-    public void setSimplifiedOracle_path(String simplifiedOracle_path) {
-        this.simplifiedOracle_path = simplifiedOracle_path;
+    public void setPathSimplifiedTruthSet(String pathSimplifiedTruthSet) {
+        this.pathSimplifiedTruthSet = pathSimplifiedTruthSet;
     }
 }
