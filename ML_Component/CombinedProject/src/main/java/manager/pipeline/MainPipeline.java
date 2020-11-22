@@ -34,7 +34,7 @@ public class MainPipeline extends MainProgram {
     // path oracle
     private String simplifiedOracle_path;
 
-    public static void main1(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         String type = "UR";
         //set mainPath according to Operating System
@@ -59,7 +59,7 @@ public class MainPipeline extends MainProgram {
         //Read Config
         ConfigFileReader configFileReader = new ConfigFileReader(pathXMLConfigFile);
         //Generate files for ML
-        FirstPart.oracleAnalysis(configFileReader);
+        FileGeneration.oracleAnalysis(configFileReader);
         //ML predictions
         ThirdPart.performMlAnalysis(configFileReader);
 

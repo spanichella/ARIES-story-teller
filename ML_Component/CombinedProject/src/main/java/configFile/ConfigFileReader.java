@@ -13,14 +13,14 @@ import java.io.File;
 public class ConfigFileReader {
 
     // PART 1. - ORACLE PARAMETERS
-    private String docs_location;
+    private String pathRScripts;
     //local path to the R script "MainScript.r"
     private String pathRScript;
     private String pathRScriptOracle;
     // here are located the "documents" folder and the  "utilities.R script"
-    private String baseFolder;
+    private String pathBaseFolder;
     // path oracle
-    private String oracle_path;
+    private String pathTruthSet;
     // path threshold
     private double threshold;
 
@@ -28,10 +28,10 @@ public class ConfigFileReader {
     private String pathTbDRScript;
 
     // locations of training and test sets
-    private String documentsTrainingSet;
-    private String documentsTestSet;
+    private String pathTrainingSetDocuments;
+    private String pathTestSetDocuments;
     // path oracle
-    private String simplifiedOracle_path;
+    private String pathSimplifiedTruthSet;
 
     protected static String dataType;
 
@@ -43,13 +43,13 @@ public class ConfigFileReader {
 
     protected static String machineLearningModelName;
 
-    private static String pathTrainingSet;
+    private static String pathTDMTrainingSet;
 
-    private static String pathTestSet;
+    private static String pathTDMTestSet;
 
     private static String pathModel;
 
-    private static String pathWholeDataset;
+    private static String pathFullTDMDataset;
 
     private static String machineLearningModel;
 
@@ -92,14 +92,14 @@ public class ConfigFileReader {
                         String id = eElement.getAttribute("id");
                         System.out.println("ADSORB-ML id : " + id);
 
-                            this.docs_location = eElement.getElementsByTagName("docs_location").item(0).getTextContent();
-                            System.out.println("docs_location : " + this.docs_location);
+                            this.pathRScripts = eElement.getElementsByTagName("pathRScripts").item(0).getTextContent();
+                            System.out.println("pathRScripts : " + this.pathRScripts);
                             this.pathRScriptOracle = eElement.getElementsByTagName("pathRScriptOracle").item(0).getTextContent();
                             System.out.println("pathRScriptOracle : " + this.pathRScriptOracle);
-                            this.baseFolder = eElement.getElementsByTagName("baseFolder").item(0).getTextContent();
-                            System.out.println("baseFolder: " + this.baseFolder);
-                            this.oracle_path = eElement.getElementsByTagName("oracle_path").item(0).getTextContent();
-                            System.out.println("oracle_path: " + this.oracle_path);
+                            this.pathBaseFolder = eElement.getElementsByTagName("pathBaseFolder").item(0).getTextContent();
+                            System.out.println("pathBaseFolder: " + this.pathBaseFolder);
+                            this.pathTruthSet = eElement.getElementsByTagName("pathTruthSet").item(0).getTextContent();
+                            System.out.println("pathTruthSet: " + this.pathTruthSet);
                             this.dataType = eElement.getElementsByTagName("dataType").item(0).getTextContent();
                             System.out.println("dataType: " + this.dataType);
                             this.nameOfAttributeID = eElement.getElementsByTagName("nameOfAttributeID").item(0).getTextContent();
@@ -110,12 +110,12 @@ public class ConfigFileReader {
                             System.out.println("nameOfAttributeClass: " + this.nameOfAttributeClass);
                             this.pathTbDRScript = eElement.getElementsByTagName("pathTbDRScript").item(0).getTextContent();
                             System.out.println("pathTbDRScript: " + this.pathTbDRScript);
-                            this.documentsTrainingSet = eElement.getElementsByTagName("documentsTrainingSet").item(0).getTextContent();
-                            System.out.println("documentsTrainingSet: " + this.documentsTrainingSet);
-                            this.documentsTestSet = eElement.getElementsByTagName("documentsTestSet").item(0).getTextContent();
-                            System.out.println("documentsTestSet: " + this.documentsTestSet);
-                            this.simplifiedOracle_path = eElement.getElementsByTagName("simplifiedOracle_path").item(0).getTextContent();
-                            System.out.println("simplifiedOracle_path: " + this.simplifiedOracle_path);
+                            this.pathTrainingSetDocuments = eElement.getElementsByTagName("pathTrainingSetDocuments").item(0).getTextContent();
+                            System.out.println("pathTrainingSetDocuments: " + this.pathTrainingSetDocuments);
+                            this.pathTestSetDocuments = eElement.getElementsByTagName("pathTestSetDocuments").item(0).getTextContent();
+                            System.out.println("pathTestSetDocuments: " + this.pathTestSetDocuments);
+                            this.pathSimplifiedTruthSet = eElement.getElementsByTagName("pathSimplifiedTruthSet").item(0).getTextContent();
+                            System.out.println("simplifiedOracle_path: " + this.pathSimplifiedTruthSet);
 
                             // ML_ANALYSIS
                             this.strategy = eElement.getElementsByTagName("strategy").item(0).getTextContent();
@@ -129,14 +129,14 @@ public class ConfigFileReader {
 
                             //TODO: needs changes for maybe
                             if (strategy.equals("Training_and_test_set")) {
-                                this.pathTrainingSet = eElement.getElementsByTagName("pathTrainingSet").item(0).getTextContent();
-                                System.out.println(": " + this.pathTrainingSet);
-                                this.pathTestSet = eElement.getElementsByTagName("pathTestSet").item(0).getTextContent();
-                                System.out.println("pathTestSet: " + this.pathTestSet);
+                                this.pathTDMTrainingSet = eElement.getElementsByTagName("pathTDMTrainingSet").item(0).getTextContent();
+                                System.out.println("pathTDMTrainingSet: " + this.pathTDMTrainingSet);
+                                this.pathTDMTestSet = eElement.getElementsByTagName("pathTDMTestSet").item(0).getTextContent();
+                                System.out.println("pathTDMTestSet: " + this.pathTDMTestSet);
                             }
                             if (strategy.equals("10-fold")) {
-                                this.pathWholeDataset = eElement.getElementsByTagName("pathWholeDataset").item(0).getTextContent();
-                                System.out.println("pathWholeDataset: " + this.pathWholeDataset);
+                                this.pathFullTDMDataset = eElement.getElementsByTagName("pathFullTDMDataset").item(0).getTextContent();
+                                System.out.println("pathFullTDMDataset: " + this.pathFullTDMDataset);
                             }
 
                     }
@@ -182,13 +182,13 @@ public class ConfigFileReader {
     }
 
 
-    public static String getPathWholeDataset() {
-        return pathWholeDataset;
+    public static String getPathFullTDMDataset() {
+        return pathFullTDMDataset;
     }
 
 
-    public static void setPathWholeDataset(String pathWholeDataset) {
-        ConfigFileReader.pathWholeDataset = pathWholeDataset;
+    public static void setPathFullTDMDataset(String pathFullTDMDataset) {
+        ConfigFileReader.pathFullTDMDataset = pathFullTDMDataset;
     }
 
 
@@ -202,23 +202,23 @@ public class ConfigFileReader {
     }
 
 
-    public static String getPathTrainingSet() {
-        return pathTrainingSet;
+    public static String getPathTDMTrainingSet() {
+        return pathTDMTrainingSet;
     }
 
 
-    public static void setPathTrainingSet(String pathTrainingSet) {
-        ConfigFileReader.pathTrainingSet = pathTrainingSet;
+    public static void setPathTDMTrainingSet(String pathTDMTrainingSet) {
+        ConfigFileReader.pathTDMTrainingSet = pathTDMTrainingSet;
     }
 
 
-    public static String getPathTestSet() {
-        return pathTestSet;
+    public static String getPathTDMTestSet() {
+        return pathTDMTestSet;
     }
 
 
-    public static void setPathTestSet(String pathTestSet) {
-        ConfigFileReader.pathTestSet = pathTestSet;
+    public static void setPathTDMTestSet(String pathTDMTestSet) {
+        ConfigFileReader.pathTDMTestSet = pathTDMTestSet;
     }
 
 
@@ -282,12 +282,12 @@ public class ConfigFileReader {
     }
 
 
-    public String getDocs_location() {
-        return docs_location;
+    public String getPathRScripts() {
+        return pathRScripts;
     }
 
-    public void setDocs_location(String docs_location) {
-        this.docs_location = docs_location;
+    public void setPathRScripts(String pathRScripts) {
+        this.pathRScripts = pathRScripts;
     }
 
     public String getPathRScript() {
@@ -298,20 +298,20 @@ public class ConfigFileReader {
         this.pathRScript = pathRScript;
     }
 
-    public String getBaseFolder() {
-        return baseFolder;
+    public String getPathBaseFolder() {
+        return pathBaseFolder;
     }
 
-    public void setBaseFolder(String baseFolder) {
-        this.baseFolder = baseFolder;
+    public void setPathBaseFolder(String pathBaseFolder) {
+        this.pathBaseFolder = pathBaseFolder;
     }
 
-    public String getOracle_path() {
-        return oracle_path;
+    public String getPathTruthSet() {
+        return pathTruthSet;
     }
 
-    public void setOracle_path(String oracle_path) {
-        this.oracle_path = oracle_path;
+    public void setPathTruthSet(String pathTruthSet) {
+        this.pathTruthSet = pathTruthSet;
     }
 
     public double getThreshold() {
@@ -330,28 +330,28 @@ public class ConfigFileReader {
         this.pathTbDRScript = pathTbDRScript;
     }
 
-    public String getDocumentsTrainingSet() {
-        return documentsTrainingSet;
+    public String getPathTrainingSetDocuments() {
+        return pathTrainingSetDocuments;
     }
 
-    public void setDocumentsTrainingSet(String documentsTrainingSet) {
-        this.documentsTrainingSet = documentsTrainingSet;
+    public void setPathTrainingSetDocuments(String pathTrainingSetDocuments) {
+        this.pathTrainingSetDocuments = pathTrainingSetDocuments;
     }
 
-    public String getDocumentsTestSet() {
-        return documentsTestSet;
+    public String getPathTestSetDocuments() {
+        return pathTestSetDocuments;
     }
 
-    public void setDocumentsTestSet(String documentsTestSet) {
-        this.documentsTestSet = documentsTestSet;
+    public void setPathTestSetDocuments(String pathTestSetDocuments) {
+        this.pathTestSetDocuments = pathTestSetDocuments;
     }
 
-    public String getSimplifiedOracle_path() {
-        return simplifiedOracle_path;
+    public String getPathSimplifiedTruthSet() {
+        return pathSimplifiedTruthSet;
     }
 
-    public void setSimplifiedOracle_path(String simplifiedOracle_path) {
-        this.simplifiedOracle_path = simplifiedOracle_path;
+    public void setPathSimplifiedTruthSet(String pathSimplifiedTruthSet) {
+        this.pathSimplifiedTruthSet = pathSimplifiedTruthSet;
     }
 
 

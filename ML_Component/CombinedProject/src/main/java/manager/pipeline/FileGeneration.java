@@ -3,17 +3,17 @@ package manager.pipeline;
 import configFile.ConfigFileReader;
 import oracle.OracleUserReviewsAnalyzer;
 
-public class FirstPart {
+public class FileGeneration {
 
     public static void oracleAnalysis(ConfigFileReader configFileReader) {
 
         // here are located the "documents" folder and the  "utilities.R script"
-        String docs_location = configFileReader.getDocs_location();
+        String docs_location = configFileReader.getPathRScripts();
         //local path to the R script "MainScript.r"
         String pathRScriptOracle = configFileReader.getPathRScriptOracle();
         // here are located the "documents" folder and the  "utilities.R script"
-        String baseFolder = configFileReader.getBaseFolder();
-        String oracle_path = configFileReader.getOracle_path();
+        String baseFolder = configFileReader.getPathBaseFolder();
+        String oracle_path = configFileReader.getPathTruthSet();
         double setPartitioning = 0.5;
 
         // Type of the data to classify
@@ -48,10 +48,10 @@ public class FirstPart {
             String pathTbDRScript = configFileReader.getPathTbDRScript();
 
             // locations of training and test sets
-            String documentsTrainingSet = configFileReader.getDocumentsTrainingSet();
-            String documentsTestSet = configFileReader.getDocumentsTestSet();
+            String documentsTrainingSet = configFileReader.getPathTrainingSetDocuments();
+            String documentsTestSet = configFileReader.getPathTestSetDocuments();
             // path oracle
-            String simplifiedOracle_path = configFileReader.getSimplifiedOracle_path();
+            String simplifiedOracle_path = configFileReader.getPathSimplifiedTruthSet();
 
             //we update parameters - used later to run TbD analysis
             mainPipeline.setDocs_location(docs_location);

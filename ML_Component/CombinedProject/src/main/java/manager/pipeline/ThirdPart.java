@@ -1,6 +1,5 @@
 package manager.pipeline;
 
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import configFile.ConfigFileReader;
 import ml.WekaClassifier;
 
@@ -21,9 +20,9 @@ public class ThirdPart {
         if (strategy != null) {
             System.out.println("PART 3. - ML prediction ");
             if (strategy.equals("Training_and_test_set")) {
-                String pathTrainingSet = configFileReader.getPathTrainingSet();
+                String pathTrainingSet = configFileReader.getPathTDMTrainingSet();
                 //path test set
-                String pathTestSet = configFileReader.getPathTestSet();
+                String pathTestSet = configFileReader.getPathTDMTestSet();
                 wekaClassifier = new WekaClassifier(pathTrainingSet, pathTestSet, pathModel);
                 if (checkWehetherTestSetIsLabeled(pathTestSet) == true) {
                     wekaClassifier.runSpecifiedMachineLearningModel(machineLearningModel, pathResultsPrediction); //default behaviour it does prediction with given training and test sets with J48
@@ -34,7 +33,7 @@ public class ThirdPart {
             if (strategy.equals("10-fold")) {
                 //path pathWholeDataset
                 //String pathWholeDataset = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed-review/tdm_full_with_oracle_info_information giving.csv";
-                String pathWholeDataset = configFileReader.getPathWholeDataset();
+                String pathWholeDataset = configFileReader.getPathFullTDMDataset();
                 try {
                     wekaClassifier.runSpecifiedModelWith10FoldStrategy(pathWholeDataset, pathModel, machineLearningModel, pathResultsPrediction);
                 } catch (Exception e) {
