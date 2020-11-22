@@ -14,7 +14,9 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.logging.Logger;
 
+import manager.pipeline.MlAnalysis;
 import weka.classifiers.Classifier;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.evaluation.Evaluation;
@@ -44,6 +46,7 @@ public class WekaClassifier extends MachineLearningClassifier {
     private static String pathTrainingSet;
     private static String pathTestSet;
     private static String pathModel;
+    private final static Logger logger = Logger.getLogger(WekaClassifier.class.getName());
 
     public WekaClassifier() {
         this.classifierToolChain = "Weka";
@@ -58,42 +61,31 @@ public class WekaClassifier extends MachineLearningClassifier {
 
     public static void runSpecifiedMachineLearningModel(String machineLearningModel, String pathResultsPrediction) {
 
-        //System.out.println("ClassifierToolChain: "+getClassifierToolChain()+" - model "+machineLearningModel);
-        //path training set
-        //String pathTrainingSet = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed/tdm_full_trainingSet_with_oracle_info.csv";
         String pathTrainingSet = getPathTrainingSet();
-        //path test set
-        //String pathTestSet = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed/tdm_full_testSet_with_oracle_info.csv";
         String pathTestSet = getPathTestSet();
-        //path output model
-        //String pathModel = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed/j48.model";
         String pathModel = getPathModel();
 
 
         try {
-            //we create istances for training and test sets
+            //we create instances for training and test sets
             DataSource sourceTraining = new DataSource(pathTrainingSet);
             DataSource sourceTesting = new DataSource(pathTestSet);
-            Instances train = sourceTraining.getDataSet(); // from somewhere
+            Instances train = sourceTraining.getDataSet();
+            //TODO what is this?
             Instances test = null;
 
-            test = sourceTesting.getDataSet();     // from somewhere
+            test = sourceTesting.getDataSet();
 
-            System.out.println("Loading data");
+            logger.info("Loading data...");
 
             // Set class the last attribute as class
             train.setClassIndex(train.numAttributes() - 1);
             test.setClassIndex(train.numAttributes() - 1);
-            System.out.println("- Training data loaded - runSpecifiedMachineLearningModel");
+            logger.info("Training data loaded");
 
-            //2) Classifier declaration
             Classifier classifier = getClassifierClassName(machineLearningModel);
-            //we print the model
-            System.out.print(classifier.getClass());
-            // train classifier
-
+            logger.info("Classifier used: "+String.valueOf(classifier.getClass()));
             classifier.buildClassifier(train);
-            // evaluate classifier and print some statistics
 
             Evaluation eval = new Evaluation(train);
             weka.core.SerializationHelper.write(pathModel, classifier);

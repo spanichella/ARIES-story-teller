@@ -6,14 +6,16 @@ import ml.WekaClassifier;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class MlAnalysis {
+    private final static Logger logger = Logger.getLogger(MlAnalysis.class.getName());
 
     public static void performMlAnalysis(ConfigFileReader configFileReader) {
 
+        logger.info("Starting Machine Learning Analysis...");
         WekaClassifier wekaClassifier = new WekaClassifier();
         if (configFileReader.getStrategy() != null) {
-            System.out.println("PART 3. - ML prediction ");
 
             if (configFileReader.getStrategy().equals("Training_and_test_set")) {
                 wekaClassifier = new WekaClassifier(configFileReader.getPathTDMTrainingSet(), configFileReader.getPathTDMTestSet(), configFileReader.getPathModel());
@@ -28,12 +30,11 @@ public class MlAnalysis {
                 try {
                     wekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.getPathFullTDMDataset(), configFileReader.getPathModel(), configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction());
                 } catch (Exception e) {
-                    System.out.print("Error: Could not run 10-fold strategy");
+                    logger.severe("Error: Could not run 10-fold strategy");
+                    System.exit(1);
                 }
             }
-            System.out.println("\n END of PART 3. - ML prediction\n\n");
-            /**/
-
+            logger.info("Machine Learning Analysis completed");
         }
     }
 

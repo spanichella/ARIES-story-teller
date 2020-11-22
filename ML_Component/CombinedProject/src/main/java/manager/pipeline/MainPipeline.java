@@ -5,6 +5,9 @@ import configFile.ConfigFileReader;
 import configFile.XMLInitializer;
 import oracle.OracleUserReviewsAnalyzer;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * @author panc
  * <p>
@@ -34,7 +37,11 @@ public class MainPipeline extends MainProgram {
     // path oracle
     private String pathSimplifiedTruthSet;
 
+    private final static Logger logger = Logger.getLogger(MainPipeline.class.getName());
+
     public static void main(String[] args) throws Exception {
+
+
 
         String type = "UR";
         //set mainPath according to Operating System
@@ -42,22 +49,25 @@ public class MainPipeline extends MainProgram {
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             mainPath = mainPath.substring(1);
         }
-        System.out.print("LOCAL PATH:"+mainPath);
+        logger.log(Level.INFO, "Path fetched: "+mainPath);
+
         //create XML files with paths, etc.
         XMLInitializer.createXML(mainPath, type);
 
-        //select path of XML according to data-type
-        String pathXMLConfigFile = "";
+        //chooses path of config file according to data-type
+        String pathConfigFile = "";
         if (type.equals("RS")) {
-            pathXMLConfigFile = mainPath + "Resources/XMLFiles/RequirementSpecificationsXML.xml";
+            pathConfigFile = mainPath + "Resources/XMLFiles/RequirementSpecificationsXML.xml";
         } else if (type.equals("UR")) {
-            pathXMLConfigFile = mainPath + "Resources/XMLFiles/UserReviewsXML.xml";
+            pathConfigFile = mainPath + "Resources/XMLFiles/UserReviewsXML.xml";
         } else {
             System.out.println("type not recognized: use RS or UR");
             System.exit(1);
         }
+        logger.log(Level.INFO, "Path of ConfigFile: "+pathConfigFile);
+
         //Read Config
-        ConfigFileReader configFileReader = new ConfigFileReader(pathXMLConfigFile);
+        ConfigFileReader configFileReader = new ConfigFileReader(pathConfigFile);
         //Generate files for ML
         FileGeneration.oracleAnalysis(configFileReader);
         //ML predictions
