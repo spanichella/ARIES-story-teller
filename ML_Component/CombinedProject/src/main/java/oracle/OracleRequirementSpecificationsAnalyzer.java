@@ -1,10 +1,12 @@
 package oracle;
 
 import configFile.ConfigFileReader;
+import ml.WekaClassifier;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.Logger;
 
 
 /**
@@ -23,6 +25,9 @@ public class OracleRequirementSpecificationsAnalyzer /*extends Oracle*/ {
         oracleArgs[3] = "" + threshold; //we pass this as String argument, it will be converted later
     }
 */
+    private final static Logger logger = Logger.getLogger(OracleUserReviewsAnalyzer.class.getName());
+
+
     public static void runReqSpecRScript(ConfigFileReader cfr) {
 
         //TODO check that none of these is null before exec of script
@@ -37,9 +42,9 @@ public class OracleRequirementSpecificationsAnalyzer /*extends Oracle*/ {
 
         //command to execute
         String command = String.join(" ","Rscript", pathRScriptOracle,baseFolder,oracle_path,threshold,nameOfAttributeID,nameOfAttributeText,nameOfAttributeClass);
+        logger.info("Command used: "+command);
         // -- Linux/Mac osx --
         try {
-            //Process process = Runtime.getRuntime().exec("ls /Users/panc/Desktop");
             Process process = Runtime.getRuntime().exec(command);
 
             BufferedReader reader = new BufferedReader(

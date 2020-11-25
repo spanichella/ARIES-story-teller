@@ -120,15 +120,8 @@ public class WekaClassifier extends MachineLearningClassifier {
 
     public static void runSpecifiedMachineLearningModelToLabelInstances(String machineLearningModel, String pathResultsPrediction) {
 
-        //System.out.println("ClassifierToolChain: "+getClassifierToolChain()+" - model "+machineLearningModel);
-        //path training set
-        //String pathTrainingSet = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed/tdm_full_trainingSet_with_oracle_info.csv";
         String pathTrainingSet = getPathTrainingSet();
-        //path test set
-        //String pathTestSet = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed/tdm_full_testSet_with_oracle_info.csv";
         String pathTestSet = getPathTestSet();
-        //path output model
-        //String pathModel = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed/j48.model";
         String pathModel = getPathModel();
 
         //start by providing the paths for your training and testing ARFF files make sure both files have the same structure and the exact classes in the header
@@ -136,26 +129,25 @@ public class WekaClassifier extends MachineLearningClassifier {
             //we create istances for training and test sets
             DataSource sourceTraining = new DataSource(pathTrainingSet);
             DataSource sourceTesting = new DataSource(pathTestSet);
-            Instances train = sourceTraining.getDataSet(); // from somewhere
+            Instances train = sourceTraining.getDataSet();
             Instances test = null;
 
-            test = sourceTesting.getDataSet();     // from somewhere
+            test = sourceTesting.getDataSet();
 
-            System.out.println("Loading data");
+            logger.info("Loading data");
 
             // Set class the last attribute as class
             train.setClassIndex(train.numAttributes() - 1);
             test.setClassIndex(test.numAttributes() - 1);
-            System.out.println("- Training data loaded - runSpecifiedMachineLearningModel");
+            logger.info("Training data loaded");
 
-            //2) Classifier declaration
             Classifier classifier = getClassifierClassName(machineLearningModel);
-            //we print the model
-            System.out.println(classifier.getClass());
-            // train classifier
-            System.out.println("Test set items that need to be labeled:" + test.numInstances());
-            System.out.println("To classify such instances, consider to use the GUI version of WEKA as reported in the following example:");
-            System.out.println("https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf");
+            logger.info("Classifier used: "+String.valueOf(classifier.getClass()));
+
+            //TODO: this method does nothing i guess?
+            logger.info("Test set items that need to be labeled:" + test.numInstances());
+            logger.info("To classify such instances, consider to use the GUI version of WEKA as reported in the following example:");
+            logger.info("https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf");
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -167,25 +159,14 @@ public class WekaClassifier extends MachineLearningClassifier {
 
 
     public static void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String j48ModelPath, String machineLearningModel, String pathResultsPrediction) throws Exception {
-        //String j48ModelPath = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed/j48.model";
-        // String wholeDataset = "/Users/panc/Desktop/Zurich-applied-Science/Collaborations/Marcela/eclipse/workspace/ML-pipeline/R-resources/R-scripts/documents-preprocessed/tdm_full_with_oracle_info_information giving.csv";
         DataSource sourceWholeDataset = new DataSource(pathWholeDataset);
         Instances wholeDataset = sourceWholeDataset.getDataSet(); // from somewhere
         wholeDataset.setClassIndex(wholeDataset.numAttributes() - 1);
 
-        System.out.println("Loading data");
-
-        // Set class the last attribute as class
-
-        System.out.println("- Whole dataset loaded - runSpecifiedModelWith10FoldStrategy");
+        logger.info("Loading data");
         String[] options;
-        //2) Classifier declaration
         Classifier classifier = getClassifierClassName(machineLearningModel);
-        //we print the model
-        System.out.print(classifier.getClass());
-        // train classifier
-        //options = weka.core.Utils.splitOptions("-D");
-        //((J48) classifier).setOptions(options);
+        logger.info("Classifier used: "+String.valueOf(classifier.getClass()));
         classifier.buildClassifier(wholeDataset);
 
 
@@ -200,7 +181,8 @@ public class WekaClassifier extends MachineLearningClassifier {
         System.out.println(eval.toClassDetailsString());
         System.out.println("AUC = " + eval.areaUnderROC(1));
 
-        FileWriter fileWriter = new FileWriter(pathResultsPrediction);
+        String strDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm:ss"));
+        FileWriter fileWriter = new FileWriter(pathResultsPrediction + strDate + ".txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println("performance results of: " + classifier.getClass().getSimpleName()
                 + "\n---------------------------------");
@@ -210,8 +192,6 @@ public class WekaClassifier extends MachineLearningClassifier {
         printWriter.println(eval.toClassDetailsString());
         printWriter.println("AUC = " + eval.areaUnderROC(1));
         printWriter.close();
-        //weka.core.SerializationHelper.write(j48ModelPath,classifier);
-
     }
 
 

@@ -5,6 +5,7 @@ import configFile.ConfigFileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.Logger;
 
 
 /**
@@ -21,6 +22,9 @@ public class OracleUserReviewsAnalyzer /*extends Oracle*/ {
         oracleArgs[3] = "" + threshold; //we pass this as String argument, it will be converted later
     }
 */
+
+    private final static Logger logger = Logger.getLogger(OracleUserReviewsAnalyzer.class.getName());
+
     //TODO: this is the same code as runReqSpecRScript
     public static void runUserReviewRScript(ConfigFileReader cfr) {
 
@@ -36,7 +40,8 @@ public class OracleUserReviewsAnalyzer /*extends Oracle*/ {
 
         //command to execute
         String command = String.join(" ","Rscript", pathRScriptOracle,baseFolder,oracle_path,threshold,nameOfAttributeID,nameOfAttributeText,nameOfAttributeClass);
-            // -- Linux/Mac osx --
+        logger.info("Command used: "+command);
+        // -- Linux/Mac osx --
             try {
                 Process process = Runtime.getRuntime().exec(command);
 
