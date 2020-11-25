@@ -38,14 +38,13 @@ public class MainPipeline extends MainProgram {
     private String pathTestSetDocuments;
     // path oracle
     private String pathSimplifiedTruthSet;
-*/
+    */
+
     private final static Logger logger = Logger.getLogger(MainPipeline.class.getName());
 
     public static void main(String[] args) throws Exception {
-
-
-
         String type = "UR";
+
         //set mainPath according to Operating System
         String mainPath = MainPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/", "");
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
@@ -74,10 +73,9 @@ public class MainPipeline extends MainProgram {
         FileGeneration.oracleAnalysis(configFileReader);
         //ML predictions
         MlAnalysis.performMlAnalysis(configFileReader);
-
     }
 
-// TODO: This is no longer needed
+    // TODO: This is no longer needed
     /*
     // loading arguments for various pipeline steps
     public MainPipeline(String dataType, String nameOfAttributeID, String nameOfAttributeText, String nameOfAttributeClass) {

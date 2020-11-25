@@ -29,7 +29,6 @@ public class OracleRequirementSpecificationsAnalyzer /*extends Oracle*/ {
 
 
     public static void runReqSpecRScript(ConfigFileReader cfr) {
-
         //TODO check that none of these is null before exec of script
         String pathRScriptOracle = cfr.getPathRScriptOracle();
         String baseFolder = cfr.getPathBaseFolder();
@@ -37,7 +36,7 @@ public class OracleRequirementSpecificationsAnalyzer /*extends Oracle*/ {
         String nameOfAttributeID = cfr.getNameOfAttributeID();
         String nameOfAttributeText = cfr.getNameOfAttributeText();
         String nameOfAttributeClass = cfr.getNameOfAttributeClass();
-        //todo implement threshold
+        //TODO implement threshold
         String threshold = String.valueOf(0.5);
 
         //command to execute
@@ -55,11 +54,8 @@ public class OracleRequirementSpecificationsAnalyzer /*extends Oracle*/ {
             }
 
             reader.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }

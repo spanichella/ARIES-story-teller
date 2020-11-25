@@ -12,14 +12,13 @@ public class MlAnalysis {
     private final static Logger logger = Logger.getLogger(MlAnalysis.class.getName());
 
     public static void performMlAnalysis(ConfigFileReader configFileReader) {
-
         logger.info("Starting Machine Learning Analysis...");
         WekaClassifier wekaClassifier = new WekaClassifier();
         if (configFileReader.getStrategy() != null) {
-
             if (configFileReader.getStrategy().equals("Training_and_test_set")) {
                 wekaClassifier = new WekaClassifier(configFileReader.getPathTDMTrainingSet(), configFileReader.getPathTDMTestSet(), configFileReader.getPathModel());
-                if (checkWehetherTestSetIsLabeled(configFileReader.getPathTDMTestSet()) == true) {
+
+                if (checkWehetherTestSetIsLabeled(configFileReader.getPathTDMTestSet())) {
                     wekaClassifier.runSpecifiedMachineLearningModel(configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction()); //default behaviour it does prediction with given training and test sets with J48
                 } else {
                     wekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction()); //default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
@@ -46,7 +45,7 @@ public class MlAnalysis {
 
             //now read the file line by line...
             int lineNum = 0;
-            String line = "";
+            String line;
             while (scanner.hasNextLine()) {
                 line = scanner.nextLine();
                 lineNum++;
@@ -57,7 +56,8 @@ public class MlAnalysis {
                 }
             }
         } catch (FileNotFoundException e) {
-            //handle this
+            //TODO handle this; generally throw error instead of blind catch; also check correct return in case of failure
+            //e.printStackTrace();
         }
         System.out.println("\\nCHECK DONE: the test set is labeled.");
         return true;

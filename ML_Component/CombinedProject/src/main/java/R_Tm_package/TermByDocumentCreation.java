@@ -14,7 +14,6 @@ import java.io.InputStreamReader;
 public class TermByDocumentCreation {
 
     public static void createTBD(ConfigFileReader cfr) {
-
         //TODO check that none of these is null before exec of script
         String pathTbDRScript = cfr.getPathTbDRScript();
         String docs_location = cfr.getPathRScripts();
@@ -43,7 +42,6 @@ public class TermByDocumentCreation {
             }
 
             reader.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

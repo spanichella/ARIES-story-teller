@@ -26,13 +26,12 @@ package manager.pipeline;
  */
 public class MainProgram {
     // TODO: These are no longer needed
-/*  protected String dataType;
+    /*  protected String dataType;
     protected String classifierToolChain;
     protected String machineLearningModelName;
     protected String nameOfAttributeID;
     protected String nameOfAttributeText;
     protected String nameOfAttributeClass;
-
 
     public String getDataType() {
         return dataType;
@@ -82,5 +81,4 @@ public class MainProgram {
         this.nameOfAttributeClass = nameOfAttributeClass;
     }
     */
-
 }

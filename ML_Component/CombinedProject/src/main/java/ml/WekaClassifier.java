@@ -60,11 +60,9 @@ public class WekaClassifier extends MachineLearningClassifier {
     }
 
     public static void runSpecifiedMachineLearningModel(String machineLearningModel, String pathResultsPrediction) {
-
         String pathTrainingSet = getPathTrainingSet();
         String pathTestSet = getPathTestSet();
         String pathModel = getPathModel();
-
 
         try {
             //we create instances for training and test sets
@@ -72,9 +70,7 @@ public class WekaClassifier extends MachineLearningClassifier {
             DataSource sourceTesting = new DataSource(pathTestSet);
             Instances train = sourceTraining.getDataSet();
             //TODO what is this?
-            Instances test = null;
-
-            test = sourceTesting.getDataSet();
+            Instances test = sourceTesting.getDataSet();
 
             logger.info("Loading data...");
 
@@ -84,7 +80,7 @@ public class WekaClassifier extends MachineLearningClassifier {
             logger.info("Training data loaded");
 
             Classifier classifier = getClassifierClassName(machineLearningModel);
-            logger.info("Classifier used: "+String.valueOf(classifier.getClass()));
+            logger.info("Classifier used: " + String.valueOf(classifier.getClass()));
             classifier.buildClassifier(train);
 
             Evaluation eval = new Evaluation(train);
@@ -114,12 +110,9 @@ public class WekaClassifier extends MachineLearningClassifier {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-
     }
 
     public static void runSpecifiedMachineLearningModelToLabelInstances(String machineLearningModel, String pathResultsPrediction) {
-
         String pathTrainingSet = getPathTrainingSet();
         String pathTestSet = getPathTestSet();
         String pathModel = getPathModel();
@@ -130,9 +123,8 @@ public class WekaClassifier extends MachineLearningClassifier {
             DataSource sourceTraining = new DataSource(pathTrainingSet);
             DataSource sourceTesting = new DataSource(pathTestSet);
             Instances train = sourceTraining.getDataSet();
-            Instances test = null;
-
-            test = sourceTesting.getDataSet();
+            // TODO: does this define the test set to use?
+            Instances test = sourceTesting.getDataSet();
 
             logger.info("Loading data");
 
@@ -148,15 +140,10 @@ public class WekaClassifier extends MachineLearningClassifier {
             logger.info("Test set items that need to be labeled:" + test.numInstances());
             logger.info("To classify such instances, consider to use the GUI version of WEKA as reported in the following example:");
             logger.info("https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf");
-
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-
     }
-
 
     public static void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String j48ModelPath, String machineLearningModel, String pathResultsPrediction) throws Exception {
         DataSource sourceWholeDataset = new DataSource(pathWholeDataset);
@@ -168,7 +155,6 @@ public class WekaClassifier extends MachineLearningClassifier {
         Classifier classifier = getClassifierClassName(machineLearningModel);
         logger.info("Classifier used: "+String.valueOf(classifier.getClass()));
         classifier.buildClassifier(wholeDataset);
-
 
         Evaluation eval = new Evaluation(wholeDataset);
         eval.crossValidateModel(classifier, wholeDataset, 10, new Random(1));
@@ -194,84 +180,60 @@ public class WekaClassifier extends MachineLearningClassifier {
         printWriter.close();
     }
 
-
     /**
      * Get classifier's class name by a short name
      */
     public static Classifier getClassifierClassName(String classifierName) {
-        Classifier classifier = null;
-        switch (classifierName) {
-            case "J48":
-                classifier = new J48();
-                break;
-            case "PART":
-                classifier = new PART();
-                break;
-            case "NaiveBayes":
-                classifier = new NaiveBayes();
-                break;
-            case "IBk":
-                classifier = new IBk();
-                break;
-            case "OneR":
-                classifier = new OneR();
-                break;
-            case "SMO":
-                classifier = new SMO();
-                break;
-            case "Logistic":
-                classifier = new Logistic();
-                break;
-            case "AdaBoostM1":
-                classifier = new AdaBoostM1();
-                break;
-            case "LogitBoost":
-                classifier = new LogitBoost();
-                break;
-            case "DecisionStump":
-                classifier = new DecisionStump();
-                break;
-            case "LinearRegression":
-                classifier = new LinearRegression();
-                break;
-            case "RegressionByDiscretization":
-                classifier = new RegressionByDiscretization();
-                break;
-            default:
-                classifier = new J48();
+        if (classifierName == "J48") {
+            return new J48();
+        } else if (classifierName == "PART") {
+            return new PART();
+        } else if (classifierName == "NaiveBayes") {
+            return new NaiveBayes();
+        } else if (classifierName == "IBk") {
+            return new IBk();
+        } else if (classifierName == "OneR") {
+            return new OneR();
+        } else if (classifierName == "SMO") {
+            return new SMO();
+        } else if (classifierName == "Logistic") {
+            return new Logistic();
+        } else if (classifierName == "AdaBoostM1") {
+            return new AdaBoostM1();
+        } else if (classifierName == "LogitBoost") {
+            return new LogitBoost();
+        } else if (classifierName == "DecisionStump") {
+            return new DecisionStump();
+        } else if (classifierName == "LinearRegression") {
+            return new LinearRegression();
+        } else if (classifierName == "RegressionByDiscretization") {
+            return new RegressionByDiscretization();
+        } else {
+            return new J48();
         }
-        return classifier;
     }
-
 
     public static String getPathTrainingSet() {
         return pathTrainingSet;
     }
 
-
     public void setPathTrainingSet(String pathTrainingSet) {
         this.pathTrainingSet = pathTrainingSet;
     }
-
 
     public static String getPathTestSet() {
         return pathTestSet;
     }
 
-
     public void setPathTestSet(String pathTestSet) {
         this.pathTestSet = pathTestSet;
     }
-
 
     public static String getPathModel() {
         return pathModel;
     }
 
-
     public void setPathModel(String pathModel) {
         this.pathModel = pathModel;
     }
-
-
 }

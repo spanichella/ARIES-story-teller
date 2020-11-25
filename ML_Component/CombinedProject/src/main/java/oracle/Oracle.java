@@ -3,15 +3,13 @@ package oracle;
 /**
  * @author panc
  */
-/* Todo: this is no longer neded
+// TODO: entire class is no longer needed
+/*
 public abstract class Oracle {
 
     protected static String dataType;
-
     protected static String nameOfAttributeID;
-
     protected static String nameOfAttributeText;
-
     protected static String nameOfAttributeClass;
 
     public static String getDataType() {
@@ -53,7 +51,5 @@ public abstract class Oracle {
         this.nameOfAttributeText = nameOfAttributeText;
         this.nameOfAttributeClass = nameOfAttributeClass;
     }
-
-
 }
  */

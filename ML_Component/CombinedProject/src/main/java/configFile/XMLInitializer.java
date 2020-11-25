@@ -28,6 +28,7 @@ public class XMLInitializer {
             baseFolder = "Resources/UserReviews/";
             name = "UserReviews";
         }
+
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -109,13 +110,13 @@ public class XMLInitializer {
             pathTbDRScript.appendChild(document.createTextNode(basePath + "Resources/R-scripts/MainScript.r"));
             ADSORB.appendChild(pathTbDRScript);
 
+            // TODO: have a look at my set generation script and then refactor enitre method with a function returning the paths pattern
             //pathTrainingSetDocuments
             Element pathTrainingSetDocuments = document.createElement("pathTrainingSetDocuments");
             if (type.equals("RS")) {
                 pathTrainingSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "training-set-Req-Specifications"));
             } else {
                 pathTrainingSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "training-set"));
-
             }
             ADSORB.appendChild(pathTrainingSetDocuments);
 
@@ -193,7 +194,6 @@ public class XMLInitializer {
             StreamResult streamResult = new StreamResult(new File(basePath+"Resources/XMLFiles/" + name + "XML.xml"));
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-
             transformer.transform(domSource, streamResult);
         } catch (Exception e) {
             System.out.print(e);

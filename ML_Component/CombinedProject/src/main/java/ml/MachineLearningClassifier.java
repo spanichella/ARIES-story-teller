@@ -7,7 +7,6 @@ package ml;
 public abstract class MachineLearningClassifier {
 
     protected static String classifierToolChain;
-
     protected static String machineLearningModelName;
 
     public static String getClassifierToolChain() {
@@ -25,6 +24,4 @@ public abstract class MachineLearningClassifier {
     public void setMachineLearningModelName(String machineLearningModelName) {
         this.machineLearningModelName = machineLearningModelName;
     }
-
-
 }
