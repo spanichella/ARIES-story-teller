@@ -25,9 +25,8 @@ package manager.pipeline;
  * - 3.b Specific Requirement Specification file format (see testing examples).
  */
 public class MainProgram {
-    // TODO NOT NEEDED ANYWHERE
-
-    protected String dataType;
+    // TODO: These are no longer needed
+/*  protected String dataType;
     protected String classifierToolChain;
     protected String machineLearningModelName;
     protected String nameOfAttributeID;
@@ -82,6 +81,6 @@ public class MainProgram {
     public void setNameOfAttributeClass(String nameOfAttributeClass) {
         this.nameOfAttributeClass = nameOfAttributeClass;
     }
-
+    */
 
 }

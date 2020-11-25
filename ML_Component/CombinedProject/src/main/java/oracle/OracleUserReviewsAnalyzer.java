@@ -10,18 +10,18 @@ import java.io.InputStreamReader;
 /**
  * @author panc
  */
-public class OracleUserReviewsAnalyzer extends Oracle {
-
+public class OracleUserReviewsAnalyzer /*extends Oracle*/ {
+/*  //TODO: no longer needed
     public OracleUserReviewsAnalyzer(String dataType, String nameOfAttributeID, String nameOfAttributeText, String nameOfAttributeClass, String pathRScriptOracle, String baseFolder, String oracle_path, double threshold) {
         super(dataType, nameOfAttributeID, nameOfAttributeText, nameOfAttributeClass);
-        // TODO NOT NEEDED ANYWHERE
         String[] oracleArgs = new String[4];
         oracleArgs[0] = pathRScriptOracle;
         oracleArgs[1] = baseFolder;
         oracleArgs[2] = oracle_path;
         oracleArgs[3] = "" + threshold; //we pass this as String argument, it will be converted later
     }
-
+*/
+    //TODO: this is the same code as runReqSpecRScript
     public static void runUserReviewRScript(ConfigFileReader cfr) {
 
         //TODO check that none of these is null before exec of script
@@ -36,7 +36,6 @@ public class OracleUserReviewsAnalyzer extends Oracle {
 
         //command to execute
         String command = "Rscript " + pathRScriptOracle + " " + baseFolder + " " + oracle_path + " " + threshold + " " + nameOfAttributeID + " " + nameOfAttributeText + " " + nameOfAttributeClass;
-        System.out.println("URRRRRRR" + pathRScriptOracle);
             // -- Linux/Mac osx --
             try {
                 Process process = Runtime.getRuntime().exec(command);

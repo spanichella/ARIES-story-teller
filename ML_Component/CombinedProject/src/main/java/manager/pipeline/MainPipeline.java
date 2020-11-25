@@ -17,6 +17,8 @@ import java.util.logging.Logger;
  */
 public class MainPipeline extends MainProgram {
 
+    //TODO: these are no longer needed
+    /*
     // PART 1. - ORACLE PARAMETERS
     private String pathRScripts;
     //local path to the R script "MainScript.r"
@@ -36,7 +38,7 @@ public class MainPipeline extends MainProgram {
     private String pathTestSetDocuments;
     // path oracle
     private String pathSimplifiedTruthSet;
-
+*/
     private final static Logger logger = Logger.getLogger(MainPipeline.class.getName());
 
     public static void main(String[] args) throws Exception {
@@ -75,19 +77,17 @@ public class MainPipeline extends MainProgram {
 
     }
 
-
+// TODO: This is no longer needed
+    /*
     // loading arguments for various pipeline steps
     public MainPipeline(String dataType, String nameOfAttributeID, String nameOfAttributeText, String nameOfAttributeClass) {
         //loading data concerning the oracle
-        // TODO NOT NEEDED ANYWHERE
-
         this.dataType = dataType;
         this.nameOfAttributeID = nameOfAttributeID;
         this.nameOfAttributeText = nameOfAttributeText;
         this.nameOfAttributeClass = nameOfAttributeClass;
     }
 
-    // TODO NOT NEEDED ANYWHERE
     public String getPathRScripts() {
         return pathRScripts;
     }
@@ -159,4 +159,5 @@ public class MainPipeline extends MainProgram {
     public void setPathSimplifiedTruthSet(String pathSimplifiedTruthSet) {
         this.pathSimplifiedTruthSet = pathSimplifiedTruthSet;
     }
+    */
 }

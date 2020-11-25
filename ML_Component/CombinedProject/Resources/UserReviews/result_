@@ -1,0 +1,37 @@
+performance results of: J48
+---------------------------------
+
+Results
+Correctly Classified Instances         690               58.6735 %
+Incorrectly Classified Instances       486               41.3265 %
+Kappa statistic                          0.3275
+K&B Relative Info Score                 26.6421 %
+K&B Information Score                  528.7099 bits      0.4496 bits/instance
+Class complexity | order 0            1984.491  bits      1.6875 bits/instance
+Class complexity | scheme            73467.3288 bits     62.4722 bits/instance
+Complexity improvement     (Sf)     -71482.8378 bits    -60.7847 bits/instance
+Mean absolute error                      0.2554
+Root mean squared error                  0.383 
+Relative absolute error                 78.4633 %
+Root relative squared error             94.9607 %
+Total Number of Instances             1176     
+
+fmeasure: 0.32209737827715357 Precision: 0.39090909090909093 Recall: 0.27388535031847133
+=== Confusion Matrix ===
+
+   a   b   c   d   <-- classified as
+ 233  25   5 152 |   a = problem discovery
+  32  43   3  79 |   b = feature request
+  16  13   5  40 |   c = information seeking
+  91  29   1 409 |   d = information giving
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.561    0.183    0.626      0.561    0.592      0.389    0.726     0.589     problem discovery
+                 0.274    0.066    0.391      0.274    0.322      0.243    0.688     0.292     feature request
+                 0.068    0.008    0.357      0.068    0.114      0.133    0.607     0.109     information seeking
+                 0.772    0.420    0.601      0.772    0.676      0.355    0.723     0.657     information giving
+Weighted Avg.    0.587    0.263    0.567      0.587    0.564      0.338    0.712     0.550     
+
+AUC = 0.6875136733277911
