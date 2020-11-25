@@ -36,8 +36,7 @@ public class OracleRequirementSpecificationsAnalyzer /*extends Oracle*/ {
         String threshold = String.valueOf(0.5);
 
         //command to execute
-        String command = "Rscript " + pathRScriptOracle + " " + baseFolder + " " + oracle_path + " " + threshold + " " + nameOfAttributeID + " " + nameOfAttributeText + " " + nameOfAttributeClass;
-
+        String command = String.join(" ","Rscript", pathRScriptOracle,baseFolder,oracle_path,threshold,nameOfAttributeID,nameOfAttributeText,nameOfAttributeClass);
         // -- Linux/Mac osx --
         try {
             //Process process = Runtime.getRuntime().exec("ls /Users/panc/Desktop");
