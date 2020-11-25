@@ -11,7 +11,7 @@
 **/training-set-Req-Specifications
 
 #XML files folder
-**/XMLFiles/**
+**/XMLFiles/*
 
 #generated target classes
 **/target
