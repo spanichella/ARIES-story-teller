@@ -1,73 +1,121 @@
 Recording	Training Set	Generated
+=== Detailed Accuracy By Class ===
                  TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
                  0.972    0.417    0.873      0.972    0.920      0.645    0.836     0.908     NULL
                  0.592    0.035    0.796      0.592    0.679      0.627    0.855     0.684     F
                  0.349    0.006    0.789      0.349    0.484      0.505    0.805     0.478     A
 Weighted Avg.    0.860    0.318    0.853      0.860    0.846      0.632    0.837     0.838     
 
+=== Confusion Matrix ===
+    a    b    c   <-- classified as
+  483   12    2 |    a = NULL
+   49   74    2 |    b = F
+   21    7   15 |    c = A
+
 
 
 
 
 Recording	Supplied Test Set	Generated
+=== Detailed Accuracy By Class ===
                  TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
                  0.965    0.364    0.898      0.965    0.930      0.668    0.838     0.916     NULL
                  0.569    0.044    0.733      0.569    0.641      0.583    0.832     0.640     F
                  0.526    0.010    0.769      0.526    0.625      0.619    0.876     0.656     A
 Weighted Avg.    0.870    0.287    0.862      0.870    0.862      0.650    0.839     0.853     
 
+=== Confusion Matrix ===
+    a    b    c   <-- classified as
+  246    8    1 |    a = NULL
+   23   33    2 |    b = F
+    5    4   10 |    c = A
+
 
 
 
 
 Recording	Cross-Validation	10 Folds
+=== Detailed Accuracy By Class ===
                  TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
                  0.940    0.625    0.816      0.940    0.874      0.394    0.735     0.857     NULL
                  0.376    0.061    0.588      0.376    0.459      0.378    0.720     0.443     F
                  0.140    0.011    0.462      0.140    0.214      0.228    0.577     0.217     A
 Weighted Avg.    0.782    0.479    0.750      0.782    0.753      0.380    0.722     0.738     
 
+=== Confusion Matrix ===
+    a    b    c   <-- classified as
+  467   25    5 |    a = NULL
+   76   47    2 |    b = F
+   29    8    6 |    c = A
+
 
 
 
 
 Recording	Percentage Split	33%
+=== Detailed Accuracy By Class ===
                  TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
                  0.925    0.759    0.784      0.925    0.849      0.225    0.564     0.781     NULL
                  0.241    0.088    0.385      0.241    0.296      0.185    0.555     0.219     F
                  0.000    0.000    ?          0.000    ?          ?        0.589     0.093     A
 Weighted Avg.    0.738    0.585    ?          0.738    ?          ?        0.564     0.632     
 
+=== Confusion Matrix ===
+    a    b    c   <-- classified as
+  309   25    0 |    a = NULL
+   63   20    0 |    b = F
+   22    7    0 |    c = A
+
 
 
 
 
 Recording	Percentage Split	50%
+=== Detailed Accuracy By Class ===
                  TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
                  0.939    0.632    0.807      0.939    0.868      0.387    0.674     0.815     NULL
                  0.328    0.093    0.457      0.328    0.382      0.268    0.598     0.317     F
                  0.000    0.003    0.000      0.000    0.000      -0.015   0.544     0.104     A
 Weighted Avg.    0.756    0.485    0.684      0.756    0.714      0.336    0.651     0.670     
 
+=== Confusion Matrix ===
+    a    b    c   <-- classified as
+  230   15    0 |    a = NULL
+   42   21    1 |    b = F
+   13   10    0 |    c = A
+
 
 
 
 
 Recording	Percentage Split	66%
+=== Detailed Accuracy By Class ===
                  TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
                  0.935    0.741    0.785      0.935    0.853      0.264    0.670     0.826     NULL
                  0.220    0.086    0.360      0.220    0.273      0.163    0.631     0.307     F
                  0.000    0.005    0.000      0.000    0.000      -0.019   0.563     0.116     A
 Weighted Avg.    0.735    0.567    0.649      0.735    0.684      0.225    0.655     0.678     
 
+=== Confusion Matrix ===
+    a    b    c   <-- classified as
+  157   11    0 |    a = NULL
+   31    9    1 |    b = F
+   12    5    0 |    c = A
+
 
 
 
 
 Recording	Percentage Split	80%
+=== Detailed Accuracy By Class ===
                  TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
                  0.933    0.759    0.815      0.933    0.870      0.234    0.655     0.847     NULL
                  0.261    0.064    0.462      0.261    0.333      0.251    0.659     0.320     F
                  0.000    0.008    0.000      0.000    0.000      -0.019   0.478     0.060     A
 Weighted Avg.    0.774    0.605    0.717      0.774    0.738      0.226    0.648     0.721     
 
+=== Confusion Matrix ===
+    a    b    c   <-- classified as
+   97    7    0 |    a = NULL
+   16    6    1 |    b = F
+    6    0    0 |    c = A
