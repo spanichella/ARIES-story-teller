@@ -122,7 +122,7 @@ i<- 1
 for(i in 1:length(oracle_trainingSet[[nameOfAttributeID2]]))
   {
     path_file <- paste(folder_training_set_files,oracle_trainingSet[[nameOfAttributeID2]][i],sep="/")
-    corpus <- paste(oracle_trainingSet[[nameOfAttributeText2]][i],"eheh, eheh")
+    corpus <- paste(oracle_trainingSet[[nameOfAttributeText2]][i])
     write(corpus,path_file)
    }
 
@@ -132,7 +132,7 @@ i<- 1
 for(i in 1:length(oracle_testSet[[nameOfAttributeID2]]))
 {
   path_file <- paste(folder_test_set_files,oracle_testSet[[nameOfAttributeID2]][i],sep="/")
-  corpus <- paste(oracle_testSet[[nameOfAttributeText2]][i],"eheh, eheh")
+  corpus <- paste(oracle_testSet[[nameOfAttributeText2]][i])
   write(corpus,path_file)
 }
 
