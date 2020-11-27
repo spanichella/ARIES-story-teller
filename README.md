@@ -1,4 +1,4 @@
-# Requirements-Collector Enhanchement: Combining the ML and DL Pipeline for Automating Requirements Specification from Elicitation Sessions and User Feedback
+# Requirements-Collector Enhancement: Combining the ML and DL Pipeline and new Truth Dataset
 Requirements-Collector follow up study: (Automating Requirements Specification from Elicitation Sessions and User Feedback) Tool - Version 1.1 
 
 **Authors: Christian Aeberhard, Marc Kramer, Janik Lüchinger, Tanzil Kombarabettu Mohammed**
