@@ -51,6 +51,7 @@ The requirements dataset was completely generated from scratch by audio recordin
   
   ## Wrapper Component Description: <a name="section5"></a>
 Todo Marc
+![](ML_Component/CombinedProject/Images/swmlogo2.jpg) **funzt erst wenn branch gemerged ist
        
        
        
