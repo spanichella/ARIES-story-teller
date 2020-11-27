@@ -6,21 +6,21 @@ Tool - Version 1.1
 
 ## Overview
 [Project Description](#section1)\
-[Tool Description]()\
-[Installation Guide]()\
-[Dataset Description]()\
-[Wrapper Component Description]()\
+[Tool Description](#section2)\
+[Installation Guide](#section3)\
+[Dataset Description](#section4)\
+[Wrapper Component Description](#section5)\
 
 ## Project Description: <a name="section1"></a>
 In order to speed up the time-to-market of high-quality software products, the requirements-collector tool is being developed. This tool supports an automatic analysis and classification of requirements specification and user feedback by leveraging the power of machine- and deeplearning strategies (for a full description, follow the links mentioned in the **Tool Description** section). Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of investigation. Thus, this study is concerned about extending the requirements and user story dataset of the former study in contemplation of further validating the efficiency and precision of the requirements-collector tool. Additionally, to further increase the usability of the tool and allow a broader audience to interact with it, a flexible environment (StoryTeller GUI) has been developed. The StoryTeller GUI acts as a wrapper and combines both the ML and DL component inside a single executable instance.
 
-## Tool Description:
+## Tool Description: <a name="section2"></a>
 The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this study are based on the Requirements-Collector Tools as suggeset by [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/). The installation guide and source code of both ML and DL component can be found in the following links:
 
 [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component)\
 [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component)
 
-## Dataset
+## Dataset Description <a name="section4"></a>
 For evaluation of the DL and ML component, a new Dataset based on a Requirements Elecitation Session was created.
 
 ### Meeting Context and Objective
