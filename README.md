@@ -1,5 +1,7 @@
-# SWME_G2_HS20
-Runtime Terror Group of Software Maintenance &amp; Evolution HS20 UZH
+# Requirements-Collector Enhanchement: Combining the ML and DL Pipeline for Automating Requirements Specification from Elicitation Sessions and User Feedback
+Requirements-Collector follow up study: (Automating Requirements Specification from Elicitation Sessions and User Feedback) Tool - Version 1.1 
+
+**Authors: Christian Aeberhard, Marc Kramer, Janik Lüchinger, Tanzil Kombarabettu Mohammed**
 
 ## Dataset
 For evaluation of the DL and ML component, a new Dataset based on a Requirements Elecitation Session was created.
