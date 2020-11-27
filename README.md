@@ -1,7 +1,8 @@
 # Requirements-Collector Enhancement: Combining the ML and DL Pipeline and new Truth Dataset
-Requirements-Collector follow up study: (Automating Requirements Specification from Elicitation Sessions and User Feedback) Tool - Version 1.1 
+Requirements-Collector follow up study: (Automating Requirements Specification from Elicitation Sessions and User Feedback)\
+Tool - Version 1.1 
 
-**Authors: Christian Aeberhard, Marc Kramer, Janik Lüchinger, Tanzil Kombarabettu Mohammed**
+**Authors: [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://en.wikipedia.org/wiki/Cramer%27s_rule), [Janik Lüchinger](https://github.com/jluech), [Tanzil Kombarabettu Mohammed](https://github.com/tanzilkm)**
 
 ## Dataset
 For evaluation of the DL and ML component, a new Dataset based on a Requirements Elecitation Session was created.
