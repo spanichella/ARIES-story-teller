@@ -5,7 +5,7 @@ Tool - Version 1.1
 **Authors: [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://en.wikipedia.org/wiki/Cramer%27s_rule), [Janik Lüchinger](https://github.com/jluech), [Tanzil Kombarabettu Mohammed](https://github.com/tanzilkm)**
 
 ## Tool Description:
-The **Ml** and **DL** Pipeline used in this study are based on the Requirements-Collector Tools suggeset by [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/). The installation guide and source code can be found here:
+The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this study are based on the Requirements-Collector Tools as suggeset by [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/). The installation guide and source code of both ML and DL component can be found in the following links:
 
 [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component)\
 [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component)
