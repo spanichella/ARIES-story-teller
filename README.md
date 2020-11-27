@@ -9,7 +9,7 @@ Tool - Version 1.1
 [Requirement Collector Tool Description](#section2)\
 [Installation Guide](#section3)\
 [Dataset Description](#section4)\
-[Wrapper Component Description](#section5)\
+[Wrapper Component Description](#section5)
 
 ## Project Description: <a name="section1"></a>
 In order to speed up the time-to-market of high-quality software products, the requirements-collector tool is being developed. This tool supports an automatic analysis and classification of requirements specification and user feedback by leveraging the power of machine- and deeplearning strategies (for a full description, follow the links mentioned in the **Tool Description** section). Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of investigation. Thus, this study is concerned about extending the requirements and user story dataset of the former study in contemplation of further validating the efficiency and precision of the requirements-collector tool. Additionally, to further increase the usability of the tool and allow a broader audience to interact with it, a flexible environment (StoryTeller GUI) has been developed. The StoryTeller GUI acts as a wrapper and combines both the ML and DL component inside a single executable instance.
