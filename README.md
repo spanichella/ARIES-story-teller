@@ -2,7 +2,7 @@
 Requirements-Collector follow up study: (Automating Requirements Specification from Elicitation Sessions and User Feedback)\
 Tool - Version 1.1 
 
-**Authors: [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://en.wikipedia.org/wiki/Cramer%27s_rule), [Janik Lüchinger](https://github.com/jluech), [Tanzil Kombarabettu Mohammed](https://github.com/tanzilkm)**
+**Authors: [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil Kombarabettu Mohammed](https://github.com/tanzilkm)**
 
 ## Overview
 [Project Description](#section1)\
@@ -21,11 +21,12 @@ The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this
 [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component)
 
 ## Dataset Description: <a name="section4"></a>
-For evaluation of the DL and ML component, a new Dataset based on a Requirements Elecitation Session was created.
+For evaluation of the DL and ML component, a new Dataset based on a Requirements Elecitation Session was created and used to extend the already existing dataset of the original study.
 
 ### Meeting Context and Objective
-The meeting was performed using Zoom and included three Participants. Specifically, a **UX Designer**, a **Software Programmer** and the **Project Manager** were part of the meeting. The topic of the meeting was set around the xPulse Software Project. The xPulse Software (SaaS) is a web based survey tool that supports Team Managers and Project Managers in creating short surveys (Pulse Surveys) with little effort and an intuitive and easy to undestand interface. A Pulse Survey typically takes around 2 - 3 minutes for a survey participant to fill out. Pulse Surveys allow managers to "feel the Pulse" of their team, may it be on the topic of "work satisfaction", "motivation" or "engagement". The project is still in a very early stage, thus the meeting was planned in the course of a series of kick-off meeting where the manager needed UX and technical inputs on a set of different functionalities which the xPulse software should include.
-There are currently 5 software developers, 2 Designers, 2 Slicers and 1 UX Designer as well as Management (consisting of 2 people) working on this project and it is set to launch in Summer 2020 with the initial Phase 1.0 requirements satisfied.
+**Meeting Environment:** The meeting was performed in a remote fashion using [Zoom](https://zoom.us/) as a conferencing tool.\
+**Meeting Setup:** The meeting included three Participants. Specifically, a **UX Designer**, a **Software Programmer** and the **Project Manager**.\
+**Meeting Topic:** The topic of the meeting was set around the ABC Software Project. The ABC Software (SaaS) is a web based survey tool that supports Team Managers and Project Managers in creating short surveys (Pulse Surveys) with little effort and an intuitive and easy to undestand interface. A Pulse Survey typically takes around 2 - 3 minutes for a survey participant to fill out. Pulse Surveys allow managers to "feel the Pulse" of their team, may it be on the topic of "work satisfaction", "motivation" or "engagement". The project is still in a very early stage, thus the meeting was planned in the course of a series of kick-off meeting where the manager needed UX and technical inputs on a set of different functionalities which the ABC software should include. There are currently 5 software developers, 2 Designers, 2 Slicers and 1 UX Designer as well as Management (consisting of 2 people) working on this project and it is set to launch in Summer 2020 with the initial Phase 1.0 requirements satisfied.
 
 ### Dataset Information
   - The Dataset can be found in the repository and is named **"RE_Transcript_RunTimeTerror.txt"**
