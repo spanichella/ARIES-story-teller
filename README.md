@@ -20,6 +20,9 @@ The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this
 [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component)\
 [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component)
 
+## Installation Guide: <a name="section3"></a>
+Todo Tanzil (Just as an info to you, Tanzil: this section refers to the point 1.5 in our google docs --> R-Script/Java installation stuff)
+
 ## Dataset Description: <a name="section4"></a>
 For evaluation of the DL and ML component, a new Dataset based on a Requirements Elecitation Session was created and used to extend the already existing dataset of the original study.
 
@@ -44,7 +47,10 @@ The requirements dataset was completely generated from scratch by audio recordin
   The user story dataset was created using a [collection of 22 datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each, expressed as user stories. The data was labeled manually and extended by random sampling null lines from the existing dataset in the original study.
   
   #### Dataset Information
-  - 
+  - Todo Tanzil and Marc
+  
+  ## Wrapper Component Description: <a name="section5"></a>
+Todo Marc
        
        
        
