@@ -17,7 +17,7 @@ Tool - Version 1.1
 ## Requirement Collector Tool Description: <a name="section2"></a>
 The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this study are based on the Requirements-Collector Tools as suggeset by [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/). The installation guide and source code of both ML and DL component can be found in the following links:
 
-- [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component)\
+- [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component)
 - [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component)
 
 ## Installation Guide: <a name="section3"></a>
