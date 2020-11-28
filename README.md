@@ -59,7 +59,10 @@ Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, die
 ![](ML_Component/CombinedProject/Images/swmlogo2.jpg)
 
   ## 6. Study Results and Discussion: <a name="section6"></a>
-TextText Chris
+Classification accuracy is the total number of correct predictions divided by the total number of predictions made for a dataset[1].
+
+  ## References
+  [1] https://machinelearningmastery.com/precision-recall-and-f-measure-for-imbalanced-classification/
        
        
        
