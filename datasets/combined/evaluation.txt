@@ -1,3 +1,5 @@
+Includes the "User Stories Requirement Specification Data" & "Requirement Eliciation Recording Data"
+
 Combined	Training Set	Generated
 === Summary ===
 Correctly Classified Instances        1589               84.4315 %
