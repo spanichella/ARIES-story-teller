@@ -59,11 +59,11 @@ Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, die
 ![](ML_Component/CombinedProject/Images/swmlogo2.jpg)
 
   ## 6. Study Results and Discussion: <a name="section6"></a>
-- **Precision** is a metric that quantifies the number of correct positive predictions made and is calculated as the ratio of correctly predicted positive examples divided by the total number of positive examples that were predicted
-- **** [1]
+- **Precision** is a metric that quantifies the number of correct positive predictions made and is calculated as the ratio of correctly predicted positive examples divided by the total number of positive examples that were predicted [1]
+- **Recall** is a metric that quantifies the number of correct postivie predictions made out of all positive predicitons tha tcould have been made. Recall provides an indication of missed positive predictions (contrary to precision) [1]
 
   ## References
-  [1] A. Fernandez, S. Garcia, M. Galar, R. C. Prati, B. Krawczyk, F. Herrera, 2018. Learning from Imbalanced Data Sets, 1st ed. 2018 Edition, P. 52
+  [1] A. Fernandez, S. Garcia, M. Galar, R. C. Prati, B. Krawczyk, F. Herrera, 2018. Learning from Imbalanced Data Sets, 1st ed. 2018 Edition
   [2] M. Ruiz, S. Panichella, 2020. Can We Design Software as We Talk? **TODO Source Info not complete**
        
        
