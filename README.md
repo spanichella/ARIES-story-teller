@@ -5,29 +5,31 @@ Tool - Version 1.1
 **Authors: [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil Kombarabettu Mohammed](https://github.com/tanzilkm)**
 
 ## Overview
-- [Project Description](#section1)\
-- [Requirement Collector Tool Description](#section2)\
-- [Installation Guide](#section3)\
-- [Dataset Description](#section4)\
-- [Wrapper Component Description](#section5)\
-- [Study Results and Discussion](#section6)
+1. [Project Description](#section1)
+2. [Requirement Collector Tool Description](#section2)
+3. [Installation Guide](#section3)
+4. [Dataset Description](#section4)\
+4.1 [Requirement Dataset](#section4.1)\
+4.2 [User Story Dataset](#section4.1)
+5. [Wrapper Component Description](#section5)
+6. [Study Results and Discussion](#section6)
 
-## Project Description: <a name="section1"></a>
+## 1. Project Description: <a name="section1"></a>
 *In order to speed up the time-to-market of high-quality software products, the requirements-collector tool is being developed. This tool supports an automatic analysis and classification of requirements specification and user feedback by leveraging the power of machine- and deeplearning strategies (for a full description of the ML an DL component, please follow the links mentioned in the [Tool Description](#section2) section). Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of investigation. Thus, this study is concerned about extending the requirements and user story dataset of the former study in contemplation of further validating the efficiency and precision of the requirements-collector tool. Additionally, to further increase the usability of the tool and allow a broader audience to interact with it, a flexible environment (StoryTeller GUI) has been developed. The StoryTeller GUI acts as a wrapper and combines both the ML and DL component inside a single executable instance. Finally, the newly created and labeled data sets have been applied to both the Ml and DL Pipeline in order to further train the algorithms and evaluate the precision and acuracy values.*
 
-## Requirement Collector Tool Description: <a name="section2"></a>
+## 2. Requirement Collector Tool Description: <a name="section2"></a>
 The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this study are based on the Requirements-Collector Tools as suggeset by [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/). The installation guide and source code of both ML and DL component can be found in the following links:
 
 - [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component)
 - [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component)
 
-## Installation Guide: <a name="section3"></a>
+## 3. Installation Guide: <a name="section3"></a>
 Todo Tanzil (Just as an info to you, Tanzil: this section refers to the point 1.5 in our google docs --> R-Script/Java installation stuff)
 
-## Dataset Description: <a name="section4"></a>
+## 4. Dataset Description: <a name="section4"></a>
 For evaluation of the DL and ML component, a new Dataset based on a Requirements Elecitation Session was created and used to extend the already existing dataset of the original study.
 
-### Requirements Dataset:
+### 4.1 Requirements Dataset: <a name="section4.1"></a>
 The requirements dataset was completely generated from scratch by audio recording a remote Meeting, performing a voice to text transformation and manually labeling the text.
 
 #### Meeting Context and Objective
@@ -45,17 +47,17 @@ The requirements dataset was completely generated from scratch by audio recordin
   - The Dataset contains 665 Lines of labeled text and strong semantical errors where manually fixed
   - The LOC is 100%, meaning the data has not been trimmed in any way
   
-  ### User Story Dataset:
+  ### 4.2 User Story Dataset: <a name="section4.2"></a>
   The user story dataset was created using a [collection of 22 datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each, expressed as user stories. The data was labeled manually and extended by random sampling null lines from the existing dataset in the original study.
   
   #### Dataset Information
   - Todo Tanzil and Marc
   
-  ## Wrapper Component Description: <a name="section5"></a>
+  ## 5. Wrapper Component Description: <a name="section5"></a>
 Todo Marc
 ![](ML_Component/CombinedProject/Images/swmlogo2.jpg) **funzt erst wenn branch gemerged ist
 
-  ## Study Results and Discussion: <a name="section6"></a>
+  ## 6. Study Results and Discussion: <a name="section6"></a>
 TextText Chris
        
        
