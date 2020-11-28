@@ -55,7 +55,8 @@ The requirements dataset was completely generated from scratch by audio recordin
   
   ## 5. Wrapper Component Description: <a name="section5"></a>
 Todo Marc
-![](ML_Component/CombinedProject/Images/swmlogo2.jpg) **funzt erst wenn branch gemerged ist
+Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, die folgende Zeile (siehe markdown source) macht das (sobald branch mit main gemerged ist sollte das img am richtigen Ort liegen)
+![](ML_Component/CombinedProject/Images/swmlogo2.jpg)
 
   ## 6. Study Results and Discussion: <a name="section6"></a>
 TextText Chris
