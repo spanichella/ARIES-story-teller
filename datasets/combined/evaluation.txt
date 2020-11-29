@@ -28,7 +28,7 @@ Weighted Avg.    0.844    0.172    0.848      0.844    0.834      0.723    0.868
 
 
 
-Combined	Supplied Test Set	20
+Combined	Supplied Test Set	20  tdm_test_set-20_combined_with_oracle.csv
 === Summary ===
 Correctly Classified Instances         321               85.1459 %
 Incorrectly Classified Instances        56               14.8541 %
@@ -56,7 +56,7 @@ Weighted Avg.    0.851    0.197    0.858      0.851    0.843      0.719    0.864
 
 
 
-Combined	Supplied Test Set	50
+Combined	Supplied Test Set	50  tdm_test_set-50_combined_with_oracle.csv
 === Summary ===
 Correctly Classified Instances         783               83.2094 %
 Incorrectly Classified Instances       158               16.7906 %
