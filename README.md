@@ -30,6 +30,10 @@ Additionally, to further increase the usability of the tool and to allow a broad
 The _StoryTeller GUI_ acts as a wrapper and combines both the ML and DL component inside a single executable instance.
 Finally, the newly created and labeled data sets have been applied to both the ML and DL Pipeline in order to further train the algorithms and evaluate their resulting precision and accuracy values.
 
+**// TODO: verify the image appears after merging combined pipeline**
+**Requirements-Collector Context:**
+![](./CombinedProject/Images/requirements-collector_context.png)
+
 
 
 ## 2. Requirement-Collector Tool Description <a name="section2"></a>
@@ -90,7 +94,7 @@ The requirements dataset was generated completely from scratch by recording an e
 - Strong semantic errors in the transcription due to misspelling or mis-identification of words have been manually fixed
 - The LOC is 100%, meaning the data has not been trimmed in any way **//TODO: What is that supposed to mean?**
 
-#### Process of building Dataset
+#### Dataset Creation
 - We collected the software specifications of the project and derived some project requirements
 - We recreated an elicitation session with three participants as described above
 - Then we converted the recording to text using a dedicated speech-to-text conversion tool.
@@ -116,7 +120,7 @@ The user story dataset was created using a [collection of 22 datasets](https://d
 
 ## 5. Wrapper Component Description <a name="section5"></a>
 **//TODO: @Marc** \
-_//Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, die folgende Zeile (siehe markdown source) macht das (sobald branch mit main gemerged ist sollte das img am richtigen Ort liegen)_
+_//Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, die folgende Zeile im markdown macht das (sobald branch mit main gemerged ist sollte das img am richtigen Ort liegen)_
 ![](./CombinedProject/Images/swmlogo2.jpg)
 
 
