@@ -13,10 +13,10 @@ This dataset has been crafted from a custom requirement elicitation session tran
 We recorded such a session, transcribed it to text using dedicated tools, and manually formatted and labeled the data.
 
 ## Stories
-This dataset is made up of user stories (taken from an openly accessible, already established dataset [1]) for valid requirements and rubbish data to fill for classification (randomly chosen NULL lines from other datasets [2]).
+This dataset is made up of user stories (taken from an openly accessible, already established dataset [1]) for valid requirements and rubbish data to fill for classification (randomly chosen `NULL` lines from existing dataset [2]).
 
 ## Study
-This dataset represents the data used in the previous work [3] and has not been adjusted in any way.
+This dataset represents the data used in the previous work [2] and has not been adjusted in any way.
 
 
 
@@ -33,6 +33,5 @@ The resulting tdm files can ultimately be used as input to the WEKA classifier.
 
 
 # Sources
-- [1] User Stories dataset reference **TODO**
-- [2] NULL lines dataset reference @Marc **TODO**
-- [3] S. Panichella and M. Ruiz, "Requirements-Collector: Automating Requirements Specification from Elicitation Sessions and User Feedback," 2020 IEEE 28th International Requirements Engineering Conference (RE), Zurich, Switzerland, 2020, pp. 404-407, doi: 10.1109/RE48521.2020.00057
+- [1] F. Dalpiaz, “Requirements data sets (user stories)”, Mendeley Data, V1, 2018, doi: 10.17632/7zbk8zsd8y.1
+- [2] S. Panichella and M. Ruiz, "Requirements-Collector: Automating Requirements Specification from Elicitation Sessions and User Feedback," 2020 IEEE 28th International Requirements Engineering Conference (RE), Zurich, Switzerland, 2020, pp. 404-407, doi: 10.1109/RE48521.2020.00057
