@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e479c205-8c8f-4961-aad8-f3d1e79c6871" name="Default Changelist" comment="Added Augmentor Python Script" />
+    <list default="true" id="e479c205-8c8f-4961-aad8-f3d1e79c6871" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,20 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ML_Component/CombinedProject" />
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/CombinedProject" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -61,6 +50,8 @@
       <updated>1603355928313</updated>
       <workItem from="1603355929662" duration="1448000" />
       <workItem from="1606148180877" duration="46000" />
+      <workItem from="1606677699991" duration="21000" />
+      <workItem from="1606677860907" duration="43000" />
     </task>
     <task id="LOCAL-00001" summary="Added Augmentor Python Script">
       <created>1603356506347</created>
@@ -83,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603357060869</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Trying to fix missing source root problem">
+      <created>1606677472803</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606677472803</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,17 +90,20 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added Augmentor Python Script" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Augmentor Python Script" />
+    <MESSAGE value="Trying to fix missing source root problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to fix missing source root problem" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="541" y="83" key="CommitChangelistDialog2" timestamp="1603357454480">
+    <state x="541" y="83" key="CommitChangelistDialog2" timestamp="1606677472263">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="541" y="83" key="CommitChangelistDialog2/-1920.29.1920.1020/3902.7.1858.1080/0.0.1920.1050@0.0.1920.1050" timestamp="1603357454480" />
-    <state x="741" y="280" key="FileChooserDialogImpl" timestamp="1606148218031">
+    <state x="541" y="83" key="CommitChangelistDialog2/-3840.29.1920.1050/3840.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1606677472263" />
+    <state x="741" y="280" key="FileChooserDialogImpl" timestamp="1606677898658">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="741" y="280" key="FileChooserDialogImpl/-1920.29.1920.1020/3902.7.1858.1080/0.0.1920.1050@0.0.1920.1050" timestamp="1606148218031" />
+    <state x="741" y="280" key="FileChooserDialogImpl/-3840.29.1920.1050/3840.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1606677898658" />
     <state x="553" y="258" key="Vcs.Push.Dialog.v2" timestamp="1603357465278">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
