@@ -60,8 +60,9 @@ The requirements dataset was completely generated from scratch by audio recordin
   - The Dataset can be found in the repository and is named **"Combined_Dataset.txt"**
   - The Dataset contains 1215  Lines of labeled text. 
  ##### Process of building Dataset
-  - For dataset of  user stories we got 615 lines then we label the dataset with Functional Requirement(F) and Non-Functional Requirement(N). 
-  - For balancing the dataset random sampled 600 lines of NULL from existing dataset is [**"truth_set_study-ReqSpec.txt"**](https://github.com/Makram95/SWME_G2_HS20/blob/main/datasets/study/truth_set_study-ReqSpec.txt).
+  - From dataset of  user stories we got 615 lines.
+  - We manually label the dataset with Functional Requirement(F) and Non-Functional Requirement(N). 
+  - For balancing the dataset we select  600 lines of NULL by random sampling  from existing dataset  [**"truth_set_study-ReqSpec.txt"**](https://github.com/Makram95/SWME_G2_HS20/blob/main/datasets/study/truth_set_study-ReqSpec.txt).
   - We used Excel for random sampling by  sorting the dataset  and shuffle  the dataset using [Random sort in Excel](https://www.ablebits.com/office-addins-blog/2018/01/24/excel-randomize-list-random-sort/) and combine this dataset with user-stories and shuffle the dataset in final. 
   ## 5. Wrapper Component Description: <a name="section5"></a>
 Todo Marc
