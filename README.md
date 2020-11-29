@@ -25,7 +25,18 @@ The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this
 - [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component)
 
 ## 3. Installation Guide: <a name="section3"></a>
-Todo Tanzil (Just as an info to you, Tanzil: this section refers to the point 1.5 in our google docs --> R-Script/Java installation stuff)
+### PRE-REQUISITIES
+  - Java 8
+  - [R](https://cran.r-project.org/bin/windows/base/)
+  - Cores:[8]
+  - Memory: [4.9GB]
+  - Download [glove txt file](https://www.kaggle.com/watts2/glove6b50dtxt) and it DL folder in project
+  - For Windows operating System Add  RScript bin path (e.g., C:\Program Files\R\R-4.0.3\bin) to Environment varible.
+### Supported Operating system 
+  - Mac OS
+  - Ubuntu 18.04 or above
+  - Windows 10
+  
 
 ## 4. Dataset Description: <a name="section4"></a>
 For evaluation of the DL and ML component, a new Dataset based on a Requirements Elecitation Session was created and used to extend the already existing dataset of the original study.
