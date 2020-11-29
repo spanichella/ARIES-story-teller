@@ -47,6 +47,11 @@ The requirements dataset was completely generated from scratch by audio recordin
     - **NULL**: Neither functional nor non-functional
   - The Dataset contains 665 Lines of labeled text and strong semantical errors where manually fixed
   - The LOC is 100%, meaning the data has not been trimmed in any way
+ ##### Process of building Dataset
+  - We collected the software specification of the project and understood the project requirement.
+  - We recreated session with Three Participants with different role Specifically, a UX Designer, a Software Programmer and the Project Manager. We recorded this session with zoom conference call.
+  - Then we converted the recording to text using speech to Text converting tool. We used [rev.com](https://www.rev.com/)  online tool to convert speech to text.
+  - We received a raw text file from the online tool. then we have labelled each sentence of recording with Above label.
   
   ### 4.2 User Story Dataset: <a name="section4.2"></a>
   The user story dataset was created using a [collection of 22 datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each, expressed as user stories. The data was labeled manually and extended by random sampling null lines from the existing dataset in the original study.
