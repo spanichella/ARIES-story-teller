@@ -57,7 +57,10 @@ The requirements dataset was completely generated from scratch by audio recordin
   The user story dataset was created using a [collection of 22 datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each, expressed as user stories. The data was labeled manually and extended by random sampling null lines from the existing dataset in the original study.
   
   #### Dataset Information
-  - Todo Tanzil and Marc
+  - The Dataset can be found in the repository and is named **"Combined_Dataset.txt"**
+  - The Dataset contains 1215  Lines of labeled text. 
+ ##### Process of building Dataset
+  - ToDO Tanzil Marc
   
   ## 5. Wrapper Component Description: <a name="section5"></a>
 Todo Marc
