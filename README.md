@@ -3,7 +3,7 @@ Requirements-Collector follow up study: (Automating Requirements Specification f
 Tool - Version 1.1 
 
 **Authors of the original study: [Sebastiano Panichella](https://spanichella.github.io/index.html), [Marcela Ruiz](https://www.marcelaruiz.eu/)**\
-**Authors: [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K M](https://github.com/tanzilkm)**
+**Authors: [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm)**
 
 ## Overview
 1. [Project Description](#section1)
@@ -60,8 +60,9 @@ The requirements dataset was completely generated from scratch by audio recordin
   - The Dataset can be found in the repository and is named **"Combined_Dataset.txt"**
   - The Dataset contains 1215  Lines of labeled text. 
  ##### Process of building Dataset
-  - ToDO Tanzil Marc
-  
+  - For about user stories we got 615 lines then we label the dataset with Functional Requirement and Non-Functional Requirement. 
+  - For balancing the dataset random sampled 600 lines of NULL from existing datase[ttruth_set_study-ReqSpec.txt]t(https://github.com/Makram95/SWME_G2_HS20/blob/main/datasets/study/truth_set_study-ReqSpec.txt).
+  - We used Excel for random sampling by  sorting the dataset  and shuffle  the dataset using [Random sort in Excel](https://www.ablebits.com/office-addins-blog/2018/01/24/excel-randomize-list-random-sort/) and combine this dataset with user-stories and shuffle the dataset in final. 
   ## 5. Wrapper Component Description: <a name="section5"></a>
 Todo Marc
 Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, die folgende Zeile (siehe markdown source) macht das (sobald branch mit main gemerged ist sollte das img am richtigen Ort liegen)
