@@ -2,7 +2,7 @@
 Requirements-Collector follow up study: (Automating Requirements Specification from Elicitation Sessions and User Feedback)\
 Tool - Version 1.1 
 
-**Authors of the original study: [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/)**\
+**Authors of the original study: [Sebastiano Panichella](https://spanichella.github.io/index.html), [Marcela Ruiz](https://www.marcelaruiz.eu/)**\
 **Authors: [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil Kombarabettu Mohammed](https://github.com/tanzilkm)**
 
 ## Overview
