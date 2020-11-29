@@ -30,12 +30,12 @@ Todo Tanzil (Just as an info to you, Tanzil: this section refers to the point 1.
 ## 4. Dataset Description: <a name="section4"></a>
 For evaluation of the DL and ML component, a new Dataset based on a Requirements Elecitation Session was created and used to extend the already existing dataset of the original study.
 
-### 4.1 Requirements Dataset: <a name="section4.1"></a>
+### 4.1 Recording Dataset: <a name="section4.1"></a>
 The requirements dataset was completely generated from scratch by audio recording a remote Meeting, performing a voice to text transformation and manually labeling the text.
 
 #### Meeting Context and Objective
-- **Meeting Environment:** The meeting was performed in a remote fashion using [Zoom](https://zoom.us/) as a conferencing tool.\
-- **Meeting Setup:** The meeting included three Participants. Specifically, a **UX Designer**, a **Software Programmer** and the **Project Manager**.\
+- **Meeting Environment:** The meeting was performed in a remote fashion using [Teams](https://www.microsoft.com/de-ch/microsoft-365/microsoft-teams/group-chat-software) as a conferencing tool.
+- **Meeting Setup:** The meeting included three Participants. Specifically, a **UX Designer**, a **Software Programmer** and the **Project Manager**.
 - **Meeting Topic:** The topic of the meeting was set around the ABC Software Project. The ABC Software (SaaS) is a web based survey tool that supports Team Managers and Project Managers in creating short surveys (Pulse Surveys) with little effort and an intuitive and easy to undestand interface. A Pulse Survey typically takes around 2 - 3 minutes for a survey participant to fill out. Pulse Surveys allow managers to "feel the Pulse" of their team, may it be on the topic of "work satisfaction", "motivation" or "engagement". The project is still in a very early stage, thus the meeting was planned in the course of a series of kick-off meeting where the manager needed UX and technical inputs on a set of different functionalities which the ABC software should include. There are currently 5 software developers, 2 Designers, 2 Slicers and 1 UX Designer as well as Management (consisting of 2 people) working on this project and it is set to launch in Summer 2020 with the initial Phase 1.0 requirements satisfied. It is worth mentioning that the ABC Company acts as a customer in this project and has developped a paper prototype of how the ABC Software should work. The actuall development is done by an outsourcing software development company located in Russia. Thus, the meeting was purely aimed at eliciting requirements of the software in order to discuss them later on with the outsourcing company.
 - **ABC Company Description:** The ABC Software Project was launched by the ABC Company, an innovative market research company and leader in employee surveys, 360° leadership feedback and supervisor evaluation throughout Switzerland. The company consists of 12 Employees, was found in 2002 and has over 20 years of expertise in the field in market and company analysis. Based on well-founded study concpets as well as quick, user-friendly survey and meaningful reporting, the company offer a broad variety of products in the field of employee satisfaction, customer satisfaction and Leadership Feedback.
 
@@ -53,7 +53,7 @@ The requirements dataset was completely generated from scratch by audio recordin
   - Then we converted the recording to text using speech to Text converting tool. We used [rev.com](https://www.rev.com/)  online tool to convert speech to text.
   - We received a raw text file from the online tool. then we have labelled each sentence of recording with Above label.
   
-  ### 4.2 User Story Dataset: <a name="section4.2"></a>
+  ### 4.2 User Stories Dataset: <a name="section4.2"></a>
   The user story dataset was created using a [collection of 22 datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each, expressed as user stories. The data was labeled manually and extended by random sampling null lines from the existing dataset in the original study.
   
   #### Dataset Information
