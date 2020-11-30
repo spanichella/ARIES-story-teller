@@ -51,10 +51,10 @@ The corresponding installation guide and source code of both ML and DL component
 - The [R language](https://cran.r-project.org/bin/windows/base/) must be installed and operational **//TODO: Which version?**
 - Cores: 8
 - Memory: 4.9GB
-- Download [glove txt file](https://www.kaggle.com/watts2/glove6b50dtxt) and put it into the designated DL folder in the project **//TODO @Marc: where?**
+- Download [glove txt file](https://www.kaggle.com/watts2/glove6b50dtxt) and put it into the DL folder located at Combined Project -> Ressources
 - For usage on Windows, add the RScript bin folder path (e.g., C:\Program Files\R\R-4.0.3\bin) to the PATH variable (in environment variables)
 ### Supported Operating Systems
-- Mac OS
+- Mac OS (works on 10.15.7 using Intel chipset)
 - Ubuntu 18.04 or above
 - Windows 10
 
@@ -103,7 +103,7 @@ The requirements dataset was generated completely from scratch by recording an e
 
 
 ### 4.2 User Stories Dataset <a name="section4.2"></a>
-The user story dataset was created using a [collection of 22 datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each - expressed as user stories - and combining them with randomly selected `NULL` lines from the existing dataset in the original study.
+The user story dataset was created using a [collection of datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each - expressed as user stories - and combining them with randomly selected `NULL` lines from the existing dataset in the original study. We used the datasets with names containing 02-04, 08 and 10-14.
 
 #### Dataset Information
 - The dataset can be found in the corresponding dataset folder as [truth_set_combined-ReqSpec.txt](./datasets/combined/truth_set_combined-ReqSpec.txt)
@@ -119,7 +119,9 @@ The user story dataset was created using a [collection of 22 datasets](https://d
 
 
 ## 5. Wrapper Component Description <a name="section5"></a>
+During our project, we wrapped the two pipelines into one executable programm. To make it user friendly we changed the setup and execution procedure from ground up with removing the commandline interaction and manual specification of the local paths and replacing them with a simple graphical user interface. During the merging of the pipelines, we also refactored, cleaned up and fixed the code, so that it now also works on windows. A more indept description and propositions to further enhance and extend our work can be found [here](./CombinedProject/README.md)
 **//TODO: @Marc** \
+_// pfad zu readme sollte stimmen, wird nach merge funktionnieren
 _//Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, die folgende Zeile im markdown macht das (sobald branch mit main gemerged ist sollte das img am richtigen Ort liegen)_
 ![](./CombinedProject/Images/swmlogo2.jpg)
 
