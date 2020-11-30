@@ -43,7 +43,7 @@
 43	 I'm just kidding. It's OK.	NULL
 44	 We're going to be building 1.1 next week because we're going to have to because it has to be done next week so some of this stuff has to be being tested. If he can get this finished today and you all get everything merged back then you can make the build today but I would say let's wait on this because otherwise, the only thing we have is that report to test.	NULL
 45	 The other report was available the last time you built for me. I just haven't tested it yet.	NULL
-46	  .	NULL
+46	 asda .	NULL
 47	 That's all you've got. Yeah. Grady and Drake and Patrick.	NULL
 48	 Still chipping away at it. Get the details on a separate page. On a search page, you jump already to the second page, about to add all the old value, new value stuff. Chipping away at it. Didn't get all that done yesterday. Other questions and stuff.	NULL
 49	 When do you realistically think it might be something that you can release to us for testing? Like, next Wednesday ish or going to be later? If it's later, then it's later.	NULL
@@ -122,7 +122,7 @@
 126	 We just had to ask her. She was calling in to  .	NULL
 127	 Oh, we both dialed in fairly early.	NULL
 128	 I don't even know if anybody else is going to join.	NULL
-129	  .	NULL
+129	  asdas.	NULL
 130	 It is. Just looking at it's like...	NULL
 131	 Larry, are you on?	NULL
 132	 Larry  .	NULL
@@ -149,7 +149,7 @@
 153	 You mean...	NULL
 154	 Yeah.	NULL
 155	 No, I don't think so.	NULL
-156	  .	NULL
+156	 sada.	NULL
 157	 He's trying to slack off, guys.	NULL
 158	 Can you think of anything else?	NULL
 159	 I'm sorry, go ahead.	NULL
@@ -162,7 +162,7 @@
 165	 Like  , I don't have email in front of me, but basically you've got a high level...Susan's team, I guess when they go in there to do the approval. Pretty much the status is already set, so they're restricted, and can't redo something.	A
 166	 An example would be of, it's like a forward stocking, LCAM says it's out there, but then when we talk tech with  , the packet is not there, or some some situation that can't use that. They can't go back and change it to pick it up in stock.	A
 167	 Interesting.	NULL
-170	  .	NULL
+170	  asd.	NULL
 171	 They can do that. I responded to Jimmy's email, I think just a few minutes ago. The problem there is that she's looking at  to see what's available. The specific item that she gave an example on is not available in LCAM because it's already sourced for other shipments.	NULL
 172	 I think she's doing the right process, but she's not looking in LCAM to see why it's telling her that, that equipment isn't available when she looks on the shelf. At least I think that's what that screenshot was of.	NULL
 173	 I sent some screenshots and explained what I did. That might help.	NULL
@@ -206,7 +206,7 @@
 214	 , that would be best. It doesn't matter when   .	NULL
 215	 I don't  that.	NULL
 216	 Yeah. I can do that. It will probably be Wednesday before I can schedule it. I'm pretty booked up. I'll send some...	NULL
-217	  .	NULL
+217	  sads.	NULL
 218	 Who all do you want? Or should I just send it to you two, and you all can send it to whoever?	NULL
 219	 You can just send it to  it doesn't matter, as long as it's  .	NULL
 220	 OK. All good.	NULL
@@ -214,7 +214,7 @@
 222	 Yeah. I got it.  .	NULL
 223	 Yeah, I've done that. We're working on where that might be confusing. And the other item, I don't know if we've had it out there before, but the  group, and, well, both groups, I don't know if it's on anything, but CLLI code with the wild card...That's a big request.	F
 224	 I don't remember that one.	NULL
-225	  .	NULL
+225	  asda.	NULL
 226	 Perfect.	NULL
 227	 Clean it up, there.	NULL
 228	 Guess it's not  I want to say. I think it is. There's so much on there, as 	NULL
@@ -292,7 +292,7 @@
 303	 Hey, Kaitlin.	NULL
 304	 Hi Greg. It's all the rest of your friends.	NULL
 305	 Not all of them.	NULL
-306	 	NULL
+306	 ghj	NULL
 307	 OK, Jim, Kaitlin, Kim, I think, and DJ.	NULL
 308	 OK, this important thing about the meeting is sent an email saying what was going to be in the release tonight, so you'll be getting the release tonight. What else do we need to talk about?	NULL
 309	 I just have one thing. This is Adam. I did get the list of fans from Brian. I haven't started working on those, but I did get those recently, so I'll start working on getting those resolved.	NULL
@@ -300,7 +300,7 @@
 311	 Feel great things.	NULL
 312	 Great things they were better than that.	NULL
 313	 OK, Anybody else have any updates?	NULL
-314	  It's hilarious that they're in there.	NULL
+314	 It's hilarious that they're in there.	NULL
 315	 It's a lot...a little bit ago what you're doing with the Thursdays?  Did Kim even join?	NULL
 316	 I thought I heard Kim, but,  sure who did join.	NULL
 317	 Yeah, it is...I always hear them on calls .	NULL
@@ -321,7 +321,7 @@
 332	 ...made. Before we go, we'll figure it out and get the best of the usual releases. Conduit...	NULL
 333	 What about that? 	NULL
 334	 We got in a request that's, as per usual, something that needs to be done within the next month so I asked them what they wanted to push out and pretty much Conduit with The Elite. A way of possibilities so we'll be replacing MAT point and configurable palette with the MAT powders. Adam and Miranda are given at the best in Michael's help. I already told them the Conduit stuff, we just have a slot for them.	NULL
-335	 	NULL
+335	 kgj	NULL
 336	 Well, get started on it. I'd say go ahead, but until we have the meeting happening.	NULL
 337	 If we get a meeting  .	NULL
 338	 Yes, if we can get the meeting and get stories. If Patrick has time again with the performance issue, any type thing, and you're becoming familiar with it then that's great.  , customer support?	NULL
@@ -343,7 +343,7 @@
 354	 It's going to be our team, Jules' team, and then a couple guys from Denver. So we can open that up. We'll figure out how to do it.	NULL
 355	 OK, HTML file  .	NULL
 356	 I've asked  for these flashback construction engineering. I told them engineering is done, and, construction, I told them we're not planning on doing anything this quarter.	NULL
-357	 At least not  .	NULL
+357	 At least not.	NULL
 358	 They were supposed to get together and talk back with me but they haven't yet, so whatever. All right, Frontier?	NULL
 359	 It's awesome!	NULL
 360	 What's the real story?	NULL
@@ -378,9 +378,9 @@
 389	 No.	NULL
 390	 I don't know, let's...	NULL
 391	 1.20 is the one that's going out at the end of the month.	NULL
-392	 	NULL
+392	 jk	NULL
 393	 Based on what new tech 1.10 out on, that is...	NULL
-394	 	NULL
+394	 gj	NULL
 395	 1.20 might need to be moved up some depending on what option they take on the fast path. That's the one having to get it checked in. I guess we owe him that with a clean release so we may go with 20 a little bit earlier.	NULL
 396	 The HTML files will be the release and then we'll work it like an Agile thing where if we have an emergency release or one month release, there might be things that are doable and releaseable, to production during that thing, and this thing of a couple of releases, I guess, probably.	NULL
 397	 Today what I did was -- for this meeting -- sometimes I hear the complaint throughout the years that people don't know what other people are doing. So today, rather than staying on track off track, I kind of had everybody give a little bit more color to the things so you all can let me know if you like that or don't like that. That way at least we all kind of know what's going on, and what's coming and what's in range, and whatever people are working on. I'm sorry that's as far as it goes. One minute.	NULL
@@ -395,9 +395,9 @@
 406	 Yeah. He's been unofficially now. We'll get a target and more formalized, with this on-boarding process. I want to talk to Brandon and Jasmine and get their input, Paige I guess as well, about what could we do better. I met with you guys a little bit about this same thing.	NULL
 407	 All right, so we took a little bit more time today talking about the status of where everything's at. Does anybody have any issues or anything that we can take off of this list? I guess it decreases every time, those tabs.	NULL
 408	 Does anybody else need...I know Susan,  and Jesse are the...	NULL
-409	  .	NULL
+409	  asdas.	NULL
 410	 OK. Does anybody feel the need to do a formal touch-base on the ticketing process?	NULL
-411	  and I would like a refresher, since it's been a few months since she showed us how to do it.	NULL
+411	 and I would like a refresher, since it's been a few months since she showed us how to do it.	NULL
 412	 Yeah, some new members. I think we need a refresher course.	NULL
 413	 We'll set that up.	NULL
 414	 What is the set up that today  would go for support fails, they need access really to  pick up some of the support, and so I asked Kevin about it, and of course they don't want to send us the  , so how are we going to analyse  because we don't want to have to give mainframe access for everybody  .	NULL
@@ -429,7 +429,7 @@
 440	 I already a  .	NULL
 441	 How long ago?	NULL
 442	 Who's next?	NULL
-443	   .	NULL
+443	 asd.	NULL
 444	 Eight.	NULL
 445	  I'm trying to understand...	NULL
 446	 About the...? OK.	NULL
@@ -587,7 +587,7 @@
 601	 I need to also be working on the changing of the icons for the notify  .	NULL
 602	 For the tiles.	NULL
 603	 We really need to set up a  repository or something that we can work from so that we're not running into these issues, and so that you're not working from your desktop and using old files.	NULL
-604	  .	NULL
+604	  asdasd.	NULL
 605	 Jasmine threw it all out to TFS i think, from the  . It's terrible.	NULL
 606	 Is it in TFS now?	NULL
 607	 I think so. I'm not 100 percent sure.	NULL
@@ -618,7 +618,7 @@
 632	 But, I guess  . Unless they hire somebody else. It doesn't need to be Susan.	NULL
 633	 Like a project manager?	NULL
 634	 Oh man, a release manager. It needs a release manager for  .	NULL
-635	  .	NULL
+635	  asd.	NULL
 636	 Whatever it needs.	NULL
 637	 But we're not doing the  .	NULL
 638	  I'm just saying somebody needs to be driving these releases and putting together iterations, because we've got to start getting results. We've got to start having iterations that have meat in them.	NULL
@@ -627,22 +627,22 @@
 641	 Mahesh, what do you need? Need anything right now?	NULL
 642	 No.	NULL
 643	 So what do we have?	NULL
-644	  .	NULL
+644	  asd.	NULL
 645	 Login page and home screen.	NULL
 646	 I'm bleeding, bro.	NULL
-647	 	NULL
-648	 	NULL
+647	 sad	NULL
+648	 asda	NULL
 649	 Back when I lived here, that would never happen.	NULL
 650	 Would have been real blood.	NULL
-651	  .	NULL
+651	 asdsa .	NULL
 652	 We need to have the login page link up with the home page.	NULL
 653	  updating the icons for every page.So if I .	NULL
 654	 That would be ideal, yes. That was what we wanted.	NULL
 655	 OK all right back to work. I'll get Karen these.	NULL
-656	  .	NULL
+656	  sad.	NULL
 657	 This is my home page, so I need to...once I log in, I should be able to access  . This is for , so I need to change these icons. I need to change the  like this. . That's what I'm thinking, if I load this website with this login page, so I can easily change the icons.	NULL
-658	  .	NULL
-659	  .	NULL
+658	 ssda .	NULL
+659	 asd .	NULL
 660	 What did the login page  .	NULL
 661	  something missing.	NULL
 662	 So what did we decide about what links and things to put in there?	NULL
@@ -658,7 +658,7 @@
 672	 It's on there now.	NULL
 673	 Yeah, but he wants it gone now.	NULL
 674	 I'll have that discussion with him  .	NULL
-675	 	NULL
+675	 sadsad	NULL
 676	 It's fine. I'll talk to him.	NULL
 677	 That probably needs to happen soon, because he was pretty adamant about it.	NULL
 678	 I guess I'm project downer there, right?	NULL
@@ -730,7 +730,7 @@
 743	 Can I get rid of  ? So, I don't know. How do you all want to handle the things that are out there now that really need to be fixed? Because they don't have workarounds for them.	NULL
 744	 Fix them?	NULL
 745	 Who's going to do the fixing and not do their one  stuff, is my question?	NULL
-746	  .	NULL
+746	  sadsad.	NULL
 747	  your desktop.	NULL
 748	 I didn't do anything on my desktop.	NULL
 749	 ...your desktop. Internet Explorer...	NULL
@@ -829,7 +829,7 @@
 847	 Yeah, because I don't think you want to change the part every time you get something in, because we wouldn't have any idea whether this was a part change or it's just receiving something in.	NULL
 848	 I've got to see. Mike was thinking that those would be treated as two separate records. I hear what you're saying. We have a whole record leaving and a whole record coming in. To me, it would be changing the VIN.	NULL
 849	 But you have to find it.	NULL
-850	 	NULL
+850	 sadsa	NULL
 851	 The other one,  would it be something we could do? Just run a query and let them pick it up? Isn't that all you're doing?	NULL
 852	 Yeah.	NULL
 853	 Have your part number and quantity. I just don't know why that would be such a significant code issue.	NULL
@@ -979,9 +979,9 @@
 999	 The only thing I had, I asked Drake for some of that information about moving databases. I'll take a look at that later today, and let you know if it works.	NULL
 1000	 Nobody else had anything?	NULL
 1001	 All Right. Thanks everybody. We'll talk to you guys later.	NULL
-1002	  .	NULL
+1002	  adsd.	NULL
 1003	 I thought Ron said he was going to call back  .	NULL
-1004	  .	NULL
+1004	 asdsa .	NULL
 1005	 Everything...	NULL
 1006	 We do have a meeting with John about it. Really nothing, just get over there and...	NULL
 1007	 What they made John the offers to give...heads up?	NULL
@@ -989,9 +989,9 @@
 1009	 Software side, Michael said he's got some kinks he's got to work on the entire map server stuff. Do some research for Windows 10, see if all hope is lost. We're fixing an issue that's not even compatible on this version, so that's very frustrating. 	NULL
 1010	 That's pretty much it. I will talk to Michael a little bit later to see...he's researching a program to replace IIS.  It's really fun. As soon as he lets me know...I'm just really curious if it's going to work on your computer or not.	NULL
 1011	 OK, since...	NULL
-1012	 	NULL
+1012	 asdsa	NULL
 1013	 It was an expensive trip.	NULL
-1014	 	NULL
+1014	 asdsad	NULL
 1015	  I'm sure he said that about me, because I have three cars,  and there's only two of us living at home, so I don't care. 	NULL
 1016	 But they're all, I mean your Acura...	NULL
 1017	 A banker sold it finally. That was when we had four.	NULL
@@ -1007,12 +1007,12 @@
 1027	 OK.	NULL
 1028	 That is a loud phone.	NULL
 1029	 What? I'm deaf now. I can't hear anything.	NULL
-1030	 	NULL
+1030	 asdasd	NULL
 1031	 He must have a desk phone and a cell phone.	NULL
 1032	 I'm sorry.	NULL
 1033	 That's OK.	NULL
 1034	 Did you  on my ticket?	NULL
-1035	 	NULL
+1035	 asdas	NULL
 1036	 So testing with CT  . I know you did that yesterday. We haven't heard anything back from them.	NULL
 1037	 They sent out an email late yesterday, and I checked on them...	NULL
 1038	 We haven't heard anything since you checked.	NULL
@@ -1021,7 +1021,7 @@
 1041	 Oh, there's the mouse cursor.  the mouse cursor. I think I'm close to getting it fixed. I should finish it today. Null and blank  have been my enemy.	A
 1041	 Oh, there's the mouse cursor.  the mouse cursor. I think I'm close to getting it fixed. I should finish it today. Null and blank  have been my enemy.	F
 1042	 Everybody's enemy  sequel.	NULL
-1043	 	NULL
+1043	 asdsa<	NULL
 1046	 Do we have anything for them other than...	NULL
 1047	 Help.	NULL
 1048	 Can we  finalized spreadsheet of users so we can go ahead and import them?	NULL
@@ -1035,7 +1035,7 @@
 1056	 What's going on with DC three?	NULL
 1057	 Barry is sending four people to Conyers, Georgia to inventory a warehouse full of test equipment.	NULL
 1058	 They're going to put acid tags on all of them, one location they have a list of what they think is in there. The other location they don't have anything. In the process of taking a copy of a wireless code, Carol's project, stripping out all the weird accounting stuff they have in there, and they're going to use that as a code base  .	NULL
-1059	 	NULL
+1059	 asdsada	NULL
 1060	 I've got some ideas, but I want to run it past you three real quick.	NULL
 1061	 All right.	NULL
 1062	 Sorry.	NULL
@@ -1072,7 +1072,7 @@
 1094	 I think Grady just does  . Trigger  all those  procedures out of the way. You've got  level, you've got...What is that? Table? I forgot the name of that table. Let's just say two hours. What do you think,  ?	NULL
 1095	  three hours.	NULL
 1096	 Three. I'm thinking optimistically.	NULL
-1097	  .	NULL
+1097	  adsas.	NULL
 1098	 He's saying three, I'm thinking two. I'm trying to be very optimistic.	NULL
 1100	 you call   .	NULL
 1101	 Allowing them to search by receive dates. I think receive date is already displaying on the screen. We just don't allow them to search by it. I'm not sure if you need to bring it up. Because I don't know if anybody  or not.	A
@@ -1097,7 +1097,7 @@
 1119	 That's it. That won't take long. Probably about, I'll say one hour. It's not going to be that hard, really, once I get the stored procedure done.	NULL
 1120	  another task.	NULL
 1121	 Yeah, the other task would...To procedure results set.	NULL
-1122	 	NULL
+1122	 asdasd	NULL
 1123	 And then  procedure.	NULL
 1124	 And you can update these.	NULL
 1125	 Yeah, I was about to say...	NULL
@@ -1109,7 +1109,7 @@
 1131	 sort   .	NULL
 1132	 If we go and look at  that.	NULL
 1134	 No, it's here.  .	NULL
-1135	 	NULL
+1135	 asdads	NULL
 1136	 So right now, see  group is not on here, so that's what you're doing. You're adding  group, and it'll still have all the same information. It'll still have each of the  listed out under it.	F
 1137	 Another column.	NULL
 1138	 Well, it's however you want to do it. They would like it with  order, so yeah, you can do it as just another column on the report, as long as  would be duplicated. And that's kind of how it sounds like they want it, as opposed to having it as a header child grid, because then they can look at everything.	A
@@ -1130,7 +1130,7 @@
 1152	  search...	NULL
 1153	  has to say.	NULL
 1154	 Do a search these, and I'll select some, and I'd better  hardware. So, that's the first thing that you're changing. You're going to allow them to change the frame for bugs. So, that's one of these, and then once you do that...	NULL
-1155	  .	NULL
+1155	  asdsad.	NULL
 1156	 Change the  , pull it  .	NULL
 1157	 That's one of them. Then, the other thing is, if you do this and you do print update...So, when you do this...No, it's not print update, is it? Try and update...	NULL
 1158	 You have to go back.	NULL
@@ -1173,7 +1173,7 @@
 1197	 You think you're clear upon that now?  The reason I'm showing them all, because they're all interrelated. They're all...	NULL
 1198	 It's like you've got to get past this one, to get past that one, to get this one.	NULL
 1199	 Yeah.  every  When it's only in the frame it's an estimate.	NULL
-1200	  .	NULL
+1200	 asdsa .	NULL
 1201	 Well...	NULL
 1202	 OK, well. Estimate.	NULL
 1203	 . What do you think,   ?	NULL
@@ -1182,7 +1182,7 @@
 1206	 Sure this is your work  ?	NULL
 1207	 for the day. Hardwire screen has  this is not need to have a frame if it's plugged  these guys, possibly   . Crap. This is a different one.	NULL
 1208	 Let's try it again.	NULL
-1209	  .	NULL
+1209	  asdsa.	NULL
 1210	 I'm confused a little bit.	NULL
 1211	 I can't imagine when. This one is, they're reverse retiring.  . They're writing assets into the 1220 account. That's why it's this many days. Today, if they go...That actually   , can they do this? Search in assets and reverse retirement of 1220.	NULL
 1212	 Go back to the story.	NULL
@@ -1203,7 +1203,7 @@
 1227	 On what CLLI  ?	NULL
 1228	 Search.	NULL
 1229	 Back here, when I had retire up there  .  . Those are both plugs. Reverse retire, and instead of in-service they're reverse retiring the inventory  .	NULL
-1230	  .	NULL
+1230	  asds.	NULL
 1231	 Right here. We'll put a frame on here.	NULL
 1232	 Is inventory  you use?	NULL
 1233	 That's what they're doing, but...	NULL
@@ -1212,10 +1212,10 @@
 1236	 What they're literally doing is this. That's how I'll test it.	NULL
 1237	 Search for hardwire, its retiring place.	NULL
 1238	 Put the CPR in.	NULL
-1239	  ?	NULL
+1239	  asdsa?	NULL
 1240	 Yeah.	NULL
 1241	  . Then reverse retire this one.	NULL
-1242	  .	NULL
+1242	  asdsa.	NULL
 1243	 Hardwire only.	NULL
 1244	 No, these are showing you,  , because it's going to be the same thing as what...	NULL
 1245	 It doesn't show a plug, it messes with your hardwire.	NULL
@@ -1248,7 +1248,7 @@
 1272	 I'll have to do that anyway.	NULL
 1273	 Whoa  .	NULL
 1274	 I have to do that anyway, for my tests.	NULL
-1275	  .	NULL
+1275	  asdasd.	NULL
 1276	 That's this three-day story.	NULL
 1277	 It's week three now.	NULL
 1278	 I know, but what are your tasks  ? Do you want me to make one, and you can go off and research this?	NULL
@@ -1257,7 +1257,7 @@
 1281	 Put three, and I'll divvy it up after I get another task. This is a three-day, right?	NULL
 1282	 Yeah.	NULL
 1283	 Do that, and if I have to bring another check I'll divvy...	NULL
-1284	  .	NULL
+1284	  adsa.	NULL
 1285	 18.	NULL
 1286	 18,  .	NULL
 1287	 I'm doing it  . It should be...	NULL
@@ -1288,7 +1288,7 @@
 1312	 I don't just want  though, I want both. I don't think I'm going to get those. First 1,000 are apparently all we use. What can I  ?	NULL
 1313	 Well you know you've have  .	NULL
 1314	 that's going to be a problem, it's going to be a problem. Anyways, if I'm trying to change   .	NULL
-1315	  .	NULL
+1315	  asddsa.	NULL
 1316	 It's required for hardwire defaults for plug, but you cannot update plugs in hardwire in the same transaction. So, the code changes to allow it to be  transaction.	NULL
 1317	 Use the,  place that they use?	NULL
 1318	 The Data Garage?	NULL
@@ -1306,11 +1306,11 @@
 1330	 How can I narrow it down to this? I have to go trough 834 records.	NULL
 1331	 Go to a different page. Grab one of those.	NULL
 1332	 OK, so just click. These are both plugs, and then go here. Zero, five.  all of them.	NULL
-1333	  .	NULL
+1333	  asd.	NULL
 1334	 I know. That's why I said wait.	NULL
 1335	 Remove frame  edits.  .	NULL
-1336	  .	NULL
-1337	  .	NULL
+1336	  asd.	NULL
+1337	  asd.	NULL
 1338	 for hardware  for flow, even though   hardwire on the same transaction.	NULL
 1339	 What's that do? Frame  .	NULL
 1340	 Probably nothing because, like I said, Kate  these and confused the heck out of me. I tried to go back and clean them up.	NULL
@@ -1318,9 +1318,9 @@
 1342	  best. Go back and read...	NULL
 1343	 You can't read what he put in here.  And you can't read what I put in here, because it won't, well, he put it in here but it's too big.	NULL
 1344	 OK, LCAM...	NULL
-1345	  .	NULL
+1345	  asd.	NULL
 1346	 This one is supposed to be the one. You do a general change. It doesn't know what day you're referring to. You have to go back in and change the frame.	NULL
-1347	  ?	NULL
+1347	  sada?	NULL
 1348	 Yep. I put this stuff in here and he still didn't run the  right, but you can't really blame him because I've done diddly-squat, too.	NULL
 1349	 All right, that's what we're doing. Not all the rest of the stuff the way  words it. I've told you that. I don't word it like they do. I word it so I know what I'm doing.	NULL
 1350	 I thought printing wouldn't  .	NULL
@@ -1351,7 +1351,7 @@
 1375	 You wanted workflow, change  .	NULL
 1376	 for frame to be a valid general   .	NULL
 1377	 This is probably the biggest part of this, right? The UI changes and then he has these backend changes. It's going to be two tasks.  .	NULL
-1378	  .	NULL
+1378	 asddsad .	NULL
 1379	 frame entered  value  . Does that make any sense to you?   I'm trying to get something in here.	NULL
 1380	 When I figure some out some out, I'll talk to you.	NULL
 1381	 What do you think? Another day, or...Honestly?	NULL
@@ -1398,11 +1398,11 @@
 1422	 Stuff.	NULL
 1423	 Just give me that Dopak. Yeah.	NULL
 1424	 That's going to be...	NULL
-1425	 12?	NULL
+1425	 asddasd 12?	NULL
 1426	  want another one. You're going to have to change the UI to at least allow that to be an option. What do you want now?	NULL
 1427	 Two?	NULL
 1428	 OK, anything else?	NULL
-1429	  .	NULL
+1429	  asdasd.	NULL
 1430	 The good thing about yours is I can look at them and I can go, "OK, now I know what you did." I can do my test cases, because he's really good about putting notes. You're good about putting notes, too.	NULL
 1431	 I try to be.	NULL
 1432	 Other people put diddly. I'm like, "That doesn't tell me anything. I still don't know what you did." We have a lot in here now. The next thing that we need to do quickly is we don't have iterations for this. 161 was supposed to start on the 14th and it didn't. Do we want to do...?	NULL
@@ -1614,7 +1614,7 @@
 1639	 You could also do that entirely on DC3. Right now it only works at the  level so you'd have to adjust it to where it would only narrow down to a particular frame ID. The challenge there is that with the whole recon process that's there it's a little bit overkill in a sense.	NULL
 1640	 Yes, and this is like techs in the field doing it. The learning curve could be huge.	NULL
 1641	 They can spell their name and that's about it.	NULL
-1642	 	NULL
+1642	 asdasd	NULL
 1643	 What did he say?	NULL
 1644	 They can spell their name.	NULL
 1645	 Say how you really feel  . 	NULL
@@ -1650,7 +1650,7 @@
 1675	 Are you logging is as CinBell?	NULL
 1676	 No. I'm on  .	NULL
 1677	 That really doesn't mean anything. It used to put a file on the FTP server, but now if you go back to...	NULL
-1678	 	NULL
+1678	 asdas	NULL
 1679	 You've got to remember what  you use...	NULL
 1680	 Process?	NULL
 1681	 Yes.	NULL
@@ -1837,7 +1837,7 @@
 1862	 You guys went to Mugshots?	NULL
 1863	 Yeah.	NULL
 1864	 I went to Logan's.	NULL
-1865	  .	NULL
+1865	  sadasd.	NULL
 1866	 Mine was free.	NULL
 1867	 Oh, no. I'm fine.	NULL
 1868	 You sure  ?	NULL
@@ -1847,7 +1847,7 @@
 1872	 It was so good. I was trying to force it down, and it was too much.	NULL
 1873	 You've got a deposit?	NULL
 1874	 Not yet. We're still waiting on the check, but that's the last thing before we sign everything.	NULL
-1875	  .	NULL
+1875	  asdasdas.	NULL
 1876	 That and the inspection.	NULL
 1877	 Oh, yeah, it's tough.	NULL
 1878	 It's an FHA loan so they have to do an appraisal too. When the appraisal comes back  .	NULL
@@ -1860,7 +1860,7 @@
 1885	 Like, your release that's going out in a month can have an iteration of coding and an iteration of test and release it, because there's still iterations within this, so that Mahesh and Baski might be working on stuff and so that's what we have to manage is how you can work on stuff that doesn't go...	NULL
 1886	 You're just saying, put them somewhere, and then pull them into the actual iterations? Is that what you're talking about?	NULL
 1887	 Yeah, but then some stuff won't probably be usable.	NULL
-1888	  .	NULL
+1888	  asdad.	NULL
 1889	 Because you have confirmed releases going on at the same time. We've got this HTML5 release.	NULL
 1890	 I know.  .	NULL
 1891	 Well, you can talk to Brian. Brian had a team that worked like that at the beginning, and he said it was just a nightmare to figure it out.	NULL
@@ -1942,8 +1942,8 @@
 1969	 Right now, Karen and I have had a class, Brian's done it, so as far as that process is concerned that's where we stand on that.	NULL
 1970	 Have we decided for searching or asset arrangement under something?	NULL
 1971	 I think it's under Home page.	NULL
-1972	  ?	NULL
-1975	  .	NULL
+1972	  asdsa?	NULL
+1975	 aasds .	NULL
 1976	 Search assets is under Navigation.	NULL
 1977	 Navigation is the bar on the top, so the thing that was already in there and then in the report we added  Navigation.	NULL
 1978	 OK.	NULL
@@ -1998,10 +1998,10 @@
 2029	 I know we said, "Home page, basically that's where you're going to  ." I think when we talked about that, how will that tie this together?	NULL
 2030	 You want the home page to just be  ?	NULL
 2031	 I guess it's like Zhivago, that website we were looking at. You go and you zoom, your home page, it's got a map in the background, it's got a place so you can say, turn on what you want to see.	NULL
-2032	  .	NULL
+2032	 asds .	NULL
 2033	 To me that's like what...	NULL
 2034	 Or like Zillow, you start by putting in an address. You come here and pick the context of, "Buy," "Rent," "Sell," or, their estimating thing. Then you put in your address and click Search and it takes you to that area.	NULL
-2035	  .	NULL
+2035	  asda.	NULL
 2036	 Either way, you can still have an epic of home page, or whatever. There's going to be a page when you logon that you go to. What's in that particular page might be different.	NULL
 2037	 Zillow is probably the best example.	NULL
 2038	 Is the name going to be that conversation  ? When someone logs on, here's my work and I can go from there and do my thing, I guess.	NULL
@@ -2029,7 +2029,7 @@
 2060	 When we have all that real estate then we can show the search area on a big map, and all that stuff, but we're dealing with such a small space we have to give them the choice when they logon of what they want to see next.	NULL
 2061	 I just want to make sure, however we're set up for release, we have the ability to do it that way  .	NULL
 2062	 You don't really have to have home page to think of it, "This is the way we're going to organize the tiles and these things." You're going to have Reporting, so that's an epic and whatever's involved in that. You have your Conversations and then whatever's involved in that. Maybe that's the way you should organize it. Like, "Manage conversation," is your epic and however that's designed.	NULL
-2063	  .	NULL
+2063	 asdasdasd .	NULL
 2064	 OK, well then maybe some of these things need to be moved over to the Conversations.	NULL
 2065	 Yeah, I think so. I like...	NULL
 2066	 You can get rid of this concept of this home page.	NULL
@@ -2116,7 +2116,7 @@
 2149	 Is the dashboard Baski's dashboard integrating that into Notify? Is that what that is?	NULL
 2150	 I think so. Baski, you can speak up if that's...	NULL
 2151	 I would say we should be able to do a conversation dashboard, and then maybe a project dashboard.	NULL
-2152	  .	NULL
+2152	 sadasd .	NULL
 2153	 Like what you've been doing is project dashboards, because they're very specific too. But a conversation dashboard would be basically using dates and  .	NULL
 2154	 What we need is a way to have a dashboard that takes certain tools that are on the dashboard, and they are received from a certain way of passing in data, so that it doesn't have to be a new dashboard built every time.  was talking about doing a data source for it.	NULL
 2155	 If you do it similarly to the way you did the map and the grid, you just design, "This is the way I want to see the data," so you could build it in to where it's behind the scenes for the data source. But I think also you can do a non-specific, because we know the Conversation...	NULL
@@ -2143,7 +2143,7 @@
 2176	 We're translating them to  .	NULL
 2177	 For the user, we're working on an accommodation page.	NULL
 2178	 As far as the data source for it right now, is it just some mocked up data, or nothing at all, or...?	NULL
-2179	  .	NULL
+2179	 sadasdas .	NULL
 2181	 It needs to be done concurrently, because what we're talking about here is something that is  . I can't do my conversation page without there being a data source that provides me conversations.	NULL
 2182	 Going back to the previous experience again, having two different swaths of stories, one for  and one for  , is just a really bad idea, because you can't test all of that until the very end when  is done, and when UI is done. When you hook it up, 90 percent of the time, it breaks, profusely.	NULL
 2183	 But what we can do, given this current situation, we could have a pre-iteration type thing. Where this is a design iteration, or a design two iterations, but it's relatively usable, I mean it's usable stuff that they're doing, in lieu of...	NULL
@@ -2162,7 +2162,7 @@
 2196	 I think I can login is one page. I can go to the website, be presented with a login page and then provide my credentials.	NULL
 2197	 OK, is one story.	NULL
 2198	 You can very well have an acceptance criteria that says, "When I login I'm redirected to a page that shows me what stuff is assigned to me." That's perfectly valid.	NULL
-2199	  .	NULL
+2199	 asdsada .	NULL
 2201	 Yeah, work together, right.	NULL
 2202	 It could be dummy data until that's done, but that's perfectly legitimate.	NULL
 2203	 That you're presented with a login screen is valid, too, but then, what happens after you get in...?	NULL
@@ -2195,7 +2195,7 @@
 2230	 We've got what they've got for mock up.	NULL
 2231	 I know.  .	NULL
 2232	 In two weeks we've got a URL, and you logon, and it checks your credentials through the Notify test, whatever, database, and he's got that home page with that data behind it.	NULL
-2233	  .	NULL
+2233	 asdsad .	NULL
 2234	 Male Participant? Are we going to say we're going to have the three  ?	NULL
 2235	 Yeah,  .	NULL
 2236	 Three what?	NULL
@@ -2265,7 +2265,7 @@
 2300	 Yes.	NULL
 2302	 That's what we'll do. We login. We land on some page that shows a list of conversations.	NULL
 2303	 That still bothers me, having to do  .	NULL
-2304	  .	NULL
+2304	 asdsada .	NULL
 2305	 Is that responsive design right now where it's...?	NULL
 2306	 Yeah, it's responsive.	NULL
 2307	  . I'm going to use the same thing we had on the other page. I need to remove .	NULL
@@ -2281,7 +2281,7 @@
 2317	 You have two remaining attempts.	NULL
 2318	 Be careful. We're recording now.	NULL
 2319	 What was that Jim Carey thing where he plays the  ?	NULL
-2320	  .	NULL
+2320	 sadad .	NULL
 2321	 Do we want to put any other stories in there?	NULL
 2322	 Let's branch off. I would say, maybe we can...	NULL
 2323	 Open a given single conversation?	NULL
@@ -2382,7 +2382,7 @@
 2419	 If they want, send something else. They probably check it, it should be in SELECT statement, but what was sent looked good, and maybe...The work closed, worked. 	NULL
 2420	 OK. Then I will just fail to test-run test this. Brian, do you have anything that we need to talk to them about on the call today?	NULL
 2421	 Probably, but I don't know yet.	NULL
-2422	 	NULL
+2422	 asdsa	NULL
 2423	 Because it probably won't be on this morning's call, but I'm about to start working on the work orders. I don't have blanket project information that I can tell or estimates for this stuff, so I'm sure that's going to get in the way. I'm not quite sure how they're going to want to handle that. I need to dig into this a little more so I can more appropriately formulate a question for them.	NULL
 2424	 OK, so where are we at with the rest of their fallout in general? Do you know?	NULL
 2425	 I have about 20, 30 million assets, about 231 are falling out.	NULL
@@ -2390,16 +2390,16 @@
 2427	 No, and that's because there's one particular FRC, never seen before .17 records have that on there and then the rest are bad catalog references. I think we've got all. None of the catalog information is falling out. There's only one location that's falling out and that's because the three character one doesn't have any assets on, so it doesn't affect anything.	NULL
 2428	 OK, yeah, they said they were going to leave that alone anyway.	NULL
 2429	 Yeah, and then the other point looks to be that the...crap, I was going somewhere.	NULL
-2430	 	NULL
+2430	 asdd	NULL
 2431	 That tripped me off.	NULL
-2432	  .	NULL
+2432	  sada.	NULL
 2433	 Yeah, and I don't even touch that partly, so there's still that whole falling out there. I'm trying to get at least to the point where they're functional business wise so I need to get the work orders in there. I think ship orders escaped my...I was looking at the publish package for this version, and I noticed that I was publishing ship orders before and I'm not even importing those now.	NULL
 2434	 I didn't even consider ship orders, so I'm going to have to see if I can pull that information in at some point either today or early tomorrow too. As far as fallout is concerned, it's looking pretty good this time around and they're actually letting me make generic rules that prevent stuff from falling out.	NULL
 2435	 OK. That's good. Maybe the next time we do this for somebody, we should give them trial run to show them they're going to get, so that then they understand what we mean by "Fallout."	NULL
 2436	 I think the next time we do this, I'm not going to do it.	NULL
 2437	 I know. 	NULL
 2438	 We need to give them the schema to ETR catalog extension after there's commitment, and so they take...you give us your data and you put in this format and then roll.	F
-2439	 	NULL
+2439	 sada	NULL
 2440	 Kim imported the database to Mary.	NULL
 2441	 Yeah.	NULL
 2442	 Do you have any questions on the users? I know you all send some emails back and forth. Think you're good now?	NULL
@@ -2568,7 +2568,7 @@
 2607	 FastPath. Are you going to have something for them Friday or not?	NULL
 2608	 I'll have something.	NULL
 2609	  Did she give you that template data or anything?	NULL
-2610	  .	NULL
+2610	  sad.	NULL
 2611	 OK, so they haven't done their part yet.	NULL
 2612	 Yes.	NULL
 2613	 Anything else? All right.	NULL
@@ -2707,7 +2707,7 @@
 2746	 Like, we need to know, what can we be working on besides just scanning through code aimlessly trying to figure out what we can do to help. That's the thing. When I was working on JRM with you, I felt at least useful. It was like every little piece, I felt like, "OK, I did something. That's good."	NULL
 2747	 Then, it gets to the point where everyone's busy, and we're just researching, not getting to feel like we're helping at all. That's hard. It's important to feel like you're doing something beneficial for the company.	NULL
 2748	 Long-term goals.	NULL
-2749	  .	NULL
+2749	  wer.	NULL
 2750	 Pair program, anybody opposed?	NULL
 2751	 As long as it's not scheduled over the weekend, I don't care. 	NULL
 2752	 Thank you, Baski. I'll pair with Baski.	NULL
@@ -2748,7 +2748,7 @@
 2787	 I think if the teams are structured the right way and the iterations are structured the right way, then the mix will be good on each team to where the new hire can pair program with the thing that they're interested in accomplishing.	NULL
 2788	 I would really, really try to steer clear of wearing one hat, because you'll get painted as the UI guy, or the business layer guy, where in the Agile world we need to strive to be multipurpose. We're better tools that way in the toolbox.	NULL
 2789	 When Drake is out, and somebody can step in and be Drake, or Baski's out, and somebody can step in and be Baski, or when Corey's out, then somebody can step in and be a Corey. We're sharper that way.	NULL
-2790	  .	NULL
+2790	  er.	NULL
 2791	 I said it before, I'm not a data guy, but I play one on TV. I did stay at Holiday Inn Express last night.	NULL
 2792	 That's part of the idea about putting the new people on the Sustainment Team so that they can get exposed to all of the different apps and cross-train at the same time. I'll add to the list.	NULL
 2793	 I heard what Jasmine said when I got here. I thought that I had to call people to ask for help, because I kept hearing people call other people, so I wasn't sure if I should go to someone's desk, or call them. Then I was like, "I don't like phones," so I started going and bothering Brian all the time, which he probably hates.	NULL
@@ -2764,10 +2764,10 @@
 2803	 Actually a lot of people opened up today, that's good.	NULL
 2804	 Remind me, because that's what Baski said.	NULL
 2805	 Thanks.	NULL
-3436	 	NULL
-3472	 	NULL
-3647	 	NULL
-3698	   .	NULL
+3436	 wer	NULL
+3472	 er	NULL
+3647	 ewr	NULL
+3698	   er.	NULL
 3867	  Oh, OK.	NULL
 3988	 I can't imagine when. This one is, they're reverse retiring.  . They're writing assets into the 1220 account. That's why it's this many days. Today, if they go...That actually   , can they do this? Search in assets and reverse retirement of 1220.	NULL
 4084	  Well, let me see if I know what you're talking about. I'm not at all sure. Have I found hardwire? That hardwire? Partially found. That's a hardwire, right?	NULL
@@ -2785,9 +2785,9 @@
 4470	 Yes. You do an hour. I will do an hour. Then we can see how far we get.	NULL
 4471	 This is my first point. Big things, so you're going to have to try to bear with me on some things. 	NULL
 4472	 There's no problem. At this point you've been in the code, you know the basics of it, you know how to structure it, and that's a lot more that I can say. Get it to compile. Just cut that variety.	NULL
-4473	 	NULL
+4473	 ewrew	NULL
 4474	 Page. I cannot believe I just made a connection between the stuff I did several months ago and then now  . Page. The last name sound familiar, I don't know if it sounds familiar, but I've never met her, I'm kidding.	NULL
-4475	 	NULL
+4475	 erwer	NULL
 4477	 We can't screw anything up. Everything is done at the end and so it's not a concern. As long as you don't check anything in until we've vetted everything.	NULL
 4478	 Is there a way to save it locally, so that I can just...Is that what he did? I'm new to DFS. I'm terrified.	NULL
 4479	 You work in your local copy. Everything you have is local. Until you decide to check everything in, you could do whatever you like.	NULL
