@@ -50,7 +50,7 @@ public class DLPipeline {
 
     // captures everything that's not a letter greedily, e.g. ", "
     private static final String WORD_SPLIT_PATTERN = "\\P{L}+";
-    // columns are split by ,
+    // columns are split by ","
     private static final String INPUT_TURN_DELIMITER_PATTERN = "\",\"";
 
     // https://deeplearning4j.org/tutorials/setup
@@ -60,10 +60,8 @@ public class DLPipeline {
         ConfigFileReader cfg = new ConfigFileReader("/Users/marckramer/Repos/SWME_G2_HS20/CombinedProject/Resources/XMLFiles/RequirementSpecificationsXML.xml");
         // the training set
         String labelledTurns = cfg.getPathTrainingSet();
-        System.out.println(labelledTurns);
         // the test set (but used for validation..)
         String validationSet = cfg.getPathTestSet();
-        System.out.println(validationSet);
 
         // load pre-trained GloVe w2v
         String glove = cfg.getPathGloveFile();
@@ -327,8 +325,6 @@ public class DLPipeline {
      */
     private static List<String> getWordList(String[] textWordAr, WordVectors wordVectors) {
         List list = Arrays.stream(textWordAr).filter(w -> wordVectors.hasWord(w)).collect(Collectors.toList());
-        System.out.println("Wordlist: ");
-        System.out.println(Arrays.toString(list.toArray()));
         return list;
     }
 

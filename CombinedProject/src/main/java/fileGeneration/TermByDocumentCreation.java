@@ -19,6 +19,7 @@ public class TermByDocumentCreation {
         String docs_location = cfr.getPathRScripts();
         String documentsTrainingSet = cfr.getPathTrainingSetDocuments();
         String documentsTestSet = cfr.getPathTestSetDocuments();
+        //TODO simplified not needed anywhere?
         String simplifiedOracle_path = cfr.getPathSimplifiedTruthSet();
         String nameOfAttributeID = cfr.getNameOfAttributeID();
         String nameOfAttributeClass = cfr.getNameOfAttributeClass();

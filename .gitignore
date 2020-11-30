@@ -1,21 +1,14 @@
 .DS_Store
 #idea files
 **/.idea
-
-#generated files
-**/documents-preprocessed-review
-**/test-set
-**/training-set
-**/documents-preprocessed-req_specification
-**/test-set-Req-Specifications
-**/training-set-Req-Specifications
-**/glove.6B.100d.txt
-*.bin
-
-#XML files folder
-**/XMLFiles/*
-
-#generated target classes
 **/target
-CombinedProject/Resources/DL/glove.6B.100d.txt
-*.bin
+
+#generated files folders
+**/ReqSpec
+**/UserReviews
+**/Models
+**/Results
+**/DL
+**/XMLFiles
+
+

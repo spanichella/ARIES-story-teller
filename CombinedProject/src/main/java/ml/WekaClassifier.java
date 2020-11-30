@@ -94,7 +94,7 @@ public class WekaClassifier extends MachineLearningClassifier {
             System.out.println(eval.toMatrixString());
             System.out.println(eval.toClassDetailsString());
             System.out.println("AUC = " + eval.areaUnderROC(1));
-            String strDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm:ss"));
+            String strDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
             FileWriter fileWriter = new FileWriter(pathResultsPrediction + strDate + ".txt");
             PrintWriter printWriter = new PrintWriter(fileWriter);
             printWriter.println("training performance results of: " + classifier.getClass().getSimpleName()
@@ -167,7 +167,7 @@ public class WekaClassifier extends MachineLearningClassifier {
         System.out.println(eval.toClassDetailsString());
         System.out.println("AUC = " + eval.areaUnderROC(1));
 
-        String strDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm:ss"));
+        String strDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
         FileWriter fileWriter = new FileWriter(pathResultsPrediction + strDate + ".txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println("performance results of: " + classifier.getClass().getSimpleName()
