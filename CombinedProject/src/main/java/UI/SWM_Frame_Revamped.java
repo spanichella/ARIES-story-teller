@@ -12,14 +12,12 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.text.DecimalFormat;
-import java.util.Hashtable;
+
 
 public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemListener, ChangeListener {
     Color backGroundColor = new Color(88, 102, 148);
     Color textColor = new Color(230,230,230);
-    //Color successColor = new Color(86,243,16);
     Color separatorColor = new Color(79,92,134);
-    Color frameColor = new Color(0,0,0);
 
     JPanel mainPanel;
     private final JButton truthSetSelector, execute_b;
@@ -47,7 +45,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     SWM_Frame_Revamped(){
         args = new String[] {"null","null","null","null","0.5","null"}; //File,Type,Pipeline,Method,threshold,split
 
-        ImageIcon logoImage = new ImageIcon("Images/swmlogo3.jpg");
+        ImageIcon logoImage = new ImageIcon("Images/swmlogo.jpg");
         JLabel logoLabel = new JLabel();
         logoLabel.setIcon(logoImage);
         logoLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -156,7 +154,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         ImageIcon icon = new ImageIcon("Images/STIcon.jpg");
         this.setIconImage(icon.getImage());
         this.setTitle("Story Teller");
-        this.setSize(320,800);
+        this.setSize(350,800);
         this.setLayout(new BorderLayout());
 
         mainPanel = new JPanel();
@@ -283,7 +281,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         step6Panel.setLayout(new BorderLayout());
 
         JPanel step6MainGrid = new JPanel();
-        step6MainGrid.setLayout(new GridLayout(3,3));
+        step6MainGrid.setLayout(new GridLayout(3,1));
 
         JPanel s6_empty1 = new JPanel();
         s6_empty1.setBackground(backGroundColor);
@@ -296,9 +294,6 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         step6MainGrid.add(s6_empty2);
         step6Panel.add(step6MainGrid,BorderLayout.CENTER);
 
-
-
-        //this.add(new JButton("1"));
         mainPanel.add(logoPanel);
         mainPanel.add(step1Panel);
         mainPanel.add(step2Panel);
@@ -359,10 +354,9 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         s5_borderCenterPanel.add(s5_l_text);
         s5_borderCenterPanel.add(c4);
 
-
-
         this.setVisible(true);
     }
+
 
     public void displayErrorMessage(String errorText){
         JOptionPane.showMessageDialog(this,errorText,
@@ -515,7 +509,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         if (e.getSource() == c1){
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 String check = "null";
-                if (e.getItem() == "User Review Data") {
+                if (e.getItem() == "Requirement Specification Data") {
                     for(int i=0;i<c2.getItemCount();i++){
                         if(c2.getItemAt(i).equals("DL")){
                             check = "found";
@@ -524,7 +518,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
                     if(check.equals("null")){
                         c2.insertItemAt("DL",c2.getItemCount());
                     }
-                } else if (e.getItem() == "Requirement Specification Data") {
+                } else if (e.getItem() == "User Review Data") {
                     c2.setSelectedItem("ML");
                     c2.removeItem("DL");
                 }
@@ -564,12 +558,16 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
                 if(e.getItem().equals("Percentage Split")){
                     populatePanels("Threshold");
                 }
+                else if(e.getItem().equals("10 Fold")){
+                    populatePanels("NoThreshold");
+                }
                 args[5] = e.getItem().toString();
             }
         }
         updateStatus();
         checkIfRunnable();
     }
+
 
     @Override
     public void stateChanged(ChangeEvent e) {
