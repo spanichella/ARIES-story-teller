@@ -29,6 +29,7 @@ import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
 import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
+import org.deeplearning4j.text.sentenceiterator.SynchronizedSentenceIterator;
 import org.deeplearning4j.text.tokenization.tokenizer.preprocessor.CommonPreprocessor;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.TokenizerFactory;
@@ -153,6 +154,7 @@ public class DLPipeline {
             try (BufferedReader reader = new BufferedReader(new FileReader(labelledTurns))) {
 
                 String line = reader.readLine();
+                line = reader.readLine();
                 for (int batch = 0; line != null && batch < nrOfBatches; ++batch) {
                     LOGGER.info("Batch " + batch);
 
@@ -203,7 +205,6 @@ public class DLPipeline {
                     while (ArrayUtils.contains(labelsBatch, -1)) {
                         labelsBatch = ArrayUtils.removeElement(labelsBatch, -1);
                     }
-
                     model.fit(input, labelsBatch);
                 }
 
