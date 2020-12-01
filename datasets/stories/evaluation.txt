@@ -36,6 +36,42 @@ Weighted Avg.    0.817    0.152    0.830      0.817    0.807      0.700    0.862
 
 
 
+Stories	Supplied Test Set	20	tdm_test_set-20_with_oracle.csv
+=== Detailed Accuracy By Class ===
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.673    0.090    0.860      0.673    0.755      0.606    0.810     0.774     F
+                 0.981    0.299    0.717      0.981    0.829      0.689    0.848     0.721     NULL
+                 0.444    0.000    1.000      0.444    0.615      0.645    0.835     0.591     A
+Weighted Avg.    0.782    0.171    0.813      0.782    0.772      0.647    0.830     0.731     
+
+=== Confusion Matrix ===
+   a   b   c   <-- classified as
+  74  36   0 |   a = F
+   2 104   0 |   b = NULL
+  10   5  12 |   c = A
+
+
+
+
+
+Stories	Supplied Test Set	50	tdm_test_set-50_with_oracle.csv
+=== Detailed Accuracy By Class ===
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.735    0.074    0.858      0.735    0.792      0.685    0.854     0.797     F
+                 0.980    0.233    0.807      0.980    0.885      0.765    0.884     0.813     NULL
+                 0.520    0.008    0.907      0.520    0.661      0.657    0.860     0.670     A
+Weighted Avg.    0.831    0.145    0.839      0.831    0.822      0.721    0.870     0.789     
+
+=== Confusion Matrix ===
+   a   b   c   <-- classified as
+ 169  57   4 |   a = F
+   6 297   0 |   b = NULL
+  22  14  39 |   c = A
+
+
+
+
+
 Stories	Cross-Validation	10 Folds
 === Detailed Accuracy By Class ===
                  TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
