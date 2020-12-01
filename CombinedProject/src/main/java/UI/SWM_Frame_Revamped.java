@@ -15,18 +15,19 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     private final JButton truthSetSelector;
     JLabel s1_l_step, s1_l_text;
     JLabel s2_l_step, s2_l_text;
+    JLabel s3_l_step, s3_l_text;
     private final String[] args;
     //private final JRadioButton cb1, cb2;
     private final JComboBox c1, c2;
     String[] contentArray = {"Select", "User Review Data", "Requirement Specification Data"};
-    String[] pipeLineArray = {"Select", "ML", "DL", "Both"};
+    String[] pipeLineArray = {"Select", "ML", "DL"};
 
     SWM_Frame_Revamped(){
         args = new String[] {"null","null","null","null","0.5"}; //File,Type,Pipeline,Method,split
 
         Color backGroundColor = new Color(88, 102, 148);
         Color textColor = new Color(230,230,230);
-        Color successColor = new Color(86,243,16);
+        //Color successColor = new Color(86,243,16);
         Color separatorColor = new Color(79,92,134);
 
         ImageIcon logoImage = new ImageIcon("Images/swmlogo3.jpg");
@@ -39,9 +40,11 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
         c1 = new JComboBox(contentArray);
         c1.addItemListener(this);
+        ((JLabel)c1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 
         c2 = new JComboBox(pipeLineArray);
         c2.addItemListener(this);
+        ((JLabel)c2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 
         s1_l_step = new JLabel("<html><div style='text-align: center;'>[Step 1]</div></html>");
         s1_l_step.setHorizontalAlignment(JLabel.CENTER);
@@ -59,6 +62,14 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         s2_l_text = new JLabel("<html><div style='text-align: center;'>Select Content Type</div></html>");
         s2_l_text.setHorizontalAlignment(JLabel.CENTER);
         s2_l_text.setForeground(textColor);
+
+        s3_l_step = new JLabel("<html><div style='text-align: center;'>[Step 3]</div></html>");
+        s3_l_step.setHorizontalAlignment(JLabel.CENTER);
+        s3_l_step.setForeground(textColor);
+
+        s3_l_text = new JLabel("<html><div style='text-align: center;'>Select a Pipeline</div></html>");
+        s3_l_text.setHorizontalAlignment(JLabel.CENTER);
+        s3_l_text.setForeground(textColor);
 
         ImageIcon icon = new ImageIcon("Images/STIcon.jpg");
         this.setIconImage(icon.getImage());
@@ -145,7 +156,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         this.add(logoPanel);
         this.add(step1Panel);
         this.add(step2Panel);
-        this.add(step4Panel);
+        this.add(step3Panel);
         this.add(step5Panel);
         this.add(step6Panel);
         this.add(step7Panel);
@@ -172,9 +183,9 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         //step 3 panels
         step3Panel.add(s3_borderCenterPanel, BorderLayout.CENTER);
         step3Panel.add(s3_blackBorder_1, BorderLayout.PAGE_END);
-        s3_borderCenterPanel.add(s2_l_step);
-        s3_borderCenterPanel.add(s2_l_text);
-        s3_borderCenterPanel.add(c1);
+        s3_borderCenterPanel.add(s3_l_step);
+        s3_borderCenterPanel.add(s3_l_text);
+        s3_borderCenterPanel.add(c2);
 
 
         this.setVisible(true);
@@ -198,14 +209,6 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
                 }
             }
         }
-        /*else if (e.getSource() == cb1) {
-            args[1] = "UR";
-            System.out.println(args[1]);
-            cb2.setSelected(false);
-        } else if (e.getSource() == cb2) {
-            args[1] = "RS";
-            cb1.setSelected(false);
-        }*/
         updateStatus();
     }
 
@@ -234,10 +237,11 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         }
 
         if(args[2].equals("null") || args[2].equals("Select")){
-
+            s3_l_step.setText("<html><div style='text-align: center;'>[Step 3]</div></html>");
         }
         else{
-
+            s3_l_step.setText("<html><div style='text-align: center;'>[Step 3] <font color =" +
+                    " '#56f310'>DONE</font></div></html>");
         }
 
         if(args[3].equals("null") || args[3].equals("Select")){
@@ -260,10 +264,10 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         }
         else if (e.getSource() == c2){
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                if(c1.getItemAt(0).equals("Select")){
-                    c1.removeItemAt(0);
+                if(c2.getItemAt(0).equals("Select")){
+                    c2.removeItemAt(0);
                 }
-                args[1] = e.getItem().toString();
+                args[2] = e.getItem().toString();
             }
         }
         updateStatus();
