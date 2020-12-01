@@ -6,27 +6,42 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 
-public class SWM_Frame_Revamped extends JFrame implements ActionListener {
+public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemListener {
 
     private final JButton truthSetSelector;
     JLabel s1_l_step, s1_l_text;
+    JLabel s2_l_step, s2_l_text;
     private final String[] args;
+    //private final JRadioButton cb1, cb2;
+    private final JComboBox c1, c2;
+    String[] contentArray = {"Select", "User Review Data", "Requirement Specification Data"};
+    String[] pipeLineArray = {"Select", "ML", "DL", "Both"};
 
     SWM_Frame_Revamped(){
         args = new String[] {"null","null","null","null","0.5"}; //File,Type,Pipeline,Method,split
 
         Color backGroundColor = new Color(88, 102, 148);
         Color textColor = new Color(230,230,230);
+        Color successColor = new Color(86,243,16);
+        Color separatorColor = new Color(79,92,134);
 
         ImageIcon logoImage = new ImageIcon("Images/swmlogo3.jpg");
         JLabel logoLabel = new JLabel();
         logoLabel.setIcon(logoImage);
         logoLabel.setHorizontalAlignment(JLabel.CENTER);
 
-        truthSetSelector = new JButton("Select Truth Set");
+        truthSetSelector = new JButton("Truth Set");
         truthSetSelector.addActionListener(this);
+
+        c1 = new JComboBox(contentArray);
+        c1.addItemListener(this);
+
+        c2 = new JComboBox(pipeLineArray);
+        c2.addItemListener(this);
 
         s1_l_step = new JLabel("<html><div style='text-align: center;'>[Step 1]</div></html>");
         s1_l_step.setHorizontalAlignment(JLabel.CENTER);
@@ -37,6 +52,13 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener {
         s1_l_text.setHorizontalAlignment(JLabel.CENTER);
         s1_l_text.setForeground(textColor);
 
+        s2_l_step = new JLabel("<html><div style='text-align: center;'>[Step 2]</div></html>");
+        s2_l_step.setHorizontalAlignment(JLabel.CENTER);
+        s2_l_step.setForeground(textColor);
+
+        s2_l_text = new JLabel("<html><div style='text-align: center;'>Select Content Type</div></html>");
+        s2_l_text.setHorizontalAlignment(JLabel.CENTER);
+        s2_l_text.setForeground(textColor);
 
         ImageIcon icon = new ImageIcon("Images/STIcon.jpg");
         this.setIconImage(icon.getImage());
@@ -51,21 +73,57 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener {
         logoPanel.setBackground(backGroundColor);
         logoPanel.setLayout(new BorderLayout());
 
-        JPanel break1Panel = new JPanel();
-        break1Panel.setBackground(backGroundColor);
-        break1Panel.setLayout(new BorderLayout());
-
-        JPanel blackBorder = new JPanel();
-        blackBorder.setBackground(new Color(40,40,40));
-
+        //Step 1 Panels
         JPanel step1Panel = new JPanel();
         step1Panel.setBackground(backGroundColor);
-        step1Panel.setLayout(new GridLayout(3,1));
+        step1Panel.setLayout(new BorderLayout());
 
-        JPanel borderCenterPanel = new JPanel();
-        borderCenterPanel.setBackground(backGroundColor);
-        borderCenterPanel.setLayout(new GridLayout(4,1));
+        JPanel s1_borderCenterPanel = new JPanel();
+        s1_borderCenterPanel.setBackground(backGroundColor);
+        s1_borderCenterPanel.setLayout(new GridLayout(3,1));
 
+        JPanel s1_blackBorder_1 = new JPanel();
+        s1_blackBorder_1.setBackground(separatorColor);
+
+        JPanel s1_blackBorder_2 = new JPanel();
+        s1_blackBorder_2.setBackground(separatorColor);
+
+        JPanel s1_bottomPanel = new JPanel();
+        s1_bottomPanel.setBackground(backGroundColor);
+        s1_bottomPanel.setLayout(new GridLayout(3,1));
+
+        JPanel s1_centerPanel = new JPanel();
+        s1_centerPanel.setBackground(backGroundColor);
+        s1_centerPanel.setLayout(new GridLayout(0,3));
+
+        JPanel s1_empty = new JPanel();
+        s1_empty.setBackground(backGroundColor);
+
+        //step 2 panels
+        JPanel step2Panel = new JPanel();
+        step2Panel.setBackground(backGroundColor);
+        step2Panel.setLayout(new BorderLayout());
+
+        JPanel s2_borderCenterPanel = new JPanel();
+        s2_borderCenterPanel.setBackground(backGroundColor);
+        s2_borderCenterPanel.setLayout(new GridLayout(3,1));
+
+        JPanel s2_blackBorder_1 = new JPanel();
+        s2_blackBorder_1.setBackground(separatorColor);
+
+        //step 3 panels
+        JPanel step3Panel = new JPanel();
+        step3Panel.setBackground(backGroundColor);
+        step3Panel.setLayout(new BorderLayout());
+
+        JPanel s3_borderCenterPanel = new JPanel();
+        s3_borderCenterPanel.setBackground(backGroundColor);
+        s3_borderCenterPanel.setLayout(new GridLayout(3,1));
+
+        JPanel s3_blackBorder_1 = new JPanel();
+        s3_blackBorder_1.setBackground(separatorColor);
+
+        //step 4 panel
         JPanel step4Panel = new JPanel();
         step4Panel.setBackground(backGroundColor);
         step4Panel.setLayout(new BorderLayout());
@@ -85,19 +143,39 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener {
 
         //this.add(new JButton("1"));
         this.add(logoPanel);
-        this.add(break1Panel);
         this.add(step1Panel);
+        this.add(step2Panel);
         this.add(step4Panel);
         this.add(step5Panel);
         this.add(step6Panel);
         this.add(step7Panel);
 
         logoPanel.add(logoLabel);
-        break1Panel.add(blackBorder, BorderLayout.PAGE_START);
-        break1Panel.add(borderCenterPanel, BorderLayout.CENTER);
-        borderCenterPanel.add(s1_l_step);
-        borderCenterPanel.add(s1_l_text);
-        borderCenterPanel.add(truthSetSelector);
+
+        //step 1 panels
+        step1Panel.add(s1_blackBorder_1, BorderLayout.PAGE_START);
+        step1Panel.add(s1_borderCenterPanel, BorderLayout.CENTER);
+        step1Panel.add(s1_blackBorder_2, BorderLayout.PAGE_END);
+        s1_borderCenterPanel.add(s1_l_step);
+        s1_borderCenterPanel.add(s1_l_text);
+        s1_borderCenterPanel.add(s1_centerPanel);
+        s1_centerPanel.add(s1_empty);
+        s1_centerPanel.add(truthSetSelector);
+
+        //step 2 panels
+        step2Panel.add(s2_borderCenterPanel, BorderLayout.CENTER);
+        step2Panel.add(s2_blackBorder_1, BorderLayout.PAGE_END);
+        s2_borderCenterPanel.add(s2_l_step);
+        s2_borderCenterPanel.add(s2_l_text);
+        s2_borderCenterPanel.add(c1);
+
+        //step 3 panels
+        step3Panel.add(s3_borderCenterPanel, BorderLayout.CENTER);
+        step3Panel.add(s3_blackBorder_1, BorderLayout.PAGE_END);
+        s3_borderCenterPanel.add(s2_l_step);
+        s3_borderCenterPanel.add(s2_l_text);
+        s3_borderCenterPanel.add(c1);
+
 
         this.setVisible(true);
     }
@@ -120,6 +198,14 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener {
                 }
             }
         }
+        /*else if (e.getSource() == cb1) {
+            args[1] = "UR";
+            System.out.println(args[1]);
+            cb2.setSelected(false);
+        } else if (e.getSource() == cb2) {
+            args[1] = "RS";
+            cb1.setSelected(false);
+        }*/
         updateStatus();
     }
 
@@ -140,10 +226,11 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener {
         }
 
         if(args[1].equals("null")){
-
+            s2_l_step.setText("<html><div style='text-align: center;'>[Step 2]</div></html>");
         }
         else{
-
+            s2_l_step.setText("<html><div style='text-align: center;'>[Step 2] <font color =" +
+                    " '#56f310'>DONE</font></div></html>");
         }
 
         if(args[2].equals("null") || args[2].equals("Select")){
@@ -159,5 +246,26 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener {
         else{
 
         }
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        if (e.getSource() == c1){
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                if(c1.getItemAt(0).equals("Select")){
+                    c1.removeItemAt(0);
+                }
+                args[1] = e.getItem().toString();
+            }
+        }
+        else if (e.getSource() == c2){
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                if(c1.getItemAt(0).equals("Select")){
+                    c1.removeItemAt(0);
+                }
+                args[1] = e.getItem().toString();
+            }
+        }
+        updateStatus();
     }
 }
