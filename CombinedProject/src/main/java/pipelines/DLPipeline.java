@@ -432,7 +432,7 @@ public class DLPipeline {
                 // Loop just in case the file is > Long.MAX_VALUE or skip() decides to not read the entire file
             }
 
-            return count.getLineNumber() + 1;                                    // +1 because line index starts at 0
+            return count.getLineNumber();                                    // +1 because line index starts at 0
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
