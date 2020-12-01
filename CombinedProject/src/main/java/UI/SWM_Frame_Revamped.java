@@ -3,24 +3,38 @@ package UI;
 import weka.core.Debug;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
+import java.text.DecimalFormat;
+import java.util.Hashtable;
 
-public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemListener {
+public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemListener, ChangeListener {
 
     private final JButton truthSetSelector;
-    JLabel s1_l_step, s1_l_text;
+    private final JLabel s1_l_step, s1_l_text;
     JLabel s2_l_step, s2_l_text;
     JLabel s3_l_step, s3_l_text;
+    JLabel s4a_l_step, s4a_l_text;
+    JLabel s4b_l_step, s4b_l_text, s4b_l_value, s4b_l_left, s4b_l_right;
     private final String[] args;
     //private final JRadioButton cb1, cb2;
-    private final JComboBox c1, c2;
+    private final JComboBox c1, c2, c3;
+    private final JSlider thresholdSlider;
     String[] contentArray = {"Select", "User Review Data", "Requirement Specification Data"};
     String[] pipeLineArray = {"Select", "ML", "DL"};
+    String[] methodArray = {
+            "Select", "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
+            "Logistic", "AdaBoostM1", "LogitBoost",
+            "DecisionStump", "LinearRegression",
+            "RegressionByDiscretization"
+    };
+    private final DecimalFormat df = new DecimalFormat("#.##");
 
     SWM_Frame_Revamped(){
         args = new String[] {"null","null","null","null","0.5"}; //File,Type,Pipeline,Method,split
@@ -38,6 +52,11 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         truthSetSelector = new JButton("Truth Set");
         truthSetSelector.addActionListener(this);
 
+        thresholdSlider = new JSlider();
+        thresholdSlider.setMinorTickSpacing(1);
+        thresholdSlider.setBackground(backGroundColor);
+        thresholdSlider.addChangeListener(this);
+
         c1 = new JComboBox(contentArray);
         c1.addItemListener(this);
         ((JLabel)c1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
@@ -45,6 +64,10 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         c2 = new JComboBox(pipeLineArray);
         c2.addItemListener(this);
         ((JLabel)c2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+
+        c3 = new JComboBox(methodArray);
+        c3.addItemListener(this);
+        ((JLabel)c3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 
         s1_l_step = new JLabel("<html><div style='text-align: center;'>[Step 1]</div></html>");
         s1_l_step.setHorizontalAlignment(JLabel.CENTER);
@@ -70,6 +93,34 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         s3_l_text = new JLabel("<html><div style='text-align: center;'>Select a Pipeline</div></html>");
         s3_l_text.setHorizontalAlignment(JLabel.CENTER);
         s3_l_text.setForeground(textColor);
+
+        s4a_l_step = new JLabel("<html><div style='text-align: center;'>[Step 4]</div></html>");
+        s4a_l_step.setHorizontalAlignment(JLabel.CENTER);
+        s4a_l_step.setForeground(textColor);
+
+        s4a_l_text = new JLabel("<html><div style='text-align: center;'>Select Method</div></html>");
+        s4a_l_text.setHorizontalAlignment(JLabel.CENTER);
+        s4a_l_text.setForeground(textColor);
+
+        s4b_l_text = new JLabel("<html><div style='text-align: center;'>Set Threshold</div></html>");
+        s4b_l_text.setHorizontalAlignment(JLabel.CENTER);
+        s4b_l_text.setForeground(textColor);
+
+        s4b_l_step = new JLabel("<html><div style='text-align: center;'>[Step 4]</div></html>");
+        s4b_l_step.setHorizontalAlignment(JLabel.CENTER);
+        s4b_l_step.setForeground(textColor);
+
+        s4b_l_value = new JLabel("<html><div style='text-align: center;'>value: 0.5</div></html>");
+        s4b_l_value.setHorizontalAlignment(JLabel.CENTER);
+        s4b_l_value.setForeground(textColor);
+
+        s4b_l_left = new JLabel("<html><div style='text-align: center;'>0.1</div></html>");
+        s4b_l_left.setHorizontalAlignment(JLabel.LEFT);
+        s4b_l_left.setForeground(textColor);
+
+        s4b_l_right = new JLabel("<html><div style='text-align: center;'>1.0</div></html>");
+        s4b_l_right.setHorizontalAlignment(JLabel.RIGHT);
+        s4b_l_right.setForeground(textColor);
 
         ImageIcon icon = new ImageIcon("Images/STIcon.jpg");
         this.setIconImage(icon.getImage());
@@ -134,14 +185,34 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         JPanel s3_blackBorder_1 = new JPanel();
         s3_blackBorder_1.setBackground(separatorColor);
 
-        //step 4 panel
-        JPanel step4Panel = new JPanel();
-        step4Panel.setBackground(backGroundColor);
-        step4Panel.setLayout(new BorderLayout());
+        //step 4a panel
+        JPanel step4aPanel = new JPanel();
+        step4aPanel.setBackground(backGroundColor);
+        step4aPanel.setLayout(new BorderLayout());
 
-        JPanel step5Panel = new JPanel();
-        step5Panel.setBackground(backGroundColor);
-        step5Panel.setLayout(new BorderLayout());
+        JPanel s4a_borderCenterPanel = new JPanel();
+        s4a_borderCenterPanel.setBackground(backGroundColor);
+        s4a_borderCenterPanel.setLayout(new GridLayout(3,1));
+
+        JPanel s4a_blackBorder_1 = new JPanel();
+        s4a_blackBorder_1.setBackground(separatorColor);
+
+        //step 4b Panel
+        JPanel step4bPanel = new JPanel();
+        step4bPanel.setBackground(backGroundColor);
+        step4bPanel.setLayout(new BorderLayout());
+
+        JPanel s4b_borderCenterPanel = new JPanel();
+        s4b_borderCenterPanel.setBackground(backGroundColor);
+        s4b_borderCenterPanel.setLayout(new GridLayout(4,1));
+
+        JPanel s4b_blackBorder_1 = new JPanel();
+        s4b_blackBorder_1.setBackground(separatorColor);
+
+        JPanel s4b_horizontalSplitter = new JPanel();
+        s4b_horizontalSplitter.setBackground(backGroundColor);
+        s4b_horizontalSplitter.setLayout(new GridLayout(0,3));
+
 
         JPanel step6Panel = new JPanel();
         step6Panel.setBackground(backGroundColor);
@@ -157,7 +228,8 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         this.add(step1Panel);
         this.add(step2Panel);
         this.add(step3Panel);
-        this.add(step5Panel);
+        this.add(step4bPanel);
+
         this.add(step6Panel);
         this.add(step7Panel);
 
@@ -187,35 +259,39 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         s3_borderCenterPanel.add(s3_l_text);
         s3_borderCenterPanel.add(c2);
 
+        //step 4a panels
+        step4aPanel.add(s4a_borderCenterPanel, BorderLayout.CENTER);
+        step4aPanel.add(s4a_blackBorder_1, BorderLayout.PAGE_END);
+        s4a_borderCenterPanel.add(s4a_l_step);
+        s4a_borderCenterPanel.add(s4a_l_text);
+        s4a_borderCenterPanel.add(c3);
+
+        //step 4b panels
+        step4bPanel.add(s4b_borderCenterPanel, BorderLayout.CENTER);
+        step4bPanel.add(s4b_blackBorder_1, BorderLayout.PAGE_END);
+        s4b_borderCenterPanel.add(s4b_l_step);
+        s4b_borderCenterPanel.add(s4b_l_text);
+        s4b_borderCenterPanel.add(s4b_horizontalSplitter);
+        s4b_horizontalSplitter.add(s4b_l_left);
+        s4b_horizontalSplitter.add(s4b_l_value);
+        s4b_horizontalSplitter.add(s4b_l_right);
+        //s4b_borderCenterPanel.add(s4b_l_value);
+        //s4b_borderCenterPanel.add(s4b_horizontalSplitter);
+        s4b_borderCenterPanel.add(thresholdSlider);
+
+
 
         this.setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == truthSetSelector) {
-            JFileChooser fileChooser = new JFileChooser();
-            int response = fileChooser.showOpenDialog(null);
-
-            if (response == JFileChooser.APPROVE_OPTION) {
-                File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                if(!file.toString().substring(file.toString().lastIndexOf(".")).equals(".txt")){
-                    displayErrorMessage("Wrong filetype selected." +
-                            " Please select a .txt file");
-                    args[0] = "null";
-                }
-                else{
-                    args[0] = file.toString();
-                }
-            }
-        }
-        updateStatus();
-    }
-
-
     public void displayErrorMessage(String errorText){
         JOptionPane.showMessageDialog(this,errorText,
                 "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+
+    public void populatePanels(){
+
     }
 
 
@@ -252,6 +328,33 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         }
     }
 
+    public void redrawFrame(){
+        //panel.revalidate();
+        //panel.repaint();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == truthSetSelector) {
+            JFileChooser fileChooser = new JFileChooser();
+            int response = fileChooser.showOpenDialog(null);
+
+            if (response == JFileChooser.APPROVE_OPTION) {
+                File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                if(!file.toString().substring(file.toString().lastIndexOf(".")).equals(".txt")){
+                    displayErrorMessage("Wrong filetype selected." +
+                            " Please select a .txt file");
+                    args[0] = "null";
+                }
+                else{
+                    args[0] = file.toString();
+                }
+            }
+        }
+        updateStatus();
+    }
+
+
     @Override
     public void itemStateChanged(ItemEvent e) {
         if (e.getSource() == c1){
@@ -281,9 +384,32 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
                 if(c2.getItemAt(0).equals("Select")){
                     c2.removeItemAt(0);
                 }
+                if(e.getItem().equals("DL")){
+                    //this.add(step4aPanel);
+                }
                 args[2] = e.getItem().toString();
             }
         }
+        else if (e.getSource() == c3){
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                if(c3.getItemAt(0).equals("Select")){
+                    c3.removeItemAt(0);
+                }
+                args[3] = e.getItem().toString();
+            }
+        }
         updateStatus();
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        double value = ((JSlider) e.getSource()).getValue() * 0.01;
+        if(value<0.1){
+            value = 0.1;
+        }
+        String decimalFixedDouble = df.format(value);
+        s4b_l_value.setText("value: " + decimalFixedDouble);
+        args[4] = decimalFixedDouble;
+        redrawFrame();
     }
 }
