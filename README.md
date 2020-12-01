@@ -66,7 +66,7 @@ The resulting complete dataset (see [datasets folder](./datasets)) achieved bett
 
 
 ### 4.1 Recording Dataset <a name="section4.1"></a>
-The requirements dataset was generated completely from scratch by recording an elicitation meeting, transcribing the test by applying a voice-to-text transformation, and finally manually labeling the data.
+The requirements dataset was generated completely from scratch by recording an elicitation meeting, transcribing the test by applying a voice-to-text transformation, and finally manually labeling the data. In order to ensure anonymity, the company name as well as the project name have been anonymized and do not represent real names.
 
 #### Meeting Context and Objective
 - **Meeting Environment:** The meeting was held in a remote fashion using [Microsoft Teams](https://www.microsoft.com/de-ch/microsoft-365/microsoft-teams/group-chat-software) as a conferencing tool.
