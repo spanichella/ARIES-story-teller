@@ -15,19 +15,26 @@ import java.text.DecimalFormat;
 import java.util.Hashtable;
 
 public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemListener, ChangeListener {
+    Color backGroundColor = new Color(88, 102, 148);
+    Color textColor = new Color(230,230,230);
+    //Color successColor = new Color(86,243,16);
+    Color separatorColor = new Color(79,92,134);
+    Color frameColor = new Color(0,0,0);
 
-    private final JButton truthSetSelector;
+    JPanel mainPanel;
+    private final JButton truthSetSelector, execute_b;
     private final JLabel s1_l_step, s1_l_text;
     JLabel s2_l_step, s2_l_text;
     JLabel s3_l_step, s3_l_text;
     JLabel s4a_l_step, s4a_l_text;
     JLabel s4b_l_step, s4b_l_text, s4b_l_value, s4b_l_left, s4b_l_right;
+    JLabel s5_l_step, s5_l_text;
     private final String[] args;
-    //private final JRadioButton cb1, cb2;
-    private final JComboBox c1, c2, c3;
+    private final JComboBox c1, c2, c3, c4;
     private final JSlider thresholdSlider;
     String[] contentArray = {"Select", "User Review Data", "Requirement Specification Data"};
     String[] pipeLineArray = {"Select", "ML", "DL"};
+    String[] splitArray = {"Select", "10 Fold", "Percentage Split"};
     String[] methodArray = {
             "Select", "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
             "Logistic", "AdaBoostM1", "LogitBoost",
@@ -36,13 +43,9 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     };
     private final DecimalFormat df = new DecimalFormat("#.##");
 
-    SWM_Frame_Revamped(){
-        args = new String[] {"null","null","null","null","0.5"}; //File,Type,Pipeline,Method,split
 
-        Color backGroundColor = new Color(88, 102, 148);
-        Color textColor = new Color(230,230,230);
-        //Color successColor = new Color(86,243,16);
-        Color separatorColor = new Color(79,92,134);
+    SWM_Frame_Revamped(){
+        args = new String[] {"null","null","null","null","0.5","null"}; //File,Type,Pipeline,Method,threshold,split
 
         ImageIcon logoImage = new ImageIcon("Images/swmlogo3.jpg");
         JLabel logoLabel = new JLabel();
@@ -52,10 +55,15 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         truthSetSelector = new JButton("Truth Set");
         truthSetSelector.addActionListener(this);
 
+        execute_b = new JButton("Run");
+        execute_b.addActionListener(this);
+        execute_b.setEnabled(false);
+
         thresholdSlider = new JSlider();
         thresholdSlider.setMinorTickSpacing(1);
         thresholdSlider.setBackground(backGroundColor);
         thresholdSlider.addChangeListener(this);
+        thresholdSlider.setVisible(false);
 
         c1 = new JComboBox(contentArray);
         c1.addItemListener(this);
@@ -68,6 +76,12 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         c3 = new JComboBox(methodArray);
         c3.addItemListener(this);
         ((JLabel)c3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        c3.setVisible(false);
+
+        c4 = new JComboBox(splitArray);
+        c4.addItemListener(this);
+        ((JLabel)c4.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        c4.setVisible(false);
 
         s1_l_step = new JLabel("<html><div style='text-align: center;'>[Step 1]</div></html>");
         s1_l_step.setHorizontalAlignment(JLabel.CENTER);
@@ -97,36 +111,74 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         s4a_l_step = new JLabel("<html><div style='text-align: center;'>[Step 4]</div></html>");
         s4a_l_step.setHorizontalAlignment(JLabel.CENTER);
         s4a_l_step.setForeground(textColor);
+        s4a_l_step.setVisible(false);
 
         s4a_l_text = new JLabel("<html><div style='text-align: center;'>Select Method</div></html>");
         s4a_l_text.setHorizontalAlignment(JLabel.CENTER);
         s4a_l_text.setForeground(textColor);
+        s4a_l_text.setVisible(false);
 
         s4b_l_text = new JLabel("<html><div style='text-align: center;'>Set Threshold</div></html>");
         s4b_l_text.setHorizontalAlignment(JLabel.CENTER);
         s4b_l_text.setForeground(textColor);
+        s4b_l_text.setVisible(false);
 
-        s4b_l_step = new JLabel("<html><div style='text-align: center;'>[Step 4]</div></html>");
+        s4b_l_step = new JLabel("<html><div style='text-align: center;'>[Step 5]</div></html>");
         s4b_l_step.setHorizontalAlignment(JLabel.CENTER);
         s4b_l_step.setForeground(textColor);
+        s4b_l_step.setVisible(false);
 
         s4b_l_value = new JLabel("<html><div style='text-align: center;'>value: 0.5</div></html>");
         s4b_l_value.setHorizontalAlignment(JLabel.CENTER);
         s4b_l_value.setForeground(textColor);
+        s4b_l_value.setVisible(false);
 
         s4b_l_left = new JLabel("<html><div style='text-align: center;'>0.1</div></html>");
         s4b_l_left.setHorizontalAlignment(JLabel.LEFT);
         s4b_l_left.setForeground(textColor);
+        s4b_l_left.setVisible(false);
 
         s4b_l_right = new JLabel("<html><div style='text-align: center;'>1.0</div></html>");
         s4b_l_right.setHorizontalAlignment(JLabel.RIGHT);
         s4b_l_right.setForeground(textColor);
+        s4b_l_right.setVisible(false);
+
+        s5_l_step = new JLabel("<html><div style='text-align: center;'>[Step 5]</div></html>");
+        s5_l_step.setHorizontalAlignment(JLabel.CENTER);
+        s5_l_step.setForeground(textColor);
+        s5_l_step.setVisible(false);
+
+        s5_l_text = new JLabel("<html><div style='text-align: center;'>Select Split</div></html>");
+        s5_l_text.setHorizontalAlignment(JLabel.CENTER);
+        s5_l_text.setForeground(textColor);
+        s5_l_text.setVisible(false);
 
         ImageIcon icon = new ImageIcon("Images/STIcon.jpg");
         this.setIconImage(icon.getImage());
         this.setTitle("Story Teller");
-        this.setSize(300,800);
-        this.setLayout(new GridLayout(7,1));
+        this.setSize(320,800);
+        this.setLayout(new BorderLayout());
+
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new GridLayout(8,1));
+        this.add(mainPanel,BorderLayout.CENTER);
+
+        JPanel topBorder = new JPanel();
+        topBorder.setBackground(separatorColor);
+        this.add(topBorder,BorderLayout.PAGE_START);
+
+        JPanel bottomBorder = new JPanel();
+        bottomBorder.setBackground(separatorColor);
+        this.add(bottomBorder,BorderLayout.PAGE_END);
+
+        JPanel leftBorder = new JPanel();
+        leftBorder.setBackground(separatorColor);
+        this.add(leftBorder,BorderLayout.WEST);
+
+        JPanel rightBorder = new JPanel();
+        rightBorder.setBackground(separatorColor);
+        this.add(rightBorder,BorderLayout.EAST);
+
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(backGroundColor);
@@ -185,7 +237,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         JPanel s3_blackBorder_1 = new JPanel();
         s3_blackBorder_1.setBackground(separatorColor);
 
-        //step 4a panel
+        //step 4a panels
         JPanel step4aPanel = new JPanel();
         step4aPanel.setBackground(backGroundColor);
         step4aPanel.setLayout(new BorderLayout());
@@ -197,7 +249,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         JPanel s4a_blackBorder_1 = new JPanel();
         s4a_blackBorder_1.setBackground(separatorColor);
 
-        //step 4b Panel
+        //step 4b Panels
         JPanel step4bPanel = new JPanel();
         step4bPanel.setBackground(backGroundColor);
         step4bPanel.setLayout(new BorderLayout());
@@ -213,25 +265,48 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         s4b_horizontalSplitter.setBackground(backGroundColor);
         s4b_horizontalSplitter.setLayout(new GridLayout(0,3));
 
+        //step 5 Panels
+        JPanel step5Panel = new JPanel();
+        step5Panel.setBackground(backGroundColor);
+        step5Panel.setLayout(new BorderLayout());
 
+        JPanel s5_borderCenterPanel = new JPanel();
+        s5_borderCenterPanel.setBackground(backGroundColor);
+        s5_borderCenterPanel.setLayout(new GridLayout(3,1));
+
+        JPanel s5_blackBorder_1 = new JPanel();
+        s5_blackBorder_1.setBackground(separatorColor);
+
+        //step 6 Panels
         JPanel step6Panel = new JPanel();
         step6Panel.setBackground(backGroundColor);
         step6Panel.setLayout(new BorderLayout());
 
-        JPanel step7Panel = new JPanel();
-        step7Panel.setBackground(backGroundColor);
-        step7Panel.setLayout(new BorderLayout());
+        JPanel step6MainGrid = new JPanel();
+        step6MainGrid.setLayout(new GridLayout(3,3));
+
+        JPanel s6_empty1 = new JPanel();
+        s6_empty1.setBackground(backGroundColor);
+
+        JPanel s6_empty2 = new JPanel();
+        s6_empty2.setBackground(backGroundColor);
+
+        step6MainGrid.add(s6_empty1);
+        step6MainGrid.add(execute_b);
+        step6MainGrid.add(s6_empty2);
+        step6Panel.add(step6MainGrid,BorderLayout.CENTER);
+
 
 
         //this.add(new JButton("1"));
-        this.add(logoPanel);
-        this.add(step1Panel);
-        this.add(step2Panel);
-        this.add(step3Panel);
-        this.add(step4bPanel);
-
-        this.add(step6Panel);
-        this.add(step7Panel);
+        mainPanel.add(logoPanel);
+        mainPanel.add(step1Panel);
+        mainPanel.add(step2Panel);
+        mainPanel.add(step3Panel);
+        mainPanel.add(step4aPanel);
+        mainPanel.add(step5Panel);
+        mainPanel.add(step4bPanel);
+        mainPanel.add(step6Panel);
 
         logoPanel.add(logoLabel);
 
@@ -275,9 +350,14 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         s4b_horizontalSplitter.add(s4b_l_left);
         s4b_horizontalSplitter.add(s4b_l_value);
         s4b_horizontalSplitter.add(s4b_l_right);
-        //s4b_borderCenterPanel.add(s4b_l_value);
-        //s4b_borderCenterPanel.add(s4b_horizontalSplitter);
         s4b_borderCenterPanel.add(thresholdSlider);
+
+        //step 5 panels
+        step5Panel.add(s5_borderCenterPanel, BorderLayout.CENTER);
+        step5Panel.add(s5_blackBorder_1, BorderLayout.PAGE_END);
+        s5_borderCenterPanel.add(s5_l_step);
+        s5_borderCenterPanel.add(s5_l_text);
+        s5_borderCenterPanel.add(c4);
 
 
 
@@ -290,8 +370,77 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     }
 
 
-    public void populatePanels(){
+    public void populatePanels(String input){
+        if(input.equals("DL")){
+            s4a_l_text.setVisible(false);
+            s4a_l_step.setVisible(false);
+            c3.setVisible(false);
+            s4b_l_step.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
+            s4b_l_text.setVisible(true);
+            s4b_l_step.setVisible(true);
+            s4b_l_value.setVisible(true);
+            s4b_l_left.setVisible(true);
+            s4b_l_right.setVisible(true);
+            thresholdSlider.setVisible(true);
+            s5_l_text.setVisible(false);
+            s5_l_step.setVisible(false);
+            c4.setVisible(false);
+        }
+        else if(input.equals("ML")){
+            s4a_l_text.setVisible(true);
+            s4a_l_step.setVisible(true);
+            c3.setVisible(true);
+            s5_l_text.setVisible(true);
+            s5_l_step.setVisible(true);
+            c4.setVisible(true);
+            s4b_l_text.setVisible(false);
+            s4b_l_step.setVisible(false);
+            s4b_l_value.setVisible(false);
+            s4b_l_left.setVisible(false);
+            s4b_l_right.setVisible(false);
+            thresholdSlider.setVisible(false);
+        }
+        else if(input.equals("Threshold")){
+            s4b_l_step.setText("<html><div style='text-align: center;'>[Step 6]</div></html>");
+            s4b_l_text.setVisible(true);
+            s4b_l_step.setVisible(true);
+            s4b_l_value.setVisible(true);
+            s4b_l_left.setVisible(true);
+            s4b_l_right.setVisible(true);
+            thresholdSlider.setVisible(true);
+        }
+        else if(input.equals("NoThreshold")){
+            s4b_l_text.setVisible(false);
+            s4b_l_step.setVisible(false);
+            s4b_l_value.setVisible(false);
+            s4b_l_left.setVisible(false);
+            s4b_l_right.setVisible(false);
+            thresholdSlider.setVisible(false);
+        }
+    }
 
+
+    public void checkIfRunnable(){
+        Boolean runnable = true;
+
+        if(c2.getSelectedItem() == "DL"){
+            if(args[0].equals("null") || args[1].equals("null") || args[2].equals("null")){
+
+            }
+        }
+        else{
+            for(int i = 0; i<args.length;i++){
+                if(args[i].equals("null")){
+                    runnable = false;
+                }
+            }
+        }
+        if(runnable){
+            execute_b.setEnabled(true);
+        }
+        else{
+            execute_b.setEnabled(false);
+        }
     }
 
 
@@ -321,17 +470,22 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         }
 
         if(args[3].equals("null") || args[3].equals("Select")){
-
+            s4a_l_step.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
         }
         else{
+            s4a_l_step.setText("<html><div style='text-align: center;'>[Step 4] <font color =" +
+                    " '#56f310'>DONE</font></div></html>");
+        }
 
+        if(args[5].equals("null") || args[3].equals("Select")){
+            s5_l_step.setText("<html><div style='text-align: center;'>[Step 5]</div></html>");
+        }
+        else{
+            s5_l_step.setText("<html><div style='text-align: center;'>[Step 5] <font color =" +
+                    " '#56f310'>DONE</font></div></html>");
         }
     }
 
-    public void redrawFrame(){
-        //panel.revalidate();
-        //panel.repaint();
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -352,6 +506,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
             }
         }
         updateStatus();
+        checkIfRunnable();
     }
 
 
@@ -385,7 +540,10 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
                     c2.removeItemAt(0);
                 }
                 if(e.getItem().equals("DL")){
-                    //this.add(step4aPanel);
+                    populatePanels("DL");
+                }
+                else if(e.getItem().equals("ML")){
+                    populatePanels("ML");
                 }
                 args[2] = e.getItem().toString();
             }
@@ -398,7 +556,19 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
                 args[3] = e.getItem().toString();
             }
         }
+        else if (e.getSource() == c4){
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                if(c4.getItemAt(0).equals("Select")){
+                    c4.removeItemAt(0);
+                }
+                if(e.getItem().equals("Percentage Split")){
+                    populatePanels("Threshold");
+                }
+                args[5] = e.getItem().toString();
+            }
+        }
         updateStatus();
+        checkIfRunnable();
     }
 
     @Override
@@ -410,6 +580,5 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         String decimalFixedDouble = df.format(value);
         s4b_l_value.setText("value: " + decimalFixedDouble);
         args[4] = decimalFixedDouble;
-        redrawFrame();
     }
 }
