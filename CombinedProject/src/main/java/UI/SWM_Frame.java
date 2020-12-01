@@ -297,4 +297,9 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         JOptionPane.showMessageDialog(this,errorText,
                 "Error", JOptionPane.ERROR_MESSAGE);
     }
+
+
+    public void populateStepPanel4(){
+
+    }
 }

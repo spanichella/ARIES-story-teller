@@ -256,6 +256,20 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     public void itemStateChanged(ItemEvent e) {
         if (e.getSource() == c1){
             if (e.getStateChange() == ItemEvent.SELECTED) {
+                String check = "null";
+                if (e.getItem() == "User Review Data") {
+                    for(int i=0;i<c2.getItemCount();i++){
+                        if(c2.getItemAt(i).equals("DL")){
+                            check = "found";
+                        }
+                    }
+                    if(check.equals("null")){
+                        c2.insertItemAt("DL",c2.getItemCount());
+                    }
+                } else if (e.getItem() == "Requirement Specification Data") {
+                    c2.setSelectedItem("ML");
+                    c2.removeItem("DL");
+                }
                 if(c1.getItemAt(0).equals("Select")){
                     c1.removeItemAt(0);
                 }
