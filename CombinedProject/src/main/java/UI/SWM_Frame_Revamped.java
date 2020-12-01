@@ -19,6 +19,8 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     Color textColor = new Color(230,230,230);
     Color separatorColor = new Color(79,92,134);
 
+    SWM_Loader_Frame loader;
+
     JPanel mainPanel;
     private final JButton truthSetSelector, execute_b;
     private final JLabel s1_l_step, s1_l_text;
@@ -52,6 +54,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
         truthSetSelector = new JButton("Truth Set");
         truthSetSelector.addActionListener(this);
+
 
         execute_b = new JButton("Run");
         execute_b.addActionListener(this);
@@ -419,7 +422,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
         if(c2.getSelectedItem() == "DL"){
             if(args[0].equals("null") || args[1].equals("null") || args[2].equals("null")){
-
+                runnable = false;
             }
         }
         else{
@@ -435,6 +438,12 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         else{
             execute_b.setEnabled(false);
         }
+    }
+
+
+    public void closeWindow(){
+        loader.closeWindow();
+        dispose();
     }
 
 
@@ -498,6 +507,10 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
                     args[0] = file.toString();
                 }
             }
+        }
+        else if(e.getSource() == execute_b){
+                loader = new SWM_Loader_Frame(args[0],args[1],args[2],args[4]);
+                this.setEnabled(false);
         }
         updateStatus();
         checkIfRunnable();
