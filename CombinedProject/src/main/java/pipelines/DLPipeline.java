@@ -71,9 +71,9 @@ public class DLPipeline {
 
         String modelFileName = "model_6b_" + GLOVE_DIM + "d_v1_0.bin";
 
-        int lengthTrainingSet = getLineCount(labelledTurns);
+        int lengthTrainingSet = getLineCount(labelledTurns)-1;
         System.out.println(lengthTrainingSet);
-        int lengthTestSet = getLineCount(validationSet);
+        int lengthTestSet = getLineCount(validationSet)-1;
         System.out.println(lengthTestSet);
 
 
@@ -101,7 +101,6 @@ public class DLPipeline {
         ModelSerializer.writeModel(model, modelFile, true);
         System.out.println(labelledTurns);
 
-
         LOGGER.info("Start training...");
         train(labelledTurns, wordVectors, lengthTrainingSet, nrOfBatches, nrOfExamplesPerBatch, nrOfEpochs, inputColumns,
                 wordsPerTurn, gloveDimension, model, validationSet, lengthTestSet);
@@ -121,13 +120,13 @@ public class DLPipeline {
 
         // prepare test data
         List<INDArray> inputList = new ArrayList<>(inputSize);
-        double[][] labelsList = new double[inputSize-2][];
+        double[][] labelsList = new double[inputSize][];
         try (BufferedReader reader = new BufferedReader(new FileReader(validationSet))) {
 
             String line;
             int labelsId = 0;
+            reader.readLine();
             while ((line = reader.readLine()) != null) {
-
                 String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
 
                 for (int i = 0 ;  i<lineAr.length;i++){
@@ -135,16 +134,15 @@ public class DLPipeline {
                 }
 
                 if(line.contains("req_specification")){
+                    System.out.println("skipped");
                     continue;
                 }
                 Optional<INDArray> inputMatrix = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
                 inputList.add(inputMatrix.get().ravel());
                 labelsList[labelsId++] = getEvalLabel(lineAr);
             }
-
         }
         INDArray evalInput = Nd4j.create(inputList, shape(inputList.size(), inputColumns));
-        System.out.println(Arrays.toString(labelsList));
         INDArray evalLabels = Nd4j.create(labelsList);
 
         LOGGER.info("Train with " + nrOfExamplesPerBatch + " examples in " + nrOfBatches + " batches for " + nrOfEpochs
@@ -175,12 +173,14 @@ public class DLPipeline {
                         }
 
                         String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
+
+
                         for (int i = 0 ;  i<lineAr.length;i++){
                             lineAr[i] = lineAr[i].replace("\"","");
                         }
 
                         if(line.contains("req_specification")){
-                            example=0;
+                            System.out.println("skipped");
                             continue;
                         }
 
@@ -243,8 +243,11 @@ public class DLPipeline {
 
             String line;
             int labelsId = 0;
+            reader.readLine();
             while ((line = reader.readLine()) != null) {
+                System.out.println(line);
                 String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
+
                 Optional<INDArray> inputMatrix = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
                 inputList.add(inputMatrix.get().ravel());
                 labelsList[labelsId++] = getEvalLabel(lineAr);
@@ -263,11 +266,11 @@ public class DLPipeline {
         String labelStr = lineAr[2];
         switch (labelStr) {
             case "NULL":
-                return new double[]{1, 0, 0};
+                return new double[] { 1, 0, 0 };
             case "A":
-                return new double[]{0, 1, 0};
+                return new double[] { 0, 1, 0 };
             case "F":
-                return new double[]{0, 0, 1};
+                return new double[] { 0, 0, 1 };
         }
 
         throw new IllegalArgumentException("Unknown label: " + labelStr);
@@ -276,11 +279,6 @@ public class DLPipeline {
     private static int getLabelValue(String[] lineAr) {
         String labelStr = lineAr[2];
         return getLabel(labelStr);
-    }
-
-    private static URL makeUrl(String path) throws MalformedURLException, FileNotFoundException {
-        File file = new File(path);
-        return Optional.ofNullable(file.toURI().toURL()).orElseThrow(() -> new FileNotFoundException(path));
     }
 
     private static int getLabel(String labelStr) {
@@ -312,8 +310,9 @@ public class DLPipeline {
 
         List<String> wordList = getWordList(ar, wordVectors);
         if (wordList.isEmpty()) {
-            List<String> list = new ArrayList<String>();
-            list.add("test");
+            List list = new ArrayList<String>();
+            list.add("nothing");
+            list.add("receive");
             return Optional.ofNullable(wordVectors.getWordVectors(list));
         }
 
@@ -325,11 +324,10 @@ public class DLPipeline {
      */
     private static List<String> getWordList(String[] textWordAr, WordVectors wordVectors) {
         List list = Arrays.stream(textWordAr).filter(w -> wordVectors.hasWord(w)).collect(Collectors.toList());
-        return list;
-    }
+        return list;	}
 
     private static int[] shape(int rows, int columns) {
-        return new int[]{rows, columns};
+        return new int[] { rows, columns };
     }
 
     private static final URL loadResource(String name) throws FileNotFoundException {
@@ -389,7 +387,6 @@ public class DLPipeline {
         // System.out.println(multiLayerConf.toJson());
         return new MultiLayerNetwork(multiLayerConf);
     }
-
     /**
      * https://deeplearning4j.org/docs/latest/deeplearning4j-nlp-word2vec
      *
