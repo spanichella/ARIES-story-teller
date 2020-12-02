@@ -374,12 +374,12 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
             s4a_l_step.setVisible(false);
             c3.setVisible(false);
             s4b_l_step.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
-            s4b_l_text.setVisible(true);
-            s4b_l_step.setVisible(true);
-            s4b_l_value.setVisible(true);
-            s4b_l_left.setVisible(true);
-            s4b_l_right.setVisible(true);
-            thresholdSlider.setVisible(true);
+            s4b_l_text.setVisible(false);
+            s4b_l_step.setVisible(false);
+            s4b_l_value.setVisible(false);
+            s4b_l_left.setVisible(false);
+            s4b_l_right.setVisible(false);
+            thresholdSlider.setVisible(false);
             s5_l_text.setVisible(false);
             s5_l_step.setVisible(false);
             c4.setVisible(false);
