@@ -522,7 +522,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         if (e.getSource() == c1) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 String check = "null";
-                if (e.getItem() == "Requirement-Specification") {
+                if (e.getItem() == "Requirement-Specifications") {
                     for (int i = 0; i < c2.getItemCount(); i++) {
                         if (c2.getItemAt(i).equals("DL")) {
                             check = "found";
@@ -531,7 +531,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
                     if (check.equals("null")) {
                         c2.insertItemAt("DL", c2.getItemCount());
                     }
-                } else if (e.getItem() == "User-Review") {
+                } else if (e.getItem() == "User-Reviews") {
                     c2.setSelectedItem("ML");
                     c2.removeItem("DL");
                 }
