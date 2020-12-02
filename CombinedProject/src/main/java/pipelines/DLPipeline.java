@@ -1,7 +1,6 @@
 package pipelines;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -10,8 +9,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
 import configFile.ConfigFileReader;
 import org.apache.commons.lang.ArrayUtils;
 import org.deeplearning4j.eval.Evaluation;
@@ -29,7 +26,6 @@ import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
 import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
-import org.deeplearning4j.text.sentenceiterator.SynchronizedSentenceIterator;
 import org.deeplearning4j.text.tokenization.tokenizer.preprocessor.CommonPreprocessor;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.TokenizerFactory;
@@ -56,9 +52,8 @@ public class DLPipeline {
 
     // https://deeplearning4j.org/tutorials/setup
 
-    public static void main(String args[]) throws IOException, URISyntaxException {
+    public static void runDLPipeline(ConfigFileReader cfg) throws IOException, URISyntaxException {
 
-        ConfigFileReader cfg = new ConfigFileReader("/Users/marckramer/Repos/SWME_G2_HS20/CombinedProject/Resources/XMLFiles/RequirementSpecificationsXML.xml");
         // the training set
         String labelledTurns = cfg.getPathTrainingSet();
         // the test set (but used for validation..)
@@ -146,6 +141,8 @@ public class DLPipeline {
         INDArray evalInput = Nd4j.create(inputList, shape(inputList.size(), inputColumns));
         INDArray evalLabels = Nd4j.create(labelsList);
 
+
+
         LOGGER.info("Train with " + nrOfExamplesPerBatch + " examples in " + nrOfBatches + " batches for " + nrOfEpochs
                 + " epochs");
         for (int epoch = 0; epoch < nrOfEpochs; ++epoch) {
@@ -213,6 +210,7 @@ public class DLPipeline {
             Evaluation eval = new Evaluation(3);
             eval.eval(evalLabels, evalInput, model);
             LOGGER.info(eval.stats());
+            //TODO:Save this to results folder, thx
 
         }
 

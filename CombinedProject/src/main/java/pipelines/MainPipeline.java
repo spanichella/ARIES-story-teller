@@ -63,10 +63,7 @@ public class MainPipeline{
         if(selectedPipeline.equals("ML")){
             MlAnalysis.performMlAnalysis(configFileReader);
         }else if(selectedPipeline.equals("DL")){
-           // DLPipeline.runDLPipeline(configFileReader);
-        }else if(selectedPipeline.equals("Both")){
-            MlAnalysis.performMlAnalysis(configFileReader);
-            System.out.print("both");
+            DLPipeline.runDLPipeline(configFileReader);
         }else{
             logger.severe("Pipeline selection invalid");
         }
