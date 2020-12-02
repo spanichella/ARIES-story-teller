@@ -22,7 +22,7 @@ public class ConfigFileReader {
     // path oracle
     private String pathTruthSet;
     // path threshold
-    private double threshold;
+    private String threshold;
     //local path to the R script "MainScript.r"
     private String pathTbDRScript;
     // locations of training and test sets
@@ -110,7 +110,7 @@ public class ConfigFileReader {
                         this.pathGloveFile = eElement.getElementsByTagName("pathGloveFile").item(0).getTextContent();
                         this.pathTestSet = eElement.getElementsByTagName("pathTestSet").item(0).getTextContent();
                         this.pathTrainingSet = eElement.getElementsByTagName("pathTrainingSet").item(0).getTextContent();
-
+                        this.threshold = eElement.getElementsByTagName("percentageSplit").item(0).getTextContent();
 
                         // ML_ANALYSIS
                         this.strategy = eElement.getElementsByTagName("strategy").item(0).getTextContent();
@@ -247,12 +247,8 @@ public class ConfigFileReader {
         return pathTruthSet;
     }
 
-    public double getThreshold() {
+    public String getThreshold() {
         return threshold;
-    }
-
-    public void setThreshold(double threshold) {
-        this.threshold = threshold;
     }
 
     public String getPathTbDRScript() {

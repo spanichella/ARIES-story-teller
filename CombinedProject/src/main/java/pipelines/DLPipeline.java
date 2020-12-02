@@ -3,6 +3,8 @@ package pipelines;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -74,9 +76,10 @@ public class DLPipeline {
 
 
         int nrOfBatches = 4;
-        int nrOfExamplesPerBatch = 97;
+        int nrOfExamplesPerBatch = lengthTrainingSet/nrOfBatches;
+        LOGGER.info(String.valueOf(nrOfExamplesPerBatch));
 
-        int nrOfEpochs = 100;
+        int nrOfEpochs = 2;
 
         int wordsPerTurn = 100; // estimated. Longer will be cut, shorter will be empty padded.
         int gloveDimension = GLOVE_DIM; // vector dimension of the word representation in the GloVe model
@@ -107,7 +110,13 @@ public class DLPipeline {
         ModelSerializer.writeModel(model, modelFile, true);
 
         LOGGER.info("Evaluate model");
-        evaluate(validationSet, lengthTestSet, model, wordVectors, inputColumns, wordsPerTurn);
+        String result = evaluate(validationSet, lengthTestSet, model, wordVectors, inputColumns, wordsPerTurn);
+        System.out.println(result);
+        String strDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
+        FileWriter fileWriter = new FileWriter(cfg.getPathResultsPrediction() + strDate + ".txt");
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        printWriter.println(result);
+        printWriter.close();
     }
 
     private static void train(String labelledTurns, WordVectors wordVectors, int nrOfExamples, int nrOfBatches,
@@ -206,12 +215,9 @@ public class DLPipeline {
                 }
 
             }
-
-            Evaluation eval = new Evaluation(3);
-            eval.eval(evalLabels, evalInput, model);
-            LOGGER.info(eval.stats());
-            //TODO:Save this to results folder, thx
-
+                Evaluation eval = new Evaluation(3);
+                eval.eval(evalLabels, evalInput, model);
+                LOGGER.info(eval.stats());
         }
 
     }
@@ -219,6 +225,7 @@ public class DLPipeline {
     /**
      * @return an INDArray with the shape: #wordsPerTurn x #inputColumns
      */
+
     private static INDArray pad(INDArray wvm, int wordsPerTurn, int inputGloveDimension) {
         if (wvm.rows() < wordsPerTurn) {
             wvm = Nd4j.vstack(wvm, Nd4j.zeros(wordsPerTurn - wvm.rows(), inputGloveDimension)).reshape(wordsPerTurn,
@@ -232,7 +239,7 @@ public class DLPipeline {
         return wvm; // .reshape(wordsPerTurn, inputColumns);
     }
 
-    private static void evaluate(String validationSet, int inputSize, MultiLayerNetwork model, WordVectors wordVectors,
+    private static String evaluate(String validationSet, int inputSize, MultiLayerNetwork model, WordVectors wordVectors,
                                  int inputColumns, int wordsPerTurn) throws IOException {
 
         List<INDArray> inputList = new ArrayList<>(inputSize);
@@ -246,7 +253,14 @@ public class DLPipeline {
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
+                for (int i = 0 ;  i<lineAr.length;i++){
+                    lineAr[i] = lineAr[i].replace("\"","");
+                }
 
+                if(line.contains("req_specification")){
+                    System.out.println("skipped");
+                    continue;
+                }
                 Optional<INDArray> inputMatrix = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
                 inputList.add(inputMatrix.get().ravel());
                 labelsList[labelsId++] = getEvalLabel(lineAr);
@@ -259,6 +273,7 @@ public class DLPipeline {
         Evaluation eval = new Evaluation(3);
         eval.eval(evalLabels, evalInput, model);
         LOGGER.info(eval.stats());
+        return eval.stats();
     }
 
     private static double[] getEvalLabel(String[] lineAr) {
