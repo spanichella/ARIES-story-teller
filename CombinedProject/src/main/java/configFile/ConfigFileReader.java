@@ -32,7 +32,6 @@ public class ConfigFileReader {
     private String pathSimplifiedTruthSet;
 
 
-
     private String pathTrainingSet;
 
 
@@ -43,7 +42,6 @@ public class ConfigFileReader {
 
     private static String dataType;
     private static String machineLearningModel;
-    private static String machineLearningModelName;
     private static String nameOfAttributeClass;
     private static String nameOfAttributeID;
     private static String nameOfAttributeText;
@@ -73,7 +71,6 @@ public class ConfigFileReader {
             NodeList nList = doc.getElementsByTagName("ADSORB");
             System.out.println("----------------------------");
 
-            // TODO: verify if doc can be null or undefined
             if (doc != null) {
                 for (int temp = 0; temp < nList.getLength(); temp++) {
                     Node nNode = nList.item(temp);
@@ -125,37 +122,25 @@ public class ConfigFileReader {
                         this.pathResultsPrediction = eElement.getElementsByTagName("pathResultsPrediction").item(0).getTextContent();
                         System.out.println("pathResultsPrediction: " + this.pathResultsPrediction);
 
-                        //TODO: needs changes for maybe
-
-                            this.pathTDMTrainingSet = eElement.getElementsByTagName("pathTDMTrainingSet").item(0).getTextContent();
-                            System.out.println("pathTDMTrainingSet: " + this.pathTDMTrainingSet);
-                            this.pathTDMTestSet = eElement.getElementsByTagName("pathTDMTestSet").item(0).getTextContent();
-                            System.out.println("pathTDMTestSet: " + this.pathTDMTestSet);
-
-
-                        if (strategy.equals("10-fold")) {
-                            this.pathFullTDMDataset = eElement.getElementsByTagName("pathFullTDMDataset").item(0).getTextContent();
-                            System.out.println("pathFullTDMDataset: " + this.pathFullTDMDataset);
-                        }
+                        this.pathTDMTrainingSet = eElement.getElementsByTagName("pathTDMTrainingSet").item(0).getTextContent();
+                        System.out.println("pathTDMTrainingSet: " + this.pathTDMTrainingSet);
+                        this.pathTDMTestSet = eElement.getElementsByTagName("pathTDMTestSet").item(0).getTextContent();
+                        System.out.println("pathTDMTestSet: " + this.pathTDMTestSet);
+                        this.pathFullTDMDataset = eElement.getElementsByTagName("pathFullTDMDataset").item(0).getTextContent();
+                        System.out.println("pathFullTDMDataset: " + this.pathFullTDMDataset);
                     }
                 }
             }
         } catch (Exception e) {
-            //e.printStackTrace(); // TODO: why commenting this??
-            System.out.println("ERROR: Something went wrong."); // TODO: after specific catch add a general Exception catch to print stacktrace
+            e.printStackTrace();
             if (doc == null) {
                 System.out.println(" Error message: No such file or directory -> " + pathXMLConfigFile); // TODO: specifically catch FileNotFoundException for this!
             }
         }
     }
 
-    // TODO: clean up all unused getter/setter
     public static String getPathResultsPrediction() {
         return pathResultsPrediction;
-    }
-
-    public static void setResultsPrediction(String resultsPrediction) {
-        ConfigFileReader.pathResultsPrediction = resultsPrediction;
     }
 
     public static String getStrategy() {
@@ -170,24 +155,12 @@ public class ConfigFileReader {
         return machineLearningModel;
     }
 
-    public static void setMachineLearningModel(String machineLearningModel) {
-        ConfigFileReader.machineLearningModel = machineLearningModel;
-    }
-
     public static String getPathFullTDMDataset() {
         return pathFullTDMDataset;
     }
 
     public static void setPathFullTDMDataset(String pathFullTDMDataset) {
         ConfigFileReader.pathFullTDMDataset = pathFullTDMDataset;
-    }
-
-    public static String getMachineLearningModelName() {
-        return machineLearningModelName;
-    }
-
-    public static void setMachineLearningModelName(String machineLearningModelName) {
-        ConfigFileReader.machineLearningModelName = machineLearningModelName;
     }
 
     public static String getPathTDMTrainingSet() {
@@ -202,59 +175,48 @@ public class ConfigFileReader {
         return pathTDMTestSet;
     }
 
-    public  void setPathTDMTestSet(String pathTDMTestSet) {
-        this.pathTDMTestSet = pathTDMTestSet;
-    }
-
-    public  String getPathModel() {
+    public String getPathModel() {
         return pathModel;
     }
 
-    public  void setPathModel(String pathModel) {
+    public void setPathModel(String pathModel) {
         this.pathModel = pathModel;
     }
 
-    public  String getDataType() {
+    public String getDataType() {
         return dataType;
     }
 
-    public  void setDataType(String dataType) {
+    public void setDataType(String dataType) {
         this.dataType = dataType;
     }
 
-    public  String getNameOfAttributeID() {
+    public String getNameOfAttributeID() {
         return nameOfAttributeID;
     }
 
-    public  void setNameOfAttributeID(String nameOfAttributeID) {
-        this.nameOfAttributeID = nameOfAttributeID;
-    }
-
-    public  String getNameOfAttributeText() {
+    public String getNameOfAttributeText() {
         return nameOfAttributeText;
     }
 
-    public  void setNameOfAttributeText(String nameOfAttributeText) {
+    public void setNameOfAttributeText(String nameOfAttributeText) {
         this.nameOfAttributeText = nameOfAttributeText;
     }
 
-    public  String getNameOfAttributeClass() {
+    public String getNameOfAttributeClass() {
         return nameOfAttributeClass;
     }
 
     public void setNameOfAttributeClass(String nameOfAttributeClass) {
         this.nameOfAttributeClass = nameOfAttributeClass;
     }
+
     public String getPathGloveFile() {
         return pathGloveFile;
     }
 
     public String getPathRScriptOracle() {
         return pathRScriptOracle;
-    }
-
-    public void setPathRScriptOracle(String pathRScriptOracle) {
-        this.pathRScriptOracle = pathRScriptOracle;
     }
 
     public String getPathRScripts() {
@@ -285,10 +247,6 @@ public class ConfigFileReader {
         return pathTruthSet;
     }
 
-    public void setPathTruthSet(String pathTruthSet) {
-        this.pathTruthSet = pathTruthSet;
-    }
-
     public double getThreshold() {
         return threshold;
     }
@@ -301,10 +259,6 @@ public class ConfigFileReader {
         return pathTbDRScript;
     }
 
-    public void setPathTbDRScript(String pathTbDRScript) {
-        this.pathTbDRScript = pathTbDRScript;
-    }
-
     public String getPathTrainingSetDocuments() {
         return pathTrainingSetDocuments;
     }
@@ -312,6 +266,7 @@ public class ConfigFileReader {
     public void setPathTrainingSetDocuments(String pathTrainingSetDocuments) {
         this.pathTrainingSetDocuments = pathTrainingSetDocuments;
     }
+
     public String getPathTestSet() {
         return pathTestSet;
     }
@@ -331,6 +286,7 @@ public class ConfigFileReader {
     public void setPathSimplifiedTruthSet(String pathSimplifiedTruthSet) {
         this.pathSimplifiedTruthSet = pathSimplifiedTruthSet;
     }
+
     public String getPathTrainingSet() {
         return pathTrainingSet;
     }

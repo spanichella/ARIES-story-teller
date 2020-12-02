@@ -17,14 +17,14 @@ import java.io.File;
  * Fills XML files on startup with correct paths and other standard values
  */
 public class XMLInitializer {
-    public static void createXML(String basePath, String pathTruthFile,String type, String model, String percentage) {
+    public static void createXML(String basePath, String pathTruthFile,String type, String model, String percentage, String strategy) {
         String baseFolder = "";
         String name = "";
 
-        if (type.equals("RS")) {
+        if (type.equals("Requirement-Specifications")) {
             baseFolder = "Resources/ReqSpec/";
             name = "RequirementSpecifications";
-        } else if (type.equals("UR")) {
+        } else if (type.equals("User-Reviews")) {
             baseFolder = "Resources/UserReviews/";
             name = "UserReviews";
         }
@@ -53,7 +53,7 @@ public class XMLInitializer {
 
             //pathRScriptOracle
             Element pathRScriptOracle = document.createElement("pathRScriptOracle");
-            if (type.equals("RS")) {
+            if (type.equals("Requirement-Specifications")) {
                 pathRScriptOracle.appendChild(document.createTextNode(basePath + "Resources/R-scripts/Script-to-create-test-dataset-Req-Specifications.r"));
             } else {
                 pathRScriptOracle.appendChild(document.createTextNode(basePath + "Resources/R-scripts/Script-to-create-test-dataset.r"));
@@ -72,7 +72,7 @@ public class XMLInitializer {
 
             //dataType
             Element dataType = document.createElement("dataType");
-            if (type.equals("RS")) {
+            if (type.equals("Requirement-Specifications")) {
                 dataType.appendChild(document.createTextNode("Requirement Specifications"));
             } else {
                 dataType.appendChild(document.createTextNode("User Reviews"));
@@ -87,7 +87,7 @@ public class XMLInitializer {
 
             //nameOfAttributeText
             Element nameOfAttributeText = document.createElement("nameOfAttributeText");
-            if (type.equals("RS")) {
+            if (type.equals("Requirement-Specifications")) {
                 nameOfAttributeText.appendChild(document.createTextNode("req_specification"));
             } else {
                 nameOfAttributeText.appendChild(document.createTextNode("review"));
@@ -105,10 +105,9 @@ public class XMLInitializer {
             pathTbDRScript.appendChild(document.createTextNode(basePath + "Resources/R-scripts/MainScript.r"));
             ADSORB.appendChild(pathTbDRScript);
 
-            // TODO: have a look at my set generation script and then refactor enitre method with a function returning the paths pattern
             //pathTrainingSetDocuments
             Element pathTrainingSetDocuments = document.createElement("pathTrainingSetDocuments");
-            if (type.equals("RS")) {
+            if (type.equals("Requirement-Specifications")) {
                 pathTrainingSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "training-set-Req-Specifications"));
             } else {
                 pathTrainingSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "training-set"));
@@ -117,7 +116,7 @@ public class XMLInitializer {
 
             //pathTestSetDocuments
             Element pathTestSetDocuments = document.createElement("pathTestSetDocuments");
-            if (type.equals("RS")) {
+            if (type.equals("Requirement-Specifications")) {
                 pathTestSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "test-set-Req-Specifications"));
             } else {
                 pathTestSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "test-set"));
@@ -126,7 +125,7 @@ public class XMLInitializer {
 
             //pathSimplifiedTruthSet
             Element pathSimplifiedTruthSet = document.createElement("pathSimplifiedTruthSet");
-            if (type.equals("RS")) {
+            if (type.equals("Requirement-Specifications")) {
                 pathSimplifiedTruthSet.appendChild(document.createTextNode(basePath + baseFolder + "truth_set-simplified-Req-Specifications.csv"));
             } else {
                 pathSimplifiedTruthSet.appendChild(document.createTextNode(basePath + baseFolder + "truth_set-simplified.csv"));
@@ -134,10 +133,9 @@ public class XMLInitializer {
             ADSORB.appendChild(pathSimplifiedTruthSet);
 
             //strategy
-            //TODO: implement strategy
-            Element strategy = document.createElement("strategy");
-            strategy.appendChild(document.createTextNode("10-fold"));
-            ADSORB.appendChild(strategy);
+            Element strategyEl = document.createElement("strategy");
+            strategyEl.appendChild(document.createTextNode(strategy));
+            ADSORB.appendChild(strategyEl);
 
             //machineLearningModel
             Element machineLearningModel = document.createElement("machineLearningModel");
@@ -155,14 +153,13 @@ public class XMLInitializer {
             ADSORB.appendChild(percentageSplit);
 
             //pathResultsPrediction
-            //TODO: implement ResultPath
             Element pathResultsPrediction = document.createElement("pathResultsPrediction");
             pathResultsPrediction.appendChild(document.createTextNode(basePath.replace("CombinedProject/", "")+"Results/" + "result_"));
             ADSORB.appendChild(pathResultsPrediction);
 
             //pathTDMTestSet
             Element pathTDMTestSet = document.createElement("pathTDMTestSet");
-            if (type.equals("RS")) {
+            if (type.equals("Requirement-Specifications")) {
                 pathTDMTestSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_testSet_with_oracle_info.csv"));
             } else {
                 pathTDMTestSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_testSet_with_oracle_info.csv"));
@@ -171,27 +168,27 @@ public class XMLInitializer {
 
             //pathTrainingSet
             Element pathTrainingSet = document.createElement("pathTrainingSet");
-            if (type.equals("RS")) {
+            if (type.equals("Requirement-Specifications")) {
                 pathTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "trainingSet_truth_set-Req-Specifications.csv"));
             } else {
-                //TODO
+                //TODO if adding user reviews to DL
                 System.out.println("");
             }
             ADSORB.appendChild(pathTrainingSet);
 
             //pathTestSet
             Element pathTestSet = document.createElement("pathTestSet");
-            if (type.equals("RS")) {
+            if (type.equals("Requirement-Specifications")) {
                 pathTestSet.appendChild(document.createTextNode(basePath + baseFolder + "testSet_truth_set-Req-Specifications.csv"));
             } else {
-                //TODO
+                //TODO if adding user reviews to DL
                 System.out.println("");
             }
             ADSORB.appendChild(pathTestSet);
 
             //pathTDMTrainingSet
             Element pathTDMTrainingSet = document.createElement("pathTDMTrainingSet");
-            if (type.equals("RS")) {
+            if (type.equals("Requirement-Specifications")) {
                 pathTDMTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_trainingSet_with_oracle_info.csv"));
             } else {
                 pathTDMTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_trainingSet_with_oracle_info.csv"));
@@ -200,7 +197,7 @@ public class XMLInitializer {
 
             //pathFullTDMDataset
             Element pathFullTDMDataset = document.createElement("pathFullTDMDataset");
-            if (type.equals("RS")) {
+            if (type.equals("Requirement-Specifications")) {
                 pathFullTDMDataset.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_with_oracle_info.csv"));
             } else {
                 pathFullTDMDataset.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_with_oracle_info.csv"));

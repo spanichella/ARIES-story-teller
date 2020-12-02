@@ -69,7 +69,6 @@ public class WekaClassifier extends MachineLearningClassifier {
             DataSource sourceTraining = new DataSource(pathTrainingSet);
             DataSource sourceTesting = new DataSource(pathTestSet);
             Instances train = sourceTraining.getDataSet();
-            //TODO what is this?
             Instances test = sourceTesting.getDataSet();
 
             logger.info("Loading data...");
@@ -107,7 +106,6 @@ public class WekaClassifier extends MachineLearningClassifier {
             printWriter.close();
 
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -123,7 +121,6 @@ public class WekaClassifier extends MachineLearningClassifier {
             DataSource sourceTraining = new DataSource(pathTrainingSet);
             DataSource sourceTesting = new DataSource(pathTestSet);
             Instances train = sourceTraining.getDataSet();
-            // TODO: does this define the test set to use?
             Instances test = sourceTesting.getDataSet();
 
             logger.info("Loading data");
@@ -135,8 +132,6 @@ public class WekaClassifier extends MachineLearningClassifier {
 
             Classifier classifier = getClassifierClassName(machineLearningModel);
             logger.info("Classifier used: "+String.valueOf(classifier.getClass()));
-
-            //TODO: this method does nothing i guess?
             logger.info("Test set items that need to be labeled:" + test.numInstances());
             logger.info("To classify such instances, consider to use the GUI version of WEKA as reported in the following example:");
             logger.info("https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf");
@@ -184,29 +179,29 @@ public class WekaClassifier extends MachineLearningClassifier {
      * Get classifier's class name by a short name
      */
     public static Classifier getClassifierClassName(String classifierName) {
-        if (classifierName == "J48") {
+        if (classifierName.equals("J48")) {
             return new J48();
-        } else if (classifierName == "PART") {
+        } else if (classifierName.equals("PART")) {
             return new PART();
-        } else if (classifierName == "NaiveBayes") {
+        } else if (classifierName.equals("NaiveBayes")) {
             return new NaiveBayes();
-        } else if (classifierName == "IBk") {
+        } else if (classifierName.equals("IBk")) {
             return new IBk();
-        } else if (classifierName == "OneR") {
+        } else if (classifierName.equals("OneR")) {
             return new OneR();
-        } else if (classifierName == "SMO") {
+        } else if (classifierName.equals("SMO")) {
             return new SMO();
-        } else if (classifierName == "Logistic") {
+        } else if (classifierName.equals("Logistic")) {
             return new Logistic();
-        } else if (classifierName == "AdaBoostM1") {
+        } else if (classifierName.equals("AdaBoostM1")) {
             return new AdaBoostM1();
-        } else if (classifierName == "LogitBoost") {
+        } else if (classifierName.equals("LogitBoost")) {
             return new LogitBoost();
-        } else if (classifierName == "DecisionStump") {
+        } else if (classifierName.equals("DecisionStump")){
             return new DecisionStump();
-        } else if (classifierName == "LinearRegression") {
+        } else if (classifierName.equals("LinearRegression")) {
             return new LinearRegression();
-        } else if (classifierName == "RegressionByDiscretization") {
+        } else if (classifierName.equals("RegressionByDiscretization")) {
             return new RegressionByDiscretization();
         } else {
             return new J48();

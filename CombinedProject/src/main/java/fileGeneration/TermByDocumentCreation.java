@@ -14,12 +14,11 @@ import java.io.InputStreamReader;
 public class TermByDocumentCreation {
 
     public static void createTBD(ConfigFileReader cfr) {
-        //TODO check that none of these is null before exec of script
+
         String pathTbDRScript = cfr.getPathTbDRScript();
         String docs_location = cfr.getPathRScripts();
         String documentsTrainingSet = cfr.getPathTrainingSetDocuments();
         String documentsTestSet = cfr.getPathTestSetDocuments();
-        //TODO simplified not needed anywhere?
         String simplifiedOracle_path = cfr.getPathSimplifiedTruthSet();
         String nameOfAttributeID = cfr.getNameOfAttributeID();
         String nameOfAttributeClass = cfr.getNameOfAttributeClass();

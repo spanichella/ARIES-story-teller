@@ -28,15 +28,13 @@ public class OracleUserReviewsAnalyzer {
 
     //TODO: this is the same code as runReqSpecRScript
     public static void runUserReviewRScript(ConfigFileReader cfr) {
-        //TODO check that none of these is null before exec of script
         String pathRScriptOracle = cfr.getPathRScriptOracle();
         String baseFolder = cfr.getPathBaseFolder();
         String oracle_path = cfr.getPathTruthSet();
         String nameOfAttributeID = cfr.getNameOfAttributeID();
         String nameOfAttributeText = cfr.getNameOfAttributeText();
         String nameOfAttributeClass = cfr.getNameOfAttributeClass();
-        //TODO implement threshold
-        String threshold = String.valueOf(0.5);
+        String threshold = String.valueOf(cfr.getThreshold());
 
         //command to execute
         String command = String.join(" ","Rscript", pathRScriptOracle,baseFolder,oracle_path,threshold,nameOfAttributeID,nameOfAttributeText,nameOfAttributeClass);

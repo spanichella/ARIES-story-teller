@@ -1,6 +1,7 @@
 package UI;
 
-import weka.core.Debug;
+import fileGeneration.XMLInitializer;
+import pipelines.MainPipeline;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -16,8 +17,8 @@ import java.text.DecimalFormat;
 
 public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemListener, ChangeListener {
     Color backGroundColor = new Color(88, 102, 148);
-    Color textColor = new Color(230,230,230);
-    Color separatorColor = new Color(79,92,134);
+    Color textColor = new Color(230, 230, 230);
+    Color separatorColor = new Color(79, 92, 134);
 
     SWM_Loader_Frame loader;
 
@@ -32,10 +33,10 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     private final String[] args;
     private final JComboBox c1, c2, c3, c4;
     private final JSlider thresholdSlider;
-    String[] contentArray = {"Select", "User Review Data", "Requirement Specification Data"};
+    String[] dataTypeArray = {"Select", "User-Reviews", "Requirement-Specifications"};
     String[] pipeLineArray = {"Select", "ML", "DL"};
-    String[] splitArray = {"Select", "10 Fold", "Percentage Split"};
-    String[] methodArray = {
+    String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
+    String[] mlModelArray = {
             "Select", "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
             "Logistic", "AdaBoostM1", "LogitBoost",
             "DecisionStump", "LinearRegression",
@@ -44,8 +45,8 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     private final DecimalFormat df = new DecimalFormat("#.##");
 
 
-    SWM_Frame_Revamped(){
-        args = new String[] {"null","null","null","null","0.5","null"}; //File,Type,Pipeline,Method,threshold,split
+    SWM_Frame_Revamped() {
+        args = new String[]{"null", "null", "null", "null", "0.5", "null"}; //truthFilePath,DataType,Pipeline,MLModel,split,Strategy
 
         ImageIcon logoImage = new ImageIcon("Images/swmlogo.jpg");
         JLabel logoLabel = new JLabel();
@@ -66,22 +67,22 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         thresholdSlider.addChangeListener(this);
         thresholdSlider.setVisible(false);
 
-        c1 = new JComboBox(contentArray);
+        c1 = new JComboBox(dataTypeArray);
         c1.addItemListener(this);
-        ((JLabel)c1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        ((JLabel) c1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 
         c2 = new JComboBox(pipeLineArray);
         c2.addItemListener(this);
-        ((JLabel)c2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        ((JLabel) c2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 
-        c3 = new JComboBox(methodArray);
+        c3 = new JComboBox(mlModelArray);
         c3.addItemListener(this);
-        ((JLabel)c3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        ((JLabel) c3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         c3.setVisible(false);
 
-        c4 = new JComboBox(splitArray);
+        c4 = new JComboBox(strategyArray);
         c4.addItemListener(this);
-        ((JLabel)c4.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        ((JLabel) c4.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         c4.setVisible(false);
 
         s1_l_step = new JLabel("<html><div style='text-align: center;'>[Step 1]</div></html>");
@@ -157,28 +158,28 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         ImageIcon icon = new ImageIcon("Images/STIcon.jpg");
         this.setIconImage(icon.getImage());
         this.setTitle("Story Teller");
-        this.setSize(350,800);
+        this.setSize(350, 800);
         this.setLayout(new BorderLayout());
 
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(8,1));
-        this.add(mainPanel,BorderLayout.CENTER);
+        mainPanel.setLayout(new GridLayout(8, 1));
+        this.add(mainPanel, BorderLayout.CENTER);
 
         JPanel topBorder = new JPanel();
         topBorder.setBackground(separatorColor);
-        this.add(topBorder,BorderLayout.PAGE_START);
+        this.add(topBorder, BorderLayout.PAGE_START);
 
         JPanel bottomBorder = new JPanel();
         bottomBorder.setBackground(separatorColor);
-        this.add(bottomBorder,BorderLayout.PAGE_END);
+        this.add(bottomBorder, BorderLayout.PAGE_END);
 
         JPanel leftBorder = new JPanel();
         leftBorder.setBackground(separatorColor);
-        this.add(leftBorder,BorderLayout.WEST);
+        this.add(leftBorder, BorderLayout.WEST);
 
         JPanel rightBorder = new JPanel();
         rightBorder.setBackground(separatorColor);
-        this.add(rightBorder,BorderLayout.EAST);
+        this.add(rightBorder, BorderLayout.EAST);
 
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -195,7 +196,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
         JPanel s1_borderCenterPanel = new JPanel();
         s1_borderCenterPanel.setBackground(backGroundColor);
-        s1_borderCenterPanel.setLayout(new GridLayout(3,1));
+        s1_borderCenterPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s1_blackBorder_1 = new JPanel();
         s1_blackBorder_1.setBackground(separatorColor);
@@ -205,11 +206,11 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
         JPanel s1_bottomPanel = new JPanel();
         s1_bottomPanel.setBackground(backGroundColor);
-        s1_bottomPanel.setLayout(new GridLayout(3,1));
+        s1_bottomPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s1_centerPanel = new JPanel();
         s1_centerPanel.setBackground(backGroundColor);
-        s1_centerPanel.setLayout(new GridLayout(0,3));
+        s1_centerPanel.setLayout(new GridLayout(0, 3));
 
         JPanel s1_empty = new JPanel();
         s1_empty.setBackground(backGroundColor);
@@ -221,7 +222,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
         JPanel s2_borderCenterPanel = new JPanel();
         s2_borderCenterPanel.setBackground(backGroundColor);
-        s2_borderCenterPanel.setLayout(new GridLayout(3,1));
+        s2_borderCenterPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s2_blackBorder_1 = new JPanel();
         s2_blackBorder_1.setBackground(separatorColor);
@@ -233,7 +234,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
         JPanel s3_borderCenterPanel = new JPanel();
         s3_borderCenterPanel.setBackground(backGroundColor);
-        s3_borderCenterPanel.setLayout(new GridLayout(3,1));
+        s3_borderCenterPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s3_blackBorder_1 = new JPanel();
         s3_blackBorder_1.setBackground(separatorColor);
@@ -245,7 +246,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
         JPanel s4a_borderCenterPanel = new JPanel();
         s4a_borderCenterPanel.setBackground(backGroundColor);
-        s4a_borderCenterPanel.setLayout(new GridLayout(3,1));
+        s4a_borderCenterPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s4a_blackBorder_1 = new JPanel();
         s4a_blackBorder_1.setBackground(separatorColor);
@@ -257,14 +258,14 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
         JPanel s4b_borderCenterPanel = new JPanel();
         s4b_borderCenterPanel.setBackground(backGroundColor);
-        s4b_borderCenterPanel.setLayout(new GridLayout(4,1));
+        s4b_borderCenterPanel.setLayout(new GridLayout(4, 1));
 
         JPanel s4b_blackBorder_1 = new JPanel();
         s4b_blackBorder_1.setBackground(separatorColor);
 
         JPanel s4b_horizontalSplitter = new JPanel();
         s4b_horizontalSplitter.setBackground(backGroundColor);
-        s4b_horizontalSplitter.setLayout(new GridLayout(0,3));
+        s4b_horizontalSplitter.setLayout(new GridLayout(0, 3));
 
         //step 5 Panels
         JPanel step5Panel = new JPanel();
@@ -273,7 +274,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
         JPanel s5_borderCenterPanel = new JPanel();
         s5_borderCenterPanel.setBackground(backGroundColor);
-        s5_borderCenterPanel.setLayout(new GridLayout(3,1));
+        s5_borderCenterPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s5_blackBorder_1 = new JPanel();
         s5_blackBorder_1.setBackground(separatorColor);
@@ -284,7 +285,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         step6Panel.setLayout(new BorderLayout());
 
         JPanel step6MainGrid = new JPanel();
-        step6MainGrid.setLayout(new GridLayout(3,1));
+        step6MainGrid.setLayout(new GridLayout(3, 1));
 
         JPanel s6_empty1 = new JPanel();
         s6_empty1.setBackground(backGroundColor);
@@ -295,7 +296,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
         step6MainGrid.add(s6_empty1);
         step6MainGrid.add(execute_b);
         step6MainGrid.add(s6_empty2);
-        step6Panel.add(step6MainGrid,BorderLayout.CENTER);
+        step6Panel.add(step6MainGrid, BorderLayout.CENTER);
 
         mainPanel.add(logoPanel);
         mainPanel.add(step1Panel);
@@ -361,14 +362,14 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     }
 
 
-    public void displayErrorMessage(String errorText){
-        JOptionPane.showMessageDialog(this,errorText,
+    public void displayErrorMessage(String errorText) {
+        JOptionPane.showMessageDialog(this, errorText,
                 "Error", JOptionPane.ERROR_MESSAGE);
     }
 
 
-    public void populatePanels(String input){
-        if(input.equals("DL")){
+    public void populatePanels(String input) {
+        if (input.equals("DL")) {
             s4a_l_text.setVisible(false);
             s4a_l_step.setVisible(false);
             c3.setVisible(false);
@@ -382,8 +383,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
             s5_l_text.setVisible(false);
             s5_l_step.setVisible(false);
             c4.setVisible(false);
-        }
-        else if(input.equals("ML")){
+        } else if (input.equals("ML")) {
             s4a_l_text.setVisible(true);
             s4a_l_step.setVisible(true);
             c3.setVisible(true);
@@ -396,8 +396,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
             s4b_l_left.setVisible(false);
             s4b_l_right.setVisible(false);
             thresholdSlider.setVisible(false);
-        }
-        else if(input.equals("Threshold")){
+        } else if (input.equals("Threshold")) {
             s4b_l_step.setText("<html><div style='text-align: center;'>[Step 6]</div></html>");
             s4b_l_text.setVisible(true);
             s4b_l_step.setVisible(true);
@@ -405,8 +404,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
             s4b_l_left.setVisible(true);
             s4b_l_right.setVisible(true);
             thresholdSlider.setVisible(true);
-        }
-        else if(input.equals("NoThreshold")){
+        } else if (input.equals("NoThreshold")) {
             s4b_l_text.setVisible(false);
             s4b_l_step.setVisible(false);
             s4b_l_value.setVisible(false);
@@ -417,73 +415,66 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     }
 
 
-    public void checkIfRunnable(){
+    public void checkIfRunnable() {
         Boolean runnable = true;
 
-        if(c2.getSelectedItem() == "DL"){
-            if(args[0].equals("null") || args[1].equals("null") || args[2].equals("null")){
+        if (c2.getSelectedItem() == "DL") {
+            if (args[0].equals("null") || args[1].equals("null") || args[2].equals("null")) {
                 runnable = false;
             }
-        }
-        else{
-            for(int i = 0; i<args.length;i++){
-                if(args[i].equals("null")){
+        } else {
+            for (int i = 0; i < args.length; i++) {
+                if (args[i].equals("null")) {
                     runnable = false;
                 }
             }
         }
-        if(runnable){
+        if (runnable) {
             execute_b.setEnabled(true);
-        }
-        else{
+        } else {
             execute_b.setEnabled(false);
         }
     }
 
 
-    public void closeWindow(){
+    public void closeWindow() {
         loader.closeWindow();
         dispose();
     }
 
 
-    private void updateStatus(){
-        if(args[0].equals("null")){
+    private void updateStatus() {
+        if (args[0].equals("null")) {
             s1_l_step.setText("<html><div style='text-align: center;'>[Step 1]</div></html>");
-        }
-        else{
+        } else {
             s1_l_step.setText("<html><div style='text-align: center;'>[Step 1] <font color =" +
                     " '#56f310'>DONE</font></div></html>");
         }
 
-        if(args[1].equals("null")){
+        if (args[1].equals("null")) {
             s2_l_step.setText("<html><div style='text-align: center;'>[Step 2]</div></html>");
-        }
-        else{
+        } else {
             s2_l_step.setText("<html><div style='text-align: center;'>[Step 2] <font color =" +
                     " '#56f310'>DONE</font></div></html>");
         }
 
-        if(args[2].equals("null") || args[2].equals("Select")){
+        if (args[2].equals("null") || args[2].equals("Select")) {
             s3_l_step.setText("<html><div style='text-align: center;'>[Step 3]</div></html>");
-        }
-        else{
+        } else {
             s3_l_step.setText("<html><div style='text-align: center;'>[Step 3] <font color =" +
                     " '#56f310'>DONE</font></div></html>");
         }
 
-        if(args[3].equals("null") || args[3].equals("Select")){
+        if (args[3].equals("null") || args[3].equals("Select")) {
             s4a_l_step.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
-        }
-        else{
+        } else {
             s4a_l_step.setText("<html><div style='text-align: center;'>[Step 4] <font color =" +
                     " '#56f310'>DONE</font></div></html>");
         }
 
-        if(args[5].equals("null") || args[3].equals("Select")){
+        if (args[5].equals("null") || args[3].equals("Select")) {
             s5_l_step.setText("<html><div style='text-align: center;'>[Step 5]</div></html>");
-        }
-        else{
+        } else {
             s5_l_step.setText("<html><div style='text-align: center;'>[Step 5] <font color =" +
                     " '#56f310'>DONE</font></div></html>");
         }
@@ -498,19 +489,28 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
             if (response == JFileChooser.APPROVE_OPTION) {
                 File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                if(!file.toString().substring(file.toString().lastIndexOf(".")).equals(".txt")){
+                if (!file.toString().substring(file.toString().lastIndexOf(".")).equals(".txt")) {
                     displayErrorMessage("Wrong filetype selected." +
                             " Please select a .txt file");
                     args[0] = "null";
-                }
-                else{
+                } else {
                     args[0] = file.toString();
                 }
             }
-        }
-        else if(e.getSource() == execute_b){
-                loader = new SWM_Loader_Frame(args[0],args[1],args[2],args[4]);
-                this.setEnabled(false);
+        } else if (e.getSource() == execute_b) {
+            loader = new SWM_Loader_Frame(args[0], args[1], args[2], args[4]);
+            //set mainPath according to Operating System
+            String mainPath = MainPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/", "");
+            if (System.getProperty("os.name").toLowerCase().contains("win")) {
+                mainPath = mainPath.substring(1);
+            }
+            generateXML();
+            try {
+                MainPipeline.runPipeline(mainPath, args[2], args[1]);
+            } catch (Exception e1) {
+                System.out.print(e1);
+            }
+            this.setEnabled(false);
         }
         updateStatus();
         checkIfRunnable();
@@ -519,59 +519,54 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-        if (e.getSource() == c1){
+        if (e.getSource() == c1) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 String check = "null";
-                if (e.getItem() == "Requirement Specification Data") {
-                    for(int i=0;i<c2.getItemCount();i++){
-                        if(c2.getItemAt(i).equals("DL")){
+                if (e.getItem() == "Requirement-Specification") {
+                    for (int i = 0; i < c2.getItemCount(); i++) {
+                        if (c2.getItemAt(i).equals("DL")) {
                             check = "found";
                         }
                     }
-                    if(check.equals("null")){
-                        c2.insertItemAt("DL",c2.getItemCount());
+                    if (check.equals("null")) {
+                        c2.insertItemAt("DL", c2.getItemCount());
                     }
-                } else if (e.getItem() == "User Review Data") {
+                } else if (e.getItem() == "User-Review") {
                     c2.setSelectedItem("ML");
                     c2.removeItem("DL");
                 }
-                if(c1.getItemAt(0).equals("Select")){
+                if (c1.getItemAt(0).equals("Select")) {
                     c1.removeItemAt(0);
                 }
                 args[1] = e.getItem().toString();
             }
-        }
-        else if (e.getSource() == c2){
+        } else if (e.getSource() == c2) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                if(c2.getItemAt(0).equals("Select")){
+                if (c2.getItemAt(0).equals("Select")) {
                     c2.removeItemAt(0);
                 }
-                if(e.getItem().equals("DL")){
+                if (e.getItem().equals("DL")) {
                     populatePanels("DL");
-                }
-                else if(e.getItem().equals("ML")){
+                } else if (e.getItem().equals("ML")) {
                     populatePanels("ML");
                 }
                 args[2] = e.getItem().toString();
             }
-        }
-        else if (e.getSource() == c3){
+        } else if (e.getSource() == c3) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                if(c3.getItemAt(0).equals("Select")){
+                if (c3.getItemAt(0).equals("Select")) {
                     c3.removeItemAt(0);
                 }
                 args[3] = e.getItem().toString();
             }
-        }
-        else if (e.getSource() == c4){
+        } else if (e.getSource() == c4) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                if(c4.getItemAt(0).equals("Select")){
+                if (c4.getItemAt(0).equals("Select")) {
                     c4.removeItemAt(0);
                 }
-                if(e.getItem().equals("Percentage Split")){
+                if (e.getItem().equals("Percentage-Split")) {
                     populatePanels("Threshold");
-                }
-                else if(e.getItem().equals("10 Fold")){
+                } else if (e.getItem().equals("10-Fold")) {
                     populatePanels("NoThreshold");
                 }
                 args[5] = e.getItem().toString();
@@ -585,11 +580,24 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     @Override
     public void stateChanged(ChangeEvent e) {
         double value = ((JSlider) e.getSource()).getValue() * 0.01;
-        if(value<0.1){
+        if (value < 0.1) {
             value = 0.1;
         }
         String decimalFixedDouble = df.format(value);
         s4b_l_value.setText("value: " + decimalFixedDouble);
         args[4] = decimalFixedDouble;
+    }
+
+    void generateXML() {
+
+        //create XML files with paths, etc.
+        //set mainPath according to Operating System
+        String mainPath = MainPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/", "");
+        if (System.getProperty("os.name").toLowerCase().contains("win")) {
+            mainPath = mainPath.substring(1);
+        }
+        System.out.print(mainPath);
+        XMLInitializer.createXML(mainPath, args[0], args[1], args[3], args[4], args[5]);
+
     }
 }

@@ -15,7 +15,8 @@ public class MlAnalysis {
         logger.info("Starting Machine Learning Analysis...");
         WekaClassifier wekaClassifier = new WekaClassifier();
         if (configFileReader.getStrategy() != null) {
-            if (configFileReader.getStrategy().equals("Training_and_test_set")) {
+            if (configFileReader.getStrategy().equals("Percentage-Split")) {
+
                 wekaClassifier = new WekaClassifier(configFileReader.getPathTDMTrainingSet(), configFileReader.getPathTDMTestSet(), configFileReader.getPathModel());
 
                 if (checkWehetherTestSetIsLabeled(configFileReader.getPathTDMTestSet())) {
@@ -25,11 +26,11 @@ public class MlAnalysis {
                 }
             }
 
-            if (configFileReader.getStrategy().equals("10-fold")) {
+            if (configFileReader.getStrategy().equals("10-Fold")) {
                 try {
                     wekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.getPathFullTDMDataset(), configFileReader.getPathModel(), configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction());
                 } catch (Exception e) {
-                    logger.severe("Error: Could not run 10-fold strategy");
+                    logger.severe(e.getMessage());
                     System.exit(1);
                 }
             }
@@ -51,7 +52,7 @@ public class MlAnalysis {
                 lineNum++;
                 //System.out.println(line);
                 if (line.contains("\"?\"") || line.contains("'?'") || line.endsWith("?")) {
-                    System.out.println("\nCHECK DONE: the test set is non labeled, we need to label such instances");
+                    System.out.println("CHECK DONE: the test set is non labeled, we need to label such instances");
                     return false;
                 }
             }
@@ -59,7 +60,7 @@ public class MlAnalysis {
             //TODO handle this; generally throw error instead of blind catch; also check correct return in case of failure
             //e.printStackTrace();
         }
-        System.out.println("\\nCHECK DONE: the test set is labeled.");
+        System.out.println("CHECK DONE: the test set is labeled.");
         return true;
     }
 }
