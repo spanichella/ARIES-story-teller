@@ -15,7 +15,7 @@ import java.io.File;
 import java.text.DecimalFormat;
 
 
-public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemListener, ChangeListener {
+public class SWM_Frame extends JFrame implements ActionListener, ItemListener, ChangeListener {
     Color backGroundColor = new Color(88, 102, 148);
     Color textColor = new Color(230, 230, 230);
     Color separatorColor = new Color(79, 92, 134);
@@ -45,7 +45,7 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
     private final DecimalFormat df = new DecimalFormat("#.##");
 
 
-    SWM_Frame_Revamped() {
+    SWM_Frame() {
         args = new String[]{"null", "null", "null", "null", "0.5", "null"}; //truthFilePath,DataType,Pipeline,MLModel,split,Strategy
 
         ImageIcon logoImage = new ImageIcon("Images/swmlogo.jpg");

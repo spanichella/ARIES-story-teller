@@ -158,7 +158,7 @@ public class XMLInitializer {
                 pathTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "trainingSet_truth_set-Req-Specifications.csv"));
             } else {
                 //TODO if adding user reviews to DL
-                System.out.println("");
+                throw new RuntimeException("Path of training-set not defined for UserReviews if using DL-Pipeline");
             }
             ADSORB.appendChild(pathTrainingSet);
 
@@ -167,7 +167,7 @@ public class XMLInitializer {
                 pathTestSet.appendChild(document.createTextNode(basePath + baseFolder + "testSet_truth_set-Req-Specifications.csv"));
             } else {
                 //TODO if adding user reviews to DL
-                System.out.println("");
+                throw new RuntimeException("Path of test-set not defined for UserReviews if using DL-Pipeline");
             }
             ADSORB.appendChild(pathTestSet);
 
