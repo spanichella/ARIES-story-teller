@@ -32,7 +32,7 @@ Finally, the newly created and labeled data sets have been applied to both the M
 
 **// TODO: verify the image appears after merging combined pipeline**
 **Requirements-Collector Context:**
-![](./CombinedProject/Images/requirements-collector_context.png)
+![](combined-pipelines/Images/requirements-collector_context.png)
 
 
 
@@ -119,11 +119,11 @@ The user story dataset was created using a [collection of datasets](https://data
 
 
 ## 5. Wrapper Component Description <a name="section5"></a>
-During our project, we wrapped the two pipelines into one executable programm. To make it user friendly we changed the setup and execution procedure from ground up with removing the commandline interaction and manual specification of the local paths and replacing them with a simple graphical user interface. During the merging of the pipelines, we also refactored, cleaned up and fixed the code, so that it now also works on windows. A more indept description and propositions to further enhance and extend our work can be found [here](./CombinedProject/README.md)
+During our project, we wrapped the two pipelines into one executable programm. To make it user friendly we changed the setup and execution procedure from ground up with removing the commandline interaction and manual specification of the local paths and replacing them with a simple graphical user interface. During the merging of the pipelines, we also refactored, cleaned up and fixed the code, so that it now also works on windows. A more indept description and propositions to further enhance and extend our work can be found [here](combined-pipelines/README.md)
 **//TODO: @Marc** \
 _// pfad zu readme sollte stimmen, wird nach merge funktionnieren
 _//Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, die folgende Zeile im markdown macht das (sobald branch mit main gemerged ist sollte das img am richtigen Ort liegen)_
-![](./CombinedProject/Images/swmlogo2.jpg)
+![](combined-pipelines/Images/swmlogo2.jpg)
 
 
 
