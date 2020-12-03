@@ -90,7 +90,7 @@ The requirements dataset was generated completely from scratch by recording an e
     - **NULL**: Neither functional nor non-functional
 - The dataset contains 665 lines of labeled lines of tab-separated values, including line number, text content, and classification label
 - Strong semantic errors in the transcription due to misspelling or mis-identification of words have been manually fixed
-- The LOC is 100%, meaning the data has not been trimmed in any way **//TODO: What is that supposed to mean?**
+- <span style="color:red">The LOC is 100%, meaning the data has not been trimmed in any way **//TODO: What is that supposed to mean?**</span>
 
 #### Dataset Creation
 - We collected the software specifications of the project and derived some project requirements
@@ -123,7 +123,7 @@ we removed the command-line interaction as well as any manual specifications of 
 While merging the pipelines we also refactored, cleaned up, and fixed the code, such that it now also works on Windows.
 A more in-depth description and propositions to further enhance and extend our work can be found [here](combined-pipelines/README.md)
 
-**//TODO: @Marc** \
+<span style="color:red">**//TODO: @Marc**</span> \
 _//Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, die folgende Zeile im markdown macht das (sobald branch mit main gemerged ist sollte das img am richtigen Ort liegen)_
 
 ![](combined-pipelines/Images/swmlogo2.jpg)
@@ -134,7 +134,7 @@ _//Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, 
 - **Precision** is a metric which quantifies the number of correct positive predictions made and is calculated as the ratio of correctly predicted positive examples (out of the total retrieved) divided by the total number of retrieved examples [2]
 - **Recall** is a metric which quantifies the number of correct positive predictions made out of all positive predictions there are. Recall provides an indication of missed positive predictions (contrary to precision) [2]
 
-**// TODO: Can somebody please verify that this is correct?**
+<span style="color:red">**// TODO: Can somebody please verify that this is correct?**</span>
 
 
 
