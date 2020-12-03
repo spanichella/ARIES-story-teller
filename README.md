@@ -135,6 +135,7 @@ _//Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, 
 - **Precision** is a metric which quantifies the number of correct positive predictions made and is calculated as the ratio of correctly predicted positive examples (out of the total retrieved) divided by the total number of retrieved examples [2]
 - **Recall** is a metric which quantifies the number of correct positive predictions made out of all positive predictions there are. Recall provides an indication of missed positive predictions (contrary to precision) [2]
 
+###  Discussion of Precision and Recall From ML Pipeline 
 **Original Study Dataset Precision and Recall Result:**\
 \
 ![](combined-pipelines/Images/Original_Study_Result_Graph.png)
