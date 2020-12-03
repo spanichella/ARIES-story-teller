@@ -2,7 +2,6 @@
 Requirements-Collector follow-up study: Automating Requirements Specification from Elicitation Sessions and User Feedback\
 Tool - Version 1.1
 
-**Authors of the original study:** [Sebastiano Panichella](https://spanichella.github.io/index.html), [Marcela Ruiz](https://www.marcelaruiz.eu/) \
 **Authors:** [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm)
 
 
@@ -21,38 +20,37 @@ Tool - Version 1.1
 
 ## 1. Project Description <a name="section1"></a>
 In order to speed up the time-to-market of high-quality software products, the authors developed the _Requirements-Collector_ tool.
-This tool supports an automatic analysis and classification of requirements specification and user feedback by leveraging the power of machine- and deeplearning strategies (for a full description of the ML an DL component, please follow the links mentioned in the [Tool Description](#section2) section).
+This tool supports an automatic analysis and classification of requirements specification and user feedback by leveraging the power of machine and deep learning strategies (for a full description of the ML and DL component, please follow the links mentioned in the [Tool Description](#section2) section).
 Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of investigation.
 Thus, this study focuses on extending the requirements and user story dataset of the former study in contemplation of further validating the efficiency and precision of the _Requirements-Collector_ tool.
-Additionally, to further increase the usability of the tool and to allow a broader audience to interact with it, we developed a more flexible environment: the _StoryTeller GUI_.
+Additionally, to further increase the usability of the tool and to allow a broader audience to interact with it, we developed a more flexible environment: _StoryTeller_, including a dedicated graphical user interface.
 
-
-The _StoryTeller GUI_ acts as a wrapper and combines both the ML and DL component inside a single executable instance.
-Finally, the newly created and labeled data sets have been applied to both the ML and DL Pipeline in order to further train the algorithms and evaluate their resulting precision and accuracy values.
-
-**// TODO: verify the image appears after merging combined pipeline**
-**Requirements-Collector Context:**
-![](combined-pipelines/Images/requirements-collector_context.png)
+_StoryTeller_ acts as a wrapper and combines both the ML and DL component inside a single executable instance.
+The newly created and labeled data sets have been applied to both the ML and DL Pipeline in order to further train the algorithms and evaluate their resulting precision and accuracy values.
 
 
 
 ## 2. Requirement-Collector Tool Description <a name="section2"></a>
-The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this study are based on the _Requirements-Collector_ tool as proposed by [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/).
+The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this study are based on the _Requirements-Collector_ tool [1] as proposed by [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/).
 The corresponding installation guide and source code of both ML and DL component can be found in the following links to their respective GitHub repositories:
 
 - [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component)
 - [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component)
 
+**Requirements-Collector Context:**
+![](combined-pipelines/Images/requirements-collector_context.png)
 
 
 ## 3. Setup Guide <a name="section3"></a>
 ### Pre-Requisites
 - Java 15
-- The [R (Version: R-4.0.3) ](https://cran.r-project.org/) must be installed and operational 
+- The [R language](https://cran.r-project.org/) (version 4.0.3) must be installed and operational 
 - Cores: 8
-- Memory: 4.9GB
+- Memory: 4.9 GB
 - Download [glove txt file](https://www.kaggle.com/watts2/glove6b50dtxt) and put it into the DL folder located at Combined Project -> Ressources
 - For usage on Windows, add the RScript bin folder path (e.g., C:\Program Files\R\R-4.0.3\bin) to the PATH variable (in environment variables)
+
+
 ### Supported Operating Systems
 - Mac OS (works on 10.15.7 using Intel chipset)
 - Ubuntu 18.04 or above
@@ -62,7 +60,7 @@ The corresponding installation guide and source code of both ML and DL component
 
 ## 4. Dataset Description <a name="section4"></a>
 For evaluation of the DL and ML component, we created a new dataset based on a requirement elicitation session and used it to extend the already existing dataset of the original study.
-The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [6: Study Results](#6-study-results-and-discussion-a-namesection6a).
+The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results](#section6).
 
 
 ### 4.1 Recording Dataset <a name="section4.1"></a>
@@ -70,7 +68,7 @@ The requirements dataset was generated completely from scratch by recording an e
 
 #### Meeting Context and Objective
 - **Meeting Environment:** The meeting was held in a remote fashion using [Microsoft Teams](https://www.microsoft.com/de-ch/microsoft-365/microsoft-teams/group-chat-software) as a conferencing tool.
-- **Meeting Setup:** The meeting included three participants: a **UX Designer**, a **Software Engineer**, and the **Project Manager**.
+- **Meeting Setup:** The meeting included three participants: a UX designer, a software engineer, and the project manager.
 - **Meeting Topic:** The topic of the meeting was set around the _ABC Software_ project.
     The _ABC Software_ (SaaS) is a web based survey tool that supports team managers and project managers in creating short surveys (Pulse Surveys) with little effort and an intuitive and an easy to understand interface.
     A Pulse Survey typically takes around 2 - 3 minutes for a survey participant to fill out.
@@ -103,15 +101,15 @@ The requirements dataset was generated completely from scratch by recording an e
 
 
 ### 4.2 User Stories Dataset <a name="section4.2"></a>
-The user story dataset was created using a [collection of datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each - expressed as user stories - and combining them with randomly selected `NULL` lines from the existing dataset in the original study. We used the datasets with names containing 02-04, 08 and 10-14.
+The user story dataset was created using a [collection of datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each - expressed as user stories - and combining them with randomly selected `NULL` lines from the existing dataset in the original study.
 
 #### Dataset Information
 - The dataset can be found in the corresponding dataset folder as [truth_set_combined-ReqSpec.txt](./datasets/combined/truth_set_combined-ReqSpec.txt)
 - The dataset contains 1215 lines of labeled lines of tab-separated values, including line number, text content, and classification label
  
 #### Dataset Creation
-- From an existing dataset containing different files of user stories we collected 615 lines of requirements
-- We manually labeled the dataset with Functional Requirement (F) and Non-Functional Requirement (A)
+- From existing datasets (mentioned above) containing different files of user stories we collected 615 lines of requirements (files g02-04, g08, g10-14; contained in the [sources folder](./datasets/_sources/datasets))
+- We manually labeled the dataset as Functional Requirement (`F`) or Non-Functional Requirement (`A`)
 - In order to balance the dataset we added 600 `NULL` lines by randomly selecting matching lines from the dataset [truth_set_study-ReqSpec.txt](./datasets/study/truth_set_study-ReqSpec.txt) of the previous work.
     We used [Microsoft Excel](https://www.microsoft.com/en-ww/microsoft-365/excel) for this by sorting the dataset according to the classifications and shuffling the lines using [random sort in Excel](https://www.ablebits.com/office-addins-blog/2018/01/24/excel-randomize-list-random-sort/).
     We then combined the findings with our gathered user stories and shuffled the dataset again for its final version
@@ -119,22 +117,27 @@ The user story dataset was created using a [collection of datasets](https://data
 
 
 ## 5. Wrapper Component Description <a name="section5"></a>
-During our project, we wrapped the two pipelines into one executable programm. To make it user friendly we changed the setup and execution procedure from ground up with removing the commandline interaction and manual specification of the local paths and replacing them with a simple graphical user interface. During the merging of the pipelines, we also refactored, cleaned up and fixed the code, so that it now also works on windows. A more indept description and propositions to further enhance and extend our work can be found [here](combined-pipelines/README.md)
+During our project, we wrapped the two pipelines into one executable program.
+To make it more user-friendly, we changed the setup and execution procedure from the ground up:
+we removed the command-line interaction as well as any manual specifications of local paths, and replaced them with a simple graphical user interface instead.
+While merging the pipelines we also refactored, cleaned up, and fixed the code, such that it now also works on Windows.
+A more in-depth description and propositions to further enhance and extend our work can be found [here](combined-pipelines/README.md)
+
 **//TODO: @Marc** \
-_// pfad zu readme sollte stimmen, wird nach merge funktionnieren
 _//Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, die folgende Zeile im markdown macht das (sobald branch mit main gemerged ist sollte das img am richtigen Ort liegen)_
+
 ![](combined-pipelines/Images/swmlogo2.jpg)
 
 
 
 ## 6. Study Results and Discussion <a name="section6"></a>
-- **Precision** is a metric which quantifies the number of correct positive predictions made and is calculated as the ratio of correctly predicted positive examples (out of the total retrieved) divided by the total number of retrieved examples [1]
-- **Recall** is a metric which quantifies the number of correct positive predictions made out of all positive predictions there are. Recall provides an indication of missed positive predictions (contrary to precision) [1]
+- **Precision** is a metric which quantifies the number of correct positive predictions made and is calculated as the ratio of correctly predicted positive examples (out of the total retrieved) divided by the total number of retrieved examples [2]
+- **Recall** is a metric which quantifies the number of correct positive predictions made out of all positive predictions there are. Recall provides an indication of missed positive predictions (contrary to precision) [2]
 
 **// TODO: Can somebody please verify that this is correct?**
 
 
 
 ## References
-- [1] A. Fernandez, S. Garcia, M. Galar, R. C. Prati, B. Krawczyk, F. Herrera, 2018. Learning from Imbalanced Data Sets, 1st ed. 2018 Edition
-- [2] M. Ruiz, S. Panichella, 2020. Can We Design Software as We Talk? **//TODO: Source Info not complete; Also where should this be used?**
+- [1] M. Ruiz, S. Panichella, 2020. Can We Design Software as We Talk?
+- [2] A. Fernandez, S. Garcia, M. Galar, R. C. Prati, B. Krawczyk, F. Herrera, 2018. Learning from Imbalanced Data Sets, 1st ed. 2018 Edition
