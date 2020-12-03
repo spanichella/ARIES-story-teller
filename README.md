@@ -47,8 +47,8 @@ The corresponding installation guide and source code of both ML and DL component
 
 ## 3. Setup Guide <a name="section3"></a>
 ### Pre-Requisites
-- Java 8 or higher
-- The [R language](https://cran.r-project.org/bin/windows/base/) must be installed and operational **//TODO: Which version?**
+- Java 15
+- The [R (Version: R-4.0.3) ](https://cran.r-project.org/) must be installed and operational 
 - Cores: 8
 - Memory: 4.9GB
 - Download [glove txt file](https://www.kaggle.com/watts2/glove6b50dtxt) and put it into the DL folder located at Combined Project -> Ressources
