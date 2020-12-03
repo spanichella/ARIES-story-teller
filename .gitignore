@@ -1,17 +1,12 @@
 .DS_Store
 #idea files
 **/.idea
-
-#generated files
-**/documents-preprocessed-review
-**/test-set
-**/training-set
-**/documents-preprocessed-req_specification
-**/test-set-Req-Specifications
-**/training-set-Req-Specifications
-
-#XML files folder
-**/XMLFiles/*
-
-#generated target classes
 **/target
+
+#generated files folders
+**/ReqSpec
+**/UserReviews
+**/Models
+**/Results
+**/DL
+**/XMLFiles
