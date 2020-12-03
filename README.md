@@ -18,7 +18,7 @@ Tool - Version 1.1
 
 
 
-## 1. Project Description <a name="section1"></a>
+## 1. Project Description<a name="section1"></a>
 In order to speed up the time-to-market of high-quality software products, the authors developed the _Requirements-Collector_ tool.
 This tool supports an automatic analysis and classification of requirements specification and user feedback by leveraging the power of machine and deep learning strategies (for a full description of the ML and DL component, please follow the links mentioned in the [Tool Description](#section2) section).
 Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of investigation.
@@ -30,7 +30,7 @@ The newly created and labeled data sets have been applied to both the ML and DL 
 
 
 
-## 2. Requirement-Collector Tool Description <a name="section2"></a>
+## 2. Requirement-Collector Tool Description<a name="section2"></a>
 The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this study are based on the _Requirements-Collector_ tool [1] as proposed by [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/).
 The corresponding installation guide and source code of both ML and DL component can be found in the following links to their respective GitHub repositories:
 
@@ -41,7 +41,8 @@ The corresponding installation guide and source code of both ML and DL component
 ![](combined-pipelines/Images/requirements-collector_context.png)
 
 
-## 3. Setup Guide <a name="section3"></a>
+
+## 3. Setup Guide<a name="section3"></a>
 ### Pre-Requisites
 - Java 15
 - The [R language](https://cran.r-project.org/) (version 4.0.3) must be installed and operational 
@@ -58,12 +59,12 @@ The corresponding installation guide and source code of both ML and DL component
 
 
 
-## 4. Dataset Description <a name="section4"></a>
+## 4. Dataset Description<a name="section4"></a>
 For evaluation of the DL and ML component, we created a new dataset based on a requirement elicitation session and used it to extend the already existing dataset of the original study.
 The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results](#section6).
 
 
-### 4.1 Recording Dataset <a name="section4.1"></a>
+### 4.1 Recording Dataset<a name="section4.1"></a>
 The requirements dataset was generated completely from scratch by recording an elicitation meeting, transcribing the test by applying a voice-to-text transformation, and finally manually labeling the data. In order to ensure anonymity, the company name as well as the project name have been anonymized and do not represent real names.
 
 #### Meeting Context and Objective
@@ -100,7 +101,7 @@ The requirements dataset was generated completely from scratch by recording an e
 - Finally, we received a raw text file from the online tool for which we then had to label each sentence according to the labels described above
 
 
-### 4.2 User Stories Dataset <a name="section4.2"></a>
+### 4.2 User Stories Dataset<a name="section4.2"></a>
 The user story dataset was created using a [collection of datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each - expressed as user stories - and combining them with randomly selected `NULL` lines from the existing dataset in the original study.
 
 #### Dataset Information
@@ -116,7 +117,7 @@ The user story dataset was created using a [collection of datasets](https://data
 
 
 
-## 5. Wrapper Component Description <a name="section5"></a>
+## 5. Wrapper Component Description<a name="section5"></a>
 During our project, we wrapped the two pipelines into one executable program.
 To make it more user-friendly, we changed the setup and execution procedure from the ground up:
 we removed the command-line interaction as well as any manual specifications of local paths, and replaced them with a simple graphical user interface instead.
@@ -130,7 +131,7 @@ _//Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, 
 
 
 
-## 6. Study Results and Discussion <a name="section6"></a>
+## 6. Study Results and Discussion<a name="section6"></a>
 - **Precision** is a metric which quantifies the number of correct positive predictions made and is calculated as the ratio of correctly predicted positive examples (out of the total retrieved) divided by the total number of retrieved examples [2]
 - **Recall** is a metric which quantifies the number of correct positive predictions made out of all positive predictions there are. Recall provides an indication of missed positive predictions (contrary to precision) [2]
 
