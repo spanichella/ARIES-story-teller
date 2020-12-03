@@ -90,7 +90,6 @@ if(length(args)==6)
      }
    }
    #oracle <- unique(oracle)
-   print(paste("CSV version of oracle file saved at: \"",path_csv_version_oracle,sep=""))
    write.csv(oracle,path_csv_version_oracle,row.names = FALSE)
    
 oracle<- read.csv(path_csv_version_oracle)

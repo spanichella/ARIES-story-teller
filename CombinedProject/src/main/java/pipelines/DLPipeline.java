@@ -96,7 +96,6 @@ public class DLPipeline {
         File modelFile = new File(cfg.getPathModel().replace("MLModel.model", ""), modelFileName);
         modelFile.createNewFile();
         LOGGER.info("Saving model to " + modelFile);
-        // TODO what does "saveUdpater" mean?
         ModelSerializer.writeModel(model, modelFile, true);
         System.out.println(labelledTurns);
 
