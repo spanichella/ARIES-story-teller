@@ -1,6 +1,5 @@
 package fileGeneration;
 
-import fileGeneration.TermByDocumentCreation;
 import configFile.ConfigFileReader;
 import oracle.OracleRequirementSpecificationsAnalyzer;
 import oracle.OracleUserReviewsAnalyzer;

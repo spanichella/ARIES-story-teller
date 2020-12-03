@@ -12,11 +12,15 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.util.logging.Logger;
 
 /**
- * Fills XML files on startup with correct paths and other standard values
+ * Fills XML files on startup with correct paths and other values
  */
 public class XMLInitializer {
+
+    private final static Logger logger = Logger.getLogger(XMLInitializer.class.getName());
+
     public static void createXML(String basePath, String pathTruthFile,String type, String model, String percentage, String strategy) {
         String baseFolder = "";
         String name = "";
@@ -24,9 +28,11 @@ public class XMLInitializer {
         if (type.equals("Requirement-Specifications")) {
             baseFolder = "Resources/ReqSpec/";
             name = "RequirementSpecifications";
+            logger.info("Creating XML-file for Requirement-Specifications...");
         } else if (type.equals("User-Reviews")) {
             baseFolder = "Resources/UserReviews/";
             name = "UserReviews";
+            logger.info("Creating XML-file for User Reviews...");
         }
 
         try {
@@ -215,6 +221,8 @@ public class XMLInitializer {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             transformer.transform(domSource, streamResult);
+
+            logger.info("XML-file created");
         } catch (Exception e) {
             System.out.print(e);
         }

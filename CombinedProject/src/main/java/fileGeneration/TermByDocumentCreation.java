@@ -4,14 +4,15 @@ import configFile.ConfigFileReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.logging.Logger;
 
 /**
  * @author panc
  */
 
 public class TermByDocumentCreation {
+    private final static Logger logger = Logger.getLogger(TermByDocumentCreation.class.getName());
 
     public static void createTBD(ConfigFileReader cfr) {
 
@@ -27,11 +28,9 @@ public class TermByDocumentCreation {
 
         //command to execute
         String command = "Rscript " + pathTbDRScript + " " + docs_location + " " + documentsTrainingSet + " " + documentsTestSet + " " + simplifiedOracle_path + " " + nameOfAttributeID + " " + nameOfAttributeClass + " " + nameOfAttributeText + " " + oracleFolder;// path of command "/usr/local/bin/Rscript" identified using: "which Rscript" from command line
-        System.out.println(command);
+        logger.info("R-Script execution begins:");
 
-        // -- Linux/Mac osx --
         try {
-            //Process process = Runtime.getRuntime().exec("ls /Users/panc/Desktop");
             Process process = Runtime.getRuntime().exec(command);
 
             BufferedReader reader = new BufferedReader(
@@ -42,6 +41,8 @@ public class TermByDocumentCreation {
             }
 
             reader.close();
+            logger.info("R-Script execution complete");
+
         } catch (IOException e) {
             e.printStackTrace();
         }

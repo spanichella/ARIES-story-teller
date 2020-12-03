@@ -1,29 +1,17 @@
 package ml;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.logging.Logger;
 
-import pipelines.MlAnalysis;
 import weka.classifiers.Classifier;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.evaluation.Evaluation;
-import weka.classifiers.evaluation.output.prediction.PlainText;
 import weka.classifiers.functions.LinearRegression;
 import weka.classifiers.functions.Logistic;
-import weka.classifiers.functions.SGD;
 import weka.classifiers.functions.SMO;
 import weka.classifiers.lazy.IBk;
 import weka.classifiers.meta.AdaBoostM1;
@@ -33,7 +21,6 @@ import weka.classifiers.rules.OneR;
 import weka.classifiers.rules.PART;
 import weka.classifiers.trees.DecisionStump;
 import weka.classifiers.trees.J48;
-import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 
@@ -115,9 +102,7 @@ public class WekaClassifier extends MachineLearningClassifier {
         String pathTestSet = getPathTestSet();
         String pathModel = getPathModel();
 
-        //start by providing the paths for your training and testing ARFF files make sure both files have the same structure and the exact classes in the header
         try {
-            //we create istances for training and test sets
             DataSource sourceTraining = new DataSource(pathTrainingSet);
             DataSource sourceTesting = new DataSource(pathTestSet);
             Instances train = sourceTraining.getDataSet();
@@ -148,6 +133,7 @@ public class WekaClassifier extends MachineLearningClassifier {
         logger.info("Loading data");
         String[] options;
         Classifier classifier = getClassifierClassName(machineLearningModel);
+        logger.info("Using 10-Fold");
         logger.info("Classifier used: "+String.valueOf(classifier.getClass()));
         classifier.buildClassifier(wholeDataset);
 

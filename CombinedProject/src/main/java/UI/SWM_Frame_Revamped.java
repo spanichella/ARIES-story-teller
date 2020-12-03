@@ -489,9 +489,9 @@ public class SWM_Frame_Revamped extends JFrame implements ActionListener, ItemLi
 
             if (response == JFileChooser.APPROVE_OPTION) {
                 File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                if (!file.toString().substring(file.toString().lastIndexOf(".")).equals(".txt")) {
+                if (!file.toString().substring(file.toString().lastIndexOf(".")).equals(".txt")&&!file.toString().substring(file.toString().lastIndexOf(".")).equals(".csv")) {
                     displayErrorMessage("Wrong filetype selected." +
-                            " Please select a .txt file");
+                            " Please select a .txt or .csv file");
                     args[0] = "null";
                 } else {
                     args[0] = file.toString();

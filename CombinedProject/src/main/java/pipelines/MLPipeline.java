@@ -8,9 +8,10 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-public class MlAnalysis {
-    private final static Logger logger = Logger.getLogger(MlAnalysis.class.getName());
+public class MLPipeline {
+    private final static Logger logger = Logger.getLogger(MLPipeline.class.getName());
 
+    // runs ML according to selections made
     public static void performMlAnalysis(ConfigFileReader configFileReader) {
         logger.info("Starting Machine Learning Analysis...");
         WekaClassifier wekaClassifier = new WekaClassifier();
@@ -19,7 +20,7 @@ public class MlAnalysis {
 
                 wekaClassifier = new WekaClassifier(configFileReader.getPathTDMTrainingSet(), configFileReader.getPathTDMTestSet(), configFileReader.getPathModel());
 
-                if (checkWehetherTestSetIsLabeled(configFileReader.getPathTDMTestSet())) {
+                if (checkWhetherTestSetIsLabeled(configFileReader.getPathTDMTestSet())) {
                     wekaClassifier.runSpecifiedMachineLearningModel(configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction()); //default behaviour it does prediction with given training and test sets with J48
                 } else {
                     wekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction()); //default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
@@ -38,7 +39,7 @@ public class MlAnalysis {
         }
     }
 
-    private static boolean checkWehetherTestSetIsLabeled(String pathTestSet) {
+    private static boolean checkWhetherTestSetIsLabeled(String pathTestSet) {
         File file = new File(pathTestSet);
 
         try {
@@ -52,15 +53,14 @@ public class MlAnalysis {
                 lineNum++;
                 //System.out.println(line);
                 if (line.contains("\"?\"") || line.contains("'?'") || line.endsWith("?")) {
-                    System.out.println("CHECK DONE: the test set is non labeled, we need to label such instances");
+                    logger.info("The test-set is non labeled, we need to first label such instances");
                     return false;
                 }
             }
         } catch (FileNotFoundException e) {
-            //TODO handle this; generally throw error instead of blind catch; also check correct return in case of failure
-            //e.printStackTrace();
+            e.printStackTrace();
         }
-        System.out.println("CHECK DONE: the test set is labeled.");
+        logger.info("The test-set is labeled.");
         return true;
     }
 }

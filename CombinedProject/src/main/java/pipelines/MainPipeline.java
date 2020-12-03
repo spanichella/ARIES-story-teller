@@ -31,18 +31,21 @@ public class MainPipeline{
         }
         logger.log(Level.INFO, "Path of ConfigFile: "+pathConfigFile);
 
-        //Read Config
+        //Read Configfile
         ConfigFileReader configFileReader = new ConfigFileReader(pathConfigFile);
+        //Generate files for ML/DL
+        logger.info("Starting file generation ");
         FileGeneration.oracleAnalysis(configFileReader);
-        //Generate files for ML
-        System.out.println(selectedPipeline);
+
+        //run selected pipeline
         if(selectedPipeline.equals("ML")){
-            MlAnalysis.performMlAnalysis(configFileReader);
+            MLPipeline.performMlAnalysis(configFileReader);
         }else if(selectedPipeline.equals("DL")){
             DLPipeline.runDLPipeline(configFileReader);
         }else{
             logger.severe("Pipeline selection invalid");
         }
+        logger.info("Program execution completed");
 
     }
 }
