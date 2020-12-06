@@ -105,7 +105,7 @@ The requirements dataset was generated completely from scratch by recording an e
 The user story dataset was created using a [collection of datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each - expressed as user stories - and combining them with randomly selected `NULL` lines from the existing dataset in the original study.
 
 #### Dataset Information
-- The dataset can be found in the corresponding dataset folder as [truth_set_combined-ReqSpec.txt](./datasets/combined/truth_set_combined-ReqSpec.txt)
+- The dataset can be found in the corresponding dataset folder as [truth_set_stories-ReqSpec.txt](./datasets/stories/truth_set_stories-ReqSpec.txt)
 - The dataset contains 1215 lines of labeled lines of tab-separated values, including line number, text content, and classification label
  
 #### Dataset Creation
