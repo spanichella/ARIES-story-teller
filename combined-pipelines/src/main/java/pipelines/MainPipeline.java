@@ -1,5 +1,6 @@
 package pipelines;
 
+import UI.SWM_GUI;
 import configFile.ConfigFileReader;
 import fileGeneration.FileGeneration;
 
@@ -46,6 +47,6 @@ public class MainPipeline{
             logger.severe("Pipeline selection invalid");
         }
         logger.info("Program execution completed");
-
+        SWM_GUI.killFrames();
     }
 }

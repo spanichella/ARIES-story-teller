@@ -134,7 +134,7 @@ public class XMLInitializer {
             ADSORB.appendChild(machineLearningModel);
 
             Element pathModel = document.createElement("pathModel");
-            pathModel.appendChild(document.createTextNode(basePath.replace("CombinedProject/", "")+"Models/MLModel.model"));
+            pathModel.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "")+"Models/MLModel.model"));
             ADSORB.appendChild(pathModel);
 
             Element percentageSplit = document.createElement("percentageSplit");
@@ -142,7 +142,7 @@ public class XMLInitializer {
             ADSORB.appendChild(percentageSplit);
 
             Element pathResultsPrediction = document.createElement("pathResultsPrediction");
-            pathResultsPrediction.appendChild(document.createTextNode(basePath.replace("CombinedProject/", "")+"Results/" + "result_"));
+            pathResultsPrediction.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "")+"Results/" + "result_"));
             ADSORB.appendChild(pathResultsPrediction);
 
             Element pathTDMTestSet = document.createElement("pathTDMTestSet");

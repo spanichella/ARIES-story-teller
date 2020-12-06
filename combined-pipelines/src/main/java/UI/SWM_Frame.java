@@ -498,9 +498,12 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
                 }
             }
         } else if (e.getSource() == execute_b) {
-            loader = new SWM_Loader_Frame(args[0], args[1], args[2], args[4]);
+            //loader = new SWM_Loader_Frame();
+            loader = new SWM_Loader_Frame();
+            loader.start();
             //set mainPath according to Operating System
-            String mainPath = MainPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/", "");
+            String mainPath = MainPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().
+                    replace("target/classes/", "");
             if (System.getProperty("os.name").toLowerCase().contains("win")) {
                 mainPath = mainPath.substring(1);
             }
