@@ -28,6 +28,9 @@ Additionally, to further increase the usability of the tool and to allow a broad
 _StoryTeller_ acts as a wrapper and combines both the ML and DL component inside a single executable instance.
 The newly created and labeled data sets have been applied to both the ML and DL Pipeline in order to further train the algorithms and evaluate their resulting precision and accuracy values.
 
+[![IMAGE ALT TEXT HERE](combined-pipelines/Images/DemoVideo.png)](https://www.youtube.com/watch?v=gXUijWG6pxg&feature=youtu.be)
+
+
 
 
 ## 2. Requirement-Collector Tool Description<a name="section2"></a>
