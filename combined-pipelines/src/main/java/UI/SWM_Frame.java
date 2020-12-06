@@ -507,12 +507,16 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
             if (System.getProperty("os.name").toLowerCase().contains("win")) {
                 mainPath = mainPath.substring(1);
             }
+
             generateXML();
+            Pipeline_Thread mainThread = new Pipeline_Thread(mainPath,args[2],args[1]);
+            mainThread.start();
+            /*
             try {
                 MainPipeline.runPipeline(mainPath, args[2], args[1]);
             } catch (Exception e1) {
                 System.out.print(e1);
-            }
+            }*/
             this.setEnabled(false);
         }
         updateStatus();
@@ -601,6 +605,5 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         }
         System.out.print(mainPath);
         XMLInitializer.createXML(mainPath, args[0], args[1], args[3], args[4], args[5]);
-
     }
 }

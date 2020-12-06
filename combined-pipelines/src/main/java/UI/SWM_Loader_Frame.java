@@ -26,6 +26,7 @@ public class SWM_Loader_Frame extends Thread {
         frame.setLayout(new GridLayout(2,1));
         frame.getContentPane().setBackground(new Color(88, 102, 148));
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
         JLabel explanationText = new JLabel("Your file is being processed. Please wait...");
