@@ -4,9 +4,16 @@
 **/target
 
 #generated files folders
-**/ReqSpec
-**/UserReviews
-**/Models
-**/Results
-**/DL
-**/XMLFiles
+**/ReqSpec/*
+!**/ReqSpec/.gitkeep 
+**/UserReviews/*
+!**/UserReviews/.gitkeep 
+**/Models/*
+!**/Models/.gitkeep 
+**/Results/*
+!**/Results/.gitkeep 
+**/DL/*
+!**/DL/.gitkeep 
+**/XMLFiles/*
+!**/XMLFiles/.gitkeep 
+
