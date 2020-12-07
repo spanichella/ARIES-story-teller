@@ -8,10 +8,10 @@
 !**/ReqSpec/.gitkeep 
 **/UserReviews/*
 !**/UserReviews/.gitkeep 
-**/Models/*
-!**/Models/.gitkeep 
-**/Results/*
-!**/Results/.gitkeep 
+**/models/*
+!**/models/.gitkeep
+**/results/*
+!**/results/.gitkeep
 **/DL/*
 !**/DL/.gitkeep 
 **/XMLFiles/*

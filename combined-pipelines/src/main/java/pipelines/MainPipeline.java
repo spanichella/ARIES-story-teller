@@ -23,9 +23,9 @@ public class MainPipeline{
         //chooses path of config file according to data-type
         String pathConfigFile = "";
         if (type.equals("Requirement-Specifications")) {
-            pathConfigFile = mainPath + "Resources/XMLFiles/RequirementSpecificationsXML.xml";
+            pathConfigFile = mainPath + "resources/XMLFiles/RequirementSpecificationsXML.xml";
         } else if (type.equals("User-Reviews")) {
-            pathConfigFile = mainPath + "Resources/XMLFiles/UserReviewsXML.xml";
+            pathConfigFile = mainPath + "resources/XMLFiles/UserReviewsXML.xml";
         } else {
             System.out.println("type not recognized: use Requirement-Specifications or UR");
             System.exit(1);

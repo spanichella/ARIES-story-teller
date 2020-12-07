@@ -26,11 +26,11 @@ public class XMLInitializer {
         String name = "";
 
         if (type.equals("Requirement-Specifications")) {
-            baseFolder = "Resources/ReqSpec/";
+            baseFolder = "resources/ReqSpec/";
             name = "RequirementSpecifications";
             logger.info("Creating XML-file for Requirement-Specifications...");
         } else if (type.equals("User-Reviews")) {
-            baseFolder = "Resources/UserReviews/";
+            baseFolder = "resources/UserReviews/";
             name = "UserReviews";
             logger.info("Creating XML-file for User Reviews...");
         }
@@ -51,14 +51,14 @@ public class XMLInitializer {
             root.appendChild(ADSORB);
 
             Element pathRScripts = document.createElement("pathRScripts");
-            pathRScripts.appendChild(document.createTextNode(basePath + "Resources/R-scripts/"));
+            pathRScripts.appendChild(document.createTextNode(basePath + "resources/R-scripts/"));
             ADSORB.appendChild(pathRScripts);
 
             Element pathRScriptOracle = document.createElement("pathRScriptOracle");
             if (type.equals("Requirement-Specifications")) {
-                pathRScriptOracle.appendChild(document.createTextNode(basePath + "Resources/R-scripts/Script-to-create-test-dataset-Req-Specifications.r"));
+                pathRScriptOracle.appendChild(document.createTextNode(basePath + "resources/R-scripts/Script-to-create-test-dataset-Req-Specifications.r"));
             } else {
-                pathRScriptOracle.appendChild(document.createTextNode(basePath + "Resources/R-scripts/Script-to-create-test-dataset.r"));
+                pathRScriptOracle.appendChild(document.createTextNode(basePath + "resources/R-scripts/Script-to-create-test-dataset.r"));
             }
             ADSORB.appendChild(pathRScriptOracle);
 
@@ -98,7 +98,7 @@ public class XMLInitializer {
 
 
             Element pathTbDRScript = document.createElement("pathTbDRScript");
-            pathTbDRScript.appendChild(document.createTextNode(basePath + "Resources/R-scripts/MainScript.r"));
+            pathTbDRScript.appendChild(document.createTextNode(basePath + "resources/R-scripts/MainScript.r"));
             ADSORB.appendChild(pathTbDRScript);
 
             Element pathTrainingSetDocuments = document.createElement("pathTrainingSetDocuments");
@@ -134,7 +134,7 @@ public class XMLInitializer {
             ADSORB.appendChild(machineLearningModel);
 
             Element pathModel = document.createElement("pathModel");
-            pathModel.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "")+"Models/MLModel.model"));
+            pathModel.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "")+"models/MLModel.model"));
             ADSORB.appendChild(pathModel);
 
             Element percentageSplit = document.createElement("percentageSplit");
@@ -142,7 +142,7 @@ public class XMLInitializer {
             ADSORB.appendChild(percentageSplit);
 
             Element pathResultsPrediction = document.createElement("pathResultsPrediction");
-            pathResultsPrediction.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "")+"Results/" + "result_"));
+            pathResultsPrediction.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "")+"results/" + "result_"));
             ADSORB.appendChild(pathResultsPrediction);
 
             Element pathTDMTestSet = document.createElement("pathTDMTestSet");
@@ -188,13 +188,13 @@ public class XMLInitializer {
             ADSORB.appendChild(pathFullTDMDataset);
 
             Element gloveFile = document.createElement("pathGloveFile");
-            gloveFile.appendChild(document.createTextNode(basePath + "Resources/DL/glove.6B.100d.txt"));
+            gloveFile.appendChild(document.createTextNode(basePath + "resources/DL/glove.6B.100d.txt"));
             ADSORB.appendChild(gloveFile);
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource domSource = new DOMSource(document);
-            StreamResult streamResult = new StreamResult(new File(basePath+"Resources/XMLFiles/" + name + "XML.xml"));
+            StreamResult streamResult = new StreamResult(new File(basePath+"resources/XMLFiles/" + name + "XML.xml"));
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             transformer.transform(domSource, streamResult);
