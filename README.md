@@ -122,13 +122,11 @@ The user story dataset was created using a [collection of datasets](https://data
 
 ## 5. Wrapper Component Description<a name="section5"></a>
 During our project, we wrapped the two pipelines into one executable program.
-To make it more user-friendly, we changed the setup and execution procedure from the ground up:
-we removed the command-line interaction as well as any manual specifications of local paths, and replaced them with a simple graphical user interface instead.
+To make it more user-friendly, we changed the setup and execution procedure from ground up:
+We removed the command-line interaction as well as any manual specifications of local paths, and replaced them with a simple graphical user interface instead.
 While merging the pipelines we also refactored, cleaned up, and fixed the code, such that it now also works on Windows.
-A more in-depth description and propositions to further enhance and extend our work can be found [here](combined-pipelines/README.md)
+A more in-depth description of the changes and the code in general, as well as possible future improvements can be found in the specific code README [here](combined-pipelines/README.md).
 
-<span style="color:red">**//TODO: @Marc**</span> \
-_//Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, die folgende Zeile im markdown macht das (sobald branch mit main gemerged ist sollte das img am richtigen Ort liegen)_
 
 ![](combined-pipelines/Images/swmlogo2.jpg)
 
