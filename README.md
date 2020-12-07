@@ -142,7 +142,7 @@ A more in-depth description of the changes and the code in general, as well as p
 
 **New Complete Study Dataset Precision and Recall Result  :**\
 \
-![](combined-pipelines/images/New_Dataset_Result_Graph_New.png)
+![](combined-pipelines/images/New_Dataset_Result_Graph.png)
 
 **Compare Original Study Dataset Vs New Complete Study Dataset (Precision and Recall ) :**\
 \
