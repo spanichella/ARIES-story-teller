@@ -94,7 +94,7 @@ The requirements dataset was generated completely from scratch by recording an e
     - **NULL**: Neither functional nor non-functional
 - The dataset contains 665 lines of labeled lines of tab-separated values, including line number, text content, and classification label
 - Strong semantic errors in the transcription due to misspelling or mis-identification of words have been manually fixed
-- <span style="color:red">The LOC is 100%, meaning the data has not been trimmed in any way **//TODO: What is that supposed to mean?**</span>
+- <span style="color:red">The LOC is 100%, meaning the data has not been trimmed in any way 
 
 #### Dataset Creation
 - We collected the software specifications of the project and derived some project requirements
