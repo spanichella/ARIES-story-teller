@@ -1,4 +1,4 @@
-# Storyteller: The combined Project
+# Storyteller: The Combined Project
 
 ## Overview
 1. [Introduction](#section1)
@@ -7,7 +7,7 @@
 4. [Future Work](#section4)
 
 ## 1. Introduction <a name="section1"></a>
-Storyteller is our combined integration of the [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component) and the [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component) used to automatically analyze User Stories and Requirements Specifications. During the project, we merged the two pipelines step by step with focus to make them userfriendly to people with no computer-science background.
+Storyteller is our combined integration of the [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component) and the [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component) used to automatically analyze User Stories and Requirements Specifications. During the project, we merged the two pipelines step by step with focus to make them user-friendly to people with no computer science background.
 
 ## 2. Program Description <a name="section2"></a>
 The goal of this part is to give a brief description of how our code works.
