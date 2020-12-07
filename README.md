@@ -145,7 +145,7 @@ _//Info von Chris: Hier kannst du ja noch das Icon vom Story Teller reinposten, 
 
 **New Complete Study Dataset Precision and Recall Result  :**\
 \
-![](combined-pipelines/Images/New_Dataset_Result_Graph.png)
+![](combined-pipelines/Images/New_Dataset_Result_Graph_New.png)
 
 **Compare Original Study Dataset Vs New Complete Study Dataset (Precision and Recall ) :**\
 \
