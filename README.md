@@ -54,6 +54,8 @@ The corresponding installation guide and source code of both ML and DL component
 - Download [glove txt file](https://www.kaggle.com/watts2/glove6b50dtxt) and put it into the DL folder located at Combined Project -> Ressources
 - For usage on Windows, add the RScript bin folder path (e.g., C:\Program Files\R\R-4.0.3\bin) to the PATH variable (in environment variables)
 
+Hint: It can potentially help to install [RStudio](https://rstudio.com/products/rstudio/download/), where you can manually open and execute the [MainScript.r]("./combined-pipelines/resources/R-scripts/MainScript.r") step by step as to install and load the necessary R packages.
+
 
 ### Supported Operating Systems
 - Mac OS (works on 10.15.7 using Intel chipset)
