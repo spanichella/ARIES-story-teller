@@ -28,7 +28,7 @@ Additionally, to further increase the usability of the tool and to allow a broad
 _StoryTeller_ acts as a wrapper and combines both the ML and DL component inside a single executable instance.
 The newly created and labeled data sets have been applied to both the ML and DL Pipeline in order to further train the algorithms and evaluate their resulting precision and accuracy values.
 
-[![IMAGE ALT TEXT HERE](combined-pipelines/Images/ThumbnailSWM.jpg)](https://www.youtube.com/watch?v=ZXxYfPH8J0E)
+[![IMAGE ALT TEXT HERE](combined-pipelines/images/ThumbnailSWM.jpg)](https://www.youtube.com/watch?v=ZXxYfPH8J0E)
 
 
 
@@ -41,7 +41,7 @@ The corresponding installation guide and source code of both ML and DL component
 - [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component)
 
 **Requirements-Collector Context:**
-![](combined-pipelines/Images/requirements-collector_context.png)
+![](combined-pipelines/images/requirements-collector_context.png)
 
 
 
@@ -127,7 +127,7 @@ While merging the pipelines we also refactored, cleaned up, and fixed the code, 
 A more in-depth description of the changes and the code in general, as well as possible future improvements can be found in the specific code README [here](combined-pipelines/README.md).
 
 
-![](combined-pipelines/Images/swmlogo2.jpg)
+![](combined-pipelines/images/swmlogo2.jpg)
 
 
 
@@ -138,15 +138,15 @@ A more in-depth description of the changes and the code in general, as well as p
 ###  Discussion of Precision and Recall From ML Pipeline 
 **Original Study Dataset Precision and Recall Result:**\
 \
-![](combined-pipelines/Images/Original_Study_Result_Graph.png)
+![](combined-pipelines/images/Original_Study_Result_Graph.png)
 
 **New Complete Study Dataset Precision and Recall Result  :**\
 \
-![](combined-pipelines/Images/New_Dataset_Result_Graph_New.png)
+![](combined-pipelines/images/New_Dataset_Result_Graph.png)
 
 **Compare Original Study Dataset Vs New Complete Study Dataset (Precision and Recall ) :**\
 \
-![](combined-pipelines/Images/Compare_Both_Dataset_Result_Graph.png)
+![](combined-pipelines/images/Compare_Both_Dataset_Result_Graph.png)
 
 
 

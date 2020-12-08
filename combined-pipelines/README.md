@@ -25,13 +25,13 @@ If everything is selected and specified correctly, he can finally click on execu
 
 On execution, the code will first create an XML-File containing local paths used for reading the existing, or generating the new files.
 After this, the code will start with the generation of the training- and test-set, depending on the selections made previously in the GUI.
-These files are created by the R-scripts located in the Resources folder.
+These files are created by the R-scripts located in the [resources]("./resources") folder.
 There is one script for each type of data (requirement specifications or user reviews).
 
 When this is done, the analysis part begins.
 Again, depending on the selections before, our code will execute the ML or DL pipeline.
 Especially the DL pipeline takes some time to be executed (up to 40min in our case).
-As soon as the results and generated models are available, the user can find them in the Results and Models folders.
+As soon as the results and generated models are available, the user can find them in the [results]("/results") and [models]("/models") folders.
 
 ## 3. Change Description <a name="section3"></a>
 This part is to explain the implementation and changes we made.

@@ -48,7 +48,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
     SWM_Frame() {
         args = new String[]{"null", "null", "null", "null", "0.5", "null"}; //truthFilePath,DataType,Pipeline,MLModel,split,Strategy
 
-        ImageIcon logoImage = new ImageIcon("Images/swmlogo.jpg");
+        ImageIcon logoImage = new ImageIcon("images/swmlogo.jpg");
         JLabel logoLabel = new JLabel();
         logoLabel.setIcon(logoImage);
         logoLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -155,7 +155,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         s5_l_text.setForeground(textColor);
         s5_l_text.setVisible(false);
 
-        ImageIcon icon = new ImageIcon("Images/STIcon.jpg");
+        ImageIcon icon = new ImageIcon("images/STIcon.jpg");
         this.setIconImage(icon.getImage());
         this.setTitle("Story Teller");
         this.setSize(350, 800);

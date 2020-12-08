@@ -15,11 +15,11 @@ public class SWM_Loader_Frame extends Thread {
     }
 
     public void run(){
-        ImageIcon loadingAnimation = new ImageIcon(new ImageIcon("Images/swm_loading.gif")
+        ImageIcon loadingAnimation = new ImageIcon(new ImageIcon("images/swm_loading.gif")
                 .getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT));
         JLabel gifLabel = new JLabel(loadingAnimation);
 
-        ImageIcon icon = new ImageIcon("Images/STIcon.jpg");
+        ImageIcon icon = new ImageIcon("images/STIcon.jpg");
         frame.setIconImage(icon.getImage());
         frame.setTitle("Story Teller Loader");
         frame.setSize(200,200);
