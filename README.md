@@ -9,12 +9,8 @@ Tool - Version 1.1
 ## Overview
 1. [Our Work](#section1)
 2. [Requirement Collector Tool Description](#section2)
-3. [Installation Guide](#section3)
-4. [Dataset Description](#section4)\
-4.1 [Requirement Dataset](#section4.1)\
-4.2 [User Story Dataset](#section4.1)
-5. [Wrapper Component Description](#section5)
-6. [Study Results and Discussion](#section6)
+3. [Our Contribution](#section3)
+4. [Summary of Results](#section4)\
 
 
 
@@ -45,7 +41,7 @@ The corresponding installation guide and source code of both ML and DL component
 
 
 
-## 3. Setup Guide<a name="section3"></a>
+## TOBEMOVED Setup Guide
 ### Pre-Requisites
 - Java 15
 - The [R language](https://cran.r-project.org/) (version 4.0.3) must be installed and operational 
@@ -64,15 +60,18 @@ Hint: It can potentially help to install [RStudio](https://rstudio.com/products/
 
 
 
-## 4. Dataset Description<a name="section4"></a>
-For evaluation of the DL and ML component, we created a new dataset based on a requirement elicitation session and used it to extend the already existing dataset of the original study.
-The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results](#section6).
+## 3. Our Contribution<a name="section3"></a>
+For evaluation of the DL and ML component, we created a new dataset based on a recreated requirement elicitation session and used the audio recording to extend the already existing dataset of the original study.
+The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results]().
+Furthermore, in order to facilitate usage and make our tool accessible for a broader audience, we combined the separate ML and DL Pipeline into a combined wrapper component and created an intuitive, easy to use graphical user interface (GUI).
+Finally, we evaluated the ML and DL component in terms of precision, recall and F-measure values with our newly created dataset and compared it to the results found in the original study.
+**TODO**: Correctly link Study Results
 
 
-### 4.1 Recording Dataset<a name="section4.1"></a>
+### TOBEMOVED Recording Dataset<a name="section4.1"></a>
 The requirements dataset was generated completely from scratch by recording an elicitation meeting, transcribing the test by applying a voice-to-text transformation, and finally manually labeling the data. In order to ensure anonymity, the company name as well as the project name have been anonymized and do not represent real names.
 
-#### Meeting Context and Objective
+#### TOBEMOVED Meeting Context and Objective
 - **Meeting Environment:** The meeting was held in a remote fashion using [Microsoft Teams](https://www.microsoft.com/de-ch/microsoft-365/microsoft-teams/group-chat-software) as a conferencing tool.
 - **Meeting Setup:** The meeting included three participants: a UX designer, a software engineer, and the project manager.
 - **Meeting Topic:** The topic of the meeting was set around the _ABC Software_ project.
@@ -88,7 +87,7 @@ The requirements dataset was generated completely from scratch by recording an e
     The company consists of 12 Employees, was founded in 2002 and has over 20 years of expertise in the field in market and company analysis.
     Based on well-founded study concepts as well as quick, user-friendly survey and meaningful reporting, the company offers a broad variety of products in the field of employee satisfaction, customer satisfaction, and leadership feedback.
 
-#### Dataset Information
+#### TOBEMOVED Dataset Information
 - The dataset can be found in the repository and is named [truth_set_recording-ReqSpec.txt](./datasets/recording/truth_set_recording-ReqSpec.txt)
 - The dataset was labeled using the following coding conventions:
     - **F**: Functional Requirement
@@ -105,14 +104,14 @@ The requirements dataset was generated completely from scratch by recording an e
 - Finally, we received a raw text file from the online tool for which we then had to label each sentence according to the labels described above
 
 
-### 4.2 User Stories Dataset<a name="section4.2"></a>
+### TOBEMOVED User Stories Dataset<a name="section4.2"></a>
 The user story dataset was created using a [collection of datasets](https://data.mendeley.com/datasets/7zbk8zsd8y/1) of 50+ requirements each - expressed as user stories - and combining them with randomly selected `NULL` lines from the existing dataset in the original study.
 
-#### Dataset Information
+#### TOBEMOVED Dataset Information
 - The dataset can be found in the corresponding dataset folder as [truth_set_stories-ReqSpec.txt](./datasets/stories/truth_set_stories-ReqSpec.txt)
 - The dataset contains 1215 lines of labeled lines of tab-separated values, including line number, text content, and classification label
  
-#### Dataset Creation
+#### TOBEMOVED Dataset Creation
 - From existing datasets (mentioned above) containing different files of user stories we collected 615 lines of requirements (files g02-04, g08, g10-14; contained in the [sources folder](./datasets/_sources/datasets))
 - We manually labeled the dataset as Functional Requirement (`F`) or Non-Functional Requirement (`A`)
 - In order to balance the dataset we added 600 `NULL` lines by randomly selecting matching lines from the dataset [truth_set_study-ReqSpec.txt](./datasets/study/truth_set_study-ReqSpec.txt) of the previous work.
@@ -120,7 +119,7 @@ The user story dataset was created using a [collection of datasets](https://data
     We then combined the findings with our gathered user stories and shuffled the dataset again for its final version
 
 
-
+## 4. Summary of results <a name="section4"></a>
 ## 5. Wrapper Component Description<a name="section5"></a>
 During our project, we wrapped the two pipelines into one executable program.
 To make it more user-friendly, we changed the setup and execution procedure from ground up:
