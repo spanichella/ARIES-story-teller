@@ -65,10 +65,10 @@ Our study is an extension of the aforementioned [study](#section2) and evolves a
 
 **"Does running the ML and DL algorithm using an extended dataset lead to better precision and recall values?"**
 
-We addressed this question by implementing the following:
+We addressed this question by implementing the following:\
 For evaluation of the DL and ML component, we created a new dataset based on a recreated requirement elicitation session and used the audio recording to extend the already existing dataset of the original study.
 The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results](). **TODO**: Correctly link Study Results \
-Furthermore, in order to facilitate usage and make our tool accessible for a broader audience, we combined the separate ML and DL Pipeline into a combined wrapper component and created an intuitive, easy to use graphical user interface (GUI). \
+Furthermore, in order to facilitate usage and make our tool more accessible to a broader audience, we combined the separate ML and DL Pipeline into a combined wrapper component and created an intuitive, easy to use graphical user interface (GUI). \
 Finally, we evaluated the ML and DL component in terms of precision, recall and F-measure values, using our newly created dataset and comparing the results to the ones achieved in the former study. These findings allowed us to address and reflect upon our research question.
 
 ### 3.1 Dataset Extension
