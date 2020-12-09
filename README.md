@@ -120,7 +120,7 @@ The user story dataset was created using a [collection of datasets](https://data
 
 
 ## Project Team
-<table style="border: 0">
+<table style="border: 0; text-align: center">
     <tr>
         <td>
             <p style="font-weight: bold">Christian Aeberhard</p>
