@@ -151,10 +151,10 @@ A more in-depth description of the changes and the code in general, as well as p
 ![](combined-pipelines/images/Compare_Both_Dataset_Result_Graph.png)
 
 ## 7. Project Team
-Christian Aeberhard:\ ![](combined-pipelines/images/chrisBubble.png)\
-Mark Kramer:\ ![](combined-pipelines/images/markBubble.png)\
-Jannik Lüchinger:\ ![](combined-pipelines/images/jannikBubble.png)\
-Tanzil Mohammed:\ ![](combined-pipelines/images/tanzilBubble.png)
+Christian Aeberhard:\ ![](combined-pipelines/images/Chris_Bubble.png)\
+Mark Kramer:\ ![](combined-pipelines/images/Marc_Bubble.png)\
+Jannik Lüchinger:\ ![](combined-pipelines/images/Janik_Bubble.png)\
+Tanzil Mohammed:\ ![](combined-pipelines/images/Tanzil_Bubble.png)
 
 
 ## References
