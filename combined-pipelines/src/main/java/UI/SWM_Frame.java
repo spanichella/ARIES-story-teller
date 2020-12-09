@@ -120,7 +120,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         s4a_l_text.setForeground(textColor);
         s4a_l_text.setVisible(false);
 
-        s4b_l_text = new JLabel("<html><div style='text-align: center;'>Set Threshold</div></html>");
+        s4b_l_text = new JLabel("<html><div style='text-align: center;'>Set Size of Training-Set</div></html>");
         s4b_l_text.setHorizontalAlignment(JLabel.CENTER);
         s4b_l_text.setForeground(textColor);
         s4b_l_text.setVisible(false);
@@ -150,7 +150,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         s5_l_step.setForeground(textColor);
         s5_l_step.setVisible(false);
 
-        s5_l_text = new JLabel("<html><div style='text-align: center;'>Select Split</div></html>");
+        s5_l_text = new JLabel("<html><div style='text-align: center;'>Select Strategy</div></html>");
         s5_l_text.setHorizontalAlignment(JLabel.CENTER);
         s5_l_text.setForeground(textColor);
         s5_l_text.setVisible(false);
