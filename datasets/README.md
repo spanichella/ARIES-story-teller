@@ -37,20 +37,20 @@ The resulting tdm files can ultimately be used as input to the WEKA classifier.
 
 
 ##  Discussion of Precision and Recall From ML Pipeline 
-**Original Study Dataset Precision and Recall Result:**\
+**Original Study Dataset:**\
 \
 ![](../combined-pipelines/images/Original_Study_Result_Graph.png)
 \
 In the above graph we see the result from ML model from [Original Study dataset](#studyDS)  with 50% split of dataset as test and training dataset where `NULL` labelled dataset performed  Precision with 80%, Recall 93%,  F-measure with  98%  and  `F` labelled dataset performed  Precision with  45%  Recall with  32% and  F-measure with  38% and  `A` labelled dataset performed poorly in original study 0% Precision, Recall and F-measure. `A` labelled lines in dataset affected the performance of Weighted Avg. of the performance in the original study dataset.
 \
-**New Complete Study Dataset Precision and Recall Result  :**\
+**New Complete Study Dataset:**\
 \
 ![](../combined-pipelines/images/New_Dataset_Result_Graph.png)
 \
 In the above graph we see the result from ML model from [Complete Study dataset](#CompleteDS)  with 50% split of the dataset as test and training dataset where `NULL` labelled dataset performed  Precision with 94%, Recall 99%,  F-measure with  96%  and  `F` labelled dataset performed  Precision with  84%  Recall with  72% and  F-measure with  78% and  `A` labelled dataset performed better compare to [Original Study dataset](#studyDS)    Precision with 92%, Recall with 42% and F-measure with 57%. 
 
 
-**Compare Original Study Dataset Vs New Complete Study Dataset (Precision and Recall ) :**\
+**Original Study Dataset vs. New Complete Study Dataset:**\
 \
 ![](../combined-pipelines/images/Compare_Both_Dataset_Result_Graph.png)
 \
