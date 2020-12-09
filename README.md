@@ -28,7 +28,7 @@ Additionally, to further increase the usability of the tool and to allow a broad
 _StoryTeller_ acts as a wrapper and combines both the ML and DL component inside a single executable instance.
 The newly created and labeled data sets have been applied to both the ML and DL Pipeline in order to further train the algorithms and evaluate their resulting precision and accuracy values.
 
-This Work has been conducted in the course of the [Software Evolution and Maintenance Module](https://www.ifi.uzh.ch/en/seal/teaching/courses/sme.html) HS2020 at University of Zurich
+This Work has been conducted in the course of the [Software Evolution and Maintenance Module](https://www.ifi.uzh.ch/en/seal/teaching/courses/sme.html) HS2020 at [UZH Department of Informatics](https://www.ifi.uzh.ch/en.html)
 
 [![IMAGE ALT TEXT HERE](combined-pipelines/images/ThumbnailSWM.jpg)](https://www.youtube.com/watch?v=ZXxYfPH8J0E)
 
