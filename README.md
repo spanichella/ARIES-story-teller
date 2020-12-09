@@ -10,7 +10,7 @@ Tool - Version 1.1
 1. [Our Work](#section1)
 2. [Requirement Collector Tool Description](#section2)
 3. [Our Contribution](#section3)
-4. [Summary of Results](#section4)\
+4. [Summary of Results](#section4)
 
 
 
@@ -137,7 +137,7 @@ The user story dataset was created using a [collection of datasets](https://data
 
 ## 4. Summary of results <a name="section4"></a>
 
-## 6. Study Results and Discussion<a name="section6"></a>
+## 5. Study Results and Discussion<a name="section6"></a>
 - **Precision** is a metric which quantifies the number of correct positive predictions made and is calculated as the ratio of correctly predicted positive examples (out of the total retrieved) divided by the total number of retrieved examples [2]
 - **Recall** is a metric which quantifies the number of correct positive predictions made out of all positive predictions there are. Recall provides an indication of missed positive predictions (contrary to precision) [2]
 
