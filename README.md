@@ -61,7 +61,7 @@ Hint: It can potentially help to install [RStudio](https://rstudio.com/products/
 
 
 ## 3. Our Contribution<a name="section3"></a>
-Our study is an extension of the aforementioned [study](#section2) and evolves around the following research question: "Does running the ML and DL algorithm using an extended dataset lead to better precision and recall values?"
+Our study is an extension of the aforementioned [study](#section2) and evolves around the following research question: \ **"Does running the ML and DL algorithm using an extended dataset lead to better precision and recall values?"** \
 We addressed this question by implementing the following:
 For evaluation of the DL and ML component, we created a new dataset based on a recreated requirement elicitation session and used the audio recording to extend the already existing dataset of the original study.
 The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results](). **TODO**: Correctly link Study Results
