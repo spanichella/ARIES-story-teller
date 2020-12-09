@@ -158,7 +158,7 @@ The user story dataset was created using a [collection of datasets](https://data
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Christian Aeberhard** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mark Kramer** <br/><br/> 
 [![](combined-pipelines/images/Chris_Bubble.png)](https://github.com/niddhog) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Marc_Bubble.png)](https://github.com/Makram95) <br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Jannik Lüchinger**  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Tanzil Mohammed** <br/><br/>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Janik_Bubble.png)](https://github.com/jluech)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Tanzil_Bubble.png)](https://github.com/tanzilkm) 
+(combined-pipelines/images/Janik_Bubble.png)](https://github.com/jluech)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Tanzil_Bubble.png)](https://github.com/tanzilkm) 
 
 ## References
 - [1] M. Ruiz, S. Panichella, 2020. Can We Design Software as We Talk?
