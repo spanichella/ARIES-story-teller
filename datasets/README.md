@@ -30,7 +30,24 @@ Using the ML pipeline of the previous work, we generated the term-by-document ma
 These tdm files are then used to create tdm pendants of the training and test sets by picking the relevant lines contained in the `.csv` files out of the truth set tdm file and writing them to a new file (two files per partitioning per dataset, `.csv` files).
 The resulting tdm files can ultimately be used as input to the WEKA classifier.
 
+# Study Results and Discussion
+- **Precision** is a metric which quantifies the number of correct positive predictions made and is calculated as the ratio of correctly predicted positive examples (out of the total retrieved) divided by the total number of retrieved examples.
+- **Recall** is a metric which quantifies the number of correct positive predictions made out of all positive predictions there are. Recall provides an indication of missed positive predictions (contrary to precision).
+- **F-measure** is a measure of a test's accuracy and is defined as the weighted harmonic mean of the precision and recall of the test. 
 
+
+##  Discussion of Precision and Recall From ML Pipeline 
+**Original Study Dataset Precision and Recall Result:**\
+\
+![](../combined-pipelines/images/Original_Study_Result_Graph.png)
+
+**New Complete Study Dataset Precision and Recall Result  :**\
+\
+![](../combined-pipelines/images/New_Dataset_Result_Graph.png)
+
+**Compare Original Study Dataset Vs New Complete Study Dataset (Precision and Recall ) :**\
+\
+![](../combined-pipelines/images/Compare_Both_Dataset_Result_Graph.png)
 
 # Sources
 - [1] F. Dalpiaz, “Requirements data sets (user stories)”, Mendeley Data, V1, 2018, doi: 10.17632/7zbk8zsd8y.1
