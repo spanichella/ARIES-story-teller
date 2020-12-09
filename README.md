@@ -123,20 +123,20 @@ The user story dataset was created using a [collection of datasets](https://data
 <table style="border: 0">
     <tr>
         <td>
-            **Christian Aeberhard**<br/>
-            [![Christian Aeberhard]("./combined-pipelines/images/Chris_Bubble.png")](https://github.com/niddhog)
+            <p style="font-weight: bold">Christian Aeberhard</p>
+            <a href="https://github.com/niddhog"><img alt="Christian Aeberhard" src="./combined-pipelines/images/Chris_Bubble.png"></a>
         </td>
         <td>
-            **Mark Kramer**<br/>
-            [![Mark Kramer]("./combined-pipelines/images/Mark_Bubble.png")](https://github.com/Makram95)
+            <p style="font-weight: bold">Mark Kramer</p>
+            <a href="https://github.com/Makram95"><img alt="Mark Kramer" src="./combined-pipelines/images/Mark_Bubble.png"></a>
         </td>
         <td>
-            **Janik Lüchinger**<br/>
-            [![Janik Lüchinger]("./combined-pipelines/images/Janik_Bubble.png")](https://github.com/jluech)
+            <p style="font-weight: bold">Janik Lüchinger</p>
+            <a href="https://github.com/jluech"><img alt="Janik Lüchinger" src="./combined-pipelines/images/Janik_Bubble.png"></a>
         </td>
         <td>
-            **Tanzil Mohammed**<br/>
-            [![Tanzil Mohammed]("./combined-pipelines/images/Tanzil_Bubble.png")](https://github.com/tanzilkm)
+            <p style="font-weight: bold">Tanzil Mohammed</p>
+            <a href="https://github.com/tanzilkm"><img src="./combined-pipelines/images/Tanzil_Bubble.png" alt="Tanzil Mohammed"></a>
         </td>
     </tr>
 </table>
