@@ -61,11 +61,13 @@ Hint: It can potentially help to install [RStudio](https://rstudio.com/products/
 
 
 ## 3. Our Contribution<a name="section3"></a>
+Our study is an extension of the aforementioned [study](#section2) and evolves around the following research question: "Does running the ML and DL algorithm using an extended dataset lead to better precision and recall values?"
+We addressed this question by implementing the following:
 For evaluation of the DL and ML component, we created a new dataset based on a recreated requirement elicitation session and used the audio recording to extend the already existing dataset of the original study.
-The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results]().
+The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results](). **TODO**: Correctly link Study Results
 Furthermore, in order to facilitate usage and make our tool accessible for a broader audience, we combined the separate ML and DL Pipeline into a combined wrapper component and created an intuitive, easy to use graphical user interface (GUI).
-Finally, we evaluated the ML and DL component in terms of precision, recall and F-measure values with our newly created dataset and compared it to the results found in the original study.
-**TODO**: Correctly link Study Results
+Finally, we evaluated the ML and DL component in terms of precision, recall and F-measure values, using our newly created dataset and comparing the results to the ones achieved in the former study. These findings allowed us to address and reflect upon our research question.
+
 
 
 ### TOBEMOVED Recording Dataset<a name="section4.1"></a>
@@ -96,7 +98,7 @@ The requirements dataset was generated completely from scratch by recording an e
 - The dataset contains 665 lines of labeled lines of tab-separated values, including line number, text content, and classification label
 - Strong semantic errors in the transcription due to misspelling or mis-identification of words have been manually fixed
 
-#### Dataset Creation
+#### TOBEMOVED Dataset Creation
 - We collected the software specifications of the project and derived some project requirements
 - We recreated an elicitation session with three participants as described above
 - Then we converted the recording to text using a dedicated speech-to-text conversion tool.
