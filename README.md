@@ -61,13 +61,28 @@ Hint: It can potentially help to install [RStudio](https://rstudio.com/products/
 
 
 ## 3. Our Contribution<a name="section3"></a>
-Our study is an extension of the aforementioned [study](#section2) and evolves around the following research question: \ **"Does running the ML and DL algorithm using an extended dataset lead to better precision and recall values?"** \
+Our study is an extension of the aforementioned [study](#section2) and evolves around the following research question:
+
+**"Does running the ML and DL algorithm using an extended dataset lead to better precision and recall values?"**
+
 We addressed this question by implementing the following:
 For evaluation of the DL and ML component, we created a new dataset based on a recreated requirement elicitation session and used the audio recording to extend the already existing dataset of the original study.
-The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results](). **TODO**: Correctly link Study Results
-Furthermore, in order to facilitate usage and make our tool accessible for a broader audience, we combined the separate ML and DL Pipeline into a combined wrapper component and created an intuitive, easy to use graphical user interface (GUI).
+The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results](). **TODO**: Correctly link Study Results \
+Furthermore, in order to facilitate usage and make our tool accessible for a broader audience, we combined the separate ML and DL Pipeline into a combined wrapper component and created an intuitive, easy to use graphical user interface (GUI). \
 Finally, we evaluated the ML and DL component in terms of precision, recall and F-measure values, using our newly created dataset and comparing the results to the ones achieved in the former study. These findings allowed us to address and reflect upon our research question.
 
+### 3.1 Dataset Extension
+Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of classification approach. Thus, we focused on extending the requirements and user story dataset of the former study in contemplation of further validating the efficiency and precision of the _Requirements-Collector_ tool.
+**TODO** Link to datasets
+
+### 3.2 Pipeline Combination
+During our project, we wrapped the two pipelines into one executable program.
+To make it more user-friendly, we changed the setup and execution procedure from ground up:
+We removed the command-line interaction as well as any manual specifications of local paths, and replaced them with a simple graphical user interface instead.
+While merging the pipelines we also refactored, cleaned up, and fixed the code, such that it now also works on Windows.
+A more in-depth description of the changes and the code in general, as well as possible future improvements can be found in the specific code README [here](combined-pipelines/README.md).
+
+![](combined-pipelines/images/swmlogo2.jpg)
 
 
 ### TOBEMOVED Recording Dataset<a name="section4.1"></a>
@@ -120,25 +135,13 @@ The user story dataset was created using a [collection of datasets](https://data
     We used [Microsoft Excel](https://www.microsoft.com/en-ww/microsoft-365/excel) for this by sorting the dataset according to the classifications and shuffling the lines using [random sort in Excel](https://www.ablebits.com/office-addins-blog/2018/01/24/excel-randomize-list-random-sort/).
     We then combined the findings with our gathered user stories and shuffled the dataset again for its final version
 
-
 ## 4. Summary of results <a name="section4"></a>
-## 5. Wrapper Component Description<a name="section5"></a>
-During our project, we wrapped the two pipelines into one executable program.
-To make it more user-friendly, we changed the setup and execution procedure from ground up:
-We removed the command-line interaction as well as any manual specifications of local paths, and replaced them with a simple graphical user interface instead.
-While merging the pipelines we also refactored, cleaned up, and fixed the code, such that it now also works on Windows.
-A more in-depth description of the changes and the code in general, as well as possible future improvements can be found in the specific code README [here](combined-pipelines/README.md).
-
-
-![](combined-pipelines/images/swmlogo2.jpg)
-
-
 
 ## 6. Study Results and Discussion<a name="section6"></a>
 - **Precision** is a metric which quantifies the number of correct positive predictions made and is calculated as the ratio of correctly predicted positive examples (out of the total retrieved) divided by the total number of retrieved examples [2]
 - **Recall** is a metric which quantifies the number of correct positive predictions made out of all positive predictions there are. Recall provides an indication of missed positive predictions (contrary to precision) [2]
 
-###  Discussion of Precision and Recall From ML Pipeline 
+### TOBEMOVED Discussion of Precision and Recall From ML Pipeline 
 **Original Study Dataset Precision and Recall Result:**\
 \
 ![](combined-pipelines/images/Original_Study_Result_Graph.png)
@@ -151,7 +154,7 @@ A more in-depth description of the changes and the code in general, as well as p
 \
 ![](combined-pipelines/images/Compare_Both_Dataset_Result_Graph.png)
 
-## 7. Project Team
+## Project Team
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Christian Aeberhard** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mark Kramer** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Jannik Lüchinger**  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Tanzil Mohammed** <br/><br/>
 [![](combined-pipelines/images/Chris_Bubble.png)](https://github.com/niddhog) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Marc_Bubble.png)](https://github.com/Makram95) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Janik_Bubble.png)](https://github.com/jluech)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Tanzil_Bubble.png)](https://github.com/tanzilkm) 
 
