@@ -120,10 +120,26 @@ The user story dataset was created using a [collection of datasets](https://data
 
 
 ## Project Team
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Christian Aeberhard** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Marc Kramer** <br/><br/> 
-[![](combined-pipelines/images/Chris_Bubble.png)](https://github.com/niddhog) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Marc_Bubble.png)](https://github.com/Makram95) <br/><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Jannik Lüchinger**  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Tanzil Mohammed** <br/><br/>
-[![](combined-pipelines/images/Janik_Bubble.png)](https://github.com/jluech)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Tanzil_Bubble.png)](https://github.com/tanzilkm) 
+<table style="border: 0">
+    <tr>
+        <td>
+            **Christian Aeberhard**<br/>
+            [![Christian Aeberhard]("./combined-pipelines/images/Chris_Bubble.png")](https://github.com/niddhog)
+        </td>
+        <td>
+            **Mark Kramer**<br/>
+            [![Mark Kramer]("./combined-pipelines/images/Mark_Bubble.png")](https://github.com/Makram95)
+        </td>
+        <td>
+            **Janik Lüchinger**<br/>
+            [![Janik Lüchinger]("./combined-pipelines/images/Janik_Bubble.png")](https://github.com/jluech)
+        </td>
+        <td>
+            **Tanzil Mohammed**<br/>
+            [![Tanzil Mohammed]("./combined-pipelines/images/Tanzil_Bubble.png")](https://github.com/tanzilkm)
+        </td>
+    </tr>
+</table>
 
 ## References
 - [1] M. Ruiz, S. Panichella, 2020. Can We Design Software as We Talk?
