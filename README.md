@@ -7,7 +7,7 @@ Tool - Version 1.1
 
 
 ## Overview
-1. [Project Description](#section1)
+1. [Our Work](#section1)
 2. [Requirement Collector Tool Description](#section2)
 3. [Installation Guide](#section3)
 4. [Dataset Description](#section4)\
@@ -18,7 +18,7 @@ Tool - Version 1.1
 
 
 
-## 1. Project Description<a name="section1"></a>
+## 1. Our Work<a name="section1"></a>
 In order to speed up the time-to-market of high-quality software products, the authors developed the _Requirements-Collector_ tool.
 This tool supports an automatic analysis and classification of requirements specification and user feedback by leveraging the power of machine and deep learning strategies (for a full description of the ML and DL component, please follow the links mentioned in the [Tool Description](#section2) section).
 Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of investigation.
