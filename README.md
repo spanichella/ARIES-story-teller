@@ -46,7 +46,7 @@ The corresponding installation guide and source code of both ML and DL component
 ## 3. Our Contribution<a name="section3"></a>
 Our study is an extension of the aforementioned original [study](#section2) and evolves around the following research question:
 
-    "Does running the ML and DL algorithm using an extended dataset lead to better precision and recall values?"
+**"Does running the ML and DL algorithm using an extended dataset lead to better precision and recall values?"**
 
 We addressed this question by implementing the following:\
 For evaluation of the DL and ML component, we created a new dataset based on a recreated requirement elicitation session and used the audio recording to extend the already existing dataset of the original study.
