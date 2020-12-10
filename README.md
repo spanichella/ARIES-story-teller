@@ -120,10 +120,26 @@ The user story dataset was created using a [collection of datasets](https://data
 
 
 ## Project Team
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Christian Aeberhard** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Marc Kramer** <br/><br/> 
-[![](combined-pipelines/images/Chris_Bubble.png)](https://github.com/niddhog) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Marc_Bubble.png)](https://github.com/Makram95) <br/><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Jannik Lüchinger**  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Tanzil Mohammed** <br/><br/>
-[![](combined-pipelines/images/Janik_Bubble.png)](https://github.com/jluech)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Tanzil_Bubble.png)](https://github.com/tanzilkm) 
+<table>
+    <tr style="border: 0; text-align: center">
+        <td style="border: 0">
+            <p style="font-weight: bold">Christian Aeberhard</p>
+            <a href="https://github.com/niddhog"><img alt="Christian Aeberhard" src="./combined-pipelines/images/Chris_Bubble.png"></a>
+        </td>
+        <td style="border: 0">
+            <p style="font-weight: bold">Mark Kramer</p>
+            <a href="https://github.com/Makram95"><img alt="Mark Kramer" src="./combined-pipelines/images/Mark_Bubble.png"></a>
+        </td>
+        <td style="border: 0">
+            <p style="font-weight: bold">Janik Lüchinger</p>
+            <a href="https://github.com/jluech"><img alt="Janik Lüchinger" src="./combined-pipelines/images/Janik_Bubble.png"></a>
+        </td>
+        <td style="border: 0">
+            <p style="font-weight: bold">Tanzil Mohammed</p>
+            <a href="https://github.com/tanzilkm"><img src="./combined-pipelines/images/Tanzil_Bubble.png" alt="Tanzil Mohammed"></a>
+        </td>
+    </tr>
+</table>
 
 ## References
 - [1] M. Ruiz, S. Panichella, 2020. Can We Design Software as We Talk?
