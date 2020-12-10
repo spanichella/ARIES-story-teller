@@ -79,7 +79,7 @@ public class DLPipeline {
         int nrOfExamplesPerBatch = lengthTrainingSet/nrOfBatches;
         LOGGER.info(String.valueOf(nrOfExamplesPerBatch));
 
-        int nrOfEpochs = 2;
+        int nrOfEpochs = 100;
 
         int wordsPerTurn = 100; // estimated. Longer will be cut, shorter will be empty padded.
         int gloveDimension = GLOVE_DIM; // vector dimension of the word representation in the GloVe model
