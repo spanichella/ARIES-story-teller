@@ -41,21 +41,21 @@ The resulting tdm files can ultimately be used as input to the WEKA classifier.
 \
 ![](../combined-pipelines/images/Original_Study_Result_Graph.png)
 \
-In the above graph we see the result from ML model from [Original Study](#studyDS)  with 50% split of dataset as test and training dataset where `NULL` labelled dataset performed  Precision with 80%, Recall 93%,  F-measure with  98%  and  `F` labelled dataset performed  Precision with  45%  Recall with  32% and  F-measure with  38% and  `A` labelled dataset performed poorly in original study 0% Precision, Recall and F-measure. `A` labelled lines in dataset affected the performance of Weighted Avg. of the performance in the original study.
+In the above graph we see the result from ML model from [Original Study dataset](#studyDS)  with 50% split of dataset as test and training dataset where `NULL` labelled dataset performed  Precision with 80%, Recall 93%,  F-measure with  98%  and  `F` labelled dataset performed  Precision with  45%  Recall with  32% and  F-measure with  38% and  `A` labelled dataset performed poorly in original study 0% Precision, Recall and F-measure. `A` labelled lines in dataset affected the performance of Weighted Avg. of the performance in the original study dataset.
 \
 **New Complete Study Dataset Precision and Recall Result  :**\
 \
 ![](../combined-pipelines/images/New_Dataset_Result_Graph.png)
 \
-In the above graph we see the result from ML model from [Complete Study](#CompleteDS)  with 50% split of the dataset as test and training dataset where `NULL` labelled dataset performed  Precision with 91%, Recall 98%,  F-measure with  94%  and  `F` labelled dataset performed  Precision with  71%  Recall with  48% and  F-measure with  58% and  `A` labelled dataset performed better compare to [Original Study](#studyDS)    Precision with 39%, Recall with 21% and F-measure with 27%. 
-\
+In the above graph we see the result from ML model from [Complete Study dataset](#CompleteDS)  with 50% split of the dataset as test and training dataset where `NULL` labelled dataset performed  Precision with 91%, Recall 98%,  F-measure with  94%  and  `F` labelled dataset performed  Precision with  71%  Recall with  48% and  F-measure with  58% and  `A` labelled dataset performed better compare to [Original Study dataset](#studyDS)    Precision with 39%, Recall with 21% and F-measure with 27%. 
+
 
 **Compare Original Study Dataset Vs New Complete Study Dataset (Precision and Recall ) :**\
 \
 ![](../combined-pipelines/images/Compare_Both_Dataset_Result_Graph.png)
 \
-In the above graph, we compare the performance of [Original Study](#studyDS) and [Complete Study](#CompleteDS) where we can see the Complete Study shows slightly better performance compare to Original Study Dataset in ML pipeline and `A` labelled lines in the dataset has shown some accuracy in the complete dataset where it was 0% in the [Original Study](#studyDS). (Original Study avg. performance  Precision with 68%, Recall with 75% and F-measure with 71% and Complete Study Precision with 86%, Recall with 88% and F-measure with 87%) 
-\
+In the above graph, we compare the performance of [Original Study dataset](#studyDS) and [Complete Study dataset](#CompleteDS) where we can see the Complete Study dataset shows slightly better performance compare to Original Study Dataset in ML pipeline and `A` labelled lines in the dataset has shown some accuracy in the complete dataset where it was 0% in the [Original Study dataset](#studyDS). (Original Study dataset avg. performance  Precision with 68%, Recall with 75% and F-measure with 71% and Complete Study dataset Precision with 86%, Recall with 88% and F-measure with 87%) 
+
 
 # Sources
 - [1] F. Dalpiaz, “Requirements data sets (user stories)”, Mendeley Data, V1, 2018, doi: 10.17632/7zbk8zsd8y.1
