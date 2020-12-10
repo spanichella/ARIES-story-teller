@@ -47,14 +47,14 @@ In the above graph we see the result from ML model from [Original Study dataset]
 \
 ![](../combined-pipelines/images/New_Dataset_Result_Graph.png)
 \
-In the above graph we see the result from ML model from [Complete Study dataset](#CompleteDS)  with 50% split of the dataset as test and training dataset where `NULL` labelled dataset performed  Precision with 91%, Recall 98%,  F-measure with  94%  and  `F` labelled dataset performed  Precision with  71%  Recall with  48% and  F-measure with  58% and  `A` labelled dataset performed better compare to [Original Study dataset](#studyDS)    Precision with 39%, Recall with 21% and F-measure with 27%. 
+In the above graph we see the result from ML model from [Complete Study dataset](#CompleteDS)  with 50% split of the dataset as test and training dataset where `NULL` labelled dataset performed  Precision with 94%, Recall 99%,  F-measure with  96%  and  `F` labelled dataset performed  Precision with  84%  Recall with  72% and  F-measure with  78% and  `A` labelled dataset performed better compare to [Original Study dataset](#studyDS)    Precision with 92%, Recall with 42% and F-measure with 57%. 
 
 
 **Compare Original Study Dataset Vs New Complete Study Dataset (Precision and Recall ) :**\
 \
 ![](../combined-pipelines/images/Compare_Both_Dataset_Result_Graph.png)
 \
-In the above graph, we compare the performance of [Original Study dataset](#studyDS) and [Complete Study dataset](#CompleteDS) where we can see the Complete Study dataset shows slightly better performance compare to Original Study Dataset in ML pipeline and `A` labelled lines in the dataset has shown some accuracy in the complete dataset where it was 0% in the [Original Study dataset](#studyDS). (Original Study dataset avg. performance  Precision with 68%, Recall with 75% and F-measure with 71% and Complete Study dataset Precision with 86%, Recall with 88% and F-measure with 87%) 
+In the above graph, we compare the performance of [Original Study dataset](#studyDS) and [Complete Study dataset](#CompleteDS) where we can see the Complete Study dataset shows slightly better performance compare to Original Study Dataset in ML pipeline and `A` labelled lines in the dataset has shown some accuracy in the complete dataset where it was 0% in the [Original Study dataset](#studyDS). (Original Study dataset avg. performance  Precision with 68%, Recall with 75% and F-measure with 71% and Complete Study dataset Precision with 93%, Recall with 93% and F-measure with 92%) 
 
 
 # Sources
