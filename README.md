@@ -40,26 +40,6 @@ The corresponding installation guide and source code of both ML and DL component
 ![](combined-pipelines/images/requirements-collector_context.png)
 
 
-
-## TOBEMOVED Setup Guide
-### Pre-Requisites
-- Java 15
-- The [R language](https://cran.r-project.org/) (version 4.0.3) must be installed and operational 
-- Cores: 8
-- Memory: 4.9 GB
-- Download [glove txt file](https://www.kaggle.com/watts2/glove6b50dtxt) and put it into the DL folder located at Combined Project -> Ressources
-- For usage on Windows, add the RScript bin folder path (e.g., C:\Program Files\R\R-4.0.3\bin) to the PATH variable (in environment variables)
-
-Hint: It can potentially help to install [RStudio](https://rstudio.com/products/rstudio/download/), where you can manually open and execute the [MainScript.r]("./combined-pipelines/resources/R-scripts/MainScript.r") step by step as to install and load the necessary R packages.
-
-
-### Supported Operating Systems
-- Mac OS (works on 10.15.7 using Intel chipset)
-- Ubuntu 18.04 or above
-- Windows 10
-
-
-
 ## 3. Our Contribution<a name="section3"></a>
 Our study is an extension of the aforementioned [study](#section2) and evolves around the following research question:
 
@@ -155,7 +135,7 @@ The user story dataset was created using a [collection of datasets](https://data
 ![](combined-pipelines/images/Compare_Both_Dataset_Result_Graph.png)
 
 ## Project Team
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Christian Aeberhard** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mark Kramer** <br/><br/> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Christian Aeberhard** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Marc Kramer** <br/><br/> 
 [![](combined-pipelines/images/Chris_Bubble.png)](https://github.com/niddhog) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Marc_Bubble.png)](https://github.com/Makram95) <br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Jannik Lüchinger**  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Tanzil Mohammed** <br/><br/>
 [![](combined-pipelines/images/Janik_Bubble.png)](https://github.com/jluech)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![](combined-pipelines/images/Tanzil_Bubble.png)](https://github.com/tanzilkm) 
