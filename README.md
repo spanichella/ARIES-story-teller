@@ -72,11 +72,16 @@ A more in-depth description of the changes and the code in general, as well as p
 
 
 
-## 4. Summary of results <a name="section4"></a>
+## 4. Summary of Results<a name="section4"></a>
+We used the original "Study" dataset as well as our new "Complete" dataset to experiment with an ML (supervised) pipeline in order to evaluate the pipeline's accuracy.
+Our results with the ML model of the "Complete" dataset have shown better performance compared to the original "Study" dataset.
+While `A` labelled instances in the "Study" dataset have not reached usable values above 0%, in the "Complete" dataset we reached values for precision, recall, and F-measure of at least 42%.
 
-We used Orginal study dataset and new complete dataset to experiment with  ML (supervised) papeline , to evaluate its accuracy. Our results with ML model from  **Complete dataset** shows better performance compare to **Original Study Dataset** in ML pipeline and A labelled lines in the dataset has shown some accuracy in the complete dataset where it was 0% in the Original Study. The Avg. accuracy of Original Study dataset was  Precision with 68%, Recall with 75% and F-measure with 71% and Complete dataset Avg. accuracy is  Precision with 93%, Recall with 93% and F-measure with 92%.  
+The original "Study" dataset reached an average accuracy of a precision of 68%, recall of 75%, and F-measure of 71%.
+On the contrary, our "Complete" dataset performed noticeably better with a precision of 93%, recall of 93%, and F-measure of 92%.
 
-Extending the Dataset shown significate performance and Accuracy in ML pipeline. As **Future work** we  just suggest to extend dataset for better performace and accuracy.
+Extending the Dataset has shown significantly better performance and Accuracy in ML pipeline.
+As future work we just suggest extending the dataset for better performance and accuracy.
 
 
 
