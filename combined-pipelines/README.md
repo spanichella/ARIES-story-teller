@@ -11,14 +11,35 @@ _StoryTeller_ is our combined integration of the [ML-Component](https://github.c
 During the project, we merged the two pipelines step by step with focus to make them user-friendly to people with no computer science background.
 
 ## 2. Program Description <a name="section2"></a>
-The goal of this part is to give a brief description of how our code works.
+The goal of this part is to give a guide for setup and a brief description of how our code works.
 
 ### 2.1 Setup Information
-For information regarding the set-up and use, please refer to the instructions provided [here](https://github.com/Makram95/SWME_G2_HS20/blob/main/README.md).
 
-### 2.2 Pipeline description
-When launching the program, the user gets presented with a simple graphical user interface (GUI).
-There he must select the location of the dataset and the type of its content.
+#### Pre-Requisites
+- Java 15
+- The [R language](https://cran.r-project.org/) (version 4.0.3) must be installed and operational 
+- Cores: 4
+- Memory: >6GB (add '-Xmx6G' to the VM options of the run configuration)
+- Download [glove txt file](https://www.kaggle.com/watts2/glove6b50dtxt) and put it into the DL folder located at Combined Project -> Ressources
+- For usage on Windows, add the RScript bin folder path (e.g., C:\Program Files\R\R-4.0.3\bin) to the PATH variable (in environment variables)
+
+Hint: It can potentially help to install [RStudio](https://rstudio.com/products/rstudio/download/), where you can manually open and execute the [MainScript.r]("./combined-pipelines/resources/R-scripts/MainScript.r") step by step as to install and load the necessary R packages.
+
+
+#### Supported Operating Systems
+- Mac OS
+- Ubuntu 18.04 or above
+- Windows 10
+
+
+### 2.2 Pipeline Execution
+
+#### Video Guide
+[![IMAGE ALT TEXT HERE](images/ThumbnailSWM.jpg)](https://www.youtube.com/watch?v=ZXxYfPH8J0E)
+
+#### Pipeline Description
+When launching the program, the simple graphical user interface (GUI) will launch.
+There the user must select the location of the dataset and the type of its content.
 He can further select the desired pipeline, where for User Stories only the ML-pipeline is available, while for Requirement Specifications both the ML and DL pipeline are available.
 Depending on what he selected he can then specify attributes regarding the execution of the chosen pipeline.
 If everything is selected and specified correctly, he can finally click on execute to run the analysis.
