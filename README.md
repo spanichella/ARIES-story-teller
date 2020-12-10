@@ -50,13 +50,16 @@ Our study is an extension of the aforementioned original [study](#section2) and 
 
 We addressed this question by implementing the following:\
 For evaluation of the DL and ML component, we created a new dataset based on a recreated requirement elicitation session and used the audio recording to extend the already existing dataset of the original study.
-The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results](datasets/README.md#study-results).\
-Furthermore, in order to facilitate usage and make our tool more accessible to a broader audience, we combined the separate ML and DL Pipeline into a combined wrapper component and created an intuitive, easy to use graphical user interface (GUI). \
-Finally, we evaluated the ML and DL component in terms of precision, recall and F-measure values, using our newly created dataset and comparing the results to the ones achieved in the former study. These findings allowed us to address and reflect upon our research question.
+The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results](datasets/README.md#study-results).
+
+Furthermore, in order to facilitate usage and make our tool more accessible to a broader audience, we combined the separate ML and DL Pipeline into a combined wrapper component and created an intuitive, easy to use graphical user interface (GUI).
+
+Finally, we evaluated the ML and DL component in terms of precision, recall and F-measure values, using our newly created dataset and comparing the results to the ones achieved in the former study.
+These findings allowed us to address and reflect upon our research question.
 
 ### 3.1 Dataset Extension
-Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of classification approach. Thus, we focused on extending the requirements and user story dataset of the former study in contemplation of further validating the efficiency and precision of the _Requirements-Collector_ tool.
-**TODO** Link to datasets
+Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of classification approach.
+Thus, we focused on extending the requirements and user story [dataset of the former study](datasets/study) in contemplation of further validating the efficiency and precision of the _Requirements-Collector_ tool.
 
 ### 3.2 Pipeline Combination
 During our project, we wrapped the two pipelines into one executable program.
