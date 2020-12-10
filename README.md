@@ -117,6 +117,10 @@ The user story dataset was created using a [collection of datasets](https://data
 
 ## 4. Summary of results <a name="section4"></a>
 
+We used Orginal study dataset and new complete dataset to experiment with  ML (supervised) papeline , to evaluate its accuracy. Our results with ML model from  **Complete dataset** shows better performance compare to **Original Study Dataset** in ML pipeline and A labelled lines in the dataset has shown some accuracy in the complete dataset where it was 0% in the Original Study. The Avg. accuracy of Original Study dataset was  Precision with 68%, Recall with 75% and F-measure with 71% and Complete dataset Avg. accuracy is  Precision with 93%, Recall with 93% and F-measure with 92%.  
+
+Extending the Dataset shown significate performance and Accuracy in ML pipeline. As **Future work** we  just suggest to extend dataset for better performace and accuracy.
+
 
 
 ## Project Team
