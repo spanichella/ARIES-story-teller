@@ -94,7 +94,7 @@ The resulting tdm files can ultimately be used as input to the WEKA classifier.
 - **F-measure** is a measure of a test's accuracy and is defined as the weighted harmonic mean of the precision and recall of the test. 
 
 
-## Discussion of Precision and Recall From ML Pipeline
+## Discussing Precision and Recall of ML Pipeline
 **Original Study Dataset:**\
 ![](../combined-pipelines/images/Original_Study_Result_Graph.png)\
 The above graph depicts the results of the ML model for the original "Study" dataset with a 50% split of the dataset (test and training set).
