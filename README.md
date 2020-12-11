@@ -111,4 +111,4 @@ As future work we just suggest extending the dataset for better performance and 
 
 ## References
 - [1] M. Ruiz, S. Panichella, 2020. Can We Design Software as We Talk?
-- [2] A. Fernandez, S. Garcia, M. Galar, R. C. Prati, B. Krawczyk, F. Herrera, 2018. Learning from Imbalanced Data Sets, 1st ed. 2018 Edition
+
