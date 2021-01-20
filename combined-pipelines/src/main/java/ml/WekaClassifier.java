@@ -67,7 +67,7 @@ public class WekaClassifier {
             logger.info("Training data loaded");
 
             Classifier classifier = getClassifierClassName(machineLearningModel);
-            logger.info("Classifier used: " + String.valueOf(classifier.getClass()));
+            logger.info("Classifier used: " + classifier.getClass());
             classifier.buildClassifier(train);
 
             Evaluation eval = new Evaluation(train);
@@ -117,7 +117,7 @@ public class WekaClassifier {
             logger.info("Training data loaded");
 
             Classifier classifier = getClassifierClassName(machineLearningModel);
-            logger.info("Classifier used: "+String.valueOf(classifier.getClass()));
+            logger.info("Classifier used: " + classifier.getClass());
             logger.info("Test set items that need to be labeled:" + test.numInstances());
             logger.info("To classify such instances, consider to use the GUI version of WEKA as reported in the following example:");
             logger.info("https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf");
@@ -135,7 +135,7 @@ public class WekaClassifier {
         String[] options;
         Classifier classifier = getClassifierClassName(machineLearningModel);
         logger.info("Using 10-Fold");
-        logger.info("Classifier used: "+String.valueOf(classifier.getClass()));
+        logger.info("Classifier used: " + classifier.getClass());
         classifier.buildClassifier(wholeDataset);
 
         Evaluation eval = new Evaluation(wholeDataset);
