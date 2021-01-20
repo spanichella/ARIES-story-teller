@@ -409,8 +409,6 @@ public class DLPipeline {
             }
 
             return count.getLineNumber();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
