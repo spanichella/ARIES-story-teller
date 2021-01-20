@@ -54,7 +54,7 @@ public class DLPipeline {
 
     // https://deeplearning4j.org/tutorials/setup
 
-    public static void runDLPipeline(ConfigFileReader cfg) throws IOException, URISyntaxException {
+    public static void runDLPipeline(ConfigFileReader cfg) throws IOException {
 
         // the training set
         String labelledTurns = cfg.getPathTrainingSet();
@@ -120,7 +120,7 @@ public class DLPipeline {
 
     private static void train(String labelledTurns, WordVectors wordVectors, int nrOfExamples, int nrOfBatches,
                               int nrOfExamplesPerBatch, int nrOfEpochs, int inputColumns, int wordsPerTurn, int gloveDimension,
-                              MultiLayerNetwork model, String validationSet, int inputSize) throws IOException, FileNotFoundException {
+                              MultiLayerNetwork model, String validationSet, int inputSize) throws IOException {
 
         // prepare test data
         List<INDArray> inputList = new ArrayList<>(inputSize);
@@ -346,7 +346,7 @@ public class DLPipeline {
         return Optional.ofNullable(url).orElseThrow(() -> new FileNotFoundException(name));
     }
 
-    public static MultiLayerNetwork createMultiLayerNetwork(int nIn, double learningRate) throws IOException {
+    public static MultiLayerNetwork createMultiLayerNetwork(int nIn, double learningRate) {
 
         int rngSeed = 123; // random number seed for reproducibility
         int optimizationIterations = 1;
