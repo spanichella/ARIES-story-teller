@@ -24,7 +24,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
 
     JPanel mainPanel;
     private final JButton truthSetSelector, execute_b;
-    private final JLabel s1_l_step, s1_l_text;
+    private final JLabel s1_l_step;
     JLabel s2_l_step, s2_l_text;
     JLabel s3_l_step, s3_l_text;
     JLabel s4a_l_step, s4a_l_text;
@@ -89,7 +89,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         s1_l_step.setHorizontalAlignment(JLabel.CENTER);
         s1_l_step.setForeground(textColor);
 
-        s1_l_text = new JLabel("<html><div style='text-align: center;'>Select a truth set to" +
+        JLabel s1_l_text = new JLabel("<html><div style='text-align: center;'>Select a truth set to" +
                 " be analyzed by the algorithm</div></html>");
         s1_l_text.setHorizontalAlignment(JLabel.CENTER);
         s1_l_text.setForeground(textColor);
