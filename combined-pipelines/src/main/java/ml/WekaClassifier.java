@@ -28,19 +28,16 @@ import weka.core.converters.ConverterUtils.DataSource;
  * @author panc
  */
 
-public class WekaClassifier extends MachineLearningClassifier {
-
+public class WekaClassifier {
     private static String pathTrainingSet;
     private static String pathTestSet;
     private static String pathModel;
     private final static Logger logger = Logger.getLogger(WekaClassifier.class.getName());
 
     public WekaClassifier() {
-        this.classifierToolChain = "Weka";
     }
 
     public WekaClassifier(String pathTrainingSet, String pathTestSet, String pathModel) {
-        this.classifierToolChain = "Weka";
         this.pathTrainingSet = pathTrainingSet;
         this.pathTestSet = pathTestSet;
         this.pathModel = pathModel;
