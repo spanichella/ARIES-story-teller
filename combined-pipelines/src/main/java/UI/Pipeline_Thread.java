@@ -1,8 +1,6 @@
 package UI;
-import pipelines.MainPipeline;
 
-import javax.swing.*;
-import java.awt.*;
+import pipelines.MainPipeline;
 
 public class Pipeline_Thread extends Thread {
     final String mainPath, args2, args1;
