@@ -36,15 +36,12 @@ public class ProcessExecutor {
     }
 
     public static abstract class ProcessException extends RuntimeException {
-        public final String[] commandParts;
-
-        public ProcessException(String[] commandParts, String message) {
-            this(commandParts, message, null);
+        public ProcessException(String message) {
+            super(message);
         }
 
-        public ProcessException(String[] commandParts, String message, Throwable cause) {
+        public ProcessException(String message, Throwable cause) {
             super(message, cause);
-            this.commandParts = commandParts;
         }
 
         protected static String toCommand(String[] commandParts) {
@@ -54,13 +51,13 @@ public class ProcessExecutor {
 
     public static class ExecutionException extends ProcessException {
         public ExecutionException(String[] commandParts, Throwable cause) {
-            super(commandParts, "Could not execute the script \"" + toCommand(commandParts) + "\"", cause);
+            super("Could not execute the script \"" + toCommand(commandParts) + "\"", cause);
         }
     }
 
     public static class RunFailedException extends ProcessException {
         public RunFailedException(String[] commandParts) {
-            super(commandParts, "Running the script \"" + toCommand(commandParts) + "\" failed");
+            super("Running the script \"" + toCommand(commandParts) + "\" failed");
         }
     }
 }
