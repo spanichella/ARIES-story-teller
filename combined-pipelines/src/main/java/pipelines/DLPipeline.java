@@ -37,14 +37,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class DLPipeline {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DLPipeline.class.getName());
 
     private static final int GLOVE_DIM = 100;
-
 
     // captures everything that's not a letter greedily, e.g. ", "
     private static final String WORD_SPLIT_PATTERN = "\\P{L}+";
@@ -81,10 +79,9 @@ public class DLPipeline {
         int nrOfEpochs = 100;
 
         int wordsPerTurn = 100; // estimated. Longer will be cut, shorter will be empty padded.
-        int gloveDimension = GLOVE_DIM; // vector dimension of the word representation in the GloVe model
 
         // columns of input. The rows are the number of examples.
-        int inputColumns = wordsPerTurn * gloveDimension;
+        int inputColumns = wordsPerTurn * GLOVE_DIM;
 
         // create the model
         LOGGER.info("Creating model");
@@ -101,7 +98,7 @@ public class DLPipeline {
 
         LOGGER.info("Start training...");
         train(labelledTurns, wordVectors, lengthTrainingSet, nrOfBatches, nrOfExamplesPerBatch, nrOfEpochs, inputColumns,
-                wordsPerTurn, gloveDimension, model, validationSet, lengthTestSet);
+                wordsPerTurn, model, validationSet, lengthTestSet);
         LOGGER.info("Finished training");
 
         LOGGER.info("Save trained model to " + modelFile);
@@ -119,7 +116,7 @@ public class DLPipeline {
     }
 
     private static void train(String labelledTurns, WordVectors wordVectors, int nrOfExamples, int nrOfBatches,
-                              int nrOfExamplesPerBatch, int nrOfEpochs, int inputColumns, int wordsPerTurn, int gloveDimension,
+                              int nrOfExamplesPerBatch, int nrOfEpochs, int inputColumns, int wordsPerTurn,
                               MultiLayerNetwork model, String validationSet, int inputSize) throws IOException {
 
         // prepare test data
