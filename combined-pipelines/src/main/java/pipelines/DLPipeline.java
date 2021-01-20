@@ -435,8 +435,7 @@ public class DLPipeline {
 
     static int getLineCount(String path) {
         try (FileReader input = new FileReader(path);
-             LineNumberReader count = new LineNumberReader(input);
-             ) {
+             LineNumberReader count = new LineNumberReader(input)) {
             while (count.skip(Long.MAX_VALUE) > 0) {
                 // Loop just in case the file is > Long.MAX_VALUE or skip() decides to not read the entire file
             }
