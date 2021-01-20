@@ -157,8 +157,8 @@ public class DLPipeline {
 
             try (BufferedReader reader = new BufferedReader(new FileReader(labelledTurns))) {
 
+                reader.readLine();
                 String line = reader.readLine();
-                line = reader.readLine();
                 for (int batch = 0; line != null && batch < nrOfBatches; ++batch) {
                     LOGGER.info("Batch " + batch);
 
@@ -197,10 +197,6 @@ public class DLPipeline {
                             continue;
                         }
 
-                        // pad
-                        INDArray wvm = wordVectorMatrixOpt.get();
-                        wvm = pad(wvm, wordsPerTurn, gloveDimension);
-
                         inputsBatch.add(wordVectorMatrixOpt.get().ravel());
                         labelsBatch[example] = getLabelValue(lineAr);
                     }
@@ -217,24 +213,6 @@ public class DLPipeline {
                 eval.eval(evalLabels, evalInput, model);
                 LOGGER.info(eval.stats());
         }
-
-    }
-
-    /**
-     * @return an INDArray with the shape: #wordsPerTurn x #inputColumns
-     */
-
-    private static INDArray pad(INDArray wvm, int wordsPerTurn, int inputGloveDimension) {
-        if (wvm.rows() < wordsPerTurn) {
-            wvm = Nd4j.vstack(wvm, Nd4j.zeros(wordsPerTurn - wvm.rows(), inputGloveDimension)).reshape(wordsPerTurn,
-                    inputGloveDimension);
-        }
-
-        if (wvm.rows() > wordsPerTurn) {
-            wvm = wvm.getRows(IntStream.rangeClosed(0, wordsPerTurn - 1).toArray());
-        }
-
-        return wvm; // .reshape(wordsPerTurn, inputColumns);
     }
 
     private static String evaluate(String validationSet, int inputSize, MultiLayerNetwork model, WordVectors wordVectors,
