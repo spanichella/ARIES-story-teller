@@ -423,9 +423,10 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
                 runnable = false;
             }
         } else {
-            for (int i = 0; i < args.length; i++) {
-                if (args[i].equals("null")) {
+            for (String arg : args) {
+                if (arg.equals("null")) {
                     runnable = false;
+                    break;
                 }
             }
         }
