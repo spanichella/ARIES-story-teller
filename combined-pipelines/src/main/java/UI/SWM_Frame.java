@@ -416,7 +416,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
 
 
     public void checkIfRunnable() {
-        Boolean runnable = true;
+        boolean runnable = true;
 
         if (c2.getSelectedItem() == "DL") {
             if (args[0].equals("null") || args[1].equals("null") || args[2].equals("null")) {
@@ -429,11 +429,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
                 }
             }
         }
-        if (runnable) {
-            execute_b.setEnabled(true);
-        } else {
-            execute_b.setEnabled(false);
-        }
+        execute_b.setEnabled(runnable);
     }
 
 
