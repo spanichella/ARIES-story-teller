@@ -1,16 +1,5 @@
 package pipelines;
 
-import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import configFile.ConfigFileReader;
 import org.apache.commons.lang.ArrayUtils;
 import org.deeplearning4j.eval.Evaluation;
@@ -39,6 +28,16 @@ import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.lossfunctions.LossFunctions.LossFunction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class DLPipeline {
 
@@ -340,14 +339,7 @@ public class DLPipeline {
         return new int[] { rows, columns };
     }
 
-    private static final URL loadResource(String name) throws FileNotFoundException {
-        LOGGER.info("loading " + name);
-        URL url = DLPipeline.class.getClassLoader().getResource(name);
-        return Optional.ofNullable(url).orElseThrow(() -> new FileNotFoundException(name));
-    }
-
     public static MultiLayerNetwork createMultiLayerNetwork(int nIn, double learningRate) {
-
         int rngSeed = 123; // random number seed for reproducibility
         int optimizationIterations = 1;
         int outputNum = 3; // number of output classes: FR, NFR, None

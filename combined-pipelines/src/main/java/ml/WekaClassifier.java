@@ -98,10 +98,9 @@ public class WekaClassifier {
         }
     }
 
-    public void runSpecifiedMachineLearningModelToLabelInstances(String machineLearningModel, String pathResultsPrediction) {
+    public void runSpecifiedMachineLearningModelToLabelInstances(String machineLearningModel) {
         String pathTrainingSet = getPathTrainingSet();
         String pathTestSet = getPathTestSet();
-        String pathModel = getPathModel();
 
         try {
             DataSource sourceTraining = new DataSource(pathTrainingSet);
@@ -126,13 +125,12 @@ public class WekaClassifier {
         }
     }
 
-    public void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String j48ModelPath, String machineLearningModel, String pathResultsPrediction) throws Exception {
+    public void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String machineLearningModel, String pathResultsPrediction) throws Exception {
         DataSource sourceWholeDataset = new DataSource(pathWholeDataset);
         Instances wholeDataset = sourceWholeDataset.getDataSet(); // from somewhere
         wholeDataset.setClassIndex(wholeDataset.numAttributes() - 1);
 
         logger.info("Loading data");
-        String[] options;
         Classifier classifier = getClassifierClassName(machineLearningModel);
         logger.info("Using 10-Fold");
         logger.info("Classifier used: " + classifier.getClass());

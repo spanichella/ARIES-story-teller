@@ -21,14 +21,14 @@ public class MLPipeline {
                 if (checkWhetherTestSetIsLabeled(configFileReader.getPathTDMTestSet())) {
                     wekaClassifier.runSpecifiedMachineLearningModel(configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction()); //default behaviour it does prediction with given training and test sets with J48
                 } else {
-                    wekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction()); //default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
+                    wekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(configFileReader.getMachineLearningModel()); //default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
                 }
             }
 
             if (configFileReader.getStrategy().equals("10-Fold")) {
                 WekaClassifier wekaClassifier = new WekaClassifier();
                 try {
-                    wekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.getPathFullTDMDataset(), configFileReader.getPathModel(), configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction());
+                    wekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.getPathFullTDMDataset(), configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction());
                 } catch (Exception e) {
                     logger.severe(e.getMessage());
                     System.exit(1);
