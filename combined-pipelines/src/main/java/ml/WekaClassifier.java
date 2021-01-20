@@ -164,32 +164,31 @@ public class WekaClassifier {
      * Get classifier's class name by a short name
      */
     public static Classifier getClassifierClassName(String classifierName) {
-        if (classifierName.equals("J48")) {
-            return new J48();
-        } else if (classifierName.equals("PART")) {
-            return new PART();
-        } else if (classifierName.equals("NaiveBayes")) {
-            return new NaiveBayes();
-        } else if (classifierName.equals("IBk")) {
-            return new IBk();
-        } else if (classifierName.equals("OneR")) {
-            return new OneR();
-        } else if (classifierName.equals("SMO")) {
-            return new SMO();
-        } else if (classifierName.equals("Logistic")) {
-            return new Logistic();
-        } else if (classifierName.equals("AdaBoostM1")) {
-            return new AdaBoostM1();
-        } else if (classifierName.equals("LogitBoost")) {
-            return new LogitBoost();
-        } else if (classifierName.equals("DecisionStump")){
-            return new DecisionStump();
-        } else if (classifierName.equals("LinearRegression")) {
-            return new LinearRegression();
-        } else if (classifierName.equals("RegressionByDiscretization")) {
-            return new RegressionByDiscretization();
-        } else {
-            return new J48();
+        switch (classifierName) {
+            case "PART":
+                return new PART();
+            case "NaiveBayes":
+                return new NaiveBayes();
+            case "IBk":
+                return new IBk();
+            case "OneR":
+                return new OneR();
+            case "SMO":
+                return new SMO();
+            case "Logistic":
+                return new Logistic();
+            case "AdaBoostM1":
+                return new AdaBoostM1();
+            case "LogitBoost":
+                return new LogitBoost();
+            case "DecisionStump":
+                return new DecisionStump();
+            case "LinearRegression":
+                return new LinearRegression();
+            case "RegressionByDiscretization":
+                return new RegressionByDiscretization();
+            default:
+                return new J48();
         }
     }
 
