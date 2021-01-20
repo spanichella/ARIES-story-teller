@@ -93,6 +93,7 @@ public class DLPipeline {
 
         // save it to file
         File modelFile = new File(cfg.getPathModel().replace("MLModel.model", ""), modelFileName);
+        //noinspection ResultOfMethodCallIgnored
         modelFile.createNewFile();
         LOGGER.info("Saving model to " + modelFile);
         ModelSerializer.writeModel(model, modelFile, true);
