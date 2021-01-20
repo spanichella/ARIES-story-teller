@@ -14,11 +14,9 @@ public class MLPipeline {
     // runs ML according to selections made
     public static void performMlAnalysis(ConfigFileReader configFileReader) {
         logger.info("Starting Machine Learning Analysis...");
-        WekaClassifier wekaClassifier = new WekaClassifier();
         if (configFileReader.getStrategy() != null) {
             if (configFileReader.getStrategy().equals("Percentage-Split")) {
-
-                wekaClassifier = new WekaClassifier(configFileReader.getPathTDMTrainingSet(), configFileReader.getPathTDMTestSet(), configFileReader.getPathModel());
+                WekaClassifier wekaClassifier = new WekaClassifier(configFileReader.getPathTDMTrainingSet(), configFileReader.getPathTDMTestSet(), configFileReader.getPathModel());
 
                 if (checkWhetherTestSetIsLabeled(configFileReader.getPathTDMTestSet())) {
                     wekaClassifier.runSpecifiedMachineLearningModel(configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction()); //default behaviour it does prediction with given training and test sets with J48
@@ -28,6 +26,7 @@ public class MLPipeline {
             }
 
             if (configFileReader.getStrategy().equals("10-Fold")) {
+                WekaClassifier wekaClassifier = new WekaClassifier();
                 try {
                     wekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.getPathFullTDMDataset(), configFileReader.getPathModel(), configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction());
                 } catch (Exception e) {

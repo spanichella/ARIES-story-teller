@@ -29,12 +29,16 @@ import weka.core.converters.ConverterUtils.DataSource;
  */
 
 public class WekaClassifier {
-    private static String pathTrainingSet;
-    private static String pathTestSet;
-    private static String pathModel;
     private final static Logger logger = Logger.getLogger(WekaClassifier.class.getName());
 
+    private final String pathTrainingSet;
+    private final String pathTestSet;
+    private final String pathModel;
+
     public WekaClassifier() {
+        pathTrainingSet = null;
+        pathTestSet = null;
+        pathModel = null;
     }
 
     public WekaClassifier(String pathTrainingSet, String pathTestSet, String pathModel) {
@@ -43,7 +47,7 @@ public class WekaClassifier {
         this.pathModel = pathModel;
     }
 
-    public static void runSpecifiedMachineLearningModel(String machineLearningModel, String pathResultsPrediction) {
+    public void runSpecifiedMachineLearningModel(String machineLearningModel, String pathResultsPrediction) {
         String pathTrainingSet = getPathTrainingSet();
         String pathTestSet = getPathTestSet();
         String pathModel = getPathModel();
@@ -94,7 +98,7 @@ public class WekaClassifier {
         }
     }
 
-    public static void runSpecifiedMachineLearningModelToLabelInstances(String machineLearningModel, String pathResultsPrediction) {
+    public void runSpecifiedMachineLearningModelToLabelInstances(String machineLearningModel, String pathResultsPrediction) {
         String pathTrainingSet = getPathTrainingSet();
         String pathTestSet = getPathTestSet();
         String pathModel = getPathModel();
@@ -122,7 +126,7 @@ public class WekaClassifier {
         }
     }
 
-    public static void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String j48ModelPath, String machineLearningModel, String pathResultsPrediction) throws Exception {
+    public void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String j48ModelPath, String machineLearningModel, String pathResultsPrediction) throws Exception {
         DataSource sourceWholeDataset = new DataSource(pathWholeDataset);
         Instances wholeDataset = sourceWholeDataset.getDataSet(); // from somewhere
         wholeDataset.setClassIndex(wholeDataset.numAttributes() - 1);
@@ -191,27 +195,15 @@ public class WekaClassifier {
         }
     }
 
-    public static String getPathTrainingSet() {
+    public String getPathTrainingSet() {
         return pathTrainingSet;
     }
 
-    public void setPathTrainingSet(String pathTrainingSet) {
-        this.pathTrainingSet = pathTrainingSet;
-    }
-
-    public static String getPathTestSet() {
+    public String getPathTestSet() {
         return pathTestSet;
     }
 
-    public void setPathTestSet(String pathTestSet) {
-        this.pathTestSet = pathTestSet;
-    }
-
-    public static String getPathModel() {
+    public String getPathModel() {
         return pathModel;
-    }
-
-    public void setPathModel(String pathModel) {
-        this.pathModel = pathModel;
     }
 }
