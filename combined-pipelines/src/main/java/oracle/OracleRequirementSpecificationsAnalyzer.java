@@ -1,10 +1,8 @@
 package oracle;
 
 import configFile.ConfigFileReader;
+import helpers.ProcessExecutor;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.logging.Logger;
 
 
@@ -26,21 +24,8 @@ public class OracleRequirementSpecificationsAnalyzer{
         String threshold = String.valueOf(cfr.getThreshold());
 
         //make command for r-script
-        String command = String.join(" ","Rscript", pathRScriptOracle,baseFolder,oracle_path,threshold,nameOfAttributeID,nameOfAttributeText,nameOfAttributeClass);
         logger.info("R-Script execution begins:");
-        try {
-            Process process = Runtime.getRuntime().exec(command);
-
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-            reader.close();
-            logger.info("R-Script execution complete");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ProcessExecutor.execute("Rscript", pathRScriptOracle, baseFolder, oracle_path, threshold,
+                nameOfAttributeID, nameOfAttributeText, nameOfAttributeClass);
     }
 }
