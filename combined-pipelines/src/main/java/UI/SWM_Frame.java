@@ -485,7 +485,8 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
 
             if (response == JFileChooser.APPROVE_OPTION) {
                 File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                if (!file.toString().substring(file.toString().lastIndexOf(".")).equals(".txt")&&!file.toString().substring(file.toString().lastIndexOf(".")).equals(".csv")) {
+                String extension = file.toString().substring(file.toString().lastIndexOf("."));
+                if (!extension.equals(".txt") && !extension.equals(".csv")) {
                     displayErrorMessage("Wrong filetype selected." +
                             " Please select a .txt or .csv file");
                     args[0] = "null";
