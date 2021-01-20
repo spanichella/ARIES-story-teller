@@ -31,7 +31,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
     JLabel s4b_l_step, s4b_l_text, s4b_l_value, s4b_l_left, s4b_l_right;
     JLabel s5_l_step, s5_l_text;
     private final String[] args;
-    private final JComboBox c1, c2, c3, c4;
+    private final JComboBox<String> c1, c2, c3, c4;
     private final JSlider thresholdSlider;
     String[] dataTypeArray = {"Select", "User-Reviews", "Requirement-Specifications"};
     String[] pipeLineArray = {"Select", "ML", "DL"};
@@ -67,20 +67,20 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         thresholdSlider.addChangeListener(this);
         thresholdSlider.setVisible(false);
 
-        c1 = new JComboBox(dataTypeArray);
+        c1 = new JComboBox<>(dataTypeArray);
         c1.addItemListener(this);
         ((JLabel) c1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 
-        c2 = new JComboBox(pipeLineArray);
+        c2 = new JComboBox<>(pipeLineArray);
         c2.addItemListener(this);
         ((JLabel) c2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 
-        c3 = new JComboBox(mlModelArray);
+        c3 = new JComboBox<>(mlModelArray);
         c3.addItemListener(this);
         ((JLabel) c3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         c3.setVisible(false);
 
-        c4 = new JComboBox(strategyArray);
+        c4 = new JComboBox<>(strategyArray);
         c4.addItemListener(this);
         ((JLabel) c4.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         c4.setVisible(false);

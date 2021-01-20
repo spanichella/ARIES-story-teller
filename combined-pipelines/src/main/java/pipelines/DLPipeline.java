@@ -323,10 +323,7 @@ public class DLPipeline {
 
         List<String> wordList = getWordList(ar, wordVectors);
         if (wordList.isEmpty()) {
-            List list = new ArrayList<String>();
-            list.add("nothing");
-            list.add("receive");
-            return Optional.ofNullable(wordVectors.getWordVectors(list));
+            return Optional.ofNullable(wordVectors.getWordVectors(List.of("nothing", "receive")));
         }
 
         return Optional.ofNullable(wordVectors.getWordVectors(wordList));
@@ -336,8 +333,8 @@ public class DLPipeline {
      * Filter words which are not in the vocabulary, to prevent failing edge cases
      */
     private static List<String> getWordList(String[] textWordAr, WordVectors wordVectors) {
-        List list = Arrays.stream(textWordAr).filter(w -> wordVectors.hasWord(w)).collect(Collectors.toList());
-        return list;	}
+        return Arrays.stream(textWordAr).filter(wordVectors::hasWord).collect(Collectors.toList());
+    }
 
     private static int[] shape(int rows, int columns) {
         return new int[] { rows, columns };
