@@ -3,11 +3,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SWM_Loader_Frame extends Thread {
+    private final JFrame frame = new JFrame();
 
-    JFrame frame = new JFrame();
-
-    SWM_Loader_Frame(){
-
+    SWM_Loader_Frame() {
     }
 
     public void closeWindow(){

@@ -16,27 +16,26 @@ import java.text.DecimalFormat;
 
 
 public class SWM_Frame extends JFrame implements ActionListener, ItemListener, ChangeListener {
-    Color backGroundColor = new Color(88, 102, 148);
-    Color textColor = new Color(230, 230, 230);
-    Color separatorColor = new Color(79, 92, 134);
+    private static final Color backGroundColor = new Color(88, 102, 148);
+    private static final Color textColor = new Color(230, 230, 230);
+    private static final Color separatorColor = new Color(79, 92, 134);
 
-    SWM_Loader_Frame loader;
+    private SWM_Loader_Frame loader;
 
-    JPanel mainPanel;
     private final JButton truthSetSelector, execute_b;
     private final JLabel s1_l_step;
-    JLabel s2_l_step, s2_l_text;
-    JLabel s3_l_step, s3_l_text;
-    JLabel s4a_l_step, s4a_l_text;
-    JLabel s4b_l_step, s4b_l_text, s4b_l_value, s4b_l_left, s4b_l_right;
-    JLabel s5_l_step, s5_l_text;
+    private final JLabel s2_l_step;
+    private final JLabel s3_l_step;
+    private final JLabel s4a_l_step, s4a_l_text;
+    private final JLabel s4b_l_step, s4b_l_text, s4b_l_value, s4b_l_left, s4b_l_right;
+    private final JLabel s5_l_step, s5_l_text;
     private final String[] args;
     private final JComboBox<String> c1, c2, c3, c4;
     private final JSlider thresholdSlider;
-    String[] dataTypeArray = {"Select", "User-Reviews", "Requirement-Specifications"};
-    String[] pipeLineArray = {"Select", "ML", "DL"};
-    String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
-    String[] mlModelArray = {
+    private static final String[] dataTypeArray = {"Select", "User-Reviews", "Requirement-Specifications"};
+    private static final String[] pipeLineArray = {"Select", "ML", "DL"};
+    private static final String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
+    private static final String[] mlModelArray = {
             "Select", "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
             "Logistic", "AdaBoostM1", "LogitBoost",
             "DecisionStump", "LinearRegression",
@@ -98,7 +97,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         s2_l_step.setHorizontalAlignment(JLabel.CENTER);
         s2_l_step.setForeground(textColor);
 
-        s2_l_text = new JLabel("<html><div style='text-align: center;'>Select Content Type</div></html>");
+        JLabel s2_l_text = new JLabel("<html><div style='text-align: center;'>Select Content Type</div></html>");
         s2_l_text.setHorizontalAlignment(JLabel.CENTER);
         s2_l_text.setForeground(textColor);
 
@@ -106,7 +105,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         s3_l_step.setHorizontalAlignment(JLabel.CENTER);
         s3_l_step.setForeground(textColor);
 
-        s3_l_text = new JLabel("<html><div style='text-align: center;'>Select a Pipeline</div></html>");
+        JLabel s3_l_text = new JLabel("<html><div style='text-align: center;'>Select a Pipeline</div></html>");
         s3_l_text.setHorizontalAlignment(JLabel.CENTER);
         s3_l_text.setForeground(textColor);
 
@@ -161,7 +160,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         this.setSize(350, 800);
         this.setLayout(new BorderLayout());
 
-        mainPanel = new JPanel();
+        JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(8, 1));
         this.add(mainPanel, BorderLayout.CENTER);
 

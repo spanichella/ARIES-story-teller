@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Pipeline_Thread extends Thread {
-    String mainPath, args2, args1;
+    final String mainPath, args2, args1;
 
     Pipeline_Thread(String mainPath, String args2, String args1){
         this.mainPath = mainPath;
