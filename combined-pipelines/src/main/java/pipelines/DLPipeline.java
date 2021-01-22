@@ -5,7 +5,6 @@ import org.apache.commons.lang.ArrayUtils;
 import org.deeplearning4j.eval.Evaluation;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
-import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.nn.api.OptimizationAlgorithm;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
@@ -15,12 +14,6 @@ import org.deeplearning4j.nn.conf.layers.DropoutLayer;
 import org.deeplearning4j.nn.conf.layers.OutputLayer;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
-import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;
-import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
-import org.deeplearning4j.text.tokenization.tokenizer.preprocessor.CommonPreprocessor;
-import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
-import org.deeplearning4j.text.tokenization.tokenizerfactory.TokenizerFactory;
-import org.deeplearning4j.ui.standalone.ClassPathResource;
 import org.deeplearning4j.util.ModelSerializer;
 import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -364,41 +357,6 @@ public class DLPipeline {
         //@formatter:on
         // System.out.println(multiLayerConf.toJson());
         return new MultiLayerNetwork(multiLayerConf);
-    }
-    /**
-     * https://deeplearning4j.org/docs/latest/deeplearning4j-nlp-word2vec
-     *
-     * @param args
-     * @throws Exception
-     */
-
-    @SuppressWarnings("unused")
-    private static void trainYourOwnWord2VecModel(String[] args) throws Exception {
-        String filePath = new ClassPathResource("raw_sentences.txt").getFile().getAbsolutePath();
-
-        LOGGER.info("Load & Vectorize Sentences....");
-        // Strip white space before and after for each line
-        SentenceIterator iter = new BasicLineIterator(filePath);
-
-        // Split on white spaces in the line to get words
-        TokenizerFactory t = new DefaultTokenizerFactory();
-        t.setTokenPreProcessor(new CommonPreprocessor());
-
-        //@formatter:off
-        LOGGER.info("Building model....");
-        Word2Vec vec = new Word2Vec.Builder()
-                .minWordFrequency(5)
-                .layerSize(100)
-                .seed(42)
-                .windowSize(5)
-                .iterate(iter)
-                .tokenizerFactory(t)
-                .build();
-        //@formatter:on
-
-        LOGGER.info("Fitting Word2Vec model....");
-        vec.fit();
-
     }
 
     static int getLineCount(String path) throws IOException {
