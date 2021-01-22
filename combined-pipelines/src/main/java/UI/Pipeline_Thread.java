@@ -2,8 +2,12 @@ package UI;
 
 import pipelines.MainPipeline;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Pipeline_Thread extends Thread {
-    final String mainPath, args2, args1;
+    private final static Logger logger = Logger.getLogger(Pipeline_Thread.class.getName());
+    private final String mainPath, args2, args1;
 
     Pipeline_Thread(String mainPath, String args2, String args1){
         this.mainPath = mainPath;
@@ -16,8 +20,8 @@ public class Pipeline_Thread extends Thread {
 
         try {
             MainPipeline.runPipeline(mainPath, args2, args1);
-        } catch (Exception e1) {
-            System.out.print(e1);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Pipeline thread failed", e);
         }
     }
 }

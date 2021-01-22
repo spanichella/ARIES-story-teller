@@ -6,6 +6,8 @@ import pipelines.MainPipeline;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,10 +15,13 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.text.DecimalFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class SWM_Frame extends JFrame implements ActionListener, ItemListener, ChangeListener {
     private static final long serialVersionUID = -592869500939986619L;
+    private final static Logger logger = Logger.getLogger(SWM_Frame.class.getName());
 
     private static final Color backGroundColor = new Color(88, 102, 148);
     private static final Color textColor = new Color(230, 230, 230);
@@ -512,10 +517,14 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
                 mainPath = mainPath.substring(1);
             }
 
-            generateXML();
-            Pipeline_Thread mainThread = new Pipeline_Thread(mainPath,args[2],args[1]);
-            mainThread.start();
-            this.setEnabled(false);
+            try {
+                generateXML();
+                Pipeline_Thread mainThread = new Pipeline_Thread(mainPath,args[2],args[1]);
+                mainThread.start();
+                this.setEnabled(false);
+            } catch (TransformerException | ParserConfigurationException exception) {
+                logger.log(Level.SEVERE, "Generating the XML Failed", exception);
+            }
         }
         updateStatus();
         checkIfRunnable();
