@@ -4,6 +4,7 @@ import configFile.ConfigFileReader;
 import oracle.OracleRequirementSpecificationsAnalyzer;
 import oracle.OracleUserReviewsAnalyzer;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,7 +12,7 @@ public class FileGeneration {
 
     private final static Logger logger = Logger.getLogger(FileGeneration.class.getName());
 
-    public static void oracleAnalysis(ConfigFileReader configFileReader) {
+    public static void oracleAnalysis(ConfigFileReader configFileReader) throws IOException {
         if (configFileReader.getDataType() != null) {
             //Select Oracle Analysis according to data type
             logger.info("Oracle getting analyzed...");

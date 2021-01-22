@@ -16,16 +16,17 @@ public class ProcessExecutor {
      * @throws ExecutionException If there is a general problem with executing the process (e.g. the command is not found)
      * @throws RunFailedException If the run finishes with a non-zero exit status
      */
-    public static void execute(String... commandParts) {
+    public static void execute(String... commandParts) throws ProcessException {
+        Process process;
         try {
-            Process process = Runtime.getRuntime().exec(commandParts);
+            process = Runtime.getRuntime().exec(commandParts);
             logStream(process.getInputStream(), Level.INFO);
             logStream(process.getErrorStream(), Level.SEVERE);
-            if (process.exitValue() != 0) {
-                throw new RunFailedException(commandParts);
-            }
         } catch (IOException exception) {
             throw new ExecutionException(commandParts, exception);
+        }
+        if (process.exitValue() != 0) {
+            throw new RunFailedException(commandParts);
         }
     }
 
@@ -35,7 +36,7 @@ public class ProcessExecutor {
         }
     }
 
-    public static abstract class ProcessException extends RuntimeException {
+    public static abstract class ProcessException extends IOException {
         private static final long serialVersionUID = -4081653183392141979L;
 
         public ProcessException(String message) {

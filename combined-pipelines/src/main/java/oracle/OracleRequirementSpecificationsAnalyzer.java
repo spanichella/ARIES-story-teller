@@ -3,6 +3,7 @@ package oracle;
 import configFile.ConfigFileReader;
 import helpers.ProcessExecutor;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 
 
@@ -14,7 +15,7 @@ public class OracleRequirementSpecificationsAnalyzer{
     private final static Logger logger = Logger.getLogger(OracleUserReviewsAnalyzer.class.getName());
 
 
-    public static void runReqSpecRScript(ConfigFileReader cfr) {
+    public static void runReqSpecRScript(ConfigFileReader cfr) throws IOException {
         String pathRScriptOracle = cfr.getPathRScriptOracle();
         String baseFolder = cfr.getPathBaseFolder();
         String oracle_path = cfr.getPathTruthSet();

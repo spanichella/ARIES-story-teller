@@ -12,7 +12,7 @@ public class MLPipeline {
     private final static Logger logger = Logger.getLogger(MLPipeline.class.getName());
 
     // runs ML according to selections made
-    public static void performMlAnalysis(ConfigFileReader configFileReader) {
+    public static void performMlAnalysis(ConfigFileReader configFileReader) throws Exception {
         logger.info("Starting Machine Learning Analysis...");
         if (configFileReader.getStrategy() != null) {
             if (configFileReader.getStrategy().equals("Percentage-Split")) {
@@ -27,37 +27,28 @@ public class MLPipeline {
 
             if (configFileReader.getStrategy().equals("10-Fold")) {
                 WekaClassifier wekaClassifier = new WekaClassifier();
-                try {
-                    wekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.getPathFullTDMDataset(), configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction());
-                } catch (Exception e) {
-                    logger.severe(e.getMessage());
-                    System.exit(1);
-                }
+                wekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.getPathFullTDMDataset(), configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction());
             }
             logger.info("Machine Learning Analysis completed");
         }
     }
 
-    private static boolean checkWhetherTestSetIsLabeled(String pathTestSet) {
+    private static boolean checkWhetherTestSetIsLabeled(String pathTestSet) throws FileNotFoundException {
         File file = new File(pathTestSet);
 
-        try {
-            Scanner scanner = new Scanner(file);
+        Scanner scanner = new Scanner(file);
 
-            //now read the file line by line...
-            int lineNum = 0;
-            String line;
-            while (scanner.hasNextLine()) {
-                line = scanner.nextLine();
-                lineNum++;
-                //System.out.println(line);
-                if (line.contains("\"?\"") || line.contains("'?'") || line.endsWith("?")) {
-                    logger.info("The test-set is non labeled, we need to first label such instances");
-                    return false;
-                }
+        //now read the file line by line...
+        int lineNum = 0;
+        String line;
+        while (scanner.hasNextLine()) {
+            line = scanner.nextLine();
+            lineNum++;
+            //System.out.println(line);
+            if (line.contains("\"?\"") || line.contains("'?'") || line.endsWith("?")) {
+                logger.info("The test-set is non labeled, we need to first label such instances");
+                return false;
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
         logger.info("The test-set is labeled.");
         return true;

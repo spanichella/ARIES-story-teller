@@ -2,14 +2,16 @@ package configFile;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class ConfigFileReader {
 
@@ -37,61 +39,55 @@ public class ConfigFileReader {
     private String pathTDMTestSet;
     private String strategy;
 
-    public ConfigFileReader(String pathXMLConfigFile) {
+    public ConfigFileReader(String pathXMLConfigFile) throws ParserConfigurationException, IOException, SAXException {
         System.out.println("Loading the config file...");
         Document doc;
 
-        try {
-            File fXmlFile = new File(pathXMLConfigFile);
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse(fXmlFile);
+        File fXmlFile = new File(pathXMLConfigFile);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        doc = dBuilder.parse(fXmlFile);
 
-            // optional, but recommended
-            // read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
-            doc.getDocumentElement().normalize();
+        // optional, but recommended
+        // read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+        doc.getDocumentElement().normalize();
 
-            System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+        System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 
-            NodeList nList = doc.getElementsByTagName("ADSORB");
-            System.out.println("----------------------------");
+        NodeList nList = doc.getElementsByTagName("ADSORB");
+        System.out.println("----------------------------");
 
-            for (int temp = 0; temp < nList.getLength(); temp++) {
-                Node nNode = nList.item(temp);
-                System.out.println("\nCurrent Element :" + nNode.getNodeName());
+        for (int temp = 0; temp < nList.getLength(); temp++) {
+            Node nNode = nList.item(temp);
+            System.out.println("\nCurrent Element :" + nNode.getNodeName());
 
-                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) nNode;
+            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                Element eElement = (Element) nNode;
 
-                    this.pathRScripts = eElement.getElementsByTagName("pathRScripts").item(0).getTextContent();
-                    this.pathRScriptOracle = eElement.getElementsByTagName("pathRScriptOracle").item(0).getTextContent();
-                    this.pathBaseFolder = eElement.getElementsByTagName("pathBaseFolder").item(0).getTextContent();
-                    this.pathTruthSet = eElement.getElementsByTagName("pathTruthSet").item(0).getTextContent();
-                    this.dataType = eElement.getElementsByTagName("dataType").item(0).getTextContent();
-                    this.nameOfAttributeID = eElement.getElementsByTagName("nameOfAttributeID").item(0).getTextContent();
-                    this.nameOfAttributeText = eElement.getElementsByTagName("nameOfAttributeText").item(0).getTextContent();
-                    this.nameOfAttributeClass = eElement.getElementsByTagName("nameOfAttributeClass").item(0).getTextContent();
-                    this.pathTbDRScript = eElement.getElementsByTagName("pathTbDRScript").item(0).getTextContent();
-                    this.pathTrainingSetDocuments = eElement.getElementsByTagName("pathTrainingSetDocuments").item(0).getTextContent();
-                    this.pathTestSetDocuments = eElement.getElementsByTagName("pathTestSetDocuments").item(0).getTextContent();
-                    this.pathSimplifiedTruthSet = eElement.getElementsByTagName("pathSimplifiedTruthSet").item(0).getTextContent();
-                    this.pathGloveFile = eElement.getElementsByTagName("pathGloveFile").item(0).getTextContent();
-                    this.pathTestSet = eElement.getElementsByTagName("pathTestSet").item(0).getTextContent();
-                    this.pathTrainingSet = eElement.getElementsByTagName("pathTrainingSet").item(0).getTextContent();
-                    this.threshold = eElement.getElementsByTagName("percentageSplit").item(0).getTextContent();
-                    this.strategy = eElement.getElementsByTagName("strategy").item(0).getTextContent();
-                    this.pathModel = eElement.getElementsByTagName("pathModel").item(0).getTextContent();
-                    this.machineLearningModel = eElement.getElementsByTagName("machineLearningModel").item(0).getTextContent();
-                    this.pathResultsPrediction = eElement.getElementsByTagName("pathResultsPrediction").item(0).getTextContent();
-                    this.pathTDMTrainingSet = eElement.getElementsByTagName("pathTDMTrainingSet").item(0).getTextContent();
-                    this.pathTDMTestSet = eElement.getElementsByTagName("pathTDMTestSet").item(0).getTextContent();
-                    this.pathFullTDMDataset = eElement.getElementsByTagName("pathFullTDMDataset").item(0).getTextContent();
-                }
+                this.pathRScripts = eElement.getElementsByTagName("pathRScripts").item(0).getTextContent();
+                this.pathRScriptOracle = eElement.getElementsByTagName("pathRScriptOracle").item(0).getTextContent();
+                this.pathBaseFolder = eElement.getElementsByTagName("pathBaseFolder").item(0).getTextContent();
+                this.pathTruthSet = eElement.getElementsByTagName("pathTruthSet").item(0).getTextContent();
+                this.dataType = eElement.getElementsByTagName("dataType").item(0).getTextContent();
+                this.nameOfAttributeID = eElement.getElementsByTagName("nameOfAttributeID").item(0).getTextContent();
+                this.nameOfAttributeText = eElement.getElementsByTagName("nameOfAttributeText").item(0).getTextContent();
+                this.nameOfAttributeClass = eElement.getElementsByTagName("nameOfAttributeClass").item(0).getTextContent();
+                this.pathTbDRScript = eElement.getElementsByTagName("pathTbDRScript").item(0).getTextContent();
+                this.pathTrainingSetDocuments = eElement.getElementsByTagName("pathTrainingSetDocuments").item(0).getTextContent();
+                this.pathTestSetDocuments = eElement.getElementsByTagName("pathTestSetDocuments").item(0).getTextContent();
+                this.pathSimplifiedTruthSet = eElement.getElementsByTagName("pathSimplifiedTruthSet").item(0).getTextContent();
+                this.pathGloveFile = eElement.getElementsByTagName("pathGloveFile").item(0).getTextContent();
+                this.pathTestSet = eElement.getElementsByTagName("pathTestSet").item(0).getTextContent();
+                this.pathTrainingSet = eElement.getElementsByTagName("pathTrainingSet").item(0).getTextContent();
+                this.threshold = eElement.getElementsByTagName("percentageSplit").item(0).getTextContent();
+                this.strategy = eElement.getElementsByTagName("strategy").item(0).getTextContent();
+                this.pathModel = eElement.getElementsByTagName("pathModel").item(0).getTextContent();
+                this.machineLearningModel = eElement.getElementsByTagName("machineLearningModel").item(0).getTextContent();
+                this.pathResultsPrediction = eElement.getElementsByTagName("pathResultsPrediction").item(0).getTextContent();
+                this.pathTDMTrainingSet = eElement.getElementsByTagName("pathTDMTrainingSet").item(0).getTextContent();
+                this.pathTDMTestSet = eElement.getElementsByTagName("pathTDMTestSet").item(0).getTextContent();
+                this.pathFullTDMDataset = eElement.getElementsByTagName("pathFullTDMDataset").item(0).getTextContent();
             }
-        }catch (FileNotFoundException fe){
-                System.out.println(" Error message: No such file or directory -> " + pathXMLConfigFile);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

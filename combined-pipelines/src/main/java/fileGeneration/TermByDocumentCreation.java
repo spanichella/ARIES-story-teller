@@ -3,6 +3,7 @@ package fileGeneration;
 import configFile.ConfigFileReader;
 import helpers.ProcessExecutor;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
@@ -11,8 +12,7 @@ import java.util.logging.Logger;
 public class TermByDocumentCreation {
     private final static Logger logger = Logger.getLogger(TermByDocumentCreation.class.getName());
 
-    public static void createTBD(ConfigFileReader cfr) {
-
+    public static void createTBD(ConfigFileReader cfr) throws IOException {
         String pathTbDRScript = cfr.getPathTbDRScript();
         String docs_location = cfr.getPathRScripts();
         String documentsTrainingSet = cfr.getPathTrainingSetDocuments();

@@ -401,7 +401,7 @@ public class DLPipeline {
 
     }
 
-    static int getLineCount(String path) {
+    static int getLineCount(String path) throws IOException {
         try (FileReader input = new FileReader(path);
              LineNumberReader count = new LineNumberReader(input)) {
             //noinspection StatementWithEmptyBody
@@ -410,9 +410,6 @@ public class DLPipeline {
             }
 
             return count.getLineNumber();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-        return 0;
     }
 }

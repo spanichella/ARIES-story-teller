@@ -602,8 +602,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         args[4] = decimalFixedDouble;
     }
 
-    void generateXML() {
-
+    void generateXML() throws TransformerException, ParserConfigurationException {
         //create XML files with paths, etc.
         //set mainPath according to Operating System
         String mainPath = MainPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/", "");
