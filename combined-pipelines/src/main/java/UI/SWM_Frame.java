@@ -16,6 +16,8 @@ import java.text.DecimalFormat;
 
 
 public class SWM_Frame extends JFrame implements ActionListener, ItemListener, ChangeListener {
+    private static final long serialVersionUID = -592869500939986619L;
+
     private static final Color backGroundColor = new Color(88, 102, 148);
     private static final Color textColor = new Color(230, 230, 230);
     private static final Color separatorColor = new Color(79, 92, 134);

@@ -36,6 +36,8 @@ public class ProcessExecutor {
     }
 
     public static abstract class ProcessException extends RuntimeException {
+        private static final long serialVersionUID = -4081653183392141979L;
+
         public ProcessException(String message) {
             super(message);
         }
@@ -50,12 +52,16 @@ public class ProcessExecutor {
     }
 
     public static class ExecutionException extends ProcessException {
+        private static final long serialVersionUID = 49748945902517787L;
+
         public ExecutionException(String[] commandParts, Throwable cause) {
             super("Could not execute the script \"" + toCommand(commandParts) + "\"", cause);
         }
     }
 
     public static class RunFailedException extends ProcessException {
+        private static final long serialVersionUID = -592869500939986619L;
+
         public RunFailedException(String[] commandParts) {
             super("Running the script \"" + toCommand(commandParts) + "\" failed");
         }
