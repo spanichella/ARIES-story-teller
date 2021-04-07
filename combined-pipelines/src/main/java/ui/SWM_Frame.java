@@ -41,15 +41,25 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
 
     private SWM_Loader_Frame loader;
 
-    private final JButton truthSetSelector, executeB;
+    private final JButton truthSetSelector;
+    private final JButton executeB;
     private final JLabel s1LStep;
     private final JLabel s2LStep;
     private final JLabel s3LStep;
-    private final JLabel s4ALStep, s4ALText;
-    private final JLabel s4BLStep, s4BLText, s4BLValue, s4BLLeft, s4BLRight;
-    private final JLabel s5LStep, s5LText;
+    private final JLabel s4ALStep;
+    private final JLabel s4ALText;
+    private final JLabel s4BLStep;
+    private final JLabel s4BLText;
+    private final JLabel s4BLValue;
+    private final JLabel s4BLLeft;
+    private final JLabel s4BLRight;
+    private final JLabel s5LStep;
+    private final JLabel s5LText;
     private final String[] args;
-    private final JComboBox<String> c1, c2, c3, c4;
+    private final JComboBox<String> c1;
+    private final JComboBox<String> c2;
+    private final JComboBox<String> c3;
+    private final JComboBox<String> c4;
     private final JSlider thresholdSlider;
     private static final String[] dataTypeArray = {"Select", "User-Reviews", "Requirement-Specifications"};
     private static final String[] pipeLineArray = {"Select", "ML", "DL"};

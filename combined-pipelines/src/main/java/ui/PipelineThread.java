@@ -6,7 +6,9 @@ import pipelines.MainPipeline;
 
 public class PipelineThread extends Thread {
     private final static Logger logger = Logger.getLogger(PipelineThread.class.getName());
-    private final String mainPath, args2, args1;
+    private final String mainPath;
+    private final String args2;
+    private final String args1;
 
     PipelineThread(String mainPath, String args2, String args1) {
         this.mainPath = mainPath;
