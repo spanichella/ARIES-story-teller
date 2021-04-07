@@ -41,13 +41,13 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
 
     private SWM_Loader_Frame loader;
 
-    private final JButton truthSetSelector, execute_b;
-    private final JLabel s1_l_step;
-    private final JLabel s2_l_step;
-    private final JLabel s3_l_step;
-    private final JLabel s4a_l_step, s4a_l_text;
-    private final JLabel s4b_l_step, s4b_l_text, s4b_l_value, s4b_l_left, s4b_l_right;
-    private final JLabel s5_l_step, s5_l_text;
+    private final JButton truthSetSelector, executeB;
+    private final JLabel s1LStep;
+    private final JLabel s2LStep;
+    private final JLabel s3LStep;
+    private final JLabel s4ALStep, s4ALText;
+    private final JLabel s4BLStep, s4BLText, s4BLValue, s4BLLeft, s4BLRight;
+    private final JLabel s5LStep, s5LText;
     private final String[] args;
     private final JComboBox<String> c1, c2, c3, c4;
     private final JSlider thresholdSlider;
@@ -75,9 +75,9 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         truthSetSelector.addActionListener(this);
 
 
-        execute_b = new JButton("Run");
-        execute_b.addActionListener(this);
-        execute_b.setEnabled(false);
+        executeB = new JButton("Run");
+        executeB.addActionListener(this);
+        executeB.setEnabled(false);
 
         thresholdSlider = new JSlider();
         thresholdSlider.setMinorTickSpacing(1);
@@ -103,75 +103,75 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         ((JLabel) c4.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         c4.setVisible(false);
 
-        s1_l_step = new JLabel("<html><div style='text-align: center;'>[Step 1]</div></html>");
-        s1_l_step.setHorizontalAlignment(JLabel.CENTER);
-        s1_l_step.setForeground(textColor);
+        s1LStep = new JLabel("<html><div style='text-align: center;'>[Step 1]</div></html>");
+        s1LStep.setHorizontalAlignment(JLabel.CENTER);
+        s1LStep.setForeground(textColor);
 
         JLabel s1LText = new JLabel("<html><div style='text-align: center;'>Select a truth set to" +
                 " be analyzed by the algorithm</div></html>");
         s1LText.setHorizontalAlignment(JLabel.CENTER);
         s1LText.setForeground(textColor);
 
-        s2_l_step = new JLabel("<html><div style='text-align: center;'>[Step 2]</div></html>");
-        s2_l_step.setHorizontalAlignment(JLabel.CENTER);
-        s2_l_step.setForeground(textColor);
+        s2LStep = new JLabel("<html><div style='text-align: center;'>[Step 2]</div></html>");
+        s2LStep.setHorizontalAlignment(JLabel.CENTER);
+        s2LStep.setForeground(textColor);
 
         JLabel s2LText = new JLabel("<html><div style='text-align: center;'>Select Content Type</div></html>");
         s2LText.setHorizontalAlignment(JLabel.CENTER);
         s2LText.setForeground(textColor);
 
-        s3_l_step = new JLabel("<html><div style='text-align: center;'>[Step 3]</div></html>");
-        s3_l_step.setHorizontalAlignment(JLabel.CENTER);
-        s3_l_step.setForeground(textColor);
+        s3LStep = new JLabel("<html><div style='text-align: center;'>[Step 3]</div></html>");
+        s3LStep.setHorizontalAlignment(JLabel.CENTER);
+        s3LStep.setForeground(textColor);
 
         JLabel s3LText = new JLabel("<html><div style='text-align: center;'>Select a Pipeline</div></html>");
         s3LText.setHorizontalAlignment(JLabel.CENTER);
         s3LText.setForeground(textColor);
 
-        s4a_l_step = new JLabel("<html><div style='text-align: center;'>[Step 4]</div></html>");
-        s4a_l_step.setHorizontalAlignment(JLabel.CENTER);
-        s4a_l_step.setForeground(textColor);
-        s4a_l_step.setVisible(false);
+        s4ALStep = new JLabel("<html><div style='text-align: center;'>[Step 4]</div></html>");
+        s4ALStep.setHorizontalAlignment(JLabel.CENTER);
+        s4ALStep.setForeground(textColor);
+        s4ALStep.setVisible(false);
 
-        s4a_l_text = new JLabel("<html><div style='text-align: center;'>Select Method</div></html>");
-        s4a_l_text.setHorizontalAlignment(JLabel.CENTER);
-        s4a_l_text.setForeground(textColor);
-        s4a_l_text.setVisible(false);
+        s4ALText = new JLabel("<html><div style='text-align: center;'>Select Method</div></html>");
+        s4ALText.setHorizontalAlignment(JLabel.CENTER);
+        s4ALText.setForeground(textColor);
+        s4ALText.setVisible(false);
 
-        s4b_l_text = new JLabel("<html><div style='text-align: center;'>Set Size of Training-Set</div></html>");
-        s4b_l_text.setHorizontalAlignment(JLabel.CENTER);
-        s4b_l_text.setForeground(textColor);
-        s4b_l_text.setVisible(false);
+        s4BLText = new JLabel("<html><div style='text-align: center;'>Set Size of Training-Set</div></html>");
+        s4BLText.setHorizontalAlignment(JLabel.CENTER);
+        s4BLText.setForeground(textColor);
+        s4BLText.setVisible(false);
 
-        s4b_l_step = new JLabel("<html><div style='text-align: center;'>[Step 5]</div></html>");
-        s4b_l_step.setHorizontalAlignment(JLabel.CENTER);
-        s4b_l_step.setForeground(textColor);
-        s4b_l_step.setVisible(false);
+        s4BLStep = new JLabel("<html><div style='text-align: center;'>[Step 5]</div></html>");
+        s4BLStep.setHorizontalAlignment(JLabel.CENTER);
+        s4BLStep.setForeground(textColor);
+        s4BLStep.setVisible(false);
 
-        s4b_l_value = new JLabel("<html><div style='text-align: center;'>value: 0.5</div></html>");
-        s4b_l_value.setHorizontalAlignment(JLabel.CENTER);
-        s4b_l_value.setForeground(textColor);
-        s4b_l_value.setVisible(false);
+        s4BLValue = new JLabel("<html><div style='text-align: center;'>value: 0.5</div></html>");
+        s4BLValue.setHorizontalAlignment(JLabel.CENTER);
+        s4BLValue.setForeground(textColor);
+        s4BLValue.setVisible(false);
 
-        s4b_l_left = new JLabel("<html><div style='text-align: center;'>0.1</div></html>");
-        s4b_l_left.setHorizontalAlignment(JLabel.LEFT);
-        s4b_l_left.setForeground(textColor);
-        s4b_l_left.setVisible(false);
+        s4BLLeft = new JLabel("<html><div style='text-align: center;'>0.1</div></html>");
+        s4BLLeft.setHorizontalAlignment(JLabel.LEFT);
+        s4BLLeft.setForeground(textColor);
+        s4BLLeft.setVisible(false);
 
-        s4b_l_right = new JLabel("<html><div style='text-align: center;'>1.0</div></html>");
-        s4b_l_right.setHorizontalAlignment(JLabel.RIGHT);
-        s4b_l_right.setForeground(textColor);
-        s4b_l_right.setVisible(false);
+        s4BLRight = new JLabel("<html><div style='text-align: center;'>1.0</div></html>");
+        s4BLRight.setHorizontalAlignment(JLabel.RIGHT);
+        s4BLRight.setForeground(textColor);
+        s4BLRight.setVisible(false);
 
-        s5_l_step = new JLabel("<html><div style='text-align: center;'>[Step 5]</div></html>");
-        s5_l_step.setHorizontalAlignment(JLabel.CENTER);
-        s5_l_step.setForeground(textColor);
-        s5_l_step.setVisible(false);
+        s5LStep = new JLabel("<html><div style='text-align: center;'>[Step 5]</div></html>");
+        s5LStep.setHorizontalAlignment(JLabel.CENTER);
+        s5LStep.setForeground(textColor);
+        s5LStep.setVisible(false);
 
-        s5_l_text = new JLabel("<html><div style='text-align: center;'>Select Strategy</div></html>");
-        s5_l_text.setHorizontalAlignment(JLabel.CENTER);
-        s5_l_text.setForeground(textColor);
-        s5_l_text.setVisible(false);
+        s5LText = new JLabel("<html><div style='text-align: center;'>Select Strategy</div></html>");
+        s5LText.setHorizontalAlignment(JLabel.CENTER);
+        s5LText.setForeground(textColor);
+        s5LText.setVisible(false);
 
         ImageIcon icon = new ImageIcon("images/STIcon.jpg");
         this.setIconImage(icon.getImage());
@@ -312,7 +312,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         s6Empty2.setBackground(backGroundColor);
 
         step6MainGrid.add(s6Empty1);
-        step6MainGrid.add(execute_b);
+        step6MainGrid.add(executeB);
         step6MainGrid.add(s6Empty2);
         step6Panel.add(step6MainGrid, BorderLayout.CENTER);
 
@@ -331,7 +331,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         step1Panel.add(s1BlackBorder1, BorderLayout.PAGE_START);
         step1Panel.add(s1BorderCenterPanel, BorderLayout.CENTER);
         step1Panel.add(s1BlackBorder2, BorderLayout.PAGE_END);
-        s1BorderCenterPanel.add(s1_l_step);
+        s1BorderCenterPanel.add(s1LStep);
         s1BorderCenterPanel.add(s1LText);
         s1BorderCenterPanel.add(s1CenterPanel);
         s1CenterPanel.add(s1Empty);
@@ -340,40 +340,40 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         //step 2 panels
         step2Panel.add(s2BorderCenterPanel, BorderLayout.CENTER);
         step2Panel.add(s2BlackBorder1, BorderLayout.PAGE_END);
-        s2BorderCenterPanel.add(s2_l_step);
+        s2BorderCenterPanel.add(s2LStep);
         s2BorderCenterPanel.add(s2LText);
         s2BorderCenterPanel.add(c1);
 
         //step 3 panels
         step3Panel.add(s3BorderCenterPanel, BorderLayout.CENTER);
         step3Panel.add(s3BlackBorder1, BorderLayout.PAGE_END);
-        s3BorderCenterPanel.add(s3_l_step);
+        s3BorderCenterPanel.add(s3LStep);
         s3BorderCenterPanel.add(s3LText);
         s3BorderCenterPanel.add(c2);
 
         //step 4a panels
         step4aPanel.add(s4ABorderCenterPanel, BorderLayout.CENTER);
         step4aPanel.add(s4ABlackBorder1, BorderLayout.PAGE_END);
-        s4ABorderCenterPanel.add(s4a_l_step);
-        s4ABorderCenterPanel.add(s4a_l_text);
+        s4ABorderCenterPanel.add(s4ALStep);
+        s4ABorderCenterPanel.add(s4ALText);
         s4ABorderCenterPanel.add(c3);
 
         //step 4b panels
         step4bPanel.add(s4BBorderCenterPanel, BorderLayout.CENTER);
         step4bPanel.add(s4BBlackBorder1, BorderLayout.PAGE_END);
-        s4BBorderCenterPanel.add(s4b_l_step);
-        s4BBorderCenterPanel.add(s4b_l_text);
+        s4BBorderCenterPanel.add(s4BLStep);
+        s4BBorderCenterPanel.add(s4BLText);
         s4BBorderCenterPanel.add(s4BHorizontalSplitter);
-        s4BHorizontalSplitter.add(s4b_l_left);
-        s4BHorizontalSplitter.add(s4b_l_value);
-        s4BHorizontalSplitter.add(s4b_l_right);
+        s4BHorizontalSplitter.add(s4BLLeft);
+        s4BHorizontalSplitter.add(s4BLValue);
+        s4BHorizontalSplitter.add(s4BLRight);
         s4BBorderCenterPanel.add(thresholdSlider);
 
         //step 5 panels
         step5Panel.add(s5BorderCenterPanel, BorderLayout.CENTER);
         step5Panel.add(s5BlackBorder1, BorderLayout.PAGE_END);
-        s5BorderCenterPanel.add(s5_l_step);
-        s5BorderCenterPanel.add(s5_l_text);
+        s5BorderCenterPanel.add(s5LStep);
+        s5BorderCenterPanel.add(s5LText);
         s5BorderCenterPanel.add(c4);
 
         this.setVisible(true);
@@ -389,49 +389,49 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
     public void populatePanels(String input) {
         switch (input) {
             case "DL":
-                s4a_l_text.setVisible(false);
-                s4a_l_step.setVisible(false);
+                s4ALText.setVisible(false);
+                s4ALStep.setVisible(false);
                 c3.setVisible(false);
-                s4b_l_step.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
-                s4b_l_text.setVisible(false);
-                s4b_l_step.setVisible(false);
-                s4b_l_value.setVisible(false);
-                s4b_l_left.setVisible(false);
-                s4b_l_right.setVisible(false);
+                s4BLStep.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
+                s4BLText.setVisible(false);
+                s4BLStep.setVisible(false);
+                s4BLValue.setVisible(false);
+                s4BLLeft.setVisible(false);
+                s4BLRight.setVisible(false);
                 thresholdSlider.setVisible(false);
-                s5_l_text.setVisible(false);
-                s5_l_step.setVisible(false);
+                s5LText.setVisible(false);
+                s5LStep.setVisible(false);
                 c4.setVisible(false);
                 break;
             case "ML":
-                s4a_l_text.setVisible(true);
-                s4a_l_step.setVisible(true);
+                s4ALText.setVisible(true);
+                s4ALStep.setVisible(true);
                 c3.setVisible(true);
-                s5_l_text.setVisible(true);
-                s5_l_step.setVisible(true);
+                s5LText.setVisible(true);
+                s5LStep.setVisible(true);
                 c4.setVisible(true);
-                s4b_l_text.setVisible(false);
-                s4b_l_step.setVisible(false);
-                s4b_l_value.setVisible(false);
-                s4b_l_left.setVisible(false);
-                s4b_l_right.setVisible(false);
+                s4BLText.setVisible(false);
+                s4BLStep.setVisible(false);
+                s4BLValue.setVisible(false);
+                s4BLLeft.setVisible(false);
+                s4BLRight.setVisible(false);
                 thresholdSlider.setVisible(false);
                 break;
             case "Threshold":
-                s4b_l_step.setText("<html><div style='text-align: center;'>[Step 6]</div></html>");
-                s4b_l_text.setVisible(true);
-                s4b_l_step.setVisible(true);
-                s4b_l_value.setVisible(true);
-                s4b_l_left.setVisible(true);
-                s4b_l_right.setVisible(true);
+                s4BLStep.setText("<html><div style='text-align: center;'>[Step 6]</div></html>");
+                s4BLText.setVisible(true);
+                s4BLStep.setVisible(true);
+                s4BLValue.setVisible(true);
+                s4BLLeft.setVisible(true);
+                s4BLRight.setVisible(true);
                 thresholdSlider.setVisible(true);
                 break;
             case "NoThreshold":
-                s4b_l_text.setVisible(false);
-                s4b_l_step.setVisible(false);
-                s4b_l_value.setVisible(false);
-                s4b_l_left.setVisible(false);
-                s4b_l_right.setVisible(false);
+                s4BLText.setVisible(false);
+                s4BLStep.setVisible(false);
+                s4BLValue.setVisible(false);
+                s4BLLeft.setVisible(false);
+                s4BLRight.setVisible(false);
                 thresholdSlider.setVisible(false);
                 break;
         }
@@ -453,7 +453,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
                 }
             }
         }
-        execute_b.setEnabled(runnable);
+        executeB.setEnabled(runnable);
     }
 
 
@@ -465,37 +465,37 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
 
     private void updateStatus() {
         if (args[0].equals("null")) {
-            s1_l_step.setText("<html><div style='text-align: center;'>[Step 1]</div></html>");
+            s1LStep.setText("<html><div style='text-align: center;'>[Step 1]</div></html>");
         } else {
-            s1_l_step.setText("<html><div style='text-align: center;'>[Step 1] <font color =" +
+            s1LStep.setText("<html><div style='text-align: center;'>[Step 1] <font color =" +
                     " '#56f310'>DONE</font></div></html>");
         }
 
         if (args[1].equals("null")) {
-            s2_l_step.setText("<html><div style='text-align: center;'>[Step 2]</div></html>");
+            s2LStep.setText("<html><div style='text-align: center;'>[Step 2]</div></html>");
         } else {
-            s2_l_step.setText("<html><div style='text-align: center;'>[Step 2] <font color =" +
+            s2LStep.setText("<html><div style='text-align: center;'>[Step 2] <font color =" +
                     " '#56f310'>DONE</font></div></html>");
         }
 
         if (args[2].equals("null") || args[2].equals("Select")) {
-            s3_l_step.setText("<html><div style='text-align: center;'>[Step 3]</div></html>");
+            s3LStep.setText("<html><div style='text-align: center;'>[Step 3]</div></html>");
         } else {
-            s3_l_step.setText("<html><div style='text-align: center;'>[Step 3] <font color =" +
+            s3LStep.setText("<html><div style='text-align: center;'>[Step 3] <font color =" +
                     " '#56f310'>DONE</font></div></html>");
         }
 
         if (args[3].equals("null") || args[3].equals("Select")) {
-            s4a_l_step.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
+            s4ALStep.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
         } else {
-            s4a_l_step.setText("<html><div style='text-align: center;'>[Step 4] <font color =" +
+            s4ALStep.setText("<html><div style='text-align: center;'>[Step 4] <font color =" +
                     " '#56f310'>DONE</font></div></html>");
         }
 
         if (args[5].equals("null") || args[3].equals("Select")) {
-            s5_l_step.setText("<html><div style='text-align: center;'>[Step 5]</div></html>");
+            s5LStep.setText("<html><div style='text-align: center;'>[Step 5]</div></html>");
         } else {
-            s5_l_step.setText("<html><div style='text-align: center;'>[Step 5] <font color =" +
+            s5LStep.setText("<html><div style='text-align: center;'>[Step 5] <font color =" +
                     " '#56f310'>DONE</font></div></html>");
         }
     }
@@ -518,7 +518,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
                     args[0] = file.toString();
                 }
             }
-        } else if (e.getSource() == execute_b) {
+        } else if (e.getSource() == executeB) {
             //loader = new SWM_Loader_Frame();
             loader = new SWM_Loader_Frame();
             loader.start();
@@ -610,7 +610,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
             value = 0.1;
         }
         String decimalFixedDouble = df.format(value);
-        s4b_l_value.setText("value: " + decimalFixedDouble);
+        s4BLValue.setText("value: " + decimalFixedDouble);
         args[4] = decimalFixedDouble;
     }
 
