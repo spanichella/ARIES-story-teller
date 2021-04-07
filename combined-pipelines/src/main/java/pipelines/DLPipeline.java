@@ -183,7 +183,7 @@ public class DLPipeline {
 
                         // check if matrix has been built
                         Optional<INDArray> wordVectorMatrixOpt = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
-                        if (!wordVectorMatrixOpt.isPresent()) {
+                        if (wordVectorMatrixOpt.isEmpty()) {
                             labelsBatch[example] = -1;
                             continue;
                         }
