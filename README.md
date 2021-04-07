@@ -1,6 +1,5 @@
 # StoryTeller: Exploiting and Analyzing User Reviews and User Stories for Supporting Software Evolution in Industry
-Requirements-Collector follow-up study: Automating Requirements Specification from Elicitation Sessions and User Feedback\
-Tool - Version 1.1
+
 
 **Authors:** [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm)
 
