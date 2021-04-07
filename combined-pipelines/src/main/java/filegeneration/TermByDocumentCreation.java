@@ -13,10 +13,10 @@ public class TermByDocumentCreation {
 
     public static void createTBD(ConfigFileReader cfr) throws IOException {
         String pathTbDRScript = cfr.getPathTbDRScript();
-        String docs_location = cfr.getPathRScripts();
+        String docsLocation = cfr.getPathRScripts();
         String documentsTrainingSet = cfr.getPathTrainingSetDocuments();
         String documentsTestSet = cfr.getPathTestSetDocuments();
-        String simplifiedOracle_path = cfr.getPathSimplifiedTruthSet();
+        String simplifiedOraclePath = cfr.getPathSimplifiedTruthSet();
         String nameOfAttributeID = cfr.getNameOfAttributeID();
         String nameOfAttributeClass = cfr.getNameOfAttributeClass();
         String nameOfAttributeText = cfr.getNameOfAttributeText();
@@ -24,8 +24,8 @@ public class TermByDocumentCreation {
 
         // path of command "/usr/local/bin/Rscript" identified using: "which Rscript" from command line
         logger.info("R-Script execution begins:");
-        ProcessExecutor.execute("Rscript", pathTbDRScript, docs_location, documentsTrainingSet,
-                documentsTestSet, simplifiedOracle_path, nameOfAttributeID, nameOfAttributeClass, nameOfAttributeText,
+        ProcessExecutor.execute("Rscript", pathTbDRScript, docsLocation, documentsTrainingSet,
+                documentsTestSet, simplifiedOraclePath, nameOfAttributeID, nameOfAttributeClass, nameOfAttributeText,
                 oracleFolder);
     }
 }

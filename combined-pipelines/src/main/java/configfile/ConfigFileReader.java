@@ -41,10 +41,10 @@ public class ConfigFileReader {
         System.out.println("Loading the config file...");
         Document doc;
 
-        File fXmlFile = new File(pathXMLConfigFile);
+        File xmlFile = new File(pathXMLConfigFile);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        doc = dBuilder.parse(fXmlFile);
+        DocumentBuilder documentBuilder = dbFactory.newDocumentBuilder();
+        doc = documentBuilder.parse(xmlFile);
 
         // optional, but recommended
         // read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
@@ -52,39 +52,39 @@ public class ConfigFileReader {
 
         System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 
-        NodeList nList = doc.getElementsByTagName("ADSORB");
+        NodeList nodeList = doc.getElementsByTagName("ADSORB");
         System.out.println("----------------------------");
 
-        for (int temp = 0; temp < nList.getLength(); temp++) {
-            Node nNode = nList.item(temp);
-            System.out.println("\nCurrent Element :" + nNode.getNodeName());
+        for (int temp = 0; temp < nodeList.getLength(); temp++) {
+            Node node = nodeList.item(temp);
+            System.out.println("\nCurrent Element :" + node.getNodeName());
 
-            if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                Element eElement = (Element) nNode;
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) node;
 
-                this.pathRScripts = eElement.getElementsByTagName("pathRScripts").item(0).getTextContent();
-                this.pathRScriptOracle = eElement.getElementsByTagName("pathRScriptOracle").item(0).getTextContent();
-                this.pathBaseFolder = eElement.getElementsByTagName("pathBaseFolder").item(0).getTextContent();
-                this.pathTruthSet = eElement.getElementsByTagName("pathTruthSet").item(0).getTextContent();
-                this.dataType = eElement.getElementsByTagName("dataType").item(0).getTextContent();
-                this.nameOfAttributeID = eElement.getElementsByTagName("nameOfAttributeID").item(0).getTextContent();
-                this.nameOfAttributeText = eElement.getElementsByTagName("nameOfAttributeText").item(0).getTextContent();
-                this.nameOfAttributeClass = eElement.getElementsByTagName("nameOfAttributeClass").item(0).getTextContent();
-                this.pathTbDRScript = eElement.getElementsByTagName("pathTbDRScript").item(0).getTextContent();
-                this.pathTrainingSetDocuments = eElement.getElementsByTagName("pathTrainingSetDocuments").item(0).getTextContent();
-                this.pathTestSetDocuments = eElement.getElementsByTagName("pathTestSetDocuments").item(0).getTextContent();
-                this.pathSimplifiedTruthSet = eElement.getElementsByTagName("pathSimplifiedTruthSet").item(0).getTextContent();
-                this.pathGloveFile = eElement.getElementsByTagName("pathGloveFile").item(0).getTextContent();
-                this.pathTestSet = eElement.getElementsByTagName("pathTestSet").item(0).getTextContent();
-                this.pathTrainingSet = eElement.getElementsByTagName("pathTrainingSet").item(0).getTextContent();
-                this.threshold = eElement.getElementsByTagName("percentageSplit").item(0).getTextContent();
-                this.strategy = eElement.getElementsByTagName("strategy").item(0).getTextContent();
-                this.pathModel = eElement.getElementsByTagName("pathModel").item(0).getTextContent();
-                this.machineLearningModel = eElement.getElementsByTagName("machineLearningModel").item(0).getTextContent();
-                this.pathResultsPrediction = eElement.getElementsByTagName("pathResultsPrediction").item(0).getTextContent();
-                this.pathTDMTrainingSet = eElement.getElementsByTagName("pathTDMTrainingSet").item(0).getTextContent();
-                this.pathTDMTestSet = eElement.getElementsByTagName("pathTDMTestSet").item(0).getTextContent();
-                this.pathFullTDMDataset = eElement.getElementsByTagName("pathFullTDMDataset").item(0).getTextContent();
+                this.pathRScripts = element.getElementsByTagName("pathRScripts").item(0).getTextContent();
+                this.pathRScriptOracle = element.getElementsByTagName("pathRScriptOracle").item(0).getTextContent();
+                this.pathBaseFolder = element.getElementsByTagName("pathBaseFolder").item(0).getTextContent();
+                this.pathTruthSet = element.getElementsByTagName("pathTruthSet").item(0).getTextContent();
+                this.dataType = element.getElementsByTagName("dataType").item(0).getTextContent();
+                this.nameOfAttributeID = element.getElementsByTagName("nameOfAttributeID").item(0).getTextContent();
+                this.nameOfAttributeText = element.getElementsByTagName("nameOfAttributeText").item(0).getTextContent();
+                this.nameOfAttributeClass = element.getElementsByTagName("nameOfAttributeClass").item(0).getTextContent();
+                this.pathTbDRScript = element.getElementsByTagName("pathTbDRScript").item(0).getTextContent();
+                this.pathTrainingSetDocuments = element.getElementsByTagName("pathTrainingSetDocuments").item(0).getTextContent();
+                this.pathTestSetDocuments = element.getElementsByTagName("pathTestSetDocuments").item(0).getTextContent();
+                this.pathSimplifiedTruthSet = element.getElementsByTagName("pathSimplifiedTruthSet").item(0).getTextContent();
+                this.pathGloveFile = element.getElementsByTagName("pathGloveFile").item(0).getTextContent();
+                this.pathTestSet = element.getElementsByTagName("pathTestSet").item(0).getTextContent();
+                this.pathTrainingSet = element.getElementsByTagName("pathTrainingSet").item(0).getTextContent();
+                this.threshold = element.getElementsByTagName("percentageSplit").item(0).getTextContent();
+                this.strategy = element.getElementsByTagName("strategy").item(0).getTextContent();
+                this.pathModel = element.getElementsByTagName("pathModel").item(0).getTextContent();
+                this.machineLearningModel = element.getElementsByTagName("machineLearningModel").item(0).getTextContent();
+                this.pathResultsPrediction = element.getElementsByTagName("pathResultsPrediction").item(0).getTextContent();
+                this.pathTDMTrainingSet = element.getElementsByTagName("pathTDMTrainingSet").item(0).getTextContent();
+                this.pathTDMTestSet = element.getElementsByTagName("pathTDMTestSet").item(0).getTextContent();
+                this.pathFullTDMDataset = element.getElementsByTagName("pathFullTDMDataset").item(0).getTextContent();
             }
         }
     }

@@ -38,8 +38,8 @@ public class XMLInitializer {
         }
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document document = dBuilder.newDocument();
+        DocumentBuilder documentBuilder = dbFactory.newDocumentBuilder();
+        Document document = documentBuilder.newDocument();
 
         Element root = document.createElement("company");
         document.appendChild(root);

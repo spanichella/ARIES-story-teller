@@ -17,7 +17,7 @@ public class OracleRequirementSpecificationsAnalyzer {
     public static void runReqSpecRScript(ConfigFileReader cfr) throws IOException {
         String pathRScriptOracle = cfr.getPathRScriptOracle();
         String baseFolder = cfr.getPathBaseFolder();
-        String oracle_path = cfr.getPathTruthSet();
+        String oraclePath = cfr.getPathTruthSet();
         String nameOfAttributeID = cfr.getNameOfAttributeID();
         String nameOfAttributeText = cfr.getNameOfAttributeText();
         String nameOfAttributeClass = cfr.getNameOfAttributeClass();
@@ -25,7 +25,7 @@ public class OracleRequirementSpecificationsAnalyzer {
 
         //make command for r-script
         logger.info("R-Script execution begins:");
-        ProcessExecutor.execute("Rscript", pathRScriptOracle, baseFolder, oracle_path, threshold,
+        ProcessExecutor.execute("Rscript", pathRScriptOracle, baseFolder, oraclePath, threshold,
                 nameOfAttributeID, nameOfAttributeText, nameOfAttributeClass);
     }
 }

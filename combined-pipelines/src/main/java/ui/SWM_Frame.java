@@ -107,26 +107,26 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         s1_l_step.setHorizontalAlignment(JLabel.CENTER);
         s1_l_step.setForeground(textColor);
 
-        JLabel s1_l_text = new JLabel("<html><div style='text-align: center;'>Select a truth set to" +
+        JLabel s1LText = new JLabel("<html><div style='text-align: center;'>Select a truth set to" +
                 " be analyzed by the algorithm</div></html>");
-        s1_l_text.setHorizontalAlignment(JLabel.CENTER);
-        s1_l_text.setForeground(textColor);
+        s1LText.setHorizontalAlignment(JLabel.CENTER);
+        s1LText.setForeground(textColor);
 
         s2_l_step = new JLabel("<html><div style='text-align: center;'>[Step 2]</div></html>");
         s2_l_step.setHorizontalAlignment(JLabel.CENTER);
         s2_l_step.setForeground(textColor);
 
-        JLabel s2_l_text = new JLabel("<html><div style='text-align: center;'>Select Content Type</div></html>");
-        s2_l_text.setHorizontalAlignment(JLabel.CENTER);
-        s2_l_text.setForeground(textColor);
+        JLabel s2LText = new JLabel("<html><div style='text-align: center;'>Select Content Type</div></html>");
+        s2LText.setHorizontalAlignment(JLabel.CENTER);
+        s2LText.setForeground(textColor);
 
         s3_l_step = new JLabel("<html><div style='text-align: center;'>[Step 3]</div></html>");
         s3_l_step.setHorizontalAlignment(JLabel.CENTER);
         s3_l_step.setForeground(textColor);
 
-        JLabel s3_l_text = new JLabel("<html><div style='text-align: center;'>Select a Pipeline</div></html>");
-        s3_l_text.setHorizontalAlignment(JLabel.CENTER);
-        s3_l_text.setForeground(textColor);
+        JLabel s3LText = new JLabel("<html><div style='text-align: center;'>Select a Pipeline</div></html>");
+        s3LText.setHorizontalAlignment(JLabel.CENTER);
+        s3LText.setForeground(textColor);
 
         s4a_l_step = new JLabel("<html><div style='text-align: center;'>[Step 4]</div></html>");
         s4a_l_step.setHorizontalAlignment(JLabel.CENTER);
@@ -212,90 +212,90 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         step1Panel.setBackground(backGroundColor);
         step1Panel.setLayout(new BorderLayout());
 
-        JPanel s1_borderCenterPanel = new JPanel();
-        s1_borderCenterPanel.setBackground(backGroundColor);
-        s1_borderCenterPanel.setLayout(new GridLayout(3, 1));
+        JPanel s1BorderCenterPanel = new JPanel();
+        s1BorderCenterPanel.setBackground(backGroundColor);
+        s1BorderCenterPanel.setLayout(new GridLayout(3, 1));
 
-        JPanel s1_blackBorder_1 = new JPanel();
-        s1_blackBorder_1.setBackground(separatorColor);
+        JPanel s1BlackBorder1 = new JPanel();
+        s1BlackBorder1.setBackground(separatorColor);
 
-        JPanel s1_blackBorder_2 = new JPanel();
-        s1_blackBorder_2.setBackground(separatorColor);
+        JPanel s1BlackBorder2 = new JPanel();
+        s1BlackBorder2.setBackground(separatorColor);
 
-        JPanel s1_bottomPanel = new JPanel();
-        s1_bottomPanel.setBackground(backGroundColor);
-        s1_bottomPanel.setLayout(new GridLayout(3, 1));
+        JPanel s1BottomPanel = new JPanel();
+        s1BottomPanel.setBackground(backGroundColor);
+        s1BottomPanel.setLayout(new GridLayout(3, 1));
 
-        JPanel s1_centerPanel = new JPanel();
-        s1_centerPanel.setBackground(backGroundColor);
-        s1_centerPanel.setLayout(new GridLayout(0, 3));
+        JPanel s1CenterPanel = new JPanel();
+        s1CenterPanel.setBackground(backGroundColor);
+        s1CenterPanel.setLayout(new GridLayout(0, 3));
 
-        JPanel s1_empty = new JPanel();
-        s1_empty.setBackground(backGroundColor);
+        JPanel s1Empty = new JPanel();
+        s1Empty.setBackground(backGroundColor);
 
         //step 2 panels
         JPanel step2Panel = new JPanel();
         step2Panel.setBackground(backGroundColor);
         step2Panel.setLayout(new BorderLayout());
 
-        JPanel s2_borderCenterPanel = new JPanel();
-        s2_borderCenterPanel.setBackground(backGroundColor);
-        s2_borderCenterPanel.setLayout(new GridLayout(3, 1));
+        JPanel s2BorderCenterPanel = new JPanel();
+        s2BorderCenterPanel.setBackground(backGroundColor);
+        s2BorderCenterPanel.setLayout(new GridLayout(3, 1));
 
-        JPanel s2_blackBorder_1 = new JPanel();
-        s2_blackBorder_1.setBackground(separatorColor);
+        JPanel s2BlackBorder1 = new JPanel();
+        s2BlackBorder1.setBackground(separatorColor);
 
         //step 3 panels
         JPanel step3Panel = new JPanel();
         step3Panel.setBackground(backGroundColor);
         step3Panel.setLayout(new BorderLayout());
 
-        JPanel s3_borderCenterPanel = new JPanel();
-        s3_borderCenterPanel.setBackground(backGroundColor);
-        s3_borderCenterPanel.setLayout(new GridLayout(3, 1));
+        JPanel s3BorderCenterPanel = new JPanel();
+        s3BorderCenterPanel.setBackground(backGroundColor);
+        s3BorderCenterPanel.setLayout(new GridLayout(3, 1));
 
-        JPanel s3_blackBorder_1 = new JPanel();
-        s3_blackBorder_1.setBackground(separatorColor);
+        JPanel s3BlackBorder1 = new JPanel();
+        s3BlackBorder1.setBackground(separatorColor);
 
         //step 4a panels
         JPanel step4aPanel = new JPanel();
         step4aPanel.setBackground(backGroundColor);
         step4aPanel.setLayout(new BorderLayout());
 
-        JPanel s4a_borderCenterPanel = new JPanel();
-        s4a_borderCenterPanel.setBackground(backGroundColor);
-        s4a_borderCenterPanel.setLayout(new GridLayout(3, 1));
+        JPanel s4ABorderCenterPanel = new JPanel();
+        s4ABorderCenterPanel.setBackground(backGroundColor);
+        s4ABorderCenterPanel.setLayout(new GridLayout(3, 1));
 
-        JPanel s4a_blackBorder_1 = new JPanel();
-        s4a_blackBorder_1.setBackground(separatorColor);
+        JPanel s4ABlackBorder1 = new JPanel();
+        s4ABlackBorder1.setBackground(separatorColor);
 
         //step 4b Panels
         JPanel step4bPanel = new JPanel();
         step4bPanel.setBackground(backGroundColor);
         step4bPanel.setLayout(new BorderLayout());
 
-        JPanel s4b_borderCenterPanel = new JPanel();
-        s4b_borderCenterPanel.setBackground(backGroundColor);
-        s4b_borderCenterPanel.setLayout(new GridLayout(4, 1));
+        JPanel s4BBorderCenterPanel = new JPanel();
+        s4BBorderCenterPanel.setBackground(backGroundColor);
+        s4BBorderCenterPanel.setLayout(new GridLayout(4, 1));
 
-        JPanel s4b_blackBorder_1 = new JPanel();
-        s4b_blackBorder_1.setBackground(separatorColor);
+        JPanel s4BBlackBorder1 = new JPanel();
+        s4BBlackBorder1.setBackground(separatorColor);
 
-        JPanel s4b_horizontalSplitter = new JPanel();
-        s4b_horizontalSplitter.setBackground(backGroundColor);
-        s4b_horizontalSplitter.setLayout(new GridLayout(0, 3));
+        JPanel s4BHorizontalSplitter = new JPanel();
+        s4BHorizontalSplitter.setBackground(backGroundColor);
+        s4BHorizontalSplitter.setLayout(new GridLayout(0, 3));
 
         //step 5 Panels
         JPanel step5Panel = new JPanel();
         step5Panel.setBackground(backGroundColor);
         step5Panel.setLayout(new BorderLayout());
 
-        JPanel s5_borderCenterPanel = new JPanel();
-        s5_borderCenterPanel.setBackground(backGroundColor);
-        s5_borderCenterPanel.setLayout(new GridLayout(3, 1));
+        JPanel s5BorderCenterPanel = new JPanel();
+        s5BorderCenterPanel.setBackground(backGroundColor);
+        s5BorderCenterPanel.setLayout(new GridLayout(3, 1));
 
-        JPanel s5_blackBorder_1 = new JPanel();
-        s5_blackBorder_1.setBackground(separatorColor);
+        JPanel s5BlackBorder1 = new JPanel();
+        s5BlackBorder1.setBackground(separatorColor);
 
         //step 6 Panels
         JPanel step6Panel = new JPanel();
@@ -305,15 +305,15 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         JPanel step6MainGrid = new JPanel();
         step6MainGrid.setLayout(new GridLayout(3, 1));
 
-        JPanel s6_empty1 = new JPanel();
-        s6_empty1.setBackground(backGroundColor);
+        JPanel s6Empty1 = new JPanel();
+        s6Empty1.setBackground(backGroundColor);
 
-        JPanel s6_empty2 = new JPanel();
-        s6_empty2.setBackground(backGroundColor);
+        JPanel s6Empty2 = new JPanel();
+        s6Empty2.setBackground(backGroundColor);
 
-        step6MainGrid.add(s6_empty1);
+        step6MainGrid.add(s6Empty1);
         step6MainGrid.add(execute_b);
-        step6MainGrid.add(s6_empty2);
+        step6MainGrid.add(s6Empty2);
         step6Panel.add(step6MainGrid, BorderLayout.CENTER);
 
         mainPanel.add(logoPanel);
@@ -328,53 +328,53 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
         logoPanel.add(logoLabel);
 
         //step 1 panels
-        step1Panel.add(s1_blackBorder_1, BorderLayout.PAGE_START);
-        step1Panel.add(s1_borderCenterPanel, BorderLayout.CENTER);
-        step1Panel.add(s1_blackBorder_2, BorderLayout.PAGE_END);
-        s1_borderCenterPanel.add(s1_l_step);
-        s1_borderCenterPanel.add(s1_l_text);
-        s1_borderCenterPanel.add(s1_centerPanel);
-        s1_centerPanel.add(s1_empty);
-        s1_centerPanel.add(truthSetSelector);
+        step1Panel.add(s1BlackBorder1, BorderLayout.PAGE_START);
+        step1Panel.add(s1BorderCenterPanel, BorderLayout.CENTER);
+        step1Panel.add(s1BlackBorder2, BorderLayout.PAGE_END);
+        s1BorderCenterPanel.add(s1_l_step);
+        s1BorderCenterPanel.add(s1LText);
+        s1BorderCenterPanel.add(s1CenterPanel);
+        s1CenterPanel.add(s1Empty);
+        s1CenterPanel.add(truthSetSelector);
 
         //step 2 panels
-        step2Panel.add(s2_borderCenterPanel, BorderLayout.CENTER);
-        step2Panel.add(s2_blackBorder_1, BorderLayout.PAGE_END);
-        s2_borderCenterPanel.add(s2_l_step);
-        s2_borderCenterPanel.add(s2_l_text);
-        s2_borderCenterPanel.add(c1);
+        step2Panel.add(s2BorderCenterPanel, BorderLayout.CENTER);
+        step2Panel.add(s2BlackBorder1, BorderLayout.PAGE_END);
+        s2BorderCenterPanel.add(s2_l_step);
+        s2BorderCenterPanel.add(s2LText);
+        s2BorderCenterPanel.add(c1);
 
         //step 3 panels
-        step3Panel.add(s3_borderCenterPanel, BorderLayout.CENTER);
-        step3Panel.add(s3_blackBorder_1, BorderLayout.PAGE_END);
-        s3_borderCenterPanel.add(s3_l_step);
-        s3_borderCenterPanel.add(s3_l_text);
-        s3_borderCenterPanel.add(c2);
+        step3Panel.add(s3BorderCenterPanel, BorderLayout.CENTER);
+        step3Panel.add(s3BlackBorder1, BorderLayout.PAGE_END);
+        s3BorderCenterPanel.add(s3_l_step);
+        s3BorderCenterPanel.add(s3LText);
+        s3BorderCenterPanel.add(c2);
 
         //step 4a panels
-        step4aPanel.add(s4a_borderCenterPanel, BorderLayout.CENTER);
-        step4aPanel.add(s4a_blackBorder_1, BorderLayout.PAGE_END);
-        s4a_borderCenterPanel.add(s4a_l_step);
-        s4a_borderCenterPanel.add(s4a_l_text);
-        s4a_borderCenterPanel.add(c3);
+        step4aPanel.add(s4ABorderCenterPanel, BorderLayout.CENTER);
+        step4aPanel.add(s4ABlackBorder1, BorderLayout.PAGE_END);
+        s4ABorderCenterPanel.add(s4a_l_step);
+        s4ABorderCenterPanel.add(s4a_l_text);
+        s4ABorderCenterPanel.add(c3);
 
         //step 4b panels
-        step4bPanel.add(s4b_borderCenterPanel, BorderLayout.CENTER);
-        step4bPanel.add(s4b_blackBorder_1, BorderLayout.PAGE_END);
-        s4b_borderCenterPanel.add(s4b_l_step);
-        s4b_borderCenterPanel.add(s4b_l_text);
-        s4b_borderCenterPanel.add(s4b_horizontalSplitter);
-        s4b_horizontalSplitter.add(s4b_l_left);
-        s4b_horizontalSplitter.add(s4b_l_value);
-        s4b_horizontalSplitter.add(s4b_l_right);
-        s4b_borderCenterPanel.add(thresholdSlider);
+        step4bPanel.add(s4BBorderCenterPanel, BorderLayout.CENTER);
+        step4bPanel.add(s4BBlackBorder1, BorderLayout.PAGE_END);
+        s4BBorderCenterPanel.add(s4b_l_step);
+        s4BBorderCenterPanel.add(s4b_l_text);
+        s4BBorderCenterPanel.add(s4BHorizontalSplitter);
+        s4BHorizontalSplitter.add(s4b_l_left);
+        s4BHorizontalSplitter.add(s4b_l_value);
+        s4BHorizontalSplitter.add(s4b_l_right);
+        s4BBorderCenterPanel.add(thresholdSlider);
 
         //step 5 panels
-        step5Panel.add(s5_borderCenterPanel, BorderLayout.CENTER);
-        step5Panel.add(s5_blackBorder_1, BorderLayout.PAGE_END);
-        s5_borderCenterPanel.add(s5_l_step);
-        s5_borderCenterPanel.add(s5_l_text);
-        s5_borderCenterPanel.add(c4);
+        step5Panel.add(s5BorderCenterPanel, BorderLayout.CENTER);
+        step5Panel.add(s5BlackBorder1, BorderLayout.PAGE_END);
+        s5BorderCenterPanel.add(s5_l_step);
+        s5BorderCenterPanel.add(s5_l_text);
+        s5BorderCenterPanel.add(c4);
 
         this.setVisible(true);
     }
