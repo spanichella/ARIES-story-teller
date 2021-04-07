@@ -315,7 +315,7 @@ public class DLPipeline {
         return new int[] { rows, columns };
     }
 
-    public static MultiLayerNetwork createMultiLayerNetwork(int nIn, double learningRate) {
+    public static MultiLayerNetwork createMultiLayerNetwork(int inputColumns, double learningRate) {
         int rngSeed = 123; // random number seed for reproducibility
         int optimizationIterations = 1;
         int outputNum = 3; // number of output classes: FR, NFR, None
@@ -333,7 +333,7 @@ public class DLPipeline {
                 // layer configuration
                 .list()
                 .layer(0, new DenseLayer.Builder()
-                        .nIn(nIn)
+                        .nIn(inputColumns)
                         .nOut(10000)
                         .activation(Activation.LEAKYRELU)
                         .build())
