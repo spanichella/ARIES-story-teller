@@ -1,6 +1,5 @@
-# Requirements-Collector Enhancement: Combining ML and DL Pipelines and Extending the Dataset
-Requirements-Collector follow-up study: Automating Requirements Specification from Elicitation Sessions and User Feedback\
-Tool - Version 1.1
+# StoryTeller: Exploiting and Analyzing User Reviews and User Stories for Supporting Software Evolution in Industry
+
 
 **Authors:** [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm)
 
@@ -110,5 +109,6 @@ As future work we just suggest extending the dataset for better performance and 
 
 
 ## References
-- [1] M. Ruiz, S. Panichella, 2020. Can We Design Software as We Talk?
+- [1] S. Panichella and M. Ruiz Requirements-Collector: Automating Requirements Specification from Elicitation Sessions and User Feedback .   IEEE International Requirements Engineering Conference (RE’20).
+
 
