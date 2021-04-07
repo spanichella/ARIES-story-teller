@@ -1,6 +1,7 @@
 package helpers;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +29,7 @@ public class ProcessExecutor {
     }
 
     private static void logStream(InputStream stream, Level level) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))) {
             reader.lines().forEach(line -> LOGGER.log(level, line));
         }
     }
