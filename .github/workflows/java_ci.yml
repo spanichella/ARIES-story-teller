@@ -18,4 +18,4 @@ jobs:
           java-version: '15'
           distribution: 'adopt'
       - name: Check with Gradle
-        run: ./gradlew check
+        run: chmod u+x gradlew && ./gradlew check
