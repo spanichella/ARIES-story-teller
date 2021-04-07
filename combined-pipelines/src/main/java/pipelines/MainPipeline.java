@@ -14,7 +14,7 @@ import ui.SWM_GUI;
  * @author panc
  */
 public class MainPipeline {
-    private final static Logger logger = Logger.getLogger(MainPipeline.class.getName());
+    private static final Logger logger = Logger.getLogger(MainPipeline.class.getName());
 
     public static void runPipeline(String mainPath, String selectedPipeline, String type) throws Exception {
 

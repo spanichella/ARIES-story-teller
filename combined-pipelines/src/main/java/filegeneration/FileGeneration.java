@@ -9,7 +9,7 @@ import oracle.OracleUserReviewsAnalyzer;
 
 public class FileGeneration {
 
-    private final static Logger logger = Logger.getLogger(FileGeneration.class.getName());
+    private static final Logger logger = Logger.getLogger(FileGeneration.class.getName());
 
     public static void oracleAnalysis(ConfigFileReader configFileReader) throws IOException {
         if (configFileReader.getDataType() != null) {

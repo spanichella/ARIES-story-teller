@@ -9,7 +9,7 @@ import java.util.logging.Logger;
  * @author panc
  */
 public class TermByDocumentCreation {
-    private final static Logger logger = Logger.getLogger(TermByDocumentCreation.class.getName());
+    private static final Logger logger = Logger.getLogger(TermByDocumentCreation.class.getName());
 
     public static void createTBD(ConfigFileReader cfr) throws IOException {
         String pathTbDRScript = cfr.getPathTbDRScript();

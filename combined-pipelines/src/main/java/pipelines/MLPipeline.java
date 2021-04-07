@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import ml.WekaClassifier;
 
 public class MLPipeline {
-    private final static Logger logger = Logger.getLogger(MLPipeline.class.getName());
+    private static final Logger logger = Logger.getLogger(MLPipeline.class.getName());
 
     // runs ML according to selections made
     public static void performMlAnalysis(ConfigFileReader configFileReader) throws Exception {

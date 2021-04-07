@@ -20,7 +20,7 @@ import org.w3c.dom.Element;
  */
 public class XMLInitializer {
 
-    private final static Logger logger = Logger.getLogger(XMLInitializer.class.getName());
+    private static final Logger logger = Logger.getLogger(XMLInitializer.class.getName());
 
     public static void createXML(String basePath, String pathTruthFile, String type, String model, String percentage, String strategy)
             throws ParserConfigurationException, TransformerException {

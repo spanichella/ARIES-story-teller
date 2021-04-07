@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProcessExecutor {
-    private final static Logger LOGGER = Logger.getLogger(ProcessExecutor.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ProcessExecutor.class.getName());
 
     /**
      * Executes the command and arguments as a system command
@@ -39,7 +39,7 @@ public class ProcessExecutor {
         }
     }
 
-    public static abstract class ProcessException extends IOException {
+    public abstract static class ProcessException extends IOException {
         @Serial
         private static final long serialVersionUID = -4081653183392141979L;
 

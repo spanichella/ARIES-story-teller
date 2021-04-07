@@ -30,7 +30,7 @@ import weka.core.converters.ConverterUtils.DataSource;
  */
 
 public class WekaClassifier {
-    private final static Logger logger = Logger.getLogger(WekaClassifier.class.getName());
+    private static final Logger logger = Logger.getLogger(WekaClassifier.class.getName());
 
     private final String pathTrainingSet;
     private final String pathTestSet;

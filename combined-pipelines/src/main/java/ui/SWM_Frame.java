@@ -33,7 +33,7 @@ import pipelines.MainPipeline;
 public class SWM_Frame extends JFrame implements ActionListener, ItemListener, ChangeListener {
     @Serial
     private static final long serialVersionUID = -592869500939986619L;
-    private final static Logger logger = Logger.getLogger(SWM_Frame.class.getName());
+    private static final Logger logger = Logger.getLogger(SWM_Frame.class.getName());
 
     private static final Color backGroundColor = new Color(88, 102, 148);
     private static final Color textColor = new Color(230, 230, 230);

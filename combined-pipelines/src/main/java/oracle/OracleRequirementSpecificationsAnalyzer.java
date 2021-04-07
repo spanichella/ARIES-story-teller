@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  */
 public class OracleRequirementSpecificationsAnalyzer {
 
-    private final static Logger logger = Logger.getLogger(OracleUserReviewsAnalyzer.class.getName());
+    private static final Logger logger = Logger.getLogger(OracleUserReviewsAnalyzer.class.getName());
 
 
     public static void runReqSpecRScript(ConfigFileReader cfr) throws IOException {

@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 import pipelines.MainPipeline;
 
 public class PipelineThread extends Thread {
-    private final static Logger logger = Logger.getLogger(PipelineThread.class.getName());
+    private static final Logger logger = Logger.getLogger(PipelineThread.class.getName());
     private final String mainPath;
     private final String args2;
     private final String args1;
