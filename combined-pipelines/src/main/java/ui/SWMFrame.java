@@ -69,7 +69,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         "Logistic", "AdaBoostM1", "LogitBoost",
         "DecisionStump", "LinearRegression",
         "RegressionByDiscretization",
-    };
+        };
     private final DecimalFormat df = new DecimalFormat("#.##");
 
 
