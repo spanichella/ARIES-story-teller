@@ -23,7 +23,7 @@ public class XMLInitializer {
 
     private final static Logger logger = Logger.getLogger(XMLInitializer.class.getName());
 
-    public static void createXML(String basePath, String pathTruthFile,String type, String model, String percentage, String strategy) throws ParserConfigurationException, TransformerException {
+    public static void createXML(String basePath, String pathTruthFile, String type, String model, String percentage, String strategy) throws ParserConfigurationException, TransformerException {
         String baseFolder = "";
         String name = "";
 
@@ -135,7 +135,7 @@ public class XMLInitializer {
         ADSORB.appendChild(machineLearningModel);
 
         Element pathModel = document.createElement("pathModel");
-        pathModel.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "")+"models/MLModel.model"));
+        pathModel.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "") + "models/MLModel.model"));
         ADSORB.appendChild(pathModel);
 
         Element percentageSplit = document.createElement("percentageSplit");
@@ -143,7 +143,7 @@ public class XMLInitializer {
         ADSORB.appendChild(percentageSplit);
 
         Element pathResultsPrediction = document.createElement("pathResultsPrediction");
-        pathResultsPrediction.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "")+"results/" + "result_"));
+        pathResultsPrediction.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "") + "results/" + "result_"));
         ADSORB.appendChild(pathResultsPrediction);
 
         Element pathTDMTestSet = document.createElement("pathTDMTestSet");
@@ -195,7 +195,7 @@ public class XMLInitializer {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource domSource = new DOMSource(document);
-        StreamResult streamResult = new StreamResult(new File(basePath+"resources/XMLFiles/" + name + "XML.xml"));
+        StreamResult streamResult = new StreamResult(new File(basePath + "resources/XMLFiles/" + name + "XML.xml"));
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
         transformer.transform(domSource, streamResult);

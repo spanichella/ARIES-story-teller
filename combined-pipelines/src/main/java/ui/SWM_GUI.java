@@ -8,7 +8,7 @@ public class SWM_GUI {
     public static void main(String[] args) {
     }
 
-    public static void killFrames(){
+    public static void killFrames() {
         frame.closeWindow();
     }
 }

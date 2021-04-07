@@ -521,7 +521,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
 
             try {
                 generateXML();
-                PipelineThread mainThread = new PipelineThread(mainPath,args[2],args[1]);
+                PipelineThread mainThread = new PipelineThread(mainPath, args[2], args[1]);
                 mainThread.start();
                 this.setEnabled(false);
             } catch (TransformerException | ParserConfigurationException exception) {

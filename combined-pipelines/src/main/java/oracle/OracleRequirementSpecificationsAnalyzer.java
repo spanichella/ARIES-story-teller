@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 /**
  * @author panc
  */
-public class OracleRequirementSpecificationsAnalyzer{
+public class OracleRequirementSpecificationsAnalyzer {
 
     private final static Logger logger = Logger.getLogger(OracleUserReviewsAnalyzer.class.getName());
 

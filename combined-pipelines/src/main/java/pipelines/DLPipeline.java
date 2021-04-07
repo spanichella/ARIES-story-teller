@@ -61,14 +61,14 @@ public class DLPipeline {
 
         String modelFileName = "model_6b_" + GLOVE_DIM + "d_v1_0.bin";
 
-        int lengthTrainingSet = getLineCount(labelledTurns)-1;
+        int lengthTrainingSet = getLineCount(labelledTurns) - 1;
         System.out.println(lengthTrainingSet);
-        int lengthTestSet = getLineCount(validationSet)-1;
+        int lengthTestSet = getLineCount(validationSet) - 1;
         System.out.println(lengthTestSet);
 
 
         int nrOfBatches = 4;
-        int nrOfExamplesPerBatch = lengthTrainingSet/nrOfBatches;
+        int nrOfExamplesPerBatch = lengthTrainingSet / nrOfBatches;
         LOGGER.info(String.valueOf(nrOfExamplesPerBatch));
 
         int nrOfEpochs = 100;
@@ -125,11 +125,11 @@ public class DLPipeline {
             while ((line = reader.readLine()) != null) {
                 String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
 
-                for (int i = 0 ;  i<lineAr.length;i++){
-                    lineAr[i] = lineAr[i].replace("\"","");
+                for (int i = 0; i < lineAr.length; i++) {
+                    lineAr[i] = lineAr[i].replace("\"", "");
                 }
 
-                if(line.contains("req_specification")){
+                if (line.contains("req_specification")) {
                     System.out.println("skipped");
                     continue;
                 }
@@ -174,11 +174,11 @@ public class DLPipeline {
                         String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
 
 
-                        for (int i = 0 ;  i<lineAr.length;i++){
-                            lineAr[i] = lineAr[i].replace("\"","");
+                        for (int i = 0; i < lineAr.length; i++) {
+                            lineAr[i] = lineAr[i].replace("\"", "");
                         }
 
-                        if(line.contains("req_specification")){
+                        if (line.contains("req_specification")) {
                             System.out.println("skipped");
                             continue;
                         }
@@ -222,11 +222,11 @@ public class DLPipeline {
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
                 String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
-                for (int i = 0 ;  i<lineAr.length;i++){
-                    lineAr[i] = lineAr[i].replace("\"","");
+                for (int i = 0; i < lineAr.length; i++) {
+                    lineAr[i] = lineAr[i].replace("\"", "");
                 }
 
-                if(line.contains("req_specification")){
+                if (line.contains("req_specification")) {
                     System.out.println("skipped");
                     continue;
                 }

@@ -8,14 +8,14 @@ public class PipelineThread extends Thread {
     private final static Logger logger = Logger.getLogger(PipelineThread.class.getName());
     private final String mainPath, args2, args1;
 
-    PipelineThread(String mainPath, String args2, String args1){
+    PipelineThread(String mainPath, String args2, String args1) {
         this.mainPath = mainPath;
         this.args2 = args2;
         this.args1 = args1;
     }
 
     @Override
-    public void run(){
+    public void run() {
         System.out.println("Thread Running");
 
         try {
