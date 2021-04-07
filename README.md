@@ -1,4 +1,4 @@
-# Requirements-Collector Enhancement: Combining ML and DL Pipelines and Extending the Dataset
+# StoryTeller: Exploiting and Analyzing User Reviews and User Stories for Supporting Software Evolution in Industry
 Requirements-Collector follow-up study: Automating Requirements Specification from Elicitation Sessions and User Feedback\
 Tool - Version 1.1
 
