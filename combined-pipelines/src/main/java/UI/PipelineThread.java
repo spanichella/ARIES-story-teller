@@ -1,9 +1,8 @@
 package UI;
 
-import pipelines.MainPipeline;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import pipelines.MainPipeline;
 
 public class Pipeline_Thread extends Thread {
     private final static Logger logger = Logger.getLogger(Pipeline_Thread.class.getName());
