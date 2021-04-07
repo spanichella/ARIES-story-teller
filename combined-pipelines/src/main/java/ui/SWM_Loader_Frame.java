@@ -1,6 +1,11 @@
 package ui;
-import javax.swing.*;
-import java.awt.*;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class SWM_Loader_Frame extends Thread {
     private final JFrame frame = new JFrame();

@@ -1,12 +1,11 @@
 package filegeneration;
 
 import configfile.ConfigFileReader;
-import oracle.OracleRequirementSpecificationsAnalyzer;
-import oracle.OracleUserReviewsAnalyzer;
-
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import oracle.OracleRequirementSpecificationsAnalyzer;
+import oracle.OracleUserReviewsAnalyzer;
 
 public class FileGeneration {
 

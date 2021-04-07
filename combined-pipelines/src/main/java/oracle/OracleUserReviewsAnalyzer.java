@@ -1,7 +1,6 @@
 package oracle;
 
 import configfile.ConfigFileReader;
-
 import java.io.IOException;
 
 

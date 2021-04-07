@@ -1,13 +1,12 @@
 package pipelines;
 
 import configfile.ConfigFileReader;
-import ml.WekaClassifier;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import java.util.logging.Logger;
+import ml.WekaClassifier;
 
 public class MLPipeline {
     private final static Logger logger = Logger.getLogger(MLPipeline.class.getName());

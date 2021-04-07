@@ -1,11 +1,10 @@
 package pipelines;
 
-import ui.SWM_GUI;
 import configfile.ConfigFileReader;
 import filegeneration.FileGeneration;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import ui.SWM_GUI;
 
 /**
  * @author panc
