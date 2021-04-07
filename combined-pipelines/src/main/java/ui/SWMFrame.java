@@ -117,8 +117,8 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         s1LStep.setHorizontalAlignment(JLabel.CENTER);
         s1LStep.setForeground(textColor);
 
-        JLabel s1LText = new JLabel("<html><div style='text-align: center;'>Select a truth set to" +
-                " be analyzed by the algorithm</div></html>");
+        JLabel s1LText = new JLabel("<html><div style='text-align: center;'>Select a truth set to"
+                + " be analyzed by the algorithm</div></html>");
         s1LText.setHorizontalAlignment(JLabel.CENTER);
         s1LText.setForeground(textColor);
 
@@ -477,36 +477,31 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         if (args[0].equals("null")) {
             s1LStep.setText("<html><div style='text-align: center;'>[Step 1]</div></html>");
         } else {
-            s1LStep.setText("<html><div style='text-align: center;'>[Step 1] <font color =" +
-                    " '#56f310'>DONE</font></div></html>");
+            s1LStep.setText("<html><div style='text-align: center;'>[Step 1] <font color='#56f310'>DONE</font></div></html>");
         }
 
         if (args[1].equals("null")) {
             s2LStep.setText("<html><div style='text-align: center;'>[Step 2]</div></html>");
         } else {
-            s2LStep.setText("<html><div style='text-align: center;'>[Step 2] <font color =" +
-                    " '#56f310'>DONE</font></div></html>");
+            s2LStep.setText("<html><div style='text-align: center;'>[Step 2] <font color='#56f310'>DONE</font></div></html>");
         }
 
         if (args[2].equals("null") || args[2].equals("Select")) {
             s3LStep.setText("<html><div style='text-align: center;'>[Step 3]</div></html>");
         } else {
-            s3LStep.setText("<html><div style='text-align: center;'>[Step 3] <font color =" +
-                    " '#56f310'>DONE</font></div></html>");
+            s3LStep.setText("<html><div style='text-align: center;'>[Step 3] <font color='#56f310'>DONE</font></div></html>");
         }
 
         if (args[3].equals("null") || args[3].equals("Select")) {
             s4ALStep.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
         } else {
-            s4ALStep.setText("<html><div style='text-align: center;'>[Step 4] <font color =" +
-                    " '#56f310'>DONE</font></div></html>");
+            s4ALStep.setText("<html><div style='text-align: center;'>[Step 4] <font color='#56f310'>DONE</font></div></html>");
         }
 
         if (args[5].equals("null") || args[3].equals("Select")) {
             s5LStep.setText("<html><div style='text-align: center;'>[Step 5]</div></html>");
         } else {
-            s5LStep.setText("<html><div style='text-align: center;'>[Step 5] <font color =" +
-                    " '#56f310'>DONE</font></div></html>");
+            s5LStep.setText("<html><div style='text-align: center;'>[Step 5] <font color='#56f310'>DONE</font></div></html>");
         }
     }
 
@@ -521,8 +516,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
                 String extension = file.toString().substring(file.toString().lastIndexOf("."));
                 if (!extension.equals(".txt") && !extension.equals(".csv")) {
-                    displayErrorMessage("Wrong filetype selected." +
-                            " Please select a .txt or .csv file");
+                    displayErrorMessage("Wrong filetype selected. Please select a .txt or .csv file");
                     args[0] = "null";
                 } else {
                     args[0] = file.toString();
@@ -533,8 +527,8 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
             loader = new SWMLoaderFrame();
             loader.start();
             //set mainPath according to Operating System
-            String mainPath = MainPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().
-                    replace("target/classes/", "");
+            String mainPath = MainPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath()
+                    .replace("target/classes/", "");
             if (System.getProperty("os.name").toLowerCase().contains("win")) {
                 mainPath = mainPath.substring(1);
             }
