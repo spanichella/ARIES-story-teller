@@ -55,10 +55,10 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
     private static final String[] pipeLineArray = {"Select", "ML", "DL"};
     private static final String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
     private static final String[] mlModelArray = {
-            "Select", "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
-            "Logistic", "AdaBoostM1", "LogitBoost",
-            "DecisionStump", "LinearRegression",
-            "RegressionByDiscretization"
+        "Select", "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
+        "Logistic", "AdaBoostM1", "LogitBoost",
+        "DecisionStump", "LinearRegression",
+        "RegressionByDiscretization",
     };
     private final DecimalFormat df = new DecimalFormat("#.##");
 

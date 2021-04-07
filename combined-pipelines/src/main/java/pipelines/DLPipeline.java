@@ -207,9 +207,9 @@ public class DLPipeline {
                 }
 
             }
-                Evaluation eval = new Evaluation(3);
-                eval.eval(evalLabels, evalInput, model);
-                LOGGER.info(eval.stats());
+            Evaluation eval = new Evaluation(3);
+            eval.eval(evalLabels, evalInput, model);
+            LOGGER.info(eval.stats());
         }
     }
 
