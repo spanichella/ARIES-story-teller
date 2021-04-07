@@ -43,16 +43,16 @@ public class XMLInitializer {
         Element root = document.createElement("company");
         document.appendChild(root);
 
-        Element ADSORB = document.createElement("ADSORB");
-        root.appendChild(ADSORB);
+        Element adsorb = document.createElement("ADSORB");
+        root.appendChild(adsorb);
         Attr attr = document.createAttribute("id");
         attr.setValue("1");
-        ADSORB.setAttributeNode(attr);
-        root.appendChild(ADSORB);
+        adsorb.setAttributeNode(attr);
+        root.appendChild(adsorb);
 
         Element pathRScripts = document.createElement("pathRScripts");
         pathRScripts.appendChild(document.createTextNode(basePath + "resources/R-scripts/"));
-        ADSORB.appendChild(pathRScripts);
+        adsorb.appendChild(pathRScripts);
 
         Element pathRScriptOracle = document.createElement("pathRScriptOracle");
         if (type.equals("Requirement-Specifications")) {
@@ -60,15 +60,15 @@ public class XMLInitializer {
         } else {
             pathRScriptOracle.appendChild(document.createTextNode(basePath + "resources/R-scripts/Script-to-create-test-dataset.r"));
         }
-        ADSORB.appendChild(pathRScriptOracle);
+        adsorb.appendChild(pathRScriptOracle);
 
         Element pathBaseFolder = document.createElement("pathBaseFolder");
         pathBaseFolder.appendChild(document.createTextNode(basePath + baseFolder));
-        ADSORB.appendChild(pathBaseFolder);
+        adsorb.appendChild(pathBaseFolder);
 
         Element pathTruthSet = document.createElement("pathTruthSet");
         pathTruthSet.appendChild(document.createTextNode(pathTruthFile));
-        ADSORB.appendChild(pathTruthSet);
+        adsorb.appendChild(pathTruthSet);
 
         Element dataType = document.createElement("dataType");
         if (type.equals("Requirement-Specifications")) {
@@ -77,11 +77,11 @@ public class XMLInitializer {
             dataType.appendChild(document.createTextNode("User Reviews"));
 
         }
-        ADSORB.appendChild(dataType);
+        adsorb.appendChild(dataType);
 
         Element nameOfAttributeID = document.createElement("nameOfAttributeID");
         nameOfAttributeID.appendChild(document.createTextNode("id"));
-        ADSORB.appendChild(nameOfAttributeID);
+        adsorb.appendChild(nameOfAttributeID);
 
         Element nameOfAttributeText = document.createElement("nameOfAttributeText");
         if (type.equals("Requirement-Specifications")) {
@@ -90,16 +90,16 @@ public class XMLInitializer {
             nameOfAttributeText.appendChild(document.createTextNode("review"));
 
         }
-        ADSORB.appendChild(nameOfAttributeText);
+        adsorb.appendChild(nameOfAttributeText);
 
         Element nameOfAttributeClass = document.createElement("nameOfAttributeClass");
         nameOfAttributeClass.appendChild(document.createTextNode("class"));
-        ADSORB.appendChild(nameOfAttributeClass);
+        adsorb.appendChild(nameOfAttributeClass);
 
 
         Element pathTbDRScript = document.createElement("pathTbDRScript");
         pathTbDRScript.appendChild(document.createTextNode(basePath + "resources/R-scripts/MainScript.r"));
-        ADSORB.appendChild(pathTbDRScript);
+        adsorb.appendChild(pathTbDRScript);
 
         Element pathTrainingSetDocuments = document.createElement("pathTrainingSetDocuments");
         if (type.equals("Requirement-Specifications")) {
@@ -107,7 +107,7 @@ public class XMLInitializer {
         } else {
             pathTrainingSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "training-set"));
         }
-        ADSORB.appendChild(pathTrainingSetDocuments);
+        adsorb.appendChild(pathTrainingSetDocuments);
 
         Element pathTestSetDocuments = document.createElement("pathTestSetDocuments");
         if (type.equals("Requirement-Specifications")) {
@@ -115,7 +115,7 @@ public class XMLInitializer {
         } else {
             pathTestSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "test-set"));
         }
-        ADSORB.appendChild(pathTestSetDocuments);
+        adsorb.appendChild(pathTestSetDocuments);
 
         Element pathSimplifiedTruthSet = document.createElement("pathSimplifiedTruthSet");
         if (type.equals("Requirement-Specifications")) {
@@ -123,27 +123,27 @@ public class XMLInitializer {
         } else {
             pathSimplifiedTruthSet.appendChild(document.createTextNode(basePath + baseFolder + "truth_set-simplified.csv"));
         }
-        ADSORB.appendChild(pathSimplifiedTruthSet);
+        adsorb.appendChild(pathSimplifiedTruthSet);
 
         Element strategyEl = document.createElement("strategy");
         strategyEl.appendChild(document.createTextNode(strategy));
-        ADSORB.appendChild(strategyEl);
+        adsorb.appendChild(strategyEl);
 
         Element machineLearningModel = document.createElement("machineLearningModel");
         machineLearningModel.appendChild(document.createTextNode(model));
-        ADSORB.appendChild(machineLearningModel);
+        adsorb.appendChild(machineLearningModel);
 
         Element pathModel = document.createElement("pathModel");
         pathModel.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "") + "models/MLModel.model"));
-        ADSORB.appendChild(pathModel);
+        adsorb.appendChild(pathModel);
 
         Element percentageSplit = document.createElement("percentageSplit");
         percentageSplit.appendChild(document.createTextNode(percentage));
-        ADSORB.appendChild(percentageSplit);
+        adsorb.appendChild(percentageSplit);
 
         Element pathResultsPrediction = document.createElement("pathResultsPrediction");
         pathResultsPrediction.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "") + "results/" + "result_"));
-        ADSORB.appendChild(pathResultsPrediction);
+        adsorb.appendChild(pathResultsPrediction);
 
         Element pathTDMTestSet = document.createElement("pathTDMTestSet");
         if (type.equals("Requirement-Specifications")) {
@@ -151,7 +151,7 @@ public class XMLInitializer {
         } else {
             pathTDMTestSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_testSet_with_oracle_info.csv"));
         }
-        ADSORB.appendChild(pathTDMTestSet);
+        adsorb.appendChild(pathTDMTestSet);
 
         Element pathTrainingSet = document.createElement("pathTrainingSet");
         if (type.equals("Requirement-Specifications")) {
@@ -160,7 +160,7 @@ public class XMLInitializer {
             //TODO if adding user reviews to DL
             throw new RuntimeException("Path of training-set not defined for UserReviews if using DL-Pipeline");
         }
-        ADSORB.appendChild(pathTrainingSet);
+        adsorb.appendChild(pathTrainingSet);
 
         Element pathTestSet = document.createElement("pathTestSet");
         if (type.equals("Requirement-Specifications")) {
@@ -169,7 +169,7 @@ public class XMLInitializer {
             //TODO if adding user reviews to DL
             throw new RuntimeException("Path of test-set not defined for UserReviews if using DL-Pipeline");
         }
-        ADSORB.appendChild(pathTestSet);
+        adsorb.appendChild(pathTestSet);
 
         Element pathTDMTrainingSet = document.createElement("pathTDMTrainingSet");
         if (type.equals("Requirement-Specifications")) {
@@ -177,7 +177,7 @@ public class XMLInitializer {
         } else {
             pathTDMTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_trainingSet_with_oracle_info.csv"));
         }
-        ADSORB.appendChild(pathTDMTrainingSet);
+        adsorb.appendChild(pathTDMTrainingSet);
 
         Element pathFullTDMDataset = document.createElement("pathFullTDMDataset");
         if (type.equals("Requirement-Specifications")) {
@@ -185,11 +185,11 @@ public class XMLInitializer {
         } else {
             pathFullTDMDataset.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_with_oracle_info.csv"));
         }
-        ADSORB.appendChild(pathFullTDMDataset);
+        adsorb.appendChild(pathFullTDMDataset);
 
         Element gloveFile = document.createElement("pathGloveFile");
         gloveFile.appendChild(document.createTextNode(basePath + "resources/DL/glove.6B.100d.txt"));
-        ADSORB.appendChild(gloveFile);
+        adsorb.appendChild(gloveFile);
 
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
