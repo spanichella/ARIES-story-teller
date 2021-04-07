@@ -1,8 +1,8 @@
 package ui;
 
 
-public class SWM_GUI {
-    public static final SWM_Frame frame = new SWM_Frame();
+public class SWMGui {
+    public static final SWMFrame frame = new SWMFrame();
 
     @SuppressWarnings("EmptyMethod")
     public static void main(String[] args) {

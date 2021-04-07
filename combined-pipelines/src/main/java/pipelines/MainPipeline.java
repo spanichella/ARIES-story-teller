@@ -4,7 +4,7 @@ import configfile.ConfigFileReader;
 import filegeneration.FileGeneration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import ui.SWM_GUI;
+import ui.SWMGui;
 
 /**
  * This class extends the Main Program class by supporting the execution of
@@ -46,6 +46,6 @@ public class MainPipeline {
             logger.severe("Pipeline selection invalid");
         }
         logger.info("Program execution completed");
-        SWM_GUI.killFrames();
+        SWMGui.killFrames();
     }
 }

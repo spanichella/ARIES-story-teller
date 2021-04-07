@@ -30,16 +30,16 @@ import javax.xml.transform.TransformerException;
 import pipelines.MainPipeline;
 
 
-public class SWM_Frame extends JFrame implements ActionListener, ItemListener, ChangeListener {
+public class SWMFrame extends JFrame implements ActionListener, ItemListener, ChangeListener {
     @Serial
     private static final long serialVersionUID = -592869500939986619L;
-    private static final Logger logger = Logger.getLogger(SWM_Frame.class.getName());
+    private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
 
     private static final Color backGroundColor = new Color(88, 102, 148);
     private static final Color textColor = new Color(230, 230, 230);
     private static final Color separatorColor = new Color(79, 92, 134);
 
-    private SWM_Loader_Frame loader;
+    private SWMLoaderFrame loader;
 
     private final JButton truthSetSelector;
     private final JButton executeB;
@@ -73,7 +73,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
     private final DecimalFormat df = new DecimalFormat("#.##");
 
 
-    SWM_Frame() {
+    SWMFrame() {
         args = new String[]{"null", "null", "null", "null", "0.5", "null"}; //truthFilePath,DataType,Pipeline,MLModel,split,Strategy
 
         ImageIcon logoImage = new ImageIcon("images/swmlogo.jpg");
@@ -530,7 +530,7 @@ public class SWM_Frame extends JFrame implements ActionListener, ItemListener, C
             }
         } else if (e.getSource() == executeB) {
             //loader = new SWM_Loader_Frame();
-            loader = new SWM_Loader_Frame();
+            loader = new SWMLoaderFrame();
             loader.start();
             //set mainPath according to Operating System
             String mainPath = MainPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().
