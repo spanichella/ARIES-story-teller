@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.logging.Logger;
@@ -81,7 +82,7 @@ public class WekaClassifier {
         System.out.println(eval.toMatrixString());
         System.out.println(eval.toClassDetailsString());
         System.out.println("AUC = " + eval.areaUnderROC(1));
-        String strDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
+        String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
         FileWriter fileWriter = new FileWriter(pathResultsPrediction + strDate + ".txt", StandardCharsets.UTF_8);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println("training performance results of: " + classifier.getClass().getSimpleName()
@@ -139,7 +140,7 @@ public class WekaClassifier {
         System.out.println(eval.toClassDetailsString());
         System.out.println("AUC = " + eval.areaUnderROC(1));
 
-        String strDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
+        String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
         FileWriter fileWriter = new FileWriter(pathResultsPrediction + strDate + ".txt", StandardCharsets.UTF_8);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println("performance results of: " + classifier.getClass().getSimpleName()
