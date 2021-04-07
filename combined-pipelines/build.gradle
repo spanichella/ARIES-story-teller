@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'application'
+    id 'net.ltgt.errorprone' version '1.3.0'
+    id 'checkstyle'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    implementation 'nz.ac.waikato.cms.weka:weka-stable:3.8.3'
+    implementation 'org.deeplearning4j:deeplearning4j-core:0.9.1'
+    implementation 'org.deeplearning4j:deeplearning4j-nlp:0.9.1'
+    implementation 'org.nd4j:nd4j-native-platform:0.9.1'
+    implementation 'org.datavec:datavec-api:0.9.1'
+    implementation 'org.slf4j:slf4j-simple:1.6.1'
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+    errorprone('com.google.errorprone:error_prone_core:2.6.0')
+}
+
+group = 'ML-pipeline'
+version = '0.0.1-SNAPSHOT'
+description = 'ADSORB Management'
+java.sourceCompatibility = JavaVersion.VERSION_15
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xlint:all' << '-Werror'
+    options.errorprone.disable('MissingSummary')
+}
+
+application {
+    mainClass.set('UI.SWM_GUI')
+}
+
+checkstyle {
+    ignoreFailures = false
+    maxWarnings = 0
+}
