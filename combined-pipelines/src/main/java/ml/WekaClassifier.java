@@ -117,7 +117,8 @@ public class WekaClassifier {
         logger.info("https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf");
     }
 
-    public void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String machineLearningModel, String pathResultsPrediction) throws Exception {
+    public void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String machineLearningModel, String pathResultsPrediction)
+            throws Exception {
         DataSource sourceWholeDataset = new DataSource(pathWholeDataset);
         Instances wholeDataset = sourceWholeDataset.getDataSet(); // from somewhere
         wholeDataset.setClassIndex(wholeDataset.numAttributes() - 1);

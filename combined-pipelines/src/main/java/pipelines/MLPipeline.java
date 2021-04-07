@@ -16,18 +16,23 @@ public class MLPipeline {
         logger.info("Starting Machine Learning Analysis...");
         if (configFileReader.getStrategy() != null) {
             if (configFileReader.getStrategy().equals("Percentage-Split")) {
-                WekaClassifier wekaClassifier = new WekaClassifier(configFileReader.getPathTDMTrainingSet(), configFileReader.getPathTDMTestSet(), configFileReader.getPathModel());
+                WekaClassifier wekaClassifier = new WekaClassifier(configFileReader.getPathTDMTrainingSet(),
+                        configFileReader.getPathTDMTestSet(), configFileReader.getPathModel());
 
                 if (checkWhetherTestSetIsLabeled(configFileReader.getPathTDMTestSet())) {
-                    wekaClassifier.runSpecifiedMachineLearningModel(configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction()); //default behaviour it does prediction with given training and test sets with J48
+                    wekaClassifier.runSpecifiedMachineLearningModel(configFileReader.getMachineLearningModel(),
+                            configFileReader.getPathResultsPrediction());
+                    // default behaviour it does prediction with given training and test sets with J48
                 } else {
-                    wekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(configFileReader.getMachineLearningModel()); //default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
+                    wekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(configFileReader.getMachineLearningModel());
+                    // default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
                 }
             }
 
             if (configFileReader.getStrategy().equals("10-Fold")) {
                 WekaClassifier wekaClassifier = new WekaClassifier();
-                wekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.getPathFullTDMDataset(), configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction());
+                wekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.getPathFullTDMDataset(),
+                        configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction());
             }
             logger.info("Machine Learning Analysis completed");
         }

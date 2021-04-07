@@ -22,7 +22,8 @@ public class XMLInitializer {
 
     private final static Logger logger = Logger.getLogger(XMLInitializer.class.getName());
 
-    public static void createXML(String basePath, String pathTruthFile, String type, String model, String percentage, String strategy) throws ParserConfigurationException, TransformerException {
+    public static void createXML(String basePath, String pathTruthFile, String type, String model, String percentage, String strategy)
+            throws ParserConfigurationException, TransformerException {
         String baseFolder = "";
         String name = "";
 
@@ -56,7 +57,8 @@ public class XMLInitializer {
 
         Element pathRScriptOracle = document.createElement("pathRScriptOracle");
         if (type.equals("Requirement-Specifications")) {
-            pathRScriptOracle.appendChild(document.createTextNode(basePath + "resources/R-scripts/Script-to-create-test-dataset-Req-Specifications.r"));
+            pathRScriptOracle.appendChild(document.createTextNode(
+                    basePath + "resources/R-scripts/Script-to-create-test-dataset-Req-Specifications.r"));
         } else {
             pathRScriptOracle.appendChild(document.createTextNode(basePath + "resources/R-scripts/Script-to-create-test-dataset.r"));
         }
@@ -119,7 +121,8 @@ public class XMLInitializer {
 
         Element pathSimplifiedTruthSet = document.createElement("pathSimplifiedTruthSet");
         if (type.equals("Requirement-Specifications")) {
-            pathSimplifiedTruthSet.appendChild(document.createTextNode(basePath + baseFolder + "truth_set-simplified-Req-Specifications.csv"));
+            pathSimplifiedTruthSet.appendChild(document.createTextNode(
+                    basePath + baseFolder + "truth_set-simplified-Req-Specifications.csv"));
         } else {
             pathSimplifiedTruthSet.appendChild(document.createTextNode(basePath + baseFolder + "truth_set-simplified.csv"));
         }
@@ -147,9 +150,11 @@ public class XMLInitializer {
 
         Element pathTDMTestSet = document.createElement("pathTDMTestSet");
         if (type.equals("Requirement-Specifications")) {
-            pathTDMTestSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_testSet_with_oracle_info.csv"));
+            pathTDMTestSet.appendChild(document.createTextNode(
+                    basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_testSet_with_oracle_info.csv"));
         } else {
-            pathTDMTestSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_testSet_with_oracle_info.csv"));
+            pathTDMTestSet.appendChild(document.createTextNode(
+                    basePath + baseFolder + "documents-preprocessed-review/tdm_full_testSet_with_oracle_info.csv"));
         }
         adsorb.appendChild(pathTDMTestSet);
 
@@ -173,17 +178,21 @@ public class XMLInitializer {
 
         Element pathTDMTrainingSet = document.createElement("pathTDMTrainingSet");
         if (type.equals("Requirement-Specifications")) {
-            pathTDMTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_trainingSet_with_oracle_info.csv"));
+            pathTDMTrainingSet.appendChild(document.createTextNode(
+                    basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_trainingSet_with_oracle_info.csv"));
         } else {
-            pathTDMTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_trainingSet_with_oracle_info.csv"));
+            pathTDMTrainingSet.appendChild(document.createTextNode(
+                    basePath + baseFolder + "documents-preprocessed-review/tdm_full_trainingSet_with_oracle_info.csv"));
         }
         adsorb.appendChild(pathTDMTrainingSet);
 
         Element pathFullTDMDataset = document.createElement("pathFullTDMDataset");
         if (type.equals("Requirement-Specifications")) {
-            pathFullTDMDataset.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_with_oracle_info.csv"));
+            pathFullTDMDataset.appendChild(document.createTextNode(
+                    basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_with_oracle_info.csv"));
         } else {
-            pathFullTDMDataset.appendChild(document.createTextNode(basePath + baseFolder + "documents-preprocessed-review/tdm_full_with_oracle_info.csv"));
+            pathFullTDMDataset.appendChild(document.createTextNode(
+                    basePath + baseFolder + "documents-preprocessed-review/tdm_full_with_oracle_info.csv"));
         }
         adsorb.appendChild(pathFullTDMDataset);
 
