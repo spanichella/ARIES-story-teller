@@ -40,11 +40,9 @@ public class MLPipeline {
         Scanner scanner = new Scanner(file, StandardCharsets.UTF_8.name());
 
         //now read the file line by line...
-        int lineNum = 0;
         String line;
         while (scanner.hasNextLine()) {
             line = scanner.nextLine();
-            lineNum++;
             //System.out.println(line);
             if (line.contains("\"?\"") || line.contains("'?'") || line.endsWith("?")) {
                 logger.info("The test-set is non labeled, we need to first label such instances");
