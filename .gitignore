@@ -1,6 +1,4 @@
 .DS_Store
-#idea files
-**/.idea
 **/target
 
 #generated files folders
