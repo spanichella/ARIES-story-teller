@@ -7,11 +7,11 @@ import java.util.logging.Logger;
 import ui.SWM_GUI;
 
 /**
- * @author panc
- * <p>
  * This class extends the Main Program class by supporting the execution of
  * the main steps of the ML- and DL-based classification pipelines
  * concerning User reviews (extracted from App stores).
+ *
+ * @author panc
  */
 public class MainPipeline {
     private final static Logger logger = Logger.getLogger(MainPipeline.class.getName());
