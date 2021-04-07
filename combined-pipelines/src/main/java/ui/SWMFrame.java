@@ -444,6 +444,8 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 s4BLRight.setVisible(false);
                 thresholdSlider.setVisible(false);
                 break;
+            default:
+                throw new IllegalArgumentException("Unknown option: " + input);
         }
     }
 

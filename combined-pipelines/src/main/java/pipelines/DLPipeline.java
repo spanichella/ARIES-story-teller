@@ -259,9 +259,9 @@ public class DLPipeline {
                 return new double[] { 0, 1, 0 };
             case "F":
                 return new double[] { 0, 0, 1 };
+            default:
+                throw new IllegalArgumentException("Unknown label: " + labelStr);
         }
-
-        throw new IllegalArgumentException("Unknown label: " + labelStr);
     }
 
     private static int getLabelValue(String[] lineAr) {
@@ -277,9 +277,9 @@ public class DLPipeline {
                 return 1;
             case "F":
                 return 2;
+            default:
+                throw new IllegalArgumentException("Unknown label: " + labelStr);
         }
-
-        throw new IllegalArgumentException("Unknown label: " + labelStr);
     }
 
     /**
