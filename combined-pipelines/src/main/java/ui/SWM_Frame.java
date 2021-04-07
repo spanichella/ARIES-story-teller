@@ -1,6 +1,6 @@
-package UI;
+package ui;
 
-import fileGeneration.XMLInitializer;
+import filegeneration.XMLInitializer;
 import pipelines.MainPipeline;
 
 import javax.swing.*;

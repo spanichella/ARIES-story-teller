@@ -1,8 +1,8 @@
 package pipelines;
 
-import UI.SWM_GUI;
-import configFile.ConfigFileReader;
-import fileGeneration.FileGeneration;
+import ui.SWM_GUI;
+import configfile.ConfigFileReader;
+import filegeneration.FileGeneration;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

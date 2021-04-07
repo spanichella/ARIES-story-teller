@@ -1,4 +1,4 @@
-package UI;
+package ui;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

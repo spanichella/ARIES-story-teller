@@ -1,6 +1,6 @@
 package oracle;
 
-import configFile.ConfigFileReader;
+import configfile.ConfigFileReader;
 import helpers.ProcessExecutor;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package fileGeneration;
+package filegeneration;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;

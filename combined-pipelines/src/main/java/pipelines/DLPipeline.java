@@ -1,6 +1,6 @@
 package pipelines;
 
-import configFile.ConfigFileReader;
+import configfile.ConfigFileReader;
 import org.apache.commons.lang.ArrayUtils;
 import org.deeplearning4j.eval.Evaluation;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;

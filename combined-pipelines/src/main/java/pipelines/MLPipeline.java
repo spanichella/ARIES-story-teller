@@ -1,6 +1,6 @@
 package pipelines;
 
-import configFile.ConfigFileReader;
+import configfile.ConfigFileReader;
 import ml.WekaClassifier;
 
 import java.io.File;

@@ -1,6 +1,6 @@
-package fileGeneration;
+package filegeneration;
 
-import configFile.ConfigFileReader;
+import configfile.ConfigFileReader;
 import helpers.ProcessExecutor;
 
 import java.io.IOException;
