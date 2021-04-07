@@ -19,10 +19,6 @@ public class SWMLoaderFrame extends Thread {
 
     @Override
     public void run() {
-        ImageIcon loadingAnimation = new ImageIcon(new ImageIcon("images/swm_loading.gif")
-                .getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-        JLabel gifLabel = new JLabel(loadingAnimation);
-
         ImageIcon icon = new ImageIcon("images/STIcon.jpg");
         frame.setIconImage(icon.getImage());
         frame.setTitle("Story Teller Loader");
@@ -38,6 +34,9 @@ public class SWMLoaderFrame extends Thread {
         explanationText.setForeground(new Color(230, 230, 230));
 
         frame.add(explanationText);
-        frame.add(gifLabel);
+
+        ImageIcon loadingAnimation = new ImageIcon(new ImageIcon("images/swm_loading.gif")
+                .getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+        frame.add(new JLabel(loadingAnimation));
     }
 }

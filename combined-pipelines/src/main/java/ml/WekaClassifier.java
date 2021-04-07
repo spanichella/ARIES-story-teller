@@ -51,7 +51,6 @@ public class WekaClassifier {
     public void runSpecifiedMachineLearningModel(String machineLearningModel, String pathResultsPrediction) throws Exception {
         String pathTrainingSet = getPathTrainingSet();
         String pathTestSet = getPathTestSet();
-        String pathModel = getPathModel();
 
         //we create instances for training and test sets
         DataSource sourceTraining = new DataSource(pathTrainingSet);
@@ -71,7 +70,7 @@ public class WekaClassifier {
         classifier.buildClassifier(train);
 
         Evaluation eval = new Evaluation(train);
-        weka.core.SerializationHelper.write(pathModel, classifier);
+        weka.core.SerializationHelper.write(getPathModel(), classifier);
         eval.evaluateModel(classifier, test);
 
         System.out.println("training performance results of: " + classifier.getClass().getSimpleName()

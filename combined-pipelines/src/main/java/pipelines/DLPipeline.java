@@ -62,10 +62,6 @@ public class DLPipeline {
         String glove = cfg.getPathGloveFile();
         System.out.println("TEST" + glove);
 
-        WordVectors wordVectors = WordVectorSerializer.readWord2VecModel(new File(glove));
-
-        String modelFileName = "model_6b_" + GLOVE_DIM + "d_v1_0.bin";
-
         int lengthTrainingSet = getLineCount(labelledTurns) - 1;
         System.out.println(lengthTrainingSet);
         int lengthTestSet = getLineCount(validationSet) - 1;
@@ -75,8 +71,6 @@ public class DLPipeline {
         int nrOfBatches = 4;
         int nrOfExamplesPerBatch = lengthTrainingSet / nrOfBatches;
         LOGGER.info(String.valueOf(nrOfExamplesPerBatch));
-
-        int nrOfEpochs = 100;
 
         int wordsPerTurn = 100; // estimated. Longer will be cut, shorter will be empty padded.
 
@@ -88,6 +82,8 @@ public class DLPipeline {
         MultiLayerNetwork model = createMultiLayerNetwork(inputColumns, 0.3);
         model.init();
 
+        String modelFileName = "model_6b_" + GLOVE_DIM + "d_v1_0.bin";
+
         // save it to file
         File modelFile = new File(cfg.getPathModel().replace("MLModel.model", ""), modelFileName);
         //noinspection ResultOfMethodCallIgnored
@@ -97,6 +93,8 @@ public class DLPipeline {
         System.out.println(labelledTurns);
 
         LOGGER.info("Start training...");
+        int nrOfEpochs = 100;
+        WordVectors wordVectors = WordVectorSerializer.readWord2VecModel(new File(glove));
         train(labelledTurns, wordVectors, lengthTrainingSet, nrOfBatches, nrOfExamplesPerBatch, nrOfEpochs, inputColumns,
                 wordsPerTurn, model, validationSet, lengthTestSet);
         LOGGER.info("Finished training");
