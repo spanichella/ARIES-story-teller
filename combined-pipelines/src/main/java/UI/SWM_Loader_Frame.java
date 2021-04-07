@@ -12,6 +12,7 @@ public class SWM_Loader_Frame extends Thread {
         frame.dispose();
     }
 
+    @Override
     public void run(){
         ImageIcon loadingAnimation = new ImageIcon(new ImageIcon("images/swm_loading.gif")
                 .getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT));
