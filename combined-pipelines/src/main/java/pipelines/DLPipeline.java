@@ -23,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -102,7 +103,7 @@ public class DLPipeline {
         String result = evaluate(validationSet, lengthTestSet, model, wordVectors, inputColumns, wordsPerTurn);
         System.out.println(result);
         String strDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-        FileWriter fileWriter = new FileWriter(cfg.getPathResultsPrediction() + strDate + ".txt");
+        FileWriter fileWriter = new FileWriter(cfg.getPathResultsPrediction() + strDate + ".txt", StandardCharsets.UTF_8);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println(result);
         printWriter.close();
@@ -115,7 +116,7 @@ public class DLPipeline {
         // prepare test data
         List<INDArray> inputList = new ArrayList<>(inputSize);
         double[][] labelsList = new double[inputSize][];
-        try (BufferedReader reader = new BufferedReader(new FileReader(validationSet))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(validationSet, StandardCharsets.UTF_8))) {
 
             String line;
             int labelsId = 0;
@@ -146,7 +147,7 @@ public class DLPipeline {
         for (int epoch = 0; epoch < nrOfEpochs; ++epoch) {
             LOGGER.info("Epoch " + epoch);
 
-            try (BufferedReader reader = new BufferedReader(new FileReader(labelledTurns))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(labelledTurns, StandardCharsets.UTF_8))) {
 
                 reader.readLine();
                 String line = reader.readLine();
@@ -212,7 +213,7 @@ public class DLPipeline {
         List<INDArray> inputList = new ArrayList<>(inputSize);
         double[][] labelsList = new double[inputSize][];
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(validationSet))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(validationSet, StandardCharsets.UTF_8))) {
 
             String line;
             int labelsId = 0;
@@ -360,7 +361,7 @@ public class DLPipeline {
     }
 
     static int getLineCount(String path) throws IOException {
-        try (FileReader input = new FileReader(path);
+        try (FileReader input = new FileReader(path, StandardCharsets.UTF_8);
              LineNumberReader count = new LineNumberReader(input)) {
             //noinspection StatementWithEmptyBody
             while (count.skip(Long.MAX_VALUE) > 0) {

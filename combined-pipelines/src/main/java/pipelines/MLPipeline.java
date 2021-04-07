@@ -5,6 +5,7 @@ import ml.WekaClassifier;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -36,7 +37,7 @@ public class MLPipeline {
     private static boolean checkWhetherTestSetIsLabeled(String pathTestSet) throws FileNotFoundException {
         File file = new File(pathTestSet);
 
-        Scanner scanner = new Scanner(file);
+        Scanner scanner = new Scanner(file, StandardCharsets.UTF_8.name());
 
         //now read the file line by line...
         int lineNum = 0;
