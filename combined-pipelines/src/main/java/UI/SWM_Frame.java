@@ -14,12 +14,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
+import java.io.Serial;
 import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 public class SWM_Frame extends JFrame implements ActionListener, ItemListener, ChangeListener {
+    @Serial
     private static final long serialVersionUID = -592869500939986619L;
     private final static Logger logger = Logger.getLogger(SWM_Frame.class.getName());
 

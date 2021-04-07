@@ -1,9 +1,6 @@
 package helpers;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,6 +34,7 @@ public class ProcessExecutor {
     }
 
     public static abstract class ProcessException extends IOException {
+        @Serial
         private static final long serialVersionUID = -4081653183392141979L;
 
         public ProcessException(String message) {
@@ -53,6 +51,7 @@ public class ProcessExecutor {
     }
 
     public static class ExecutionException extends ProcessException {
+        @Serial
         private static final long serialVersionUID = 49748945902517787L;
 
         public ExecutionException(String[] commandParts, Throwable cause) {
@@ -61,6 +60,7 @@ public class ProcessExecutor {
     }
 
     public static class RunFailedException extends ProcessException {
+        @Serial
         private static final long serialVersionUID = -592869500939986619L;
 
         public RunFailedException(String[] commandParts) {
