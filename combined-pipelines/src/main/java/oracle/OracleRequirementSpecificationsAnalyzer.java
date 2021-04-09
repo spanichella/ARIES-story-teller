@@ -1,7 +1,7 @@
 package oracle;
 
 import configfile.ConfigFileReader;
-import helpers.ProcessExecutor;
+import helpers.RscriptExecutor;
 import java.io.IOException;
 import java.util.logging.Logger;
 
@@ -25,7 +25,7 @@ public class OracleRequirementSpecificationsAnalyzer {
 
         //make command for r-script
         logger.info("R-Script execution begins:");
-        ProcessExecutor.execute("Rscript", pathRScriptOracle, baseFolder, oraclePath, threshold,
+        RscriptExecutor.execute(pathRScriptOracle, baseFolder, oraclePath, threshold,
                 nameOfAttributeID, nameOfAttributeText, nameOfAttributeClass);
     }
 }

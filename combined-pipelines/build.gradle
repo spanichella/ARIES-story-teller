@@ -21,7 +21,7 @@ dependencies {
     implementation 'org.datavec:datavec-api:0.9.1'
     implementation 'org.slf4j:slf4j-simple:1.6.1'
     compileOnly 'org.projectlombok:lombok:1.18.2'
-    errorprone('com.google.errorprone:error_prone_core:2.6.0')
+    errorprone 'com.google.errorprone:error_prone_core:2.6.0'
 }
 
 group = 'ML-pipeline'
@@ -47,7 +47,15 @@ application {
     mainClass.set('ui.SWM_GUI')
 }
 
+sourceSets.main.resources.srcDirs += "resources"
+
 checkstyle {
     ignoreFailures = false
     maxWarnings = 0
+}
+
+task verifyInstallation(type: JavaExec) {
+    group = "Execution"
+    classpath = sourceSets.main.runtimeClasspath
+    main = "helpers.RscriptValidator"
 }

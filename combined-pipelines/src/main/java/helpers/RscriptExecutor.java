@@ -8,9 +8,11 @@ import java.io.Serial;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
-public class ProcessExecutor {
-    private static final Logger LOGGER = Logger.getLogger(ProcessExecutor.class.getName());
+public class RscriptExecutor {
+    private static final Logger LOGGER = Logger.getLogger(RscriptExecutor.class.getName());
+    private static final String rscriptCommand = "Rscript";
 
     /**
      * Executes the command and arguments as a system command
@@ -22,7 +24,7 @@ public class ProcessExecutor {
     public static void execute(String... commandParts) throws ProcessException {
         Process process;
         try {
-            process = Runtime.getRuntime().exec(commandParts);
+            process = Runtime.getRuntime().exec(toRscriptCommand(commandParts));
             logStream(process.getInputStream(), Level.INFO);
             logStream(process.getErrorStream(), Level.SEVERE);
         } catch (IOException exception) {
@@ -33,9 +35,19 @@ public class ProcessExecutor {
         }
     }
 
+    private static String[] toRscriptCommand(String[] rest) {
+        String[] combined = new String[rest.length + 1];
+        combined[0] = rscriptCommand;
+        System.arraycopy(rest, 0, combined, 1, rest.length);
+        return combined;
+    }
+
     private static void logStream(InputStream stream, Level level) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8))) {
-            reader.lines().forEach(line -> LOGGER.log(level, line));
+            String content = reader.lines().collect(Collectors.joining(System.lineSeparator()));
+            if (!content.isEmpty()) {
+                LOGGER.log(level, content);
+            }
         }
     }
 

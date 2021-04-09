@@ -1,7 +1,7 @@
 package filegeneration;
 
 import configfile.ConfigFileReader;
-import helpers.ProcessExecutor;
+import helpers.RscriptExecutor;
 import java.io.IOException;
 import java.util.logging.Logger;
 
@@ -24,7 +24,7 @@ public class TermByDocumentCreation {
 
         // path of command "/usr/local/bin/Rscript" identified using: "which Rscript" from command line
         logger.info("R-Script execution begins:");
-        ProcessExecutor.execute("Rscript", pathTbDRScript, docsLocation, documentsTrainingSet,
+        RscriptExecutor.execute(pathTbDRScript, docsLocation, documentsTrainingSet,
                 documentsTestSet, simplifiedOraclePath, nameOfAttributeID, nameOfAttributeClass, nameOfAttributeText,
                 oracleFolder);
     }

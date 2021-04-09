@@ -13,15 +13,7 @@ oracleFolder2  <- args[8]
 # @author sebastiano panichella
 
 #install packages if not installed yet
-print("Installing necessary packages...")
-if (!require(tm)){ install.packages("tm") }
-if (!require(stringr)){ install.packages("stringr") } 
-if (!require(stopwords)){ install.packages("stopwords") }
-if (!require(slam)){ install.packages("slam") }
-if (!require(snakecase)){ install.packages("snakecase") }
-if (!require(data.table)){ install.packages("data.table") }
-if (!require(XML)){ install.packages("XML") }
-if (!require(SnowballC)){ install.packages("SnowballC") }
+source("./install.r")
 
 #load the libraries...
 print("Loading libraries...")
