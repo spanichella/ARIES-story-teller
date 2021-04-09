@@ -44,7 +44,7 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainClass.set('ui.SWM_GUI')
+    mainClass.set('ui.SWMGui')
 }
 
 sourceSets.main.resources.srcDirs += "resources"
