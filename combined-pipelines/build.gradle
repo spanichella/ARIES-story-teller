@@ -28,6 +28,7 @@ group = 'ML-pipeline'
 version = '0.0.1-SNAPSHOT'
 description = 'ADSORB Management'
 java.sourceCompatibility = JavaVersion.VERSION_15
+applicationDefaultJvmArgs << '-Xmx6G'
 
 publishing {
     publications {
