@@ -1,4 +1,4 @@
-# StoryTeller: Exploiting and Analyzing User Reviews and User Stories for Supporting Software Evolution in Industry
+# StoryTeller: Analyzing User Stories and User Reviews for Supporting Software Evolution in Industry
 
 
 **Authors:** [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm)
