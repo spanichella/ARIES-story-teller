@@ -18,7 +18,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
@@ -26,7 +25,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import pipelines.MainPipeline;
 
 
 public class SWMFrame extends JFrame implements ActionListener, ItemListener, ChangeListener {
@@ -392,13 +390,6 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         this.setVisible(true);
     }
 
-
-    public void displayErrorMessage(String errorText) {
-        JOptionPane.showMessageDialog(this, errorText,
-                "Error", JOptionPane.ERROR_MESSAGE);
-    }
-
-
     public void populatePanels(String input) {
         switch (input) {
             case "DL" -> {
@@ -516,7 +507,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
                 String extension = file.toString().substring(file.toString().lastIndexOf("."));
                 if (!extension.equals(".txt") && !extension.equals(".csv")) {
-                    displayErrorMessage("Wrong filetype selected. Please select a .txt or .csv file");
+                    UIHelpers.showErrorMessage(logger, "Wrong filetype selected. Please select a .txt or .csv file", this);
                     truthFilePath = "null";
                 } else {
                     truthFilePath = file.toString();
@@ -525,12 +516,6 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         } else if (e.getSource() == executeB) {
             loader = new SWMLoaderFrame();
             loader.start();
-            //set mainPath according to Operating System
-            String mainPath = MainPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath()
-                    .replace("target/classes/", "");
-            if (System.getProperty("os.name").toLowerCase().contains("win")) {
-                mainPath = mainPath.substring(1);
-            }
 
             try {
                 generateXML();
@@ -539,7 +524,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 UIHelpers.showErrorMessage(logger, "Generating the XML Failed", exception, this);
                 return;
             }
-            PipelineThread mainThread = new PipelineThread(mainPath, pipeline, dataType);
+            PipelineThread mainThread = new PipelineThread(pipeline, dataType);
             mainThread.start();
             this.setEnabled(false);
         }
@@ -619,14 +604,8 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         split = decimalFixedDouble;
     }
 
-    void generateXML() throws TransformerException, ParserConfigurationException {
+    private void generateXML() throws TransformerException, ParserConfigurationException {
         //create XML files with paths, etc.
-        //set mainPath according to Operating System
-        String mainPath = MainPipeline.class.getProtectionDomain().getCodeSource().getLocation().getPath().replace("target/classes/", "");
-        if (System.getProperty("os.name").toLowerCase().contains("win")) {
-            mainPath = mainPath.substring(1);
-        }
-        System.out.print(mainPath);
-        XMLInitializer.createXML(mainPath, truthFilePath, dataType, mlModel, split, strategy);
+        XMLInitializer.createXML(truthFilePath, dataType, mlModel, split, strategy);
     }
 }

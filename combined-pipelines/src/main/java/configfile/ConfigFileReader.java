@@ -2,6 +2,7 @@ package configfile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -37,11 +38,11 @@ public class ConfigFileReader {
     private String pathTDMTestSet;
     private String strategy;
 
-    public ConfigFileReader(String pathXMLConfigFile) throws ParserConfigurationException, IOException, SAXException {
+    public ConfigFileReader(Path pathXMLConfigFile) throws ParserConfigurationException, IOException, SAXException {
         System.out.println("Loading the config file...");
         Document doc;
 
-        File xmlFile = new File(pathXMLConfigFile);
+        File xmlFile = pathXMLConfigFile.toFile();
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = dbFactory.newDocumentBuilder();
         doc = documentBuilder.parse(xmlFile);

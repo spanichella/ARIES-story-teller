@@ -45,6 +45,7 @@ public class DLPipeline {
     private static final int GLOVE_DIM = 100;
 
     // captures everything that's not a letter greedily, e.g. ", "
+    @SuppressWarnings("HardcodedFileSeparator")
     private static final String WORD_SPLIT_PATTERN = "\\P{L}+";
     // columns are split by ","
     private static final String INPUT_TURN_DELIMITER_PATTERN = "\",\"";

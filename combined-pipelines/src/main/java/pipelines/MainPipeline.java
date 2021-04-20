@@ -2,6 +2,8 @@ package pipelines;
 
 import configfile.ConfigFileReader;
 import filegeneration.FileGeneration;
+import helpers.CommonPaths;
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ui.SWMGui;
@@ -16,18 +18,17 @@ import ui.SWMGui;
 public class MainPipeline {
     private static final Logger logger = Logger.getLogger(MainPipeline.class.getName());
 
-    public static void runPipeline(String mainPath, String selectedPipeline, String type) throws Exception {
-
+    public static void runPipeline(String selectedPipeline, String type) throws Exception {
+        Path xmlFiles = CommonPaths.XML_FILES;
 
         //chooses path of config file according to data-type
-        String pathConfigFile = "";
+        Path pathConfigFile;
         if (type.equals("Requirement-Specifications")) {
-            pathConfigFile = mainPath + "resources/XMLFiles/RequirementSpecificationsXML.xml";
+            pathConfigFile = xmlFiles.resolve("RequirementSpecificationsXML.xml");
         } else if (type.equals("User-Reviews")) {
-            pathConfigFile = mainPath + "resources/XMLFiles/UserReviewsXML.xml";
+            pathConfigFile = xmlFiles.resolve("UserReviewsXML.xml");
         } else {
-            System.out.println("type not recognized: use Requirement-Specifications or UR");
-            System.exit(1);
+            throw new IllegalArgumentException("type \"" + type + "\" not recognized: use Requirement-Specifications or User-Reviews");
         }
         logger.log(Level.INFO, "Path of ConfigFile: " + pathConfigFile);
 

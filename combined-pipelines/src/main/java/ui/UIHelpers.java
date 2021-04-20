@@ -6,12 +6,17 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 class UIHelpers {
+    public static void showErrorMessage(Logger logger, String message, Component parentComponent) {
+        logger.log(Level.SEVERE, message);
+        JOptionPane.showMessageDialog(parentComponent, message, message, JOptionPane.ERROR_MESSAGE);
+    }
+
     public static void showErrorMessage(Logger logger, String message, Throwable throwable) {
         showErrorMessage(logger, message, throwable, null);
     }
 
     public static void showErrorMessage(Logger logger, String message, Throwable throwable, Component parentComponent) {
         logger.log(Level.SEVERE, message, throwable);
-        JOptionPane.showMessageDialog(parentComponent, message, message, JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(parentComponent, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

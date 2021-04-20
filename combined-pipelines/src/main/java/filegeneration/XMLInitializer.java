@@ -1,6 +1,7 @@
 package filegeneration;
 
-import java.io.File;
+import helpers.CommonPaths;
+import java.nio.file.Path;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -11,8 +12,6 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-import helpers.CommonPaths;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -24,19 +23,21 @@ public class XMLInitializer {
 
     private static final Logger logger = Logger.getLogger(XMLInitializer.class.getName());
 
-    public static void createXML(String basePath, String pathTruthFile, String type, String model, String percentage, String strategy)
+    public static void createXML(String pathTruthFile, String type, String model, String percentage, String strategy)
             throws ParserConfigurationException, TransformerException {
-        String baseFolder = "";
-        String name = "";
+        Path baseFolder;
+        String name;
 
         if (type.equals("Requirement-Specifications")) {
-            baseFolder = "resources/ReqSpec/";
+            baseFolder = CommonPaths.RESOURCES.resolve("ReqSpec");
             name = "RequirementSpecifications";
             logger.info("Creating XML-file for Requirement-Specifications...");
         } else if (type.equals("User-Reviews")) {
-            baseFolder = "resources/UserReviews/";
+            baseFolder = CommonPaths.RESOURCES.resolve("UserReviews");
             name = "UserReviews";
             logger.info("Creating XML-file for User Reviews...");
+        } else {
+            throw new IllegalArgumentException("Unknown type \"" + type + "\"");
         }
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -54,20 +55,21 @@ public class XMLInitializer {
         root.appendChild(adsorb);
 
         Element pathRScripts = document.createElement("pathRScripts");
-        pathRScripts.appendChild(document.createTextNode(basePath + "resources/R-scripts/"));
+        pathRScripts.appendChild(document.createTextNode(CommonPaths.R_SCRIPTS.toString()));
         adsorb.appendChild(pathRScripts);
 
         Element pathRScriptOracle = document.createElement("pathRScriptOracle");
         if (type.equals("Requirement-Specifications")) {
-            pathRScriptOracle.appendChild(document.createTextNode(
-                    basePath + "resources/R-scripts/Script-to-create-test-dataset-Req-Specifications.r"));
+            pathRScriptOracle.appendChild(document.createTextNode(CommonPaths.R_SCRIPTS
+                    .resolve("Script-to-create-test-dataset-Req-Specifications.r").toString()));
         } else {
-            pathRScriptOracle.appendChild(document.createTextNode(basePath + "resources/R-scripts/Script-to-create-test-dataset.r"));
+            pathRScriptOracle.appendChild(document.createTextNode(CommonPaths.R_SCRIPTS
+                    .resolve("Script-to-create-test-dataset.r").toString()));
         }
         adsorb.appendChild(pathRScriptOracle);
 
         Element pathBaseFolder = document.createElement("pathBaseFolder");
-        pathBaseFolder.appendChild(document.createTextNode(basePath + baseFolder));
+        pathBaseFolder.appendChild(document.createTextNode(baseFolder.toString()));
         adsorb.appendChild(pathBaseFolder);
 
         Element pathTruthSet = document.createElement("pathTruthSet");
@@ -102,31 +104,31 @@ public class XMLInitializer {
 
 
         Element pathTbDRScript = document.createElement("pathTbDRScript");
-        pathTbDRScript.appendChild(document.createTextNode(basePath + "resources/R-scripts/MainScript.r"));
+        pathTbDRScript.appendChild(document.createTextNode(CommonPaths.R_SCRIPTS.resolve("MainScript.r").toString()));
         adsorb.appendChild(pathTbDRScript);
 
         Element pathTrainingSetDocuments = document.createElement("pathTrainingSetDocuments");
         if (type.equals("Requirement-Specifications")) {
-            pathTrainingSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "training-set-Req-Specifications"));
+            pathTrainingSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("training-set-Req-Specifications").toString()));
         } else {
-            pathTrainingSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "training-set"));
+            pathTrainingSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("training-set").toString()));
         }
         adsorb.appendChild(pathTrainingSetDocuments);
 
         Element pathTestSetDocuments = document.createElement("pathTestSetDocuments");
         if (type.equals("Requirement-Specifications")) {
-            pathTestSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "test-set-Req-Specifications"));
+            pathTestSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("test-set-Req-Specifications").toString()));
         } else {
-            pathTestSetDocuments.appendChild(document.createTextNode(basePath + baseFolder + "test-set"));
+            pathTestSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("test-set").toString()));
         }
         adsorb.appendChild(pathTestSetDocuments);
 
         Element pathSimplifiedTruthSet = document.createElement("pathSimplifiedTruthSet");
         if (type.equals("Requirement-Specifications")) {
             pathSimplifiedTruthSet.appendChild(document.createTextNode(
-                    basePath + baseFolder + "truth_set-simplified-Req-Specifications.csv"));
+                    baseFolder.resolve("truth_set-simplified-Req-Specifications.csv").toString()));
         } else {
-            pathSimplifiedTruthSet.appendChild(document.createTextNode(basePath + baseFolder + "truth_set-simplified.csv"));
+            pathSimplifiedTruthSet.appendChild(document.createTextNode(baseFolder.resolve("truth_set-simplified.csv").toString()));
         }
         adsorb.appendChild(pathSimplifiedTruthSet);
 
@@ -139,7 +141,7 @@ public class XMLInitializer {
         adsorb.appendChild(machineLearningModel);
 
         Element pathModel = document.createElement("pathModel");
-        pathModel.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "") + "models/MLModel.model"));
+        pathModel.appendChild(document.createTextNode(CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model").toString()));
         adsorb.appendChild(pathModel);
 
         Element percentageSplit = document.createElement("percentageSplit");
@@ -147,22 +149,24 @@ public class XMLInitializer {
         adsorb.appendChild(percentageSplit);
 
         Element pathResultsPrediction = document.createElement("pathResultsPrediction");
-        pathResultsPrediction.appendChild(document.createTextNode(basePath.replace("combined-pipelines/", "") + "results/" + "result_"));
+        pathResultsPrediction.appendChild(document.createTextNode(CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_")
+                .toString()));
         adsorb.appendChild(pathResultsPrediction);
 
         Element pathTDMTestSet = document.createElement("pathTDMTestSet");
         if (type.equals("Requirement-Specifications")) {
-            pathTDMTestSet.appendChild(document.createTextNode(
-                    basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_testSet_with_oracle_info.csv"));
+            pathTDMTestSet.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-req_specification")
+                    .resolve("tdm_full_testSet_with_oracle_info.csv").toString()));
         } else {
-            pathTDMTestSet.appendChild(document.createTextNode(
-                    basePath + baseFolder + "documents-preprocessed-review/tdm_full_testSet_with_oracle_info.csv"));
+            pathTDMTestSet.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-review")
+                    .resolve("tdm_full_testSet_with_oracle_info.csv").toString()));
         }
         adsorb.appendChild(pathTDMTestSet);
 
         Element pathTrainingSet = document.createElement("pathTrainingSet");
         if (type.equals("Requirement-Specifications")) {
-            pathTrainingSet.appendChild(document.createTextNode(basePath + baseFolder + "trainingSet_truth_set-Req-Specifications.csv"));
+            pathTrainingSet.appendChild(document.createTextNode(baseFolder.resolve("trainingSet_truth_set-Req-Specifications.csv")
+                    .toString()));
         } else {
             //TODO if adding user reviews to DL
             throw new RuntimeException("Path of training-set not defined for UserReviews if using DL-Pipeline");
@@ -171,7 +175,7 @@ public class XMLInitializer {
 
         Element pathTestSet = document.createElement("pathTestSet");
         if (type.equals("Requirement-Specifications")) {
-            pathTestSet.appendChild(document.createTextNode(basePath + baseFolder + "testSet_truth_set-Req-Specifications.csv"));
+            pathTestSet.appendChild(document.createTextNode(baseFolder.resolve("testSet_truth_set-Req-Specifications.csv").toString()));
         } else {
             //TODO if adding user reviews to DL
             throw new RuntimeException("Path of test-set not defined for UserReviews if using DL-Pipeline");
@@ -180,21 +184,21 @@ public class XMLInitializer {
 
         Element pathTDMTrainingSet = document.createElement("pathTDMTrainingSet");
         if (type.equals("Requirement-Specifications")) {
-            pathTDMTrainingSet.appendChild(document.createTextNode(
-                    basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_trainingSet_with_oracle_info.csv"));
+            pathTDMTrainingSet.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-req_specification")
+                    .resolve("tdm_full_trainingSet_with_oracle_info.csv").toString()));
         } else {
-            pathTDMTrainingSet.appendChild(document.createTextNode(
-                    basePath + baseFolder + "documents-preprocessed-review/tdm_full_trainingSet_with_oracle_info.csv"));
+            pathTDMTrainingSet.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-review")
+                    .resolve("tdm_full_trainingSet_with_oracle_info.csv").toString()));
         }
         adsorb.appendChild(pathTDMTrainingSet);
 
         Element pathFullTDMDataset = document.createElement("pathFullTDMDataset");
         if (type.equals("Requirement-Specifications")) {
-            pathFullTDMDataset.appendChild(document.createTextNode(
-                    basePath + baseFolder + "documents-preprocessed-req_specification/tdm_full_with_oracle_info.csv"));
+            pathFullTDMDataset.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-req_specification")
+                    .resolve("tdm_full_with_oracle_info.csv").toString()));
         } else {
-            pathFullTDMDataset.appendChild(document.createTextNode(
-                    basePath + baseFolder + "documents-preprocessed-review/tdm_full_with_oracle_info.csv"));
+            pathFullTDMDataset.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-review")
+                    .resolve("tdm_full_with_oracle_info.csv").toString()));
         }
         adsorb.appendChild(pathFullTDMDataset);
 
@@ -205,7 +209,7 @@ public class XMLInitializer {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource domSource = new DOMSource(document);
-        StreamResult streamResult = new StreamResult(new File(basePath + "resources/XMLFiles/" + name + "XML.xml"));
+        StreamResult streamResult = new StreamResult(CommonPaths.XML_FILES.resolve(name + "XML.xml").toFile());
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
         transformer.transform(domSource, streamResult);

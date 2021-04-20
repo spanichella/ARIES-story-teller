@@ -49,8 +49,6 @@ application {
     mainClass.set('ui.SWMGui')
 }
 
-sourceSets.main.resources.srcDirs += "resources"
-
 checkstyle {
     ignoreFailures = false
     maxWarnings = 0
