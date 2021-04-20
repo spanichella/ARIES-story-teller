@@ -11,6 +11,8 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
+import helpers.CommonPaths;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -197,7 +199,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathFullTDMDataset);
 
         Element gloveFile = document.createElement("pathGloveFile");
-        gloveFile.appendChild(document.createTextNode(basePath + "resources/DL/glove.6B.100d.txt"));
+        gloveFile.appendChild(document.createTextNode(CommonPaths.GLOVE_FILE.toString()));
         adsorb.appendChild(gloveFile);
 
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
