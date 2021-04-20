@@ -21,6 +21,7 @@ public class RscriptExecutor {
      * @throws ExecutionException If there is a general problem with executing the process (e.g. the command is not found)
      * @throws RunFailedException If the run finishes with a non-zero exit status
      */
+    @SuppressWarnings("CallToRuntimeExec")
     public static void execute(String... commandParts) throws ProcessException {
         Process process;
         try {
