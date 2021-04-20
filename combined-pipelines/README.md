@@ -8,8 +8,8 @@ Read more about the Project in [PROJECT.md](./PROJECT.md)
 * Install Java 15 and R
 * In a command line change into the folder `combined-pipelines`
 * Verify your installation with:
-  * On Linux/Mac OS: `./gradlew verifyInstallation`
-  * On Windows: `.\gradlew.bat verifyInstallation`
+  * On Linux/Mac OS: `./gradlew check`
+  * On Windows: `.\gradlew.bat check`
 * Follow the instructions until it runs successful
 * Run the application with:
   * On Linux/Mac OS: `./gradlew run`
