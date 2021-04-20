@@ -14,6 +14,7 @@ Read more about the Project in [PROJECT.md](./PROJECT.md)
 * Run the application with:
   * On Linux/Mac OS: `./gradlew run`
   * On Windows: `.\gradlew.bat run`
+* As an example the file `datasets/combined/truth_set_combined-ReqSpec.txt` can be used with `Requirement-Specifications` and `DL` as the options.
 
 ## Development
 
