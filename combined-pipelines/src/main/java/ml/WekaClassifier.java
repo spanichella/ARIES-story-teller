@@ -156,32 +156,20 @@ public class WekaClassifier {
      * Get classifier's class name by a short name
      */
     public static Classifier getClassifierClassName(String classifierName) {
-        switch (classifierName) {
-            case "PART":
-                return new PART();
-            case "NaiveBayes":
-                return new NaiveBayes();
-            case "IBk":
-                return new IBk();
-            case "OneR":
-                return new OneR();
-            case "SMO":
-                return new SMO();
-            case "Logistic":
-                return new Logistic();
-            case "AdaBoostM1":
-                return new AdaBoostM1();
-            case "LogitBoost":
-                return new LogitBoost();
-            case "DecisionStump":
-                return new DecisionStump();
-            case "LinearRegression":
-                return new LinearRegression();
-            case "RegressionByDiscretization":
-                return new RegressionByDiscretization();
-            default:
-                return new J48();
-        }
+        return switch (classifierName) {
+            case "PART" -> new PART();
+            case "NaiveBayes" -> new NaiveBayes();
+            case "IBk" -> new IBk();
+            case "OneR" -> new OneR();
+            case "SMO" -> new SMO();
+            case "Logistic" -> new Logistic();
+            case "AdaBoostM1" -> new AdaBoostM1();
+            case "LogitBoost" -> new LogitBoost();
+            case "DecisionStump" -> new DecisionStump();
+            case "LinearRegression" -> new LinearRegression();
+            case "RegressionByDiscretization" -> new RegressionByDiscretization();
+            default -> new J48();
+        };
     }
 
     public String getPathTrainingSet() {

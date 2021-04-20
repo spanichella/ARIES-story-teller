@@ -398,7 +398,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
 
     public void populatePanels(String input) {
         switch (input) {
-            case "DL":
+            case "DL" -> {
                 s4ALText.setVisible(false);
                 s4ALStep.setVisible(false);
                 c3.setVisible(false);
@@ -412,8 +412,8 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 s5LText.setVisible(false);
                 s5LStep.setVisible(false);
                 c4.setVisible(false);
-                break;
-            case "ML":
+            }
+            case "ML" -> {
                 s4ALText.setVisible(true);
                 s4ALStep.setVisible(true);
                 c3.setVisible(true);
@@ -426,8 +426,8 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 s4BLLeft.setVisible(false);
                 s4BLRight.setVisible(false);
                 thresholdSlider.setVisible(false);
-                break;
-            case "Threshold":
+            }
+            case "Threshold" -> {
                 s4BLStep.setText("<html><div style='text-align: center;'>[Step 6]</div></html>");
                 s4BLText.setVisible(true);
                 s4BLStep.setVisible(true);
@@ -435,17 +435,16 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 s4BLLeft.setVisible(true);
                 s4BLRight.setVisible(true);
                 thresholdSlider.setVisible(true);
-                break;
-            case "NoThreshold":
+            }
+            case "NoThreshold" -> {
                 s4BLText.setVisible(false);
                 s4BLStep.setVisible(false);
                 s4BLValue.setVisible(false);
                 s4BLLeft.setVisible(false);
                 s4BLRight.setVisible(false);
                 thresholdSlider.setVisible(false);
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown option: " + input);
+            }
+            default -> throw new IllegalArgumentException("Unknown option: " + input);
         }
     }
 

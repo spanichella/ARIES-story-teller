@@ -250,16 +250,12 @@ public class DLPipeline {
 
     private static double[] getEvalLabel(String[] lineAr) {
         String labelStr = lineAr[2];
-        switch (labelStr) {
-            case "NULL":
-                return new double[] { 1, 0, 0 };
-            case "A":
-                return new double[] { 0, 1, 0 };
-            case "F":
-                return new double[] { 0, 0, 1 };
-            default:
-                throw new IllegalArgumentException("Unknown label: " + labelStr);
-        }
+        return switch (labelStr) {
+            case "NULL" -> new double[]{1, 0, 0};
+            case "A" -> new double[]{0, 1, 0};
+            case "F" -> new double[]{0, 0, 1};
+            default -> throw new IllegalArgumentException("Unknown label: " + labelStr);
+        };
     }
 
     private static int getLabelValue(String[] lineAr) {
@@ -268,16 +264,12 @@ public class DLPipeline {
     }
 
     private static int getLabel(String labelStr) {
-        switch (labelStr) {
-            case "NULL":
-                return 0;
-            case "A":
-                return 1;
-            case "F":
-                return 2;
-            default:
-                throw new IllegalArgumentException("Unknown label: " + labelStr);
-        }
+        return switch (labelStr) {
+            case "NULL" -> 0;
+            case "A" -> 1;
+            case "F" -> 2;
+            default -> throw new IllegalArgumentException("Unknown label: " + labelStr);
+        };
     }
 
     /**
