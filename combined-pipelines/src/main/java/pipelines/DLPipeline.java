@@ -137,7 +137,7 @@ public class DLPipeline {
                     continue;
                 }
                 Optional<INDArray> inputMatrix = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
-                inputList.add(inputMatrix.get().ravel());
+                inputList.add(inputMatrix.orElseThrow().ravel());
                 labelsList[labelsId++] = getEvalLabel(lineAr);
             }
         }
@@ -234,7 +234,7 @@ public class DLPipeline {
                     continue;
                 }
                 Optional<INDArray> inputMatrix = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
-                inputList.add(inputMatrix.get().ravel());
+                inputList.add(inputMatrix.orElseThrow().ravel());
                 labelsList[labelsId++] = getEvalLabel(lineAr);
             }
 
