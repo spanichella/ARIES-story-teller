@@ -113,11 +113,18 @@ public class DLPipeline {
         printWriter.close();
     }
 
-    private static void train(String labelledTurns, WordVectors wordVectors, int nrOfExamples, int nrOfBatches,
-                              int nrOfExamplesPerBatch, int nrOfEpochs, int inputColumns, int wordsPerTurn,
-                              MultiLayerNetwork model, String validationSet, int inputSize) throws IOException {
+    private static class EvaluationData {
+        public final INDArray input;
+        public final INDArray labels;
 
-        // prepare test data
+        public EvaluationData(INDArray input, INDArray labels) {
+            this.input = input;
+            this.labels = labels;
+        }
+    }
+
+    private static EvaluationData getEvaluationData(String validationSet, int inputSize, WordVectors wordVectors, int inputColumns,
+                                                    int wordsPerTurn)throws IOException {
         List<INDArray> inputList = new ArrayList<>(inputSize);
         double[][] labelsList = new double[inputSize][];
         try (BufferedReader reader = new BufferedReader(new FileReader(validationSet, StandardCharsets.UTF_8))) {
@@ -126,26 +133,30 @@ public class DLPipeline {
             int labelsId = 0;
             reader.readLine();
             while ((line = reader.readLine()) != null) {
-                String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
-
-                for (int i = 0; i < lineAr.length; i++) {
-                    lineAr[i] = lineAr[i].replace("\"", "");
-                }
-
                 if (line.contains("req_specification")) {
                     System.out.println("skipped");
                     continue;
                 }
+
+                String[] lineAr = splitLine(line);
                 Optional<INDArray> inputMatrix = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
                 inputList.add(inputMatrix.orElseThrow().ravel());
                 labelsList[labelsId++] = getEvalLabel(lineAr);
             }
         }
-        INDArray evalInput = Nd4j.create(inputList, shape(inputList.size(), inputColumns));
-        INDArray evalLabels = Nd4j.create(labelsList);
+        return new EvaluationData(Nd4j.create(inputList, shape(inputList.size(), inputColumns)), Nd4j.create(labelsList));
+    }
 
+    private static Evaluation getEvaluation(EvaluationData data, MultiLayerNetwork model) {
+        Evaluation eval = new Evaluation(3);
+        eval.eval(data.labels, data.input, model);
+        return eval;
+    }
 
-
+    private static void train(String labelledTurns, WordVectors wordVectors, int nrOfExamples, int nrOfBatches,
+                              int nrOfExamplesPerBatch, int nrOfEpochs, int inputColumns, int wordsPerTurn,
+                              MultiLayerNetwork model, String validationSet, int inputSize) throws IOException {
+        EvaluationData evaluationData = getEvaluationData(validationSet, inputSize, wordVectors, inputColumns, wordsPerTurn);
         LOGGER.info("Train with " + nrOfExamplesPerBatch + " examples in " + nrOfBatches + " batches for " + nrOfEpochs
                 + " epochs");
         for (int epoch = 0; epoch < nrOfEpochs; ++epoch) {
@@ -174,18 +185,12 @@ public class DLPipeline {
                             break;
                         }
 
-                        String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
-
-
-                        for (int i = 0; i < lineAr.length; i++) {
-                            lineAr[i] = lineAr[i].replace("\"", "");
-                        }
-
                         if (line.contains("req_specification")) {
                             System.out.println("skipped");
                             continue;
                         }
 
+                        String[] lineAr = splitLine(line);
                         // check if matrix has been built
                         Optional<INDArray> wordVectorMatrixOpt = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
                         if (wordVectorMatrixOpt.isEmpty()) {
@@ -205,45 +210,23 @@ public class DLPipeline {
                 }
 
             }
-            Evaluation eval = new Evaluation(3);
-            eval.eval(evalLabels, evalInput, model);
+            Evaluation eval = getEvaluation(evaluationData, model);
             LOGGER.info(eval.stats());
         }
     }
 
+    private static String[] splitLine(String line) {
+        String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
+        for (int i = 0; i < lineAr.length; i++) {
+            lineAr[i] = lineAr[i].replace("\"", "");
+        }
+        return lineAr;
+    }
+
     private static String evaluate(String validationSet, int inputSize, MultiLayerNetwork model, WordVectors wordVectors,
                                  int inputColumns, int wordsPerTurn) throws IOException {
-
-        List<INDArray> inputList = new ArrayList<>(inputSize);
-        double[][] labelsList = new double[inputSize][];
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(validationSet, StandardCharsets.UTF_8))) {
-
-            String line;
-            int labelsId = 0;
-            reader.readLine();
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-                String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
-                for (int i = 0; i < lineAr.length; i++) {
-                    lineAr[i] = lineAr[i].replace("\"", "");
-                }
-
-                if (line.contains("req_specification")) {
-                    System.out.println("skipped");
-                    continue;
-                }
-                Optional<INDArray> inputMatrix = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
-                inputList.add(inputMatrix.orElseThrow().ravel());
-                labelsList[labelsId++] = getEvalLabel(lineAr);
-            }
-
-        }
-
-        INDArray evalInput = Nd4j.create(inputList, shape(inputSize, inputColumns));
-        INDArray evalLabels = Nd4j.create(labelsList);
-        Evaluation eval = new Evaluation(3);
-        eval.eval(evalLabels, evalInput, model);
+        EvaluationData data = getEvaluationData(validationSet, inputSize, wordVectors, inputColumns, wordsPerTurn);
+        Evaluation eval = getEvaluation(data, model);
         LOGGER.info(eval.stats());
         return eval.stats();
     }
