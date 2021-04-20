@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
+import java.util.function.Consumer;
 import java.util.logging.Logger;
 import weka.classifiers.Classifier;
 import weka.classifiers.bayes.NaiveBayes;
@@ -75,21 +76,13 @@ public class WekaClassifier {
 
         System.out.println("training performance results of: " + classifier.getClass().getSimpleName()
                 + "\n---------------------------------");
-        System.out.println(eval.toSummaryString("\nResults", true));
-        System.out.println("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
-        System.out.println(eval.toMatrixString());
-        System.out.println(eval.toClassDetailsString());
-        System.out.println("AUC = " + eval.areaUnderROC(1));
+        printModelMeasures(eval, System.out::println);
         String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
         FileWriter fileWriter = new FileWriter(pathResultsPrediction + strDate + ".txt", StandardCharsets.UTF_8);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println("training performance results of: " + classifier.getClass().getSimpleName()
                 + "\n---------------------------------");
-        printWriter.println(eval.toSummaryString("\nResults", true));
-        printWriter.println("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
-        printWriter.println(eval.toMatrixString());
-        printWriter.println(eval.toClassDetailsString());
-        printWriter.println("AUC = " + eval.areaUnderROC(1));
+        printModelMeasures(eval, printWriter::println);
         printWriter.close();
     }
 
@@ -133,23 +126,23 @@ public class WekaClassifier {
 
         System.out.println("performance results of: " + classifier.getClass().getSimpleName()
                 + "\n---------------------------------");
-        System.out.println(eval.toSummaryString("\nResults", true));
-        System.out.println("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
-        System.out.println(eval.toMatrixString());
-        System.out.println(eval.toClassDetailsString());
-        System.out.println("AUC = " + eval.areaUnderROC(1));
+        printModelMeasures(eval, System.out::println);
 
         String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
         FileWriter fileWriter = new FileWriter(pathResultsPrediction + strDate + ".txt", StandardCharsets.UTF_8);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println("performance results of: " + classifier.getClass().getSimpleName()
                 + "\n---------------------------------");
-        printWriter.println(eval.toSummaryString("\nResults", true));
-        printWriter.println("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
-        printWriter.println(eval.toMatrixString());
-        printWriter.println(eval.toClassDetailsString());
-        printWriter.println("AUC = " + eval.areaUnderROC(1));
+        printModelMeasures(eval, printWriter::println);
         printWriter.close();
+    }
+
+    private static void printModelMeasures(Evaluation eval, Consumer<String> println) throws Exception {
+        println.accept(eval.toSummaryString("\nResults", true));
+        println.accept("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
+        println.accept(eval.toMatrixString());
+        println.accept(eval.toClassDetailsString());
+        println.accept("AUC = " + eval.areaUnderROC(1));
     }
 
     /**
