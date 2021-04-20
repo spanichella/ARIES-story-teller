@@ -57,7 +57,8 @@ public class ConfigFileReader {
 
         for (int temp = 0; temp < nodeList.getLength(); temp++) {
             Node node = nodeList.item(temp);
-            System.out.println("\nCurrent Element :" + node.getNodeName());
+            System.out.println();
+            System.out.println("Current Element :" + node.getNodeName());
 
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
