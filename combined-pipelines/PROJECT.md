@@ -20,7 +20,7 @@ The goal of this part is to give a guide for setup and a brief description of ho
 - The [R language](https://cran.r-project.org/) (version 4.0.3) must be installed and operational 
 - Cores: 4
 - Memory: >6GB (add '-Xmx6G' to the VM options of the run configuration)
-- Download [glove txt file](https://www.kaggle.com/watts2/glove6b50dtxt) and put it into the DL folder located at Combined Project -> Ressources
+- Download [glove txt file](https://www.kaggle.com/watts2/glove6b50dtxt) and put it into the DL folder located at Combined Project -> Resources
 - For usage on Windows, add the RScript bin folder path (e.g., C:\Program Files\R\R-4.0.3\bin) to the PATH variable (in environment variables)
 
 Hint: It can potentially help to install [RStudio](https://rstudio.com/products/rstudio/download/), where you can manually open and execute the [MainScript.r](resources/R-scripts/MainScript.r) step by step as to install and load the necessary R packages.

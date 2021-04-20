@@ -46,7 +46,7 @@ if( (!is.na(trainingSetDirectory2)) && (!is.na(testSetDirectory2)) )
   
 
   #print("2) argument \"trainingSetDirectory\" given as argument to the R script ")
-  #print("3) \"testSetDirectory\" given as argumet to the R script ")
+  #print("3) \"testSetDirectory\" given as argument to the R script ")
   }
 
   if(!is.na(nameOfAttributeText2) && nameOfAttributeText2=="req_specification")
@@ -61,7 +61,7 @@ dir.create(testSetDirectory, showWarnings = FALSE, recursive = TRUE)
 if(!is.na(simplifiedOracle2_path))
 {
   simplifiedOracle_path <- simplifiedOracle2_path
-  #print("4) argument \"simplifiedOracle2_path\" given as argumet to the R script ")
+  #print("4) argument \"simplifiedOracle2_path\" given as argument to the R script ")
 }
 
 #dir.create(simplifiedOracle_path, showWarnings = FALSE, recursive = TRUE)
@@ -111,8 +111,8 @@ print("Creating sparse term-by-document-matrix from training- and test-set...")
 Training_files <- list.files(trainingSetDirectory, recursive=TRUE)
 TestSet_files <- list.files(testSetDirectory, recursive=TRUE)
 
-#we obtain the full term by document matrics
-#print("---> we obtain the full term by document matrics")
+#we obtain the full term by document matrix
+#print("---> we obtain the full term by document matrix")
 tdm_full <- as.matrix(tdm)
 tdm_full<- t(tdm_full)
 print("Non-sparse term-by-document-matrix from training- and test-sets files created")

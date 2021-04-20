@@ -32,7 +32,7 @@ public class MainPipeline {
         }
         logger.log(Level.INFO, "Path of ConfigFile: " + pathConfigFile);
 
-        //Read Configfile
+        //Read Config file
         ConfigFileReader configFileReader = new ConfigFileReader(pathConfigFile);
         //Generate files for ML/DL
         logger.info("Starting file generation ");
