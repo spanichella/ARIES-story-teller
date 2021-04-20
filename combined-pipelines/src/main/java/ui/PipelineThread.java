@@ -6,13 +6,13 @@ import pipelines.MainPipeline;
 public class PipelineThread extends Thread {
     private static final Logger logger = Logger.getLogger(PipelineThread.class.getName());
     private final String mainPath;
-    private final String args2;
-    private final String args1;
+    private final String pipeline;
+    private final String dataType;
 
-    PipelineThread(String mainPath, String args2, String args1) {
+    PipelineThread(String mainPath, String pipeline, String dataType) {
         this.mainPath = mainPath;
-        this.args2 = args2;
-        this.args1 = args1;
+        this.pipeline = pipeline;
+        this.dataType = dataType;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class PipelineThread extends Thread {
         logger.info("Thread Running");
 
         try {
-            MainPipeline.runPipeline(mainPath, args2, args1);
+            MainPipeline.runPipeline(mainPath, pipeline, dataType);
         } catch (Exception e) {
             UIHelpers.showErrorMessage(logger, "Pipeline thread failed", e);
         }

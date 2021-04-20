@@ -55,7 +55,12 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private final JLabel s4BLRight;
     private final JLabel s5LStep;
     private final JLabel s5LText;
-    private final String[] args;
+    private String truthFilePath = "null";
+    private String dataType = "null";
+    private String pipeline = "null";
+    private String mlModel = "null";
+    private String split = "0.5";
+    private String strategy = "null";
     private final JComboBox<String> c1;
     private final JComboBox<String> c2;
     private final JComboBox<String> c3;
@@ -74,8 +79,6 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
 
 
     SWMFrame() {
-        args = new String[]{"null", "null", "null", "null", "0.5", "null"}; //truthFilePath,DataType,Pipeline,MLModel,split,Strategy
-
         ImageIcon logoImage = new ImageIcon("images/swmlogo.jpg");
         JLabel logoLabel = new JLabel();
         logoLabel.setIcon(logoImage);
@@ -452,17 +455,10 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     public void checkIfRunnable() {
         boolean runnable = true;
 
-        if (c2.getSelectedItem() == "DL") {
-            if (args[0].equals("null") || args[1].equals("null") || args[2].equals("null")) {
-                runnable = false;
-            }
-        } else {
-            for (String arg : args) {
-                if (arg.equals("null")) {
-                    runnable = false;
-                    break;
-                }
-            }
+        if (truthFilePath.equals("null") || dataType.equals("null") || pipeline.equals("null")) {
+            runnable = false;
+        } else if (!"DL".equals(c2.getSelectedItem()) && (mlModel.equals("null") || split.equals("null") || strategy.equals("null"))) {
+            runnable = false;
         }
         executeB.setEnabled(runnable);
     }
@@ -475,31 +471,31 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
 
 
     private void updateStatus() {
-        if (args[0].equals("null")) {
+        if (truthFilePath.equals("null")) {
             s1LStep.setText("<html><div style='text-align: center;'>[Step 1]</div></html>");
         } else {
             s1LStep.setText("<html><div style='text-align: center;'>[Step 1] <font color='#56f310'>DONE</font></div></html>");
         }
 
-        if (args[1].equals("null")) {
+        if (dataType.equals("null")) {
             s2LStep.setText("<html><div style='text-align: center;'>[Step 2]</div></html>");
         } else {
             s2LStep.setText("<html><div style='text-align: center;'>[Step 2] <font color='#56f310'>DONE</font></div></html>");
         }
 
-        if (args[2].equals("null") || args[2].equals("Select")) {
+        if (pipeline.equals("null") || pipeline.equals("Select")) {
             s3LStep.setText("<html><div style='text-align: center;'>[Step 3]</div></html>");
         } else {
             s3LStep.setText("<html><div style='text-align: center;'>[Step 3] <font color='#56f310'>DONE</font></div></html>");
         }
 
-        if (args[3].equals("null") || args[3].equals("Select")) {
+        if (mlModel.equals("null") || mlModel.equals("Select")) {
             s4ALStep.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
         } else {
             s4ALStep.setText("<html><div style='text-align: center;'>[Step 4] <font color='#56f310'>DONE</font></div></html>");
         }
 
-        if (args[5].equals("null") || args[3].equals("Select")) {
+        if (strategy.equals("null") || mlModel.equals("Select")) {
             s5LStep.setText("<html><div style='text-align: center;'>[Step 5]</div></html>");
         } else {
             s5LStep.setText("<html><div style='text-align: center;'>[Step 5] <font color='#56f310'>DONE</font></div></html>");
@@ -521,9 +517,9 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 String extension = file.toString().substring(file.toString().lastIndexOf("."));
                 if (!extension.equals(".txt") && !extension.equals(".csv")) {
                     displayErrorMessage("Wrong filetype selected. Please select a .txt or .csv file");
-                    args[0] = "null";
+                    truthFilePath = "null";
                 } else {
-                    args[0] = file.toString();
+                    truthFilePath = file.toString();
                 }
             }
         } else if (e.getSource() == executeB) {
@@ -543,7 +539,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 UIHelpers.showErrorMessage(logger, "Generating the XML Failed", exception, this);
                 return;
             }
-            PipelineThread mainThread = new PipelineThread(mainPath, args[2], args[1]);
+            PipelineThread mainThread = new PipelineThread(mainPath, pipeline, dataType);
             mainThread.start();
             this.setEnabled(false);
         }
@@ -573,7 +569,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 if (c1.getItemAt(0).equals("Select")) {
                     c1.removeItemAt(0);
                 }
-                args[1] = e.getItem().toString();
+                dataType = e.getItem().toString();
             }
         } else if (e.getSource() == c2) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -585,14 +581,14 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 } else if (e.getItem().equals("ML")) {
                     populatePanels("ML");
                 }
-                args[2] = e.getItem().toString();
+                pipeline = e.getItem().toString();
             }
         } else if (e.getSource() == c3) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 if (c3.getItemAt(0).equals("Select")) {
                     c3.removeItemAt(0);
                 }
-                args[3] = e.getItem().toString();
+                mlModel = e.getItem().toString();
             }
         } else if (e.getSource() == c4) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -604,7 +600,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 } else if (e.getItem().equals("10-Fold")) {
                     populatePanels("NoThreshold");
                 }
-                args[5] = e.getItem().toString();
+                strategy = e.getItem().toString();
             }
         }
         updateStatus();
@@ -620,7 +616,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         }
         String decimalFixedDouble = df.format(value);
         s4BLValue.setText("value: " + decimalFixedDouble);
-        args[4] = decimalFixedDouble;
+        split = decimalFixedDouble;
     }
 
     void generateXML() throws TransformerException, ParserConfigurationException {
@@ -631,6 +627,6 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
             mainPath = mainPath.substring(1);
         }
         System.out.print(mainPath);
-        XMLInitializer.createXML(mainPath, args[0], args[1], args[3], args[4], args[5]);
+        XMLInitializer.createXML(mainPath, truthFilePath, dataType, mlModel, split, strategy);
     }
 }
