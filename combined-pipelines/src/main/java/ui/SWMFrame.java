@@ -33,6 +33,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     @Serial
     private static final long serialVersionUID = -592869500939986619L;
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
+    private static final File DATASETS_FOLDER = new File("..", "datasets");
 
     private static final Color backGroundColor = new Color(88, 102, 148);
     private static final Color textColor = new Color(230, 230, 230);
@@ -510,6 +511,9 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == truthSetSelector) {
             JFileChooser fileChooser = new JFileChooser();
+            if (DATASETS_FOLDER.exists()) {
+                fileChooser.setCurrentDirectory(DATASETS_FOLDER);
+            }
             int response = fileChooser.showOpenDialog(null);
 
             if (response == JFileChooser.APPROVE_OPTION) {
@@ -523,7 +527,6 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 }
             }
         } else if (e.getSource() == executeB) {
-            //loader = new SWM_Loader_Frame();
             loader = new SWMLoaderFrame();
             loader.start();
             //set mainPath according to Operating System
