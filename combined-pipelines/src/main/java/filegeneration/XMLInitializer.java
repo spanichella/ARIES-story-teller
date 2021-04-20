@@ -211,6 +211,7 @@ public class XMLInitializer {
         DOMSource domSource = new DOMSource(document);
         StreamResult streamResult = new StreamResult(CommonPaths.XML_FILES.resolve(name + "XML.xml").toFile());
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        //noinspection HardcodedFileSeparator
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
         transformer.transform(domSource, streamResult);
 

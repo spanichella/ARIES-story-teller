@@ -20,6 +20,7 @@ public class VerifyInstallation {
 
         Path gloveFile = CommonPaths.GLOVE_FILE;
         if (!gloveFile.toFile().exists()) {
+            //noinspection HardcodedFileSeparator
             System.err.println("ERROR: The glove file " + gloveFile + " does not exist. Please download it from https://www.kaggle.com/danielwillgeorge/glove6b100dtxt");
             failed = true;
         }
