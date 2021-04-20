@@ -74,16 +74,7 @@ public class WekaClassifier {
         weka.core.SerializationHelper.write(getPathModel(), classifier);
         eval.evaluateModel(classifier, test);
 
-        System.out.println("training performance results of: " + classifier.getClass().getSimpleName()
-                + "\n---------------------------------");
-        printModelMeasures(eval, System.out::println);
-        String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-        FileWriter fileWriter = new FileWriter(pathResultsPrediction + strDate + ".txt", StandardCharsets.UTF_8);
-        PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.println("training performance results of: " + classifier.getClass().getSimpleName()
-                + "\n---------------------------------");
-        printModelMeasures(eval, printWriter::println);
-        printWriter.close();
+        printAndWriteModelMeasures("training performance", classifier, eval, pathResultsPrediction);
     }
 
     public void runSpecifiedMachineLearningModelToLabelInstances(String machineLearningModel) throws Exception {
@@ -123,22 +114,25 @@ public class WekaClassifier {
 
         Evaluation eval = new Evaluation(wholeDataset);
         eval.crossValidateModel(classifier, wholeDataset, 10, new Random(1));
-
-        System.out.println("performance results of: " + classifier.getClass().getSimpleName()
-                + "\n---------------------------------");
-        printModelMeasures(eval, System.out::println);
-
-        String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-        FileWriter fileWriter = new FileWriter(pathResultsPrediction + strDate + ".txt", StandardCharsets.UTF_8);
-        PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.println("performance results of: " + classifier.getClass().getSimpleName()
-                + "\n---------------------------------");
-        printModelMeasures(eval, printWriter::println);
-        printWriter.close();
+        printAndWriteModelMeasures("performance", classifier, eval, pathResultsPrediction);
     }
 
-    private static void printModelMeasures(Evaluation eval, Consumer<String> println) throws Exception {
-        println.accept(eval.toSummaryString("\nResults", true));
+    private static void printAndWriteModelMeasures(String title, Classifier classifier, Evaluation eval, String pathResultsPrediction)
+            throws Exception {
+        printModelMeasures(title, classifier, eval, System.out::println);
+        String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
+        try (FileWriter fileWriter = new FileWriter(pathResultsPrediction + strDate + ".txt", StandardCharsets.UTF_8);
+             PrintWriter printWriter = new PrintWriter(fileWriter)) {
+            printModelMeasures(title, classifier, eval, printWriter::println);
+        }
+    }
+
+    private static void printModelMeasures(String title, Classifier classifier, Evaluation eval, Consumer<String> println)
+            throws Exception {
+        println.accept(title + " results of: " + classifier.getClass().getSimpleName());
+        println.accept("---------------------------------");
+        println.accept("");
+        println.accept(eval.toSummaryString("Results", true));
         println.accept("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
         println.accept(eval.toMatrixString());
         println.accept(eval.toClassDetailsString());
