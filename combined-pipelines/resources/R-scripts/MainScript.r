@@ -12,6 +12,13 @@ oracleFolder2  <- args[8]
 
 # @author sebastiano panichella
 
+if(!is.na(base_folder2))
+{
+  base_folder<- base_folder2
+}
+setwd(base_folder)
+print(paste("Base folder used:",base_folder))
+
 #install packages if not installed yet
 source("./install.r")
 
@@ -22,14 +29,6 @@ library(stringr)
 library(stopwords)
 library(slam)
 library(SnowballC)
-
-if(!is.na(base_folder2))
-{
-  base_folder<- base_folder2
-  #print("1) argument \"docs_location\" used in R by setwd() ")
-}
-setwd(base_folder)
-print(paste("Base folder used:",base_folder))
 
 source("./utilities.R")
 #path software artifacts
