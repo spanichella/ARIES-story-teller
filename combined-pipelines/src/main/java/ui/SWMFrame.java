@@ -11,7 +11,6 @@ import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.Serial;
 import java.text.DecimalFormat;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -536,12 +535,14 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
 
             try {
                 generateXML();
-                PipelineThread mainThread = new PipelineThread(mainPath, args[2], args[1]);
-                mainThread.start();
-                this.setEnabled(false);
-            } catch (TransformerException | ParserConfigurationException exception) {
-                logger.log(Level.SEVERE, "Generating the XML Failed", exception);
+            } catch (Exception exception) {
+                loader.closeWindow();
+                UIHelpers.showErrorMessage(logger, "Generating the XML Failed", exception, this);
+                return;
             }
+            PipelineThread mainThread = new PipelineThread(mainPath, args[2], args[1]);
+            mainThread.start();
+            this.setEnabled(false);
         }
         updateStatus();
         checkIfRunnable();

@@ -1,6 +1,5 @@
 package ui;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import pipelines.MainPipeline;
 
@@ -18,12 +17,12 @@ public class PipelineThread extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Thread Running");
+        logger.info("Thread Running");
 
         try {
             MainPipeline.runPipeline(mainPath, args2, args1);
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "Pipeline thread failed", e);
+            UIHelpers.showErrorMessage(logger, "Pipeline thread failed", e);
         }
     }
 }
