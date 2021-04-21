@@ -18,7 +18,7 @@ import ui.SWMGui;
 public class MainPipeline {
     private static final Logger logger = Logger.getLogger(MainPipeline.class.getName());
 
-    public static void runPipeline(String selectedPipeline, DataType dataType) throws Exception {
+    public static void runPipeline(String pipelineType, DataType dataType) throws Exception {
         Path xmlFiles = CommonPaths.XML_FILES;
 
         //chooses path of config file according to data-type
@@ -39,9 +39,9 @@ public class MainPipeline {
         FileGeneration.oracleAnalysis(configFileReader);
 
         //run selected pipeline
-        if (selectedPipeline.equals("ML")) {
+        if (pipelineType.equals("ML")) {
             MLPipeline.performMlAnalysis(configFileReader);
-        } else if (selectedPipeline.equals("DL")) {
+        } else if (pipelineType.equals("DL")) {
             DLPipeline.runDLPipeline(configFileReader);
         } else {
             logger.severe("Pipeline selection invalid");
