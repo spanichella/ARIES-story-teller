@@ -18,17 +18,17 @@ import ui.SWMGui;
 public class MainPipeline {
     private static final Logger logger = Logger.getLogger(MainPipeline.class.getName());
 
-    public static void runPipeline(String selectedPipeline, String type) throws Exception {
+    public static void runPipeline(String selectedPipeline, String dataType) throws Exception {
         Path xmlFiles = CommonPaths.XML_FILES;
 
         //chooses path of config file according to data-type
         Path pathConfigFile;
-        if (type.equals("Requirement-Specifications")) {
+        if (dataType.equals("Requirement-Specifications")) {
             pathConfigFile = xmlFiles.resolve("RequirementSpecificationsXML.xml");
-        } else if (type.equals("User-Reviews")) {
+        } else if (dataType.equals("User-Reviews")) {
             pathConfigFile = xmlFiles.resolve("UserReviewsXML.xml");
         } else {
-            throw new IllegalArgumentException("type \"" + type + "\" not recognized: use Requirement-Specifications or User-Reviews");
+            throw new IllegalArgumentException("type \"" + dataType + "\" not recognized: use Requirement-Specifications or User-Reviews");
         }
         logger.log(Level.INFO, "Path of ConfigFile: " + pathConfigFile);
 

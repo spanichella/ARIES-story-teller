@@ -59,7 +59,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private String mlModel = "null";
     private String split = "0.5";
     private String strategy = "null";
-    private final JComboBox<String> c1;
+    private final JComboBox<String> dataTypeComboBox;
     private final JComboBox<String> c2;
     private final JComboBox<String> c3;
     private final JComboBox<String> c4;
@@ -85,7 +85,6 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         truthSetSelector = new JButton("Truth Set");
         truthSetSelector.addActionListener(this);
 
-
         executeB = new JButton("Run");
         executeB.addActionListener(this);
         executeB.setEnabled(false);
@@ -96,9 +95,9 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         thresholdSlider.addChangeListener(this);
         thresholdSlider.setVisible(false);
 
-        c1 = new JComboBox<>(dataTypeArray);
-        c1.addItemListener(this);
-        ((JLabel) c1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        dataTypeComboBox = new JComboBox<>(dataTypeArray);
+        dataTypeComboBox.addItemListener(this);
+        ((JLabel) dataTypeComboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 
         c2 = new JComboBox<>(pipeLineArray);
         c2.addItemListener(this);
@@ -353,7 +352,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         step2Panel.add(s2BlackBorder1, BorderLayout.PAGE_END);
         s2BorderCenterPanel.add(s2LStep);
         s2BorderCenterPanel.add(s2LText);
-        s2BorderCenterPanel.add(c1);
+        s2BorderCenterPanel.add(dataTypeComboBox);
 
         //step 3 panels
         step3Panel.add(s3BorderCenterPanel, BorderLayout.CENTER);
@@ -535,7 +534,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-        if (e.getSource() == c1) {
+        if (e.getSource() == dataTypeComboBox) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 String check = "null";
                 if (e.getItem() == "Requirement-Specifications") {
@@ -551,8 +550,8 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                     c2.setSelectedItem("ML");
                     c2.removeItem("DL");
                 }
-                if (c1.getItemAt(0).equals("Select")) {
-                    c1.removeItemAt(0);
+                if (dataTypeComboBox.getItemAt(0).equals("Select")) {
+                    dataTypeComboBox.removeItemAt(0);
                 }
                 dataType = e.getItem().toString();
             }
@@ -591,7 +590,6 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         updateStatus();
         checkIfRunnable();
     }
-
 
     @Override
     public void stateChanged(ChangeEvent e) {
