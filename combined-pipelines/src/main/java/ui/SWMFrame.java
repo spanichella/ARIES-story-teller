@@ -593,10 +593,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
 
     @Override
     public void stateChanged(ChangeEvent e) {
-        double value = ((JSlider) e.getSource()).getValue() * 0.01;
-        if (value < 0.1) {
-            value = 0.1;
-        }
+        double value = Double.max(((JSlider) e.getSource()).getValue() * 0.01, 0.1);
         String decimalFixedDouble = df.format(value);
         s4BLValue.setText("value: " + decimalFixedDouble);
         split = decimalFixedDouble;
