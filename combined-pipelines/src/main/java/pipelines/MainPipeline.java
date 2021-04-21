@@ -18,14 +18,14 @@ import ui.SWMGui;
 public class MainPipeline {
     private static final Logger logger = Logger.getLogger(MainPipeline.class.getName());
 
-    public static void runPipeline(String selectedPipeline, String dataType) throws Exception {
+    public static void runPipeline(String selectedPipeline, DataType dataType) throws Exception {
         Path xmlFiles = CommonPaths.XML_FILES;
 
         //chooses path of config file according to data-type
         Path pathConfigFile;
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             pathConfigFile = xmlFiles.resolve("RequirementSpecificationsXML.xml");
-        } else if (dataType.equals("User-Reviews")) {
+        } else if (dataType == DataType.USER_REVIEWS) {
             pathConfigFile = xmlFiles.resolve("UserReviewsXML.xml");
         } else {
             throw new IllegalArgumentException("type \"" + dataType + "\" not recognized: use Requirement-Specifications or User-Reviews");

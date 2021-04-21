@@ -15,6 +15,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import pipelines.DataType;
 
 /**
  * Fills XML files on startup with correct paths and other values
@@ -23,16 +24,16 @@ public class XMLInitializer {
 
     private static final Logger logger = Logger.getLogger(XMLInitializer.class.getName());
 
-    public static void createXML(String pathTruthFile, String dataType, String model, String percentage, String strategy)
+    public static void createXML(String pathTruthFile, DataType dataType, String model, String percentage, String strategy)
             throws ParserConfigurationException, TransformerException {
         Path baseFolder;
         String name;
 
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             baseFolder = CommonPaths.RESOURCES.resolve("ReqSpec");
             name = "RequirementSpecifications";
             logger.info("Creating XML-file for Requirement-Specifications...");
-        } else if (dataType.equals("User-Reviews")) {
+        } else if (dataType == DataType.USER_REVIEWS) {
             baseFolder = CommonPaths.RESOURCES.resolve("UserReviews");
             name = "UserReviews";
             logger.info("Creating XML-file for User Reviews...");
@@ -59,7 +60,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathRScripts);
 
         Element pathRScriptOracle = document.createElement("pathRScriptOracle");
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             pathRScriptOracle.appendChild(document.createTextNode(CommonPaths.R_SCRIPTS
                     .resolve("Script-to-create-test-dataset-Req-Specifications.r").toString()));
         } else {
@@ -77,7 +78,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathTruthSet);
 
         Element dataTypeElement = document.createElement("dataType");
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             dataTypeElement.appendChild(document.createTextNode("Requirement Specifications"));
         } else {
             dataTypeElement.appendChild(document.createTextNode("User Reviews"));
@@ -90,7 +91,7 @@ public class XMLInitializer {
         adsorb.appendChild(nameOfAttributeID);
 
         Element nameOfAttributeText = document.createElement("nameOfAttributeText");
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             nameOfAttributeText.appendChild(document.createTextNode("req_specification"));
         } else {
             nameOfAttributeText.appendChild(document.createTextNode("review"));
@@ -108,7 +109,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathTbDRScript);
 
         Element pathTrainingSetDocuments = document.createElement("pathTrainingSetDocuments");
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             pathTrainingSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("training-set-Req-Specifications").toString()));
         } else {
             pathTrainingSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("training-set").toString()));
@@ -116,7 +117,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathTrainingSetDocuments);
 
         Element pathTestSetDocuments = document.createElement("pathTestSetDocuments");
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             pathTestSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("test-set-Req-Specifications").toString()));
         } else {
             pathTestSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("test-set").toString()));
@@ -124,7 +125,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathTestSetDocuments);
 
         Element pathSimplifiedTruthSet = document.createElement("pathSimplifiedTruthSet");
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             pathSimplifiedTruthSet.appendChild(document.createTextNode(
                     baseFolder.resolve("truth_set-simplified-Req-Specifications.csv").toString()));
         } else {
@@ -154,7 +155,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathResultsPrediction);
 
         Element pathTDMTestSet = document.createElement("pathTDMTestSet");
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             pathTDMTestSet.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-req_specification")
                     .resolve("tdm_full_testSet_with_oracle_info.csv").toString()));
         } else {
@@ -164,7 +165,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathTDMTestSet);
 
         Element pathTrainingSet = document.createElement("pathTrainingSet");
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             pathTrainingSet.appendChild(document.createTextNode(baseFolder.resolve("trainingSet_truth_set-Req-Specifications.csv")
                     .toString()));
         } else {
@@ -174,7 +175,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathTrainingSet);
 
         Element pathTestSet = document.createElement("pathTestSet");
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             pathTestSet.appendChild(document.createTextNode(baseFolder.resolve("testSet_truth_set-Req-Specifications.csv").toString()));
         } else {
             //TODO if adding user reviews to DL
@@ -183,7 +184,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathTestSet);
 
         Element pathTDMTrainingSet = document.createElement("pathTDMTrainingSet");
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             pathTDMTrainingSet.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-req_specification")
                     .resolve("tdm_full_trainingSet_with_oracle_info.csv").toString()));
         } else {
@@ -193,7 +194,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathTDMTrainingSet);
 
         Element pathFullTDMDataset = document.createElement("pathFullTDMDataset");
-        if (dataType.equals("Requirement-Specifications")) {
+        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
             pathFullTDMDataset.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-req_specification")
                     .resolve("tdm_full_with_oracle_info.csv").toString()));
         } else {

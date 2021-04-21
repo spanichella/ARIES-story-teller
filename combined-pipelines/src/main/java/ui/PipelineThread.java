@@ -1,14 +1,15 @@
 package ui;
 
 import java.util.logging.Logger;
+import pipelines.DataType;
 import pipelines.MainPipeline;
 
 public class PipelineThread extends Thread {
     private static final Logger logger = Logger.getLogger(PipelineThread.class.getName());
     private final String pipeline;
-    private final String dataType;
+    private final DataType dataType;
 
-    PipelineThread(String pipeline, String dataType) {
+    PipelineThread(String pipeline, DataType dataType) {
         this.pipeline = pipeline;
         this.dataType = dataType;
     }

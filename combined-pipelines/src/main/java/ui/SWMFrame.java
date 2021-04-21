@@ -11,7 +11,13 @@ import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.Serial;
 import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -23,8 +29,7 @@ import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
+import pipelines.DataType;
 
 
 public class SWMFrame extends JFrame implements ActionListener, ItemListener, ChangeListener {
@@ -32,6 +37,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private static final long serialVersionUID = -592869500939986619L;
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
     private static final File DATASETS_FOLDER = new File("..", "datasets");
+    private static final String EMPTY_TEXT = "Select";
 
     private static final Color backGroundColor = new Color(88, 102, 148);
     private static final Color textColor = new Color(230, 230, 230);
@@ -54,7 +60,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private final JLabel s5LStep;
     private final JLabel s5LText;
     private String truthFilePath = "null";
-    private String dataType = "null";
+    private DataType dataType;
     private String pipeline = "null";
     private String mlModel = "null";
     private String split = "0.5";
@@ -64,7 +70,6 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private final JComboBox<String> c3;
     private final JComboBox<String> c4;
     private final JSlider thresholdSlider;
-    private static final String[] dataTypeArray = {"Select", "User-Reviews", "Requirement-Specifications"};
     private static final String[] pipeLineArray = {"Select", "ML", "DL"};
     private static final String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
     private static final String[] mlModelArray = {
@@ -95,9 +100,9 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         thresholdSlider.addChangeListener(this);
         thresholdSlider.setVisible(false);
 
-        dataTypeComboBox = new JComboBox<>(dataTypeArray);
-        dataTypeComboBox.addItemListener(this);
-        ((JLabel) dataTypeComboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        dataTypeComboBox = getTranslatableComboBox(
+                new DataType[] { null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS },
+                SWMFrame::translateDataType, this::onDataTypeChange);
 
         c2 = new JComboBox<>(pipeLineArray);
         c2.addItemListener(this);
@@ -445,7 +450,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     public void checkIfRunnable() {
         boolean runnable = true;
 
-        if (truthFilePath.equals("null") || dataType.equals("null") || pipeline.equals("null")) {
+        if (truthFilePath.equals("null") || dataType == null || pipeline.equals("null")) {
             runnable = false;
         } else if (!"DL".equals(c2.getSelectedItem()) && (mlModel.equals("null") || split.equals("null") || strategy.equals("null"))) {
             runnable = false;
@@ -467,7 +472,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
             s1LStep.setText("<html><div style='text-align: center;'>[Step 1] <font color='#56f310'>DONE</font></div></html>");
         }
 
-        if (dataType.equals("null")) {
+        if (dataType == null) {
             s2LStep.setText("<html><div style='text-align: center;'>[Step 2]</div></html>");
         } else {
             s2LStep.setText("<html><div style='text-align: center;'>[Step 2] <font color='#56f310'>DONE</font></div></html>");
@@ -531,31 +536,34 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         checkIfRunnable();
     }
 
+    public void onDataTypeChange(DataType dataType) {
+        boolean found = false;
+        switch (dataType) {
+            case REQUIREMENT_SPECIFICATIONS -> {
+                for (int i = 0; i < c2.getItemCount(); i++) {
+                    if (c2.getItemAt(i).equals("DL")) {
+                        found = true;
+                    }
+                }
+                if (!found) {
+                    c2.insertItemAt("DL", c2.getItemCount());
+                }
+            }
+            case USER_REVIEWS -> {
+                c2.setSelectedItem("ML");
+                c2.removeItem("DL");
+            }
+            default -> throw new IllegalArgumentException("Unknown type: " + dataType);
+        }
+        if (dataTypeComboBox.getItemAt(0).equals(EMPTY_TEXT)) {
+            dataTypeComboBox.removeItemAt(0);
+        }
+        this.dataType = dataType;
+    }
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-        if (e.getSource() == dataTypeComboBox) {
-            if (e.getStateChange() == ItemEvent.SELECTED) {
-                String check = "null";
-                if (e.getItem() == "Requirement-Specifications") {
-                    for (int i = 0; i < c2.getItemCount(); i++) {
-                        if (c2.getItemAt(i).equals("DL")) {
-                            check = "found";
-                        }
-                    }
-                    if (check.equals("null")) {
-                        c2.insertItemAt("DL", c2.getItemCount());
-                    }
-                } else if (e.getItem() == "User-Reviews") {
-                    c2.setSelectedItem("ML");
-                    c2.removeItem("DL");
-                }
-                if (dataTypeComboBox.getItemAt(0).equals("Select")) {
-                    dataTypeComboBox.removeItemAt(0);
-                }
-                dataType = e.getItem().toString();
-            }
-        } else if (e.getSource() == c2) {
+        if (e.getSource() == c2) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 if (c2.getItemAt(0).equals("Select")) {
                     c2.removeItemAt(0);
@@ -597,5 +605,28 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         String decimalFixedDouble = df.format(value);
         s4BLValue.setText("value: " + decimalFixedDouble);
         split = decimalFixedDouble;
+    }
+
+    private static <E> JComboBox<String> getTranslatableComboBox(E[] elements, Function<E, String> translator, Consumer<E> listener) {
+        List<String> translations = Arrays.stream(elements).map(translator).collect(Collectors.toUnmodifiableList());
+        JComboBox<String> comboBox = new JComboBox<>(translations.toArray(new String[0]));
+        comboBox.addItemListener((ItemEvent e) -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                String value = (String) e.getItem();
+                listener.accept(elements[translations.indexOf(value)]);
+            }
+        });
+        ((JLabel) comboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        return comboBox;
+    }
+
+    private static String translateDataType(@Nullable DataType dataType) {
+        if (dataType == null) {
+            return EMPTY_TEXT;
+        }
+        return switch (dataType) {
+            case REQUIREMENT_SPECIFICATIONS -> "Requirement-Specifications";
+            case USER_REVIEWS -> "User-Reviews";
+        };
     }
 }
