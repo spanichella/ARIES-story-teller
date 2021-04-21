@@ -517,7 +517,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
             loader.start();
 
             try {
-                generateXML();
+                XMLInitializer.createXML(truthFilePath, dataType, mlModel, split, strategy);
             } catch (Exception exception) {
                 loader.closeWindow();
                 UIHelpers.showErrorMessage(logger, "Generating the XML Failed", exception, this);
@@ -600,10 +600,5 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         String decimalFixedDouble = df.format(value);
         s4BLValue.setText("value: " + decimalFixedDouble);
         split = decimalFixedDouble;
-    }
-
-    private void generateXML() throws TransformerException, ParserConfigurationException {
-        //create XML files with paths, etc.
-        XMLInitializer.createXML(truthFilePath, dataType, mlModel, split, strategy);
     }
 }
