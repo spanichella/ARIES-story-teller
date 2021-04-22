@@ -27,7 +27,7 @@ public class XMLInitializer {
 
     private static final Logger logger = Logger.getLogger(XMLInitializer.class.getName());
 
-    public static void createXML(String pathTruthFile, @Nonnull DataType dataType, String model,
+    public static void createXML(@Nonnull String pathTruthFile, @Nonnull DataType dataType, String model,
                                  @Nonnull BigDecimal percentage, String strategy)
             throws ParserConfigurationException, TransformerException {
         Path baseFolder;

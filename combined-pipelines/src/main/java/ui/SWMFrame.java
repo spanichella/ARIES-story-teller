@@ -63,7 +63,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private final JLabel s4BLRight;
     private final JLabel s5LStep;
     private final JLabel s5LText;
-    private String truthFilePath = "null";
+    private @Nullable String truthFilePath;
     private @Nullable DataType dataType;
     private @Nullable PipelineType pipelineType;
     private String mlModel = "null";
@@ -457,7 +457,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     public void checkIfRunnable() {
         boolean runnable = true;
 
-        if (truthFilePath.equals("null") || dataType == null || pipelineType == null) {
+        if (truthFilePath == null || dataType == null || pipelineType == null) {
             runnable = false;
         } else if (!"DL".equals(pipelineTypeComboBox.getSelectedItem())
                 && (mlModel.equals("null") || strategy.equals("null"))) {
@@ -474,7 +474,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
 
 
     private void updateStatus() {
-        if (truthFilePath.equals("null")) {
+        if (truthFilePath == null) {
             s1LStep.setText("<html><div style='text-align: center;'>[Step 1]</div></html>");
         } else {
             s1LStep.setText("<html><div style='text-align: center;'>[Step 1] <font color='#56f310'>DONE</font></div></html>");
@@ -520,14 +520,14 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 String extension = file.toString().substring(file.toString().lastIndexOf("."));
                 if (!extension.equals(".txt") && !extension.equals(".csv")) {
                     UIHelpers.showErrorMessage(logger, "Wrong filetype selected. Please select a .txt or .csv file", this);
-                    truthFilePath = "null";
+                    truthFilePath = null;
                 } else {
                     truthFilePath = file.toString();
                 }
             }
         } else if (e.getSource() == executeB) {
-            if (pipelineType == null || dataType == null) {
-                throw new IllegalArgumentException("pipelineType or dataType is null");
+            if (truthFilePath == null || pipelineType == null || dataType == null) {
+                throw new IllegalArgumentException("truthFilePath or pipelineType or dataType is null");
             }
 
             loader = new SWMLoaderFrame();
