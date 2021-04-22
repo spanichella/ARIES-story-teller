@@ -8,10 +8,10 @@ import pipelines.PipelineType;
 
 public class PipelineThread extends Thread {
     private static final Logger logger = Logger.getLogger(PipelineThread.class.getName());
-    private final String pipelineType;
+    private final @Nonnull PipelineType pipelineType;
     private final @Nonnull DataType dataType;
 
-    PipelineThread(String pipelineType, @Nonnull DataType dataType) {
+    PipelineThread(@Nonnull PipelineType pipelineType, @Nonnull DataType dataType) {
         this.pipelineType = pipelineType;
         this.dataType = dataType;
     }

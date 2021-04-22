@@ -30,6 +30,7 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import pipelines.DataType;
+import pipelines.PipelineType;
 
 
 public class SWMFrame extends JFrame implements ActionListener, ItemListener, ChangeListener {
@@ -61,7 +62,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private final JLabel s5LText;
     private String truthFilePath = "null";
     private @Nullable DataType dataType;
-    private String pipelineType = "null";
+    private @Nullable PipelineType pipelineType;
     private String mlModel = "null";
     private String split = "0.5";
     private String strategy = "null";
@@ -70,7 +71,6 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private final JComboBox<String> mlModelComboBox;
     private final JComboBox<String> strategyComboBox;
     private final JSlider thresholdSlider;
-    private static final String[] pipeLineArray = {"Select", "ML", "DL"};
     private static final String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
     private static final String[] mlModelArray = {
         "Select", "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
@@ -104,9 +104,9 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 new DataType[] { null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS },
                 SWMFrame::translateDataType, this::onDataTypeChange);
 
-        pipelineTypeComboBox = new JComboBox<>(pipeLineArray);
-        pipelineTypeComboBox.addItemListener(this);
-        ((JLabel) pipelineTypeComboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        pipelineTypeComboBox = getTranslatableComboBox(
+                new PipelineType[] { null, PipelineType.ML, PipelineType.DL },
+                SWMFrame::translatePipelineType, this::onPipelineTypeChange);
 
         mlModelComboBox = new JComboBox<>(mlModelArray);
         mlModelComboBox.addItemListener(this);
@@ -394,9 +394,9 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         this.setVisible(true);
     }
 
-    public void populatePanels(String input) {
-        switch (input) {
-            case "DL" -> {
+    public void populatePanels(PipelineType pipelineType) {
+        switch (pipelineType) {
+            case DL -> {
                 s4ALText.setVisible(false);
                 s4ALStep.setVisible(false);
                 mlModelComboBox.setVisible(false);
@@ -411,7 +411,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 s5LStep.setVisible(false);
                 strategyComboBox.setVisible(false);
             }
-            case "ML" -> {
+            case ML -> {
                 s4ALText.setVisible(true);
                 s4ALStep.setVisible(true);
                 mlModelComboBox.setVisible(true);
@@ -425,6 +425,12 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 s4BLRight.setVisible(false);
                 thresholdSlider.setVisible(false);
             }
+            default -> throw new IllegalArgumentException("Unknown pipeline type: " + pipelineType);
+        }
+    }
+
+    public void populatePanels(String input) {
+        switch (input) {
             case "Threshold" -> {
                 s4BLStep.setText("<html><div style='text-align: center;'>[Step 6]</div></html>");
                 s4BLText.setVisible(true);
@@ -450,9 +456,10 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     public void checkIfRunnable() {
         boolean runnable = true;
 
-        if (truthFilePath.equals("null") || dataType == null || pipelineType.equals("null")) {
+        if (truthFilePath.equals("null") || dataType == null || pipelineType == null) {
             runnable = false;
-        } else if (!"DL".equals(pipelineTypeComboBox.getSelectedItem()) && (mlModel.equals("null") || split.equals("null") || strategy.equals("null"))) {
+        } else if (!"DL".equals(pipelineTypeComboBox.getSelectedItem())
+                && (mlModel.equals("null") || split.equals("null") || strategy.equals("null"))) {
             runnable = false;
         }
         executeB.setEnabled(runnable);
@@ -478,7 +485,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
             s2LStep.setText("<html><div style='text-align: center;'>[Step 2] <font color='#56f310'>DONE</font></div></html>");
         }
 
-        if (pipelineType.equals("null") || pipelineType.equals("Select")) {
+        if (pipelineType == null) {
             s3LStep.setText("<html><div style='text-align: center;'>[Step 3]</div></html>");
         } else {
             s3LStep.setText("<html><div style='text-align: center;'>[Step 3] <font color='#56f310'>DONE</font></div></html>");
@@ -518,8 +525,8 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 }
             }
         } else if (e.getSource() == executeB) {
-            if (dataType == null) {
-                throw new IllegalArgumentException("dataType is null");
+            if (pipelineType == null || dataType == null) {
+                throw new IllegalArgumentException("pipelineType or dataType is null");
             }
 
             loader = new SWMLoaderFrame();
@@ -565,21 +572,17 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         this.dataType = dataType;
     }
 
+    private void onPipelineTypeChange(PipelineType pipelineType) {
+        if (pipelineTypeComboBox.getItemAt(0).equals("Select")) {
+            pipelineTypeComboBox.removeItemAt(0);
+        }
+        populatePanels(pipelineType);
+        this.pipelineType = pipelineType;
+    }
+
     @Override
     public void itemStateChanged(ItemEvent e) {
-        if (e.getSource() == pipelineTypeComboBox) {
-            if (e.getStateChange() == ItemEvent.SELECTED) {
-                if (pipelineTypeComboBox.getItemAt(0).equals("Select")) {
-                    pipelineTypeComboBox.removeItemAt(0);
-                }
-                if (e.getItem().equals("DL")) {
-                    populatePanels("DL");
-                } else if (e.getItem().equals("ML")) {
-                    populatePanels("ML");
-                }
-                pipelineType = e.getItem().toString();
-            }
-        } else if (e.getSource() == mlModelComboBox) {
+        if (e.getSource() == mlModelComboBox) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 if (mlModelComboBox.getItemAt(0).equals("Select")) {
                     mlModelComboBox.removeItemAt(0);
@@ -631,6 +634,16 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         return switch (dataType) {
             case REQUIREMENT_SPECIFICATIONS -> "Requirement-Specifications";
             case USER_REVIEWS -> "User-Reviews";
+        };
+    }
+
+    private static String translatePipelineType(@Nullable PipelineType pipelineType) {
+        if (pipelineType == null) {
+            return EMPTY_TEXT;
+        }
+        return switch (pipelineType) {
+            case ML -> "ML";
+            case DL -> "DL";
         };
     }
 }
