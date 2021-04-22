@@ -3,6 +3,7 @@ package filegeneration;
 import helpers.CommonPaths;
 import java.nio.file.Path;
 import java.util.logging.Logger;
+import javax.annotation.Nonnull;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,7 +25,7 @@ public class XMLInitializer {
 
     private static final Logger logger = Logger.getLogger(XMLInitializer.class.getName());
 
-    public static void createXML(String pathTruthFile, DataType dataType, String model, String percentage, String strategy)
+    public static void createXML(String pathTruthFile, @Nonnull DataType dataType, String model, String percentage, String strategy)
             throws ParserConfigurationException, TransformerException {
         Path baseFolder;
         String name;
@@ -95,7 +96,6 @@ public class XMLInitializer {
             nameOfAttributeText.appendChild(document.createTextNode("req_specification"));
         } else {
             nameOfAttributeText.appendChild(document.createTextNode("review"));
-
         }
         adsorb.appendChild(nameOfAttributeText);
 

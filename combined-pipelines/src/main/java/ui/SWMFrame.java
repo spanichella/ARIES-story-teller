@@ -60,7 +60,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private final JLabel s5LStep;
     private final JLabel s5LText;
     private String truthFilePath = "null";
-    private DataType dataType;
+    private @Nullable DataType dataType;
     private String pipelineType = "null";
     private String mlModel = "null";
     private String split = "0.5";
@@ -518,6 +518,10 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 }
             }
         } else if (e.getSource() == executeB) {
+            if (dataType == null) {
+                throw new IllegalArgumentException("dataType is null");
+            }
+
             loader = new SWMLoaderFrame();
             loader.start();
 
@@ -536,7 +540,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         checkIfRunnable();
     }
 
-    public void onDataTypeChange(DataType dataType) {
+    private void onDataTypeChange(DataType dataType) {
         boolean found = false;
         switch (dataType) {
             case REQUIREMENT_SPECIFICATIONS -> {

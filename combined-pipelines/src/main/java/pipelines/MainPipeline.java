@@ -6,6 +6,7 @@ import helpers.CommonPaths;
 import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Nonnull;
 import ui.SWMGui;
 
 /**
@@ -18,7 +19,7 @@ import ui.SWMGui;
 public class MainPipeline {
     private static final Logger logger = Logger.getLogger(MainPipeline.class.getName());
 
-    public static void runPipeline(String pipelineType, DataType dataType) throws Exception {
+    public static void runPipeline(String pipelineType, @Nonnull DataType dataType) throws Exception {
         Path xmlFiles = CommonPaths.XML_FILES;
 
         //chooses path of config file according to data-type
