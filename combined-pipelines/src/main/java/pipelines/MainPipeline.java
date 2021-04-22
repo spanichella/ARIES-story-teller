@@ -23,14 +23,11 @@ public class MainPipeline {
         Path xmlFiles = CommonPaths.XML_FILES;
 
         //chooses path of config file according to data-type
-        Path pathConfigFile;
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            pathConfigFile = xmlFiles.resolve("RequirementSpecificationsXML.xml");
-        } else if (dataType == DataType.USER_REVIEWS) {
-            pathConfigFile = xmlFiles.resolve("UserReviewsXML.xml");
-        } else {
-            throw new IllegalArgumentException("type \"" + dataType + "\" not recognized: use Requirement-Specifications or User-Reviews");
-        }
+        Path pathConfigFile = switch (dataType) {
+            case REQUIREMENT_SPECIFICATIONS -> xmlFiles.resolve("RequirementSpecificationsXML.xml");
+            case USER_REVIEWS -> xmlFiles.resolve("UserReviewsXML.xml");
+        };
+
         logger.log(Level.INFO, "Path of ConfigFile: " + pathConfigFile);
 
         //Read Config file

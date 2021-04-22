@@ -30,16 +30,18 @@ public class XMLInitializer {
         Path baseFolder;
         String name;
 
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            baseFolder = CommonPaths.RESOURCES.resolve("ReqSpec");
-            name = "RequirementSpecifications";
-            logger.info("Creating XML-file for Requirement-Specifications...");
-        } else if (dataType == DataType.USER_REVIEWS) {
-            baseFolder = CommonPaths.RESOURCES.resolve("UserReviews");
-            name = "UserReviews";
-            logger.info("Creating XML-file for User Reviews...");
-        } else {
-            throw new IllegalArgumentException("Unknown type \"" + dataType + "\"");
+        switch (dataType) {
+            case REQUIREMENT_SPECIFICATIONS -> {
+                baseFolder = CommonPaths.RESOURCES.resolve("ReqSpec");
+                name = "RequirementSpecifications";
+                logger.info("Creating XML-file for Requirement-Specifications...");
+            }
+            case USER_REVIEWS -> {
+                baseFolder = CommonPaths.RESOURCES.resolve("UserReviews");
+                name = "UserReviews";
+                logger.info("Creating XML-file for User Reviews...");
+            }
+            default -> throw new IllegalArgumentException("Unknown type \"" + dataType + "\"");
         }
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
