@@ -10,13 +10,15 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.Serial;
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -39,6 +41,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
     private static final File DATASETS_FOLDER = new File("..", "datasets");
     private static final String EMPTY_TEXT = "Select";
+    private final static int SPLIT_PRECISION = 2;
 
     private static final Color backGroundColor = new Color(88, 102, 148);
     private static final Color textColor = new Color(230, 230, 230);
@@ -64,7 +67,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private @Nullable DataType dataType;
     private @Nullable PipelineType pipelineType;
     private String mlModel = "null";
-    private String split = "0.5";
+    private @Nonnull BigDecimal split = createSplitDecimal(50);
     private String strategy = "null";
     private final JComboBox<String> dataTypeComboBox;
     private final JComboBox<String> pipelineTypeComboBox;
@@ -78,8 +81,6 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         "DecisionStump", "LinearRegression",
         "RegressionByDiscretization",
         };
-    private final DecimalFormat df = new DecimalFormat("#.##");
-
 
     SWMFrame() {
         ImageIcon logoImage = new ImageIcon("images/swmlogo.jpg");
@@ -459,7 +460,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         if (truthFilePath.equals("null") || dataType == null || pipelineType == null) {
             runnable = false;
         } else if (!"DL".equals(pipelineTypeComboBox.getSelectedItem())
-                && (mlModel.equals("null") || split.equals("null") || strategy.equals("null"))) {
+                && (mlModel.equals("null") || strategy.equals("null"))) {
             runnable = false;
         }
         executeB.setEnabled(runnable);
@@ -608,10 +609,18 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
 
     @Override
     public void stateChanged(ChangeEvent e) {
-        double value = Double.max(((JSlider) e.getSource()).getValue() * 0.01, 0.1);
-        String decimalFixedDouble = df.format(value);
-        s4BLValue.setText("value: " + decimalFixedDouble);
-        split = decimalFixedDouble;
+        int rawValue = ((JSlider) e.getSource()).getValue();
+        BigDecimal value = createSplitDecimal(rawValue);
+        s4BLValue.setText("value: " + value.toPlainString());
+        split = value;
+    }
+
+    private static @Nonnull BigDecimal createSplitDecimal(int value) {
+        return new BigDecimal(value, new MathContext(SPLIT_PRECISION))
+                // at least 0.1
+                .max(BigDecimal.TEN)
+                // divide by 100
+                .movePointLeft(SPLIT_PRECISION);
     }
 
     private static <E> JComboBox<String> getTranslatableComboBox(E[] elements, Function<E, String> translator, Consumer<E> listener) {

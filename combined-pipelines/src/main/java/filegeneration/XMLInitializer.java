@@ -1,6 +1,8 @@
 package filegeneration;
 
 import helpers.CommonPaths;
+
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
@@ -25,7 +27,8 @@ public class XMLInitializer {
 
     private static final Logger logger = Logger.getLogger(XMLInitializer.class.getName());
 
-    public static void createXML(String pathTruthFile, @Nonnull DataType dataType, String model, String percentage, String strategy)
+    public static void createXML(String pathTruthFile, @Nonnull DataType dataType, String model,
+                                 @Nonnull BigDecimal percentage, String strategy)
             throws ParserConfigurationException, TransformerException {
         Path baseFolder;
         String name;
@@ -148,7 +151,7 @@ public class XMLInitializer {
         adsorb.appendChild(pathModel);
 
         Element percentageSplit = document.createElement("percentageSplit");
-        percentageSplit.appendChild(document.createTextNode(percentage));
+        percentageSplit.appendChild(document.createTextNode(percentage.toPlainString()));
         adsorb.appendChild(percentageSplit);
 
         Element pathResultsPrediction = document.createElement("pathResultsPrediction");
