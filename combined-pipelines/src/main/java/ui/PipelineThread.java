@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.Serial;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 import pipelines.DataType;
@@ -23,7 +24,16 @@ public class PipelineThread extends Thread {
         try {
             MainPipeline.runPipeline(pipelineType, dataType);
         } catch (Exception e) {
-            UIHelpers.showErrorMessage(logger, "Pipeline thread failed", e);
+            throw new ThreadException(e);
+        }
+    }
+
+    static class ThreadException extends RuntimeException {
+        @Serial
+        private static final long serialVersionUID = 7785242162506057983L;
+
+        private ThreadException(Throwable cause) {
+            super(cause);
         }
     }
 }

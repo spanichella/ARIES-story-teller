@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
@@ -25,6 +26,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
@@ -506,7 +508,7 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
                 File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
                 String extension = file.toString().substring(file.toString().lastIndexOf("."));
                 if (!extension.equals(".txt") && !extension.equals(".csv")) {
-                    UIHelpers.showErrorMessage(logger, "Wrong filetype selected. Please select a .txt or .csv file", this);
+                    showErrorMessage("Wrong filetype selected. Please select a .txt or .csv file");
                     truthFilePath = null;
                 } else {
                     truthFilePath = file.toString();
@@ -523,12 +525,19 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
             try {
                 XMLInitializer.createXML(truthFilePath, dataType, translateEmptyText(mlModel), split, translateEmptyText(strategy));
             } catch (Exception exception) {
-                loader.closeWindow();
-                UIHelpers.showErrorMessage(logger, "Generating the XML Failed", exception, this);
+                showErrorMessage("Generating the XML Failed", exception);
+                this.closeWindow();
                 return;
             }
             PipelineThread mainThread = new PipelineThread(pipelineType, dataType);
             mainThread.start();
+            mainThread.setUncaughtExceptionHandler((Thread thread, Throwable throwable) -> {
+                if (throwable instanceof PipelineThread.ThreadException) {
+                    throwable = throwable.getCause();
+                }
+                showErrorMessage("Pipeline Thread failed", throwable);
+                this.closeWindow();
+            });
             this.setEnabled(false);
         }
         updateStatus();
@@ -632,5 +641,15 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
 
     private static @Nonnull String translateEmptyText(@Nonnull String text) {
         return text.equals(EMPTY_TEXT) ? "null" : text;
+    }
+
+    public void showErrorMessage(String message) {
+        logger.log(Level.SEVERE, message);
+        JOptionPane.showMessageDialog(this, message, message, JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void showErrorMessage(String message, Throwable throwable) {
+        logger.log(Level.SEVERE, message, throwable);
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
