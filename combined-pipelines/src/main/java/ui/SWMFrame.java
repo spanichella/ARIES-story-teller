@@ -98,10 +98,6 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         thresholdSlider.addChangeListener(this);
         thresholdSlider.setVisible(false);
 
-        JComboBox<String> dataTypeComboBox = getTranslatableComboBox(
-                new DataType[]{null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS},
-                SWMFrame::translateDataType, this::onDataTypeChange);
-
         pipelineTypeComboBox = getTranslatableComboBox(
                 new PipelineType[] { null, PipelineType.ML, PipelineType.DL },
                 SWMFrame::translatePipelineType, this::onPipelineTypeChange);
@@ -351,7 +347,9 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         step2Panel.add(s2BlackBorder1, BorderLayout.PAGE_END);
         s2BorderCenterPanel.add(s2LStep);
         s2BorderCenterPanel.add(s2LText);
-        s2BorderCenterPanel.add(dataTypeComboBox);
+        s2BorderCenterPanel.add(getTranslatableComboBox(
+                new DataType[]{null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS},
+                SWMFrame::translateDataType, this::onDataTypeChange));
 
         //step 3 panels
         step3Panel.add(s3BorderCenterPanel, BorderLayout.CENTER);
