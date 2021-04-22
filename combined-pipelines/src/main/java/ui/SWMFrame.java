@@ -424,7 +424,7 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
                 File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
                 String extension = file.toString().substring(file.toString().lastIndexOf("."));
                 if (!extension.equals(".txt") && !extension.equals(".csv")) {
-                    showErrorMessage("Wrong filetype selected. Please select a .txt or .csv file");
+                    showErrorMessage("Wrong filetype selected. Please select a .txt or .csv file", null);
                     truthFilePath = null;
                 } else {
                     truthFilePath = file.toString();
@@ -559,12 +559,7 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         return text.equals(EMPTY_TEXT) ? "null" : text;
     }
 
-    private void showErrorMessage(String message) {
-        logger.log(Level.SEVERE, message);
-        JOptionPane.showMessageDialog(this, message, message, JOptionPane.ERROR_MESSAGE);
-    }
-
-    private void showErrorMessage(String message, Throwable throwable) {
+    private void showErrorMessage(@Nonnull String message, @Nullable Throwable throwable) {
         logger.log(Level.SEVERE, message, throwable);
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
