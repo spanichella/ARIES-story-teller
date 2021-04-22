@@ -1,7 +1,6 @@
 package filegeneration;
 
 import helpers.CommonPaths;
-
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.logging.Logger;
@@ -32,16 +31,22 @@ public class XMLInitializer {
             throws ParserConfigurationException, TransformerException {
         Path baseFolder;
         String name;
+        String dataTypePostfix;
+        String attributeTextName;
 
         switch (dataType) {
             case REQUIREMENT_SPECIFICATIONS -> {
                 baseFolder = CommonPaths.RESOURCES.resolve("ReqSpec");
                 name = "RequirementSpecifications";
+                dataTypePostfix = "-Req-Specifications";
+                attributeTextName = "req_specification";
                 logger.info("Creating XML-file for Requirement-Specifications...");
             }
             case USER_REVIEWS -> {
                 baseFolder = CommonPaths.RESOURCES.resolve("UserReviews");
                 name = "UserReviews";
+                dataTypePostfix = "";
+                attributeTextName = "review";
                 logger.info("Creating XML-file for User Reviews...");
             }
             default -> throw new IllegalArgumentException("Unknown type \"" + dataType + "\"");
@@ -61,152 +66,47 @@ public class XMLInitializer {
         adsorb.setAttributeNode(attr);
         root.appendChild(adsorb);
 
-        Element pathRScripts = document.createElement("pathRScripts");
-        pathRScripts.appendChild(document.createTextNode(CommonPaths.R_SCRIPTS.toString()));
-        adsorb.appendChild(pathRScripts);
+        XMLNodeHelper adsorbHelper = new XMLNodeHelper(document, adsorb);
+        adsorbHelper.addSimpleNode("pathRScripts", CommonPaths.R_SCRIPTS);
+        adsorbHelper.addSimpleNode("pathRScriptOracle",
+                CommonPaths.R_SCRIPTS.resolve("Script-to-create-test-dataset" + dataTypePostfix + ".r"));
+        adsorbHelper.addSimpleNode("pathBaseFolder", baseFolder);
+        adsorbHelper.addSimpleNode("pathTruthSet", pathTruthFile);
+        adsorbHelper.addSimpleNode("dataType", switch (dataType) {
+            case REQUIREMENT_SPECIFICATIONS -> "Requirement Specifications";
+            case USER_REVIEWS -> "User Reviews";
+        });
+        adsorbHelper.addSimpleNode("nameOfAttributeID", "id");
+        adsorbHelper.addSimpleNode("nameOfAttributeText", attributeTextName);
+        adsorbHelper.addSimpleNode("nameOfAttributeClass", "class");
+        adsorbHelper.addSimpleNode("pathTbDRScript", CommonPaths.R_SCRIPTS.resolve("MainScript.r"));
+        adsorbHelper.addSimpleNode("pathTrainingSetDocuments", "training-set" + dataTypePostfix);
 
-        Element pathRScriptOracle = document.createElement("pathRScriptOracle");
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            pathRScriptOracle.appendChild(document.createTextNode(CommonPaths.R_SCRIPTS
-                    .resolve("Script-to-create-test-dataset-Req-Specifications.r").toString()));
-        } else {
-            pathRScriptOracle.appendChild(document.createTextNode(CommonPaths.R_SCRIPTS
-                    .resolve("Script-to-create-test-dataset.r").toString()));
-        }
-        adsorb.appendChild(pathRScriptOracle);
+        adsorbHelper.addSimpleNode("pathTestSetDocuments", "test-set" + dataTypePostfix);
 
-        Element pathBaseFolder = document.createElement("pathBaseFolder");
-        pathBaseFolder.appendChild(document.createTextNode(baseFolder.toString()));
-        adsorb.appendChild(pathBaseFolder);
+        adsorbHelper.addSimpleNode("pathSimplifiedTruthSet", baseFolder.resolve("truth_set-simplified" + dataTypePostfix + ".csv"));
 
-        Element pathTruthSet = document.createElement("pathTruthSet");
-        pathTruthSet.appendChild(document.createTextNode(pathTruthFile));
-        adsorb.appendChild(pathTruthSet);
+        adsorbHelper.addSimpleNode("strategy", strategy);
 
-        Element dataTypeElement = document.createElement("dataType");
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            dataTypeElement.appendChild(document.createTextNode("Requirement Specifications"));
-        } else {
-            dataTypeElement.appendChild(document.createTextNode("User Reviews"));
+        adsorbHelper.addSimpleNode("machineLearningModel", model);
 
-        }
-        adsorb.appendChild(dataTypeElement);
+        adsorbHelper.addSimpleNode("pathModel", CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model"));
 
-        Element nameOfAttributeID = document.createElement("nameOfAttributeID");
-        nameOfAttributeID.appendChild(document.createTextNode("id"));
-        adsorb.appendChild(nameOfAttributeID);
+        adsorbHelper.addSimpleNode("percentageSplit", percentage.toPlainString());
 
-        Element nameOfAttributeText = document.createElement("nameOfAttributeText");
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            nameOfAttributeText.appendChild(document.createTextNode("req_specification"));
-        } else {
-            nameOfAttributeText.appendChild(document.createTextNode("review"));
-        }
-        adsorb.appendChild(nameOfAttributeText);
+        adsorbHelper.addSimpleNode("pathResultsPrediction", CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_"));
 
-        Element nameOfAttributeClass = document.createElement("nameOfAttributeClass");
-        nameOfAttributeClass.appendChild(document.createTextNode("class"));
-        adsorb.appendChild(nameOfAttributeClass);
+        Path preprocessedFolder = baseFolder.resolve("documents-preprocessed-" + attributeTextName);
 
+        adsorbHelper.addSimpleNode("pathTDMTestSet", preprocessedFolder.resolve("tdm_full_testSet_with_oracle_info.csv"));
 
-        Element pathTbDRScript = document.createElement("pathTbDRScript");
-        pathTbDRScript.appendChild(document.createTextNode(CommonPaths.R_SCRIPTS.resolve("MainScript.r").toString()));
-        adsorb.appendChild(pathTbDRScript);
+        adsorbHelper.addSimpleNode("pathTrainingSet", baseFolder.resolve("trainingSet_truth_set" + dataTypePostfix + ".csv"));
 
-        Element pathTrainingSetDocuments = document.createElement("pathTrainingSetDocuments");
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            pathTrainingSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("training-set-Req-Specifications").toString()));
-        } else {
-            pathTrainingSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("training-set").toString()));
-        }
-        adsorb.appendChild(pathTrainingSetDocuments);
+        adsorbHelper.addSimpleNode("pathTestSet", baseFolder.resolve("testSet_truth_set" + dataTypePostfix + ".csv"));
 
-        Element pathTestSetDocuments = document.createElement("pathTestSetDocuments");
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            pathTestSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("test-set-Req-Specifications").toString()));
-        } else {
-            pathTestSetDocuments.appendChild(document.createTextNode(baseFolder.resolve("test-set").toString()));
-        }
-        adsorb.appendChild(pathTestSetDocuments);
+        adsorbHelper.addSimpleNode("pathTDMTrainingSet", preprocessedFolder.resolve("tdm_full_trainingSet_with_oracle_info.csv"));
 
-        Element pathSimplifiedTruthSet = document.createElement("pathSimplifiedTruthSet");
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            pathSimplifiedTruthSet.appendChild(document.createTextNode(
-                    baseFolder.resolve("truth_set-simplified-Req-Specifications.csv").toString()));
-        } else {
-            pathSimplifiedTruthSet.appendChild(document.createTextNode(baseFolder.resolve("truth_set-simplified.csv").toString()));
-        }
-        adsorb.appendChild(pathSimplifiedTruthSet);
-
-        Element strategyEl = document.createElement("strategy");
-        strategyEl.appendChild(document.createTextNode(strategy));
-        adsorb.appendChild(strategyEl);
-
-        Element machineLearningModel = document.createElement("machineLearningModel");
-        machineLearningModel.appendChild(document.createTextNode(model));
-        adsorb.appendChild(machineLearningModel);
-
-        Element pathModel = document.createElement("pathModel");
-        pathModel.appendChild(document.createTextNode(CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model").toString()));
-        adsorb.appendChild(pathModel);
-
-        Element percentageSplit = document.createElement("percentageSplit");
-        percentageSplit.appendChild(document.createTextNode(percentage.toPlainString()));
-        adsorb.appendChild(percentageSplit);
-
-        Element pathResultsPrediction = document.createElement("pathResultsPrediction");
-        pathResultsPrediction.appendChild(document.createTextNode(CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_")
-                .toString()));
-        adsorb.appendChild(pathResultsPrediction);
-
-        Element pathTDMTestSet = document.createElement("pathTDMTestSet");
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            pathTDMTestSet.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-req_specification")
-                    .resolve("tdm_full_testSet_with_oracle_info.csv").toString()));
-        } else {
-            pathTDMTestSet.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-review")
-                    .resolve("tdm_full_testSet_with_oracle_info.csv").toString()));
-        }
-        adsorb.appendChild(pathTDMTestSet);
-
-        Element pathTrainingSet = document.createElement("pathTrainingSet");
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            pathTrainingSet.appendChild(document.createTextNode(baseFolder.resolve("trainingSet_truth_set-Req-Specifications.csv")
-                    .toString()));
-        } else {
-            //TODO if adding user reviews to DL
-            throw new RuntimeException("Path of training-set not defined for UserReviews if using DL-Pipeline");
-        }
-        adsorb.appendChild(pathTrainingSet);
-
-        Element pathTestSet = document.createElement("pathTestSet");
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            pathTestSet.appendChild(document.createTextNode(baseFolder.resolve("testSet_truth_set-Req-Specifications.csv").toString()));
-        } else {
-            //TODO if adding user reviews to DL
-            throw new RuntimeException("Path of test-set not defined for UserReviews if using DL-Pipeline");
-        }
-        adsorb.appendChild(pathTestSet);
-
-        Element pathTDMTrainingSet = document.createElement("pathTDMTrainingSet");
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            pathTDMTrainingSet.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-req_specification")
-                    .resolve("tdm_full_trainingSet_with_oracle_info.csv").toString()));
-        } else {
-            pathTDMTrainingSet.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-review")
-                    .resolve("tdm_full_trainingSet_with_oracle_info.csv").toString()));
-        }
-        adsorb.appendChild(pathTDMTrainingSet);
-
-        Element pathFullTDMDataset = document.createElement("pathFullTDMDataset");
-        if (dataType == DataType.REQUIREMENT_SPECIFICATIONS) {
-            pathFullTDMDataset.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-req_specification")
-                    .resolve("tdm_full_with_oracle_info.csv").toString()));
-        } else {
-            pathFullTDMDataset.appendChild(document.createTextNode(baseFolder.resolve("documents-preprocessed-review")
-                    .resolve("tdm_full_with_oracle_info.csv").toString()));
-        }
-        adsorb.appendChild(pathFullTDMDataset);
+        adsorbHelper.addSimpleNode("pathFullTDMDataset", preprocessedFolder.resolve("tdm_full_with_oracle_info.csv"));
 
         Element gloveFile = document.createElement("pathGloveFile");
         gloveFile.appendChild(document.createTextNode(CommonPaths.GLOVE_FILE.toString()));
