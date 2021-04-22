@@ -7,7 +7,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.Serial;
 import java.math.BigDecimal;
@@ -34,8 +33,7 @@ import javax.swing.event.ChangeListener;
 import pipelines.DataType;
 import pipelines.PipelineType;
 
-
-public class SWMFrame extends JFrame implements ActionListener, ItemListener, ChangeListener {
+public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
     @Serial
     private static final long serialVersionUID = -592869500939986619L;
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
@@ -68,7 +66,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private @Nullable PipelineType pipelineType;
     private @Nonnull String mlModel = EMPTY_TEXT;
     private @Nonnull BigDecimal split = createSplitDecimal(50);
-    private String strategy = "null";
+    private @Nonnull String strategy = EMPTY_TEXT;
     private final JComboBox<String> pipelineTypeComboBox;
     private final JComboBox<String> mlModelComboBox;
     private final JComboBox<String> strategyComboBox;
@@ -111,9 +109,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         mlModelComboBox = getComboBox(mlModelArray, (String newName) -> mlModel = newName);
         mlModelComboBox.setVisible(false);
 
-        strategyComboBox = new JComboBox<>(strategyArray);
-        strategyComboBox.addItemListener(this);
-        ((JLabel) strategyComboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        strategyComboBox = getComboBox(strategyArray, this::onStrategyChange);
         strategyComboBox.setVisible(false);
 
         s1LStep = new JLabel("<html><div style='text-align: center;'>[Step 1]</div></html>");
@@ -427,26 +423,22 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         }
     }
 
-    public void populatePanels(String input) {
-        switch (input) {
-            case "Threshold" -> {
-                s4BLStep.setText("<html><div style='text-align: center;'>[Step 6]</div></html>");
-                s4BLText.setVisible(true);
-                s4BLStep.setVisible(true);
-                s4BLValue.setVisible(true);
-                s4BLLeft.setVisible(true);
-                s4BLRight.setVisible(true);
-                thresholdSlider.setVisible(true);
-            }
-            case "NoThreshold" -> {
-                s4BLText.setVisible(false);
-                s4BLStep.setVisible(false);
-                s4BLValue.setVisible(false);
-                s4BLLeft.setVisible(false);
-                s4BLRight.setVisible(false);
-                thresholdSlider.setVisible(false);
-            }
-            default -> throw new IllegalArgumentException("Unknown option: " + input);
+    public void populateThresholdPanels(boolean withThreshold) {
+        if (withThreshold) {
+            s4BLStep.setText("<html><div style='text-align: center;'>[Step 6]</div></html>");
+            s4BLText.setVisible(true);
+            s4BLStep.setVisible(true);
+            s4BLValue.setVisible(true);
+            s4BLLeft.setVisible(true);
+            s4BLRight.setVisible(true);
+            thresholdSlider.setVisible(true);
+        } else {
+            s4BLText.setVisible(false);
+            s4BLStep.setVisible(false);
+            s4BLValue.setVisible(false);
+            s4BLLeft.setVisible(false);
+            s4BLRight.setVisible(false);
+            thresholdSlider.setVisible(false);
         }
     }
 
@@ -457,7 +449,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         if (truthFilePath == null || dataType == null || pipelineType == null) {
             runnable = false;
         } else if (!"DL".equals(pipelineTypeComboBox.getSelectedItem())
-                && (mlModel.equals(EMPTY_TEXT) || strategy.equals("null"))) {
+                && (mlModel.equals(EMPTY_TEXT) || strategy.equals(EMPTY_TEXT))) {
             runnable = false;
         }
         executeB.setEnabled(runnable);
@@ -495,7 +487,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
             s4ALStep.setText("<html><div style='text-align: center;'>[Step 4] <font color='#56f310'>DONE</font></div></html>");
         }
 
-        if (strategy.equals("null") || strategy.equals(EMPTY_TEXT)) {
+        if (strategy.equals(EMPTY_TEXT)) {
             s5LStep.setText("<html><div style='text-align: center;'>[Step 5]</div></html>");
         } else {
             s5LStep.setText("<html><div style='text-align: center;'>[Step 5] <font color='#56f310'>DONE</font></div></html>");
@@ -531,7 +523,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
             loader.start();
 
             try {
-                XMLInitializer.createXML(truthFilePath, dataType, mlModel, split, strategy);
+                XMLInitializer.createXML(truthFilePath, dataType, translateEmptyText(mlModel), split, translateEmptyText(strategy));
             } catch (Exception exception) {
                 loader.closeWindow();
                 UIHelpers.showErrorMessage(logger, "Generating the XML Failed", exception, this);
@@ -572,23 +564,13 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         this.pipelineType = pipelineType;
     }
 
-    @Override
-    public void itemStateChanged(ItemEvent e) {
-        if (e.getSource() == strategyComboBox) {
-            if (e.getStateChange() == ItemEvent.SELECTED) {
-                if (strategyComboBox.getItemAt(0).equals("Select")) {
-                    strategyComboBox.removeItemAt(0);
-                }
-                if (e.getItem().equals("Percentage-Split")) {
-                    populatePanels("Threshold");
-                } else if (e.getItem().equals("10-Fold")) {
-                    populatePanels("NoThreshold");
-                }
-                strategy = e.getItem().toString();
-            }
+    public void onStrategyChange(String newStrategy) {
+        switch (newStrategy) {
+            case "Percentage-Split" -> populateThresholdPanels(true);
+            case "10-Fold" -> populateThresholdPanels(false);
+            default -> throw new IllegalArgumentException("Unknown strategy " + newStrategy);
         }
-        updateStatus();
-        checkIfRunnable();
+        strategy = newStrategy;
     }
 
     @Override
@@ -648,5 +630,9 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
             case ML -> "ML";
             case DL -> "DL";
         };
+    }
+
+    private static @Nonnull String translateEmptyText(@Nonnull String text) {
+        return text.equals(EMPTY_TEXT) ? "null" : text;
     }
 }
