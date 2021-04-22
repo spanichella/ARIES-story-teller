@@ -110,74 +110,18 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         strategyComboBox = getComboBox(strategyArray, this::onStrategyChange);
         strategyComboBox.setVisible(false);
 
-        s1LStep = new JLabel(toTitle("[Step 1]"));
-        s1LStep.setHorizontalAlignment(JLabel.CENTER);
-        s1LStep.setForeground(textColor);
-
-        JLabel s1LText = new JLabel(toTitle("Select a truth set to be analyzed by the algorithm"));
-        s1LText.setHorizontalAlignment(JLabel.CENTER);
-        s1LText.setForeground(textColor);
-
-        s2LStep = new JLabel(toTitle("[Step 2]"));
-        s2LStep.setHorizontalAlignment(JLabel.CENTER);
-        s2LStep.setForeground(textColor);
-
-        JLabel s2LText = new JLabel(toTitle("Select Content Type"));
-        s2LText.setHorizontalAlignment(JLabel.CENTER);
-        s2LText.setForeground(textColor);
-
-        s3LStep = new JLabel(toTitle("[Step 3]"));
-        s3LStep.setHorizontalAlignment(JLabel.CENTER);
-        s3LStep.setForeground(textColor);
-
-        JLabel s3LText = new JLabel(toTitle("Select a Pipeline"));
-        s3LText.setHorizontalAlignment(JLabel.CENTER);
-        s3LText.setForeground(textColor);
-
-        s4ALStep = new JLabel(toTitle("[Step 4]"));
-        s4ALStep.setHorizontalAlignment(JLabel.CENTER);
-        s4ALStep.setForeground(textColor);
-        s4ALStep.setVisible(false);
-
-        s4ALText = new JLabel(toTitle("Select Method"));
-        s4ALText.setHorizontalAlignment(JLabel.CENTER);
-        s4ALText.setForeground(textColor);
-        s4ALText.setVisible(false);
-
-        s4BLText = new JLabel(toTitle("Set Size of Training-Set"));
-        s4BLText.setHorizontalAlignment(JLabel.CENTER);
-        s4BLText.setForeground(textColor);
-        s4BLText.setVisible(false);
-
-        s4BLStep = new JLabel(toTitle("[Step 5]"));
-        s4BLStep.setHorizontalAlignment(JLabel.CENTER);
-        s4BLStep.setForeground(textColor);
-        s4BLStep.setVisible(false);
-
-        s4BLValue = new JLabel(toTitle("value: 0.5"));
-        s4BLValue.setHorizontalAlignment(JLabel.CENTER);
-        s4BLValue.setForeground(textColor);
-        s4BLValue.setVisible(false);
-
-        s4BLLeft = new JLabel(toTitle("0.1"));
-        s4BLLeft.setHorizontalAlignment(JLabel.LEFT);
-        s4BLLeft.setForeground(textColor);
-        s4BLLeft.setVisible(false);
-
-        s4BLRight = new JLabel(toTitle("1.0"));
-        s4BLRight.setHorizontalAlignment(JLabel.RIGHT);
-        s4BLRight.setForeground(textColor);
-        s4BLRight.setVisible(false);
-
-        s5LStep = new JLabel(toTitle("[Step 5]"));
-        s5LStep.setHorizontalAlignment(JLabel.CENTER);
-        s5LStep.setForeground(textColor);
-        s5LStep.setVisible(false);
-
-        s5LText = new JLabel(toTitle("Select Strategy"));
-        s5LText.setHorizontalAlignment(JLabel.CENTER);
-        s5LText.setForeground(textColor);
-        s5LText.setVisible(false);
+        s1LStep = getLabel("[Step 1]");
+        s2LStep = getLabel("[Step 2]");
+        s3LStep = getLabel("[Step 3]");
+        s4ALStep = getLabel("[Step 4]", false);
+        s4ALText = getLabel("Select Method", false);
+        s4BLText = getLabel("Set Size of Training-Set", false);
+        s4BLStep = getLabel("[Step 5]", false);
+        s4BLValue = getLabel("value: 0.5", false);
+        s4BLLeft = getLabel("0.1", false);
+        s4BLRight = getLabel("1.0", false);
+        s5LStep = getLabel("[Step 5]", false);
+        s5LText = getLabel("Select Strategy", false);
 
         ImageIcon icon = new ImageIcon("images/STIcon.jpg");
         this.setIconImage(icon.getImage());
@@ -338,7 +282,7 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         step1Panel.add(s1BorderCenterPanel, BorderLayout.CENTER);
         step1Panel.add(s1BlackBorder2, BorderLayout.PAGE_END);
         s1BorderCenterPanel.add(s1LStep);
-        s1BorderCenterPanel.add(s1LText);
+        s1BorderCenterPanel.add(getLabel("Select a truth set to be analyzed by the algorithm"));
         s1BorderCenterPanel.add(s1CenterPanel);
         s1CenterPanel.add(s1Empty);
         s1CenterPanel.add(truthSetSelector);
@@ -347,7 +291,7 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         step2Panel.add(s2BorderCenterPanel, BorderLayout.CENTER);
         step2Panel.add(s2BlackBorder1, BorderLayout.PAGE_END);
         s2BorderCenterPanel.add(s2LStep);
-        s2BorderCenterPanel.add(s2LText);
+        s2BorderCenterPanel.add(getLabel("Select Content Type"));
         s2BorderCenterPanel.add(getTranslatableComboBox(
                 new DataType[]{null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS},
                 SWMFrame::translateDataType, this::onDataTypeChange));
@@ -356,7 +300,7 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         step3Panel.add(s3BorderCenterPanel, BorderLayout.CENTER);
         step3Panel.add(s3BlackBorder1, BorderLayout.PAGE_END);
         s3BorderCenterPanel.add(s3LStep);
-        s3BorderCenterPanel.add(s3LText);
+        s3BorderCenterPanel.add(getLabel("Select a Pipeline"));
         s3BorderCenterPanel.add(pipelineTypeComboBox);
 
         //step 4a panels
@@ -623,6 +567,18 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
     private void showErrorMessage(String message, Throwable throwable) {
         logger.log(Level.SEVERE, message, throwable);
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    private static JLabel getLabel(String title) {
+        return getLabel(title, true);
+    }
+
+    private static JLabel getLabel(String title, boolean visible) {
+        JLabel label = new JLabel(toTitle(title));
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setForeground(textColor);
+        label.setVisible(visible);
+        return label;
     }
 
     private static String toTitle(String title) {
