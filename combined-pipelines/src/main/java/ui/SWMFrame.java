@@ -110,72 +110,71 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         strategyComboBox = getComboBox(strategyArray, this::onStrategyChange);
         strategyComboBox.setVisible(false);
 
-        s1LStep = new JLabel("<html><div style='text-align: center;'>[Step 1]</div></html>");
+        s1LStep = new JLabel(toTitle("[Step 1]"));
         s1LStep.setHorizontalAlignment(JLabel.CENTER);
         s1LStep.setForeground(textColor);
 
-        JLabel s1LText = new JLabel("<html><div style='text-align: center;'>Select a truth set to"
-                + " be analyzed by the algorithm</div></html>");
+        JLabel s1LText = new JLabel(toTitle("Select a truth set to be analyzed by the algorithm"));
         s1LText.setHorizontalAlignment(JLabel.CENTER);
         s1LText.setForeground(textColor);
 
-        s2LStep = new JLabel("<html><div style='text-align: center;'>[Step 2]</div></html>");
+        s2LStep = new JLabel(toTitle("[Step 2]"));
         s2LStep.setHorizontalAlignment(JLabel.CENTER);
         s2LStep.setForeground(textColor);
 
-        JLabel s2LText = new JLabel("<html><div style='text-align: center;'>Select Content Type</div></html>");
+        JLabel s2LText = new JLabel(toTitle("Select Content Type"));
         s2LText.setHorizontalAlignment(JLabel.CENTER);
         s2LText.setForeground(textColor);
 
-        s3LStep = new JLabel("<html><div style='text-align: center;'>[Step 3]</div></html>");
+        s3LStep = new JLabel(toTitle("[Step 3]"));
         s3LStep.setHorizontalAlignment(JLabel.CENTER);
         s3LStep.setForeground(textColor);
 
-        JLabel s3LText = new JLabel("<html><div style='text-align: center;'>Select a Pipeline</div></html>");
+        JLabel s3LText = new JLabel(toTitle("Select a Pipeline"));
         s3LText.setHorizontalAlignment(JLabel.CENTER);
         s3LText.setForeground(textColor);
 
-        s4ALStep = new JLabel("<html><div style='text-align: center;'>[Step 4]</div></html>");
+        s4ALStep = new JLabel(toTitle("[Step 4]"));
         s4ALStep.setHorizontalAlignment(JLabel.CENTER);
         s4ALStep.setForeground(textColor);
         s4ALStep.setVisible(false);
 
-        s4ALText = new JLabel("<html><div style='text-align: center;'>Select Method</div></html>");
+        s4ALText = new JLabel(toTitle("Select Method"));
         s4ALText.setHorizontalAlignment(JLabel.CENTER);
         s4ALText.setForeground(textColor);
         s4ALText.setVisible(false);
 
-        s4BLText = new JLabel("<html><div style='text-align: center;'>Set Size of Training-Set</div></html>");
+        s4BLText = new JLabel(toTitle("Set Size of Training-Set"));
         s4BLText.setHorizontalAlignment(JLabel.CENTER);
         s4BLText.setForeground(textColor);
         s4BLText.setVisible(false);
 
-        s4BLStep = new JLabel("<html><div style='text-align: center;'>[Step 5]</div></html>");
+        s4BLStep = new JLabel(toTitle("[Step 5]"));
         s4BLStep.setHorizontalAlignment(JLabel.CENTER);
         s4BLStep.setForeground(textColor);
         s4BLStep.setVisible(false);
 
-        s4BLValue = new JLabel("<html><div style='text-align: center;'>value: 0.5</div></html>");
+        s4BLValue = new JLabel(toTitle("value: 0.5"));
         s4BLValue.setHorizontalAlignment(JLabel.CENTER);
         s4BLValue.setForeground(textColor);
         s4BLValue.setVisible(false);
 
-        s4BLLeft = new JLabel("<html><div style='text-align: center;'>0.1</div></html>");
+        s4BLLeft = new JLabel(toTitle("0.1"));
         s4BLLeft.setHorizontalAlignment(JLabel.LEFT);
         s4BLLeft.setForeground(textColor);
         s4BLLeft.setVisible(false);
 
-        s4BLRight = new JLabel("<html><div style='text-align: center;'>1.0</div></html>");
+        s4BLRight = new JLabel(toTitle("1.0"));
         s4BLRight.setHorizontalAlignment(JLabel.RIGHT);
         s4BLRight.setForeground(textColor);
         s4BLRight.setVisible(false);
 
-        s5LStep = new JLabel("<html><div style='text-align: center;'>[Step 5]</div></html>");
+        s5LStep = new JLabel(toTitle("[Step 5]"));
         s5LStep.setHorizontalAlignment(JLabel.CENTER);
         s5LStep.setForeground(textColor);
         s5LStep.setVisible(false);
 
-        s5LText = new JLabel("<html><div style='text-align: center;'>Select Strategy</div></html>");
+        s5LText = new JLabel(toTitle("Select Strategy"));
         s5LText.setHorizontalAlignment(JLabel.CENTER);
         s5LText.setForeground(textColor);
         s5LText.setVisible(false);
@@ -455,45 +454,18 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         executeB.setEnabled(runnable);
     }
 
-
     public void closeWindow() {
         loader.closeWindow();
         dispose();
     }
 
-
     private void updateStatus() {
-        if (truthFilePath == null) {
-            s1LStep.setText("<html><div style='text-align: center;'>[Step 1]</div></html>");
-        } else {
-            s1LStep.setText("<html><div style='text-align: center;'>[Step 1] <font color='#56f310'>DONE</font></div></html>");
-        }
-
-        if (dataType == null) {
-            s2LStep.setText("<html><div style='text-align: center;'>[Step 2]</div></html>");
-        } else {
-            s2LStep.setText("<html><div style='text-align: center;'>[Step 2] <font color='#56f310'>DONE</font></div></html>");
-        }
-
-        if (pipelineType == null) {
-            s3LStep.setText("<html><div style='text-align: center;'>[Step 3]</div></html>");
-        } else {
-            s3LStep.setText("<html><div style='text-align: center;'>[Step 3] <font color='#56f310'>DONE</font></div></html>");
-        }
-
-        if (mlModel.equals(EMPTY_TEXT)) {
-            s4ALStep.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
-        } else {
-            s4ALStep.setText("<html><div style='text-align: center;'>[Step 4] <font color='#56f310'>DONE</font></div></html>");
-        }
-
-        if (strategy.equals(EMPTY_TEXT)) {
-            s5LStep.setText("<html><div style='text-align: center;'>[Step 5]</div></html>");
-        } else {
-            s5LStep.setText("<html><div style='text-align: center;'>[Step 5] <font color='#56f310'>DONE</font></div></html>");
-        }
+        s1LStep.setText(toTitle("[Step 1]", truthFilePath != null));
+        s2LStep.setText(toTitle("[Step 2]", dataType != null));
+        s3LStep.setText(toTitle("[Step 3]", pipelineType != null));
+        s4ALStep.setText(toTitle("[Step 4]", !mlModel.equals(EMPTY_TEXT)));
+        s5LStep.setText(toTitle("[Step 5]", !strategy.equals(EMPTY_TEXT)));
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -584,7 +556,7 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
     public void stateChanged(ChangeEvent e) {
         int rawValue = ((JSlider) e.getSource()).getValue();
         BigDecimal value = createSplitDecimal(rawValue);
-        s4BLValue.setText("value: " + value.toPlainString());
+        s4BLValue.setText(toTitle("value: " + value.toPlainString()));
         split = value;
     }
 
@@ -643,13 +615,24 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         return text.equals(EMPTY_TEXT) ? "null" : text;
     }
 
-    public void showErrorMessage(String message) {
+    private void showErrorMessage(String message) {
         logger.log(Level.SEVERE, message);
         JOptionPane.showMessageDialog(this, message, message, JOptionPane.ERROR_MESSAGE);
     }
 
-    public void showErrorMessage(String message, Throwable throwable) {
+    private void showErrorMessage(String message, Throwable throwable) {
         logger.log(Level.SEVERE, message, throwable);
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    private static String toTitle(String title) {
+        return toTitle(title, false);
+    }
+
+    private static String toTitle(String title, boolean done) {
+        if (done) {
+            title += " <font color='#56f310'>DONE</font>";
+        }
+        return "<html>" + title + "</html>";
     }
 }
