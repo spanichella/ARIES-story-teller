@@ -39,7 +39,7 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
     private static final File DATASETS_FOLDER = new File("..", "datasets");
     private static final String EMPTY_TEXT = "Select";
-    private final static int SPLIT_PRECISION = 2;
+    private static final int SPLIT_PRECISION = 2;
 
     private static final Color backGroundColor = new Color(88, 102, 148);
     private static final Color textColor = new Color(230, 230, 230);
