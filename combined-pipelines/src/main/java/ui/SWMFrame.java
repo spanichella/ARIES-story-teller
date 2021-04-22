@@ -66,17 +66,16 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
     private @Nullable String truthFilePath;
     private @Nullable DataType dataType;
     private @Nullable PipelineType pipelineType;
-    private String mlModel = "null";
+    private @Nonnull String mlModel = EMPTY_TEXT;
     private @Nonnull BigDecimal split = createSplitDecimal(50);
     private String strategy = "null";
-    private final JComboBox<String> dataTypeComboBox;
     private final JComboBox<String> pipelineTypeComboBox;
     private final JComboBox<String> mlModelComboBox;
     private final JComboBox<String> strategyComboBox;
     private final JSlider thresholdSlider;
     private static final String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
     private static final String[] mlModelArray = {
-        "Select", "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
+        EMPTY_TEXT, "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
         "Logistic", "AdaBoostM1", "LogitBoost",
         "DecisionStump", "LinearRegression",
         "RegressionByDiscretization",
@@ -101,17 +100,15 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         thresholdSlider.addChangeListener(this);
         thresholdSlider.setVisible(false);
 
-        dataTypeComboBox = getTranslatableComboBox(
-                new DataType[] { null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS },
+        JComboBox<String> dataTypeComboBox = getTranslatableComboBox(
+                new DataType[]{null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS},
                 SWMFrame::translateDataType, this::onDataTypeChange);
 
         pipelineTypeComboBox = getTranslatableComboBox(
                 new PipelineType[] { null, PipelineType.ML, PipelineType.DL },
                 SWMFrame::translatePipelineType, this::onPipelineTypeChange);
 
-        mlModelComboBox = new JComboBox<>(mlModelArray);
-        mlModelComboBox.addItemListener(this);
-        ((JLabel) mlModelComboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        mlModelComboBox = getComboBox(mlModelArray, (String newName) -> mlModel = newName);
         mlModelComboBox.setVisible(false);
 
         strategyComboBox = new JComboBox<>(strategyArray);
@@ -460,7 +457,7 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
         if (truthFilePath == null || dataType == null || pipelineType == null) {
             runnable = false;
         } else if (!"DL".equals(pipelineTypeComboBox.getSelectedItem())
-                && (mlModel.equals("null") || strategy.equals("null"))) {
+                && (mlModel.equals(EMPTY_TEXT) || strategy.equals("null"))) {
             runnable = false;
         }
         executeB.setEnabled(runnable);
@@ -492,13 +489,13 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
             s3LStep.setText("<html><div style='text-align: center;'>[Step 3] <font color='#56f310'>DONE</font></div></html>");
         }
 
-        if (mlModel.equals("null") || mlModel.equals("Select")) {
+        if (mlModel.equals(EMPTY_TEXT)) {
             s4ALStep.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
         } else {
             s4ALStep.setText("<html><div style='text-align: center;'>[Step 4] <font color='#56f310'>DONE</font></div></html>");
         }
 
-        if (strategy.equals("null") || mlModel.equals("Select")) {
+        if (strategy.equals("null") || strategy.equals(EMPTY_TEXT)) {
             s5LStep.setText("<html><div style='text-align: center;'>[Step 5]</div></html>");
         } else {
             s5LStep.setText("<html><div style='text-align: center;'>[Step 5] <font color='#56f310'>DONE</font></div></html>");
@@ -567,30 +564,17 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
             }
             default -> throw new IllegalArgumentException("Unknown type: " + dataType);
         }
-        if (dataTypeComboBox.getItemAt(0).equals(EMPTY_TEXT)) {
-            dataTypeComboBox.removeItemAt(0);
-        }
         this.dataType = dataType;
     }
 
     private void onPipelineTypeChange(PipelineType pipelineType) {
-        if (pipelineTypeComboBox.getItemAt(0).equals("Select")) {
-            pipelineTypeComboBox.removeItemAt(0);
-        }
         populatePanels(pipelineType);
         this.pipelineType = pipelineType;
     }
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-        if (e.getSource() == mlModelComboBox) {
-            if (e.getStateChange() == ItemEvent.SELECTED) {
-                if (mlModelComboBox.getItemAt(0).equals("Select")) {
-                    mlModelComboBox.removeItemAt(0);
-                }
-                mlModel = e.getItem().toString();
-            }
-        } else if (e.getSource() == strategyComboBox) {
+        if (e.getSource() == strategyComboBox) {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 if (strategyComboBox.getItemAt(0).equals("Select")) {
                     strategyComboBox.removeItemAt(0);
@@ -623,13 +607,23 @@ public class SWMFrame extends JFrame implements ActionListener, ItemListener, Ch
                 .movePointLeft(SPLIT_PRECISION);
     }
 
-    private static <E> JComboBox<String> getTranslatableComboBox(E[] elements, Function<E, String> translator, Consumer<E> listener) {
+    private <E> JComboBox<String> getTranslatableComboBox(E[] elements, Function<E, String> translator, Consumer<E> listener) {
         List<String> translations = Arrays.stream(elements).map(translator).collect(Collectors.toUnmodifiableList());
-        JComboBox<String> comboBox = new JComboBox<>(translations.toArray(new String[0]));
+        return getComboBox(translations.toArray(new String[0]), (String value) ->
+                listener.accept(elements[translations.indexOf(value)]));
+    }
+
+    private JComboBox<String> getComboBox(String[] names, Consumer<String> listener) {
+        JComboBox<String> comboBox = new JComboBox<>(names);
         comboBox.addItemListener((ItemEvent e) -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 String value = (String) e.getItem();
-                listener.accept(elements[translations.indexOf(value)]);
+                if (comboBox.getItemAt(0).equals(EMPTY_TEXT)) {
+                    comboBox.removeItemAt(0);
+                }
+                listener.accept(value);
+                updateStatus();
+                checkIfRunnable();
             }
         });
         ((JLabel) comboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
