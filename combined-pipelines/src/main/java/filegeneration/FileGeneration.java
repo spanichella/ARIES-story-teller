@@ -1,7 +1,8 @@
 package filegeneration;
 
 import configfile.ConfigFileReader;
-import java.io.IOException;
+import helpers.RscriptExecutor.ExecutionException;
+import helpers.RscriptExecutor.RunFailedException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import oracle.OracleRequirementSpecificationsAnalyzer;
@@ -10,7 +11,7 @@ import oracle.OracleUserReviewsAnalyzer;
 public final class FileGeneration {
     private static final Logger logger = Logger.getLogger(FileGeneration.class.getName());
 
-    public static void oracleAnalysis(ConfigFileReader configFileReader) throws IOException {
+    public static void oracleAnalysis(ConfigFileReader configFileReader) throws ExecutionException, RunFailedException {
         if (configFileReader.getDataType() != null) {
             //Select Oracle Analysis according to data type
             logger.info("Oracle getting analyzed...");

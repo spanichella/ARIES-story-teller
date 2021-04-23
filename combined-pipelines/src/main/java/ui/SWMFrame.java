@@ -30,6 +30,8 @@ import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import pipelines.DataType;
 import pipelines.PipelineType;
 
@@ -437,7 +439,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
 
         try {
             XMLInitializer.createXML(truthFilePath, dataType, translateEmptyText(mlModel), split, translateEmptyText(strategy));
-        } catch (Exception exception) {
+        } catch (TransformerException | ParserConfigurationException | RuntimeException exception) {
             showErrorMessage("Generating the XML Failed", exception);
             this.closeWindow();
             return;

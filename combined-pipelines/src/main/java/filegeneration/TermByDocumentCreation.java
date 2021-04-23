@@ -2,7 +2,6 @@ package filegeneration;
 
 import configfile.ConfigFileReader;
 import helpers.RscriptExecutor;
-import java.io.IOException;
 import java.util.logging.Logger;
 
 /**
@@ -11,7 +10,7 @@ import java.util.logging.Logger;
 final class TermByDocumentCreation {
     private static final Logger logger = Logger.getLogger(TermByDocumentCreation.class.getName());
 
-    static void createTBD(ConfigFileReader cfr) throws IOException {
+    static void createTBD(ConfigFileReader cfr) throws RscriptExecutor.ExecutionException, RscriptExecutor.RunFailedException {
         String pathTbDRScript = cfr.getPathTbDRScript();
         String docsLocation = cfr.getPathRScripts();
         String documentsTrainingSet = cfr.getPathTrainingSetDocuments();

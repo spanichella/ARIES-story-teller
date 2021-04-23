@@ -22,7 +22,7 @@ public final class RscriptExecutor {
      * @throws RunFailedException If the run finishes with a non-zero exit status
      */
     @SuppressWarnings("CallToRuntimeExec")
-    public static void execute(String... commandParts) throws ProcessException {
+    public static void execute(String... commandParts) throws ExecutionException, RunFailedException {
         Process process;
         try {
             process = Runtime.getRuntime().exec(toRscriptCommand(commandParts));

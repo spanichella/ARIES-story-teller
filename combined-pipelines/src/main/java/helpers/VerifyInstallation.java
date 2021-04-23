@@ -1,6 +1,8 @@
 package helpers;
 
 import java.nio.file.Path;
+import helpers.RscriptExecutor.ExecutionException;
+import helpers.RscriptExecutor.RunFailedException;
 
 final class VerifyInstallation {
     public static void main(String[] args) {
@@ -8,11 +10,11 @@ final class VerifyInstallation {
         Path mainScript = CommonPaths.R_SCRIPTS.resolve("install.r");
         try {
             RscriptExecutor.execute(mainScript.toString());
-        } catch (RscriptExecutor.ExecutionException e) {
+        } catch (ExecutionException e) {
             System.err.println("ERROR: RScript not found.");
             System.err.println("Verify that you have a running installation of R and it can be found in the $PATH variable");
             failed = true;
-        } catch (RscriptExecutor.ProcessException e) {
+        } catch (RunFailedException e) {
             System.err.println("ERROR: The installation did not succeed. Try to run " + mainScript + " manually.");
             e.printStackTrace();
             failed = true;
