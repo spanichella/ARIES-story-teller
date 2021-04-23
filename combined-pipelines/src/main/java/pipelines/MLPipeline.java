@@ -40,16 +40,16 @@ final class MLPipeline {
     private static boolean checkWhetherTestSetIsLabeled(String pathTestSet) throws FileNotFoundException {
         File file = new File(pathTestSet);
 
-        Scanner scanner = new Scanner(file, StandardCharsets.UTF_8.name());
-
-        //now read the file line by line...
-        String line;
-        while (scanner.hasNextLine()) {
-            line = scanner.nextLine();
-            //System.out.println(line);
-            if (line.contains("\"?\"") || line.contains("'?'") || line.endsWith("?")) {
-                logger.info("The test-set is non labeled, we need to first label such instances");
-                return false;
+        try (Scanner scanner = new Scanner(file, StandardCharsets.UTF_8.name())) {
+            //now read the file line by line...
+            String line;
+            while (scanner.hasNextLine()) {
+                line = scanner.nextLine();
+                //System.out.println(line);
+                if (line.contains("\"?\"") || line.contains("'?'") || line.endsWith("?")) {
+                    logger.info("The test-set is non labeled, we need to first label such instances");
+                    return false;
+                }
             }
         }
         logger.info("The test-set is labeled.");
