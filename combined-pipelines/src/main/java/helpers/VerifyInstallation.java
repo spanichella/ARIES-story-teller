@@ -5,6 +5,7 @@ import helpers.RscriptExecutor.ExecutionException;
 import helpers.RscriptExecutor.RunFailedException;
 
 final class VerifyInstallation {
+    @SuppressWarnings({"UseOfSystemOutOrSystemErr", "CallToPrintStackTrace"})
     public static void main(String[] args) {
         boolean failed = false;
         Path mainScript = CommonPaths.R_SCRIPTS.resolve("install.r");
