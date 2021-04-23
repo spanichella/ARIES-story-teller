@@ -78,7 +78,7 @@ final class DLPipeline {
 
         // create the model
         LOGGER.info("Creating model");
-        MultiLayerNetwork model = createMultiLayerNetwork(inputColumns, 0.3);
+        MultiLayerNetwork model = createMultiLayerNetwork(inputColumns);
         model.init();
 
         String modelFileName = "model_6b_%dd_v1_0.bin".formatted(GLOVE_DIM);
@@ -294,7 +294,7 @@ final class DLPipeline {
         return new int[] { rows, columns };
     }
 
-    private static MultiLayerNetwork createMultiLayerNetwork(int inputColumns, double learningRate) {
+    private static MultiLayerNetwork createMultiLayerNetwork(int inputColumns) {
         int rngSeed = 123; // random number seed for reproducibility
         int optimizationIterations = 1;
         int outputNum = 3; // number of output classes: FR, NFR, None
@@ -303,7 +303,7 @@ final class DLPipeline {
         MultiLayerConfiguration multiLayerConf = new NeuralNetConfiguration.Builder()
                 // high level configuration
                 .seed(rngSeed)
-                .learningRate(learningRate)
+                .learningRate(0.3)
                 .regularization(true).l2(1e-4)
                 .iterations(optimizationIterations)
                 .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
