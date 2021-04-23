@@ -3,43 +3,47 @@ package configfile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.stream.IntStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class ConfigFileReader {
+public final class ConfigFileReader {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConfigFileReader.class.getName());
 
-    private String pathRScripts;
-    private String pathRScriptOracle;
-    private String pathBaseFolder;
-    private String pathTruthSet;
-    private String threshold;
-    private String pathTbDRScript;
-    private String pathTrainingSetDocuments;
-    private String pathTestSetDocuments;
-    private String pathSimplifiedTruthSet;
-    private String pathTrainingSet;
-    private String pathTestSet;
-    private String pathGloveFile;
-    private String dataType;
-    private String machineLearningModel;
-    private String nameOfAttributeClass;
-    private String nameOfAttributeID;
-    private String nameOfAttributeText;
-    private String pathModel;
-    private String pathFullTDMDataset;
-    private String pathResultsPrediction;
-    private String pathTDMTrainingSet;
-    private String pathTDMTestSet;
-    private String strategy;
+    private final String pathRScripts;
+    private final String pathRScriptOracle;
+    private final String pathBaseFolder;
+    private final String pathTruthSet;
+    private final String threshold;
+    private final String pathTbDRScript;
+    private final String pathTrainingSetDocuments;
+    private final String pathTestSetDocuments;
+    private final String pathSimplifiedTruthSet;
+    private final String pathTrainingSet;
+    private final String pathTestSet;
+    private final String pathGloveFile;
+    private final String dataType;
+    private final String machineLearningModel;
+    private final String nameOfAttributeClass;
+    private final String nameOfAttributeID;
+    private final String nameOfAttributeText;
+    private final String pathModel;
+    private final String pathFullTDMDataset;
+    private final String pathResultsPrediction;
+    private final String pathTDMTrainingSet;
+    private final String pathTDMTestSet;
+    private final String strategy;
 
     public ConfigFileReader(Path pathXMLConfigFile) throws ParserConfigurationException, IOException, SAXException {
-        System.out.println("Loading the config file...");
+        LOGGER.info("Loading the config file...");
         Document doc;
 
         File xmlFile = pathXMLConfigFile.toFile();
@@ -51,44 +55,41 @@ public class ConfigFileReader {
         // read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
         doc.getDocumentElement().normalize();
 
-        System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
+        LOGGER.info("Root element :{}", doc.getDocumentElement().getNodeName());
 
         NodeList nodeList = doc.getElementsByTagName("ADSORB");
-        System.out.println("----------------------------");
+        LOGGER.info("----------------------------");
 
-        for (int temp = 0; temp < nodeList.getLength(); temp++) {
-            Node node = nodeList.item(temp);
-            System.out.println();
-            System.out.println("Current Element :" + node.getNodeName());
+        Element element = (Element) IntStream.range(0, nodeList.getLength())
+                .mapToObj(nodeList::item)
+                .filter(node -> node.getNodeType() == Node.ELEMENT_NODE)
+                // get last element
+                .reduce((first, second) -> second)
+                .orElseThrow(() -> new IllegalArgumentException("No matching element found in the config file"));
 
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) node;
-
-                this.pathRScripts = element.getElementsByTagName("pathRScripts").item(0).getTextContent();
-                this.pathRScriptOracle = element.getElementsByTagName("pathRScriptOracle").item(0).getTextContent();
-                this.pathBaseFolder = element.getElementsByTagName("pathBaseFolder").item(0).getTextContent();
-                this.pathTruthSet = element.getElementsByTagName("pathTruthSet").item(0).getTextContent();
-                this.dataType = element.getElementsByTagName("dataType").item(0).getTextContent();
-                this.nameOfAttributeID = element.getElementsByTagName("nameOfAttributeID").item(0).getTextContent();
-                this.nameOfAttributeText = element.getElementsByTagName("nameOfAttributeText").item(0).getTextContent();
-                this.nameOfAttributeClass = element.getElementsByTagName("nameOfAttributeClass").item(0).getTextContent();
-                this.pathTbDRScript = element.getElementsByTagName("pathTbDRScript").item(0).getTextContent();
-                this.pathTrainingSetDocuments = element.getElementsByTagName("pathTrainingSetDocuments").item(0).getTextContent();
-                this.pathTestSetDocuments = element.getElementsByTagName("pathTestSetDocuments").item(0).getTextContent();
-                this.pathSimplifiedTruthSet = element.getElementsByTagName("pathSimplifiedTruthSet").item(0).getTextContent();
-                this.pathGloveFile = element.getElementsByTagName("pathGloveFile").item(0).getTextContent();
-                this.pathTestSet = element.getElementsByTagName("pathTestSet").item(0).getTextContent();
-                this.pathTrainingSet = element.getElementsByTagName("pathTrainingSet").item(0).getTextContent();
-                this.threshold = element.getElementsByTagName("percentageSplit").item(0).getTextContent();
-                this.strategy = element.getElementsByTagName("strategy").item(0).getTextContent();
-                this.pathModel = element.getElementsByTagName("pathModel").item(0).getTextContent();
-                this.machineLearningModel = element.getElementsByTagName("machineLearningModel").item(0).getTextContent();
-                this.pathResultsPrediction = element.getElementsByTagName("pathResultsPrediction").item(0).getTextContent();
-                this.pathTDMTrainingSet = element.getElementsByTagName("pathTDMTrainingSet").item(0).getTextContent();
-                this.pathTDMTestSet = element.getElementsByTagName("pathTDMTestSet").item(0).getTextContent();
-                this.pathFullTDMDataset = element.getElementsByTagName("pathFullTDMDataset").item(0).getTextContent();
-            }
-        }
+        pathRScripts = element.getElementsByTagName("pathRScripts").item(0).getTextContent();
+        pathRScriptOracle = element.getElementsByTagName("pathRScriptOracle").item(0).getTextContent();
+        pathBaseFolder = element.getElementsByTagName("pathBaseFolder").item(0).getTextContent();
+        pathTruthSet = element.getElementsByTagName("pathTruthSet").item(0).getTextContent();
+        dataType = element.getElementsByTagName("dataType").item(0).getTextContent();
+        nameOfAttributeID = element.getElementsByTagName("nameOfAttributeID").item(0).getTextContent();
+        nameOfAttributeText = element.getElementsByTagName("nameOfAttributeText").item(0).getTextContent();
+        nameOfAttributeClass = element.getElementsByTagName("nameOfAttributeClass").item(0).getTextContent();
+        pathTbDRScript = element.getElementsByTagName("pathTbDRScript").item(0).getTextContent();
+        pathTrainingSetDocuments = element.getElementsByTagName("pathTrainingSetDocuments").item(0).getTextContent();
+        pathTestSetDocuments = element.getElementsByTagName("pathTestSetDocuments").item(0).getTextContent();
+        pathSimplifiedTruthSet = element.getElementsByTagName("pathSimplifiedTruthSet").item(0).getTextContent();
+        pathGloveFile = element.getElementsByTagName("pathGloveFile").item(0).getTextContent();
+        pathTestSet = element.getElementsByTagName("pathTestSet").item(0).getTextContent();
+        pathTrainingSet = element.getElementsByTagName("pathTrainingSet").item(0).getTextContent();
+        threshold = element.getElementsByTagName("percentageSplit").item(0).getTextContent();
+        strategy = element.getElementsByTagName("strategy").item(0).getTextContent();
+        pathModel = element.getElementsByTagName("pathModel").item(0).getTextContent();
+        machineLearningModel = element.getElementsByTagName("machineLearningModel").item(0).getTextContent();
+        pathResultsPrediction = element.getElementsByTagName("pathResultsPrediction").item(0).getTextContent();
+        pathTDMTrainingSet = element.getElementsByTagName("pathTDMTrainingSet").item(0).getTextContent();
+        pathTDMTestSet = element.getElementsByTagName("pathTDMTestSet").item(0).getTextContent();
+        pathFullTDMDataset = element.getElementsByTagName("pathFullTDMDataset").item(0).getTextContent();
     }
 
     public  String getPathResultsPrediction() {
