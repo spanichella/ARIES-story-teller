@@ -5,7 +5,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.io.File;
 import java.io.Serial;
@@ -34,7 +33,7 @@ import javax.swing.event.ChangeListener;
 import pipelines.DataType;
 import pipelines.PipelineType;
 
-public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
+public class SWMFrame extends JFrame implements ChangeListener {
     @Serial
     private static final long serialVersionUID = -592869500939986619L;
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
@@ -47,7 +46,6 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
 
     private SWMLoaderFrame loader;
 
-    private final JButton truthSetSelector;
     private final JButton executeB;
     private final JLabel s1LStep;
     private final JLabel s2LStep;
@@ -85,11 +83,8 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         logoLabel.setIcon(logoImage);
         logoLabel.setHorizontalAlignment(JLabel.CENTER);
 
-        truthSetSelector = new JButton("Truth Set");
-        truthSetSelector.addActionListener(this);
-
         executeB = new JButton("Run");
-        executeB.addActionListener(this);
+        executeB.addActionListener(this::onRun);
         executeB.setEnabled(false);
 
         thresholdSlider = new JSlider();
@@ -283,6 +278,8 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         s1BorderCenterPanel.add(getLabel("Select a truth set to be analyzed by the algorithm"));
         s1BorderCenterPanel.add(s1CenterPanel);
         s1CenterPanel.add(s1Empty);
+        JButton truthSetSelector = new JButton("Truth Set");
+        truthSetSelector.addActionListener(this::onTruthSetSelector);
         s1CenterPanel.add(truthSetSelector);
 
         //step 2 panels
@@ -409,51 +406,52 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
         s5LStep.setText(toTitle("[Step 5]", !strategy.equals(EMPTY_TEXT)));
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == truthSetSelector) {
-            JFileChooser fileChooser = new JFileChooser();
-            if (DATASETS_FOLDER.exists()) {
-                fileChooser.setCurrentDirectory(DATASETS_FOLDER);
-            }
-            int response = fileChooser.showOpenDialog(null);
-
-            if (response == JFileChooser.APPROVE_OPTION) {
-                File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-                String extension = file.toString().substring(file.toString().lastIndexOf("."));
-                if (!extension.equals(".txt") && !extension.equals(".csv")) {
-                    showErrorMessage("Wrong filetype selected. Please select a .txt or .csv file", null);
-                    truthFilePath = null;
-                } else {
-                    truthFilePath = file.toString();
-                }
-            }
-        } else if (e.getSource() == executeB) {
-            if (truthFilePath == null || pipelineType == null || dataType == null) {
-                throw new IllegalArgumentException("truthFilePath or pipelineType or dataType is null");
-            }
-
-            loader = new SWMLoaderFrame();
-            loader.start();
-
-            try {
-                XMLInitializer.createXML(truthFilePath, dataType, translateEmptyText(mlModel), split, translateEmptyText(strategy));
-            } catch (Exception exception) {
-                showErrorMessage("Generating the XML Failed", exception);
-                this.closeWindow();
-                return;
-            }
-            PipelineThread mainThread = new PipelineThread(pipelineType, dataType);
-            mainThread.start();
-            mainThread.setUncaughtExceptionHandler((Thread thread, Throwable throwable) -> {
-                if (throwable instanceof PipelineThread.ThreadException) {
-                    throwable = throwable.getCause();
-                }
-                showErrorMessage("Pipeline Thread failed", throwable);
-                this.closeWindow();
-            });
-            this.setEnabled(false);
+    private void onTruthSetSelector(ActionEvent e) {
+        JFileChooser fileChooser = new JFileChooser();
+        if (DATASETS_FOLDER.exists()) {
+            fileChooser.setCurrentDirectory(DATASETS_FOLDER);
         }
+        int response = fileChooser.showOpenDialog(null);
+
+        if (response == JFileChooser.APPROVE_OPTION) {
+            File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+            String extension = file.toString().substring(file.toString().lastIndexOf("."));
+            if (!extension.equals(".txt") && !extension.equals(".csv")) {
+                showErrorMessage("Wrong filetype selected. Please select a .txt or .csv file", null);
+                truthFilePath = null;
+            } else {
+                truthFilePath = file.toString();
+            }
+        }
+        updateStatus();
+        checkIfRunnable();
+    }
+
+    private void onRun(ActionEvent e) {
+        if (truthFilePath == null || pipelineType == null || dataType == null) {
+            throw new IllegalArgumentException("truthFilePath or pipelineType or dataType is null");
+        }
+
+        loader = new SWMLoaderFrame();
+        loader.start();
+
+        try {
+            XMLInitializer.createXML(truthFilePath, dataType, translateEmptyText(mlModel), split, translateEmptyText(strategy));
+        } catch (Exception exception) {
+            showErrorMessage("Generating the XML Failed", exception);
+            this.closeWindow();
+            return;
+        }
+        PipelineThread mainThread = new PipelineThread(pipelineType, dataType);
+        mainThread.start();
+        mainThread.setUncaughtExceptionHandler((Thread thread, Throwable throwable) -> {
+            if (throwable instanceof PipelineThread.ThreadException) {
+                throwable = throwable.getCause();
+            }
+            showErrorMessage("Pipeline Thread failed", throwable);
+            this.closeWindow();
+        });
+        this.setEnabled(false);
         updateStatus();
         checkIfRunnable();
     }
@@ -516,9 +514,9 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
                     comboBox.removeItemAt(0);
                 }
                 listener.accept(value);
-                updateStatus();
-                checkIfRunnable();
             }
+            updateStatus();
+            checkIfRunnable();
         });
         ((JLabel) comboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         return comboBox;
