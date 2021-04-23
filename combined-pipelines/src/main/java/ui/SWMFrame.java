@@ -31,13 +31,12 @@ import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import pipelines.DataType;
 import pipelines.PipelineType;
 
-final class SWMFrame extends JFrame implements ChangeListener {
+final class SWMFrame extends JFrame {
     @Serial
     private static final long serialVersionUID = -592869500939986619L;
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
@@ -94,7 +93,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
         thresholdSlider = new JSlider();
         thresholdSlider.setMinorTickSpacing(1);
         thresholdSlider.setBackground(backGroundColor);
-        thresholdSlider.addChangeListener(this);
+        thresholdSlider.addChangeListener(this::onSplitChanged);
         thresholdSlider.setVisible(false);
 
         pipelineTypeComboBox = getTranslatableComboBox(
@@ -499,8 +498,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
         strategy = newStrategy;
     }
 
-    @Override
-    public void stateChanged(ChangeEvent e) {
+    private void onSplitChanged(ChangeEvent e) {
         int rawValue = ((JSlider) e.getSource()).getValue();
         split = BigDecimal.valueOf(Math.max(rawValue, 10), 2);
         s4BLValue.setText(toTitle("value: " + split.toPlainString()));
