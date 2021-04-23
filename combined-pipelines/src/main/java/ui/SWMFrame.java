@@ -33,9 +33,9 @@ import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import pipelines.DataType;
+import types.DataType;
 import pipelines.MainPipeline;
-import pipelines.PipelineType;
+import types.PipelineType;
 
 final class SWMFrame extends JFrame {
     @Serial

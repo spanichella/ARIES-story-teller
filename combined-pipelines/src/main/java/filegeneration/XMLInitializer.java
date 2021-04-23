@@ -19,7 +19,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import pipelines.DataType;
+import types.DataType;
 
 /**
  * Fills XML files on startup with correct paths and other values

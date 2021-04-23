@@ -7,6 +7,8 @@ import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
+import types.DataType;
+import types.PipelineType;
 
 /**
  * This class extends the Main Program class by supporting the execution of
