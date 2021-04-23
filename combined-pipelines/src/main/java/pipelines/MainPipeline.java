@@ -16,7 +16,7 @@ import ui.SWMGui;
  *
  * @author panc
  */
-public class MainPipeline {
+public final class MainPipeline {
     private static final Logger logger = Logger.getLogger(MainPipeline.class.getName());
 
     public static void runPipeline(@Nonnull PipelineType pipelineType, @Nonnull DataType dataType) throws Exception {

@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-public class RscriptExecutor {
+public final class RscriptExecutor {
     private static final Logger LOGGER = Logger.getLogger(RscriptExecutor.class.getName());
     private static final String rscriptCommand = "Rscript";
 
@@ -52,37 +52,37 @@ public class RscriptExecutor {
         }
     }
 
-    public abstract static class ProcessException extends IOException {
+    private abstract static class ProcessException extends IOException {
         @Serial
         private static final long serialVersionUID = -4081653183392141979L;
 
-        public ProcessException(String message) {
+        ProcessException(String message) {
             super(message);
         }
 
-        public ProcessException(String message, Throwable cause) {
+        ProcessException(String message, Throwable cause) {
             super(message, cause);
         }
 
-        protected static String toCommand(String[] commandParts) {
+        static String toCommand(String[] commandParts) {
             return String.join(" ", commandParts);
         }
     }
 
-    public static class ExecutionException extends ProcessException {
+    public static final class ExecutionException extends ProcessException {
         @Serial
         private static final long serialVersionUID = 49748945902517787L;
 
-        public ExecutionException(String[] commandParts, Throwable cause) {
+        ExecutionException(String[] commandParts, Throwable cause) {
             super("Could not execute the script \"" + toCommand(commandParts) + "\"", cause);
         }
     }
 
-    public static class RunFailedException extends ProcessException {
+    public static final class RunFailedException extends ProcessException {
         @Serial
         private static final long serialVersionUID = -592869500939986619L;
 
-        public RunFailedException(String[] commandParts) {
+        RunFailedException(String[] commandParts) {
             super("Running the script \"" + toCommand(commandParts) + "\" failed");
         }
     }

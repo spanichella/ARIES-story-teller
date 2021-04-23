@@ -38,8 +38,7 @@ import org.nd4j.linalg.lossfunctions.LossFunctions.LossFunction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DLPipeline {
-
+final class DLPipeline {
     private static final Logger LOGGER = LoggerFactory.getLogger(DLPipeline.class.getName());
 
     private static final int GLOVE_DIM = 100;
@@ -52,7 +51,7 @@ public class DLPipeline {
 
     // https://deeplearning4j.org/tutorials/setup
 
-    public static void runDLPipeline(ConfigFileReader cfg) throws IOException {
+    static void runDLPipeline(ConfigFileReader cfg) throws IOException {
 
         // the training set
         String labelledTurns = cfg.getPathTrainingSet();
@@ -114,11 +113,11 @@ public class DLPipeline {
         printWriter.close();
     }
 
-    private static class EvaluationData {
+    private static final class EvaluationData {
         public final INDArray input;
         public final INDArray labels;
 
-        public EvaluationData(INDArray input, INDArray labels) {
+        EvaluationData(INDArray input, INDArray labels) {
             this.input = input;
             this.labels = labels;
         }
@@ -289,7 +288,7 @@ public class DLPipeline {
         return new int[] { rows, columns };
     }
 
-    public static MultiLayerNetwork createMultiLayerNetwork(int inputColumns, double learningRate) {
+    private static MultiLayerNetwork createMultiLayerNetwork(int inputColumns, double learningRate) {
         int rngSeed = 123; // random number seed for reproducibility
         int optimizationIterations = 1;
         int outputNum = 3; // number of output classes: FR, NFR, None
@@ -340,7 +339,7 @@ public class DLPipeline {
         return new MultiLayerNetwork(multiLayerConf);
     }
 
-    static int getLineCount(String path) throws IOException {
+    private static int getLineCount(String path) throws IOException {
         try (FileReader input = new FileReader(path, StandardCharsets.UTF_8);
              LineNumberReader count = new LineNumberReader(input)) {
             //noinspection StatementWithEmptyBody

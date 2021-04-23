@@ -8,10 +8,10 @@ import java.util.logging.Logger;
 /**
  * @author panc
  */
-public class TermByDocumentCreation {
+final class TermByDocumentCreation {
     private static final Logger logger = Logger.getLogger(TermByDocumentCreation.class.getName());
 
-    public static void createTBD(ConfigFileReader cfr) throws IOException {
+    static void createTBD(ConfigFileReader cfr) throws IOException {
         String pathTbDRScript = cfr.getPathTbDRScript();
         String docsLocation = cfr.getPathRScripts();
         String documentsTrainingSet = cfr.getPathTrainingSetDocuments();

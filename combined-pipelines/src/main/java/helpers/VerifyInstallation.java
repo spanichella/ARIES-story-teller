@@ -2,7 +2,7 @@ package helpers;
 
 import java.nio.file.Path;
 
-public class VerifyInstallation {
+final class VerifyInstallation {
     public static void main(String[] args) {
         boolean failed = false;
         Path mainScript = CommonPaths.R_SCRIPTS.resolve("install.r");

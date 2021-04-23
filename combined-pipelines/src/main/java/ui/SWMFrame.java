@@ -33,7 +33,7 @@ import javax.swing.event.ChangeListener;
 import pipelines.DataType;
 import pipelines.PipelineType;
 
-public class SWMFrame extends JFrame implements ChangeListener {
+final class SWMFrame extends JFrame implements ChangeListener {
     @Serial
     private static final long serialVersionUID = -592869500939986619L;
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
@@ -59,12 +59,12 @@ public class SWMFrame extends JFrame implements ChangeListener {
     private final JLabel s4BLRight;
     private final JLabel s5LStep;
     private final JLabel s5LText;
-    private @Nullable String truthFilePath;
-    private @Nullable DataType dataType;
-    private @Nullable PipelineType pipelineType;
-    private @Nonnull String mlModel = EMPTY_TEXT;
-    private @Nonnull BigDecimal split = BigDecimal.valueOf(5, 1);
-    private @Nonnull String strategy = EMPTY_TEXT;
+    @Nullable private String truthFilePath;
+    @Nullable private DataType dataType;
+    @Nullable private PipelineType pipelineType;
+    @Nonnull private String mlModel = EMPTY_TEXT;
+    @Nonnull private BigDecimal split = BigDecimal.valueOf(5, 1);
+    @Nonnull private String strategy = EMPTY_TEXT;
     private final JComboBox<String> pipelineTypeComboBox;
     private final JComboBox<String> mlModelComboBox;
     private final JComboBox<String> strategyComboBox;
@@ -326,7 +326,7 @@ public class SWMFrame extends JFrame implements ChangeListener {
         this.setVisible(true);
     }
 
-    public void populatePanels(PipelineType pipelineType) {
+    private void populatePipelinePanels() {
         switch (pipelineType) {
             case DL -> {
                 s4ALText.setVisible(false);
@@ -361,7 +361,7 @@ public class SWMFrame extends JFrame implements ChangeListener {
         }
     }
 
-    public void populateThresholdPanels(boolean withThreshold) {
+    private void populateThresholdPanels(boolean withThreshold) {
         if (withThreshold) {
             s4BLStep.setText("<html><div style='text-align: center;'>[Step 6]</div></html>");
             s4BLText.setVisible(true);
@@ -381,7 +381,7 @@ public class SWMFrame extends JFrame implements ChangeListener {
     }
 
 
-    public void checkIfRunnable() {
+    private void updateRunnable() {
         boolean runnable = true;
 
         if (truthFilePath == null || dataType == null || pipelineType == null) {
@@ -393,7 +393,7 @@ public class SWMFrame extends JFrame implements ChangeListener {
         executeB.setEnabled(runnable);
     }
 
-    public void closeWindow() {
+    void closeWindow() {
         loader.closeWindow();
         dispose();
     }
@@ -424,7 +424,7 @@ public class SWMFrame extends JFrame implements ChangeListener {
             }
         }
         updateStatus();
-        checkIfRunnable();
+        updateRunnable();
     }
 
     private void onRun(ActionEvent e) {
@@ -453,7 +453,7 @@ public class SWMFrame extends JFrame implements ChangeListener {
         });
         this.setEnabled(false);
         updateStatus();
-        checkIfRunnable();
+        updateRunnable();
     }
 
     private void onDataTypeChange(DataType dataType) {
@@ -483,7 +483,7 @@ public class SWMFrame extends JFrame implements ChangeListener {
         this.pipelineType = pipelineType;
     }
 
-    public void onStrategyChange(String newStrategy) {
+    private void onStrategyChange(String newStrategy) {
         switch (newStrategy) {
             case "Percentage-Split" -> populateThresholdPanels(true);
             case "10-Fold" -> populateThresholdPanels(false);
@@ -516,7 +516,7 @@ public class SWMFrame extends JFrame implements ChangeListener {
                 listener.accept(value);
             }
             updateStatus();
-            checkIfRunnable();
+            updateRunnable();
         });
         ((JLabel) comboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         return comboBox;
@@ -542,7 +542,7 @@ public class SWMFrame extends JFrame implements ChangeListener {
         };
     }
 
-    private static @Nonnull String translateEmptyText(@Nonnull String text) {
+    @Nonnull private static String translateEmptyText(@Nonnull String text) {
         return text.equals(EMPTY_TEXT) ? "null" : text;
     }
 

@@ -7,13 +7,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class SWMLoaderFrame extends Thread {
+final class SWMLoaderFrame extends Thread {
     private final JFrame frame = new JFrame();
 
-    SWMLoaderFrame() {
-    }
-
-    public void closeWindow() {
+    void closeWindow() {
         frame.dispose();
     }
 

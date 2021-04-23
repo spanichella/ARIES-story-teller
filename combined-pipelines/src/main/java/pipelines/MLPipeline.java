@@ -8,11 +8,11 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 import ml.WekaClassifier;
 
-public class MLPipeline {
+final class MLPipeline {
     private static final Logger logger = Logger.getLogger(MLPipeline.class.getName());
 
     // runs ML according to selections made
-    public static void performMlAnalysis(ConfigFileReader configFileReader) throws Exception {
+    static void performMlAnalysis(ConfigFileReader configFileReader) throws Exception {
         logger.info("Starting Machine Learning Analysis...");
         if (configFileReader.getStrategy() != null) {
             if (configFileReader.getStrategy().equals("Percentage-Split")) {

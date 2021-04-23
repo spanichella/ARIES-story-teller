@@ -22,8 +22,7 @@ import pipelines.DataType;
 /**
  * Fills XML files on startup with correct paths and other values
  */
-public class XMLInitializer {
-
+public final class XMLInitializer {
     private static final Logger logger = Logger.getLogger(XMLInitializer.class.getName());
 
     public static void createXML(@Nonnull String pathTruthFile, @Nonnull DataType dataType, @Nonnull String model,

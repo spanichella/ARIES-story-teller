@@ -142,7 +142,7 @@ public class WekaClassifier {
     /**
      * Get classifier's class name by a short name
      */
-    public static Classifier getClassifierClassName(String classifierName) {
+    private static Classifier getClassifierClassName(String classifierName) {
         return switch (classifierName) {
             case "PART" -> new PART();
             case "NaiveBayes" -> new NaiveBayes();

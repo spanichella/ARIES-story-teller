@@ -7,10 +7,10 @@ import pipelines.DataType;
 import pipelines.MainPipeline;
 import pipelines.PipelineType;
 
-public class PipelineThread extends Thread {
+final class PipelineThread extends Thread {
     private static final Logger logger = Logger.getLogger(PipelineThread.class.getName());
-    private final @Nonnull PipelineType pipelineType;
-    private final @Nonnull DataType dataType;
+    @Nonnull private final PipelineType pipelineType;
+    @Nonnull private final DataType dataType;
 
     PipelineThread(@Nonnull PipelineType pipelineType, @Nonnull DataType dataType) {
         this.pipelineType = pipelineType;
@@ -28,7 +28,7 @@ public class PipelineThread extends Thread {
         }
     }
 
-    static class ThreadException extends RuntimeException {
+    static final class ThreadException extends RuntimeException {
         @Serial
         private static final long serialVersionUID = 7785242162506057983L;
 

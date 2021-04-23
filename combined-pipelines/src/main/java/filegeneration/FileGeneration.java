@@ -7,8 +7,7 @@ import java.util.logging.Logger;
 import oracle.OracleRequirementSpecificationsAnalyzer;
 import oracle.OracleUserReviewsAnalyzer;
 
-public class FileGeneration {
-
+public final class FileGeneration {
     private static final Logger logger = Logger.getLogger(FileGeneration.class.getName());
 
     public static void oracleAnalysis(ConfigFileReader configFileReader) throws IOException {

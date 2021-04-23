@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-class XMLNodeHelper {
+final class XMLNodeHelper {
     private final Document document;
     private final Element node;
 
