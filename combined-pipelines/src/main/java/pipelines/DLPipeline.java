@@ -113,12 +113,20 @@ final class DLPipeline {
     }
 
     private static final class EvaluationData {
-        public final INDArray input;
-        public final INDArray labels;
+        private final INDArray input;
+        private final INDArray labels;
 
         EvaluationData(INDArray input, INDArray labels) {
             this.input = input;
             this.labels = labels;
+        }
+
+        INDArray getInput() {
+            return input;
+        }
+
+        INDArray getLabels() {
+            return labels;
         }
     }
 
@@ -148,7 +156,7 @@ final class DLPipeline {
 
     private static Evaluation getEvaluation(EvaluationData data, MultiLayerNetwork model) {
         Evaluation eval = new Evaluation(3);
-        eval.eval(data.labels, data.input, model);
+        eval.eval(data.getLabels(), data.getInput(), model);
         return eval;
     }
 
