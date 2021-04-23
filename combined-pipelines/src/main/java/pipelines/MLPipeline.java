@@ -30,8 +30,7 @@ final class MLPipeline {
             }
 
             if (configFileReader.getStrategy().equals("10-Fold")) {
-                WekaClassifier wekaClassifier = new WekaClassifier();
-                wekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.getPathFullTDMDataset(),
+                WekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.getPathFullTDMDataset(),
                         configFileReader.getMachineLearningModel(), configFileReader.getPathResultsPrediction());
             }
             logger.info("Machine Learning Analysis completed");

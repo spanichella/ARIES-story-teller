@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
+import javax.annotation.Nonnull;
 import weka.classifiers.Classifier;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.evaluation.Evaluation;
@@ -30,29 +31,20 @@ import weka.core.converters.ConverterUtils.DataSource;
  * @author panc
  */
 
-public class WekaClassifier {
+public final class WekaClassifier {
     private static final Logger logger = Logger.getLogger(WekaClassifier.class.getName());
 
-    private final String pathTrainingSet;
-    private final String pathTestSet;
-    private final String pathModel;
+    @Nonnull private final String pathTrainingSet;
+    @Nonnull private final String pathTestSet;
+    @Nonnull private final String pathModel;
 
-    public WekaClassifier() {
-        pathTrainingSet = null;
-        pathTestSet = null;
-        pathModel = null;
-    }
-
-    public WekaClassifier(String pathTrainingSet, String pathTestSet, String pathModel) {
+    public WekaClassifier(@Nonnull String pathTrainingSet, @Nonnull String pathTestSet, @Nonnull String pathModel) {
         this.pathTrainingSet = pathTrainingSet;
         this.pathTestSet = pathTestSet;
         this.pathModel = pathModel;
     }
 
     public void runSpecifiedMachineLearningModel(String machineLearningModel, String pathResultsPrediction) throws Exception {
-        String pathTrainingSet = getPathTrainingSet();
-        String pathTestSet = getPathTestSet();
-
         //we create instances for training and test sets
         DataSource sourceTraining = new DataSource(pathTrainingSet);
         DataSource sourceTesting = new DataSource(pathTestSet);
@@ -71,16 +63,13 @@ public class WekaClassifier {
         classifier.buildClassifier(train);
 
         Evaluation eval = new Evaluation(train);
-        weka.core.SerializationHelper.write(getPathModel(), classifier);
+        weka.core.SerializationHelper.write(pathModel, classifier);
         eval.evaluateModel(classifier, test);
 
         printAndWriteModelMeasures("training performance", classifier, eval, pathResultsPrediction);
     }
 
     public void runSpecifiedMachineLearningModelToLabelInstances(String machineLearningModel) throws Exception {
-        String pathTrainingSet = getPathTrainingSet();
-        String pathTestSet = getPathTestSet();
-
         DataSource sourceTraining = new DataSource(pathTrainingSet);
         DataSource sourceTesting = new DataSource(pathTestSet);
         Instances train = sourceTraining.getDataSet();
@@ -100,7 +89,7 @@ public class WekaClassifier {
         logger.info("https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf");
     }
 
-    public void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String machineLearningModel, String pathResultsPrediction)
+    public static void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String machineLearningModel, String pathResultsPrediction)
             throws Exception {
         DataSource sourceWholeDataset = new DataSource(pathWholeDataset);
         Instances wholeDataset = sourceWholeDataset.getDataSet(); // from somewhere
@@ -127,7 +116,7 @@ public class WekaClassifier {
         }
     }
 
-    private static void printModelMeasures(String title, Classifier classifier, Evaluation eval, Consumer<String> println)
+    private static void printModelMeasures(String title, Classifier classifier, Evaluation eval, Consumer<? super String> println)
             throws Exception {
         println.accept("%s results of: %s".formatted(title, classifier.getClass().getSimpleName()));
         println.accept("---------------------------------");
@@ -157,17 +146,5 @@ public class WekaClassifier {
             case "RegressionByDiscretization" -> new RegressionByDiscretization();
             default -> new J48();
         };
-    }
-
-    public String getPathTrainingSet() {
-        return pathTrainingSet;
-    }
-
-    public String getPathTestSet() {
-        return pathTestSet;
-    }
-
-    public String getPathModel() {
-        return pathModel;
     }
 }
