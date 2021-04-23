@@ -6,6 +6,8 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
 final class SWMLoaderFrame extends Thread {
     private final JFrame frame = new JFrame();
@@ -23,11 +25,11 @@ final class SWMLoaderFrame extends Thread {
         frame.setLayout(new GridLayout(2, 1));
         frame.getContentPane().setBackground(new Color(88, 102, 148));
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
         JLabel explanationText = new JLabel("Your file is being processed. Please wait...");
-        explanationText.setHorizontalAlignment(JLabel.CENTER);
+        explanationText.setHorizontalAlignment(SwingConstants.CENTER);
         explanationText.setForeground(new Color(230, 230, 230));
 
         frame.add(explanationText);

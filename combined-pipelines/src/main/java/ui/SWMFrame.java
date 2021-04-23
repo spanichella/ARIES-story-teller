@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -28,6 +29,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.xml.parsers.ParserConfigurationException;
@@ -46,7 +48,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
     private static final Color textColor = new Color(230, 230, 230);
     private static final Color separatorColor = new Color(79, 92, 134);
 
-    private SWMLoaderFrame loader;
+    @Nullable private SWMLoaderFrame loader;
 
     private final JButton executeB;
     private final JLabel s1LStep;
@@ -80,10 +82,10 @@ final class SWMFrame extends JFrame implements ChangeListener {
         };
 
     SWMFrame() {
-        ImageIcon logoImage = new ImageIcon("images/swmlogo.jpg");
+        Icon logoImage = new ImageIcon("images/swmlogo.jpg");
         JLabel logoLabel = new JLabel();
         logoLabel.setIcon(logoImage);
-        logoLabel.setHorizontalAlignment(JLabel.CENTER);
+        logoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         executeB = new JButton("Run");
         executeB.addActionListener(this::onRun);
@@ -145,7 +147,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
         this.add(rightBorder, BorderLayout.EAST);
 
         this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.getContentPane().setBackground(backGroundColor);
 
         JPanel logoPanel = new JPanel();
@@ -559,7 +561,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
 
     private static JLabel getLabel(String title, boolean visible) {
         JLabel label = new JLabel(toTitle(title));
-        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setForeground(textColor);
         label.setVisible(visible);
         return label;

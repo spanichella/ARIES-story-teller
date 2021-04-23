@@ -9,6 +9,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -113,8 +115,8 @@ public final class XMLInitializer {
 
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
-        DOMSource domSource = new DOMSource(document);
-        StreamResult streamResult = new StreamResult(CommonPaths.XML_FILES.resolve(name + "XML.xml").toFile());
+        Source domSource = new DOMSource(document);
+        Result streamResult = new StreamResult(CommonPaths.XML_FILES.resolve(name + "XML.xml").toFile());
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         //noinspection HardcodedFileSeparator
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
