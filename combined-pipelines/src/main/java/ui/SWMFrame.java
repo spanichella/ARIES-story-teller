@@ -10,7 +10,6 @@ import java.awt.event.ItemEvent;
 import java.io.File;
 import java.io.Serial;
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
@@ -41,7 +40,6 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
     private static final File DATASETS_FOLDER = new File("..", "datasets");
     private static final String EMPTY_TEXT = "Select";
-    private static final int SPLIT_PRECISION = 2;
 
     private static final Color backGroundColor = new Color(88, 102, 148);
     private static final Color textColor = new Color(230, 230, 230);
@@ -67,7 +65,7 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
     private @Nullable DataType dataType;
     private @Nullable PipelineType pipelineType;
     private @Nonnull String mlModel = EMPTY_TEXT;
-    private @Nonnull BigDecimal split = createSplitDecimal(50);
+    private @Nonnull BigDecimal split = BigDecimal.valueOf(5, 1);
     private @Nonnull String strategy = EMPTY_TEXT;
     private final JComboBox<String> pipelineTypeComboBox;
     private final JComboBox<String> mlModelComboBox;
@@ -499,17 +497,8 @@ public class SWMFrame extends JFrame implements ActionListener, ChangeListener {
     @Override
     public void stateChanged(ChangeEvent e) {
         int rawValue = ((JSlider) e.getSource()).getValue();
-        BigDecimal value = createSplitDecimal(rawValue);
-        s4BLValue.setText(toTitle("value: " + value.toPlainString()));
-        split = value;
-    }
-
-    private static @Nonnull BigDecimal createSplitDecimal(int value) {
-        return new BigDecimal(value, new MathContext(SPLIT_PRECISION))
-                // at least 0.1
-                .max(BigDecimal.TEN)
-                // divide by 100
-                .movePointLeft(SPLIT_PRECISION);
+        split = BigDecimal.valueOf(Math.max(rawValue, 10), 2);
+        s4BLValue.setText(toTitle("value: " + split.toPlainString()));
     }
 
     private <E> JComboBox<String> getTranslatableComboBox(E[] elements, Function<E, String> translator, Consumer<E> listener) {
