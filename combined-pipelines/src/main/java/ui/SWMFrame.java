@@ -424,7 +424,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
 
         if (response == JFileChooser.APPROVE_OPTION) {
             File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-            String extension = file.toString().substring(file.toString().lastIndexOf("."));
+            String extension = file.toString().substring(file.toString().lastIndexOf('.'));
             if (!extension.equals(".txt") && !extension.equals(".csv")) {
                 showErrorMessage("Wrong filetype selected. Please select a .txt or .csv file", null);
                 truthFilePath = null;
