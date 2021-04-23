@@ -331,6 +331,9 @@ final class SWMFrame extends JFrame implements ChangeListener {
     }
 
     private void populatePipelinePanels() {
+        if (pipelineType == null) {
+            return;
+        }
         switch (pipelineType) {
             case DL -> {
                 s4ALText.setVisible(false);
@@ -398,7 +401,9 @@ final class SWMFrame extends JFrame implements ChangeListener {
     }
 
     void closeWindow() {
-        loader.closeWindow();
+        if (loader != null) {
+            loader.closeWindow();
+        }
         dispose();
     }
 
@@ -448,28 +453,26 @@ final class SWMFrame extends JFrame implements ChangeListener {
         }
         PipelineThread mainThread = new PipelineThread(pipelineType, dataType);
         mainThread.start();
-        mainThread.setUncaughtExceptionHandler((Thread thread, Throwable throwable) -> {
-            if (throwable instanceof PipelineThread.ThreadException) {
-                throwable = throwable.getCause();
-            }
-            showErrorMessage("Pipeline Thread failed", throwable);
-            this.closeWindow();
+        mainThread.setUncaughtExceptionHandler((thread, throwable) -> {
+            showErrorMessage("Pipeline Thread failed",
+                    throwable instanceof PipelineThread.ThreadException ? throwable.getCause() : throwable);
+            closeWindow();
         });
         setEnabled(false);
         updateStatus();
         updateRunnable();
     }
 
-    private void onDataTypeChange(DataType dataType) {
-        boolean found = false;
-        switch (dataType) {
+    private void onDataTypeChange(DataType newDataType) {
+        boolean isMissing = true;
+        switch (newDataType) {
             case REQUIREMENT_SPECIFICATIONS -> {
                 for (int i = 0; i < pipelineTypeComboBox.getItemCount(); i++) {
                     if (pipelineTypeComboBox.getItemAt(i).equals("DL")) {
-                        found = true;
+                        isMissing = false;
                     }
                 }
-                if (!found) {
+                if (isMissing) {
                     pipelineTypeComboBox.insertItemAt("DL", pipelineTypeComboBox.getItemCount());
                 }
             }
@@ -479,12 +482,12 @@ final class SWMFrame extends JFrame implements ChangeListener {
             }
             default -> throw new IllegalArgumentException("Unknown type: %s".formatted(newDataType));
         }
-        this.dataType = dataType;
+        dataType = newDataType;
     }
 
-    private void onPipelineTypeChange(PipelineType pipelineType) {
-        populatePanels(pipelineType);
-        this.pipelineType = pipelineType;
+    private void onPipelineTypeChange(PipelineType newPipelineType) {
+        pipelineType = newPipelineType;
+        populatePipelinePanels();
     }
 
     private void onStrategyChange(String newStrategy) {
