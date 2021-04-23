@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
-import ui.SWMGui;
 
 /**
  * This class extends the Main Program class by supporting the execution of
@@ -43,6 +42,5 @@ public final class MainPipeline {
             default -> throw new IllegalArgumentException("Unknown pipeline type: %s".formatted(pipelineType));
         }
         logger.info("Program execution completed");
-        SWMGui.killFrames();
     }
 }

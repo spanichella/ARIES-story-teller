@@ -34,6 +34,7 @@ import javax.swing.event.ChangeEvent;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import pipelines.DataType;
+import pipelines.MainPipeline;
 import pipelines.PipelineType;
 
 final class SWMFrame extends JFrame {
@@ -399,7 +400,7 @@ final class SWMFrame extends JFrame {
         executeB.setEnabled(runnable);
     }
 
-    void closeWindow() {
+    private void closeWindow() {
         if (loader != null) {
             loader.closeWindow();
         }
@@ -450,16 +451,26 @@ final class SWMFrame extends JFrame {
             closeWindow();
             return;
         }
-        PipelineThread mainThread = new PipelineThread(pipelineType, dataType);
+        Thread mainThread = new Thread(() -> runPipeline(pipelineType, dataType));
         mainThread.start();
         mainThread.setUncaughtExceptionHandler((thread, throwable) -> {
             showErrorMessage("Pipeline Thread failed",
-                    throwable instanceof PipelineThread.ThreadException ? throwable.getCause() : throwable);
+                    throwable instanceof ThreadException ? throwable.getCause() : throwable);
             closeWindow();
         });
         setEnabled(false);
         updateStatus();
         updateRunnable();
+    }
+
+    private void runPipeline(@Nonnull PipelineType realPipelineType, @Nonnull DataType realDataType) {
+        logger.info("Thread Running");
+        try {
+            MainPipeline.runPipeline(realPipelineType, realDataType);
+            closeWindow();
+        } catch (Exception e) {
+            throw new ThreadException(e);
+        }
     }
 
     private void onDataTypeChange(DataType newDataType) {
@@ -578,5 +589,14 @@ final class SWMFrame extends JFrame {
             sb.append(" <font color='#56f310'>DONE</font>");
         }
         return sb.append("</html>").toString();
+    }
+
+    private static final class ThreadException extends RuntimeException {
+        @Serial
+        private static final long serialVersionUID = 7785242162506057983L;
+
+        private ThreadException(Throwable cause) {
+            super(cause);
+        }
     }
 }
