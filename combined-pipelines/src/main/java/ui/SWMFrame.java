@@ -506,17 +506,17 @@ final class SWMFrame extends JFrame implements ChangeListener {
         s4BLValue.setText(toTitle("value: " + split.toPlainString()));
     }
 
-    private <E> JComboBox<String> getTranslatableComboBox(E[] elements, Function<E, String> translator, Consumer<E> listener) {
+    private <E> JComboBox<String> getTranslatableComboBox(E[] elements, Function<? super E, String> translator, Consumer<? super E> listener) {
         List<String> translations = Arrays.stream(elements).map(translator).collect(Collectors.toUnmodifiableList());
         return getComboBox(translations.toArray(new String[0]), (String value) ->
                 listener.accept(elements[translations.indexOf(value)]));
     }
 
-    private JComboBox<String> getComboBox(String[] names, Consumer<String> listener) {
+    private JComboBox<String> getComboBox(String[] names, Consumer<? super String> listener) {
         JComboBox<String> comboBox = new JComboBox<>(names);
-        comboBox.addItemListener((ItemEvent e) -> {
-            if (e.getStateChange() == ItemEvent.SELECTED) {
-                String value = (String) e.getItem();
+        comboBox.addItemListener((event) -> {
+            if (event.getStateChange() == ItemEvent.SELECTED) {
+                String value = (String) event.getItem();
                 if (comboBox.getItemAt(0).equals(EMPTY_TEXT)) {
                     comboBox.removeItemAt(0);
                 }
