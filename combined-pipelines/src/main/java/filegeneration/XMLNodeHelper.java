@@ -1,6 +1,5 @@
 package filegeneration;
 
-import java.math.BigDecimal;
 import java.nio.file.Path;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

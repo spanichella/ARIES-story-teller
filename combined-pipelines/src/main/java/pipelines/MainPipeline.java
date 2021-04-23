@@ -28,7 +28,7 @@ public final class MainPipeline {
             case USER_REVIEWS -> xmlFiles.resolve("UserReviewsXML.xml");
         };
 
-        logger.log(Level.INFO, "Path of ConfigFile: " + pathConfigFile);
+        logger.log(Level.INFO, "Path of ConfigFile: %s".formatted(pathConfigFile));
 
         //Read Config file
         ConfigFileReader configFileReader = new ConfigFileReader(pathConfigFile);
@@ -40,7 +40,7 @@ public final class MainPipeline {
         switch (pipelineType) {
             case ML -> MLPipeline.performMlAnalysis(configFileReader);
             case DL -> DLPipeline.runDLPipeline(configFileReader);
-            default -> throw new IllegalArgumentException("Unknown pipeline type: " + pipelineType);
+            default -> throw new IllegalArgumentException("Unknown pipeline type: %s".formatted(pipelineType));
         }
         logger.info("Program execution completed");
         SWMGui.killFrames();

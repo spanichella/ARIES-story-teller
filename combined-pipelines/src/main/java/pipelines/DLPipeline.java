@@ -60,12 +60,11 @@ final class DLPipeline {
 
         // load pre-trained GloVe w2v
         String glove = cfg.getPathGloveFile();
-        System.out.println("TEST" + glove);
-
+        LOGGER.debug("TEST{}", glove);
         int lengthTrainingSet = getLineCount(labelledTurns) - 1;
-        System.out.println(lengthTrainingSet);
+        LOGGER.debug("{}", lengthTrainingSet);
         int lengthTestSet = getLineCount(validationSet) - 1;
-        System.out.println(lengthTestSet);
+        LOGGER.debug("{}", lengthTestSet);
 
 
         int nrOfBatches = 4;
@@ -82,15 +81,15 @@ final class DLPipeline {
         MultiLayerNetwork model = createMultiLayerNetwork(inputColumns, 0.3);
         model.init();
 
-        String modelFileName = "model_6b_" + GLOVE_DIM + "d_v1_0.bin";
+        String modelFileName = "model_6b_%dd_v1_0.bin".formatted(GLOVE_DIM);
 
         // save it to file
         File modelFile = new File(cfg.getPathModel().replace("MLModel.model", ""), modelFileName);
         //noinspection ResultOfMethodCallIgnored
         modelFile.createNewFile();
-        LOGGER.info("Saving model to " + modelFile);
+        LOGGER.info("Saving model to {}", modelFile);
         ModelSerializer.writeModel(model, modelFile, true);
-        System.out.println(labelledTurns);
+        LOGGER.debug("{}", labelledTurns);
 
         LOGGER.info("Start training...");
         int nrOfEpochs = 100;
@@ -99,15 +98,15 @@ final class DLPipeline {
                 wordsPerTurn, model, validationSet, lengthTestSet);
         LOGGER.info("Finished training");
 
-        LOGGER.info("Save trained model to " + modelFile);
+        LOGGER.info("Save trained model to {}", modelFile);
         // save parameter
         ModelSerializer.writeModel(model, modelFile, true);
 
         LOGGER.info("Evaluate model");
         String result = evaluate(validationSet, lengthTestSet, model, wordVectors, inputColumns, wordsPerTurn);
-        System.out.println(result);
+        LOGGER.debug(result);
         String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-        FileWriter fileWriter = new FileWriter(cfg.getPathResultsPrediction() + strDate + ".txt", StandardCharsets.UTF_8);
+        FileWriter fileWriter = new FileWriter("%s%s.txt".formatted(cfg.getPathResultsPrediction(), strDate), StandardCharsets.UTF_8);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println(result);
         printWriter.close();
@@ -134,7 +133,7 @@ final class DLPipeline {
             reader.readLine();
             while ((line = reader.readLine()) != null) {
                 if (line.contains("req_specification")) {
-                    System.out.println("skipped");
+                    LOGGER.debug("skipped");
                     continue;
                 }
 
@@ -157,17 +156,16 @@ final class DLPipeline {
                               int nrOfExamplesPerBatch, int nrOfEpochs, int inputColumns, int wordsPerTurn,
                               MultiLayerNetwork model, String validationSet, int inputSize) throws IOException {
         EvaluationData evaluationData = getEvaluationData(validationSet, inputSize, wordVectors, inputColumns, wordsPerTurn);
-        LOGGER.info("Train with " + nrOfExamplesPerBatch + " examples in " + nrOfBatches + " batches for " + nrOfEpochs
-                + " epochs");
+        LOGGER.info("Train with {} examples in {} batches for {} epochs", nrOfExamplesPerBatch, nrOfBatches, nrOfEpochs);
         for (int epoch = 0; epoch < nrOfEpochs; ++epoch) {
-            LOGGER.info("Epoch " + epoch);
+            LOGGER.info("Epoch {}", epoch);
 
             try (BufferedReader reader = new BufferedReader(new FileReader(labelledTurns, StandardCharsets.UTF_8))) {
 
                 reader.readLine();
                 String line = reader.readLine();
                 for (int batch = 0; line != null && batch < nrOfBatches; ++batch) {
-                    LOGGER.info("Batch " + batch);
+                    LOGGER.info("Batch {}", batch);
 
                     List<INDArray> inputsBatch = new ArrayList<>(nrOfExamplesPerBatch);
                     int[] labelsBatch = new int[nrOfExamplesPerBatch];
@@ -186,7 +184,7 @@ final class DLPipeline {
                         }
 
                         if (line.contains("req_specification")) {
-                            System.out.println("skipped");
+                            LOGGER.debug("skipped");
                             continue;
                         }
 
@@ -237,7 +235,7 @@ final class DLPipeline {
             case "NULL" -> new double[]{1, 0, 0};
             case "A" -> new double[]{0, 1, 0};
             case "F" -> new double[]{0, 0, 1};
-            default -> throw new IllegalArgumentException("Unknown label: " + labelStr);
+            default -> throw new IllegalArgumentException("Unknown label: %s".formatted(labelStr));
         };
     }
 
@@ -251,7 +249,7 @@ final class DLPipeline {
             case "NULL" -> 0;
             case "A" -> 1;
             case "F" -> 2;
-            default -> throw new IllegalArgumentException("Unknown label: " + labelStr);
+            default -> throw new IllegalArgumentException("Unknown label: %s".formatted(labelStr));
         };
     }
 

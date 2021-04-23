@@ -48,7 +48,7 @@ public final class XMLInitializer {
                 attributeTextName = "review";
                 logger.info("Creating XML-file for User Reviews...");
             }
-            default -> throw new IllegalArgumentException("Unknown type \"" + dataType + "\"");
+            default -> throw new IllegalArgumentException("Unknown type \"%s\"".formatted(dataType));
         }
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -79,9 +79,9 @@ public final class XMLInitializer {
         adsorbHelper.addSimpleNode("nameOfAttributeText", attributeTextName);
         adsorbHelper.addSimpleNode("nameOfAttributeClass", "class");
         adsorbHelper.addSimpleNode("pathTbDRScript", CommonPaths.R_SCRIPTS.resolve("MainScript.r"));
-        adsorbHelper.addSimpleNode("pathTrainingSetDocuments", "training-set" + dataTypePostfix);
+        adsorbHelper.addSimpleNode("pathTrainingSetDocuments", "training-set%s".formatted(dataTypePostfix));
 
-        adsorbHelper.addSimpleNode("pathTestSetDocuments", "test-set" + dataTypePostfix);
+        adsorbHelper.addSimpleNode("pathTestSetDocuments", "test-set%s".formatted(dataTypePostfix));
 
         adsorbHelper.addSimpleNode("pathSimplifiedTruthSet", baseFolder.resolve("truth_set-simplified" + dataTypePostfix + ".csv"));
 

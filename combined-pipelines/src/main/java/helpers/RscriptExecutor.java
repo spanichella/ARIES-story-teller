@@ -74,7 +74,7 @@ public final class RscriptExecutor {
         private static final long serialVersionUID = 49748945902517787L;
 
         ExecutionException(String[] commandParts, Throwable cause) {
-            super("Could not execute the script \"" + toCommand(commandParts) + "\"", cause);
+            super("Could not execute the script \"%s\"".formatted(toCommand(commandParts)), cause);
         }
     }
 
@@ -83,7 +83,7 @@ public final class RscriptExecutor {
         private static final long serialVersionUID = -592869500939986619L;
 
         RunFailedException(String[] commandParts) {
-            super("Running the script \"" + toCommand(commandParts) + "\" failed");
+            super("Running the script \"%s\" failed".formatted(toCommand(commandParts)));
         }
     }
 }

@@ -15,7 +15,7 @@ final class VerifyInstallation {
             System.err.println("Verify that you have a running installation of R and it can be found in the $PATH variable");
             failed = true;
         } catch (RunFailedException e) {
-            System.err.println("ERROR: The installation did not succeed. Try to run " + mainScript + " manually.");
+            System.err.printf("ERROR: The installation did not succeed. Try to run %s manually.%n", mainScript);
             e.printStackTrace();
             failed = true;
         }
@@ -23,7 +23,7 @@ final class VerifyInstallation {
         Path gloveFile = CommonPaths.GLOVE_FILE;
         if (!gloveFile.toFile().exists()) {
             //noinspection HardcodedFileSeparator
-            System.err.println("ERROR: The glove file " + gloveFile + " does not exist. Please download it from https://www.kaggle.com/danielwillgeorge/glove6b100dtxt");
+            System.err.printf("ERROR: The glove file %s does not exist. Please download it from https://www.kaggle.com/danielwillgeorge/glove6b100dtxt%n", gloveFile);
             failed = true;
         }
 

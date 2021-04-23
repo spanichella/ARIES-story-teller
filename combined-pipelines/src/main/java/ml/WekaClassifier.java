@@ -67,7 +67,7 @@ public class WekaClassifier {
         logger.info("Training data loaded");
 
         Classifier classifier = getClassifierClassName(machineLearningModel);
-        logger.info("Classifier used: " + classifier.getClass());
+        logger.info("Classifier used: %s".formatted(classifier.getClass()));
         classifier.buildClassifier(train);
 
         Evaluation eval = new Evaluation(train);
@@ -94,8 +94,8 @@ public class WekaClassifier {
         logger.info("Training data loaded");
 
         Classifier classifier = getClassifierClassName(machineLearningModel);
-        logger.info("Classifier used: " + classifier.getClass());
-        logger.info("Test set items that need to be labeled:" + test.numInstances());
+        logger.info("Classifier used: %s".formatted(classifier.getClass()));
+        logger.info("Test set items that need to be labeled:%d".formatted(test.numInstances()));
         logger.info("To classify such instances, consider to use the GUI version of WEKA as reported in the following example:");
         logger.info("https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf");
     }
@@ -109,7 +109,7 @@ public class WekaClassifier {
         logger.info("Loading data");
         Classifier classifier = getClassifierClassName(machineLearningModel);
         logger.info("Using 10-Fold");
-        logger.info("Classifier used: " + classifier.getClass());
+        logger.info("Classifier used: %s".formatted(classifier.getClass()));
         classifier.buildClassifier(wholeDataset);
 
         Evaluation eval = new Evaluation(wholeDataset);
@@ -119,9 +119,9 @@ public class WekaClassifier {
 
     private static void printAndWriteModelMeasures(String title, Classifier classifier, Evaluation eval, String pathResultsPrediction)
             throws Exception {
-        printModelMeasures(title, classifier, eval, System.out::println);
+        printModelMeasures(title, classifier, eval, logger::info);
         String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-        try (FileWriter fileWriter = new FileWriter(pathResultsPrediction + strDate + ".txt", StandardCharsets.UTF_8);
+        try (FileWriter fileWriter = new FileWriter("%s%s.txt".formatted(pathResultsPrediction, strDate), StandardCharsets.UTF_8);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
             printModelMeasures(title, classifier, eval, printWriter::println);
         }
@@ -129,14 +129,14 @@ public class WekaClassifier {
 
     private static void printModelMeasures(String title, Classifier classifier, Evaluation eval, Consumer<String> println)
             throws Exception {
-        println.accept(title + " results of: " + classifier.getClass().getSimpleName());
+        println.accept("%s results of: %s".formatted(title, classifier.getClass().getSimpleName()));
         println.accept("---------------------------------");
         println.accept("");
         println.accept(eval.toSummaryString("Results", true));
-        println.accept("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
+        println.accept("fmeasure: %s Precision: %s Recall: %s".formatted(eval.fMeasure(1), eval.precision(1), eval.recall(1)));
         println.accept(eval.toMatrixString());
         println.accept(eval.toClassDetailsString());
-        println.accept("AUC = " + eval.areaUnderROC(1));
+        println.accept("AUC = %s".formatted(eval.areaUnderROC(1)));
     }
 
     /**

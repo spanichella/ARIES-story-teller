@@ -359,7 +359,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
                 s4BLRight.setVisible(false);
                 thresholdSlider.setVisible(false);
             }
-            default -> throw new IllegalArgumentException("Unknown pipeline type: " + pipelineType);
+            default -> throw new IllegalArgumentException("Unknown pipeline type: %s".formatted(pipelineType));
         }
     }
 
@@ -475,7 +475,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
                 pipelineTypeComboBox.setSelectedItem("ML");
                 pipelineTypeComboBox.removeItem("DL");
             }
-            default -> throw new IllegalArgumentException("Unknown type: " + dataType);
+            default -> throw new IllegalArgumentException("Unknown type: %s".formatted(newDataType));
         }
         this.dataType = dataType;
     }
@@ -489,7 +489,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
         switch (newStrategy) {
             case "Percentage-Split" -> populateThresholdPanels(true);
             case "10-Fold" -> populateThresholdPanels(false);
-            default -> throw new IllegalArgumentException("Unknown strategy " + newStrategy);
+            default -> throw new IllegalArgumentException("Unknown strategy %s".formatted(newStrategy));
         }
         strategy = newStrategy;
     }
@@ -570,9 +570,10 @@ final class SWMFrame extends JFrame implements ChangeListener {
     }
 
     private static String toTitle(String title, boolean done) {
+        StringBuilder sb = new StringBuilder("<html>").append(title);
         if (done) {
-            title += " <font color='#56f310'>DONE</font>";
+            sb.append(" <font color='#56f310'>DONE</font>");
         }
-        return "<html>" + title + "</html>";
+        return sb.append("</html>").toString();
     }
 }
