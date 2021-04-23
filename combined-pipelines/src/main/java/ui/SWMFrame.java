@@ -121,34 +121,34 @@ final class SWMFrame extends JFrame implements ChangeListener {
         s5LText = getLabel("Select Strategy", false);
 
         ImageIcon icon = new ImageIcon("images/STIcon.jpg");
-        this.setIconImage(icon.getImage());
-        this.setTitle("Story Teller");
-        this.setSize(350, 800);
-        this.setLayout(new BorderLayout());
+        setIconImage(icon.getImage());
+        setTitle("Story Teller");
+        setSize(350, 800);
+        setLayout(new BorderLayout());
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(8, 1));
-        this.add(mainPanel, BorderLayout.CENTER);
+        add(mainPanel, BorderLayout.CENTER);
 
         JPanel topBorder = new JPanel();
         topBorder.setBackground(separatorColor);
-        this.add(topBorder, BorderLayout.PAGE_START);
+        add(topBorder, BorderLayout.PAGE_START);
 
         JPanel bottomBorder = new JPanel();
         bottomBorder.setBackground(separatorColor);
-        this.add(bottomBorder, BorderLayout.PAGE_END);
+        add(bottomBorder, BorderLayout.PAGE_END);
 
         JPanel leftBorder = new JPanel();
         leftBorder.setBackground(separatorColor);
-        this.add(leftBorder, BorderLayout.WEST);
+        add(leftBorder, BorderLayout.WEST);
 
         JPanel rightBorder = new JPanel();
         rightBorder.setBackground(separatorColor);
-        this.add(rightBorder, BorderLayout.EAST);
+        add(rightBorder, BorderLayout.EAST);
 
-        this.setResizable(false);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.getContentPane().setBackground(backGroundColor);
+        setResizable(false);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setBackground(backGroundColor);
 
         JPanel logoPanel = new JPanel();
         logoPanel.setBackground(backGroundColor);
@@ -327,7 +327,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
         s5BorderCenterPanel.add(s5LText);
         s5BorderCenterPanel.add(strategyComboBox);
 
-        this.setVisible(true);
+        setVisible(true);
     }
 
     private void populatePipelinePanels() {
@@ -443,7 +443,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
             XMLInitializer.createXML(truthFilePath, dataType, translateEmptyText(mlModel), split, translateEmptyText(strategy));
         } catch (TransformerException | ParserConfigurationException | RuntimeException exception) {
             showErrorMessage("Generating the XML Failed", exception);
-            this.closeWindow();
+            closeWindow();
             return;
         }
         PipelineThread mainThread = new PipelineThread(pipelineType, dataType);
@@ -455,7 +455,7 @@ final class SWMFrame extends JFrame implements ChangeListener {
             showErrorMessage("Pipeline Thread failed", throwable);
             this.closeWindow();
         });
-        this.setEnabled(false);
+        setEnabled(false);
         updateStatus();
         updateRunnable();
     }
