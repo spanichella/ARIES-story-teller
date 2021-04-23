@@ -11,9 +11,7 @@ import java.util.logging.Logger;
  * @author panc
  */
 public final class OracleRequirementSpecificationsAnalyzer {
-
-    private static final Logger logger = Logger.getLogger(OracleUserReviewsAnalyzer.class.getName());
-
+    private static final Logger logger = Logger.getLogger(OracleRequirementSpecificationsAnalyzer.class.getName());
 
     public static void runReqSpecRScript(ConfigFileReader cfr) throws ExecutionException, RunFailedException {
         String pathRScriptOracle = cfr.getPathRScriptOracle();
