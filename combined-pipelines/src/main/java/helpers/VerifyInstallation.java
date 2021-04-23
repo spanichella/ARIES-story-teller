@@ -1,8 +1,8 @@
 package helpers;
 
-import java.nio.file.Path;
 import helpers.RscriptExecutor.ExecutionException;
 import helpers.RscriptExecutor.RunFailedException;
+import java.nio.file.Path;
 
 final class VerifyInstallation {
     @SuppressWarnings({"UseOfSystemOutOrSystemErr", "CallToPrintStackTrace"})

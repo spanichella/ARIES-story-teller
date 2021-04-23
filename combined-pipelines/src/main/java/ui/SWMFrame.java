@@ -33,8 +33,8 @@ import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import types.DataType;
 import pipelines.MainPipeline;
+import types.DataType;
 import types.PipelineType;
 
 final class SWMFrame extends JFrame {
