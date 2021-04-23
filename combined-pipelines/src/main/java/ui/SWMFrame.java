@@ -515,7 +515,8 @@ final class SWMFrame extends JFrame {
         s4BLValue.setText(toTitle("value: " + split.toPlainString()));
     }
 
-    private <E> JComboBox<String> getTranslatableComboBox(E[] elements, Function<? super E, String> translator, Consumer<? super E> listener) {
+    private <E> JComboBox<String> getTranslatableComboBox(E[] elements, Function<? super E, String> translator,
+                                                          Consumer<? super E> listener) {
         List<String> translations = Arrays.stream(elements).map(translator).collect(Collectors.toUnmodifiableList());
         return getComboBox(translations.toArray(new String[0]), (String value) ->
                 listener.accept(elements[translations.indexOf(value)]));
