@@ -54,12 +54,12 @@ final class DLPipeline {
     static void runDLPipeline(ConfigFileReader cfg) throws IOException {
 
         // the training set
-        String labelledTurns = cfg.getPathTrainingSet();
+        String labelledTurns = cfg.pathTrainingSet;
         // the test set (but used for validation..)
-        String validationSet = cfg.getPathTestSet();
+        String validationSet = cfg.pathTestSet;
 
         // load pre-trained GloVe w2v
-        String glove = cfg.getPathGloveFile();
+        String glove = cfg.pathGloveFile;
         LOGGER.debug("TEST{}", glove);
         int lengthTrainingSet = getLineCount(labelledTurns) - 1;
         LOGGER.debug("{}", lengthTrainingSet);
@@ -84,7 +84,7 @@ final class DLPipeline {
         String modelFileName = "model_6b_%dd_v1_0.bin".formatted(GLOVE_DIM);
 
         // save it to file
-        File modelFile = new File(cfg.getPathModel().replace("MLModel.model", ""), modelFileName);
+        File modelFile = new File(cfg.pathModel.replace("MLModel.model", ""), modelFileName);
         //noinspection ResultOfMethodCallIgnored
         modelFile.createNewFile();
         LOGGER.info("Saving model to {}", modelFile);
@@ -106,7 +106,7 @@ final class DLPipeline {
         String result = evaluate(validationSet, lengthTestSet, model, wordVectors, inputColumns, wordsPerTurn);
         LOGGER.debug(result);
         String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-        FileWriter fileWriter = new FileWriter("%s%s.txt".formatted(cfg.getPathResultsPrediction(), strDate), StandardCharsets.UTF_8);
+        FileWriter fileWriter = new FileWriter("%s%s.txt".formatted(cfg.pathResultsPrediction, strDate), StandardCharsets.UTF_8);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println(result);
         printWriter.close();

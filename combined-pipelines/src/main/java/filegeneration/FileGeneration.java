@@ -12,12 +12,12 @@ public final class FileGeneration {
     private static final Logger logger = Logger.getLogger(FileGeneration.class.getName());
 
     public static void oracleAnalysis(ConfigFileReader configFileReader) throws ExecutionException, RunFailedException {
-        if (configFileReader.getDataType() != null) {
+        if (configFileReader.dataType != null) {
             //Select Oracle Analysis according to data type
             logger.info("Oracle getting analyzed...");
-            if (configFileReader.getDataType().equals("Requirement Specifications")) {
+            if (configFileReader.dataType.equals("Requirement Specifications")) {
                 OracleRequirementSpecificationsAnalyzer.runReqSpecRScript(configFileReader);
-            } else if (configFileReader.getDataType().equals("User Reviews")) {
+            } else if (configFileReader.dataType.equals("User Reviews")) {
                 OracleUserReviewsAnalyzer.runUserReviewRScript(configFileReader);
             } else {
                 logger.log(Level.SEVERE, "Data type does not match analysis options");

@@ -18,29 +18,29 @@ import org.xml.sax.SAXException;
 public final class ConfigFileReader {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConfigFileReader.class.getName());
 
-    private final String pathRScripts;
-    private final String pathRScriptOracle;
-    private final String pathBaseFolder;
-    private final String pathTruthSet;
-    private final String threshold;
-    private final String pathTbDRScript;
-    private final String pathTrainingSetDocuments;
-    private final String pathTestSetDocuments;
-    private final String pathSimplifiedTruthSet;
-    private final String pathTrainingSet;
-    private final String pathTestSet;
-    private final String pathGloveFile;
-    private final String dataType;
-    private final String machineLearningModel;
-    private final String nameOfAttributeClass;
-    private final String nameOfAttributeID;
-    private final String nameOfAttributeText;
-    private final String pathModel;
-    private final String pathFullTDMDataset;
-    private final String pathResultsPrediction;
-    private final String pathTDMTrainingSet;
-    private final String pathTDMTestSet;
-    private final String strategy;
+    public final String pathRScripts;
+    public final String pathRScriptOracle;
+    public final String pathBaseFolder;
+    public final String pathTruthSet;
+    public final String threshold;
+    public final String pathTbDRScript;
+    public final String pathTrainingSetDocuments;
+    public final String pathTestSetDocuments;
+    public final String pathSimplifiedTruthSet;
+    public final String pathTrainingSet;
+    public final String pathTestSet;
+    public final String pathGloveFile;
+    public final String dataType;
+    public final String machineLearningModel;
+    public final String nameOfAttributeClass;
+    public final String nameOfAttributeID;
+    public final String nameOfAttributeText;
+    public final String pathModel;
+    public final String pathFullTDMDataset;
+    public final String pathResultsPrediction;
+    public final String pathTDMTrainingSet;
+    public final String pathTDMTestSet;
+    public final String strategy;
 
     public ConfigFileReader(Path pathXMLConfigFile) throws ParserConfigurationException, IOException, SAXException {
         LOGGER.info("Loading the config file...");
@@ -90,97 +90,5 @@ public final class ConfigFileReader {
         pathTDMTrainingSet = element.getElementsByTagName("pathTDMTrainingSet").item(0).getTextContent();
         pathTDMTestSet = element.getElementsByTagName("pathTDMTestSet").item(0).getTextContent();
         pathFullTDMDataset = element.getElementsByTagName("pathFullTDMDataset").item(0).getTextContent();
-    }
-
-    public  String getPathResultsPrediction() {
-        return pathResultsPrediction;
-    }
-
-    public  String getStrategy() {
-        return strategy;
-    }
-
-    public  String getMachineLearningModel() {
-        return machineLearningModel;
-    }
-
-    public String getPathFullTDMDataset() {
-        return pathFullTDMDataset;
-    }
-
-    public String getPathTDMTrainingSet() {
-        return pathTDMTrainingSet;
-    }
-
-    public String getPathTDMTestSet() {
-        return pathTDMTestSet;
-    }
-
-    public String getPathModel() {
-        return pathModel;
-    }
-
-    public String getDataType() {
-        return dataType;
-    }
-
-    public String getNameOfAttributeID() {
-        return nameOfAttributeID;
-    }
-
-    public String getNameOfAttributeText() {
-        return nameOfAttributeText;
-    }
-
-    public String getNameOfAttributeClass() {
-        return nameOfAttributeClass;
-    }
-
-    public String getPathGloveFile() {
-        return pathGloveFile;
-    }
-
-    public String getPathRScriptOracle() {
-        return pathRScriptOracle;
-    }
-
-    public String getPathRScripts() {
-        return pathRScripts;
-    }
-
-    public String getPathBaseFolder() {
-        return pathBaseFolder;
-    }
-
-    public String getPathTruthSet() {
-        return pathTruthSet;
-    }
-
-    public String getThreshold() {
-        return threshold;
-    }
-
-    public String getPathTbDRScript() {
-        return pathTbDRScript;
-    }
-
-    public String getPathTrainingSetDocuments() {
-        return pathTrainingSetDocuments;
-    }
-
-    public String getPathTestSet() {
-        return pathTestSet;
-    }
-
-    public String getPathTestSetDocuments() {
-        return pathTestSetDocuments;
-    }
-
-    public String getPathSimplifiedTruthSet() {
-        return pathSimplifiedTruthSet;
-    }
-
-    public String getPathTrainingSet() {
-        return pathTrainingSet;
     }
 }
