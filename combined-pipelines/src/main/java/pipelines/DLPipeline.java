@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import javax.annotation.Nonnull;
 import org.apache.commons.lang.ArrayUtils;
 import org.deeplearning4j.eval.Evaluation;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
@@ -113,19 +114,19 @@ final class DLPipeline {
     }
 
     private static final class EvaluationData {
-        private final INDArray input;
-        private final INDArray labels;
+        @Nonnull private final INDArray input;
+        @Nonnull private final INDArray labels;
 
-        EvaluationData(INDArray input, INDArray labels) {
+        EvaluationData(@Nonnull INDArray input, @Nonnull INDArray labels) {
             this.input = input;
             this.labels = labels;
         }
 
-        INDArray getInput() {
+        @Nonnull INDArray getInput() {
             return input;
         }
 
-        INDArray getLabels() {
+        @Nonnull INDArray getLabels() {
             return labels;
         }
     }

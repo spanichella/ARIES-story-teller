@@ -50,29 +50,29 @@ final class SWMFrame extends JFrame {
 
     @Nullable private SWMLoaderFrame loader;
 
-    private final JButton executeB;
-    private final JLabel s1LStep;
-    private final JLabel s2LStep;
-    private final JLabel s3LStep;
-    private final JLabel s4ALStep;
-    private final JLabel s4ALText;
-    private final JLabel s4BLStep;
-    private final JLabel s4BLText;
-    private final JLabel s4BLValue;
-    private final JLabel s4BLLeft;
-    private final JLabel s4BLRight;
-    private final JLabel s5LStep;
-    private final JLabel s5LText;
+    @Nonnull private final JButton executeB;
+    @Nonnull private final JLabel s1LStep;
+    @Nonnull private final JLabel s2LStep;
+    @Nonnull private final JLabel s3LStep;
+    @Nonnull private final JLabel s4ALStep;
+    @Nonnull private final JLabel s4ALText;
+    @Nonnull private final JLabel s4BLStep;
+    @Nonnull private final JLabel s4BLText;
+    @Nonnull private final JLabel s4BLValue;
+    @Nonnull private final JLabel s4BLLeft;
+    @Nonnull private final JLabel s4BLRight;
+    @Nonnull private final JLabel s5LStep;
+    @Nonnull private final JLabel s5LText;
     @Nullable private String truthFilePath;
     @Nullable private DataType dataType;
     @Nullable private PipelineType pipelineType;
     @Nonnull private String mlModel = EMPTY_TEXT;
     @Nonnull private BigDecimal split = BigDecimal.valueOf(5, 1);
     @Nonnull private String strategy = EMPTY_TEXT;
-    private final JComboBox<String> pipelineTypeComboBox;
-    private final JComboBox<String> mlModelComboBox;
-    private final JComboBox<String> strategyComboBox;
-    private final JSlider thresholdSlider;
+    @Nonnull private final JComboBox<String> pipelineTypeComboBox;
+    @Nonnull private final JComboBox<String> mlModelComboBox;
+    @Nonnull private final JComboBox<String> strategyComboBox;
+    @Nonnull private final JSlider thresholdSlider;
     private static final String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
     private static final String[] mlModelArray = {
         EMPTY_TEXT, "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
