@@ -14,27 +14,25 @@ final class MLPipeline {
     // runs ML according to selections made
     static void performMlAnalysis(ConfigFileReader configFileReader) throws Exception {
         logger.info("Starting Machine Learning Analysis...");
-        if (configFileReader.strategy != null) {
-            if (configFileReader.strategy.equals("Percentage-Split")) {
-                WekaClassifier wekaClassifier = new WekaClassifier(configFileReader.pathTDMTrainingSet,
-                        configFileReader.pathTDMTestSet, configFileReader.pathModel);
+        if (configFileReader.strategy.equals("Percentage-Split")) {
+            WekaClassifier wekaClassifier = new WekaClassifier(configFileReader.pathTDMTrainingSet,
+                configFileReader.pathTDMTestSet, configFileReader.pathModel);
 
-                if (checkWhetherTestSetIsLabeled(configFileReader.pathTDMTestSet)) {
-                    wekaClassifier.runSpecifiedMachineLearningModel(configFileReader.machineLearningModel,
-                            configFileReader.pathResultsPrediction);
-                    // default behaviour it does prediction with given training and test sets with J48
-                } else {
-                    wekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(configFileReader.machineLearningModel);
-                    // default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
-                }
+            if (checkWhetherTestSetIsLabeled(configFileReader.pathTDMTestSet)) {
+                wekaClassifier.runSpecifiedMachineLearningModel(configFileReader.machineLearningModel,
+                    configFileReader.pathResultsPrediction);
+                // default behaviour it does prediction with given training and test sets with J48
+            } else {
+                wekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(configFileReader.machineLearningModel);
+                // default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
             }
-
-            if (configFileReader.strategy.equals("10-Fold")) {
-                WekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.pathFullTDMDataset,
-                        configFileReader.machineLearningModel, configFileReader.pathResultsPrediction);
-            }
-            logger.info("Machine Learning Analysis completed");
         }
+
+        if (configFileReader.strategy.equals("10-Fold")) {
+            WekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.pathFullTDMDataset,
+                configFileReader.machineLearningModel, configFileReader.pathResultsPrediction);
+        }
+        logger.info("Machine Learning Analysis completed");
     }
 
     private static boolean checkWhetherTestSetIsLabeled(String pathTestSet) throws FileNotFoundException {
