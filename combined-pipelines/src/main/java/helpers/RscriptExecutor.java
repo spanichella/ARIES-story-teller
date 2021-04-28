@@ -21,18 +21,23 @@ public final class RscriptExecutor {
      * @throws ExecutionException If there is a general problem with executing the process (e.g. the command is not found)
      * @throws RunFailedException If the run finishes with a non-zero exit status
      */
-    @SuppressWarnings("CallToRuntimeExec")
     public static void execute(String... commandParts) throws ExecutionException, RunFailedException {
+        executeWithRuntime(Runtime.getRuntime(), commandParts);
+    }
+
+    @SuppressWarnings("CallToRuntimeExec")
+    public static void executeWithRuntime(Runtime runtime, String... commandParts) throws ExecutionException, RunFailedException {
         Process process;
+        String[] fullCommand = toRscriptCommand(commandParts);
         try {
-            process = Runtime.getRuntime().exec(toRscriptCommand(commandParts));
+            process = runtime.exec(fullCommand);
             logStream(process.getInputStream(), Level.INFO);
             logStream(process.getErrorStream(), Level.SEVERE);
         } catch (IOException exception) {
-            throw new ExecutionException(commandParts, exception);
+            throw new ExecutionException(fullCommand, exception);
         }
         if (process.exitValue() != 0) {
-            throw new RunFailedException(commandParts);
+            throw new RunFailedException(fullCommand);
         }
     }
 
