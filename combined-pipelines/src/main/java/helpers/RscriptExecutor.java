@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public final class RscriptExecutor {
-    private static final Logger LOGGER = Logger.getLogger(RscriptExecutor.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(RscriptExecutor.class.getName());
     private static final String rscriptCommand = "Rscript";
 
     /**

@@ -3,18 +3,21 @@ package test.helpers;
 import helpers.RscriptExecutor;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import java.util.logging.Level;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
+import test.utilities.LogMessageFetcher;
 
 @SuppressWarnings("CallToRuntimeExec")
 final class RscriptExecutorTests {
     @Test
     void testArgumentsGetPassedCorrectly() throws Exception {
         Runtime runtimeMock = Mockito.mock(Runtime.class);
-        Process returnedProcess = getProcessMock(0, "Test STDOUT Output", "Test STDERR Output");
+        Process returnedProcess = getProcessMock(0);
         Mockito.when(runtimeMock.exec(ArgumentMatchers.any(String[].class))).thenReturn(returnedProcess);
 
         RscriptExecutor.executeWithRuntime(runtimeMock, "some", "argument");
@@ -27,9 +30,26 @@ final class RscriptExecutorTests {
     }
 
     @Test
+    void testLogIsWrittenCorrectly() throws Exception {
+        LogMessageFetcher fetcher = new LogMessageFetcher();
+        RscriptExecutor.LOGGER.setFilter(fetcher);
+
+        Runtime runtimeMock = Mockito.mock(Runtime.class);
+        Process returnedProcess = getProcessMock(0, "Test STDOUT Output", "Test STDERR Output");
+        Mockito.when(runtimeMock.exec(ArgumentMatchers.any(String[].class))).thenReturn(returnedProcess);
+
+        RscriptExecutor.executeWithRuntime(runtimeMock, "some", "argument");
+
+        Assertions.assertEquals(fetcher.getMessages(), Map.of(
+            Level.INFO, "Test STDOUT Output",
+            Level.SEVERE, "Test STDERR Output"
+        ));
+    }
+
+    @Test
     void testFailingCommand() throws Exception {
         Runtime runtimeMock = Mockito.mock(Runtime.class);
-        Process returnedProcess = getProcessMock(1, "Other STDOUT Output", "Other STDERR Output");
+        Process returnedProcess = getProcessMock(1);
         Mockito.when(runtimeMock.exec(ArgumentMatchers.any(String[].class))).thenReturn(returnedProcess);
 
         RscriptExecutor.RunFailedException exception = Assertions.assertThrows(RscriptExecutor.RunFailedException.class,
@@ -47,6 +67,10 @@ final class RscriptExecutorTests {
             () -> RscriptExecutor.executeWithRuntime(runtimeMock, "some", "other", "argument"));
         Assertions.assertEquals(exception.getMessage(), "Could not execute the script \"Rscript some other argument\"");
         Assertions.assertEquals(exception.getCause(), thrownException);
+    }
+
+    private static Process getProcessMock(int exitValue) {
+        return getProcessMock(exitValue, "", "");
     }
 
     private static Process getProcessMock(int exitValue, String stdout, String stderr) {
