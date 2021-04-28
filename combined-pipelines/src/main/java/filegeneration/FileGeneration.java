@@ -14,13 +14,10 @@ public final class FileGeneration {
     public static void oracleAnalysis(ConfigFileReader configFileReader) throws ExecutionException, RunFailedException {
         //Select Oracle Analysis according to data type
         logger.info("Oracle getting analyzed...");
-        if (configFileReader.dataType.equals("Requirement Specifications")) {
-            OracleRequirementSpecificationsAnalyzer.runReqSpecRScript(configFileReader);
-        } else if (configFileReader.dataType.equals("User Reviews")) {
-            OracleUserReviewsAnalyzer.runUserReviewRScript(configFileReader);
-        } else {
-            logger.log(Level.SEVERE, "Data type does not match analysis options");
-            System.exit(1);
+        switch (configFileReader.dataType) {
+            case "Requirement Specifications" -> OracleRequirementSpecificationsAnalyzer.runReqSpecRScript(configFileReader);
+            case "User Reviews" -> OracleUserReviewsAnalyzer.runUserReviewRScript(configFileReader);
+            default -> throw new IllegalArgumentException("Data type does not match analysis options");
         }
         logger.info("Oracle analysis completed");
 
