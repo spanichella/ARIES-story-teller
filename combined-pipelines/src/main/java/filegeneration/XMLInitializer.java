@@ -82,31 +82,18 @@ public final class XMLInitializer {
         adsorbHelper.addSimpleNode("nameOfAttributeClass", "class");
         adsorbHelper.addSimpleNode("pathTbDRScript", CommonPaths.R_SCRIPTS.resolve("MainScript.r"));
         adsorbHelper.addSimpleNode("pathTrainingSetDocuments", "training-set%s".formatted(dataTypePostfix));
-
         adsorbHelper.addSimpleNode("pathTestSetDocuments", "test-set%s".formatted(dataTypePostfix));
-
         adsorbHelper.addSimpleNode("pathSimplifiedTruthSet", baseFolder.resolve("truth_set-simplified" + dataTypePostfix + ".csv"));
-
         adsorbHelper.addSimpleNode("strategy", strategy);
-
         adsorbHelper.addSimpleNode("machineLearningModel", model);
-
         adsorbHelper.addSimpleNode("pathModel", CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model"));
-
         adsorbHelper.addSimpleNode("percentageSplit", percentage.toPlainString());
-
         adsorbHelper.addSimpleNode("pathResultsPrediction", CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_"));
-
         Path preprocessedFolder = baseFolder.resolve("documents-preprocessed-" + attributeTextName);
-
         adsorbHelper.addSimpleNode("pathTDMTestSet", preprocessedFolder.resolve("tdm_full_testSet_with_oracle_info.csv"));
-
         adsorbHelper.addSimpleNode("pathTrainingSet", baseFolder.resolve("trainingSet_truth_set" + dataTypePostfix + ".csv"));
-
         adsorbHelper.addSimpleNode("pathTestSet", baseFolder.resolve("testSet_truth_set" + dataTypePostfix + ".csv"));
-
         adsorbHelper.addSimpleNode("pathTDMTrainingSet", preprocessedFolder.resolve("tdm_full_trainingSet_with_oracle_info.csv"));
-
         adsorbHelper.addSimpleNode("pathFullTDMDataset", preprocessedFolder.resolve("tdm_full_with_oracle_info.csv"));
 
         Element gloveFile = document.createElement("pathGloveFile");
