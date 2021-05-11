@@ -1,6 +1,5 @@
 package ui;
 
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -23,14 +22,14 @@ final class SWMLoaderFrame extends Thread {
         frame.setTitle("Story Teller Loader");
         frame.setSize(200, 200);
         frame.setLayout(new GridLayout(2, 1));
-        frame.getContentPane().setBackground(new Color(88, 102, 148));
+        frame.getContentPane().setBackground(DefaultColors.BACKGROUND);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
         JLabel explanationText = new JLabel("Your file is being processed. Please wait...");
         explanationText.setHorizontalAlignment(SwingConstants.CENTER);
-        explanationText.setForeground(new Color(230, 230, 230));
+        explanationText.setForeground(DefaultColors.TEXT);
 
         frame.add(explanationText);
 

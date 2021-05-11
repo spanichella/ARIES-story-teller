@@ -2,7 +2,6 @@ package ui;
 
 import filegeneration.XMLInitializer;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
@@ -43,10 +42,6 @@ final class SWMFrame extends JFrame {
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
     private static final File DATASETS_FOLDER = new File("..", "datasets");
     private static final String EMPTY_TEXT = "Select";
-
-    private static final Color backGroundColor = new Color(88, 102, 148);
-    private static final Color textColor = new Color(230, 230, 230);
-    private static final Color separatorColor = new Color(79, 92, 134);
 
     @Nullable private SWMLoaderFrame loader;
 
@@ -93,7 +88,7 @@ final class SWMFrame extends JFrame {
 
         thresholdSlider = new JSlider();
         thresholdSlider.setMinorTickSpacing(1);
-        thresholdSlider.setBackground(backGroundColor);
+        thresholdSlider.setBackground(DefaultColors.BACKGROUND);
         thresholdSlider.addChangeListener(this::onSplitChanged);
         thresholdSlider.setVisible(false);
 
@@ -131,132 +126,132 @@ final class SWMFrame extends JFrame {
         add(mainPanel, BorderLayout.CENTER);
 
         JPanel topBorder = new JPanel();
-        topBorder.setBackground(separatorColor);
+        topBorder.setBackground(DefaultColors.SEPARATOR);
         add(topBorder, BorderLayout.PAGE_START);
 
         JPanel bottomBorder = new JPanel();
-        bottomBorder.setBackground(separatorColor);
+        bottomBorder.setBackground(DefaultColors.SEPARATOR);
         add(bottomBorder, BorderLayout.PAGE_END);
 
         JPanel leftBorder = new JPanel();
-        leftBorder.setBackground(separatorColor);
+        leftBorder.setBackground(DefaultColors.SEPARATOR);
         add(leftBorder, BorderLayout.WEST);
 
         JPanel rightBorder = new JPanel();
-        rightBorder.setBackground(separatorColor);
+        rightBorder.setBackground(DefaultColors.SEPARATOR);
         add(rightBorder, BorderLayout.EAST);
 
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setBackground(backGroundColor);
+        getContentPane().setBackground(DefaultColors.BACKGROUND);
 
         JPanel logoPanel = new JPanel();
-        logoPanel.setBackground(backGroundColor);
+        logoPanel.setBackground(DefaultColors.BACKGROUND);
         logoPanel.setLayout(new BorderLayout());
 
         //Step 1 Panels
         JPanel step1Panel = new JPanel();
-        step1Panel.setBackground(backGroundColor);
+        step1Panel.setBackground(DefaultColors.BACKGROUND);
         step1Panel.setLayout(new BorderLayout());
 
         JPanel s1BorderCenterPanel = new JPanel();
-        s1BorderCenterPanel.setBackground(backGroundColor);
+        s1BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s1BorderCenterPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s1BlackBorder1 = new JPanel();
-        s1BlackBorder1.setBackground(separatorColor);
+        s1BlackBorder1.setBackground(DefaultColors.SEPARATOR);
 
         JPanel s1BlackBorder2 = new JPanel();
-        s1BlackBorder2.setBackground(separatorColor);
+        s1BlackBorder2.setBackground(DefaultColors.SEPARATOR);
 
         JPanel s1BottomPanel = new JPanel();
-        s1BottomPanel.setBackground(backGroundColor);
+        s1BottomPanel.setBackground(DefaultColors.BACKGROUND);
         s1BottomPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s1CenterPanel = new JPanel();
-        s1CenterPanel.setBackground(backGroundColor);
+        s1CenterPanel.setBackground(DefaultColors.BACKGROUND);
         s1CenterPanel.setLayout(new GridLayout(0, 3));
 
         JPanel s1Empty = new JPanel();
-        s1Empty.setBackground(backGroundColor);
+        s1Empty.setBackground(DefaultColors.BACKGROUND);
 
         //step 2 panels
         JPanel step2Panel = new JPanel();
-        step2Panel.setBackground(backGroundColor);
+        step2Panel.setBackground(DefaultColors.BACKGROUND);
         step2Panel.setLayout(new BorderLayout());
 
         JPanel s2BorderCenterPanel = new JPanel();
-        s2BorderCenterPanel.setBackground(backGroundColor);
+        s2BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s2BorderCenterPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s2BlackBorder1 = new JPanel();
-        s2BlackBorder1.setBackground(separatorColor);
+        s2BlackBorder1.setBackground(DefaultColors.SEPARATOR);
 
         //step 3 panels
         JPanel step3Panel = new JPanel();
-        step3Panel.setBackground(backGroundColor);
+        step3Panel.setBackground(DefaultColors.BACKGROUND);
         step3Panel.setLayout(new BorderLayout());
 
         JPanel s3BorderCenterPanel = new JPanel();
-        s3BorderCenterPanel.setBackground(backGroundColor);
+        s3BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s3BorderCenterPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s3BlackBorder1 = new JPanel();
-        s3BlackBorder1.setBackground(separatorColor);
+        s3BlackBorder1.setBackground(DefaultColors.SEPARATOR);
 
         //step 4a panels
         JPanel step4aPanel = new JPanel();
-        step4aPanel.setBackground(backGroundColor);
+        step4aPanel.setBackground(DefaultColors.BACKGROUND);
         step4aPanel.setLayout(new BorderLayout());
 
         JPanel s4ABorderCenterPanel = new JPanel();
-        s4ABorderCenterPanel.setBackground(backGroundColor);
+        s4ABorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s4ABorderCenterPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s4ABlackBorder1 = new JPanel();
-        s4ABlackBorder1.setBackground(separatorColor);
+        s4ABlackBorder1.setBackground(DefaultColors.SEPARATOR);
 
         //step 4b Panels
         JPanel step4bPanel = new JPanel();
-        step4bPanel.setBackground(backGroundColor);
+        step4bPanel.setBackground(DefaultColors.BACKGROUND);
         step4bPanel.setLayout(new BorderLayout());
 
         JPanel s4BBorderCenterPanel = new JPanel();
-        s4BBorderCenterPanel.setBackground(backGroundColor);
+        s4BBorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s4BBorderCenterPanel.setLayout(new GridLayout(4, 1));
 
         JPanel s4BBlackBorder1 = new JPanel();
-        s4BBlackBorder1.setBackground(separatorColor);
+        s4BBlackBorder1.setBackground(DefaultColors.SEPARATOR);
 
         JPanel s4BHorizontalSplitter = new JPanel();
-        s4BHorizontalSplitter.setBackground(backGroundColor);
+        s4BHorizontalSplitter.setBackground(DefaultColors.BACKGROUND);
         s4BHorizontalSplitter.setLayout(new GridLayout(0, 3));
 
         //step 5 Panels
         JPanel step5Panel = new JPanel();
-        step5Panel.setBackground(backGroundColor);
+        step5Panel.setBackground(DefaultColors.BACKGROUND);
         step5Panel.setLayout(new BorderLayout());
 
         JPanel s5BorderCenterPanel = new JPanel();
-        s5BorderCenterPanel.setBackground(backGroundColor);
+        s5BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s5BorderCenterPanel.setLayout(new GridLayout(3, 1));
 
         JPanel s5BlackBorder1 = new JPanel();
-        s5BlackBorder1.setBackground(separatorColor);
+        s5BlackBorder1.setBackground(DefaultColors.SEPARATOR);
 
         //step 6 Panels
         JPanel step6Panel = new JPanel();
-        step6Panel.setBackground(backGroundColor);
+        step6Panel.setBackground(DefaultColors.BACKGROUND);
         step6Panel.setLayout(new BorderLayout());
 
         JPanel step6MainGrid = new JPanel();
         step6MainGrid.setLayout(new GridLayout(3, 1));
 
         JPanel s6Empty1 = new JPanel();
-        s6Empty1.setBackground(backGroundColor);
+        s6Empty1.setBackground(DefaultColors.BACKGROUND);
 
         JPanel s6Empty2 = new JPanel();
-        s6Empty2.setBackground(backGroundColor);
+        s6Empty2.setBackground(DefaultColors.BACKGROUND);
 
         step6MainGrid.add(s6Empty1);
         step6MainGrid.add(executeB);
@@ -575,7 +570,7 @@ final class SWMFrame extends JFrame {
     private static JLabel getLabel(String title, boolean visible) {
         JLabel label = new JLabel(toTitle(title));
         label.setHorizontalAlignment(SwingConstants.CENTER);
-        label.setForeground(textColor);
+        label.setForeground(DefaultColors.TEXT);
         label.setVisible(visible);
         return label;
     }
