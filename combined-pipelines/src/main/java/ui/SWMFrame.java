@@ -3,7 +3,6 @@ package ui;
 import filegeneration.XMLInitializer;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.io.File;
@@ -37,6 +36,7 @@ import javax.xml.transform.TransformerException;
 import pipelines.MainPipeline;
 import types.DataType;
 import types.PipelineType;
+import static ui.UIHelpers.*;
 
 final class SWMFrame extends JFrame {
     @Serial
@@ -449,48 +449,6 @@ final class SWMFrame extends JFrame {
     private void showErrorMessage(@Nonnull String message, @Nullable Throwable throwable) {
         logger.log(Level.SEVERE, message, throwable);
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
-    }
-
-    private static JLabel getLabel(String title) {
-        return getLabel(title, true);
-    }
-
-    private static JLabel getLabel(String title, boolean visible) {
-        JLabel label = new JLabel(toTitle(title));
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        label.setForeground(DefaultColors.TEXT);
-        label.setVisible(visible);
-        return label;
-    }
-
-    private static JPanel createSeparator() {
-        JPanel separator = new JPanel();
-        separator.setBackground(DefaultColors.SEPARATOR);
-        return separator;
-    }
-
-    private static JPanel createPanel() {
-        JPanel panel = new JPanel();
-        panel.setBackground(DefaultColors.BACKGROUND);
-        return panel;
-    }
-
-    private static JPanel createPanel(@Nonnull LayoutManager layoutManager) {
-        JPanel panel = createPanel();
-        panel.setLayout(layoutManager);
-        return panel;
-    }
-
-    private static String toTitle(String title) {
-        return toTitle(title, false);
-    }
-
-    private static String toTitle(String title, boolean done) {
-        StringBuilder sb = new StringBuilder("<html>").append(title);
-        if (done) {
-            sb.append(" <font color='#56f310'>DONE</font>");
-        }
-        return sb.append("</html>").toString();
     }
 
     private static final class ThreadException extends RuntimeException {
