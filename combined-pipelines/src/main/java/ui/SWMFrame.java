@@ -1,11 +1,15 @@
 package ui;
 
+import static ui.UIHelpers.createPanel;
+import static ui.UIHelpers.createSeparator;
+import static ui.UIHelpers.getLabel;
+import static ui.UIHelpers.toTitle;
+
 import filegeneration.XMLInitializer;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
-import java.io.File;
 import java.io.Serial;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -22,7 +26,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -36,19 +39,17 @@ import javax.xml.transform.TransformerException;
 import pipelines.MainPipeline;
 import types.DataType;
 import types.PipelineType;
-import static ui.UIHelpers.*;
 
 final class SWMFrame extends JFrame {
     @Serial
     private static final long serialVersionUID = -592869500939986619L;
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
-    private static final File DATASETS_FOLDER = new File("..", "datasets");
     private static final String EMPTY_TEXT = "Select";
 
     @Nullable private SWMLoaderFrame loader;
 
     @Nonnull private final JButton executeB;
-    @Nonnull private final JLabel s1LStep;
+    @Nonnull private final TruthSetPanel truthSetPanel;
     @Nonnull private final JLabel s2LStep;
     @Nonnull private final JLabel s3LStep;
     @Nonnull private final JLabel s4ALStep;
@@ -104,7 +105,6 @@ final class SWMFrame extends JFrame {
         strategyComboBox = getComboBox(strategyArray, this::onStrategyChange);
         strategyComboBox.setVisible(false);
 
-        s1LStep = getLabel("[Step 1]");
         s2LStep = getLabel("[Step 2]");
         s3LStep = getLabel("[Step 3]");
         s4ALStep = getLabel("[Step 4]", false);
@@ -140,21 +140,10 @@ final class SWMFrame extends JFrame {
         logoPanel.add(logoLabel);
         mainPanel.add(logoPanel);
 
-        //Step 1 Panels
-        JPanel s1BorderCenterPanel = createPanel(new GridLayout(3, 1));
-        s1BorderCenterPanel.add(s1LStep);
-        s1BorderCenterPanel.add(getLabel("Select a truth set to be analyzed by the algorithm"));
-        JButton truthSetSelector = new JButton("Truth Set");
-        truthSetSelector.addActionListener(this::onTruthSetSelector);
-        JPanel s1CenterPanel = createPanel(new GridLayout(0, 3));
-        s1CenterPanel.add(createPanel());
-        s1CenterPanel.add(truthSetSelector);
-        s1BorderCenterPanel.add(s1CenterPanel);
-        JPanel step1Panel = createPanel(new BorderLayout());
-        step1Panel.add(createSeparator(), BorderLayout.PAGE_START);
-        step1Panel.add(s1BorderCenterPanel, BorderLayout.CENTER);
-        step1Panel.add(createSeparator(), BorderLayout.PAGE_END);
-        mainPanel.add(step1Panel);
+        truthSetPanel = new TruthSetPanel("[Step 1]",
+            file -> truthFilePath = file.toString(),
+            error -> showErrorMessage(error, null));
+        mainPanel.add(truthSetPanel);
 
         //step 2 panels
         JPanel s2BorderCenterPanel = createPanel(new GridLayout(3, 1));
@@ -295,32 +284,11 @@ final class SWMFrame extends JFrame {
     }
 
     private void updateStatus() {
-        s1LStep.setText(toTitle("[Step 1]", truthFilePath != null));
+        truthSetPanel.markDone(truthFilePath != null);
         s2LStep.setText(toTitle("[Step 2]", dataType != null));
         s3LStep.setText(toTitle("[Step 3]", pipelineType != null));
         s4ALStep.setText(toTitle("[Step 4]", !mlModel.equals(EMPTY_TEXT)));
         s5LStep.setText(toTitle("[Step 5]", !strategy.equals(EMPTY_TEXT)));
-    }
-
-    private void onTruthSetSelector(ActionEvent e) {
-        JFileChooser fileChooser = new JFileChooser();
-        if (DATASETS_FOLDER.exists()) {
-            fileChooser.setCurrentDirectory(DATASETS_FOLDER);
-        }
-        int response = fileChooser.showOpenDialog(null);
-
-        if (response == JFileChooser.APPROVE_OPTION) {
-            File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-            String extension = file.toString().substring(file.toString().lastIndexOf('.'));
-            if (!extension.equals(".txt") && !extension.equals(".csv")) {
-                showErrorMessage("Wrong filetype selected. Please select a .txt or .csv file", null);
-                truthFilePath = null;
-            } else {
-                truthFilePath = file.toString();
-            }
-        }
-        updateStatus();
-        updateRunnable();
     }
 
     private void onRun(ActionEvent e) {
