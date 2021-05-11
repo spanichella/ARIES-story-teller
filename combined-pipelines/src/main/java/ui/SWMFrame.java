@@ -135,96 +135,42 @@ final class SWMFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setBackground(DefaultColors.BACKGROUND);
 
-        JPanel logoPanel = new JPanel();
-        logoPanel.setBackground(DefaultColors.BACKGROUND);
-        logoPanel.setLayout(new BorderLayout());
+        JPanel logoPanel = createBorderPanel();
 
         //Step 1 Panels
-        JPanel step1Panel = new JPanel();
-        step1Panel.setBackground(DefaultColors.BACKGROUND);
-        step1Panel.setLayout(new BorderLayout());
-
-        JPanel s1BorderCenterPanel = new JPanel();
-        s1BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
-        s1BorderCenterPanel.setLayout(new GridLayout(3, 1));
-
-        JPanel s1BottomPanel = new JPanel();
-        s1BottomPanel.setBackground(DefaultColors.BACKGROUND);
-        s1BottomPanel.setLayout(new GridLayout(3, 1));
-
-        JPanel s1CenterPanel = new JPanel();
-        s1CenterPanel.setBackground(DefaultColors.BACKGROUND);
-        s1CenterPanel.setLayout(new GridLayout(0, 3));
-
-        JPanel s1Empty = new JPanel();
-        s1Empty.setBackground(DefaultColors.BACKGROUND);
+        JPanel step1Panel = createBorderPanel();
+        JPanel s1BorderCenterPanel = createGridPanel(3, 1);
+        JPanel s1CenterPanel = createGridPanel(0, 3);
+        JPanel s1Empty = createPanel();
 
         //step 2 panels
-        JPanel step2Panel = new JPanel();
-        step2Panel.setBackground(DefaultColors.BACKGROUND);
-        step2Panel.setLayout(new BorderLayout());
-
-        JPanel s2BorderCenterPanel = new JPanel();
-        s2BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
-        s2BorderCenterPanel.setLayout(new GridLayout(3, 1));
+        JPanel step2Panel = createBorderPanel();
+        JPanel s2BorderCenterPanel = createGridPanel(3, 1);
 
         //step 3 panels
-        JPanel step3Panel = new JPanel();
-        step3Panel.setBackground(DefaultColors.BACKGROUND);
-        step3Panel.setLayout(new BorderLayout());
-
-        JPanel s3BorderCenterPanel = new JPanel();
-        s3BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
-        s3BorderCenterPanel.setLayout(new GridLayout(3, 1));
+        JPanel step3Panel = createBorderPanel();
+        JPanel s3BorderCenterPanel = createGridPanel(3, 1);
 
         //step 4a panels
-        JPanel step4aPanel = new JPanel();
-        step4aPanel.setBackground(DefaultColors.BACKGROUND);
-        step4aPanel.setLayout(new BorderLayout());
-
-        JPanel s4ABorderCenterPanel = new JPanel();
-        s4ABorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
-        s4ABorderCenterPanel.setLayout(new GridLayout(3, 1));
+        JPanel step4aPanel = createBorderPanel();
+        JPanel s4ABorderCenterPanel = createGridPanel(3, 1);
 
         //step 4b Panels
-        JPanel step4bPanel = new JPanel();
-        step4bPanel.setBackground(DefaultColors.BACKGROUND);
-        step4bPanel.setLayout(new BorderLayout());
-
-        JPanel s4BBorderCenterPanel = new JPanel();
-        s4BBorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
-        s4BBorderCenterPanel.setLayout(new GridLayout(4, 1));
-
-        JPanel s4BHorizontalSplitter = new JPanel();
-        s4BHorizontalSplitter.setBackground(DefaultColors.BACKGROUND);
-        s4BHorizontalSplitter.setLayout(new GridLayout(0, 3));
+        JPanel step4bPanel = createBorderPanel();
+        JPanel s4BBorderCenterPanel = createGridPanel(4, 1);
+        JPanel s4BHorizontalSplitter = createGridPanel(0, 3);
 
         //step 5 Panels
-        JPanel step5Panel = new JPanel();
-        step5Panel.setBackground(DefaultColors.BACKGROUND);
-        step5Panel.setLayout(new BorderLayout());
-
-        JPanel s5BorderCenterPanel = new JPanel();
-        s5BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
-        s5BorderCenterPanel.setLayout(new GridLayout(3, 1));
+        JPanel step5Panel = createBorderPanel();
+        JPanel s5BorderCenterPanel = createGridPanel(3, 1);
 
         //step 6 Panels
-        JPanel step6Panel = new JPanel();
-        step6Panel.setBackground(DefaultColors.BACKGROUND);
-        step6Panel.setLayout(new BorderLayout());
+        JPanel step6Panel = createBorderPanel();
+        JPanel step6MainGrid = createGridPanel(3, 1);
 
-        JPanel step6MainGrid = new JPanel();
-        step6MainGrid.setLayout(new GridLayout(3, 1));
-
-        JPanel s6Empty1 = new JPanel();
-        s6Empty1.setBackground(DefaultColors.BACKGROUND);
-
-        JPanel s6Empty2 = new JPanel();
-        s6Empty2.setBackground(DefaultColors.BACKGROUND);
-
-        step6MainGrid.add(s6Empty1);
+        step6MainGrid.add(createPanel());
         step6MainGrid.add(executeB);
-        step6MainGrid.add(s6Empty2);
+        step6MainGrid.add(createPanel());
         step6Panel.add(step6MainGrid, BorderLayout.CENTER);
 
         mainPanel.add(logoPanel);
@@ -544,6 +490,24 @@ final class SWMFrame extends JFrame {
         JPanel separator = new JPanel();
         separator.setBackground(DefaultColors.SEPARATOR);
         return separator;
+    }
+
+    private static JPanel createPanel() {
+        JPanel panel = new JPanel();
+        panel.setBackground(DefaultColors.BACKGROUND);
+        return panel;
+    }
+
+    private static JPanel createBorderPanel() {
+        JPanel panel = createPanel();
+        panel.setLayout(new BorderLayout());
+        return panel;
+    }
+
+    private static JPanel createGridPanel(int rows, int cols) {
+        JPanel panel = createPanel();
+        panel.setLayout(new GridLayout(rows, cols));
+        return panel;
     }
 
     private static String toTitle(String title) {
