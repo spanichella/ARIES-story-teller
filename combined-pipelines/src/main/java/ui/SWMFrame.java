@@ -126,21 +126,10 @@ final class SWMFrame extends JFrame {
         mainPanel.setLayout(new GridLayout(8, 1));
         add(mainPanel, BorderLayout.CENTER);
 
-        JPanel topBorder = new JPanel();
-        topBorder.setBackground(DefaultColors.SEPARATOR);
-        add(topBorder, BorderLayout.PAGE_START);
-
-        JPanel bottomBorder = new JPanel();
-        bottomBorder.setBackground(DefaultColors.SEPARATOR);
-        add(bottomBorder, BorderLayout.PAGE_END);
-
-        JPanel leftBorder = new JPanel();
-        leftBorder.setBackground(DefaultColors.SEPARATOR);
-        add(leftBorder, BorderLayout.WEST);
-
-        JPanel rightBorder = new JPanel();
-        rightBorder.setBackground(DefaultColors.SEPARATOR);
-        add(rightBorder, BorderLayout.EAST);
+        add(createSeparator(), BorderLayout.PAGE_START);
+        add(createSeparator(), BorderLayout.PAGE_END);
+        add(createSeparator(), BorderLayout.WEST);
+        add(createSeparator(), BorderLayout.EAST);
 
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -158,12 +147,6 @@ final class SWMFrame extends JFrame {
         JPanel s1BorderCenterPanel = new JPanel();
         s1BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s1BorderCenterPanel.setLayout(new GridLayout(3, 1));
-
-        JPanel s1BlackBorder1 = new JPanel();
-        s1BlackBorder1.setBackground(DefaultColors.SEPARATOR);
-
-        JPanel s1BlackBorder2 = new JPanel();
-        s1BlackBorder2.setBackground(DefaultColors.SEPARATOR);
 
         JPanel s1BottomPanel = new JPanel();
         s1BottomPanel.setBackground(DefaultColors.BACKGROUND);
@@ -185,9 +168,6 @@ final class SWMFrame extends JFrame {
         s2BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s2BorderCenterPanel.setLayout(new GridLayout(3, 1));
 
-        JPanel s2BlackBorder1 = new JPanel();
-        s2BlackBorder1.setBackground(DefaultColors.SEPARATOR);
-
         //step 3 panels
         JPanel step3Panel = new JPanel();
         step3Panel.setBackground(DefaultColors.BACKGROUND);
@@ -196,9 +176,6 @@ final class SWMFrame extends JFrame {
         JPanel s3BorderCenterPanel = new JPanel();
         s3BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s3BorderCenterPanel.setLayout(new GridLayout(3, 1));
-
-        JPanel s3BlackBorder1 = new JPanel();
-        s3BlackBorder1.setBackground(DefaultColors.SEPARATOR);
 
         //step 4a panels
         JPanel step4aPanel = new JPanel();
@@ -209,9 +186,6 @@ final class SWMFrame extends JFrame {
         s4ABorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s4ABorderCenterPanel.setLayout(new GridLayout(3, 1));
 
-        JPanel s4ABlackBorder1 = new JPanel();
-        s4ABlackBorder1.setBackground(DefaultColors.SEPARATOR);
-
         //step 4b Panels
         JPanel step4bPanel = new JPanel();
         step4bPanel.setBackground(DefaultColors.BACKGROUND);
@@ -220,9 +194,6 @@ final class SWMFrame extends JFrame {
         JPanel s4BBorderCenterPanel = new JPanel();
         s4BBorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s4BBorderCenterPanel.setLayout(new GridLayout(4, 1));
-
-        JPanel s4BBlackBorder1 = new JPanel();
-        s4BBlackBorder1.setBackground(DefaultColors.SEPARATOR);
 
         JPanel s4BHorizontalSplitter = new JPanel();
         s4BHorizontalSplitter.setBackground(DefaultColors.BACKGROUND);
@@ -236,9 +207,6 @@ final class SWMFrame extends JFrame {
         JPanel s5BorderCenterPanel = new JPanel();
         s5BorderCenterPanel.setBackground(DefaultColors.BACKGROUND);
         s5BorderCenterPanel.setLayout(new GridLayout(3, 1));
-
-        JPanel s5BlackBorder1 = new JPanel();
-        s5BlackBorder1.setBackground(DefaultColors.SEPARATOR);
 
         //step 6 Panels
         JPanel step6Panel = new JPanel();
@@ -271,9 +239,9 @@ final class SWMFrame extends JFrame {
         logoPanel.add(logoLabel);
 
         //step 1 panels
-        step1Panel.add(s1BlackBorder1, BorderLayout.PAGE_START);
+        step1Panel.add(createSeparator(), BorderLayout.PAGE_START);
         step1Panel.add(s1BorderCenterPanel, BorderLayout.CENTER);
-        step1Panel.add(s1BlackBorder2, BorderLayout.PAGE_END);
+        step1Panel.add(createSeparator(), BorderLayout.PAGE_END);
         s1BorderCenterPanel.add(s1LStep);
         s1BorderCenterPanel.add(getLabel("Select a truth set to be analyzed by the algorithm"));
         s1BorderCenterPanel.add(s1CenterPanel);
@@ -284,7 +252,7 @@ final class SWMFrame extends JFrame {
 
         //step 2 panels
         step2Panel.add(s2BorderCenterPanel, BorderLayout.CENTER);
-        step2Panel.add(s2BlackBorder1, BorderLayout.PAGE_END);
+        step2Panel.add(createSeparator(), BorderLayout.PAGE_END);
         s2BorderCenterPanel.add(s2LStep);
         s2BorderCenterPanel.add(getLabel("Select Content Type"));
         s2BorderCenterPanel.add(getTranslatableComboBox(
@@ -293,21 +261,21 @@ final class SWMFrame extends JFrame {
 
         //step 3 panels
         step3Panel.add(s3BorderCenterPanel, BorderLayout.CENTER);
-        step3Panel.add(s3BlackBorder1, BorderLayout.PAGE_END);
+        step3Panel.add(createSeparator(), BorderLayout.PAGE_END);
         s3BorderCenterPanel.add(s3LStep);
         s3BorderCenterPanel.add(getLabel("Select a Pipeline"));
         s3BorderCenterPanel.add(pipelineTypeComboBox);
 
         //step 4a panels
         step4aPanel.add(s4ABorderCenterPanel, BorderLayout.CENTER);
-        step4aPanel.add(s4ABlackBorder1, BorderLayout.PAGE_END);
+        step4aPanel.add(createSeparator(), BorderLayout.PAGE_END);
         s4ABorderCenterPanel.add(s4ALStep);
         s4ABorderCenterPanel.add(s4ALText);
         s4ABorderCenterPanel.add(mlModelComboBox);
 
         //step 4b panels
         step4bPanel.add(s4BBorderCenterPanel, BorderLayout.CENTER);
-        step4bPanel.add(s4BBlackBorder1, BorderLayout.PAGE_END);
+        step4bPanel.add(createSeparator(), BorderLayout.PAGE_END);
         s4BBorderCenterPanel.add(s4BLStep);
         s4BBorderCenterPanel.add(s4BLText);
         s4BBorderCenterPanel.add(s4BHorizontalSplitter);
@@ -318,7 +286,7 @@ final class SWMFrame extends JFrame {
 
         //step 5 panels
         step5Panel.add(s5BorderCenterPanel, BorderLayout.CENTER);
-        step5Panel.add(s5BlackBorder1, BorderLayout.PAGE_END);
+        step5Panel.add(createSeparator(), BorderLayout.PAGE_END);
         s5BorderCenterPanel.add(s5LStep);
         s5BorderCenterPanel.add(s5LText);
         s5BorderCenterPanel.add(strategyComboBox);
@@ -570,6 +538,12 @@ final class SWMFrame extends JFrame {
         label.setForeground(DefaultColors.TEXT);
         label.setVisible(visible);
         return label;
+    }
+
+    private static JPanel createSeparator() {
+        JPanel separator = new JPanel();
+        separator.setBackground(DefaultColors.SEPARATOR);
+        return separator;
     }
 
     private static String toTitle(String title) {
