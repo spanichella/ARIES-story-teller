@@ -290,17 +290,16 @@ final class SWMFrame extends JFrame {
         thresholdSlider.setVisible(withThreshold);
     }
 
+    private boolean isRunnable() {
+        if (truthFilePath == null || dataType == null || pipelineType == null) {
+            return false;
+        }
+        return "DL".equals(pipelineTypeComboBox.getSelectedItem())
+            || (!mlModel.equals(EMPTY_TEXT) && !strategy.equals(EMPTY_TEXT));
+    }
 
     private void updateRunnable() {
-        boolean runnable = true;
-
-        if (truthFilePath == null || dataType == null || pipelineType == null) {
-            runnable = false;
-        } else if (!"DL".equals(pipelineTypeComboBox.getSelectedItem())
-                && (mlModel.equals(EMPTY_TEXT) || strategy.equals(EMPTY_TEXT))) {
-            runnable = false;
-        }
-        executeB.setEnabled(runnable);
+        executeB.setEnabled(isRunnable());
     }
 
     private void closeWindow() {
