@@ -136,106 +136,90 @@ final class SWMFrame extends JFrame {
         getContentPane().setBackground(DefaultColors.BACKGROUND);
 
         JPanel logoPanel = createBorderPanel();
+        logoPanel.add(logoLabel);
+        mainPanel.add(logoPanel);
 
         //Step 1 Panels
-        JPanel step1Panel = createBorderPanel();
         JPanel s1BorderCenterPanel = createGridPanel(3, 1);
+        s1BorderCenterPanel.add(s1LStep);
+        s1BorderCenterPanel.add(getLabel("Select a truth set to be analyzed by the algorithm"));
+        JButton truthSetSelector = new JButton("Truth Set");
+        truthSetSelector.addActionListener(this::onTruthSetSelector);
         JPanel s1CenterPanel = createGridPanel(0, 3);
-        JPanel s1Empty = createPanel();
-
-        //step 2 panels
-        JPanel step2Panel = createBorderPanel();
-        JPanel s2BorderCenterPanel = createGridPanel(3, 1);
-
-        //step 3 panels
-        JPanel step3Panel = createBorderPanel();
-        JPanel s3BorderCenterPanel = createGridPanel(3, 1);
-
-        //step 4a panels
-        JPanel step4aPanel = createBorderPanel();
-        JPanel s4ABorderCenterPanel = createGridPanel(3, 1);
-
-        //step 4b Panels
-        JPanel step4bPanel = createBorderPanel();
-        JPanel s4BBorderCenterPanel = createGridPanel(4, 1);
-        JPanel s4BHorizontalSplitter = createGridPanel(0, 3);
-
-        //step 5 Panels
-        JPanel step5Panel = createBorderPanel();
-        JPanel s5BorderCenterPanel = createGridPanel(3, 1);
-
-        //step 6 Panels
-        JPanel step6Panel = createBorderPanel();
-        JPanel step6MainGrid = createGridPanel(3, 1);
-
-        step6MainGrid.add(createPanel());
-        step6MainGrid.add(executeB);
-        step6MainGrid.add(createPanel());
-        step6Panel.add(step6MainGrid, BorderLayout.CENTER);
-
-        mainPanel.add(logoPanel);
-        mainPanel.add(step1Panel);
-        mainPanel.add(step2Panel);
-        mainPanel.add(step3Panel);
-        mainPanel.add(step4aPanel);
-        mainPanel.add(step5Panel);
-        mainPanel.add(step4bPanel);
-        mainPanel.add(step6Panel);
-
-        logoPanel.add(logoLabel);
-
-        //step 1 panels
+        s1CenterPanel.add(createPanel());
+        s1CenterPanel.add(truthSetSelector);
+        s1BorderCenterPanel.add(s1CenterPanel);
+        JPanel step1Panel = createBorderPanel();
         step1Panel.add(createSeparator(), BorderLayout.PAGE_START);
         step1Panel.add(s1BorderCenterPanel, BorderLayout.CENTER);
         step1Panel.add(createSeparator(), BorderLayout.PAGE_END);
-        s1BorderCenterPanel.add(s1LStep);
-        s1BorderCenterPanel.add(getLabel("Select a truth set to be analyzed by the algorithm"));
-        s1BorderCenterPanel.add(s1CenterPanel);
-        s1CenterPanel.add(s1Empty);
-        JButton truthSetSelector = new JButton("Truth Set");
-        truthSetSelector.addActionListener(this::onTruthSetSelector);
-        s1CenterPanel.add(truthSetSelector);
+        mainPanel.add(step1Panel);
 
         //step 2 panels
-        step2Panel.add(s2BorderCenterPanel, BorderLayout.CENTER);
-        step2Panel.add(createSeparator(), BorderLayout.PAGE_END);
+        JPanel s2BorderCenterPanel = createGridPanel(3, 1);
         s2BorderCenterPanel.add(s2LStep);
         s2BorderCenterPanel.add(getLabel("Select Content Type"));
         s2BorderCenterPanel.add(getTranslatableComboBox(
-                new DataType[]{null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS},
-                SWMFrame::translateDataType, this::onDataTypeChange));
+            new DataType[]{null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS},
+            SWMFrame::translateDataType, this::onDataTypeChange));
+        JPanel step2Panel = createBorderPanel();
+        step2Panel.add(s2BorderCenterPanel, BorderLayout.CENTER);
+        step2Panel.add(createSeparator(), BorderLayout.PAGE_END);
+        mainPanel.add(step2Panel);
 
         //step 3 panels
-        step3Panel.add(s3BorderCenterPanel, BorderLayout.CENTER);
-        step3Panel.add(createSeparator(), BorderLayout.PAGE_END);
+        JPanel s3BorderCenterPanel = createGridPanel(3, 1);
         s3BorderCenterPanel.add(s3LStep);
         s3BorderCenterPanel.add(getLabel("Select a Pipeline"));
         s3BorderCenterPanel.add(pipelineTypeComboBox);
+        JPanel step3Panel = createBorderPanel();
+        step3Panel.add(s3BorderCenterPanel, BorderLayout.CENTER);
+        step3Panel.add(createSeparator(), BorderLayout.PAGE_END);
+        mainPanel.add(step3Panel);
 
         //step 4a panels
-        step4aPanel.add(s4ABorderCenterPanel, BorderLayout.CENTER);
-        step4aPanel.add(createSeparator(), BorderLayout.PAGE_END);
+        JPanel s4ABorderCenterPanel = createGridPanel(3, 1);
         s4ABorderCenterPanel.add(s4ALStep);
         s4ABorderCenterPanel.add(s4ALText);
         s4ABorderCenterPanel.add(mlModelComboBox);
+        JPanel step4aPanel = createBorderPanel();
+        step4aPanel.add(s4ABorderCenterPanel, BorderLayout.CENTER);
+        step4aPanel.add(createSeparator(), BorderLayout.PAGE_END);
+        mainPanel.add(step4aPanel);
 
-        //step 4b panels
-        step4bPanel.add(s4BBorderCenterPanel, BorderLayout.CENTER);
-        step4bPanel.add(createSeparator(), BorderLayout.PAGE_END);
-        s4BBorderCenterPanel.add(s4BLStep);
-        s4BBorderCenterPanel.add(s4BLText);
-        s4BBorderCenterPanel.add(s4BHorizontalSplitter);
+        //step 4b Panels
+        JPanel s4BHorizontalSplitter = createGridPanel(0, 3);
         s4BHorizontalSplitter.add(s4BLLeft);
         s4BHorizontalSplitter.add(s4BLValue);
         s4BHorizontalSplitter.add(s4BLRight);
+        JPanel s4BBorderCenterPanel = createGridPanel(4, 1);
+        s4BBorderCenterPanel.add(s4BLStep);
+        s4BBorderCenterPanel.add(s4BLText);
+        s4BBorderCenterPanel.add(s4BHorizontalSplitter);
         s4BBorderCenterPanel.add(thresholdSlider);
+        JPanel step4bPanel = createBorderPanel();
+        step4bPanel.add(s4BBorderCenterPanel, BorderLayout.CENTER);
+        step4bPanel.add(createSeparator(), BorderLayout.PAGE_END);
+        mainPanel.add(step4bPanel);
 
-        //step 5 panels
-        step5Panel.add(s5BorderCenterPanel, BorderLayout.CENTER);
-        step5Panel.add(createSeparator(), BorderLayout.PAGE_END);
+        //step 5 Panels
+        JPanel s5BorderCenterPanel = createGridPanel(3, 1);
         s5BorderCenterPanel.add(s5LStep);
         s5BorderCenterPanel.add(s5LText);
         s5BorderCenterPanel.add(strategyComboBox);
+        JPanel step5Panel = createBorderPanel();
+        step5Panel.add(s5BorderCenterPanel, BorderLayout.CENTER);
+        step5Panel.add(createSeparator(), BorderLayout.PAGE_END);
+        mainPanel.add(step5Panel);
+
+        //step 6 Panels
+        JPanel step6MainGrid = createGridPanel(3, 1);
+        step6MainGrid.add(createPanel());
+        step6MainGrid.add(executeB);
+        step6MainGrid.add(createPanel());
+        JPanel step6Panel = createBorderPanel();
+        step6Panel.add(step6MainGrid, BorderLayout.CENTER);
+        mainPanel.add(step6Panel);
 
         setVisible(true);
     }
