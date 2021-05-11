@@ -25,7 +25,7 @@ abstract class CompletablePanel extends JPanel {
         titleLabel.setVisible(visible);
     }
 
-    protected JLabel getTitleLabel() {
+    JLabel getTitleLabel() {
         return titleLabel;
     }
 }

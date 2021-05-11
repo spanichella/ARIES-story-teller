@@ -2,23 +2,20 @@ package ui;
 
 import static ui.UIHelpers.createPanel;
 import static ui.UIHelpers.createSeparator;
+import static ui.UIHelpers.getComboBox;
 import static ui.UIHelpers.getLabel;
+import static ui.UIHelpers.getTranslatableComboBox;
 import static ui.UIHelpers.toTitle;
+import static ui.UIHelpers.EMPTY_TEXT;
 
 import filegeneration.XMLInitializer;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ItemEvent;
 import java.io.Serial;
 import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -44,13 +41,12 @@ final class SWMFrame extends JFrame {
     @Serial
     private static final long serialVersionUID = -592869500939986619L;
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
-    private static final String EMPTY_TEXT = "Select";
 
     @Nullable private SWMLoaderFrame loader;
 
     @Nonnull private final JButton executeB;
     @Nonnull private final TruthSetPanel truthSetPanel;
-    @Nonnull private final JLabel s2LStep;
+    @Nonnull private final ContentTypePanel contentTypePanel;
     @Nonnull private final JLabel s3LStep;
     @Nonnull private final JLabel s4ALStep;
     @Nonnull private final JLabel s4ALText;
@@ -97,15 +93,14 @@ final class SWMFrame extends JFrame {
 
         pipelineTypeComboBox = getTranslatableComboBox(
                 new PipelineType[] { null, PipelineType.ML, PipelineType.DL },
-                SWMFrame::translatePipelineType, this::onPipelineTypeChange);
+                SWMFrame::translatePipelineType, this::onPipelineTypeChange, this::updateStatus);
 
-        mlModelComboBox = getComboBox(mlModelArray, (String newName) -> mlModel = newName);
+        mlModelComboBox = getComboBox(mlModelArray, (String newName) -> mlModel = newName, this::updateStatus);
         mlModelComboBox.setVisible(false);
 
-        strategyComboBox = getComboBox(strategyArray, this::onStrategyChange);
+        strategyComboBox = getComboBox(strategyArray, this::onStrategyChange, this::updateStatus);
         strategyComboBox.setVisible(false);
 
-        s2LStep = getLabel("[Step 2]");
         s3LStep = getLabel("[Step 3]");
         s4ALStep = getLabel("[Step 4]", false);
         s4ALText = getLabel("Select Method", false);
@@ -141,21 +136,15 @@ final class SWMFrame extends JFrame {
         mainPanel.add(logoPanel);
 
         truthSetPanel = new TruthSetPanel("[Step 1]",
+            this::updateStatus,
             file -> truthFilePath = file.toString(),
             error -> showErrorMessage(error, null));
         mainPanel.add(truthSetPanel);
 
-        //step 2 panels
-        JPanel s2BorderCenterPanel = createPanel(new GridLayout(3, 1));
-        s2BorderCenterPanel.add(s2LStep);
-        s2BorderCenterPanel.add(getLabel("Select Content Type"));
-        s2BorderCenterPanel.add(getTranslatableComboBox(
-            new DataType[]{null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS},
-            SWMFrame::translateDataType, this::onDataTypeChange));
-        JPanel step2Panel = createPanel(new BorderLayout());
-        step2Panel.add(s2BorderCenterPanel, BorderLayout.CENTER);
-        step2Panel.add(createSeparator(), BorderLayout.PAGE_END);
-        mainPanel.add(step2Panel);
+        contentTypePanel = new ContentTypePanel("[Step 2]",
+            this::updateStatus,
+            this::onDataTypeChange);
+        mainPanel.add(contentTypePanel);
 
         //step 3 panels
         JPanel s3BorderCenterPanel = createPanel(new GridLayout(3, 1));
@@ -177,6 +166,16 @@ final class SWMFrame extends JFrame {
         step4aPanel.add(createSeparator(), BorderLayout.PAGE_END);
         mainPanel.add(step4aPanel);
 
+        //step 5 Panels
+        JPanel s5BorderCenterPanel = createPanel(new GridLayout(3, 1));
+        s5BorderCenterPanel.add(s5LStep);
+        s5BorderCenterPanel.add(s5LText);
+        s5BorderCenterPanel.add(strategyComboBox);
+        JPanel step5Panel = createPanel(new BorderLayout());
+        step5Panel.add(s5BorderCenterPanel, BorderLayout.CENTER);
+        step5Panel.add(createSeparator(), BorderLayout.PAGE_END);
+        mainPanel.add(step5Panel);
+
         //step 4b Panels
         JPanel s4BHorizontalSplitter = createPanel(new GridLayout(0, 3));
         s4BHorizontalSplitter.add(s4BLLeft);
@@ -191,16 +190,6 @@ final class SWMFrame extends JFrame {
         step4bPanel.add(s4BBorderCenterPanel, BorderLayout.CENTER);
         step4bPanel.add(createSeparator(), BorderLayout.PAGE_END);
         mainPanel.add(step4bPanel);
-
-        //step 5 Panels
-        JPanel s5BorderCenterPanel = createPanel(new GridLayout(3, 1));
-        s5BorderCenterPanel.add(s5LStep);
-        s5BorderCenterPanel.add(s5LText);
-        s5BorderCenterPanel.add(strategyComboBox);
-        JPanel step5Panel = createPanel(new BorderLayout());
-        step5Panel.add(s5BorderCenterPanel, BorderLayout.CENTER);
-        step5Panel.add(createSeparator(), BorderLayout.PAGE_END);
-        mainPanel.add(step5Panel);
 
         //step 6 Panels
         JPanel step6MainGrid = createPanel(new GridLayout(3, 1));
@@ -272,10 +261,6 @@ final class SWMFrame extends JFrame {
             || (!mlModel.equals(EMPTY_TEXT) && !strategy.equals(EMPTY_TEXT));
     }
 
-    private void updateRunnable() {
-        executeB.setEnabled(isRunnable());
-    }
-
     private void closeWindow() {
         if (loader != null) {
             loader.closeWindow();
@@ -285,10 +270,11 @@ final class SWMFrame extends JFrame {
 
     private void updateStatus() {
         truthSetPanel.markDone(truthFilePath != null);
-        s2LStep.setText(toTitle("[Step 2]", dataType != null));
+        contentTypePanel.markDone(dataType != null);
         s3LStep.setText(toTitle("[Step 3]", pipelineType != null));
         s4ALStep.setText(toTitle("[Step 4]", !mlModel.equals(EMPTY_TEXT)));
         s5LStep.setText(toTitle("[Step 5]", !strategy.equals(EMPTY_TEXT)));
+        executeB.setEnabled(isRunnable());
     }
 
     private void onRun(ActionEvent e) {
@@ -315,7 +301,6 @@ final class SWMFrame extends JFrame {
         });
         setEnabled(false);
         updateStatus();
-        updateRunnable();
     }
 
     private void runPipeline(@Nonnull PipelineType realPipelineType, @Nonnull DataType realDataType) {
@@ -364,40 +349,6 @@ final class SWMFrame extends JFrame {
         int rawValue = ((JSlider) e.getSource()).getValue();
         split = BigDecimal.valueOf(Math.max(rawValue, 10), 2);
         s4BLValue.setText(toTitle("value: " + split.toPlainString()));
-    }
-
-    private <E> JComboBox<String> getTranslatableComboBox(E[] elements, Function<? super E, String> translator,
-                                                          Consumer<? super E> listener) {
-        List<String> translations = Arrays.stream(elements).map(translator).collect(Collectors.toUnmodifiableList());
-        return getComboBox(translations.toArray(new String[0]), (String value) ->
-                listener.accept(elements[translations.indexOf(value)]));
-    }
-
-    private JComboBox<String> getComboBox(String[] names, Consumer<? super String> listener) {
-        JComboBox<String> comboBox = new JComboBox<>(names);
-        comboBox.addItemListener((event) -> {
-            if (event.getStateChange() == ItemEvent.SELECTED) {
-                String value = (String) event.getItem();
-                if (comboBox.getItemAt(0).equals(EMPTY_TEXT)) {
-                    comboBox.removeItemAt(0);
-                }
-                listener.accept(value);
-            }
-            updateStatus();
-            updateRunnable();
-        });
-        ((JLabel) comboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-        return comboBox;
-    }
-
-    private static String translateDataType(@Nullable DataType dataType) {
-        if (dataType == null) {
-            return EMPTY_TEXT;
-        }
-        return switch (dataType) {
-            case REQUIREMENT_SPECIFICATIONS -> "Requirement-Specifications";
-            case USER_REVIEWS -> "User-Reviews";
-        };
     }
 
     private static String translatePipelineType(@Nullable PipelineType pipelineType) {
