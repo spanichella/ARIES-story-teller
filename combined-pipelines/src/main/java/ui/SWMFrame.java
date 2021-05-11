@@ -15,6 +15,7 @@ import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.swing.Icon;
@@ -469,15 +470,11 @@ final class SWMFrame extends JFrame {
     }
 
     private void onDataTypeChange(DataType newDataType) {
-        boolean isMissing = true;
         switch (newDataType) {
             case REQUIREMENT_SPECIFICATIONS -> {
-                for (int i = 0; i < pipelineTypeComboBox.getItemCount(); i++) {
-                    if (pipelineTypeComboBox.getItemAt(i).equals("DL")) {
-                        isMissing = false;
-                    }
-                }
-                if (isMissing) {
+                if (IntStream.range(0, pipelineTypeComboBox.getItemCount())
+                    .mapToObj(pipelineTypeComboBox::getItemAt)
+                    .noneMatch(value -> value.equals("DL"))) {
                     pipelineTypeComboBox.insertItemAt("DL", pipelineTypeComboBox.getItemCount());
                 }
             }
