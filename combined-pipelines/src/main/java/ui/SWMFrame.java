@@ -3,7 +3,6 @@ package ui;
 import static ui.UIHelpers.EMPTY_TEXT;
 import static ui.UIHelpers.createPanel;
 import static ui.UIHelpers.createSeparator;
-import static ui.UIHelpers.getComboBox;
 import static ui.UIHelpers.getLabel;
 import static ui.UIHelpers.toTitle;
 
@@ -20,7 +19,6 @@ import javax.annotation.Nullable;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -47,22 +45,19 @@ final class SWMFrame extends JFrame {
     @Nonnull private final ContentTypePanel contentTypePanel;
     @Nonnull private final PipelinePanel pipelinePanel;
     @Nonnull private final MlModelPanel mlModelPanel;
+    @Nonnull private final StrategyPanel strategyPanel;
     @Nonnull private final JLabel s4BLStep;
     @Nonnull private final JLabel s4BLText;
     @Nonnull private final JLabel s4BLValue;
     @Nonnull private final JLabel s4BLLeft;
     @Nonnull private final JLabel s4BLRight;
-    @Nonnull private final JLabel s5LStep;
-    @Nonnull private final JLabel s5LText;
     @Nullable private String truthFilePath;
     @Nullable private DataType dataType;
     @Nullable private PipelineType pipelineType;
     @Nonnull private String mlModel = EMPTY_TEXT;
     @Nonnull private BigDecimal split = BigDecimal.valueOf(5, 1);
     @Nonnull private String strategy = EMPTY_TEXT;
-    @Nonnull private final JComboBox<String> strategyComboBox;
     @Nonnull private final JSlider thresholdSlider;
-    private static final String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
 
     SWMFrame() {
         Icon logoImage = new ImageIcon("images/swmlogo.jpg");
@@ -80,16 +75,11 @@ final class SWMFrame extends JFrame {
         thresholdSlider.addChangeListener(this::onSplitChanged);
         thresholdSlider.setVisible(false);
 
-        strategyComboBox = getComboBox(strategyArray, this::onStrategyChange, this::updateStatus);
-        strategyComboBox.setVisible(false);
-
         s4BLText = getLabel("Set Size of Training-Set", false);
         s4BLStep = getLabel("[Step 5]", false);
         s4BLValue = getLabel("value: 0.5", false);
         s4BLLeft = getLabel("0.1", false);
         s4BLRight = getLabel("1.0", false);
-        s5LStep = getLabel("[Step 5]", false);
-        s5LText = getLabel("Select Strategy", false);
 
         ImageIcon icon = new ImageIcon("images/STIcon.jpg");
         setIconImage(icon.getImage());
@@ -134,15 +124,9 @@ final class SWMFrame extends JFrame {
         mlModelPanel.setItemsVisible(false);
         mainPanel.add(mlModelPanel);
 
-        //step 5 Panels
-        JPanel s5BorderCenterPanel = createPanel(new GridLayout(3, 1));
-        s5BorderCenterPanel.add(s5LStep);
-        s5BorderCenterPanel.add(s5LText);
-        s5BorderCenterPanel.add(strategyComboBox);
-        JPanel step5Panel = createPanel(new BorderLayout());
-        step5Panel.add(s5BorderCenterPanel, BorderLayout.CENTER);
-        step5Panel.add(createSeparator(), BorderLayout.PAGE_END);
-        mainPanel.add(step5Panel);
+        strategyPanel = new StrategyPanel("[Step 5]", this::onStrategyChange, this::updateStatus);
+        strategyPanel.setItemsVisible(false);
+        mainPanel.add(strategyPanel);
 
         //step 4b Panels
         JPanel s4BHorizontalSplitter = createPanel(new GridLayout(0, 3));
@@ -185,15 +169,11 @@ final class SWMFrame extends JFrame {
                 s4BLLeft.setVisible(false);
                 s4BLRight.setVisible(false);
                 thresholdSlider.setVisible(false);
-                s5LText.setVisible(false);
-                s5LStep.setVisible(false);
-                strategyComboBox.setVisible(false);
+                strategyPanel.setItemsVisible(false);
             }
             case ML -> {
                 mlModelPanel.setItemsVisible(true);
-                s5LText.setVisible(true);
-                s5LStep.setVisible(true);
-                strategyComboBox.setVisible(true);
+                strategyPanel.setItemsVisible(true);
                 s4BLText.setVisible(false);
                 s4BLStep.setVisible(false);
                 s4BLValue.setVisible(false);
@@ -237,7 +217,7 @@ final class SWMFrame extends JFrame {
         contentTypePanel.markDone(dataType != null);
         pipelinePanel.markDone(pipelineType != null);
         mlModelPanel.markDone(!mlModel.equals(EMPTY_TEXT));
-        s5LStep.setText(toTitle("[Step 5]", !strategy.equals(EMPTY_TEXT)));
+        strategyPanel.markDone(!strategy.equals(EMPTY_TEXT));
         executeB.setEnabled(isRunnable());
     }
 
