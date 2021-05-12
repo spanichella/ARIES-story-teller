@@ -46,8 +46,7 @@ final class SWMFrame extends JFrame {
     @Nonnull private final TruthSetPanel truthSetPanel;
     @Nonnull private final ContentTypePanel contentTypePanel;
     @Nonnull private final PipelinePanel pipelinePanel;
-    @Nonnull private final JLabel s4ALStep;
-    @Nonnull private final JLabel s4ALText;
+    @Nonnull private final MlModelPanel mlModelPanel;
     @Nonnull private final JLabel s4BLStep;
     @Nonnull private final JLabel s4BLText;
     @Nonnull private final JLabel s4BLValue;
@@ -61,16 +60,9 @@ final class SWMFrame extends JFrame {
     @Nonnull private String mlModel = EMPTY_TEXT;
     @Nonnull private BigDecimal split = BigDecimal.valueOf(5, 1);
     @Nonnull private String strategy = EMPTY_TEXT;
-    @Nonnull private final JComboBox<String> mlModelComboBox;
     @Nonnull private final JComboBox<String> strategyComboBox;
     @Nonnull private final JSlider thresholdSlider;
     private static final String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
-    private static final String[] mlModelArray = {
-        EMPTY_TEXT, "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
-        "Logistic", "AdaBoostM1", "LogitBoost",
-        "DecisionStump", "LinearRegression",
-        "RegressionByDiscretization",
-        };
 
     SWMFrame() {
         Icon logoImage = new ImageIcon("images/swmlogo.jpg");
@@ -88,14 +80,9 @@ final class SWMFrame extends JFrame {
         thresholdSlider.addChangeListener(this::onSplitChanged);
         thresholdSlider.setVisible(false);
 
-        mlModelComboBox = getComboBox(mlModelArray, (String newName) -> mlModel = newName, this::updateStatus);
-        mlModelComboBox.setVisible(false);
-
         strategyComboBox = getComboBox(strategyArray, this::onStrategyChange, this::updateStatus);
         strategyComboBox.setVisible(false);
 
-        s4ALStep = getLabel("[Step 4]", false);
-        s4ALText = getLabel("Select Method", false);
         s4BLText = getLabel("Set Size of Training-Set", false);
         s4BLStep = getLabel("[Step 5]", false);
         s4BLValue = getLabel("value: 0.5", false);
@@ -143,15 +130,9 @@ final class SWMFrame extends JFrame {
             this::updateStatus);
         mainPanel.add(pipelinePanel);
 
-        //step 4a panels
-        JPanel s4ABorderCenterPanel = createPanel(new GridLayout(3, 1));
-        s4ABorderCenterPanel.add(s4ALStep);
-        s4ABorderCenterPanel.add(s4ALText);
-        s4ABorderCenterPanel.add(mlModelComboBox);
-        JPanel step4aPanel = createPanel(new BorderLayout());
-        step4aPanel.add(s4ABorderCenterPanel, BorderLayout.CENTER);
-        step4aPanel.add(createSeparator(), BorderLayout.PAGE_END);
-        mainPanel.add(step4aPanel);
+        mlModelPanel = new MlModelPanel("[Step 4]", model -> mlModel = model, this::updateStatus);
+        mlModelPanel.setItemsVisible(false);
+        mainPanel.add(mlModelPanel);
 
         //step 5 Panels
         JPanel s5BorderCenterPanel = createPanel(new GridLayout(3, 1));
@@ -196,9 +177,7 @@ final class SWMFrame extends JFrame {
         }
         switch (pipelineType) {
             case DL -> {
-                s4ALText.setVisible(false);
-                s4ALStep.setVisible(false);
-                mlModelComboBox.setVisible(false);
+                mlModelPanel.setItemsVisible(false);
                 s4BLStep.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
                 s4BLText.setVisible(false);
                 s4BLStep.setVisible(false);
@@ -211,9 +190,7 @@ final class SWMFrame extends JFrame {
                 strategyComboBox.setVisible(false);
             }
             case ML -> {
-                s4ALText.setVisible(true);
-                s4ALStep.setVisible(true);
-                mlModelComboBox.setVisible(true);
+                mlModelPanel.setItemsVisible(true);
                 s5LText.setVisible(true);
                 s5LStep.setVisible(true);
                 strategyComboBox.setVisible(true);
@@ -259,7 +236,7 @@ final class SWMFrame extends JFrame {
         truthSetPanel.markDone(truthFilePath != null);
         contentTypePanel.markDone(dataType != null);
         pipelinePanel.markDone(pipelineType != null);
-        s4ALStep.setText(toTitle("[Step 4]", !mlModel.equals(EMPTY_TEXT)));
+        mlModelPanel.markDone(!mlModel.equals(EMPTY_TEXT));
         s5LStep.setText(toTitle("[Step 5]", !strategy.equals(EMPTY_TEXT)));
         executeB.setEnabled(isRunnable());
     }
