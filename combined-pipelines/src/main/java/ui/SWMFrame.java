@@ -110,9 +110,7 @@ final class SWMFrame extends JFrame {
         step6MainGrid.add(UIHelpers.createPanel());
         step6MainGrid.add(executeB);
         step6MainGrid.add(UIHelpers.createPanel());
-        JPanel step6Panel = UIHelpers.createPanel(new BorderLayout());
-        step6Panel.add(step6MainGrid, BorderLayout.CENTER);
-        mainPanel.add(step6Panel);
+        mainPanel.add(step6MainGrid);
 
         setVisible(true);
     }
