@@ -17,14 +17,9 @@ final class UIHelpers {
     static final String EMPTY_TEXT = "Select";
 
     static JLabel getLabel(String title) {
-        return getLabel(title, true);
-    }
-
-    static JLabel getLabel(String title, boolean visible) {
         JLabel label = new JLabel(toTitle(title));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setForeground(DefaultColors.TEXT);
-        label.setVisible(visible);
         return label;
     }
 
