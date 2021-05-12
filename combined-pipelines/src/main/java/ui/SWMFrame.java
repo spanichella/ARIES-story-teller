@@ -3,8 +3,6 @@ package ui;
 import static ui.UIHelpers.EMPTY_TEXT;
 import static ui.UIHelpers.createPanel;
 import static ui.UIHelpers.createSeparator;
-import static ui.UIHelpers.getLabel;
-import static ui.UIHelpers.toTitle;
 
 import filegeneration.XMLInitializer;
 import java.awt.BorderLayout;
@@ -23,10 +21,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import javax.swing.event.ChangeEvent;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import pipelines.MainPipeline;
@@ -46,18 +42,13 @@ final class SWMFrame extends JFrame {
     @Nonnull private final PipelinePanel pipelinePanel;
     @Nonnull private final MlModelPanel mlModelPanel;
     @Nonnull private final StrategyPanel strategyPanel;
-    @Nonnull private final JLabel s4BLStep;
-    @Nonnull private final JLabel s4BLText;
-    @Nonnull private final JLabel s4BLValue;
-    @Nonnull private final JLabel s4BLLeft;
-    @Nonnull private final JLabel s4BLRight;
+    @Nonnull private final ThresholdPanel thresholdPanel;
     @Nullable private String truthFilePath;
     @Nullable private DataType dataType;
     @Nullable private PipelineType pipelineType;
     @Nonnull private String mlModel = EMPTY_TEXT;
     @Nonnull private BigDecimal split = BigDecimal.valueOf(5, 1);
     @Nonnull private String strategy = EMPTY_TEXT;
-    @Nonnull private final JSlider thresholdSlider;
 
     SWMFrame() {
         Icon logoImage = new ImageIcon("images/swmlogo.jpg");
@@ -68,18 +59,6 @@ final class SWMFrame extends JFrame {
         executeB = new JButton("Run");
         executeB.addActionListener(this::onRun);
         executeB.setEnabled(false);
-
-        thresholdSlider = new JSlider();
-        thresholdSlider.setMinorTickSpacing(1);
-        thresholdSlider.setBackground(DefaultColors.BACKGROUND);
-        thresholdSlider.addChangeListener(this::onSplitChanged);
-        thresholdSlider.setVisible(false);
-
-        s4BLText = getLabel("Set Size of Training-Set", false);
-        s4BLStep = getLabel("[Step 5]", false);
-        s4BLValue = getLabel("value: 0.5", false);
-        s4BLLeft = getLabel("0.1", false);
-        s4BLRight = getLabel("1.0", false);
 
         ImageIcon icon = new ImageIcon("images/STIcon.jpg");
         setIconImage(icon.getImage());
@@ -128,20 +107,9 @@ final class SWMFrame extends JFrame {
         strategyPanel.setItemsVisible(false);
         mainPanel.add(strategyPanel);
 
-        //step 4b Panels
-        JPanel s4BHorizontalSplitter = createPanel(new GridLayout(0, 3));
-        s4BHorizontalSplitter.add(s4BLLeft);
-        s4BHorizontalSplitter.add(s4BLValue);
-        s4BHorizontalSplitter.add(s4BLRight);
-        JPanel s4BBorderCenterPanel = createPanel(new GridLayout(4, 1));
-        s4BBorderCenterPanel.add(s4BLStep);
-        s4BBorderCenterPanel.add(s4BLText);
-        s4BBorderCenterPanel.add(s4BHorizontalSplitter);
-        s4BBorderCenterPanel.add(thresholdSlider);
-        JPanel step4bPanel = createPanel(new BorderLayout());
-        step4bPanel.add(s4BBorderCenterPanel, BorderLayout.CENTER);
-        step4bPanel.add(createSeparator(), BorderLayout.PAGE_END);
-        mainPanel.add(step4bPanel);
+        thresholdPanel = new ThresholdPanel("[Step 6]", newSplit -> split = newSplit);
+        thresholdPanel.setItemsVisible(false);
+        mainPanel.add(thresholdPanel);
 
         //step 6 Panels
         JPanel step6MainGrid = createPanel(new GridLayout(3, 1));
@@ -162,39 +130,21 @@ final class SWMFrame extends JFrame {
         switch (pipelineType) {
             case DL -> {
                 mlModelPanel.setItemsVisible(false);
-                s4BLStep.setText("<html><div style='text-align: center;'>[Step 4]</div></html>");
-                s4BLText.setVisible(false);
-                s4BLStep.setVisible(false);
-                s4BLValue.setVisible(false);
-                s4BLLeft.setVisible(false);
-                s4BLRight.setVisible(false);
-                thresholdSlider.setVisible(false);
+                thresholdPanel.setItemsVisible(false);
                 strategyPanel.setItemsVisible(false);
             }
             case ML -> {
                 mlModelPanel.setItemsVisible(true);
                 strategyPanel.setItemsVisible(true);
-                s4BLText.setVisible(false);
-                s4BLStep.setVisible(false);
-                s4BLValue.setVisible(false);
-                s4BLLeft.setVisible(false);
-                s4BLRight.setVisible(false);
-                thresholdSlider.setVisible(false);
+                thresholdPanel.setItemsVisible(false);
             }
             default -> throw new IllegalArgumentException("Unknown pipeline type: %s".formatted(pipelineType));
         }
     }
 
     private void populateThresholdPanels(boolean withThreshold) {
-        if (withThreshold) {
-            s4BLStep.setText("<html><div style='text-align: center;'>[Step 6]</div></html>");
-        }
-        s4BLText.setVisible(withThreshold);
-        s4BLStep.setVisible(withThreshold);
-        s4BLValue.setVisible(withThreshold);
-        s4BLLeft.setVisible(withThreshold);
-        s4BLRight.setVisible(withThreshold);
-        thresholdSlider.setVisible(withThreshold);
+        thresholdPanel.markDone(false);
+        thresholdPanel.setItemsVisible(withThreshold);
     }
 
     private boolean isRunnable() {
@@ -278,12 +228,6 @@ final class SWMFrame extends JFrame {
             default -> throw new IllegalArgumentException("Unknown strategy %s".formatted(newStrategy));
         }
         strategy = newStrategy;
-    }
-
-    private void onSplitChanged(ChangeEvent e) {
-        int rawValue = ((JSlider) e.getSource()).getValue();
-        split = BigDecimal.valueOf(Math.max(rawValue, 10), 2);
-        s4BLValue.setText(toTitle("value: " + split.toPlainString()));
     }
 
     @Nonnull private static String translateEmptyText(@Nonnull String text) {
