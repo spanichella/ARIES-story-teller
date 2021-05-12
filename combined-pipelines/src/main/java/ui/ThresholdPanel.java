@@ -20,27 +20,27 @@ final class ThresholdPanel extends CompletablePanel {
     @Nonnull private final JLabel minValueLabel;
     @Nonnull private final JLabel maxValueLabel;
     @Nonnull private final JSlider thresholdSlider;
+    @Nonnull private BigDecimal split = BigDecimal.valueOf(5, 1);
 
-    ThresholdPanel(@Nonnull Consumer<? super BigDecimal> onSplitChange) {
+    ThresholdPanel() {
         super("[Step 6]");
 
         subTitleLabel = UIHelpers.getLabel("Set Size of Training-Set");
         valueLabel = UIHelpers.getLabel("value: 0.5");
         minValueLabel = UIHelpers.getLabel("0.1");
         maxValueLabel = UIHelpers.getLabel("1.0");
-        thresholdSlider = buildSlider(onSplitChange);
+        thresholdSlider = buildSlider();
 
         add(buildCenterPanel(), BorderLayout.CENTER);
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_END);
     }
 
-    private JSlider buildSlider(@Nonnull Consumer<? super BigDecimal> onSplitChange) {
+    private JSlider buildSlider() {
         JSlider slider = new JSlider();
         slider.setMinorTickSpacing(1);
         slider.setBackground(DefaultColors.BACKGROUND);
         slider.addChangeListener(e -> {
-            BigDecimal split = getSplitValueFromEvent(e);
-            onSplitChange.accept(getSplitValueFromEvent(e));
+            split = getSplitValueFromEvent(e);
             valueLabel.setText(UIHelpers.toTitle("value: " + split.toPlainString()));
         });
         return slider;
@@ -67,6 +67,11 @@ final class ThresholdPanel extends CompletablePanel {
         minValueLabel.setVisible(visible);
         maxValueLabel.setVisible(visible);
         thresholdSlider.setVisible(visible);
+    }
+
+    @Nonnull
+    BigDecimal getSplit() {
+        return split;
     }
 
     private static BigDecimal getSplitValueFromEvent(ChangeEvent event) {

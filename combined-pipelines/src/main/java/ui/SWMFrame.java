@@ -5,7 +5,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.io.Serial;
-import java.math.BigDecimal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
@@ -43,7 +42,6 @@ final class SWMFrame extends JFrame {
     @Nullable private DataType dataType;
     @Nullable private PipelineType pipelineType;
     @Nonnull private String mlModel = UIHelpers.EMPTY_TEXT;
-    @Nonnull private BigDecimal split = BigDecimal.valueOf(5, 1);
     @Nonnull private String strategy = UIHelpers.EMPTY_TEXT;
 
     SWMFrame() {
@@ -101,7 +99,7 @@ final class SWMFrame extends JFrame {
         strategyPanel.setItemsVisible(false);
         mainPanel.add(strategyPanel);
 
-        thresholdPanel = new ThresholdPanel(newSplit -> split = newSplit);
+        thresholdPanel = new ThresholdPanel();
         thresholdPanel.setItemsVisible(false);
         mainPanel.add(thresholdPanel);
 
@@ -172,7 +170,8 @@ final class SWMFrame extends JFrame {
         loader.start();
 
         try {
-            XMLInitializer.createXML(truthFilePath, dataType, translateEmptyText(mlModel), split, translateEmptyText(strategy));
+            XMLInitializer.createXML(truthFilePath, dataType, translateEmptyText(mlModel), thresholdPanel.getSplit(),
+                translateEmptyText(strategy));
         } catch (TransformerException | ParserConfigurationException | RuntimeException exception) {
             showErrorMessage("Generating the XML Failed", exception);
             closeWindow();
