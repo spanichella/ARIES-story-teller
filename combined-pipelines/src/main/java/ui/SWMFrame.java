@@ -1,12 +1,12 @@
 package ui;
 
+import static ui.UIHelpers.EMPTY_TEXT;
 import static ui.UIHelpers.createPanel;
 import static ui.UIHelpers.createSeparator;
 import static ui.UIHelpers.getComboBox;
 import static ui.UIHelpers.getLabel;
 import static ui.UIHelpers.getTranslatableComboBox;
 import static ui.UIHelpers.toTitle;
-import static ui.UIHelpers.EMPTY_TEXT;
 
 import filegeneration.XMLInitializer;
 import java.awt.BorderLayout;

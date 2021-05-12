@@ -15,7 +15,8 @@ final class TruthSetPanel extends CompletablePanel {
     private static final long serialVersionUID = -8088616060831842438L;
     private static final File DATASETS_FOLDER = new File("..", "datasets");
 
-    TruthSetPanel(@Nonnull String title, @Nonnull Runnable onUpdate, Consumer<? super File> onFileSelected, Consumer<? super String> onFileSelectionFailed) {
+    TruthSetPanel(@Nonnull String title, @Nonnull Runnable onUpdate, Consumer<? super File> onFileSelected,
+                  Consumer<? super String> onFileSelectionFailed) {
         super(title);
         setLayout(new BorderLayout());
 
@@ -24,7 +25,8 @@ final class TruthSetPanel extends CompletablePanel {
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_END);
     }
 
-    private JPanel buildCenterPanel(Runnable onUpdate, Consumer<? super File> onFileSelected, Consumer<? super String> onFileSelectionFailed) {
+    private JPanel buildCenterPanel(Runnable onUpdate, Consumer<? super File> onFileSelected,
+                                    Consumer<? super String> onFileSelectionFailed) {
         JPanel panel = UIHelpers.createPanel(new GridLayout(3, 1));
         panel.add(getTitleLabel());
         panel.add(UIHelpers.getLabel("Select a truth set to be analyzed by the algorithm"));
@@ -39,7 +41,7 @@ final class TruthSetPanel extends CompletablePanel {
         return panel;
     }
 
-    private void selectTruthSet(Runnable onUpdate, Consumer<? super File> onSuccess, Consumer<? super String> onError) {
+    private static void selectTruthSet(Runnable onUpdate, Consumer<? super File> onSuccess, Consumer<? super String> onError) {
         JFileChooser fileChooser = new JFileChooser();
         if (DATASETS_FOLDER.exists()) {
             fileChooser.setCurrentDirectory(DATASETS_FOLDER);

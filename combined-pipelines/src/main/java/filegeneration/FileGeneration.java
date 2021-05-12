@@ -3,7 +3,6 @@ package filegeneration;
 import configfile.ConfigFileReader;
 import helpers.RscriptExecutor.ExecutionException;
 import helpers.RscriptExecutor.RunFailedException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import oracle.OracleRequirementSpecificationsAnalyzer;
 import oracle.OracleUserReviewsAnalyzer;

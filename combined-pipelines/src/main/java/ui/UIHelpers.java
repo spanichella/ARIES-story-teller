@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-class UIHelpers {
+final class UIHelpers {
     static final String EMPTY_TEXT = "Select";
 
     static JLabel getLabel(String title) {
