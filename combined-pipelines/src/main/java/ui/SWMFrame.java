@@ -1,9 +1,5 @@
 package ui;
 
-import static ui.UIHelpers.EMPTY_TEXT;
-import static ui.UIHelpers.createPanel;
-import static ui.UIHelpers.createSeparator;
-
 import filegeneration.XMLInitializer;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -46,9 +42,9 @@ final class SWMFrame extends JFrame {
     @Nullable private String truthFilePath;
     @Nullable private DataType dataType;
     @Nullable private PipelineType pipelineType;
-    @Nonnull private String mlModel = EMPTY_TEXT;
+    @Nonnull private String mlModel = UIHelpers.EMPTY_TEXT;
     @Nonnull private BigDecimal split = BigDecimal.valueOf(5, 1);
-    @Nonnull private String strategy = EMPTY_TEXT;
+    @Nonnull private String strategy = UIHelpers.EMPTY_TEXT;
 
     SWMFrame() {
         Icon logoImage = new ImageIcon("images/swmlogo.jpg");
@@ -70,16 +66,16 @@ final class SWMFrame extends JFrame {
         mainPanel.setLayout(new GridLayout(8, 1));
         add(mainPanel, BorderLayout.CENTER);
 
-        add(createSeparator(), BorderLayout.PAGE_START);
-        add(createSeparator(), BorderLayout.PAGE_END);
-        add(createSeparator(), BorderLayout.WEST);
-        add(createSeparator(), BorderLayout.EAST);
+        add(UIHelpers.createSeparator(), BorderLayout.PAGE_START);
+        add(UIHelpers.createSeparator(), BorderLayout.PAGE_END);
+        add(UIHelpers.createSeparator(), BorderLayout.WEST);
+        add(UIHelpers.createSeparator(), BorderLayout.EAST);
 
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setBackground(DefaultColors.BACKGROUND);
 
-        JPanel logoPanel = createPanel(new BorderLayout());
+        JPanel logoPanel = UIHelpers.createPanel(new BorderLayout());
         logoPanel.add(logoLabel);
         mainPanel.add(logoPanel);
 
@@ -112,11 +108,11 @@ final class SWMFrame extends JFrame {
         mainPanel.add(thresholdPanel);
 
         //step 6 Panels
-        JPanel step6MainGrid = createPanel(new GridLayout(3, 1));
-        step6MainGrid.add(createPanel());
+        JPanel step6MainGrid = UIHelpers.createPanel(new GridLayout(3, 1));
+        step6MainGrid.add(UIHelpers.createPanel());
         step6MainGrid.add(executeB);
-        step6MainGrid.add(createPanel());
-        JPanel step6Panel = createPanel(new BorderLayout());
+        step6MainGrid.add(UIHelpers.createPanel());
+        JPanel step6Panel = UIHelpers.createPanel(new BorderLayout());
         step6Panel.add(step6MainGrid, BorderLayout.CENTER);
         mainPanel.add(step6Panel);
 
@@ -152,7 +148,7 @@ final class SWMFrame extends JFrame {
             return false;
         }
         return pipelinePanel.getSelectedItem() == PipelineType.DL
-            || (!mlModel.equals(EMPTY_TEXT) && !strategy.equals(EMPTY_TEXT));
+            || (!mlModel.equals(UIHelpers.EMPTY_TEXT) && !strategy.equals(UIHelpers.EMPTY_TEXT));
     }
 
     private void closeWindow() {
@@ -166,8 +162,8 @@ final class SWMFrame extends JFrame {
         truthSetPanel.markDone(truthFilePath != null);
         contentTypePanel.markDone(dataType != null);
         pipelinePanel.markDone(pipelineType != null);
-        mlModelPanel.markDone(!mlModel.equals(EMPTY_TEXT));
-        strategyPanel.markDone(!strategy.equals(EMPTY_TEXT));
+        mlModelPanel.markDone(!mlModel.equals(UIHelpers.EMPTY_TEXT));
+        strategyPanel.markDone(!strategy.equals(UIHelpers.EMPTY_TEXT));
         executeB.setEnabled(isRunnable());
     }
 
@@ -231,7 +227,7 @@ final class SWMFrame extends JFrame {
     }
 
     @Nonnull private static String translateEmptyText(@Nonnull String text) {
-        return text.equals(EMPTY_TEXT) ? "null" : text;
+        return text.equals(UIHelpers.EMPTY_TEXT) ? "null" : text;
     }
 
     private void showErrorMessage(@Nonnull String message, @Nullable Throwable throwable) {
