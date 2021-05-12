@@ -32,7 +32,7 @@ final class SWMFrame extends JFrame {
 
     @Nullable private SWMLoaderFrame loader;
 
-    @Nonnull private final JButton executeB;
+    @Nonnull private final JButton executeButton;
     @Nonnull private final TruthSetPanel truthSetPanel;
     @Nonnull private final ContentTypePanel contentTypePanel;
     @Nonnull private final PipelinePanel pipelinePanel;
@@ -52,9 +52,9 @@ final class SWMFrame extends JFrame {
         logoLabel.setIcon(logoImage);
         logoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        executeB = new JButton("Run");
-        executeB.addActionListener(this::onRun);
-        executeB.setEnabled(false);
+        executeButton = new JButton("Run");
+        executeButton.addActionListener(this::onRun);
+        executeButton.setEnabled(false);
 
         ImageIcon icon = new ImageIcon("images/STIcon.jpg");
         setIconImage(icon.getImage());
@@ -108,7 +108,7 @@ final class SWMFrame extends JFrame {
         //step 6 Panels
         JPanel step6MainGrid = UIHelpers.createPanel(new GridLayout(3, 1));
         step6MainGrid.add(UIHelpers.createPanel());
-        step6MainGrid.add(executeB);
+        step6MainGrid.add(executeButton);
         step6MainGrid.add(UIHelpers.createPanel());
         mainPanel.add(step6MainGrid);
 
@@ -160,7 +160,7 @@ final class SWMFrame extends JFrame {
         pipelinePanel.markDone(pipelineType != null);
         mlModelPanel.markDone(!mlModel.equals(UIHelpers.EMPTY_TEXT));
         strategyPanel.markDone(!strategy.equals(UIHelpers.EMPTY_TEXT));
-        executeB.setEnabled(isRunnable());
+        executeButton.setEnabled(isRunnable());
     }
 
     private void onRun(ActionEvent e) {
