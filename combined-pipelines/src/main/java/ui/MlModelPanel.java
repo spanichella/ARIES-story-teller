@@ -25,7 +25,6 @@ final class MlModelPanel extends CompletablePanel {
 
     MlModelPanel(@Nonnull String title, @Nonnull Consumer<? super String> onModelChange, @Nonnull Runnable onUpdate) {
         super(title);
-        setLayout(new BorderLayout());
 
         subTitleLabel = UIHelpers.getLabel("Select Method");
         comboBox = UIHelpers.getComboBox(mlModelArray, onModelChange, onUpdate);

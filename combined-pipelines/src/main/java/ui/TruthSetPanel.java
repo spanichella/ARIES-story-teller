@@ -18,7 +18,6 @@ final class TruthSetPanel extends CompletablePanel {
     TruthSetPanel(@Nonnull String title, @Nonnull Runnable onUpdate, Consumer<? super File> onFileSelected,
                   Consumer<? super String> onFileSelectionFailed) {
         super(title);
-        setLayout(new BorderLayout());
 
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_START);
         add(buildCenterPanel(onUpdate, onFileSelected, onFileSelectionFailed), BorderLayout.CENTER);

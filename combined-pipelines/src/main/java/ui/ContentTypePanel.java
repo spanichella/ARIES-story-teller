@@ -15,7 +15,6 @@ final class ContentTypePanel extends CompletablePanel {
 
     ContentTypePanel(@Nonnull String title, @Nonnull Runnable onUpdate, @Nonnull Consumer<? super DataType> onDataTypeChange) {
         super(title);
-        setLayout(new BorderLayout());
         add(buildCenterPanel(onUpdate, onDataTypeChange), BorderLayout.CENTER);
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_END);
     }

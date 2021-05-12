@@ -24,7 +24,6 @@ final class PipelinePanel extends CompletablePanel {
             new PipelineType[] { null, PipelineType.ML, PipelineType.DL },
             PipelinePanel::translatePipelineType, onPipelineChange, onUpdate);
 
-        setLayout(new BorderLayout());
         add(buildCenterPanel(), BorderLayout.CENTER);
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_END);
     }

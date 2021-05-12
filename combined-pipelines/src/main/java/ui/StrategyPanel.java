@@ -20,7 +20,6 @@ final class StrategyPanel extends CompletablePanel {
 
     StrategyPanel(@Nonnull String title, @Nonnull Consumer<? super String> onStrategyChange, @Nonnull Runnable onUpdate) {
         super(title);
-        setLayout(new BorderLayout());
 
         subTitleLabel = UIHelpers.getLabel("Select Strategy");
         comboBox = UIHelpers.getComboBox(strategyArray, onStrategyChange, onUpdate);

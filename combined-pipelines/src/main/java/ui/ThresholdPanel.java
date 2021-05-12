@@ -23,7 +23,6 @@ final class ThresholdPanel extends CompletablePanel {
 
     ThresholdPanel(@Nonnull String title, @Nonnull Consumer<? super BigDecimal> onSplitChange) {
         super(title);
-        setLayout(new BorderLayout());
 
         subTitleLabel = UIHelpers.getLabel("Set Size of Training-Set");
         valueLabel = UIHelpers.getLabel("value: 0.5");

@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.BorderLayout;
 import java.io.Serial;
 import javax.annotation.Nonnull;
 import javax.swing.JLabel;
@@ -15,6 +16,7 @@ abstract class CompletablePanel extends JPanel {
     CompletablePanel(@Nonnull String title) {
         this.title = title;
         titleLabel = UIHelpers.getLabel(title);
+        setLayout(new BorderLayout());
     }
 
     void markDone(boolean done) {
