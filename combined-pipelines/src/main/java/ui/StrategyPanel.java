@@ -18,8 +18,8 @@ final class StrategyPanel extends CompletablePanel {
 
     private static final String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
 
-    StrategyPanel(@Nonnull String title, @Nonnull Consumer<? super String> onStrategyChange, @Nonnull Runnable onUpdate) {
-        super(title);
+    StrategyPanel(@Nonnull Consumer<? super String> onStrategyChange, @Nonnull Runnable onUpdate) {
+        super("[Step 5]");
 
         subTitleLabel = UIHelpers.getLabel("Select Strategy");
         comboBox = UIHelpers.getComboBox(strategyArray, onStrategyChange, onUpdate);

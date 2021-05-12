@@ -79,31 +79,29 @@ final class SWMFrame extends JFrame {
         logoPanel.add(logoLabel);
         mainPanel.add(logoPanel);
 
-        truthSetPanel = new TruthSetPanel("[Step 1]",
+        truthSetPanel = new TruthSetPanel(
             this::updateStatus,
             file -> truthFilePath = file.toString(),
             error -> showErrorMessage(error, null));
         mainPanel.add(truthSetPanel);
 
-        contentTypePanel = new ContentTypePanel("[Step 2]",
-            this::updateStatus,
-            this::onDataTypeChange);
+        contentTypePanel = new ContentTypePanel(this::updateStatus, this::onDataTypeChange);
         mainPanel.add(contentTypePanel);
 
-        pipelinePanel = new PipelinePanel("[Step 3]",
+        pipelinePanel = new PipelinePanel(
             this::onPipelineTypeChange,
             this::updateStatus);
         mainPanel.add(pipelinePanel);
 
-        mlModelPanel = new MlModelPanel("[Step 4]", model -> mlModel = model, this::updateStatus);
+        mlModelPanel = new MlModelPanel(model -> mlModel = model, this::updateStatus);
         mlModelPanel.setItemsVisible(false);
         mainPanel.add(mlModelPanel);
 
-        strategyPanel = new StrategyPanel("[Step 5]", this::onStrategyChange, this::updateStatus);
+        strategyPanel = new StrategyPanel(this::onStrategyChange, this::updateStatus);
         strategyPanel.setItemsVisible(false);
         mainPanel.add(strategyPanel);
 
-        thresholdPanel = new ThresholdPanel("[Step 6]", newSplit -> split = newSplit);
+        thresholdPanel = new ThresholdPanel(newSplit -> split = newSplit);
         thresholdPanel.setItemsVisible(false);
         mainPanel.add(thresholdPanel);
 

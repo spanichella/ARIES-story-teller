@@ -17,8 +17,8 @@ final class PipelinePanel extends CompletablePanel {
 
     private final JComboBox<String> comboBox;
 
-    PipelinePanel(@Nonnull String title, @Nonnull Consumer<? super PipelineType> onPipelineChange, @Nonnull Runnable onUpdate) {
-        super(title);
+    PipelinePanel(@Nonnull Consumer<? super PipelineType> onPipelineChange, @Nonnull Runnable onUpdate) {
+        super("[Step 3]");
 
         comboBox = UIHelpers.getTranslatableComboBox(
             new PipelineType[] { null, PipelineType.ML, PipelineType.DL },

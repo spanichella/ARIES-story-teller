@@ -15,9 +15,9 @@ final class TruthSetPanel extends CompletablePanel {
     private static final long serialVersionUID = -8088616060831842438L;
     private static final File DATASETS_FOLDER = new File("..", "datasets");
 
-    TruthSetPanel(@Nonnull String title, @Nonnull Runnable onUpdate, Consumer<? super File> onFileSelected,
+    TruthSetPanel(@Nonnull Runnable onUpdate, Consumer<? super File> onFileSelected,
                   Consumer<? super String> onFileSelectionFailed) {
-        super(title);
+        super("[Step 1]");
 
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_START);
         add(buildCenterPanel(onUpdate, onFileSelected, onFileSelectionFailed), BorderLayout.CENTER);

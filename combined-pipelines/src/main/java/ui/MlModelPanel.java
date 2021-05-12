@@ -23,8 +23,8 @@ final class MlModelPanel extends CompletablePanel {
         "RegressionByDiscretization",
         };
 
-    MlModelPanel(@Nonnull String title, @Nonnull Consumer<? super String> onModelChange, @Nonnull Runnable onUpdate) {
-        super(title);
+    MlModelPanel(@Nonnull Consumer<? super String> onModelChange, @Nonnull Runnable onUpdate) {
+        super("[Step 4]");
 
         subTitleLabel = UIHelpers.getLabel("Select Method");
         comboBox = UIHelpers.getComboBox(mlModelArray, onModelChange, onUpdate);

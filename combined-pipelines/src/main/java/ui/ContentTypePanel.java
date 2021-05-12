@@ -13,8 +13,8 @@ final class ContentTypePanel extends CompletablePanel {
     @Serial
     private static final long serialVersionUID = 6735293525362364632L;
 
-    ContentTypePanel(@Nonnull String title, @Nonnull Runnable onUpdate, @Nonnull Consumer<? super DataType> onDataTypeChange) {
-        super(title);
+    ContentTypePanel(@Nonnull Runnable onUpdate, @Nonnull Consumer<? super DataType> onDataTypeChange) {
+        super("[Step 2]");
         add(buildCenterPanel(onUpdate, onDataTypeChange), BorderLayout.CENTER);
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_END);
     }

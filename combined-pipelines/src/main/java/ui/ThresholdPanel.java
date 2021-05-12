@@ -21,8 +21,8 @@ final class ThresholdPanel extends CompletablePanel {
     @Nonnull private final JLabel maxValueLabel;
     @Nonnull private final JSlider thresholdSlider;
 
-    ThresholdPanel(@Nonnull String title, @Nonnull Consumer<? super BigDecimal> onSplitChange) {
-        super(title);
+    ThresholdPanel(@Nonnull Consumer<? super BigDecimal> onSplitChange) {
+        super("[Step 6]");
 
         subTitleLabel = UIHelpers.getLabel("Set Size of Training-Set");
         valueLabel = UIHelpers.getLabel("value: 0.5");
