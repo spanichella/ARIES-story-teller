@@ -5,7 +5,6 @@ import static ui.UIHelpers.createPanel;
 import static ui.UIHelpers.createSeparator;
 import static ui.UIHelpers.getComboBox;
 import static ui.UIHelpers.getLabel;
-import static ui.UIHelpers.getTranslatableComboBox;
 import static ui.UIHelpers.toTitle;
 
 import filegeneration.XMLInitializer;
@@ -16,7 +15,6 @@ import java.io.Serial;
 import java.math.BigDecimal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.IntStream;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.swing.Icon;
@@ -47,7 +45,7 @@ final class SWMFrame extends JFrame {
     @Nonnull private final JButton executeB;
     @Nonnull private final TruthSetPanel truthSetPanel;
     @Nonnull private final ContentTypePanel contentTypePanel;
-    @Nonnull private final JLabel s3LStep;
+    @Nonnull private final PipelinePanel pipelinePanel;
     @Nonnull private final JLabel s4ALStep;
     @Nonnull private final JLabel s4ALText;
     @Nonnull private final JLabel s4BLStep;
@@ -63,7 +61,6 @@ final class SWMFrame extends JFrame {
     @Nonnull private String mlModel = EMPTY_TEXT;
     @Nonnull private BigDecimal split = BigDecimal.valueOf(5, 1);
     @Nonnull private String strategy = EMPTY_TEXT;
-    @Nonnull private final JComboBox<String> pipelineTypeComboBox;
     @Nonnull private final JComboBox<String> mlModelComboBox;
     @Nonnull private final JComboBox<String> strategyComboBox;
     @Nonnull private final JSlider thresholdSlider;
@@ -91,17 +88,12 @@ final class SWMFrame extends JFrame {
         thresholdSlider.addChangeListener(this::onSplitChanged);
         thresholdSlider.setVisible(false);
 
-        pipelineTypeComboBox = getTranslatableComboBox(
-                new PipelineType[] { null, PipelineType.ML, PipelineType.DL },
-                SWMFrame::translatePipelineType, this::onPipelineTypeChange, this::updateStatus);
-
         mlModelComboBox = getComboBox(mlModelArray, (String newName) -> mlModel = newName, this::updateStatus);
         mlModelComboBox.setVisible(false);
 
         strategyComboBox = getComboBox(strategyArray, this::onStrategyChange, this::updateStatus);
         strategyComboBox.setVisible(false);
 
-        s3LStep = getLabel("[Step 3]");
         s4ALStep = getLabel("[Step 4]", false);
         s4ALText = getLabel("Select Method", false);
         s4BLText = getLabel("Set Size of Training-Set", false);
@@ -146,15 +138,10 @@ final class SWMFrame extends JFrame {
             this::onDataTypeChange);
         mainPanel.add(contentTypePanel);
 
-        //step 3 panels
-        JPanel s3BorderCenterPanel = createPanel(new GridLayout(3, 1));
-        s3BorderCenterPanel.add(s3LStep);
-        s3BorderCenterPanel.add(getLabel("Select a Pipeline"));
-        s3BorderCenterPanel.add(pipelineTypeComboBox);
-        JPanel step3Panel = createPanel(new BorderLayout());
-        step3Panel.add(s3BorderCenterPanel, BorderLayout.CENTER);
-        step3Panel.add(createSeparator(), BorderLayout.PAGE_END);
-        mainPanel.add(step3Panel);
+        pipelinePanel = new PipelinePanel("[Step 3]",
+            this::onPipelineTypeChange,
+            this::updateStatus);
+        mainPanel.add(pipelinePanel);
 
         //step 4a panels
         JPanel s4ABorderCenterPanel = createPanel(new GridLayout(3, 1));
@@ -257,7 +244,7 @@ final class SWMFrame extends JFrame {
         if (truthFilePath == null || dataType == null || pipelineType == null) {
             return false;
         }
-        return "DL".equals(pipelineTypeComboBox.getSelectedItem())
+        return pipelinePanel.getSelectedItem() == PipelineType.DL
             || (!mlModel.equals(EMPTY_TEXT) && !strategy.equals(EMPTY_TEXT));
     }
 
@@ -271,7 +258,7 @@ final class SWMFrame extends JFrame {
     private void updateStatus() {
         truthSetPanel.markDone(truthFilePath != null);
         contentTypePanel.markDone(dataType != null);
-        s3LStep.setText(toTitle("[Step 3]", pipelineType != null));
+        pipelinePanel.markDone(pipelineType != null);
         s4ALStep.setText(toTitle("[Step 4]", !mlModel.equals(EMPTY_TEXT)));
         s5LStep.setText(toTitle("[Step 5]", !strategy.equals(EMPTY_TEXT)));
         executeB.setEnabled(isRunnable());
@@ -315,17 +302,8 @@ final class SWMFrame extends JFrame {
 
     private void onDataTypeChange(DataType newDataType) {
         switch (newDataType) {
-            case REQUIREMENT_SPECIFICATIONS -> {
-                if (IntStream.range(0, pipelineTypeComboBox.getItemCount())
-                    .mapToObj(pipelineTypeComboBox::getItemAt)
-                    .noneMatch(value -> value.equals("DL"))) {
-                    pipelineTypeComboBox.insertItemAt("DL", pipelineTypeComboBox.getItemCount());
-                }
-            }
-            case USER_REVIEWS -> {
-                pipelineTypeComboBox.setSelectedItem("ML");
-                pipelineTypeComboBox.removeItem("DL");
-            }
+            case REQUIREMENT_SPECIFICATIONS -> pipelinePanel.addDL();
+            case USER_REVIEWS -> pipelinePanel.removeDL();
             default -> throw new IllegalArgumentException("Unknown type: %s".formatted(newDataType));
         }
         dataType = newDataType;
@@ -349,16 +327,6 @@ final class SWMFrame extends JFrame {
         int rawValue = ((JSlider) e.getSource()).getValue();
         split = BigDecimal.valueOf(Math.max(rawValue, 10), 2);
         s4BLValue.setText(toTitle("value: " + split.toPlainString()));
-    }
-
-    private static String translatePipelineType(@Nullable PipelineType pipelineType) {
-        if (pipelineType == null) {
-            return EMPTY_TEXT;
-        }
-        return switch (pipelineType) {
-            case ML -> "ML";
-            case DL -> "DL";
-        };
     }
 
     @Nonnull private static String translateEmptyText(@Nonnull String text) {
