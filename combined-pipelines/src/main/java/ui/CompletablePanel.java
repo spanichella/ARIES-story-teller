@@ -16,19 +16,21 @@ abstract class CompletablePanel extends JPanel {
     CompletablePanel(@Nonnull String title) {
         this.title = title;
         titleLabel = UIHelpers.getLabel(title);
+        //noinspection OverridableMethodCallDuringObjectConstruction
         setLayout(new BorderLayout());
     }
 
-    void markDone(boolean done) {
+    final void markDone(boolean done) {
         titleLabel.setText(UIHelpers.toTitle(title, done));
     }
 
+    @SuppressWarnings("DesignForExtension")
     void setItemsVisible(boolean visible) {
         titleLabel.setVisible(visible);
     }
 
     @Nonnull
-    JLabel getTitleLabel() {
+    final JLabel getTitleLabel() {
         return titleLabel;
     }
 }
