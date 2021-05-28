@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.io.Serial;
 import java.math.BigDecimal;
-import java.util.function.Consumer;
 import javax.annotation.Nonnull;
 import javax.swing.JLabel;
 import javax.swing.JPanel;

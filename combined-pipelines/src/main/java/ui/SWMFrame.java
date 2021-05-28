@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import pipelines.AsyncPipeline;
 import pipelines.MainPipeline;
 import types.DataType;
 import types.PipelineType;
@@ -177,25 +178,15 @@ final class SWMFrame extends JFrame {
             closeWindow();
             return;
         }
-        Thread mainThread = new Thread(() -> runPipeline(pipelineType, dataType));
-        mainThread.start();
-        mainThread.setUncaughtExceptionHandler((thread, throwable) -> {
-            showErrorMessage("Pipeline Thread failed",
-                    throwable instanceof ThreadException ? throwable.getCause() : throwable);
+
+        @Nonnull PipelineType validPipelineType = pipelineType;
+        @Nonnull DataType validDataType = dataType;
+        AsyncPipeline.run(() -> MainPipeline.runPipeline(validPipelineType, validDataType), error -> {
+            error.ifPresent(throwable -> showErrorMessage("Pipeline Thread failed", throwable));
             closeWindow();
         });
         setEnabled(false);
         updateStatus();
-    }
-
-    private void runPipeline(@Nonnull PipelineType realPipelineType, @Nonnull DataType realDataType) {
-        logger.info("Thread Running");
-        try {
-            MainPipeline.runPipeline(realPipelineType, realDataType);
-            closeWindow();
-        } catch (Exception e) {
-            throw new ThreadException(e);
-        }
     }
 
     private void onDataTypeChange(DataType newDataType) {
@@ -228,14 +219,5 @@ final class SWMFrame extends JFrame {
     private void showErrorMessage(@Nonnull String message, @Nullable Throwable throwable) {
         logger.log(Level.SEVERE, message, throwable);
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
-    }
-
-    private static final class ThreadException extends RuntimeException {
-        @Serial
-        private static final long serialVersionUID = 7785242162506057983L;
-
-        private ThreadException(Throwable cause) {
-            super(cause);
-        }
     }
 }
