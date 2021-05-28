@@ -5,11 +5,11 @@ import java.util.function.Consumer;
 import java.util.logging.Logger;
 
 public final class AsyncPipeline {
-    private static final Logger logger = Logger.getLogger(AsyncPipeline.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(AsyncPipeline.class.getName());
 
     public static void run(ExceptionRunnable action, Consumer<? super Optional<Throwable>> onCompleted) {
         Thread thread = new Thread(() -> {
-            logger.info("Thread Running");
+            LOGGER.info("Thread Running");
             try {
                 action.run();
                 onCompleted.accept(Optional.empty());
