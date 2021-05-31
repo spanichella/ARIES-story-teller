@@ -25,7 +25,7 @@ import types.DataType;
  * Fills XML files on startup with correct paths and other values
  */
 public final class XMLInitializer {
-    private static final Logger logger = Logger.getLogger(XMLInitializer.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(XMLInitializer.class.getName());
 
     public static void createXML(@Nonnull String pathTruthFile, @Nonnull DataType dataType, @Nonnull String model,
                                  @Nonnull BigDecimal percentage, @Nonnull String strategy)
@@ -41,14 +41,14 @@ public final class XMLInitializer {
                 name = "RequirementSpecifications";
                 dataTypePostfix = "-Req-Specifications";
                 attributeTextName = "req_specification";
-                logger.info("Creating XML-file for Requirement-Specifications...");
+                LOGGER.info("Creating XML-file for Requirement-Specifications...");
             }
             case USER_REVIEWS -> {
                 baseFolder = CommonPaths.RESOURCES.resolve("UserReviews");
                 name = "UserReviews";
                 dataTypePostfix = "";
                 attributeTextName = "review";
-                logger.info("Creating XML-file for User Reviews...");
+                LOGGER.info("Creating XML-file for User Reviews...");
             }
             default -> throw new IllegalArgumentException("Unknown type \"%s\"".formatted(dataType));
         }
@@ -109,6 +109,6 @@ public final class XMLInitializer {
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
         transformer.transform(domSource, streamResult);
 
-        logger.info("XML-file created");
+        LOGGER.info("XML-file created");
     }
 }

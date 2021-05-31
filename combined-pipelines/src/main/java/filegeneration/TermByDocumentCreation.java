@@ -8,7 +8,7 @@ import java.util.logging.Logger;
  * @author panc
  */
 final class TermByDocumentCreation {
-    private static final Logger logger = Logger.getLogger(TermByDocumentCreation.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TermByDocumentCreation.class.getName());
 
     static void createTBD(ConfigFileReader cfr) throws RscriptExecutor.ExecutionException, RscriptExecutor.RunFailedException {
         String pathTbDRScript = cfr.pathTbDRScript;
@@ -22,7 +22,7 @@ final class TermByDocumentCreation {
         String oracleFolder = cfr.pathBaseFolder;
 
         // path of command "/usr/local/bin/Rscript" identified using: "which Rscript" from command line
-        logger.info("R-Script execution begins:");
+        LOGGER.info("R-Script execution begins:");
         RscriptExecutor.execute(pathTbDRScript, docsLocation, documentsTrainingSet,
                 documentsTestSet, simplifiedOraclePath, nameOfAttributeID, nameOfAttributeClass, nameOfAttributeText,
                 oracleFolder);

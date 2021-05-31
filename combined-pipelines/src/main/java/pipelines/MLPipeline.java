@@ -9,11 +9,11 @@ import java.util.logging.Logger;
 import ml.WekaClassifier;
 
 final class MLPipeline {
-    private static final Logger logger = Logger.getLogger(MLPipeline.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(MLPipeline.class.getName());
 
     // runs ML according to selections made
     static void performMlAnalysis(ConfigFileReader configFileReader) throws Exception {
-        logger.info("Starting Machine Learning Analysis...");
+        LOGGER.info("Starting Machine Learning Analysis...");
         if (configFileReader.strategy.equals("Percentage-Split")) {
             WekaClassifier wekaClassifier = new WekaClassifier(configFileReader.pathTDMTrainingSet,
                 configFileReader.pathTDMTestSet, configFileReader.pathModel);
@@ -32,7 +32,7 @@ final class MLPipeline {
             WekaClassifier.runSpecifiedModelWith10FoldStrategy(configFileReader.pathFullTDMDataset,
                 configFileReader.machineLearningModel, configFileReader.pathResultsPrediction);
         }
-        logger.info("Machine Learning Analysis completed");
+        LOGGER.info("Machine Learning Analysis completed");
     }
 
     private static boolean checkWhetherTestSetIsLabeled(String pathTestSet) throws FileNotFoundException {
@@ -45,12 +45,12 @@ final class MLPipeline {
                 line = scanner.nextLine();
                 //System.out.println(line);
                 if (line.contains("\"?\"") || line.contains("'?'") || line.endsWith("?")) {
-                    logger.info("The test-set is non labeled, we need to first label such instances");
+                    LOGGER.info("The test-set is non labeled, we need to first label such instances");
                     return false;
                 }
             }
         }
-        logger.info("The test-set is labeled.");
+        LOGGER.info("The test-set is labeled.");
         return true;
     }
 }

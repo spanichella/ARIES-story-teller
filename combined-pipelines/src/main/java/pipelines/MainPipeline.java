@@ -18,7 +18,7 @@ import types.PipelineType;
  * @author panc
  */
 public final class MainPipeline {
-    private static final Logger logger = Logger.getLogger(MainPipeline.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(MainPipeline.class.getName());
 
     public static void runPipeline(@Nonnull PipelineType pipelineType, @Nonnull DataType dataType) throws Exception {
         Path xmlFiles = CommonPaths.XML_FILES;
@@ -29,12 +29,12 @@ public final class MainPipeline {
             case USER_REVIEWS -> xmlFiles.resolve("UserReviewsXML.xml");
         };
 
-        logger.log(Level.INFO, "Path of ConfigFile: %s".formatted(pathConfigFile));
+        LOGGER.log(Level.INFO, "Path of ConfigFile: %s".formatted(pathConfigFile));
 
         //Read Config file
         ConfigFileReader configFileReader = new ConfigFileReader(pathConfigFile);
         //Generate files for ML/DL
-        logger.info("Starting file generation ");
+        LOGGER.info("Starting file generation ");
         FileGeneration.oracleAnalysis(configFileReader);
 
         //run selected pipeline
@@ -43,6 +43,6 @@ public final class MainPipeline {
             case DL -> DLPipeline.runDLPipeline(configFileReader);
             default -> throw new IllegalArgumentException("Unknown pipeline type: %s".formatted(pipelineType));
         }
-        logger.info("Program execution completed");
+        LOGGER.info("Program execution completed");
     }
 }

@@ -28,7 +28,7 @@ import types.PipelineType;
 final class SWMFrame extends JFrame {
     @Serial
     private static final long serialVersionUID = -592869500939986619L;
-    private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SWMFrame.class.getName());
 
     @Nonnull
     private final JButton executeButton;
@@ -232,7 +232,7 @@ final class SWMFrame extends JFrame {
     }
 
     private void showErrorMessage(@Nonnull String message, @Nullable Throwable throwable) {
-        logger.log(Level.SEVERE, message, throwable);
+        LOGGER.log(Level.SEVERE, message, throwable);
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

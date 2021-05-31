@@ -32,7 +32,7 @@ import weka.core.converters.ConverterUtils.DataSource;
  */
 
 public final class WekaClassifier {
-    private static final Logger logger = Logger.getLogger(WekaClassifier.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(WekaClassifier.class.getName());
 
     @Nonnull
     private final String pathTrainingSet;
@@ -54,15 +54,15 @@ public final class WekaClassifier {
         Instances train = sourceTraining.getDataSet();
         Instances test = sourceTesting.getDataSet();
 
-        logger.info("Loading data...");
+        LOGGER.info("Loading data...");
 
         // Set class the last attribute as class
         train.setClassIndex(train.numAttributes() - 1);
         test.setClassIndex(train.numAttributes() - 1);
-        logger.info("Training data loaded");
+        LOGGER.info("Training data loaded");
 
         Classifier classifier = getClassifierClassName(machineLearningModel);
-        logger.info("Classifier used: %s".formatted(classifier.getClass()));
+        LOGGER.info("Classifier used: %s".formatted(classifier.getClass()));
         classifier.buildClassifier(train);
 
         Evaluation eval = new Evaluation(train);
@@ -78,18 +78,18 @@ public final class WekaClassifier {
         Instances train = sourceTraining.getDataSet();
         Instances test = sourceTesting.getDataSet();
 
-        logger.info("Loading data");
+        LOGGER.info("Loading data");
 
         // Set class the last attribute as class
         train.setClassIndex(train.numAttributes() - 1);
         test.setClassIndex(test.numAttributes() - 1);
-        logger.info("Training data loaded");
+        LOGGER.info("Training data loaded");
 
         Classifier classifier = getClassifierClassName(machineLearningModel);
-        logger.info("Classifier used: %s".formatted(classifier.getClass()));
-        logger.info("Test set items that need to be labeled:%d".formatted(test.numInstances()));
-        logger.info("To classify such instances, consider to use the GUI version of WEKA as reported in the following example:");
-        logger.info("https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf");
+        LOGGER.info("Classifier used: %s".formatted(classifier.getClass()));
+        LOGGER.info("Test set items that need to be labeled:%d".formatted(test.numInstances()));
+        LOGGER.info("To classify such instances, consider to use the GUI version of WEKA as reported in the following example:");
+        LOGGER.info("https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf");
     }
 
     public static void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String machineLearningModel,
@@ -98,10 +98,10 @@ public final class WekaClassifier {
         Instances wholeDataset = sourceWholeDataset.getDataSet(); // from somewhere
         wholeDataset.setClassIndex(wholeDataset.numAttributes() - 1);
 
-        logger.info("Loading data");
+        LOGGER.info("Loading data");
         Classifier classifier = getClassifierClassName(machineLearningModel);
-        logger.info("Using 10-Fold");
-        logger.info("Classifier used: %s".formatted(classifier.getClass()));
+        LOGGER.info("Using 10-Fold");
+        LOGGER.info("Classifier used: %s".formatted(classifier.getClass()));
         classifier.buildClassifier(wholeDataset);
 
         Evaluation eval = new Evaluation(wholeDataset);
@@ -111,7 +111,7 @@ public final class WekaClassifier {
 
     private static void printAndWriteModelMeasures(String title, Classifier classifier, Evaluation eval, String pathResultsPrediction)
             throws Exception {
-        printModelMeasures(title, classifier, eval, logger::info);
+        printModelMeasures(title, classifier, eval, LOGGER::info);
         String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
         try (FileWriter fileWriter = new FileWriter("%s%s.txt".formatted(pathResultsPrediction, strDate), StandardCharsets.UTF_8);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
