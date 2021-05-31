@@ -1,5 +1,7 @@
 # ARIES StoryTeller
 
+![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
+
 StoryTeller is a tool to automatically analyze User Stories and Requirements Specifications.
 Read more about the Project in [PROJECT.md](./PROJECT.md)
 
