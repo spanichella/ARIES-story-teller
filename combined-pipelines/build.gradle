@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'application'
+    id 'net.ltgt.errorprone' version '1.3.0'
+    id 'checkstyle'
+}
+
+apply plugin: 'java'
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    implementation 'nz.ac.waikato.cms.weka:weka-stable:3.8.3'
+    implementation 'org.deeplearning4j:deeplearning4j-core:0.9.1'
+    implementation 'org.deeplearning4j:deeplearning4j-nlp:0.9.1'
+    implementation 'org.nd4j:nd4j-native-platform:0.9.1'
+    implementation 'org.datavec:datavec-api:0.9.1'
+    implementation 'org.slf4j:slf4j-simple:1.6.1'
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+    errorprone 'com.google.errorprone:error_prone_core:2.6.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+    testImplementation 'org.mockito:mockito-core:3.9.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
+}
+
+group = 'ML-pipeline'
+version = '0.0.1-SNAPSHOT'
+description = 'ADSORB Management'
+java.sourceCompatibility = JavaVersion.VERSION_15
+applicationDefaultJvmArgs << '-Xmx6G'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xlint:all' << '-Werror'
+    options.errorprone.disable('MissingSummary')
+    options.errorprone.disable('UnnecessaryParentheses') // due to false positives with enhanced switches
+}
+
+application {
+    mainClass.set('ui.SWMGui')
+}
+
+checkstyle {
+    ignoreFailures = false
+    maxWarnings = 0
+}
+
+task verifyInstallation(type: JavaExec) {
+    group = "Execution"
+    classpath = sourceSets.main.runtimeClasspath
+    main = "helpers.VerifyInstallation"
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -64,8 +64,10 @@ if(!is.na(threshold2))
   #print(paste("arguments length", length(args)))
 }
 
-if(length(args)==6)
- {
+if(length(args)!=6) {
+  stop("Error: some problems with the arguments of the oracle..")
+}
+
   #print("All fine with the arguments..")
    print("Creating oracle CSV file...")
    oracle <- list(nameOfAttributeID2=c(), nameOfAttributeText2=c(),nameOfAttributeClass2=c())
@@ -139,12 +141,3 @@ print("populating simplified version of CSV...")
 simplified_oracle <- oracle
 simplified_oracle[[nameOfAttributeText2]] <- NULL
 write.csv(simplified_oracle, simplified_oracle_path,row.names = FALSE)
- }
- if(length(args)!=6)
- {
-   print("Error: some problems with the arguments of the oracle..")
- }
-
-
-
-

@@ -1,22 +1,27 @@
 package pipelines;
 
-import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
+import configfile.ConfigFileReader;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import configFile.ConfigFileReader;
+import javax.annotation.Nonnull;
 import org.apache.commons.lang.ArrayUtils;
 import org.deeplearning4j.eval.Evaluation;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
-import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.nn.api.OptimizationAlgorithm;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
@@ -26,12 +31,6 @@ import org.deeplearning4j.nn.conf.layers.DropoutLayer;
 import org.deeplearning4j.nn.conf.layers.OutputLayer;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.deeplearning4j.nn.weights.WeightInit;
-import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;
-import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
-import org.deeplearning4j.text.tokenization.tokenizer.preprocessor.CommonPreprocessor;
-import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
-import org.deeplearning4j.text.tokenization.tokenizerfactory.TokenizerFactory;
-import org.deeplearning4j.ui.standalone.ClassPathResource;
 import org.deeplearning4j.util.ModelSerializer;
 import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -40,128 +39,142 @@ import org.nd4j.linalg.lossfunctions.LossFunctions.LossFunction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DLPipeline {
-
+final class DLPipeline {
     private static final Logger LOGGER = LoggerFactory.getLogger(DLPipeline.class.getName());
 
     private static final int GLOVE_DIM = 100;
 
-
     // captures everything that's not a letter greedily, e.g. ", "
+    @SuppressWarnings("HardcodedFileSeparator")
     private static final String WORD_SPLIT_PATTERN = "\\P{L}+";
     // columns are split by ","
     private static final String INPUT_TURN_DELIMITER_PATTERN = "\",\"";
 
     // https://deeplearning4j.org/tutorials/setup
 
-    public static void runDLPipeline(ConfigFileReader cfg) throws IOException, URISyntaxException {
+    static void runDLPipeline(ConfigFileReader cfg) throws IOException {
 
         // the training set
-        String labelledTurns = cfg.getPathTrainingSet();
+        String labelledTurns = cfg.pathTrainingSet;
         // the test set (but used for validation..)
-        String validationSet = cfg.getPathTestSet();
+        String validationSet = cfg.pathTestSet;
 
         // load pre-trained GloVe w2v
-        String glove = cfg.getPathGloveFile();
-        System.out.println("TEST" + glove);
-
-        WordVectors wordVectors = WordVectorSerializer.readWord2VecModel(new File(glove));
-
-        String modelFileName = "model_6b_" + GLOVE_DIM + "d_v1_0.bin";
-
-        int lengthTrainingSet = getLineCount(labelledTurns)-1;
-        System.out.println(lengthTrainingSet);
-        int lengthTestSet = getLineCount(validationSet)-1;
-        System.out.println(lengthTestSet);
+        String glove = cfg.pathGloveFile;
+        LOGGER.debug("TEST{}", glove);
+        int lengthTrainingSet = getLineCount(labelledTurns) - 1;
+        LOGGER.debug("{}", lengthTrainingSet);
+        int lengthTestSet = getLineCount(validationSet) - 1;
+        LOGGER.debug("{}", lengthTestSet);
 
 
         int nrOfBatches = 4;
-        int nrOfExamplesPerBatch = lengthTrainingSet/nrOfBatches;
+        int nrOfExamplesPerBatch = lengthTrainingSet / nrOfBatches;
         LOGGER.info(String.valueOf(nrOfExamplesPerBatch));
 
-        int nrOfEpochs = 100;
-
         int wordsPerTurn = 100; // estimated. Longer will be cut, shorter will be empty padded.
-        int gloveDimension = GLOVE_DIM; // vector dimension of the word representation in the GloVe model
 
         // columns of input. The rows are the number of examples.
-        int inputColumns = wordsPerTurn * gloveDimension;
+        int inputColumns = wordsPerTurn * GLOVE_DIM;
 
         // create the model
         LOGGER.info("Creating model");
-        MultiLayerNetwork model = createMultiLayerNetwork(inputColumns, 0.3);
+        MultiLayerNetwork model = createMultiLayerNetwork(inputColumns);
         model.init();
 
+        String modelFileName = "model_6b_%dd_v1_0.bin".formatted(GLOVE_DIM);
+
         // save it to file
-        File modelFile = new File(cfg.getPathModel().replace("MLModel.model", ""), modelFileName);
+        File modelFile = new File(cfg.pathModel.replace("MLModel.model", ""), modelFileName);
+        //noinspection ResultOfMethodCallIgnored
         modelFile.createNewFile();
-        LOGGER.info("Saving model to " + modelFile);
+        LOGGER.info("Saving model to {}", modelFile);
         ModelSerializer.writeModel(model, modelFile, true);
-        System.out.println(labelledTurns);
+        LOGGER.debug("{}", labelledTurns);
 
         LOGGER.info("Start training...");
+        int nrOfEpochs = 100;
+        WordVectors wordVectors = WordVectorSerializer.readWord2VecModel(new File(glove));
         train(labelledTurns, wordVectors, lengthTrainingSet, nrOfBatches, nrOfExamplesPerBatch, nrOfEpochs, inputColumns,
-                wordsPerTurn, gloveDimension, model, validationSet, lengthTestSet);
+                wordsPerTurn, model, validationSet, lengthTestSet);
         LOGGER.info("Finished training");
 
-        LOGGER.info("Save trained model to " + modelFile);
+        LOGGER.info("Save trained model to {}", modelFile);
         // save parameter
         ModelSerializer.writeModel(model, modelFile, true);
 
         LOGGER.info("Evaluate model");
         String result = evaluate(validationSet, lengthTestSet, model, wordVectors, inputColumns, wordsPerTurn);
-        System.out.println(result);
-        String strDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-        FileWriter fileWriter = new FileWriter(cfg.getPathResultsPrediction() + strDate + ".txt");
+        LOGGER.debug(result);
+        String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
+        FileWriter fileWriter = new FileWriter("%s%s.txt".formatted(cfg.pathResultsPrediction, strDate), StandardCharsets.UTF_8);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println(result);
         printWriter.close();
     }
 
-    private static void train(String labelledTurns, WordVectors wordVectors, int nrOfExamples, int nrOfBatches,
-                              int nrOfExamplesPerBatch, int nrOfEpochs, int inputColumns, int wordsPerTurn, int gloveDimension,
-                              MultiLayerNetwork model, String validationSet, int inputSize) throws IOException, FileNotFoundException {
+    private static final class EvaluationData {
+        @Nonnull private final INDArray input;
+        @Nonnull private final INDArray labels;
 
-        // prepare test data
+        EvaluationData(@Nonnull INDArray input, @Nonnull INDArray labels) {
+            this.input = input;
+            this.labels = labels;
+        }
+
+        @Nonnull INDArray getInput() {
+            return input;
+        }
+
+        @Nonnull INDArray getLabels() {
+            return labels;
+        }
+    }
+
+    private static EvaluationData getEvaluationData(String validationSet, int inputSize, WordVectors wordVectors, int inputColumns,
+                                                    int wordsPerTurn)throws IOException {
         List<INDArray> inputList = new ArrayList<>(inputSize);
         double[][] labelsList = new double[inputSize][];
-        try (BufferedReader reader = new BufferedReader(new FileReader(validationSet))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(validationSet, StandardCharsets.UTF_8))) {
 
             String line;
             int labelsId = 0;
             reader.readLine();
             while ((line = reader.readLine()) != null) {
-                String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
-
-                for (int i = 0 ;  i<lineAr.length;i++){
-                    lineAr[i] = lineAr[i].replace("\"","");
-                }
-
-                if(line.contains("req_specification")){
-                    System.out.println("skipped");
+                if (line.contains("req_specification")) {
+                    LOGGER.debug("skipped");
                     continue;
                 }
+
+                String[] lineAr = splitLine(line);
                 Optional<INDArray> inputMatrix = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
-                inputList.add(inputMatrix.get().ravel());
+                inputList.add(inputMatrix.orElseThrow().ravel());
                 labelsList[labelsId++] = getEvalLabel(lineAr);
             }
         }
-        INDArray evalInput = Nd4j.create(inputList, shape(inputList.size(), inputColumns));
-        INDArray evalLabels = Nd4j.create(labelsList);
+        return new EvaluationData(Nd4j.create(inputList, shape(inputList.size(), inputColumns)), Nd4j.create(labelsList));
+    }
 
+    private static Evaluation getEvaluation(EvaluationData data, MultiLayerNetwork model) {
+        Evaluation eval = new Evaluation(3);
+        eval.eval(data.getLabels(), data.getInput(), model);
+        return eval;
+    }
 
-
-        LOGGER.info("Train with " + nrOfExamplesPerBatch + " examples in " + nrOfBatches + " batches for " + nrOfEpochs
-                + " epochs");
+    private static void train(String labelledTurns, WordVectors wordVectors, int nrOfExamples, int nrOfBatches,
+                              int nrOfExamplesPerBatch, int nrOfEpochs, int inputColumns, int wordsPerTurn,
+                              MultiLayerNetwork model, String validationSet, int inputSize) throws IOException {
+        EvaluationData evaluationData = getEvaluationData(validationSet, inputSize, wordVectors, inputColumns, wordsPerTurn);
+        LOGGER.info("Train with {} examples in {} batches for {} epochs", nrOfExamplesPerBatch, nrOfBatches, nrOfEpochs);
         for (int epoch = 0; epoch < nrOfEpochs; ++epoch) {
-            LOGGER.info("Epoch " + epoch);
+            LOGGER.info("Epoch {}", epoch);
 
-            try (BufferedReader reader = new BufferedReader(new FileReader(labelledTurns))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(labelledTurns, StandardCharsets.UTF_8))) {
 
+                reader.readLine();
                 String line = reader.readLine();
-                line = reader.readLine();
                 for (int batch = 0; line != null && batch < nrOfBatches; ++batch) {
-                    LOGGER.info("Batch " + batch);
+                    LOGGER.info("Batch {}", batch);
 
                     List<INDArray> inputsBatch = new ArrayList<>(nrOfExamplesPerBatch);
                     int[] labelsBatch = new int[nrOfExamplesPerBatch];
@@ -179,28 +192,18 @@ public class DLPipeline {
                             break;
                         }
 
-                        String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
-
-
-                        for (int i = 0 ;  i<lineAr.length;i++){
-                            lineAr[i] = lineAr[i].replace("\"","");
-                        }
-
-                        if(line.contains("req_specification")){
-                            System.out.println("skipped");
+                        if (line.contains("req_specification")) {
+                            LOGGER.debug("skipped");
                             continue;
                         }
 
+                        String[] lineAr = splitLine(line);
                         // check if matrix has been built
                         Optional<INDArray> wordVectorMatrixOpt = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
-                        if (!wordVectorMatrixOpt.isPresent()) {
+                        if (wordVectorMatrixOpt.isEmpty()) {
                             labelsBatch[example] = -1;
                             continue;
                         }
-
-                        // pad
-                        INDArray wvm = wordVectorMatrixOpt.get();
-                        wvm = pad(wvm, wordsPerTurn, gloveDimension);
 
                         inputsBatch.add(wordVectorMatrixOpt.get().ravel());
                         labelsBatch[example] = getLabelValue(lineAr);
@@ -214,79 +217,35 @@ public class DLPipeline {
                 }
 
             }
-                Evaluation eval = new Evaluation(3);
-                eval.eval(evalLabels, evalInput, model);
-                LOGGER.info(eval.stats());
+            Evaluation eval = getEvaluation(evaluationData, model);
+            LOGGER.info(eval.stats());
         }
-
     }
 
-    /**
-     * @return an INDArray with the shape: #wordsPerTurn x #inputColumns
-     */
-
-    private static INDArray pad(INDArray wvm, int wordsPerTurn, int inputGloveDimension) {
-        if (wvm.rows() < wordsPerTurn) {
-            wvm = Nd4j.vstack(wvm, Nd4j.zeros(wordsPerTurn - wvm.rows(), inputGloveDimension)).reshape(wordsPerTurn,
-                    inputGloveDimension);
+    private static String[] splitLine(String line) {
+        String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
+        for (int i = 0; i < lineAr.length; i++) {
+            lineAr[i] = lineAr[i].replace("\"", "");
         }
-
-        if (wvm.rows() > wordsPerTurn) {
-            wvm = wvm.getRows(IntStream.rangeClosed(0, wordsPerTurn - 1).toArray());
-        }
-
-        return wvm; // .reshape(wordsPerTurn, inputColumns);
+        return lineAr;
     }
 
     private static String evaluate(String validationSet, int inputSize, MultiLayerNetwork model, WordVectors wordVectors,
                                  int inputColumns, int wordsPerTurn) throws IOException {
-
-        List<INDArray> inputList = new ArrayList<>(inputSize);
-        double[][] labelsList = new double[inputSize][];
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(validationSet))) {
-
-            String line;
-            int labelsId = 0;
-            reader.readLine();
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-                String[] lineAr = line.split(INPUT_TURN_DELIMITER_PATTERN);
-                for (int i = 0 ;  i<lineAr.length;i++){
-                    lineAr[i] = lineAr[i].replace("\"","");
-                }
-
-                if(line.contains("req_specification")){
-                    System.out.println("skipped");
-                    continue;
-                }
-                Optional<INDArray> inputMatrix = getInputValueMatrix(lineAr, wordVectors, wordsPerTurn);
-                inputList.add(inputMatrix.get().ravel());
-                labelsList[labelsId++] = getEvalLabel(lineAr);
-            }
-
-        }
-
-        INDArray evalInput = Nd4j.create(inputList, shape(inputSize, inputColumns));
-        INDArray evalLabels = Nd4j.create(labelsList);
-        Evaluation eval = new Evaluation(3);
-        eval.eval(evalLabels, evalInput, model);
+        EvaluationData data = getEvaluationData(validationSet, inputSize, wordVectors, inputColumns, wordsPerTurn);
+        Evaluation eval = getEvaluation(data, model);
         LOGGER.info(eval.stats());
         return eval.stats();
     }
 
     private static double[] getEvalLabel(String[] lineAr) {
         String labelStr = lineAr[2];
-        switch (labelStr) {
-            case "NULL":
-                return new double[] { 1, 0, 0 };
-            case "A":
-                return new double[] { 0, 1, 0 };
-            case "F":
-                return new double[] { 0, 0, 1 };
-        }
-
-        throw new IllegalArgumentException("Unknown label: " + labelStr);
+        return switch (labelStr) {
+            case "NULL" -> new double[]{1, 0, 0};
+            case "A" -> new double[]{0, 1, 0};
+            case "F" -> new double[]{0, 0, 1};
+            default -> throw new IllegalArgumentException("Unknown label: %s".formatted(labelStr));
+        };
     }
 
     private static int getLabelValue(String[] lineAr) {
@@ -295,16 +254,12 @@ public class DLPipeline {
     }
 
     private static int getLabel(String labelStr) {
-        switch (labelStr) {
-            case "NULL":
-                return 0;
-            case "A":
-                return 1;
-            case "F":
-                return 2;
-        }
-
-        throw new IllegalArgumentException("Unknown label: " + labelStr);
+        return switch (labelStr) {
+            case "NULL" -> 0;
+            case "A" -> 1;
+            case "F" -> 2;
+            default -> throw new IllegalArgumentException("Unknown label: %s".formatted(labelStr));
+        };
     }
 
     /**
@@ -323,10 +278,7 @@ public class DLPipeline {
 
         List<String> wordList = getWordList(ar, wordVectors);
         if (wordList.isEmpty()) {
-            List list = new ArrayList<String>();
-            list.add("nothing");
-            list.add("receive");
-            return Optional.ofNullable(wordVectors.getWordVectors(list));
+            return Optional.ofNullable(wordVectors.getWordVectors(List.of("nothing", "receive")));
         }
 
         return Optional.ofNullable(wordVectors.getWordVectors(wordList));
@@ -336,21 +288,14 @@ public class DLPipeline {
      * Filter words which are not in the vocabulary, to prevent failing edge cases
      */
     private static List<String> getWordList(String[] textWordAr, WordVectors wordVectors) {
-        List list = Arrays.stream(textWordAr).filter(w -> wordVectors.hasWord(w)).collect(Collectors.toList());
-        return list;	}
+        return Arrays.stream(textWordAr).filter(wordVectors::hasWord).collect(Collectors.toList());
+    }
 
     private static int[] shape(int rows, int columns) {
         return new int[] { rows, columns };
     }
 
-    private static final URL loadResource(String name) throws FileNotFoundException {
-        LOGGER.info("loading " + name);
-        URL url = DLPipeline.class.getClassLoader().getResource(name);
-        return Optional.ofNullable(url).orElseThrow(() -> new FileNotFoundException(name));
-    }
-
-    public static MultiLayerNetwork createMultiLayerNetwork(int nIn, double learningRate) throws IOException {
-
+    private static MultiLayerNetwork createMultiLayerNetwork(int inputColumns) {
         int rngSeed = 123; // random number seed for reproducibility
         int optimizationIterations = 1;
         int outputNum = 3; // number of output classes: FR, NFR, None
@@ -359,7 +304,7 @@ public class DLPipeline {
         MultiLayerConfiguration multiLayerConf = new NeuralNetConfiguration.Builder()
                 // high level configuration
                 .seed(rngSeed)
-                .learningRate(learningRate)
+                .learningRate(0.3)
                 .regularization(true).l2(1e-4)
                 .iterations(optimizationIterations)
                 .optimizationAlgo(OptimizationAlgorithm.STOCHASTIC_GRADIENT_DESCENT)
@@ -368,7 +313,7 @@ public class DLPipeline {
                 // layer configuration
                 .list()
                 .layer(0, new DenseLayer.Builder()
-                        .nIn(nIn)
+                        .nIn(inputColumns)
                         .nOut(10000)
                         .activation(Activation.LEAKYRELU)
                         .build())
@@ -400,56 +345,16 @@ public class DLPipeline {
         // System.out.println(multiLayerConf.toJson());
         return new MultiLayerNetwork(multiLayerConf);
     }
-    /**
-     * https://deeplearning4j.org/docs/latest/deeplearning4j-nlp-word2vec
-     *
-     * @param args
-     * @throws Exception
-     */
 
-    @SuppressWarnings("unused")
-    private static void trainYourOwnWord2VecModel(String[] args) throws Exception {
-        String filePath = new ClassPathResource("raw_sentences.txt").getFile().getAbsolutePath();
-
-        LOGGER.info("Load & Vectorize Sentences....");
-        // Strip white space before and after for each line
-        SentenceIterator iter = new BasicLineIterator(filePath);
-
-        // Split on white spaces in the line to get words
-        TokenizerFactory t = new DefaultTokenizerFactory();
-        t.setTokenPreProcessor(new CommonPreprocessor());
-
-        //@formatter:off
-        LOGGER.info("Building model....");
-        Word2Vec vec = new Word2Vec.Builder()
-                .minWordFrequency(5)
-                .layerSize(100)
-                .seed(42)
-                .windowSize(5)
-                .iterate(iter)
-                .tokenizerFactory(t)
-                .build();
-        //@formatter:on
-
-        LOGGER.info("Fitting Word2Vec model....");
-        vec.fit();
-
-    }
-
-    static int getLineCount(String path) {
-        try (FileReader input = new FileReader(path);
-             LineNumberReader count = new LineNumberReader(input);
-             ) {
+    private static int getLineCount(String path) throws IOException {
+        try (FileReader input = new FileReader(path, StandardCharsets.UTF_8);
+             LineNumberReader count = new LineNumberReader(input)) {
+            //noinspection StatementWithEmptyBody
             while (count.skip(Long.MAX_VALUE) > 0) {
                 // Loop just in case the file is > Long.MAX_VALUE or skip() decides to not read the entire file
             }
 
             return count.getLineNumber();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-        return 0;
     }
 }

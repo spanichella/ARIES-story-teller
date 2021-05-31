@@ -1,52 +1,48 @@
 package pipelines;
 
-import UI.SWM_GUI;
-import configFile.ConfigFileReader;
-import fileGeneration.FileGeneration;
-
+import configfile.ConfigFileReader;
+import filegeneration.FileGeneration;
+import helpers.CommonPaths;
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Nonnull;
+import types.DataType;
+import types.PipelineType;
 
 /**
- * @author panc
- * <p>
  * This class extends the Main Program class by supporting the execution of
  * the main steps of the ML- and DL-based classification pipelines
  * concerning User reviews (extracted from App stores).
+ *
+ * @author panc
  */
-public class MainPipeline{
-    private final static Logger logger = Logger.getLogger(MainPipeline.class.getName());
+public final class MainPipeline {
+    private static final Logger logger = Logger.getLogger(MainPipeline.class.getName());
 
-    public static void runPipeline(String mainPath, String selectedPipeline,String type) throws Exception {
-
+    public static void runPipeline(@Nonnull PipelineType pipelineType, @Nonnull DataType dataType) throws Exception {
+        Path xmlFiles = CommonPaths.XML_FILES;
 
         //chooses path of config file according to data-type
-        String pathConfigFile = "";
-        if (type.equals("Requirement-Specifications")) {
-            pathConfigFile = mainPath + "resources/XMLFiles/RequirementSpecificationsXML.xml";
-        } else if (type.equals("User-Reviews")) {
-            pathConfigFile = mainPath + "resources/XMLFiles/UserReviewsXML.xml";
-        } else {
-            System.out.println("type not recognized: use Requirement-Specifications or UR");
-            System.exit(1);
-        }
-        logger.log(Level.INFO, "Path of ConfigFile: "+pathConfigFile);
+        Path pathConfigFile = switch (dataType) {
+            case REQUIREMENT_SPECIFICATIONS -> xmlFiles.resolve("RequirementSpecificationsXML.xml");
+            case USER_REVIEWS -> xmlFiles.resolve("UserReviewsXML.xml");
+        };
 
-        //Read Configfile
+        logger.log(Level.INFO, "Path of ConfigFile: %s".formatted(pathConfigFile));
+
+        //Read Config file
         ConfigFileReader configFileReader = new ConfigFileReader(pathConfigFile);
         //Generate files for ML/DL
         logger.info("Starting file generation ");
         FileGeneration.oracleAnalysis(configFileReader);
 
         //run selected pipeline
-        if(selectedPipeline.equals("ML")){
-            MLPipeline.performMlAnalysis(configFileReader);
-        }else if(selectedPipeline.equals("DL")){
-            DLPipeline.runDLPipeline(configFileReader);
-        }else{
-            logger.severe("Pipeline selection invalid");
+        switch (pipelineType) {
+            case ML -> MLPipeline.performMlAnalysis(configFileReader);
+            case DL -> DLPipeline.runDLPipeline(configFileReader);
+            default -> throw new IllegalArgumentException("Unknown pipeline type: %s".formatted(pipelineType));
         }
         logger.info("Program execution completed");
-        SWM_GUI.killFrames();
     }
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_core/2.6.0/25f42a33683acf8c4d132ea5c1556271eeb480da/error_prone_core-2.6.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_check_api/2.6.0/16762b0f14403512dcdcbdac9a96a3db4484851a/error_prone_check_api-2.6.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotation/2.6.0/7e41c6be5d0525e3e50dd89095266da7e52bae3d/error_prone_annotation-2.6.0.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_type_annotations/2.6.0/619ecf6cb58e766776f61ab898d2865cdb45814/error_prone_type_annotations-2.6.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/pcollections/pcollections/2.1.2/pcollections-2.1.2.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/auto/auto-common/0.10/auto-common-0.10.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/code/findbugs/jFormatString/3.0.0/jFormatString-3.0.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.checkerframework/dataflow-shaded/3.11.0/a1ad6b6e1519fd5b5d684a3c1be1e7a7d87c058d/dataflow-shaded-3.11.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/auto/value/auto-value-annotations/1.7/auto-value-annotations-1.7.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/github/ben-manes/caffeine/caffeine/2.8.8/caffeine-2.8.8.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.6.0/b0137da370913cd9bd9283931f2413490a49aaa6/error_prone_annotations-2.6.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/3.4.0/protobuf-java-3.4.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/auto/service/auto-service-annotations/1.0-rc6/auto-service-annotations-1.0-rc6.jar" />
+          <entry name="$MAVEN_REPOSITORY$/io/github/java-diff-utils/java-diff-utils/4.0/java-diff-utils-4.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/github/kevinstern/software-and-algorithms/1.0/software-and-algorithms-1.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.8.0/6b83e4a33220272c3a08991498ba9dc09519f190/checker-qual-3.8.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/eclipse/jgit/org.eclipse.jgit/4.4.1.201607150455-r/org.eclipse.jgit-4.4.1.201607150455-r.jar" />
+        </processorPath>
+        <module name="combined-pipelines.ML-pipeline.test" />
+        <module name="combined-pipelines.ML-pipeline.main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ML-pipeline" target="15" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ML-pipeline" options="-Xlint:all -XDcompilePolicy=simple -Xplugin:ErrorProne" />
+    </option>
+  </component>
+</project>

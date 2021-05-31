@@ -1,9 +1,10 @@
 # StoryTeller: Exploiting and Analyzing User Reviews and User Stories for Supporting Software Evolution in Industry
 
+![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
 
 **Authors:** [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm)
 
-
+**Instructions:** see [combined-pipelines/README.md](./combined-pipelines/README.md)
 
 ## Overview
 1. [Our Work](#section1)
