@@ -9,6 +9,8 @@ import javax.annotation.Nonnull;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 final class TruthSetPanel extends CompletablePanel {
     @Serial
@@ -41,21 +43,33 @@ final class TruthSetPanel extends CompletablePanel {
     }
 
     private static void selectTruthSet(Runnable onUpdate, Consumer<? super File> onSuccess, Consumer<? super String> onError) {
-        JFileChooser fileChooser = new JFileChooser();
-        if (DATASETS_FOLDER.exists()) {
-            fileChooser.setCurrentDirectory(DATASETS_FOLDER);
+        JFileChooser fileChooser = new JFileChooser(DATASETS_FOLDER.exists() ? DATASETS_FOLDER : null);
+        // remove the default file filters
+        for (FileFilter oldFilter : fileChooser.getChoosableFileFilters()) {
+            fileChooser.removeChoosableFileFilter(oldFilter);
         }
+        FileFilter filter = getExtensionFilter();
+        fileChooser.setFileFilter(filter);
         int response = fileChooser.showOpenDialog(null);
 
         if (response == JFileChooser.APPROVE_OPTION) {
             File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-            String extension = file.toString().substring(file.toString().lastIndexOf('.'));
-            if (!extension.equals(".txt") && !extension.equals(".csv")) {
-                onError.accept("Wrong filetype selected. Please select a .txt or .csv file");
-            } else {
+            if (filter.accept(file)) {
                 onSuccess.accept(file);
+            } else {
+                onError.accept("Wrong filetype selected. Please select a .txt, .csv or .tsv file");
             }
         }
         onUpdate.run();
+    }
+
+    private static FileFilter getExtensionFilter() {
+        var extensions = new String[] { "csv", "tsv", "txt" };
+        var fullDescription = new StringBuilder("Data Files (");
+        for (String extension : extensions) {
+            fullDescription.append("*.").append(extension);
+        }
+        fullDescription.append(")");
+        return new FileNameExtensionFilter(fullDescription.toString(), extensions);
     }
 }
