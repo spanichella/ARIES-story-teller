@@ -10,8 +10,10 @@ abstract class CompletablePanel extends JPanel {
     @Serial
     private static final long serialVersionUID = -3208183439207582395L;
 
-    @Nonnull private final String title;
-    @Nonnull private final JLabel titleLabel;
+    @Nonnull
+    private final String title;
+    @Nonnull
+    private final JLabel titleLabel;
 
     CompletablePanel(@Nonnull String title) {
         this.title = title;

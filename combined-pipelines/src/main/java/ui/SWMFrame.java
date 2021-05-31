@@ -30,20 +30,32 @@ final class SWMFrame extends JFrame {
     private static final long serialVersionUID = -592869500939986619L;
     private static final Logger logger = Logger.getLogger(SWMFrame.class.getName());
 
-    @Nullable private SWMLoaderFrame loader;
-
-    @Nonnull private final JButton executeButton;
-    @Nonnull private final TruthSetPanel truthSetPanel;
-    @Nonnull private final ContentTypePanel contentTypePanel;
-    @Nonnull private final PipelinePanel pipelinePanel;
-    @Nonnull private final MlModelPanel mlModelPanel;
-    @Nonnull private final StrategyPanel strategyPanel;
-    @Nonnull private final ThresholdPanel thresholdPanel;
-    @Nullable private String truthFilePath;
-    @Nullable private DataType dataType;
-    @Nullable private PipelineType pipelineType;
-    @Nonnull private String mlModel = UIHelpers.EMPTY_TEXT;
-    @Nonnull private String strategy = UIHelpers.EMPTY_TEXT;
+    @Nonnull
+    private final JButton executeButton;
+    @Nonnull
+    private final TruthSetPanel truthSetPanel;
+    @Nonnull
+    private final ContentTypePanel contentTypePanel;
+    @Nonnull
+    private final PipelinePanel pipelinePanel;
+    @Nonnull
+    private final MlModelPanel mlModelPanel;
+    @Nonnull
+    private final StrategyPanel strategyPanel;
+    @Nonnull
+    private final ThresholdPanel thresholdPanel;
+    @Nullable
+    private SWMLoaderFrame loader;
+    @Nullable
+    private String truthFilePath;
+    @Nullable
+    private DataType dataType;
+    @Nullable
+    private PipelineType pipelineType;
+    @Nonnull
+    private String mlModel = UIHelpers.EMPTY_TEXT;
+    @Nonnull
+    private String strategy = UIHelpers.EMPTY_TEXT;
 
     SWMFrame() {
         Icon logoImage = new ImageIcon("images/swmlogo.jpg");
@@ -114,6 +126,11 @@ final class SWMFrame extends JFrame {
         setVisible(true);
     }
 
+    @Nonnull
+    private static String translateEmptyText(@Nonnull String text) {
+        return text.equals(UIHelpers.EMPTY_TEXT) ? "null" : text;
+    }
+
     private void populatePipelinePanels() {
         if (pipelineType == null) {
             return;
@@ -179,8 +196,10 @@ final class SWMFrame extends JFrame {
             return;
         }
 
-        @Nonnull PipelineType validPipelineType = pipelineType;
-        @Nonnull DataType validDataType = dataType;
+        @Nonnull
+        PipelineType validPipelineType = pipelineType;
+        @Nonnull
+        DataType validDataType = dataType;
         AsyncPipeline.run(() -> MainPipeline.runPipeline(validPipelineType, validDataType), error -> {
             error.ifPresent(throwable -> showErrorMessage("Pipeline Thread failed", throwable));
             closeWindow();
@@ -210,10 +229,6 @@ final class SWMFrame extends JFrame {
             default -> throw new IllegalArgumentException("Unknown strategy %s".formatted(newStrategy));
         }
         strategy = newStrategy;
-    }
-
-    @Nonnull private static String translateEmptyText(@Nonnull String text) {
-        return text.equals(UIHelpers.EMPTY_TEXT) ? "null" : text;
     }
 
     private void showErrorMessage(@Nonnull String message, @Nullable Throwable throwable) {

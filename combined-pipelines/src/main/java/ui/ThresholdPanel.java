@@ -14,12 +14,18 @@ final class ThresholdPanel extends CompletablePanel {
     @Serial
     private static final long serialVersionUID = 321331743488681896L;
 
-    @Nonnull private final JLabel subTitleLabel;
-    @Nonnull private final JLabel valueLabel;
-    @Nonnull private final JLabel minValueLabel;
-    @Nonnull private final JLabel maxValueLabel;
-    @Nonnull private final JSlider thresholdSlider;
-    @Nonnull private BigDecimal split = BigDecimal.valueOf(5, 1);
+    @Nonnull
+    private final JLabel subTitleLabel;
+    @Nonnull
+    private final JLabel valueLabel;
+    @Nonnull
+    private final JLabel minValueLabel;
+    @Nonnull
+    private final JLabel maxValueLabel;
+    @Nonnull
+    private final JSlider thresholdSlider;
+    @Nonnull
+    private BigDecimal split = BigDecimal.valueOf(5, 1);
 
     ThresholdPanel() {
         super("[Step 6]");

@@ -19,29 +19,52 @@ import org.xml.sax.SAXException;
 public final class ConfigFileReader {
     private static final Logger LOGGER = LoggerFactory.getLogger(ConfigFileReader.class.getName());
 
-    @Nonnull public final String pathRScripts;
-    @Nonnull public final String pathRScriptOracle;
-    @Nonnull public final String pathBaseFolder;
-    @Nonnull public final String pathTruthSet;
-    @Nonnull public final String threshold;
-    @Nonnull public final String pathTbDRScript;
-    @Nonnull public final String pathTrainingSetDocuments;
-    @Nonnull public final String pathTestSetDocuments;
-    @Nonnull public final String pathSimplifiedTruthSet;
-    @Nonnull public final String pathTrainingSet;
-    @Nonnull public final String pathTestSet;
-    @Nonnull public final String pathGloveFile;
-    @Nonnull public final String dataType;
-    @Nonnull public final String machineLearningModel;
-    @Nonnull public final String nameOfAttributeClass;
-    @Nonnull public final String nameOfAttributeID;
-    @Nonnull public final String nameOfAttributeText;
-    @Nonnull public final String pathModel;
-    @Nonnull public final String pathFullTDMDataset;
-    @Nonnull public final String pathResultsPrediction;
-    @Nonnull public final String pathTDMTrainingSet;
-    @Nonnull public final String pathTDMTestSet;
-    @Nonnull public final String strategy;
+    @Nonnull
+    public final String pathRScripts;
+    @Nonnull
+    public final String pathRScriptOracle;
+    @Nonnull
+    public final String pathBaseFolder;
+    @Nonnull
+    public final String pathTruthSet;
+    @Nonnull
+    public final String threshold;
+    @Nonnull
+    public final String pathTbDRScript;
+    @Nonnull
+    public final String pathTrainingSetDocuments;
+    @Nonnull
+    public final String pathTestSetDocuments;
+    @Nonnull
+    public final String pathSimplifiedTruthSet;
+    @Nonnull
+    public final String pathTrainingSet;
+    @Nonnull
+    public final String pathTestSet;
+    @Nonnull
+    public final String pathGloveFile;
+    @Nonnull
+    public final String dataType;
+    @Nonnull
+    public final String machineLearningModel;
+    @Nonnull
+    public final String nameOfAttributeClass;
+    @Nonnull
+    public final String nameOfAttributeID;
+    @Nonnull
+    public final String nameOfAttributeText;
+    @Nonnull
+    public final String pathModel;
+    @Nonnull
+    public final String pathFullTDMDataset;
+    @Nonnull
+    public final String pathResultsPrediction;
+    @Nonnull
+    public final String pathTDMTrainingSet;
+    @Nonnull
+    public final String pathTDMTestSet;
+    @Nonnull
+    public final String strategy;
 
     public ConfigFileReader(Path pathXMLConfigFile) throws ParserConfigurationException, IOException, SAXException {
         LOGGER.info("Loading the config file...");

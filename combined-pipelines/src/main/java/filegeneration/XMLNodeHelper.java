@@ -6,8 +6,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 final class XMLNodeHelper {
-    @Nonnull private final Document document;
-    @Nonnull private final Element node;
+    @Nonnull
+    private final Document document;
+    @Nonnull
+    private final Element node;
 
     XMLNodeHelper(@Nonnull Document document, @Nonnull Element node) {
         this.document = document;

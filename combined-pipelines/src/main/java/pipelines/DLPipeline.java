@@ -114,19 +114,23 @@ final class DLPipeline {
     }
 
     private static final class EvaluationData {
-        @Nonnull private final INDArray input;
-        @Nonnull private final INDArray labels;
+        @Nonnull
+        private final INDArray input;
+        @Nonnull
+        private final INDArray labels;
 
         EvaluationData(@Nonnull INDArray input, @Nonnull INDArray labels) {
             this.input = input;
             this.labels = labels;
         }
 
-        @Nonnull INDArray getInput() {
+        @Nonnull
+        INDArray getInput() {
             return input;
         }
 
-        @Nonnull INDArray getLabels() {
+        @Nonnull
+        INDArray getLabels() {
             return labels;
         }
     }

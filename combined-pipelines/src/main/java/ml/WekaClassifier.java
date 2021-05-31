@@ -34,9 +34,12 @@ import weka.core.converters.ConverterUtils.DataSource;
 public final class WekaClassifier {
     private static final Logger logger = Logger.getLogger(WekaClassifier.class.getName());
 
-    @Nonnull private final String pathTrainingSet;
-    @Nonnull private final String pathTestSet;
-    @Nonnull private final String pathModel;
+    @Nonnull
+    private final String pathTrainingSet;
+    @Nonnull
+    private final String pathTestSet;
+    @Nonnull
+    private final String pathModel;
 
     public WekaClassifier(@Nonnull String pathTrainingSet, @Nonnull String pathTestSet, @Nonnull String pathModel) {
         this.pathTrainingSet = pathTrainingSet;
