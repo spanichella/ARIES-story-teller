@@ -30,6 +30,7 @@ public final class RscriptExecutor {
         Process process;
         String[] fullCommand = toRscriptCommand(commandParts);
         try {
+            LOGGER.info("Executing: %s".formatted(String.join(" ", fullCommand)));
             process = runtime.exec(fullCommand);
             logStream(process.getInputStream(), Level.INFO);
             logStream(process.getErrorStream(), Level.SEVERE);
