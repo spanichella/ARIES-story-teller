@@ -31,7 +31,7 @@ import types.StrategyType;
 public final class XMLInitializer {
     private static final Logger LOGGER = Logger.getLogger(XMLInitializer.class.getName());
 
-    public static void createXML(@Nonnull String pathTruthFile, @Nonnull DataType dataType, @Nullable MlModelType model,
+    public static void createXML(@Nonnull Path pathTruthFile, @Nonnull DataType dataType, @Nullable MlModelType model,
                                  @Nonnull BigDecimal percentage, @Nullable StrategyType strategy)
             throws ParserConfigurationException, TransformerException {
         Path baseFolder;

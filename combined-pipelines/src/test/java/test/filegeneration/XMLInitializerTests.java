@@ -20,7 +20,7 @@ final class XMLInitializerTests {
             Assertions.assertTrue(targetFile.delete());
         }
         try {
-            XMLInitializer.createXML("example truth file", DataType.REQUIREMENT_SPECIFICATIONS, MlModelType.ADA_BOOST_M1,
+            XMLInitializer.createXML(Path.of("example truth file"), DataType.REQUIREMENT_SPECIFICATIONS, MlModelType.ADA_BOOST_M1,
                 BigDecimal.valueOf(123), null);
             Assertions.assertTrue(targetFile.exists());
             ConfigFileReader reader = new ConfigFileReader(targetFile.toPath());
@@ -63,7 +63,7 @@ final class XMLInitializerTests {
             Assertions.assertTrue(targetFile.delete());
         }
         try {
-            XMLInitializer.createXML("new example truth file", DataType.USER_REVIEWS, null,
+            XMLInitializer.createXML(Path.of("new example truth file"), DataType.USER_REVIEWS, null,
                 BigDecimal.valueOf(1.2), StrategyType.TEN_FOLD);
             Assertions.assertTrue(targetFile.exists());
             ConfigFileReader reader = new ConfigFileReader(targetFile.toPath());

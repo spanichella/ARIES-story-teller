@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.io.Serial;
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
@@ -49,7 +50,7 @@ final class SWMFrame extends JFrame {
     @Nullable
     private SWMLoaderFrame loader;
     @Nullable
-    private String truthFilePath;
+    private Path truthFilePath;
     @Nullable
     private DataType dataType;
     @Nullable
@@ -94,7 +95,7 @@ final class SWMFrame extends JFrame {
 
         truthSetPanel = new TruthSetPanel(
             this::updateStatus,
-            file -> truthFilePath = file.toString(),
+            file -> truthFilePath = file.toPath(),
             error -> showErrorMessage(error, null));
         mainPanel.add(truthSetPanel);
 
