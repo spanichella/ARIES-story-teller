@@ -24,13 +24,13 @@ final class MLPipeline {
                     "https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf"));
             }
             WekaClassifier.runSpecifiedMachineLearningModel(configuration.pathTDMTrainingSet, configuration.pathTDMTestSet,
-                configuration.pathModel, configuration.machineLearningModel, configuration.pathResultsPrediction);
+                Configuration.pathModel, configuration.machineLearningModel, Configuration.pathResultsPrediction);
             // default behaviour it does prediction with given training and test sets with J48
         }
 
         if (configuration.strategy == StrategyType.TEN_FOLD) {
             WekaClassifier.runSpecifiedModelWith10FoldStrategy(configuration.pathFullTDMDataset,
-                configuration.machineLearningModel, configuration.pathResultsPrediction);
+                configuration.machineLearningModel, Configuration.pathResultsPrediction);
         }
         LOGGER.info("Machine Learning Analysis completed");
     }

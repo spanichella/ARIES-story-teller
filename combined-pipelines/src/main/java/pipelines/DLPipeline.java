@@ -1,5 +1,6 @@
 package pipelines;
 
+import helpers.CommonPaths;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -59,7 +60,7 @@ final class DLPipeline {
         String validationSet = cfg.pathTestSet.toString();
 
         // load pre-trained GloVe w2v
-        String glove = cfg.pathGloveFile.toString();
+        String glove = CommonPaths.GLOVE_FILE.toString();
         LOGGER.debug("TEST{}", glove);
         int lengthTrainingSet = getLineCount(labelledTurns) - 1;
         LOGGER.debug("{}", lengthTrainingSet);
@@ -84,7 +85,7 @@ final class DLPipeline {
         String modelFileName = "model_6b_%dd_v1_0.bin".formatted(GLOVE_DIM);
 
         // save it to file
-        File modelFile = new File(cfg.pathModel.toString().replace("MLModel.model", ""), modelFileName);
+        File modelFile = new File(Configuration.pathModel.toString().replace("MLModel.model", ""), modelFileName);
         //noinspection ResultOfMethodCallIgnored
         modelFile.createNewFile();
         LOGGER.info("Saving model to {}", modelFile);
@@ -106,7 +107,7 @@ final class DLPipeline {
         String result = evaluate(validationSet, lengthTestSet, model, wordVectors, inputColumns, wordsPerTurn);
         LOGGER.debug(result);
         String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
-        FileWriter fileWriter = new FileWriter("%s%s.txt".formatted(cfg.pathResultsPrediction, strDate), StandardCharsets.UTF_8);
+        FileWriter fileWriter = new FileWriter("%s%s.txt".formatted(Configuration.pathResultsPrediction, strDate), StandardCharsets.UTF_8);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.println(result);
         printWriter.close();

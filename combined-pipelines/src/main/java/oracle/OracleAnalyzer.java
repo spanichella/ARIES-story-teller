@@ -17,6 +17,6 @@ public final class OracleAnalyzer {
         //make command for r-script
         LOGGER.info("R-Script execution begins:");
         RscriptExecutor.execute(cfr.pathRScriptOracle.toString(), cfr.pathBaseFolder.toString(), cfr.pathTruthSet.toString(),
-            cfr.threshold.toPlainString(), cfr.nameOfAttributeID, cfr.nameOfAttributeText, cfr.nameOfAttributeClass);
+            cfr.threshold.toPlainString(), Configuration.nameOfAttributeID, cfr.nameOfAttributeText, Configuration.nameOfAttributeClass);
     }
 }

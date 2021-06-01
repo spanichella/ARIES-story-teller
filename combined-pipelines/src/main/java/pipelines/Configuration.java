@@ -10,6 +10,11 @@ import types.MlModelType;
 import types.StrategyType;
 
 public final class Configuration {
+    public static final String nameOfAttributeClass = "class";
+    public static final String nameOfAttributeID = "id";
+    static final Path pathModel = CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model");
+    static final Path pathResultsPrediction = CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_");
+
     @Nonnull
     public final Path pathRScripts;
     @Nonnull
@@ -21,8 +26,6 @@ public final class Configuration {
     @Nonnull
     public final BigDecimal threshold;
     @Nonnull
-    public final Path pathTbDRScript = CommonPaths.R_SCRIPTS.resolve("MainScript.r");
-    @Nonnull
     public final String pathTrainingSetDocuments;
     @Nonnull
     public final String pathTestSetDocuments;
@@ -32,22 +35,12 @@ public final class Configuration {
     public final Path pathTrainingSet;
     @Nonnull
     public final Path pathTestSet;
-    @Nonnull
-    public final Path pathGloveFile = CommonPaths.GLOVE_FILE;
     @Nullable
     public final MlModelType machineLearningModel;
     @Nonnull
-    public final String nameOfAttributeClass = "class";
-    @Nonnull
-    public final String nameOfAttributeID = "id";
-    @Nonnull
     public final String nameOfAttributeText;
     @Nonnull
-    public final Path pathModel = CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model");
-    @Nonnull
     public final Path pathFullTDMDataset;
-    @Nonnull
-    public final Path pathResultsPrediction = CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_");
     @Nonnull
     public final Path pathTDMTrainingSet;
     @Nonnull
