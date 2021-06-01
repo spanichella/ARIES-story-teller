@@ -10,10 +10,10 @@ import java.util.logging.Logger;
 /**
  * @author panc
  */
-public final class OracleRequirementSpecificationsAnalyzer {
-    private static final Logger LOGGER = Logger.getLogger(OracleRequirementSpecificationsAnalyzer.class.getName());
+public final class OracleAnalyzer {
+    private static final Logger LOGGER = Logger.getLogger(OracleAnalyzer.class.getName());
 
-    public static void runReqSpecRScript(ConfigFileReader cfr) throws ExecutionException, RunFailedException {
+    public static void runRScript(ConfigFileReader cfr) throws ExecutionException, RunFailedException {
         //make command for r-script
         LOGGER.info("R-Script execution begins:");
         RscriptExecutor.execute(cfr.pathRScriptOracle, cfr.pathBaseFolder, cfr.pathTruthSet, cfr.threshold,
