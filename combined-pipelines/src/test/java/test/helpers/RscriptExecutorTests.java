@@ -3,13 +3,14 @@ package test.helpers;
 import helpers.RscriptExecutor;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Map;
+import java.util.List;
 import java.util.logging.Level;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
+import test.utilities.LogData;
 import test.utilities.LogMessageFetcher;
 
 @SuppressWarnings("CallToRuntimeExec")
@@ -40,9 +41,9 @@ final class RscriptExecutorTests {
 
         RscriptExecutor.executeWithRuntime(runtimeMock, "some", "argument");
 
-        Assertions.assertEquals(fetcher.getMessages(), Map.of(
-            Level.INFO, "Test STDOUT Output",
-            Level.SEVERE, "Test STDERR Output"
+        Assertions.assertEquals(fetcher.getMessages(), List.of(
+            new LogData(Level.INFO, "Test STDOUT Output"),
+            new LogData(Level.SEVERE, "Test STDERR Output")
         ));
     }
 

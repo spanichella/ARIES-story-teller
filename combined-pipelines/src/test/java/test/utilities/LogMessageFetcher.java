@@ -2,9 +2,7 @@ package test.utilities;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Map;
 import java.util.logging.Filter;
-import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.stream.Collectors;
 
@@ -17,7 +15,7 @@ public final class LogMessageFetcher implements Filter {
         return false;
     }
 
-    public Map<Level, String> getMessages() {
-        return records.stream().collect(Collectors.toMap(LogRecord::getLevel, LogRecord::getMessage));
+    public Iterable<LogData> getMessages() {
+        return records.stream().map(LogData::of).collect(Collectors.toUnmodifiableList());
     }
 }

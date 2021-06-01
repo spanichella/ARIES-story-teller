@@ -1,7 +1,7 @@
 package test.pipelines;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import pipelines.AsyncPipeline;
+import test.utilities.LogData;
 import test.utilities.LogMessageFetcher;
 
 @Timeout(1000)
@@ -27,7 +28,9 @@ final class AsyncPipelineTests {
     @AfterEach
     void tearDown() {
         Assertions.assertNotNull(fetcher);
-        Assertions.assertEquals(fetcher.getMessages(), Map.of(Level.INFO, "Thread Running"));
+        Assertions.assertEquals(fetcher.getMessages(), List.of(
+            new LogData(Level.INFO, "Thread Running")
+        ));
     }
 
     @Test
