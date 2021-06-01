@@ -16,9 +16,7 @@ final class XMLInitializerTests {
     @Test
     void testCreatingRequirementsSpecificationsFile() throws Exception {
         File targetFile = CommonPaths.XML_FILES.resolve("RequirementSpecificationsXML.xml").toFile();
-        if (targetFile.exists()) {
-            Assertions.assertTrue(targetFile.delete());
-        }
+        ensureDeleted(targetFile);
         try {
             XMLInitializer.createXML(Path.of("example truth file"), DataType.REQUIREMENT_SPECIFICATIONS, MlModelType.ADA_BOOST_M1,
                 BigDecimal.valueOf(123), null);
@@ -50,18 +48,14 @@ final class XMLInitializerTests {
             assertPath(reader.pathFullTDMDataset, processedDocumentsFolder.resolve("tdm_full_with_oracle_info.csv"));
             assertPath(reader.pathGloveFile, CommonPaths.RESOURCES.resolve("DL").resolve("glove.6B.100d.txt"));
         } finally {
-            if (targetFile.exists()) {
-                Assertions.assertTrue(targetFile.delete());
-            }
+            ensureDeleted(targetFile);
         }
     }
 
     @Test
     void testCreatingUserReviewsFile() throws Exception {
         File targetFile = CommonPaths.XML_FILES.resolve("UserReviewsXML.xml").toFile();
-        if (targetFile.exists()) {
-            Assertions.assertTrue(targetFile.delete());
-        }
+        ensureDeleted(targetFile);
         try {
             XMLInitializer.createXML(Path.of("new example truth file"), DataType.USER_REVIEWS, null,
                 BigDecimal.valueOf(1.2), StrategyType.TEN_FOLD);
@@ -93,9 +87,13 @@ final class XMLInitializerTests {
             assertPath(reader.pathFullTDMDataset, processedDocumentsFolder.resolve("tdm_full_with_oracle_info.csv"));
             assertPath(reader.pathGloveFile, CommonPaths.RESOURCES.resolve("DL").resolve("glove.6B.100d.txt"));
         } finally {
-            if (targetFile.exists()) {
-                Assertions.assertTrue(targetFile.delete());
-            }
+            ensureDeleted(targetFile);
+        }
+    }
+
+    private static void ensureDeleted(File file) {
+        if (file.exists()) {
+            Assertions.assertTrue(file.delete());
         }
     }
 
