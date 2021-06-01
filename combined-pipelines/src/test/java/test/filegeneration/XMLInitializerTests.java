@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import types.DataType;
+import types.StrategyType;
 
 final class XMLInitializerTests {
     @Test
@@ -19,7 +20,7 @@ final class XMLInitializerTests {
         }
         try {
             XMLInitializer.createXML("example truth file", DataType.REQUIREMENT_SPECIFICATIONS, "some model",
-                BigDecimal.valueOf(123), "test strategy");
+                BigDecimal.valueOf(123), null);
             Assertions.assertTrue(targetFile.exists());
             ConfigFileReader reader = new ConfigFileReader(targetFile.toPath());
             assertPath(reader.pathRScripts, CommonPaths.R_SCRIPTS);
@@ -35,7 +36,7 @@ final class XMLInitializerTests {
             Assertions.assertEquals(reader.pathTrainingSetDocuments, "training-set-Req-Specifications");
             Assertions.assertEquals(reader.pathTestSetDocuments, "test-set-Req-Specifications");
             assertPath(reader.pathSimplifiedTruthSet, baseFolder.resolve("truth_set-simplified-Req-Specifications.csv"));
-            Assertions.assertEquals(reader.strategy, "test strategy");
+            Assertions.assertEquals(reader.strategy, "null");
             Assertions.assertEquals(reader.machineLearningModel, "some model");
             assertPath(reader.pathModel, CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model"));
             Assertions.assertEquals(reader.threshold, "123");
@@ -62,7 +63,7 @@ final class XMLInitializerTests {
         }
         try {
             XMLInitializer.createXML("new example truth file", DataType.USER_REVIEWS, "other model",
-                BigDecimal.valueOf(1.2), "different strategy");
+                BigDecimal.valueOf(1.2), StrategyType.TEN_FOLD);
             Assertions.assertTrue(targetFile.exists());
             ConfigFileReader reader = new ConfigFileReader(targetFile.toPath());
             assertPath(reader.pathRScripts, CommonPaths.R_SCRIPTS);
@@ -78,7 +79,7 @@ final class XMLInitializerTests {
             Assertions.assertEquals(reader.pathTrainingSetDocuments, "training-set");
             Assertions.assertEquals(reader.pathTestSetDocuments, "test-set");
             assertPath(reader.pathSimplifiedTruthSet, baseFolder.resolve("truth_set-simplified.csv"));
-            Assertions.assertEquals(reader.strategy, "different strategy");
+            Assertions.assertEquals(reader.strategy, "10-Fold");
             Assertions.assertEquals(reader.machineLearningModel, "other model");
             assertPath(reader.pathModel, CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model"));
             Assertions.assertEquals(reader.threshold, "1.2");

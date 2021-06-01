@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import types.StrategyType;
 
 final class StrategyPanel extends CompletablePanel {
     @Serial
@@ -16,13 +17,12 @@ final class StrategyPanel extends CompletablePanel {
     private final JLabel subTitleLabel;
     private final JComboBox<String> comboBox;
 
-    private static final String[] strategyArray = {"Select", "10-Fold", "Percentage-Split"};
-
-    StrategyPanel(@Nonnull Consumer<? super String> onStrategyChange, @Nonnull Runnable onUpdate) {
+    StrategyPanel(@Nonnull Consumer<? super StrategyType> onStrategyChange, @Nonnull Runnable onUpdate) {
         super("[Step 5]");
 
         subTitleLabel = UIHelpers.getLabel("Select Strategy");
-        comboBox = UIHelpers.getComboBox(strategyArray, onStrategyChange, onUpdate);
+        comboBox = UIHelpers.getTranslatableComboBox(
+            new StrategyType[] {null, StrategyType.TEN_FOLD, StrategyType.PERCENTAGE_SPLIT}, onStrategyChange, onUpdate);
 
         add(buildCenterPanel(), BorderLayout.CENTER);
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_END);

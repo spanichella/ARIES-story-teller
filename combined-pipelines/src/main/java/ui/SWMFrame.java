@@ -24,6 +24,7 @@ import pipelines.AsyncPipeline;
 import pipelines.MainPipeline;
 import types.DataType;
 import types.PipelineType;
+import types.StrategyType;
 
 final class SWMFrame extends JFrame {
     @Serial
@@ -54,8 +55,8 @@ final class SWMFrame extends JFrame {
     private PipelineType pipelineType;
     @Nonnull
     private String mlModel = UIHelpers.EMPTY_TEXT;
-    @Nonnull
-    private String strategy = UIHelpers.EMPTY_TEXT;
+    @Nullable
+    private StrategyType strategy;
 
     SWMFrame() {
         Icon logoImage = new ImageIcon("images/swmlogo.jpg");
@@ -160,7 +161,7 @@ final class SWMFrame extends JFrame {
             return false;
         }
         return pipelinePanel.getSelectedItem() == PipelineType.DL
-            || (!mlModel.equals(UIHelpers.EMPTY_TEXT) && !strategy.equals(UIHelpers.EMPTY_TEXT));
+            || (!mlModel.equals(UIHelpers.EMPTY_TEXT) && strategy != null);
     }
 
     private void closeWindow() {
@@ -175,7 +176,7 @@ final class SWMFrame extends JFrame {
         contentTypePanel.markDone(dataType != null);
         pipelinePanel.markDone(pipelineType != null);
         mlModelPanel.markDone(!mlModel.equals(UIHelpers.EMPTY_TEXT));
-        strategyPanel.markDone(!strategy.equals(UIHelpers.EMPTY_TEXT));
+        strategyPanel.markDone(strategy != null);
         executeButton.setEnabled(isRunnable());
     }
 
@@ -189,7 +190,7 @@ final class SWMFrame extends JFrame {
 
         try {
             XMLInitializer.createXML(truthFilePath, dataType, translateEmptyText(mlModel), thresholdPanel.getSplit(),
-                translateEmptyText(strategy));
+                strategy);
         } catch (TransformerException | ParserConfigurationException | RuntimeException exception) {
             showErrorMessage("Generating the XML Failed", exception);
             closeWindow();
@@ -227,10 +228,10 @@ final class SWMFrame extends JFrame {
         populatePipelinePanels();
     }
 
-    private void onStrategyChange(String newStrategy) {
+    private void onStrategyChange(StrategyType newStrategy) {
         switch (newStrategy) {
-            case "Percentage-Split" -> populateThresholdPanels(true);
-            case "10-Fold" -> populateThresholdPanels(false);
+            case PERCENTAGE_SPLIT -> populateThresholdPanels(true);
+            case TEN_FOLD -> populateThresholdPanels(false);
             default -> throw new IllegalArgumentException("Unknown strategy %s".formatted(newStrategy));
         }
         strategy = newStrategy;

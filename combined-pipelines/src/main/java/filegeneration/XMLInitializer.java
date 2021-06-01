@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,6 +21,8 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import types.DataType;
+import types.IDescribable;
+import types.StrategyType;
 
 /**
  * Fills XML files on startup with correct paths and other values
@@ -28,7 +31,7 @@ public final class XMLInitializer {
     private static final Logger LOGGER = Logger.getLogger(XMLInitializer.class.getName());
 
     public static void createXML(@Nonnull String pathTruthFile, @Nonnull DataType dataType, @Nonnull String model,
-                                 @Nonnull BigDecimal percentage, @Nonnull String strategy)
+                                 @Nonnull BigDecimal percentage, @Nullable StrategyType strategy)
             throws ParserConfigurationException, TransformerException {
         Path baseFolder;
         String name;
@@ -84,7 +87,7 @@ public final class XMLInitializer {
         adsorbHelper.addSimpleNode("pathTrainingSetDocuments", "training-set%s".formatted(dataTypePostfix));
         adsorbHelper.addSimpleNode("pathTestSetDocuments", "test-set%s".formatted(dataTypePostfix));
         adsorbHelper.addSimpleNode("pathSimplifiedTruthSet", baseFolder.resolve("truth_set-simplified" + dataTypePostfix + ".csv"));
-        adsorbHelper.addSimpleNode("strategy", strategy);
+        adsorbHelper.addSimpleNode("strategy", translateNull(strategy));
         adsorbHelper.addSimpleNode("machineLearningModel", model);
         adsorbHelper.addSimpleNode("pathModel", CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model"));
         adsorbHelper.addSimpleNode("percentageSplit", percentage.toPlainString());
@@ -110,5 +113,10 @@ public final class XMLInitializer {
         transformer.transform(domSource, streamResult);
 
         LOGGER.info("XML-file created");
+    }
+
+    @Nonnull
+    private static String translateNull(@Nullable IDescribable describable) {
+        return describable == null ? "null" : describable.getDescription();
     }
 }
