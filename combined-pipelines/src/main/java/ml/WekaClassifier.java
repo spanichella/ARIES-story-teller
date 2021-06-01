@@ -34,20 +34,9 @@ import weka.core.converters.ConverterUtils.DataSource;
 public final class WekaClassifier {
     private static final Logger LOGGER = Logger.getLogger(WekaClassifier.class.getName());
 
-    @Nonnull
-    private final String pathTrainingSet;
-    @Nonnull
-    private final String pathTestSet;
-    @Nonnull
-    private final String pathModel;
-
-    public WekaClassifier(@Nonnull String pathTrainingSet, @Nonnull String pathTestSet, @Nonnull String pathModel) {
-        this.pathTrainingSet = pathTrainingSet;
-        this.pathTestSet = pathTestSet;
-        this.pathModel = pathModel;
-    }
-
-    public void runSpecifiedMachineLearningModel(String machineLearningModel, String pathResultsPrediction) throws Exception {
+    public static void runSpecifiedMachineLearningModel(@Nonnull String pathTrainingSet, @Nonnull String pathTestSet,
+                                                        @Nonnull String pathModel, @Nonnull String machineLearningModel,
+                                                        @Nonnull String pathResultsPrediction) throws Exception {
         //we create instances for training and test sets
         DataSource sourceTraining = new DataSource(pathTrainingSet);
         DataSource sourceTesting = new DataSource(pathTestSet);
@@ -72,7 +61,8 @@ public final class WekaClassifier {
         printAndWriteModelMeasures("training performance", classifier, eval, pathResultsPrediction);
     }
 
-    public void runSpecifiedMachineLearningModelToLabelInstances(String machineLearningModel) throws Exception {
+    public static void runSpecifiedMachineLearningModelToLabelInstances(@Nonnull String pathTrainingSet, @Nonnull String pathTestSet,
+                                                                        @Nonnull String machineLearningModel) throws Exception {
         DataSource sourceTraining = new DataSource(pathTrainingSet);
         DataSource sourceTesting = new DataSource(pathTestSet);
         Instances train = sourceTraining.getDataSet();

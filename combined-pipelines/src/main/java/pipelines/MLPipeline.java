@@ -15,15 +15,13 @@ final class MLPipeline {
     static void performMlAnalysis(ConfigFileReader configFileReader) throws Exception {
         LOGGER.info("Starting Machine Learning Analysis...");
         if (configFileReader.strategy.equals("Percentage-Split")) {
-            WekaClassifier wekaClassifier = new WekaClassifier(configFileReader.pathTDMTrainingSet,
-                configFileReader.pathTDMTestSet, configFileReader.pathModel);
-
             if (checkWhetherTestSetIsLabeled(configFileReader.pathTDMTestSet)) {
-                wekaClassifier.runSpecifiedMachineLearningModel(configFileReader.machineLearningModel,
-                    configFileReader.pathResultsPrediction);
+                WekaClassifier.runSpecifiedMachineLearningModel(configFileReader.pathTDMTrainingSet, configFileReader.pathTDMTestSet,
+                    configFileReader.pathModel, configFileReader.machineLearningModel, configFileReader.pathResultsPrediction);
                 // default behaviour it does prediction with given training and test sets with J48
             } else {
-                wekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(configFileReader.machineLearningModel);
+                WekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(configFileReader.pathTDMTrainingSet,
+                    configFileReader.pathTDMTestSet, configFileReader.machineLearningModel);
                 // default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
             }
         }
