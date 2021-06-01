@@ -61,27 +61,6 @@ public final class WekaClassifier {
         printAndWriteModelMeasures("training performance", classifier, eval, pathResultsPrediction);
     }
 
-    public static void runSpecifiedMachineLearningModelToLabelInstances(@Nonnull String pathTrainingSet, @Nonnull String pathTestSet,
-                                                                        @Nonnull String machineLearningModel) throws Exception {
-        DataSource sourceTraining = new DataSource(pathTrainingSet);
-        DataSource sourceTesting = new DataSource(pathTestSet);
-        Instances train = sourceTraining.getDataSet();
-        Instances test = sourceTesting.getDataSet();
-
-        LOGGER.info("Loading data");
-
-        // Set class the last attribute as class
-        train.setClassIndex(train.numAttributes() - 1);
-        test.setClassIndex(test.numAttributes() - 1);
-        LOGGER.info("Training data loaded");
-
-        Classifier classifier = getClassifierClassName(machineLearningModel);
-        LOGGER.info("Classifier used: %s".formatted(classifier.getClass()));
-        LOGGER.info("Test set items that need to be labeled:%d".formatted(test.numInstances()));
-        LOGGER.info("To classify such instances, consider to use the GUI version of WEKA as reported in the following example:");
-        LOGGER.info("https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf");
-    }
-
     public static void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String machineLearningModel,
                                                            String pathResultsPrediction) throws Exception {
         DataSource sourceWholeDataset = new DataSource(pathWholeDataset);

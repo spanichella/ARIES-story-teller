@@ -15,15 +15,14 @@ final class MLPipeline {
     static void performMlAnalysis(ConfigFileReader configFileReader) throws Exception {
         LOGGER.info("Starting Machine Learning Analysis...");
         if (configFileReader.strategy.equals("Percentage-Split")) {
-            if (checkWhetherTestSetIsLabeled(configFileReader.pathTDMTestSet)) {
-                WekaClassifier.runSpecifiedMachineLearningModel(configFileReader.pathTDMTrainingSet, configFileReader.pathTDMTestSet,
-                    configFileReader.pathModel, configFileReader.machineLearningModel, configFileReader.pathResultsPrediction);
-                // default behaviour it does prediction with given training and test sets with J48
-            } else {
-                WekaClassifier.runSpecifiedMachineLearningModelToLabelInstances(configFileReader.pathTDMTrainingSet,
-                    configFileReader.pathTDMTestSet, configFileReader.machineLearningModel);
-                // default behaviour it does prediction with given training and test sets with J48 - it label instances in the test set
+            if (!checkWhetherTestSetIsLabeled(configFileReader.pathTDMTestSet)) {
+                throw new IllegalArgumentException(String.join(System.lineSeparator(), "Test set items need to be labeled.",
+                    "To classify such instances, consider to use the GUI version of WEKA as reported in the following example:",
+                    "https://github.com/spanichella/Requirement-Collector-ML-Component/blob/master/ClassifyingNewDataWeka.pdf"));
             }
+            WekaClassifier.runSpecifiedMachineLearningModel(configFileReader.pathTDMTrainingSet, configFileReader.pathTDMTestSet,
+                configFileReader.pathModel, configFileReader.machineLearningModel, configFileReader.pathResultsPrediction);
+            // default behaviour it does prediction with given training and test sets with J48
         }
 
         if (configFileReader.strategy.equals("10-Fold")) {
