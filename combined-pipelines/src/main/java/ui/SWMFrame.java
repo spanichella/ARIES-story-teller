@@ -23,6 +23,7 @@ import javax.xml.transform.TransformerException;
 import pipelines.AsyncPipeline;
 import pipelines.MainPipeline;
 import types.DataType;
+import types.MlModelType;
 import types.PipelineType;
 import types.StrategyType;
 
@@ -53,8 +54,8 @@ final class SWMFrame extends JFrame {
     private DataType dataType;
     @Nullable
     private PipelineType pipelineType;
-    @Nonnull
-    private String mlModel = UIHelpers.EMPTY_TEXT;
+    @Nullable
+    private MlModelType mlModel;
     @Nullable
     private StrategyType strategy;
 
@@ -127,11 +128,6 @@ final class SWMFrame extends JFrame {
         setVisible(true);
     }
 
-    @Nonnull
-    private static String translateEmptyText(@Nonnull String text) {
-        return text.equals(UIHelpers.EMPTY_TEXT) ? "null" : text;
-    }
-
     private void populatePipelinePanels() {
         if (pipelineType == null) {
             return;
@@ -160,8 +156,7 @@ final class SWMFrame extends JFrame {
         if (truthFilePath == null || dataType == null || pipelineType == null) {
             return false;
         }
-        return pipelinePanel.getSelectedItem() == PipelineType.DL
-            || (!mlModel.equals(UIHelpers.EMPTY_TEXT) && strategy != null);
+        return pipelinePanel.getSelectedItem() == PipelineType.DL || (mlModel != null && strategy != null);
     }
 
     private void closeWindow() {
@@ -175,7 +170,7 @@ final class SWMFrame extends JFrame {
         truthSetPanel.markDone(truthFilePath != null);
         contentTypePanel.markDone(dataType != null);
         pipelinePanel.markDone(pipelineType != null);
-        mlModelPanel.markDone(!mlModel.equals(UIHelpers.EMPTY_TEXT));
+        mlModelPanel.markDone(mlModel != null);
         strategyPanel.markDone(strategy != null);
         executeButton.setEnabled(isRunnable());
     }
@@ -189,8 +184,7 @@ final class SWMFrame extends JFrame {
         loader.start();
 
         try {
-            XMLInitializer.createXML(truthFilePath, dataType, translateEmptyText(mlModel), thresholdPanel.getSplit(),
-                strategy);
+            XMLInitializer.createXML(truthFilePath, dataType, mlModel, thresholdPanel.getSplit(), strategy);
         } catch (TransformerException | ParserConfigurationException | RuntimeException exception) {
             showErrorMessage("Generating the XML Failed", exception);
             closeWindow();

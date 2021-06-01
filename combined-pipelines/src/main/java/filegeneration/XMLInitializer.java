@@ -22,6 +22,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import types.DataType;
 import types.IDescribable;
+import types.MlModelType;
 import types.StrategyType;
 
 /**
@@ -30,7 +31,7 @@ import types.StrategyType;
 public final class XMLInitializer {
     private static final Logger LOGGER = Logger.getLogger(XMLInitializer.class.getName());
 
-    public static void createXML(@Nonnull String pathTruthFile, @Nonnull DataType dataType, @Nonnull String model,
+    public static void createXML(@Nonnull String pathTruthFile, @Nonnull DataType dataType, @Nullable MlModelType model,
                                  @Nonnull BigDecimal percentage, @Nullable StrategyType strategy)
             throws ParserConfigurationException, TransformerException {
         Path baseFolder;
@@ -88,7 +89,7 @@ public final class XMLInitializer {
         adsorbHelper.addSimpleNode("pathTestSetDocuments", "test-set%s".formatted(dataTypePostfix));
         adsorbHelper.addSimpleNode("pathSimplifiedTruthSet", baseFolder.resolve("truth_set-simplified" + dataTypePostfix + ".csv"));
         adsorbHelper.addSimpleNode("strategy", translateNull(strategy));
-        adsorbHelper.addSimpleNode("machineLearningModel", model);
+        adsorbHelper.addSimpleNode("machineLearningModel", translateNull(model));
         adsorbHelper.addSimpleNode("pathModel", CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model"));
         adsorbHelper.addSimpleNode("percentageSplit", percentage.toPlainString());
         adsorbHelper.addSimpleNode("pathResultsPrediction", CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_"));

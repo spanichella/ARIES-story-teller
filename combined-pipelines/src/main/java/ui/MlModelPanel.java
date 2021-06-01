@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import types.MlModelType;
 
 final class MlModelPanel extends CompletablePanel {
     @Serial
@@ -16,18 +17,17 @@ final class MlModelPanel extends CompletablePanel {
     private final JLabel subTitleLabel;
     private final JComboBox<String> comboBox;
 
-    private static final String[] mlModelArray = {
-        UIHelpers.EMPTY_TEXT, "J48", "PART", "NaiveBayes", "IBk", "OneR", "SMO",
-        "Logistic", "AdaBoostM1", "LogitBoost",
-        "DecisionStump", "LinearRegression",
-        "RegressionByDiscretization",
+    private static final MlModelType[] mlModelArray = {
+        null, MlModelType.J48, MlModelType.PART, MlModelType.NAIVE_BAYES, MlModelType.IB_K, MlModelType.ONE_R, MlModelType.SMO,
+        MlModelType.LOGISTIC, MlModelType.ADA_BOOST_M1, MlModelType.LOGIT_BOOST, MlModelType.DECISION_STUMP, MlModelType.LINEAR_REGRESSION,
+        MlModelType.REGRESSION_BY_DISCRETIZATION,
         };
 
-    MlModelPanel(@Nonnull Consumer<? super String> onModelChange, @Nonnull Runnable onUpdate) {
+    MlModelPanel(@Nonnull Consumer<? super MlModelType> onModelChange, @Nonnull Runnable onUpdate) {
         super("[Step 4]");
 
         subTitleLabel = UIHelpers.getLabel("Select Method");
-        comboBox = UIHelpers.getComboBox(mlModelArray, onModelChange, onUpdate);
+        comboBox = UIHelpers.getTranslatableComboBox(mlModelArray, onModelChange, onUpdate);
 
         add(buildCenterPanel(), BorderLayout.CENTER);
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_END);
