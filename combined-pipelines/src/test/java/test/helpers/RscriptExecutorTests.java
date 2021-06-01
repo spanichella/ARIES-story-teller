@@ -42,6 +42,7 @@ final class RscriptExecutorTests {
         RscriptExecutor.executeWithRuntime(runtimeMock, "some", "argument");
 
         Assertions.assertEquals(fetcher.getMessages(), List.of(
+            new LogData(Level.INFO, "Executing: Rscript some argument"),
             new LogData(Level.INFO, "Test STDOUT Output"),
             new LogData(Level.SEVERE, "Test STDERR Output")
         ));
