@@ -6,7 +6,6 @@ import java.io.Serial;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import types.PipelineType;
@@ -22,7 +21,7 @@ final class PipelinePanel extends CompletablePanel {
 
         comboBox = UIHelpers.getTranslatableComboBox(
             new PipelineType[] { null, PipelineType.ML, PipelineType.DL },
-            PipelinePanel::translatePipelineType, onPipelineChange, onUpdate);
+            PipelineType::getDescription, onPipelineChange, onUpdate);
 
         add(buildCenterPanel(), BorderLayout.CENTER);
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_END);
@@ -37,42 +36,20 @@ final class PipelinePanel extends CompletablePanel {
     }
 
     PipelineType getSelectedItem() {
-        return translatePipelineText((String) comboBox.getSelectedItem());
+        return PipelineType.from((String) comboBox.getSelectedItem());
     }
 
     void addDL() {
+        String dlDescription = PipelineType.DL.getDescription();
         if (IntStream.range(0, comboBox.getItemCount())
             .mapToObj(comboBox::getItemAt)
-            .noneMatch(value -> value.equals("DL"))) {
-            comboBox.insertItemAt("DL", comboBox.getItemCount());
+            .noneMatch(value -> value.equals(dlDescription))) {
+            comboBox.insertItemAt(dlDescription, comboBox.getItemCount());
         }
     }
 
     void removeDL() {
-        comboBox.setSelectedItem("ML");
-        comboBox.removeItem("DL");
-    }
-
-    private static String translatePipelineType(@Nullable PipelineType pipelineType) {
-        if (pipelineType == null) {
-            return UIHelpers.EMPTY_TEXT;
-        }
-        return switch (pipelineType) {
-            case ML -> "ML";
-            case DL -> "DL";
-        };
-    }
-
-    @Nullable
-    private static PipelineType translatePipelineText(@Nullable String pipelineText) {
-        if (pipelineText == null) {
-            return null;
-        }
-        return switch (pipelineText) {
-            case UIHelpers.EMPTY_TEXT -> null;
-            case "ML" -> PipelineType.ML;
-            case "DL" -> PipelineType.DL;
-            default -> throw new IllegalArgumentException("Unknown pipelineText: %s".formatted(pipelineText));
-        };
+        comboBox.setSelectedItem(PipelineType.ML.getDescription());
+        comboBox.removeItem(PipelineType.DL.getDescription());
     }
 }
