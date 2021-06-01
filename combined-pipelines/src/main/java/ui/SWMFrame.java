@@ -201,7 +201,12 @@ final class SWMFrame extends JFrame {
         @Nonnull
         DataType validDataType = dataType;
         AsyncPipeline.run(() -> MainPipeline.runPipeline(validPipelineType, validDataType), error -> {
-            error.ifPresent(throwable -> showErrorMessage("Pipeline Thread failed", throwable));
+            if (error.isPresent()) {
+                showErrorMessage("Pipeline Thread failed", error.get());
+            } else {
+                JOptionPane.showMessageDialog(this, "The pipeline finished successfully", "Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+            }
             closeWindow();
         });
         setEnabled(false);
