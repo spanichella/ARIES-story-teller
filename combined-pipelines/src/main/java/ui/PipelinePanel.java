@@ -20,8 +20,7 @@ final class PipelinePanel extends CompletablePanel {
         super("[Step 3]");
 
         comboBox = UIHelpers.getTranslatableComboBox(
-            new PipelineType[] { null, PipelineType.ML, PipelineType.DL },
-            UIHelpers::getDescriptionOrEmpty, onPipelineChange, onUpdate);
+            new PipelineType[] {null, PipelineType.ML, PipelineType.DL}, onPipelineChange, onUpdate);
 
         add(buildCenterPanel(), BorderLayout.CENTER);
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_END);

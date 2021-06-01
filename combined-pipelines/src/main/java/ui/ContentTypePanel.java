@@ -23,8 +23,7 @@ final class ContentTypePanel extends CompletablePanel {
         centerPanel.add(getTitleLabel());
         centerPanel.add(UIHelpers.getLabel("Select Content Type"));
         centerPanel.add(UIHelpers.getTranslatableComboBox(
-            new DataType[]{null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS},
-            UIHelpers::getDescriptionOrEmpty, onDataTypeChange, onUpdate));
+            new DataType[]{null, DataType.USER_REVIEWS, DataType.REQUIREMENT_SPECIFICATIONS}, onDataTypeChange, onUpdate));
         return centerPanel;
     }
 }

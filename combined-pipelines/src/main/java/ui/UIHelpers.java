@@ -55,9 +55,10 @@ final class UIHelpers {
         return sb.append("</html>").toString();
     }
 
-    static <E> JComboBox<String> getTranslatableComboBox(E[] elements, Function<? super E, String> translator,
-                                                          Consumer<? super E> listener, Runnable onUpdate) {
-        List<String> translations = Arrays.stream(elements).map(translator).collect(Collectors.toUnmodifiableList());
+    static <E extends IDescribable> JComboBox<String> getTranslatableComboBox(E[] elements, Consumer<? super E> listener,
+                                                                              Runnable onUpdate) {
+        List<String> translations = Arrays.stream(elements).map(e -> e == null ? EMPTY_TEXT : e.getDescription())
+            .collect(Collectors.toUnmodifiableList());
         return getComboBox(translations.toArray(new String[0]), (String value) ->
             listener.accept(elements[translations.indexOf(value)]), onUpdate);
     }
@@ -76,10 +77,6 @@ final class UIHelpers {
         });
         ((JLabel) comboBox.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         return comboBox;
-    }
-
-    static <T extends IDescribable> String getDescriptionOrEmpty(T item) {
-        return item == null ? EMPTY_TEXT : item.getDescription();
     }
 
     @Nullable
