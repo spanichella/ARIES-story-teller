@@ -1,6 +1,5 @@
 package pipelines;
 
-import configfile.ConfigFileReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -52,15 +51,15 @@ final class DLPipeline {
 
     // https://deeplearning4j.org/tutorials/setup
 
-    static void runDLPipeline(ConfigFileReader cfg) throws IOException {
+    static void runDLPipeline(Configuration cfg) throws IOException {
 
         // the training set
-        String labelledTurns = cfg.pathTrainingSet;
+        String labelledTurns = cfg.pathTrainingSet.toString();
         // the test set (but used for validation..)
-        String validationSet = cfg.pathTestSet;
+        String validationSet = cfg.pathTestSet.toString();
 
         // load pre-trained GloVe w2v
-        String glove = cfg.pathGloveFile;
+        String glove = cfg.pathGloveFile.toString();
         LOGGER.debug("TEST{}", glove);
         int lengthTrainingSet = getLineCount(labelledTurns) - 1;
         LOGGER.debug("{}", lengthTrainingSet);
@@ -85,7 +84,7 @@ final class DLPipeline {
         String modelFileName = "model_6b_%dd_v1_0.bin".formatted(GLOVE_DIM);
 
         // save it to file
-        File modelFile = new File(cfg.pathModel.replace("MLModel.model", ""), modelFileName);
+        File modelFile = new File(cfg.pathModel.toString().replace("MLModel.model", ""), modelFileName);
         //noinspection ResultOfMethodCallIgnored
         modelFile.createNewFile();
         LOGGER.info("Saving model to {}", modelFile);

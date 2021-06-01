@@ -1,16 +1,11 @@
 package pipelines;
 
-import configfile.ConfigFileReader;
 import filegeneration.FileGeneration;
-import filegeneration.XMLInitializer;
 import java.math.BigDecimal;
 import java.nio.file.Path;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import types.DataType;
 import types.MlModelType;
 import types.PipelineType;
@@ -30,25 +25,16 @@ public final class MainPipeline {
         @Nonnull Path truthFilePath, @Nonnull PipelineType pipelineType, @Nonnull DataType dataType, @Nullable MlModelType model,
         @Nonnull BigDecimal percentage, @Nullable StrategyType strategy
     ) throws Exception {
-        Path pathConfigFile;
-        try {
-            pathConfigFile = XMLInitializer.createXML(truthFilePath, dataType, model, percentage, strategy);
-        } catch (TransformerException | ParserConfigurationException | RuntimeException exception) {
-            throw new RuntimeException("Generating the XML Failed", exception);
-        }
+        Configuration configuration = new Configuration(truthFilePath, dataType, model, percentage, strategy);
 
-        LOGGER.log(Level.INFO, "Path of ConfigFile: %s".formatted(pathConfigFile));
-
-        //Read Config file
-        ConfigFileReader configFileReader = new ConfigFileReader(pathConfigFile);
         //Generate files for ML/DL
         LOGGER.info("Starting file generation ");
-        FileGeneration.oracleAnalysis(configFileReader);
+        FileGeneration.oracleAnalysis(configuration);
 
         //run selected pipeline
         switch (pipelineType) {
-            case ML -> MLPipeline.performMlAnalysis(configFileReader);
-            case DL -> DLPipeline.runDLPipeline(configFileReader);
+            case ML -> MLPipeline.performMlAnalysis(configuration);
+            case DL -> DLPipeline.runDLPipeline(configuration);
             default -> throw new IllegalArgumentException("Unknown pipeline type: %s".formatted(pipelineType));
         }
         LOGGER.info("Program execution completed");

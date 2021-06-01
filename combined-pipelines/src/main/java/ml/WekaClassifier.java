@@ -3,6 +3,7 @@ package ml;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -10,6 +11,7 @@ import java.util.Random;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
+import types.MlModelType;
 import weka.classifiers.Classifier;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.evaluation.Evaluation;
@@ -34,12 +36,12 @@ import weka.core.converters.ConverterUtils.DataSource;
 public final class WekaClassifier {
     private static final Logger LOGGER = Logger.getLogger(WekaClassifier.class.getName());
 
-    public static void runSpecifiedMachineLearningModel(@Nonnull String pathTrainingSet, @Nonnull String pathTestSet,
-                                                        @Nonnull String pathModel, @Nonnull String machineLearningModel,
-                                                        @Nonnull String pathResultsPrediction) throws Exception {
+    public static void runSpecifiedMachineLearningModel(@Nonnull Path pathTrainingSet, @Nonnull Path pathTestSet,
+                                                        @Nonnull Path pathModel, @Nonnull MlModelType machineLearningModel,
+                                                        @Nonnull Path pathResultsPrediction) throws Exception {
         //we create instances for training and test sets
-        DataSource sourceTraining = new DataSource(pathTrainingSet);
-        DataSource sourceTesting = new DataSource(pathTestSet);
+        DataSource sourceTraining = new DataSource(pathTrainingSet.toString());
+        DataSource sourceTesting = new DataSource(pathTestSet.toString());
         Instances train = sourceTraining.getDataSet();
         Instances test = sourceTesting.getDataSet();
 
@@ -55,15 +57,15 @@ public final class WekaClassifier {
         classifier.buildClassifier(train);
 
         Evaluation eval = new Evaluation(train);
-        weka.core.SerializationHelper.write(pathModel, classifier);
+        weka.core.SerializationHelper.write(pathModel.toString(), classifier);
         eval.evaluateModel(classifier, test);
 
         printAndWriteModelMeasures("training performance", classifier, eval, pathResultsPrediction);
     }
 
-    public static void runSpecifiedModelWith10FoldStrategy(String pathWholeDataset, String machineLearningModel,
-                                                           String pathResultsPrediction) throws Exception {
-        DataSource sourceWholeDataset = new DataSource(pathWholeDataset);
+    public static void runSpecifiedModelWith10FoldStrategy(@Nonnull Path pathWholeDataset, @Nonnull MlModelType machineLearningModel,
+                                                           @Nonnull Path pathResultsPrediction) throws Exception {
+        DataSource sourceWholeDataset = new DataSource(pathWholeDataset.toString());
         Instances wholeDataset = sourceWholeDataset.getDataSet(); // from somewhere
         wholeDataset.setClassIndex(wholeDataset.numAttributes() - 1);
 
@@ -78,7 +80,7 @@ public final class WekaClassifier {
         printAndWriteModelMeasures("performance", classifier, eval, pathResultsPrediction);
     }
 
-    private static void printAndWriteModelMeasures(String title, Classifier classifier, Evaluation eval, String pathResultsPrediction)
+    private static void printAndWriteModelMeasures(String title, Classifier classifier, Evaluation eval, Path pathResultsPrediction)
             throws Exception {
         printModelMeasures(title, classifier, eval, LOGGER::info);
         String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
@@ -103,20 +105,20 @@ public final class WekaClassifier {
     /**
      * Get classifier's class name by a short name
      */
-    private static Classifier getClassifierClassName(String classifierName) {
-        return switch (classifierName) {
-            case "PART" -> new PART();
-            case "NaiveBayes" -> new NaiveBayes();
-            case "IBk" -> new IBk();
-            case "OneR" -> new OneR();
-            case "SMO" -> new SMO();
-            case "Logistic" -> new Logistic();
-            case "AdaBoostM1" -> new AdaBoostM1();
-            case "LogitBoost" -> new LogitBoost();
-            case "DecisionStump" -> new DecisionStump();
-            case "LinearRegression" -> new LinearRegression();
-            case "RegressionByDiscretization" -> new RegressionByDiscretization();
-            default -> new J48();
+    private static Classifier getClassifierClassName(@Nonnull MlModelType mlModelType) {
+        return switch (mlModelType) {
+            case PART -> new PART();
+            case NAIVE_BAYES -> new NaiveBayes();
+            case IB_K -> new IBk();
+            case ONE_R -> new OneR();
+            case SMO -> new SMO();
+            case LOGISTIC -> new Logistic();
+            case ADA_BOOST_M1 -> new AdaBoostM1();
+            case LOGIT_BOOST -> new LogitBoost();
+            case DECISION_STUMP -> new DecisionStump();
+            case LINEAR_REGRESSION -> new LinearRegression();
+            case REGRESSION_BY_DISCRETIZATION -> new RegressionByDiscretization();
+            case J48 -> new J48();
         };
     }
 }
