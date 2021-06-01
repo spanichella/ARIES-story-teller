@@ -21,7 +21,7 @@ final class PipelinePanel extends CompletablePanel {
 
         comboBox = UIHelpers.getTranslatableComboBox(
             new PipelineType[] { null, PipelineType.ML, PipelineType.DL },
-            PipelineType::getDescription, onPipelineChange, onUpdate);
+            UIHelpers::getDescriptionOrEmpty, onPipelineChange, onUpdate);
 
         add(buildCenterPanel(), BorderLayout.CENTER);
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_END);
@@ -36,7 +36,7 @@ final class PipelinePanel extends CompletablePanel {
     }
 
     PipelineType getSelectedItem() {
-        return PipelineType.from((String) comboBox.getSelectedItem());
+        return UIHelpers.fromDescriptionOrEmpty((String) comboBox.getSelectedItem(), PipelineType.values());
     }
 
     void addDL() {

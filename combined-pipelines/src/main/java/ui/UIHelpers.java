@@ -8,10 +8,12 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import types.IDescribable;
 
 final class UIHelpers {
     static final String EMPTY_TEXT = "Select";
@@ -76,4 +78,20 @@ final class UIHelpers {
         return comboBox;
     }
 
+    static <T extends IDescribable> String getDescriptionOrEmpty(T item) {
+        return item == null ? EMPTY_TEXT : item.getDescription();
+    }
+
+    @Nullable
+    static <T extends IDescribable> T fromDescriptionOrEmpty(@Nullable String description, T[] values) {
+        if (description == null) {
+            return null;
+        }
+        for (T type : values) {
+            if (type.getDescription().equals(description)) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Unknown PipelineType with description \"%s\"".formatted(description));
+    }
 }
