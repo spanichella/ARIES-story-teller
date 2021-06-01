@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -55,12 +56,12 @@ final class DLPipeline {
     static void runDLPipeline(Configuration cfg) throws IOException {
 
         // the training set
-        String labelledTurns = cfg.pathTrainingSet.toString();
+        Path labelledTurns = cfg.pathTrainingSet;
         // the test set (but used for validation..)
-        String validationSet = cfg.pathTestSet.toString();
+        Path validationSet = cfg.pathTestSet;
 
         // load pre-trained GloVe w2v
-        String glove = CommonPaths.GLOVE_FILE.toString();
+        Path glove = CommonPaths.GLOVE_FILE;
         LOGGER.debug("TEST{}", glove);
         int lengthTrainingSet = getLineCount(labelledTurns) - 1;
         LOGGER.debug("{}", lengthTrainingSet);
@@ -94,7 +95,7 @@ final class DLPipeline {
 
         LOGGER.info("Start training...");
         int nrOfEpochs = 100;
-        WordVectors wordVectors = WordVectorSerializer.readWord2VecModel(new File(glove));
+        WordVectors wordVectors = WordVectorSerializer.readWord2VecModel(glove.toFile());
         train(labelledTurns, wordVectors, lengthTrainingSet, nrOfBatches, nrOfExamplesPerBatch, nrOfEpochs, inputColumns,
                 wordsPerTurn, model, validationSet, lengthTestSet);
         LOGGER.info("Finished training");
@@ -135,11 +136,11 @@ final class DLPipeline {
         }
     }
 
-    private static EvaluationData getEvaluationData(String validationSet, int inputSize, WordVectors wordVectors, int inputColumns,
+    private static EvaluationData getEvaluationData(Path validationSet, int inputSize, WordVectors wordVectors, int inputColumns,
                                                     int wordsPerTurn)throws IOException {
         List<INDArray> inputList = new ArrayList<>(inputSize);
         double[][] labelsList = new double[inputSize][];
-        try (BufferedReader reader = new BufferedReader(new FileReader(validationSet, StandardCharsets.UTF_8))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(validationSet.toFile(), StandardCharsets.UTF_8))) {
 
             String line;
             int labelsId = 0;
@@ -165,15 +166,15 @@ final class DLPipeline {
         return eval;
     }
 
-    private static void train(String labelledTurns, WordVectors wordVectors, int nrOfExamples, int nrOfBatches,
+    private static void train(Path labelledTurns, WordVectors wordVectors, int nrOfExamples, int nrOfBatches,
                               int nrOfExamplesPerBatch, int nrOfEpochs, int inputColumns, int wordsPerTurn,
-                              MultiLayerNetwork model, String validationSet, int inputSize) throws IOException {
+                              MultiLayerNetwork model, Path validationSet, int inputSize) throws IOException {
         EvaluationData evaluationData = getEvaluationData(validationSet, inputSize, wordVectors, inputColumns, wordsPerTurn);
         LOGGER.info("Train with {} examples in {} batches for {} epochs", nrOfExamplesPerBatch, nrOfBatches, nrOfEpochs);
         for (int epoch = 0; epoch < nrOfEpochs; ++epoch) {
             LOGGER.info("Epoch {}", epoch);
 
-            try (BufferedReader reader = new BufferedReader(new FileReader(labelledTurns, StandardCharsets.UTF_8))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(labelledTurns.toFile(), StandardCharsets.UTF_8))) {
 
                 reader.readLine();
                 String line = reader.readLine();
@@ -234,7 +235,7 @@ final class DLPipeline {
         return lineAr;
     }
 
-    private static String evaluate(String validationSet, int inputSize, MultiLayerNetwork model, WordVectors wordVectors,
+    private static String evaluate(Path validationSet, int inputSize, MultiLayerNetwork model, WordVectors wordVectors,
                                  int inputColumns, int wordsPerTurn) throws IOException {
         EvaluationData data = getEvaluationData(validationSet, inputSize, wordVectors, inputColumns, wordsPerTurn);
         Evaluation eval = getEvaluation(data, model);
@@ -350,8 +351,8 @@ final class DLPipeline {
         return new MultiLayerNetwork(multiLayerConf);
     }
 
-    private static int getLineCount(String path) throws IOException {
-        try (FileReader input = new FileReader(path, StandardCharsets.UTF_8);
+    private static int getLineCount(Path path) throws IOException {
+        try (FileReader input = new FileReader(path.toFile(), StandardCharsets.UTF_8);
              LineNumberReader count = new LineNumberReader(input)) {
             //noinspection StatementWithEmptyBody
             while (count.skip(Long.MAX_VALUE) > 0) {
