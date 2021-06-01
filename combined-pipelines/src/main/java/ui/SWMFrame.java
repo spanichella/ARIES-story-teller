@@ -1,6 +1,5 @@
 package ui;
 
-import filegeneration.XMLInitializer;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -19,8 +18,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import pipelines.AsyncPipeline;
 import pipelines.MainPipeline;
 import types.DataType;
@@ -184,27 +181,18 @@ final class SWMFrame extends JFrame {
         loader = new SWMLoaderFrame();
         loader.start();
 
-        try {
-            XMLInitializer.createXML(truthFilePath, dataType, mlModel, thresholdPanel.getSplit(), strategy);
-        } catch (TransformerException | ParserConfigurationException | RuntimeException exception) {
-            showErrorMessage("Generating the XML Failed", exception);
-            closeWindow();
-            return;
-        }
-
-        @Nonnull
-        PipelineType validPipelineType = pipelineType;
-        @Nonnull
-        DataType validDataType = dataType;
-        AsyncPipeline.run(() -> MainPipeline.runPipeline(validPipelineType, validDataType), error -> {
-            if (error.isPresent()) {
-                showErrorMessage("Pipeline Thread failed", error.get());
-            } else {
-                JOptionPane.showMessageDialog(this, "The pipeline finished successfully", "Success",
-                    JOptionPane.INFORMATION_MESSAGE);
+        AsyncPipeline.run(
+            () -> MainPipeline.runPipeline(truthFilePath, pipelineType, dataType, mlModel, thresholdPanel.getSplit(), strategy),
+            error -> {
+                if (error.isPresent()) {
+                    showErrorMessage("Pipeline Thread failed", error.get());
+                } else {
+                    JOptionPane.showMessageDialog(this, "The pipeline finished successfully", "Success",
+                        JOptionPane.INFORMATION_MESSAGE);
+                }
+                closeWindow();
             }
-            closeWindow();
-        });
+        );
         setEnabled(false);
         updateStatus();
     }

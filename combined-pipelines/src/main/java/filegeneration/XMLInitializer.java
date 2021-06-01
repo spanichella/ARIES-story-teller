@@ -31,7 +31,7 @@ import types.StrategyType;
 public final class XMLInitializer {
     private static final Logger LOGGER = Logger.getLogger(XMLInitializer.class.getName());
 
-    public static void createXML(@Nonnull Path pathTruthFile, @Nonnull DataType dataType, @Nullable MlModelType model,
+    public static Path createXML(@Nonnull Path pathTruthFile, @Nonnull DataType dataType, @Nullable MlModelType model,
                                  @Nonnull BigDecimal percentage, @Nullable StrategyType strategy)
             throws ParserConfigurationException, TransformerException {
         Path baseFolder;
@@ -107,13 +107,15 @@ public final class XMLInitializer {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         Source domSource = new DOMSource(document);
-        Result streamResult = new StreamResult(CommonPaths.XML_FILES.resolve(name + "XML.xml").toFile());
+        Path path = CommonPaths.XML_FILES.resolve(name + "XML.xml");
+        Result streamResult = new StreamResult(path.toFile());
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
         //noinspection HardcodedFileSeparator
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
         transformer.transform(domSource, streamResult);
 
         LOGGER.info("XML-file created");
+        return path;
     }
 
     @Nonnull

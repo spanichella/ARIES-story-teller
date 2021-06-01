@@ -2,13 +2,19 @@ package pipelines;
 
 import configfile.ConfigFileReader;
 import filegeneration.FileGeneration;
-import helpers.CommonPaths;
+import filegeneration.XMLInitializer;
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import types.DataType;
+import types.MlModelType;
 import types.PipelineType;
+import types.StrategyType;
 
 /**
  * This class extends the Main Program class by supporting the execution of
@@ -20,14 +26,16 @@ import types.PipelineType;
 public final class MainPipeline {
     private static final Logger LOGGER = Logger.getLogger(MainPipeline.class.getName());
 
-    public static void runPipeline(@Nonnull PipelineType pipelineType, @Nonnull DataType dataType) throws Exception {
-        Path xmlFiles = CommonPaths.XML_FILES;
-
-        //chooses path of config file according to data-type
-        Path pathConfigFile = switch (dataType) {
-            case REQUIREMENT_SPECIFICATIONS -> xmlFiles.resolve("RequirementSpecificationsXML.xml");
-            case USER_REVIEWS -> xmlFiles.resolve("UserReviewsXML.xml");
-        };
+    public static void runPipeline(
+        @Nonnull Path truthFilePath, @Nonnull PipelineType pipelineType, @Nonnull DataType dataType, @Nullable MlModelType model,
+        @Nonnull BigDecimal percentage, @Nullable StrategyType strategy
+    ) throws Exception {
+        Path pathConfigFile;
+        try {
+            pathConfigFile = XMLInitializer.createXML(truthFilePath, dataType, model, percentage, strategy);
+        } catch (TransformerException | ParserConfigurationException | RuntimeException exception) {
+            throw new RuntimeException("Generating the XML Failed", exception);
+        }
 
         LOGGER.log(Level.INFO, "Path of ConfigFile: %s".formatted(pathConfigFile));
 
