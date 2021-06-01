@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 import types.IDescribable;
 
 final class UIHelpers {
-    static final String EMPTY_TEXT = "Select";
+    private static final String EMPTY_TEXT = "Select";
 
     static JLabel getLabel(String title) {
         JLabel label = new JLabel(toTitle(title));
@@ -54,23 +54,19 @@ final class UIHelpers {
         return sb.append("</html>").toString();
     }
 
-    static <E extends IDescribable> JComboBox<String> getTranslatableComboBox(E[] elements, Consumer<? super E> listener,
-                                                                              Runnable onUpdate) {
+    static <E extends IDescribable> JComboBox<String> getTranslatableComboBox(
+        E[] elements, Consumer<? super E> listener, Runnable onUpdate
+    ) {
         List<String> translations = Arrays.stream(elements).map(e -> e == null ? EMPTY_TEXT : e.getDescription())
             .collect(Collectors.toUnmodifiableList());
-        return getComboBox(translations.toArray(new String[0]), (String value) ->
-            listener.accept(elements[translations.indexOf(value)]), onUpdate);
-    }
-
-    static JComboBox<String> getComboBox(String[] names, Consumer<? super String> listener, Runnable onUpdate) {
-        JComboBox<String> comboBox = new JComboBox<>(names);
+        JComboBox<String> comboBox = new JComboBox<>(translations.toArray(new String[0]));
         comboBox.addItemListener((event) -> {
             if (event.getStateChange() == ItemEvent.SELECTED) {
                 String value = (String) event.getItem();
                 if (comboBox.getItemAt(0).equals(EMPTY_TEXT)) {
                     comboBox.removeItemAt(0);
                 }
-                listener.accept(value);
+                listener.accept(elements[translations.indexOf(value)]);
             }
             onUpdate.run();
         });
