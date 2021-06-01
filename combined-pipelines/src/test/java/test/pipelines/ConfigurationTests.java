@@ -13,7 +13,7 @@ import types.StrategyType;
 final class ConfigurationTests {
     @Test
     void testCreatingRequirementsSpecificationsFile() {
-        Configuration reader = new Configuration(Path.of("example truth file"), DataType.REQUIREMENT_SPECIFICATIONS,
+        Configuration reader = Configuration.forDataType(DataType.REQUIREMENT_SPECIFICATIONS, Path.of("example truth file"),
             MlModelType.ADA_BOOST_M1, BigDecimal.valueOf(123), null);
         Assertions.assertEquals(reader.pathRScripts, CommonPaths.R_SCRIPTS);
         Assertions.assertEquals(reader.pathRScriptOracle,
@@ -44,7 +44,7 @@ final class ConfigurationTests {
 
     @Test
     void testCreatingUserReviewsFile() {
-        Configuration reader = new Configuration(Path.of("new example truth file"), DataType.USER_REVIEWS, null,
+        Configuration reader = Configuration.forDataType(DataType.USER_REVIEWS, Path.of("new example truth file"), null,
             BigDecimal.valueOf(1.2), StrategyType.TEN_FOLD);
         Assertions.assertEquals(reader.pathRScripts, CommonPaths.R_SCRIPTS);
         Assertions.assertEquals(reader.pathRScriptOracle, CommonPaths.R_SCRIPTS.resolve("Script-to-create-test-dataset.r"));

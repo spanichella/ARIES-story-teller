@@ -5,15 +5,11 @@ import java.math.BigDecimal;
 import java.nio.file.Path;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import types.DataType;
 import types.MlModelType;
 import types.StrategyType;
 
 public final class Configuration {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Configuration.class.getName());
-
     @Nonnull
     public final Path pathRScripts;
     @Nonnull
@@ -25,7 +21,7 @@ public final class Configuration {
     @Nonnull
     public final BigDecimal threshold;
     @Nonnull
-    public final Path pathTbDRScript;
+    public final Path pathTbDRScript = CommonPaths.R_SCRIPTS.resolve("MainScript.r");
     @Nonnull
     public final String pathTrainingSetDocuments;
     @Nonnull
@@ -41,17 +37,17 @@ public final class Configuration {
     @Nullable
     public final MlModelType machineLearningModel;
     @Nonnull
-    public final String nameOfAttributeClass;
+    public final String nameOfAttributeClass = "class";
     @Nonnull
-    public final String nameOfAttributeID;
+    public final String nameOfAttributeID = "id";
     @Nonnull
     public final String nameOfAttributeText;
     @Nonnull
-    public final Path pathModel;
+    public final Path pathModel = CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model");
     @Nonnull
     public final Path pathFullTDMDataset;
     @Nonnull
-    public final Path pathResultsPrediction;
+    public final Path pathResultsPrediction = CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_");
     @Nonnull
     public final Path pathTDMTrainingSet;
     @Nonnull
@@ -59,47 +55,35 @@ public final class Configuration {
     @Nullable
     public final StrategyType strategy;
 
-    public Configuration(@Nonnull Path pathTruthFile, @Nonnull DataType dataType, @Nullable MlModelType model,
-                         @Nonnull BigDecimal percentage, @Nullable StrategyType strategy) {
-        Path baseFolder;
-        String dataTypePostfix;
-        String attributeTextName;
+    public static Configuration forDataType(@Nonnull DataType dataType, @Nonnull Path pathTruthFile, @Nullable MlModelType model,
+                                            @Nonnull BigDecimal percentage, @Nullable StrategyType strategy) {
+        return switch (dataType) {
+            case REQUIREMENT_SPECIFICATIONS ->
+                new Configuration(pathTruthFile, model, percentage, strategy, "ReqSpec", "-Req-Specifications", "req_specification");
+            case USER_REVIEWS ->
+                new Configuration(pathTruthFile, model, percentage, strategy, "UserReviews", "", "review");
+        };
+    }
 
-        switch (dataType) {
-            case REQUIREMENT_SPECIFICATIONS -> {
-                baseFolder = CommonPaths.RESOURCES.resolve("ReqSpec");
-                dataTypePostfix = "-Req-Specifications";
-                attributeTextName = "req_specification";
-                LOGGER.info("Creating configuration for Requirement-Specifications...");
-            }
-            case USER_REVIEWS -> {
-                baseFolder = CommonPaths.RESOURCES.resolve("UserReviews");
-                dataTypePostfix = "";
-                attributeTextName = "review";
-                LOGGER.info("Creating configuration for User Reviews...");
-            }
-            default -> throw new IllegalArgumentException("Unknown type \"%s\"".formatted(dataType));
-        }
-
+    @SuppressWarnings("ConstructorWithTooManyParameters")
+    private Configuration(
+        @Nonnull Path pathTruthFile, @Nullable MlModelType model, @Nonnull BigDecimal percentage,
+        @Nullable StrategyType strategy, @Nonnull String baseFolderName, @Nonnull String dataTypePostfix, @Nonnull String attributeTextName
+    ) {
         pathRScripts = CommonPaths.R_SCRIPTS;
         pathRScriptOracle = CommonPaths.R_SCRIPTS.resolve("Script-to-create-test-dataset" + dataTypePostfix + ".r");
-        pathBaseFolder = baseFolder;
+        pathBaseFolder = CommonPaths.RESOURCES.resolve(baseFolderName);
         pathTruthSet = pathTruthFile;
         threshold = percentage;
-        pathTbDRScript = CommonPaths.R_SCRIPTS.resolve("MainScript.r");
         pathTrainingSetDocuments = "training-set%s".formatted(dataTypePostfix);
         pathTestSetDocuments = "test-set%s".formatted(dataTypePostfix);
-        pathSimplifiedTruthSet = baseFolder.resolve("truth_set-simplified" + dataTypePostfix + ".csv");
-        pathTrainingSet = baseFolder.resolve("trainingSet_truth_set" + dataTypePostfix + ".csv");
-        pathTestSet = baseFolder.resolve("testSet_truth_set" + dataTypePostfix + ".csv");
+        pathSimplifiedTruthSet = pathBaseFolder.resolve("truth_set-simplified" + dataTypePostfix + ".csv");
+        pathTrainingSet = pathBaseFolder.resolve("trainingSet_truth_set" + dataTypePostfix + ".csv");
+        pathTestSet = pathBaseFolder.resolve("testSet_truth_set" + dataTypePostfix + ".csv");
         machineLearningModel = model;
-        nameOfAttributeClass = "class";
-        nameOfAttributeID = "id";
         nameOfAttributeText = attributeTextName;
-        pathModel = CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model");
-        Path preprocessedFolder = baseFolder.resolve("documents-preprocessed-" + attributeTextName);
+        Path preprocessedFolder = pathBaseFolder.resolve("documents-preprocessed-" + attributeTextName);
         pathFullTDMDataset = preprocessedFolder.resolve("tdm_full_with_oracle_info.csv");
-        pathResultsPrediction = CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_");
         pathTDMTrainingSet = preprocessedFolder.resolve("tdm_full_trainingSet_with_oracle_info.csv");
         pathTDMTestSet = preprocessedFolder.resolve("tdm_full_testSet_with_oracle_info.csv");
         this.strategy = strategy;

@@ -25,7 +25,7 @@ public final class MainPipeline {
         @Nonnull Path truthFilePath, @Nonnull PipelineType pipelineType, @Nonnull DataType dataType, @Nullable MlModelType model,
         @Nonnull BigDecimal percentage, @Nullable StrategyType strategy
     ) throws Exception {
-        Configuration configuration = new Configuration(truthFilePath, dataType, model, percentage, strategy);
+        Configuration configuration = Configuration.forDataType(dataType, truthFilePath, model, percentage, strategy);
 
         //Generate files for ML/DL
         LOGGER.info("Starting file generation ");
