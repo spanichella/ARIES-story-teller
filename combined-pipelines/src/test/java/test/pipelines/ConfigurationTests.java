@@ -1,11 +1,11 @@
 package test.pipelines;
 
+import config.Configuration;
 import helpers.CommonPaths;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import pipelines.Configuration;
 import types.DataType;
 import types.MlModelType;
 import types.StrategyType;

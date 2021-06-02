@@ -1,5 +1,6 @@
 package pipelines;
 
+import config.Configuration;
 import helpers.CommonPaths;
 import java.io.BufferedReader;
 import java.io.File;

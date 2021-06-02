@@ -1,5 +1,6 @@
 package pipelines;
 
+import config.Configuration;
 import java.io.FileNotFoundException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;

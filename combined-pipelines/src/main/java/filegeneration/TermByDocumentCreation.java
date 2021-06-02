@@ -1,10 +1,10 @@
 package filegeneration;
 
+import config.Configuration;
 import helpers.CommonPaths;
 import helpers.RscriptExecutor;
 import java.nio.file.Path;
 import java.util.logging.Logger;
-import pipelines.Configuration;
 
 /**
  * @author panc

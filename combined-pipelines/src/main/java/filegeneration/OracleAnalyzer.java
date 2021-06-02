@@ -1,10 +1,10 @@
 package filegeneration;
 
+import config.Configuration;
 import helpers.RscriptExecutor;
 import helpers.RscriptExecutor.ExecutionException;
 import helpers.RscriptExecutor.RunFailedException;
 import java.util.logging.Logger;
-import pipelines.Configuration;
 
 
 /**

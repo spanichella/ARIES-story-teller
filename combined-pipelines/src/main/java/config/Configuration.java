@@ -1,4 +1,4 @@
-package pipelines;
+package config;
 
 import helpers.CommonPaths;
 import java.math.BigDecimal;
@@ -12,8 +12,8 @@ import types.StrategyType;
 public final class Configuration {
     public static final String nameOfAttributeClass = "class";
     public static final String nameOfAttributeID = "id";
-    static final Path pathModel = CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model");
-    static final Path pathResultsPrediction = CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_");
+    public static final Path pathModel = CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model");
+    public static final Path pathResultsPrediction = CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_");
 
     @Nonnull
     public final Path pathRScripts;

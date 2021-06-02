@@ -1,9 +1,9 @@
 package filegeneration;
 
+import config.Configuration;
 import helpers.RscriptExecutor.ExecutionException;
 import helpers.RscriptExecutor.RunFailedException;
 import java.util.logging.Logger;
-import pipelines.Configuration;
 
 public final class FileGeneration {
     private static final Logger LOGGER = Logger.getLogger(FileGeneration.class.getName());
