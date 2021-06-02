@@ -10,6 +10,7 @@ import types.DataType;
 import types.MlModelType;
 import types.StrategyType;
 
+@SuppressWarnings({"ClassOnlyUsedInOneModule", "ClassIndependentOfModule"})
 final class ConfigurationTests {
     @Test
     void testCreatingRequirementsSpecificationsFile() {
