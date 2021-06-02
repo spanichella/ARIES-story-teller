@@ -3,7 +3,6 @@ package filegeneration;
 import helpers.RscriptExecutor.ExecutionException;
 import helpers.RscriptExecutor.RunFailedException;
 import java.util.logging.Logger;
-import oracle.OracleAnalyzer;
 import pipelines.Configuration;
 
 public final class FileGeneration {
