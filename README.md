@@ -7,8 +7,8 @@
 **Instructions:** see [combined-pipelines/README.md](./combined-pipelines/README.md)
 
 ## Overview
-1. [Our Work](#section1)
-2. [Requirement Collector Tool Description](#section2)
+1. [Abstract](#section1)
+2. [_StoryTeller_ Tool Description](#section2)
 3. [Our Contribution](#section3)
 4. [Summary of Results](#section4)
 
