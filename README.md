@@ -25,17 +25,12 @@ We share in this paper our experience, insights, and challenges in sharing, adap
 **_StoryTeller_** acts as a wrapper and combines both the ML and DL component inside a single executable instance.
 The set of labeled data sets used to apply to both the ML and DL Pipelines and to evaluate their resulting precision and accuracy values are provide in this repository.
 
-## 2. Requirement-Collector Tool Description<a name="section2"></a>
+## 2. _StoryTeller_ Tool Description<a name="section2"></a>
 The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this study are based on the _Requirements-Collector_ tool [1] as proposed by [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/).
 The corresponding installation guide and source code of both ML and DL component can be found in the following links to their respective GitHub repositories:
 
 - [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component)
 - [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component)
-
-**Requirements-Collector Context:**
-![](combined-pipelines/images/requirements-collector_context.png)
-
-
 
 ## 3. Our Contribution<a name="section3"></a>
 Our study is an extension of the aforementioned original [study](#section2) and evolves around the following research question:
