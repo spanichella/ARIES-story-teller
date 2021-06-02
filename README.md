@@ -72,32 +72,6 @@ On the contrary, our "Complete" dataset performed noticeably better with a preci
 Extending the Dataset has shown significantly better performance and Accuracy in ML pipeline.
 As future work we just suggest extending the dataset for better performance and accuracy.
 
-
-
-## Project Team
-<table>
-    <tr style="border: 0; text-align: center">
-        <td style="border: 0">
-            <p style="font-weight: bold">Christian Aeberhard</p>
-            <a href="https://github.com/niddhog"><img alt="Christian Aeberhard" src="combined-pipelines/images/Chris_Bubble.png"></a>
-        </td>
-        <td style="border: 0">
-            <p style="font-weight: bold">Marc Kramer</p>
-            <a href="https://github.com/Makram95"><img alt="Marc Kramer" src="combined-pipelines/images/Marc_Bubble.png"></a>
-        </td>
-        <td style="border: 0">
-            <p style="font-weight: bold">Janik Lüchinger</p>
-            <a href="https://github.com/jluech"><img alt="Janik Lüchinger" src="combined-pipelines/images/Janik_Bubble.png"></a>
-        </td>
-        <td style="border: 0">
-            <p style="font-weight: bold">Tanzil Mohammed</p>
-            <a href="https://github.com/tanzilkm"><img src="combined-pipelines/images/Tanzil_Bubble.png" alt="Tanzil Mohammed"></a>
-        </td>
-    </tr>
-</table>
-
-
-
 ## References
 - [1] S. Panichella and M. Ruiz Requirements-Collector: Automating Requirements Specification from Elicitation Sessions and User Feedback .   IEEE International Requirements Engineering Conference (RE’20).
 
