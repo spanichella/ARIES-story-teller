@@ -1,4 +1,4 @@
-package ui;
+package ui.panels;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -9,8 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
+import ui.utilities.DefaultColors;
+import ui.utilities.UIHelpers;
 
-final class ThresholdPanel extends CompletablePanel {
+public final class ThresholdPanel extends CompletablePanel {
     @Serial
     private static final long serialVersionUID = 321331743488681896L;
 
@@ -27,7 +29,7 @@ final class ThresholdPanel extends CompletablePanel {
     @Nonnull
     private BigDecimal split = BigDecimal.valueOf(5, 1);
 
-    ThresholdPanel() {
+    public ThresholdPanel() {
         super("[Step 6]");
 
         subTitleLabel = UIHelpers.getLabel("Set Size of Training-Set");
@@ -65,7 +67,7 @@ final class ThresholdPanel extends CompletablePanel {
     }
 
     @Override
-    void setItemsVisible(boolean visible) {
+    public void setItemsVisible(boolean visible) {
         super.setItemsVisible(visible);
         subTitleLabel.setVisible(visible);
         valueLabel.setVisible(visible);
@@ -75,7 +77,7 @@ final class ThresholdPanel extends CompletablePanel {
     }
 
     @Nonnull
-    BigDecimal getSplit() {
+    public BigDecimal getSplit() {
         return split;
     }
 

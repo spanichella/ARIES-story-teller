@@ -1,4 +1,4 @@
-package ui;
+package ui.panels;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -11,14 +11,15 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import ui.utilities.UIHelpers;
 
-final class TruthSetPanel extends CompletablePanel {
+public final class TruthSetPanel extends CompletablePanel {
     @Serial
     private static final long serialVersionUID = -8088616060831842438L;
     private static final File DATASETS_FOLDER = new File("..", "datasets");
 
-    TruthSetPanel(@Nonnull Runnable onUpdate, Consumer<? super File> onFileSelected,
-                  Consumer<? super String> onFileSelectionFailed) {
+    public TruthSetPanel(@Nonnull Runnable onUpdate, Consumer<? super File> onFileSelected,
+                         Consumer<? super String> onFileSelectionFailed) {
         super("[Step 1]");
 
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_START);

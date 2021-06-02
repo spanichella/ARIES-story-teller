@@ -1,4 +1,4 @@
-package ui;
+package ui.panels;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -9,15 +9,16 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import types.StrategyType;
+import ui.utilities.UIHelpers;
 
-final class StrategyPanel extends CompletablePanel {
+public final class StrategyPanel extends CompletablePanel {
     @Serial
     private static final long serialVersionUID = 321331743488681896L;
 
     private final JLabel subTitleLabel;
     private final JComboBox<String> comboBox;
 
-    StrategyPanel(@Nonnull Consumer<? super StrategyType> onStrategyChange, @Nonnull Runnable onUpdate) {
+    public StrategyPanel(@Nonnull Consumer<? super StrategyType> onStrategyChange, @Nonnull Runnable onUpdate) {
         super("[Step 5]");
 
         subTitleLabel = UIHelpers.getLabel("Select Strategy");
@@ -37,7 +38,7 @@ final class StrategyPanel extends CompletablePanel {
     }
 
     @Override
-    void setItemsVisible(boolean visible) {
+    public void setItemsVisible(boolean visible) {
         super.setItemsVisible(visible);
         subTitleLabel.setVisible(visible);
         comboBox.setVisible(visible);

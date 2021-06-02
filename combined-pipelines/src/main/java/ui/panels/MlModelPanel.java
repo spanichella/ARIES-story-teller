@@ -1,4 +1,4 @@
-package ui;
+package ui.panels;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -9,8 +9,9 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import types.MlModelType;
+import ui.utilities.UIHelpers;
 
-final class MlModelPanel extends CompletablePanel {
+public final class MlModelPanel extends CompletablePanel {
     @Serial
     private static final long serialVersionUID = 6612775420664586742L;
 
@@ -23,7 +24,7 @@ final class MlModelPanel extends CompletablePanel {
         MlModelType.REGRESSION_BY_DISCRETIZATION,
         };
 
-    MlModelPanel(@Nonnull Consumer<? super MlModelType> onModelChange, @Nonnull Runnable onUpdate) {
+    public MlModelPanel(@Nonnull Consumer<? super MlModelType> onModelChange, @Nonnull Runnable onUpdate) {
         super("[Step 4]");
 
         subTitleLabel = UIHelpers.getLabel("Select Method");
@@ -42,7 +43,7 @@ final class MlModelPanel extends CompletablePanel {
     }
 
     @Override
-    void setItemsVisible(boolean visible) {
+    public void setItemsVisible(boolean visible) {
         super.setItemsVisible(visible);
         subTitleLabel.setVisible(visible);
         comboBox.setVisible(visible);

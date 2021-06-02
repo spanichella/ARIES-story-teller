@@ -24,7 +24,16 @@ import types.DataType;
 import types.MlModelType;
 import types.PipelineType;
 import types.StrategyType;
+import ui.panels.ContentTypePanel;
+import ui.panels.MlModelPanel;
+import ui.panels.PipelinePanel;
+import ui.panels.StrategyPanel;
+import ui.panels.ThresholdPanel;
+import ui.panels.TruthSetPanel;
+import ui.utilities.DefaultColors;
+import ui.utilities.UIHelpers;
 
+@SuppressWarnings("ClassWithTooManyDependencies")
 final class SWMFrame extends JFrame {
     @Serial
     private static final long serialVersionUID = -592869500939986619L;

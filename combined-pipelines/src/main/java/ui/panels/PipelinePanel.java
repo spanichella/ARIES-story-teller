@@ -1,4 +1,4 @@
-package ui;
+package ui.panels;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -9,14 +9,15 @@ import javax.annotation.Nonnull;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import types.PipelineType;
+import ui.utilities.UIHelpers;
 
-final class PipelinePanel extends CompletablePanel {
+public final class PipelinePanel extends CompletablePanel {
     @Serial
     private static final long serialVersionUID = 862256006596193220L;
 
     private final JComboBox<String> comboBox;
 
-    PipelinePanel(@Nonnull Consumer<? super PipelineType> onPipelineChange, @Nonnull Runnable onUpdate) {
+    public PipelinePanel(@Nonnull Consumer<? super PipelineType> onPipelineChange, @Nonnull Runnable onUpdate) {
         super("[Step 3]");
 
         comboBox = UIHelpers.getTranslatableComboBox(
@@ -34,11 +35,11 @@ final class PipelinePanel extends CompletablePanel {
         return panel;
     }
 
-    PipelineType getSelectedItem() {
+    public PipelineType getSelectedItem() {
         return UIHelpers.fromDescriptionOrEmpty((String) comboBox.getSelectedItem(), PipelineType.values());
     }
 
-    void addDL() {
+    public void addDL() {
         String dlDescription = PipelineType.DL.getDescription();
         if (IntStream.range(0, comboBox.getItemCount())
             .mapToObj(comboBox::getItemAt)
@@ -47,7 +48,7 @@ final class PipelinePanel extends CompletablePanel {
         }
     }
 
-    void removeDL() {
+    public void removeDL() {
         comboBox.setSelectedItem(PipelineType.ML.getDescription());
         comboBox.removeItem(PipelineType.DL.getDescription());
     }

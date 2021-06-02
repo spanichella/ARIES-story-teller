@@ -1,4 +1,4 @@
-package ui;
+package ui.utilities;
 
 import java.awt.LayoutManager;
 import java.awt.event.ItemEvent;
@@ -14,39 +14,39 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import types.IDescribable;
 
-final class UIHelpers {
+public final class UIHelpers {
     private static final String EMPTY_TEXT = "Select";
 
-    static JLabel getLabel(String title) {
+    public static JLabel getLabel(String title) {
         JLabel label = new JLabel(toTitle(title));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setForeground(DefaultColors.TEXT);
         return label;
     }
 
-    static JPanel createSeparator() {
+    public static JPanel createSeparator() {
         JPanel separator = new JPanel();
         separator.setBackground(DefaultColors.SEPARATOR);
         return separator;
     }
 
-    static JPanel createPanel() {
+    public static JPanel createPanel() {
         JPanel panel = new JPanel();
         panel.setBackground(DefaultColors.BACKGROUND);
         return panel;
     }
 
-    static JPanel createPanel(@Nonnull LayoutManager layoutManager) {
+    public static JPanel createPanel(@Nonnull LayoutManager layoutManager) {
         JPanel panel = createPanel();
         panel.setLayout(layoutManager);
         return panel;
     }
 
-    static String toTitle(String title) {
+    public static String toTitle(String title) {
         return toTitle(title, false);
     }
 
-    static String toTitle(String title, boolean done) {
+    public static String toTitle(String title, boolean done) {
         StringBuilder sb = new StringBuilder("<html>").append(title);
         if (done) {
             sb.append(" <font color='#56f310'>DONE</font>");
@@ -54,7 +54,7 @@ final class UIHelpers {
         return sb.append("</html>").toString();
     }
 
-    static <E extends IDescribable> JComboBox<String> getTranslatableComboBox(
+    public static <E extends IDescribable> JComboBox<String> getTranslatableComboBox(
         E[] elements, Consumer<? super E> listener, Runnable onUpdate
     ) {
         List<String> translations = Arrays.stream(elements).map(e -> e == null ? EMPTY_TEXT : e.getDescription())
@@ -75,7 +75,7 @@ final class UIHelpers {
     }
 
     @Nullable
-    static <T extends IDescribable> T fromDescriptionOrEmpty(@Nullable String description, T[] values) {
+    public static <T extends IDescribable> T fromDescriptionOrEmpty(@Nullable String description, T[] values) {
         if (description == null) {
             return null;
         }

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+import ui.utilities.DefaultColors;
 
 final class SWMLoaderFrame extends Thread {
     private final JFrame frame = new JFrame();
