@@ -10,7 +10,11 @@ plugins {
 apply plugin: 'java'
 
 apply plugin: 'nebula.lint'
-gradleLint.criticalRules = ['all-dependency']
+gradleLint {
+    criticalRules = ['all-dependency']
+    // ignore classes that are in multiple packages because there are too many
+    excludedRules = ['transitive-duplicate-dependency-class']
+}
 
 repositories {
     mavenLocal()
