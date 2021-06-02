@@ -2,7 +2,7 @@
 
 ![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
 
-**Authors:** [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm)
+**Authors:** [Nicolas Ganz](https://www.zhaw.ch/en/about-us/person/gann/), [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm), [Marcela Ruiz](https://www.zhaw.ch/en/about-us/person/ruiz/), [Lukas Ballo](https://www.linkedin.com/in/lballo/?originalSubdomain=ch), [Sebastiano Panichella](https://spanichella.github.io/)
 
 **Instructions:** see [combined-pipelines/README.md](./combined-pipelines/README.md)
 
@@ -14,22 +14,16 @@
 
 
 
-## 1. Our Work<a name="section1"></a>
-In order to speed up the time-to-market of high-quality software products, the authors developed the _Requirements-Collector_ tool.
-This tool supports an automatic analysis and classification of requirements specification and user feedback by leveraging the power of machine and deep learning strategies
-(for a full description of the ML and DL component, please follow the links mentioned in the [Tool Description](#section2) section).
-Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of investigation.
-Thus, this study focuses on extending the requirements and user story dataset of the former study in contemplation of further validating the efficiency and precision of the _Requirements-Collector_ tool.
-Additionally, to further increase the usability of the tool and to allow a broader audience to interact with it, we developed a more flexible environment: _StoryTeller_, including a dedicated graphical user interface.
-
-_StoryTeller_ acts as a wrapper and combines both the ML and DL component inside a single executable instance.
-The newly created and labeled data sets have been applied to both the ML and DL Pipeline in order to further train the algorithms and evaluate their resulting precision and accuracy values.
-
-This Work has been conducted in the course of the [Software Evolution and Maintenance Module](https://www.ifi.uzh.ch/en/seal/teaching/courses/sme.html) HS2020 at [UZH Department of Informatics](https://www.ifi.uzh.ch/en.html).
-
-[![IMAGE ALT TEXT HERE](combined-pipelines/images/ThumbnailSWM.jpg)](https://www.youtube.com/watch?v=ZXxYfPH8J0E)
+## 1. Abstract<a name="section1"></a>
+Addressing user requests in the form of user reviews as well as efficiently and correctly identifying requirements from user stories are essential development tasks to ensure the success of any software organization. User requests and user stories tend to widely differ in their quality, structure, completeness levels, and textual representation. As result, developers are forced to spend a considerable amount of time collecting and analyzing them.
+Researchers have proposed tools automating the analysis of user reviews and user stories for supporting software evolution activities. However, these previous studies did not investigate the practical usage (i.e., the scalability), accuracy, and usability of \textit{both user reviews and user stories analysis tools} in industrial settings. 
+To fill this gap, in this paper, we investigate the accuracy and practical usability of _StoryTeller_, a tool designed to analyze both user reviews and user stories, through an industry evaluation involving developers and requirement engineers of a company having more than 20 years of experience in market analysis.
+Our industrial evaluation has shown a high classification accuracy of _StoryTeller_. However, its low scalability and usability level required us to refactor, update its dependencies, and design an ad-hoc user interface to make _StoryTeller_ usable in an industrial setting.
+We share in this paper our experience, insights, and challenges in sharing, adapting, and evaluating StoryTeller in an industrial setting.
 
 
+**_StoryTeller_** acts as a wrapper and combines both the ML and DL component inside a single executable instance.
+The set of labeled data sets used to apply to both the ML and DL Pipelines and to evaluate their resulting precision and accuracy values are provide in this repository.
 
 ## 2. Requirement-Collector Tool Description<a name="section2"></a>
 The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this study are based on the _Requirements-Collector_ tool [1] as proposed by [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/).
