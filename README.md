@@ -21,7 +21,10 @@ We share in this paper our experience, insights, and challenges in sharing, adap
 
 ## 2. _StoryTeller_ Tool Description<a name="section2"></a>
 
-**_StoryTeller_** acts as a wrapper and combines both a ML and DL component inside a single executable instance.
+**_StoryTeller_** StoryTeller classify user stories and user reviews content by performing the following steps: (1) processing and splitting the text of
+user reviews and user stories in sentences; (2) producing a vectorial representation of sentences in user reviews and user stories; (3)
+automated classification of user reviews and user stories based on machine learning (ML) or Deep learning (DL) strategies. 
+*_StoryTeller_* acts as a wrapper and combines both a ML and DL component inside a single executable instance.
 The set of labeled data sets used to apply to both the ML and DL Pipelines and to evaluate their resulting precision and accuracy values are provide in this repository.
 
 ![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
@@ -29,27 +32,9 @@ The set of labeled data sets used to apply to both the ML and DL Pipelines and t
 ## 3. Our Contribution<a name="section3"></a>
 Our study is an extension of the aforementioned original [study](#section2) and evolves around the following research question:
 
-**"Does running the ML and DL algorithm using an extended dataset lead to better precision and recall values?"**
-
-We addressed this question by implementing the following:\
-For evaluation of the DL and ML component, we created a new dataset based on a recreated requirement elicitation session and used the audio recording to extend the already existing dataset of the original study.
-The resulting complete dataset (see [datasets folder](./datasets)) achieved better performance, as is discussed in section [Study Results](datasets/README.md#study-results).
-
-Furthermore, in order to facilitate usage and make our tool more accessible to a broader audience, we combined the separate ML and DL Pipeline into a combined wrapper component and created an intuitive, easy to use graphical user interface (GUI).
-
-Finally, we evaluated the ML and DL component in terms of precision, recall and F-measure values, using our newly created dataset and comparing the results to the ones achieved in the former study.
-These findings allowed us to address and reflect upon our research question.
-
-### 3.1 Dataset Extension
+### 3 Datasets
 Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of classification approach.
 Thus, we focused on extending the requirements and user story [dataset of the former study](datasets/study) in contemplation of further validating the efficiency and precision of the _Requirements-Collector_ tool.
-
-### 3.2 Pipeline Combination
-During our project, we wrapped the two pipelines into one executable program.
-To make it more user-friendly, we changed the setup and execution procedure from ground up:
-We removed the command-line interaction as well as any manual specifications of local paths, and replaced them with a simple graphical user interface instead.
-While merging the pipelines we also refactored, cleaned up, and fixed the code, such that it now also works on Windows.
-A more in-depth description of the changes and the code in general, as well as possible future improvements can be found in the specific code README [here](combined-pipelines/README.md).
 
 ## References
 - [1] S. Panichella and M. Ruiz Requirements-Collector: Automating Requirements Specification from Elicitation Sessions and User Feedback .   IEEE International Requirements Engineering Conference (RE’20).
