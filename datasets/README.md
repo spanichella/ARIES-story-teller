@@ -1,33 +1,27 @@
-# Datasets
-
-## Complete
-This dataset is a collection of all the datasets merged into one single dataset.
-Specifically, it includes the following datasets: Recording, Stories, Study.
-
-
-## Combined
-This dataset makes up our contribution of collected data to the project.
-Specifically, it combines the following two datasets: Recording, Stories.
-
+# Datasets Description
 
 ## Recording
 This dataset has been crafted from a custom requirement elicitation session transcript.
 We recorded such a session, transcribed it to text using dedicated tools, and manually formatted and labeled the data.
 
+## Combined
+This dataset makes up our contribution of collected data to the project.
+Specifically, it combines the following two datasets: Recording, Stories.
 
 ## Stories
 This dataset is made up of user stories (taken from an openly accessible, already established dataset [1]) for valid requirements and rubbish data to fill for classification (randomly chosen `NULL` lines from existing dataset [2]).
 
-
-## Study
-This dataset represents the data used in the previous work [2] and has not been adjusted in any way.
-
-
+## Complete
+This dataset is a collection of all the datasets merged into one single dataset.
+Specifically, it includes the following datasets: Recording, Stories, Study.
 
 # Creation of Datasets
 
 ## Recording Dataset
-The requirements dataset was generated completely from scratch by recording an elicitation meeting, transcribing the test by applying a voice-to-text transformation, and finally manually labeling the data. In order to ensure anonymity, the company name as well as the project name have been anonymized and do not represent real names.
+
+To assess the classification accuracy achieved by the ML pipeline of StoryTeller, we conducted an empirical evaluation involving a dataset of user stories provided by the *SM-company*. three participants of the *SM-company* such as a developer, a software architect, and a requirement engineer,  shared with us a dataset concerning an internal RE meeting concerning the *SM-Project*, containing the corresponding anonymized textual transcripts, derived from the transcribed audio recording of the RE meeting by the participants. Thus, we asked the participants to manually (and collaboratively) label the data in a format compatible with StoryTeller. As result, we obtained a [dataset](datasets)  (available in our repository) having in total 664 statements that have been manually labeled as *functional* (150) or *non-functional* (45) requirements, or as irrelevant (the remaining 469) statements by the participants.
+
+This requirements dataset was generated completely from scratch by recording an elicitation meeting, transcribing the test by applying a voice-to-text transformation, and finally manually labeling the data. In order to ensure anonymity, the company name as well as the project name have been anonymized and do not represent real names. 
 
 ### Meeting Context and Objective
 - **Meeting Environment:** The meeting was held in a remote fashion using [Microsoft Teams](https://www.microsoft.com/de-ch/microsoft-365/microsoft-teams/group-chat-software) as a conferencing tool.
@@ -85,41 +79,6 @@ We then extract a training and test set (`.csv` files) out of the truth set by r
 Using the ML pipeline of the previous work, we generated the term-by-document matrix files ("tdm", `.csv` files) of each corresponding truth set and copied them into their dedicated folders.
 These tdm files are then used to create tdm pendants of the training and test sets by picking the relevant lines contained in the `.csv` files out of the truth set tdm file and writing them to a new file (two files per partitioning per dataset, `.csv` files).
 The resulting tdm files can ultimately be used as input to the WEKA classifier.
-
-
-
-# Study Results and Discussion<a name="study-results"></a>
-- **Precision** is a metric which quantifies the number of correct positive predictions made and is calculated as the ratio of correctly predicted positive examples (out of the total retrieved) divided by the total number of retrieved examples. [3]
-- **Recall** is a metric which quantifies the number of correct positive predictions made out of all positive predictions there are. Recall provides an indication of missed positive predictions (contrary to precision).[3]
-- **F-measure** is a measure of a test's accuracy and is defined as the weighted harmonic mean of the precision and recall of the test. 
-
-
-## Discussing Precision and Recall of ML Pipeline
-**Original Study Dataset:**\
-![](../combined-pipelines/images/Original_Study_Result_Graph.png)\
-The above graph depicts the results of the ML model for the original "Study" dataset with a 50% split of the dataset (test and training set).
-The graph shows that classification of `NULL` labelled instances resulted in a precision of 80%, recall of 93%, and F-measure of 98%.
-Classifying `F` labelled instances resulted in a precision of 45%, recall of 32%, and F-measure of 38%,
-while classification of `A` labelled instances performed poorly in the original study with a precision, recall, and F-measure of 0%.
-This poor performance of `A` labelled instances affected the performance of the weighted average in the original dataset, as can be seen in the graph.
-
-**New Complete Dataset:**\
-![](../combined-pipelines/images/New_Dataset_Result_Graph.png)\
-The above graph depicts the results of the ML model for the "Complete" dataset with a 50% split of the dataset (test and training set).
-The graph shows that classification of `NULL` labelled instances resulted in a precision of 94%, recall of 99%, and F-measure of 96%.
-Classifying `F` labelled instances resulted in a precision of 84%, recall of 72%, and F-measure of 78%,
-while `A` labelled instances performed better in comparison to the original "Study" dataset with a precision of 92%, recall of 42%, and F-measure of 57%.
-
-**Original Study Dataset vs. New Complete Dataset:**\
-![](../combined-pipelines/images/Compare_Both_Dataset_Result_Graph.png)\
-In the above graph we compare the performance of the original "Study" dataset with the "Complete" dataset.
-As we can see, the "Complete" dataset performed significantly better compared to the original "Study" dataset (using the ML pipeline).
-More specifically, the `A` labelled lines in the "Complete" dataset have shown clearly visible and competitive values,
-where they were at 0% in the original "Study" dataset.\
-On average, the original "Study" dataset had a precision of 68%, recall of 75%, and F-measure of 71%.
-The "Complete" dataset - on average - had a precision of 93%, recall of 93%, and F-measure of 92%.
-
-
 
 # Sources
 - [1] F. Dalpiaz, “Requirements data sets (user stories)”, Mendeley Data, V1, 2018, doi: 10.17632/7zbk8zsd8y.1
