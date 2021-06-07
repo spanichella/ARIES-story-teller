@@ -1,6 +1,6 @@
 # StoryTeller: Exploiting and Analyzing User Reviews and User Stories for Supporting Software Evolution in Industry
 
-![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
+![](combined-pipelines/images/swmlogo2.jpg)
 
 **Authors:** [Nicolas Ganz](https://www.zhaw.ch/en/about-us/person/gann/), [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm), [Marcela Ruiz](https://www.zhaw.ch/en/about-us/person/ruiz/), [Lukas Ballo](https://www.linkedin.com/in/lballo/?originalSubdomain=ch), [Sebastiano Panichella](https://spanichella.github.io/)
 
@@ -12,8 +12,6 @@
 3. [Our Contribution](#section3)
 4. [Summary of Results](#section4)
 
-
-
 ## 1. Summary of the Work<a name="section1"></a>
 Addressing user requests in the form of user reviews as well as efficiently and correctly identifying requirements from user stories are essential development tasks to ensure the success of any software organization. User requests and user stories tend to widely differ in their quality, structure, completeness levels, and textual representation. As result, developers are forced to spend a considerable amount of time collecting and analyzing them.
 Researchers have proposed tools automating the analysis of user reviews and user stories for supporting software evolution activities. However, these previous studies did not investigate the practical usage (i.e., the scalability), accuracy, and usability of \textit{both user reviews and user stories analysis tools} in industrial settings. 
@@ -21,16 +19,12 @@ To fill this gap, in this paper, we investigate the accuracy and practical usabi
 Our industrial evaluation has shown a high classification accuracy of _StoryTeller_. However, its low scalability and usability level required us to refactor, update its dependencies, and design an ad-hoc user interface to make _StoryTeller_ usable in an industrial setting.
 We share in this paper our experience, insights, and challenges in sharing, adapting, and evaluating StoryTeller in an industrial setting.
 
+## 2. _StoryTeller_ Tool Description<a name="section2"></a>
 
-**_StoryTeller_** acts as a wrapper and combines both the ML and DL component inside a single executable instance.
+**_StoryTeller_** acts as a wrapper and combines both a ML and DL component inside a single executable instance.
 The set of labeled data sets used to apply to both the ML and DL Pipelines and to evaluate their resulting precision and accuracy values are provide in this repository.
 
-## 2. _StoryTeller_ Tool Description<a name="section2"></a>
-The **Machine Learning (ML)** and **Deep Learning (DL)** components used in this study are based on the _Requirements-Collector_ tool [1] as proposed by [Sebastiano Panichella](https://spanichella.github.io/index.html) and [Marcela Ruiz](https://www.marcelaruiz.eu/).
-The corresponding installation guide and source code of both ML and DL component can be found in the following links to their respective GitHub repositories:
-
-- [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component)
-- [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component)
+![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
 
 ## 3. Our Contribution<a name="section3"></a>
 Our study is an extension of the aforementioned original [study](#section2) and evolves around the following research question:
@@ -56,8 +50,6 @@ To make it more user-friendly, we changed the setup and execution procedure from
 We removed the command-line interaction as well as any manual specifications of local paths, and replaced them with a simple graphical user interface instead.
 While merging the pipelines we also refactored, cleaned up, and fixed the code, such that it now also works on Windows.
 A more in-depth description of the changes and the code in general, as well as possible future improvements can be found in the specific code README [here](combined-pipelines/README.md).
-
-![](combined-pipelines/images/swmlogo2.jpg)
 
 ## References
 - [1] S. Panichella and M. Ruiz Requirements-Collector: Automating Requirements Specification from Elicitation Sessions and User Feedback .   IEEE International Requirements Engineering Conference (RE’20).
