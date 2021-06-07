@@ -33,13 +33,14 @@ Carefully read the [full license agreement](https://www.gnu.org/licenses/agpl-3.
 ## Overview
 1. [Summary of the Work](#section1)
 2. [_StoryTeller_ Tool Description](#section2)
-3. [Our Contribution](#section3)
-4. [Summary of Results](#section4)
+3. [Our Contributions](#section3)
+4. [Evaluation Context](#section4)
+5. [Datasets](#section5)
 
 ## 1. Summary of the Work<a name="section1"></a>
 Addressing user requests in the form of user reviews as well as efficiently and correctly identifying requirements from user stories are essential development tasks to ensure the success of any software organization. User requests and user stories tend to widely differ in their quality, structure, completeness levels, and textual representation. As result, developers are forced to spend a considerable amount of time collecting and analyzing them.
 Researchers have proposed tools automating the analysis of user reviews and user stories for supporting software evolution activities. However, these previous studies did not investigate the practical usage (i.e., the scalability), accuracy, and usability of \textit{both user reviews and user stories analysis tools} in industrial settings. 
-To fill this gap, in this paper, we investigate the accuracy and practical usability of _StoryTeller_, a tool designed to analyze both user reviews and user stories, through an industry evaluation involving developers and requirement engineers of a company having more than 20 years of experience in market analysis.
+To fill this gap, we investigate the accuracy and practical usability of _StoryTeller_, a tool designed to analyze both user reviews and user stories, through an industry evaluation involving developers and requirement engineers of a company having more than 20 years of experience in market analysis.
 Our industrial evaluation has shown a high classification accuracy of _StoryTeller_. However, its low scalability and usability level required us to refactor, update its dependencies, and design an ad-hoc user interface to make _StoryTeller_ usable in an industrial setting.
 We share in this paper our experience, insights, and challenges in sharing, adapting, and evaluating StoryTeller in an industrial setting.
 
@@ -55,13 +56,17 @@ The set of labeled data sets used to apply to both the ML and DL Pipelines and t
 
 ![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
 
-## 3. Our Contribution<a name="section3"></a>
-Our study is an extension of the aforementioned original [study](#section2) and evolves around the following research question:
+## 3. Our Contributions<a name="section3"></a>
+ Research tools have been proposed to analyze user stories or user reviews to support software evolution activities. However, very few studies investigated the usability, scalability, and accuracy of a tool enabling the analysis of **_both user reviews and user stories in industrial settings_**. To fill this gap, we investigate the usability, scalability, and accuracy of StoryTeller, a tool we designed to analyze both user reviews and user stories, through an industry evaluation involving developers and requirement engineers of a company called SM-company (detailed in Section \ref{sec:evaluation}), a leader in employee survey evaluations in Switzerland. 
 
-### 3 Datasets
-Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of classification approach.
-Thus, we focused on extending the requirements and user story [dataset of the former study](datasets/study) in contemplation of further validating the efficiency and precision of the _Requirements-Collector_ tool.
+### 4 Evaluation Context
 
-## References
-- [1] S. Panichella and M. Ruiz Requirements-Collector: Automating Requirements Specification from Elicitation Sessions and User Feedback .   IEEE International Requirements Engineering Conference (RE’20).
+**SM-company**. For confidentiality reasons, we refer to the  company involved in our industrial evaluation with the Swiss-Marketing Company (*SM-company*) and with the SM Software Project (*SM-Project*), the project that has been considered for the evaluation of StoryTeller.
+The *SM-Project* was launched by the \textit{SM-company}, an innovative market research company in Switzerland, a leader in employee surveys, leadership feedback, and supervisor evaluation throughout Switzerland. The company was founded in 2002 and has over 20 years of expertise in the field of market and company analysis. Based on well-founded study concepts as well as quick, user-friendly surveys and meaningful reporting, the company offers a broad variety of products in the field of employee satisfaction, customer satisfaction, and leadership feedback.
+
+### 5 Datasets
+Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of classification approach. 
+Thus, we provided [datasets](datasets) for validating the accuracy and usability of the _StoryTeller_ tool. 
+
+To assess the classification accuracy achieved by the ML pipeline of StoryTeller, we conducted an empirical evaluation involving a dataset of user stories provided by the *SM-company*. three participants of the *SM-company* such as a developer, a software architect, and a requirement engineer,  shared with us a dataset concerning an internal RE meeting concerning the *SM-Project*, containing the corresponding anonymized textual transcripts, derived from the transcribed audio recording of the RE meeting by the participants. Thus, we asked the participants to manually (and collaboratively) label the data in a format compatible with StoryTeller. As result, we obtained a [dataset](datasets)  (available in our repository) having in total 664 statements that have been manually labeled as *functional* (150) or *non-functional* (45) requirements, or as irrelevant (the remaining 469) statements by the participants.
 
