@@ -32,7 +32,7 @@ Carefully read the [full license agreement](https://www.gnu.org/licenses/agpl-3.
 
 ## Overview
 1. [Summary of the Work](#section1)
-2. [_StoryTeller_ Tool Description](#section2)
+2. [_StoryTeller_ Tool](#section2)
 3. [Our Contributions](#section3)
 4. [Evaluation Context](#section4)
 5. [Datasets](#section5)
@@ -44,7 +44,7 @@ To fill this gap, we investigate the accuracy and practical usability of _StoryT
 Our industrial evaluation has shown a high classification accuracy of _StoryTeller_. However, its low scalability and usability level required us to refactor, update its dependencies, and design an ad-hoc user interface to make _StoryTeller_ usable in an industrial setting.
 We share in this paper our experience, insights, and challenges in sharing, adapting, and evaluating StoryTeller in an industrial setting.
 
-## 2. _StoryTeller_ Tool Description<a name="section2"></a>
+## 2. _StoryTeller_ Tool <a name="section2"></a>
 
 **_StoryTeller_** StoryTeller classify user stories and user reviews content by performing the following steps: (1) processing and splitting the text of
 user reviews and user stories in sentences; (2) producing a vectorial representation of sentences in user reviews and user stories; (3)
