@@ -7,14 +7,14 @@
 **Instructions:** see [combined-pipelines/README.md](./combined-pipelines/README.md)
 
 ## Overview
-1. [Abstract](#section1)
+1. [Summary of the Work](#section1)
 2. [_StoryTeller_ Tool Description](#section2)
 3. [Our Contribution](#section3)
 4. [Summary of Results](#section4)
 
 
 
-## 1. Abstract<a name="section1"></a>
+## 1. Summary of the Work<a name="section1"></a>
 Addressing user requests in the form of user reviews as well as efficiently and correctly identifying requirements from user stories are essential development tasks to ensure the success of any software organization. User requests and user stories tend to widely differ in their quality, structure, completeness levels, and textual representation. As result, developers are forced to spend a considerable amount of time collecting and analyzing them.
 Researchers have proposed tools automating the analysis of user reviews and user stories for supporting software evolution activities. However, these previous studies did not investigate the practical usage (i.e., the scalability), accuracy, and usability of \textit{both user reviews and user stories analysis tools} in industrial settings. 
 To fill this gap, in this paper, we investigate the accuracy and practical usability of _StoryTeller_, a tool designed to analyze both user reviews and user stories, through an industry evaluation involving developers and requirement engineers of a company having more than 20 years of experience in market analysis.
@@ -58,19 +58,6 @@ While merging the pipelines we also refactored, cleaned up, and fixed the code, 
 A more in-depth description of the changes and the code in general, as well as possible future improvements can be found in the specific code README [here](combined-pipelines/README.md).
 
 ![](combined-pipelines/images/swmlogo2.jpg)
-
-
-
-## 4. Summary of Results<a name="section4"></a>
-We used the original "Study" dataset as well as our new "Complete" dataset to experiment with an ML (supervised) pipeline in order to evaluate the pipeline's accuracy.
-Our results with the ML model of the "Complete" dataset have shown better performance compared to the original "Study" dataset.
-While `A` labelled instances in the "Study" dataset have not reached usable values above 0%, in the "Complete" dataset we reached values for precision, recall, and F-measure of at least 42%.
-
-The original "Study" dataset reached an average accuracy of a precision of 68%, recall of 75%, and F-measure of 71%.
-On the contrary, our "Complete" dataset performed noticeably better with a precision of 93%, recall of 93%, and F-measure of 92%.
-
-Extending the Dataset has shown significantly better performance and Accuracy in ML pipeline.
-As future work we just suggest extending the dataset for better performance and accuracy.
 
 ## References
 - [1] S. Panichella and M. Ruiz Requirements-Collector: Automating Requirements Specification from Elicitation Sessions and User Feedback .   IEEE International Requirements Engineering Conference (RE’20).
