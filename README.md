@@ -59,14 +59,26 @@ The set of labeled data sets used to apply to both the ML and DL Pipelines and t
 ## 3. Our Contributions<a name="section3"></a>
  Research tools have been proposed to analyze user stories or user reviews to support software evolution activities. However, very few studies investigated the usability, scalability, and accuracy of a tool enabling the analysis of **_both user reviews and user stories in industrial settings_**. To fill this gap, we investigate the usability, scalability, and accuracy of StoryTeller, a tool we designed to analyze both user reviews and user stories, through an industry evaluation involving developers and requirement engineers of a company called SM-company (detailed in Section \ref{sec:evaluation}), a leader in employee survey evaluations in Switzerland. 
 
-### 4 Evaluation Context
+### 4 Evaluation Context<a name="section4"></a>
 
 **SM-company**. For confidentiality reasons, we refer to the  company involved in our industrial evaluation with the Swiss-Marketing Company (*SM-company*) and with the SM Software Project (*SM-Project*), the project that has been considered for the evaluation of StoryTeller.
 The *SM-Project* was launched by the \textit{SM-company}, an innovative market research company in Switzerland, a leader in employee surveys, leadership feedback, and supervisor evaluation throughout Switzerland. The company was founded in 2002 and has over 20 years of expertise in the field of market and company analysis. Based on well-founded study concepts as well as quick, user-friendly surveys and meaningful reporting, the company offers a broad variety of products in the field of employee satisfaction, customer satisfaction, and leadership feedback.
 
-### 5 Datasets
+### 5 Datasets <a name="section5"></a>
 Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of classification approach. 
 Thus, we provided [datasets](datasets) for validating the accuracy and usability of the _StoryTeller_ tool. 
 
 To assess the classification accuracy achieved by the ML pipeline of StoryTeller, we conducted an empirical evaluation involving a dataset of user stories provided by the *SM-company*. three participants of the *SM-company* such as a developer, a software architect, and a requirement engineer,  shared with us a dataset concerning an internal RE meeting concerning the *SM-Project*, containing the corresponding anonymized textual transcripts, derived from the transcribed audio recording of the RE meeting by the participants. Thus, we asked the participants to manually (and collaboratively) label the data in a format compatible with StoryTeller. As result, we obtained a [dataset](datasets)  (available in our repository) having in total 664 statements that have been manually labeled as *functional* (150) or *non-functional* (45) requirements, or as irrelevant (the remaining 469) statements by the participants.
+
+### ACKNOWLEDGMENTS & Credit Author Statement
+We gratefully acknowledge the Innosuisse support for the project *ARIES* (Exploiting User Journeys for Supporting Mobility as a Service Platforms),
+Project No.45548.1. 
+
+As follow, the Credit Author Statement for each of the authors. 
+- Nicolas Ganz: Data curation, Software, Writing - review & editing.
+- Christian Aeberhard, Marc Kramer, Janik Lüchinger, Tanzil Mohammed: Software,  Validation.
+- Lukas Ballo: Review.
+- Marcela Ruiz: Review.
+- Sebastiano Panichella: Data curation, Conceptualization, Software, Methodology, Investigation, Validation, Writing - original draft & editing, Project administration.
+
 
