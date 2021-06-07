@@ -10,7 +10,7 @@ _StoryTeller_ is licensed under the GNU Affero General Public License. Every fil
 
 ```
 _StoryTeller_ is a a tool designed to analyze both user reviews and user stories.
-Copyright (C) 2018-2021  Rafael Kallis
+Copyright (C) Nicolas Ganz and Sebastiano Panichella.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
