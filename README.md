@@ -56,8 +56,8 @@ The set of labeled data sets used to apply to both the ML and DL Pipelines and t
 
 **_StoryTeller_ Demonstration Video:**
 
-[![_StoryTeller_ Demonstration Video](https://github.com/spanichella/ARIES-story-teller/blob/main/StoryTeller-DemonstrationImage.png)](https://youtu.be/V6kY78DZJoE)
-- [Youtube link](https://youtu.be/V6kY78DZJoE)
+[![_StoryTeller_ Demonstration Video](https://github.com/spanichella/ARIES-story-teller/blob/main/StoryTeller-DemonstrationImage.png)](https://youtu.be/FXn1Oj5vh3A)
+- [Youtube link](https://youtu.be/FXn1Oj5vh3A)
 
 ![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
 
