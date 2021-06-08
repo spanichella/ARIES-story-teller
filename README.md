@@ -62,8 +62,7 @@ The set of labeled data sets used to apply to both the ML and DL Pipelines and t
 ![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
 
 ## 3. Our Contributions<a name="section3"></a>
- Research tools have been proposed to analyze user stories or user reviews to support software evolution activities. However, very few studies investigated the usability, scalability, and accuracy of a tool enabling the analysis of **_both user reviews and user stories in industrial settings_**. To fill this gap, we investigate the usability, scalability, and accuracy of StoryTeller, a tool we designed to analyze both user reviews and user stories, through an industry evaluation involving developers and requirement engineers of a company called SM-company (detailed in Section \ref
- sec:evaluation), a leader in employee survey evaluations in Switzerland. 
+ Research tools have been proposed to analyze user stories or user reviews to support software evolution activities. However, very few studies investigated the usability, scalability, and accuracy of a tool enabling the analysis of **_both user reviews and user stories in industrial settings_**. To fill this gap, we investigate the usability, scalability, and accuracy of StoryTeller, a tool we designed to analyze both user reviews and user stories, through an industry evaluation involving developers and requirement engineers of a company called SM-company, a leader in employee survey evaluations in Switzerland. 
 
 ### 4 Evaluation Context<a name="section4"></a>
 
