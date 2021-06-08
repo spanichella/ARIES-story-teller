@@ -78,7 +78,7 @@ Thus, we provided [datasets](datasets) for validating the accuracy and usability
 
 ### ACKNOWLEDGMENTS & Credit Author Statement
 We gratefully acknowledge the Innosuisse support for the project *ARIES* (Exploiting User Journeys for Supporting Mobility as a Service Platforms),
-Project No.45548.1. 
+Project No.45548.1. **Web page**: https://www.aries-devops.ch/index.html
 
 As follow, the Credit Author Statement for each of the authors. 
 - Nicolas Ganz: Data curation, Software, Writing - review & editing.
