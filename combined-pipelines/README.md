@@ -7,7 +7,7 @@ Read more about the Project in [PROJECT.md](./PROJECT.md)
 
 ## Installation
 
-* Install Java 15 and R
+* [Install Java 15](https://www.oracle.com/java/technologies/javase/jdk15-archive-downloads.html) and R
 * In a command line change into the folder `combined-pipelines`
 * Verify your installation with:
   * On Linux/Mac OS: `./gradlew verifyInstallation`
