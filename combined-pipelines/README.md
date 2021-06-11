@@ -11,6 +11,7 @@ Read more about the Project in [PROJECT.md](./PROJECT.md)
 * In a command line change into the folder `combined-pipelines`
 * Verify your installation with:
   * On Linux/Mac OS: `./gradlew verifyInstallation`
+    * In the case of Mac OS it could require to download locally the file [https://www.kaggle.com/danielwillgeorge/glove6b100dtxt](https://www.kaggle.com/danielwillgeorge/glove6b100dtxt)
   * On Windows: `.\gradlew.bat verifyInstallation`
 * Follow the instructions until it runs successful
 * Run the application with:
