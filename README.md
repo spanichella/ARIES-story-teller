@@ -1,4 +1,4 @@
-# StoryTeller: Exploiting and Analyzing User Reviews and User Stories for Supporting Software Evolution in Industry
+# StoryTeller: Exploiting and Analyzing User Reviews and User Stories for Supporting Software Evolution
 
 ![](combined-pipelines/images/swmlogo2.jpg)
 
