@@ -30,7 +30,6 @@ dependencies {
     implementation 'com.google.code.findbugs:annotations:2.0.1'
     implementation 'commons-lang:commons-lang:2.6'
     implementation 'org.nd4j:nd4j-api:0.9.1'
-    implementation 'org.slf4j:slf4j-api:1.7.12'
     compileOnly 'org.projectlombok:lombok:1.18.2'
     errorprone 'com.google.errorprone:error_prone_core:2.6.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import org.apache.commons.lang.ArrayUtils;
@@ -38,11 +39,9 @@ import org.nd4j.linalg.activations.Activation;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.lossfunctions.LossFunctions.LossFunction;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 final class DLPipeline {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DLPipeline.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(DLPipeline.class.getName());
 
     private static final int GLOVE_DIM = 100;
 
@@ -55,25 +54,6 @@ final class DLPipeline {
     // https://deeplearning4j.org/tutorials/setup
 
     static void runDLPipeline(Configuration cfg) throws IOException {
-
-        // the training set
-        Path labelledTurns = cfg.pathTrainingSet;
-        // the test set (but used for validation..)
-        Path validationSet = cfg.pathTestSet;
-
-        // load pre-trained GloVe w2v
-        Path glove = CommonPaths.GLOVE_FILE;
-        LOGGER.debug("TEST{}", glove);
-        int lengthTrainingSet = getLineCount(labelledTurns) - 1;
-        LOGGER.debug("{}", lengthTrainingSet);
-        int lengthTestSet = getLineCount(validationSet) - 1;
-        LOGGER.debug("{}", lengthTestSet);
-
-
-        int nrOfBatches = 4;
-        int nrOfExamplesPerBatch = lengthTrainingSet / nrOfBatches;
-        LOGGER.info(String.valueOf(nrOfExamplesPerBatch));
-
         int wordsPerTurn = 100; // estimated. Longer will be cut, shorter will be empty padded.
 
         // columns of input. The rows are the number of examples.
@@ -90,24 +70,35 @@ final class DLPipeline {
         File modelFile = Configuration.pathModel.getParent().resolve(modelFileName).toFile();
         //noinspection ResultOfMethodCallIgnored
         modelFile.createNewFile();
-        LOGGER.info("Saving model to {}", modelFile);
+        LOGGER.info("Saving model to %s".formatted(modelFile));
         ModelSerializer.writeModel(model, modelFile, true);
-        LOGGER.debug("{}", labelledTurns);
 
         LOGGER.info("Start training...");
+
+        // the training set
+        Path labelledTurns = cfg.pathTrainingSet;
+        // the test set (but used for validation..)
+        Path validationSet = cfg.pathTestSet;
+
+        int lengthTrainingSet = getLineCount(labelledTurns) - 1;
+        int lengthTestSet = getLineCount(validationSet) - 1;
+
         int nrOfEpochs = 100;
-        WordVectors wordVectors = WordVectorSerializer.readWord2VecModel(glove.toFile());
+        int nrOfBatches = 4;
+        int nrOfExamplesPerBatch = lengthTrainingSet / nrOfBatches;
+
+        WordVectors wordVectors = WordVectorSerializer.readWord2VecModel(CommonPaths.GLOVE_FILE.toFile());
         train(labelledTurns, wordVectors, lengthTrainingSet, nrOfBatches, nrOfExamplesPerBatch, nrOfEpochs, inputColumns,
                 wordsPerTurn, model, validationSet, lengthTestSet);
         LOGGER.info("Finished training");
 
-        LOGGER.info("Save trained model to {}", modelFile);
+        LOGGER.info("Save trained model to %s".formatted(modelFile));
         // save parameter
         ModelSerializer.writeModel(model, modelFile, true);
 
         LOGGER.info("Evaluate model");
         String result = evaluate(validationSet, lengthTestSet, model, wordVectors, inputColumns, wordsPerTurn);
-        LOGGER.debug(result);
+        LOGGER.info(result);
         String strDate = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
         FileWriter fileWriter = new FileWriter("%s%s.txt".formatted(Configuration.pathResultsPrediction, strDate), StandardCharsets.UTF_8);
         PrintWriter printWriter = new PrintWriter(fileWriter);
@@ -148,7 +139,6 @@ final class DLPipeline {
             reader.readLine();
             while ((line = reader.readLine()) != null) {
                 if (line.contains("req_specification")) {
-                    LOGGER.debug("skipped");
                     continue;
                 }
 
@@ -171,16 +161,16 @@ final class DLPipeline {
                               int nrOfExamplesPerBatch, int nrOfEpochs, int inputColumns, int wordsPerTurn,
                               MultiLayerNetwork model, Path validationSet, int inputSize) throws IOException {
         EvaluationData evaluationData = getEvaluationData(validationSet, inputSize, wordVectors, inputColumns, wordsPerTurn);
-        LOGGER.info("Train with {} examples in {} batches for {} epochs", nrOfExamplesPerBatch, nrOfBatches, nrOfEpochs);
+        LOGGER.info("Train with %d examples in %d batches for %d epochs".formatted(nrOfExamplesPerBatch, nrOfBatches, nrOfEpochs));
         for (int epoch = 0; epoch < nrOfEpochs; ++epoch) {
-            LOGGER.info("Epoch {}", epoch);
+            LOGGER.info("Epoch %d".formatted(epoch));
 
             try (BufferedReader reader = new BufferedReader(new FileReader(labelledTurns.toFile(), StandardCharsets.UTF_8))) {
 
                 reader.readLine();
                 String line = reader.readLine();
                 for (int batch = 0; line != null && batch < nrOfBatches; ++batch) {
-                    LOGGER.info("Batch {}", batch);
+                    LOGGER.info("Batch %d".formatted(batch));
 
                     List<INDArray> inputsBatch = new ArrayList<>(nrOfExamplesPerBatch);
                     int[] labelsBatch = new int[nrOfExamplesPerBatch];
@@ -189,8 +179,8 @@ final class DLPipeline {
                         // LOGGER.info("Example " + example);
 
                         if (line == null) {
-                            LOGGER.warn("Premature end of test set file. Expected: {}. Actual: {}.", nrOfExamples,
-                                    (batch + 1) * nrOfExamplesPerBatch + example + 1);
+                            LOGGER.warning("Premature end of test set file. Expected: %d. Actual: %d.".formatted(
+                                nrOfExamples, (batch + 1) * nrOfExamplesPerBatch + example + 1));
                             for (; example < nrOfExamplesPerBatch; ++example) {
                                 // fill labels array, so input and label shape match
                                 labelsBatch[example] = -1;
@@ -199,7 +189,6 @@ final class DLPipeline {
                         }
 
                         if (line.contains("req_specification")) {
-                            LOGGER.debug("skipped");
                             continue;
                         }
 
