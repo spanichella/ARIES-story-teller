@@ -1,17 +1,13 @@
 .DS_Store
-**/target
 
 #generated files folders
-**/ReqSpec/*
-!**/ReqSpec/.gitkeep 
-**/UserReviews/*
-!**/UserReviews/.gitkeep 
-**/models/*
-!**/models/.gitkeep
-**/results/*
-!**/results/.gitkeep
-**/DL/*
-!**/DL/.gitkeep 
-**/XMLFiles/*
-!**/XMLFiles/.gitkeep 
-
+/combined-pipelines/resources/ReqSpec/*
+!/combined-pipelines/resources/ReqSpec/.gitkeep
+/combined-pipelines/resources/UserReviews/*
+!/combined-pipelines/resources/UserReviews/.gitkeep
+/models/*
+!/models/.gitkeep
+/results/*
+!/results/.gitkeep
+/combined-pipelines/resources/DL/*
+!/combined-pipelines/resources/DL/.gitkeep
