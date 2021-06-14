@@ -87,7 +87,7 @@ final class DLPipeline {
         String modelFileName = "model_6b_%dd_v1_0.bin".formatted(GLOVE_DIM);
 
         // save it to file
-        File modelFile = new File(Configuration.pathModel.toString().replace("MLModel.model", ""), modelFileName);
+        File modelFile = Configuration.pathModel.getParent().resolve(modelFileName).toFile();
         //noinspection ResultOfMethodCallIgnored
         modelFile.createNewFile();
         LOGGER.info("Saving model to {}", modelFile);
