@@ -52,7 +52,11 @@ automated classification of user reviews and user stories based on machine learn
 *_StoryTeller_* acts as a wrapper and combines both a ML and DL component inside a single executable instance.
 The set of labeled data sets used to apply to both the ML and DL Pipelines and to evaluate their resulting precision and accuracy values are provide in this repository.
 
-**Instructions on how to install _StoryTeller_:** see [combined-pipelines/README.md](./combined-pipelines/README.md)
+**Overview of _StoryTeller_ Architecture:** 
+
+[![_StoryTeller_ Architecture](https://github.com/spanichella/ARIES-story-teller/blob/main/StoryTeller-Architcture.png)](https://github.com/spanichella/ARIES-story-teller/blob/main/StoryTeller-Architcture.png)
+
+**How to install _StoryTeller_:** see [combined-pipelines/README.md](./combined-pipelines/README.md)
 
 **_StoryTeller_ Demonstration Video:**
 
