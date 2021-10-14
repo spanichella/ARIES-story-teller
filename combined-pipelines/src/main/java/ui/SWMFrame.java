@@ -91,7 +91,6 @@ final class SWMFrame extends JFrame {
         add(UIHelpers.createSeparator(), BorderLayout.WEST);
         add(UIHelpers.createSeparator(), BorderLayout.EAST);
 
-        setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setBackground(DefaultColors.BACKGROUND);
 
