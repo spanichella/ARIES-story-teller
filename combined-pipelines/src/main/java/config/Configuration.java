@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import java.nio.file.Path;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import types.DataType;
 import types.MlModelType;
 import types.StrategyType;
 
@@ -14,6 +13,9 @@ public final class Configuration {
     public static final String nameOfAttributeID = "id";
     public static final Path pathModel = CommonPaths.PROJECT_ROOT.resolve("models").resolve("MLModel.model");
     public static final Path pathResultsPrediction = CommonPaths.PROJECT_ROOT.resolve("results").resolve("result_");
+    private static final String baseFolderName = "ReqSpec";
+    private static final String dataTypePostfix = "-Req-Specifications";
+    private static final String attributeTextName = "req_specification";
 
     @Nonnull
     public final Path pathRScripts;
@@ -48,20 +50,9 @@ public final class Configuration {
     @Nullable
     public final StrategyType strategy;
 
-    public static Configuration forDataType(@Nonnull DataType dataType, @Nonnull Path pathTruthFile, @Nullable MlModelType model,
-                                            @Nonnull BigDecimal percentage, @Nullable StrategyType strategy) {
-        return switch (dataType) {
-            case REQUIREMENT_SPECIFICATIONS ->
-                new Configuration(pathTruthFile, model, percentage, strategy, "ReqSpec", "-Req-Specifications", "req_specification");
-            case USER_REVIEWS ->
-                new Configuration(pathTruthFile, model, percentage, strategy, "UserReviews", "", "review");
-        };
-    }
-
-    @SuppressWarnings("ConstructorWithTooManyParameters")
-    private Configuration(
+    public Configuration(
         @Nonnull Path pathTruthFile, @Nullable MlModelType model, @Nonnull BigDecimal percentage,
-        @Nullable StrategyType strategy, @Nonnull String baseFolderName, @Nonnull String dataTypePostfix, @Nonnull String attributeTextName
+        @Nullable StrategyType strategy
     ) {
         pathRScripts = CommonPaths.R_SCRIPTS;
         pathRScriptOracle = CommonPaths.R_SCRIPTS.resolve("Script-to-create-test-dataset" + dataTypePostfix + ".r");

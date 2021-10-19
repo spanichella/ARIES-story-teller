@@ -25,7 +25,7 @@ public final class MlModelPanel extends CompletablePanel {
         };
 
     public MlModelPanel(@Nonnull Consumer<? super MlModelType> onModelChange, @Nonnull Runnable onUpdate) {
-        super("[Step 4]");
+        super("[Step 3]");
 
         subTitleLabel = UIHelpers.getLabel("Select Method");
         comboBox = UIHelpers.getTranslatableComboBox(mlModelArray, onModelChange, onUpdate);

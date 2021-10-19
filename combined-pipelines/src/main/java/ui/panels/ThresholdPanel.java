@@ -30,7 +30,7 @@ public final class ThresholdPanel extends CompletablePanel {
     private BigDecimal split = BigDecimal.valueOf(5, 1);
 
     public ThresholdPanel() {
-        super("[Step 6]");
+        super("[Step 5]");
 
         subTitleLabel = UIHelpers.getLabel("Set Size of Training-Set");
         valueLabel = UIHelpers.getLabel("value: 0.5");

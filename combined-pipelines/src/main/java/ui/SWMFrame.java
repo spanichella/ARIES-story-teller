@@ -20,11 +20,9 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import pipelines.AsyncPipeline;
 import pipelines.MainPipeline;
-import types.DataType;
 import types.MlModelType;
 import types.PipelineType;
 import types.StrategyType;
-import ui.panels.ContentTypePanel;
 import ui.panels.MlModelPanel;
 import ui.panels.PipelinePanel;
 import ui.panels.StrategyPanel;
@@ -44,8 +42,6 @@ final class SWMFrame extends JFrame {
     @Nonnull
     private final TruthSetPanel truthSetPanel;
     @Nonnull
-    private final ContentTypePanel contentTypePanel;
-    @Nonnull
     private final PipelinePanel pipelinePanel;
     @Nonnull
     private final MlModelPanel mlModelPanel;
@@ -57,8 +53,6 @@ final class SWMFrame extends JFrame {
     private SWMLoaderFrame loader;
     @Nullable
     private Path truthFilePath;
-    @Nullable
-    private DataType dataType;
     @Nullable
     private PipelineType pipelineType;
     @Nullable
@@ -79,11 +73,12 @@ final class SWMFrame extends JFrame {
         ImageIcon icon = new ImageIcon("images/STIcon.jpg");
         setIconImage(icon.getImage());
         setTitle("Story Teller");
-        setSize(350, 800);
+        setSize(350, 700);
         setLayout(new BorderLayout());
 
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(8, 1));
+        mainPanel.setBackground(DefaultColors.BACKGROUND);
+        mainPanel.setLayout(new GridLayout(7, 1));
         add(mainPanel, BorderLayout.CENTER);
 
         add(UIHelpers.createSeparator(), BorderLayout.PAGE_START);
@@ -103,9 +98,6 @@ final class SWMFrame extends JFrame {
             file -> truthFilePath = file.toPath(),
             error -> showErrorMessage(error, null));
         mainPanel.add(truthSetPanel);
-
-        contentTypePanel = new ContentTypePanel(this::updateStatus, this::onDataTypeChange);
-        mainPanel.add(contentTypePanel);
 
         pipelinePanel = new PipelinePanel(
             this::onPipelineTypeChange,
@@ -159,7 +151,7 @@ final class SWMFrame extends JFrame {
     }
 
     private boolean isRunnable() {
-        if (truthFilePath == null || dataType == null || pipelineType == null) {
+        if (truthFilePath == null || pipelineType == null) {
             return false;
         }
         return pipelinePanel.getSelectedItem() == PipelineType.DL || (mlModel != null && strategy != null);
@@ -174,7 +166,6 @@ final class SWMFrame extends JFrame {
 
     private void updateStatus() {
         truthSetPanel.markDone(truthFilePath != null);
-        contentTypePanel.markDone(dataType != null);
         pipelinePanel.markDone(pipelineType != null);
         mlModelPanel.markDone(mlModel != null);
         strategyPanel.markDone(strategy != null);
@@ -182,15 +173,11 @@ final class SWMFrame extends JFrame {
     }
 
     private void onRun(ActionEvent e) {
-        if (truthFilePath == null || pipelineType == null || dataType == null) {
-            throw new IllegalArgumentException("truthFilePath or pipelineType or dataType is null");
-        }
-
         loader = new SWMLoaderFrame();
         loader.start();
 
         AsyncPipeline.run(
-            () -> MainPipeline.runPipeline(truthFilePath, pipelineType, dataType, mlModel, thresholdPanel.getSplit(), strategy),
+            () -> MainPipeline.runPipeline(truthFilePath, pipelineType, mlModel, thresholdPanel.getSplit(), strategy),
             error -> {
                 if (error.isPresent()) {
                     showErrorMessage("Pipeline Thread failed", error.get());
@@ -203,15 +190,6 @@ final class SWMFrame extends JFrame {
         );
         setEnabled(false);
         updateStatus();
-    }
-
-    private void onDataTypeChange(DataType newDataType) {
-        switch (newDataType) {
-            case REQUIREMENT_SPECIFICATIONS -> pipelinePanel.addDL();
-            case USER_REVIEWS -> pipelinePanel.removeDL();
-            default -> throw new IllegalArgumentException("Unknown type: %s".formatted(newDataType));
-        }
-        dataType = newDataType;
     }
 
     private void onPipelineTypeChange(PipelineType newPipelineType) {

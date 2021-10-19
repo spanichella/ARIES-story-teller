@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.util.logging.Logger;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import types.DataType;
 import types.MlModelType;
 import types.PipelineType;
 import types.StrategyType;
@@ -23,10 +22,10 @@ public final class MainPipeline {
     private static final Logger LOGGER = Logger.getLogger(MainPipeline.class.getName());
 
     public static void runPipeline(
-        @Nonnull Path truthFilePath, @Nonnull PipelineType pipelineType, @Nonnull DataType dataType, @Nullable MlModelType model,
+        @Nonnull Path truthFilePath, @Nonnull PipelineType pipelineType, @Nullable MlModelType model,
         @Nonnull BigDecimal percentage, @Nullable StrategyType strategy
     ) throws Exception {
-        Configuration configuration = Configuration.forDataType(dataType, truthFilePath, model, percentage, strategy);
+        Configuration configuration = new Configuration(truthFilePath, model, percentage, strategy);
 
         //Generate files for ML/DL
         LOGGER.info("Starting file generation ");

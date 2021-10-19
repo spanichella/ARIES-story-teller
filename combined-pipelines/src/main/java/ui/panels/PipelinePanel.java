@@ -18,7 +18,7 @@ public final class PipelinePanel extends CompletablePanel {
     private final JComboBox<String> comboBox;
 
     public PipelinePanel(@Nonnull Consumer<? super PipelineType> onPipelineChange, @Nonnull Runnable onUpdate) {
-        super("[Step 3]");
+        super("[Step 2]");
 
         comboBox = UIHelpers.getTranslatableComboBox(
             new PipelineType[] {null, PipelineType.ML, PipelineType.DL}, onPipelineChange, onUpdate);
@@ -37,19 +37,5 @@ public final class PipelinePanel extends CompletablePanel {
 
     public PipelineType getSelectedItem() {
         return UIHelpers.fromDescriptionOrEmpty((String) comboBox.getSelectedItem(), PipelineType.values());
-    }
-
-    public void addDL() {
-        String dlDescription = PipelineType.DL.getDescription();
-        if (IntStream.range(0, comboBox.getItemCount())
-            .mapToObj(comboBox::getItemAt)
-            .noneMatch(value -> value.equals(dlDescription))) {
-            comboBox.insertItemAt(dlDescription, comboBox.getItemCount());
-        }
-    }
-
-    public void removeDL() {
-        comboBox.setSelectedItem(PipelineType.ML.getDescription());
-        comboBox.removeItem(PipelineType.DL.getDescription());
     }
 }

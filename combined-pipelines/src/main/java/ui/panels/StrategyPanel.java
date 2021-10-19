@@ -19,7 +19,7 @@ public final class StrategyPanel extends CompletablePanel {
     private final JComboBox<String> comboBox;
 
     public StrategyPanel(@Nonnull Consumer<? super StrategyType> onStrategyChange, @Nonnull Runnable onUpdate) {
-        super("[Step 5]");
+        super("[Step 4]");
 
         subTitleLabel = UIHelpers.getLabel("Select Strategy");
         comboBox = UIHelpers.getTranslatableComboBox(
