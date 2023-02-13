@@ -38,17 +38,13 @@ Carefully read the [full license agreement](https://www.gnu.org/licenses/agpl-3.
 5. [Datasets](#section5)
 
 ## 1. Summary of the Work<a name="section1"></a>
-Addressing user requests in the form of user reviews as well as efficiently and correctly identifying requirements from user stories are essential development tasks to ensure the success of any software organization. User requests and user stories tend to widely differ in their quality, structure, completeness levels, and textual representation. As result, developers are forced to spend a considerable amount of time collecting and analyzing them.
-Researchers have proposed tools automating the analysis of user reviews and user stories for supporting software evolution activities. However, these previous studies did not investigate the practical usage (i.e., the scalability), accuracy, and usability of both user reviews and user stories analysis tools in industrial settings. 
-To fill this gap, we investigate the accuracy and practical usability of _StoryTeller_, a tool designed to analyze both user reviews and user stories, through an industry evaluation involving developers and requirement engineers of a company having more than 20 years of experience in market analysis.
-Our industrial evaluation has shown a high classification accuracy of _StoryTeller_. However, its low scalability and usability level required us to refactor, update its dependencies, and design an ad-hoc user interface to make _StoryTeller_ usable in an industrial setting.
-We share in this paper our experience, insights, and challenges in sharing, adapting, and evaluating StoryTeller in an industrial setting.
+User stories play an essential role in software development, but they often vary in quality and structure, making them difficult to analyze. Although there have been studies proposing tools to automate the analysis of user stories, there is a lack of research on their usability, scalability, and accuracy in real-world scenarios. 
+This paper investigates the usability, scalability, and accuracy of a tool called _StoryTeller_, designed to analyze user stories in industrial settings. 
+An industry evaluation was conducted with a UX designer, software engineer, and project manager from a company with over 20 years of experience in market analysis. The results showed that StoryTeller had high accuracy in categorizing user stories, but low scalability and usability levels. We share our insights on how we adapted and evaluated _StoryTeller_ in the industrial environment, including refactoring the code and designing a user-friendly interface.
 
 ## 2. _StoryTeller_ Tool <a name="section2"></a>
 
-**_StoryTeller_** StoryTeller classify user stories and user reviews content by performing the following steps: (1) processing and splitting the text of
-user reviews and user stories in sentences; (2) producing a vectorial representation of sentences in user reviews and user stories; (3)
-automated classification of user reviews and user stories based on machine learning (ML) or Deep learning (DL) strategies. 
+**_StoryTeller_** StoryTeller classifies user stories through three steps: (1) text splitting into sentences, (2) vector representation of sentences, and (3) automated classification using Machine learning (ML) or Deep learning (DL) strategies.
 *_StoryTeller_* acts as a wrapper and combines both a ML and DL component inside a single executable instance.
 The set of labeled data sets used to apply to both the ML and DL Pipelines and to evaluate their resulting precision and accuracy values are provide in this repository.
 
@@ -66,7 +62,7 @@ The set of labeled data sets used to apply to both the ML and DL Pipelines and t
 ![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
 
 ## 3. Our Contributions<a name="section3"></a>
- Research tools have been proposed to analyze user stories or user reviews to support software evolution activities. However, very few studies investigated the usability, scalability, and accuracy of a tool enabling the analysis of **_both user reviews and user stories in industrial settings_**. To fill this gap, we investigate the usability, scalability, and accuracy of StoryTeller, a tool we designed to analyze both user reviews and user stories, through an industry evaluation involving developers and requirement engineers of a company called SM-company, a leader in employee survey evaluations in Switzerland. 
+ Research tools have been proposed to analyze user stories or user reviews to support software evolution activities. However, very few studies investigated the usability, scalability, and accuracy of a tool enabling the analysis of **_user stories in industrial settings_**. To fill this gap, we investigate the usability, scalability, and accuracy of StoryTeller, a tool we designed to analyze user stories, through an industry evaluation involving developers and requirement engineers of a company called SM-company, a leader in employee survey evaluations in Switzerland. 
 
 ### 4 Evaluation Context<a name="section4"></a>
 
