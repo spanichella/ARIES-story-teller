@@ -2,7 +2,7 @@
 
 ![](combined-pipelines/images/swmlogo2.jpg)
 
-**Authors:** [Nicolas Ganz](https://www.zhaw.ch/en/about-us/person/gann/), [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm), [Marcela Ruiz](https://www.zhaw.ch/en/about-us/person/ruiz/), [Lukas Ballo](https://www.linkedin.com/in/lballo/?originalSubdomain=ch), [Sebastiano Panichella](https://spanichella.github.io/)
+**Authors:** [Nicolas Ganz](https://www.zhaw.ch/en/about-us/person/gann/), [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm), Andrea Di Sorbo, [Sebastiano Panichella](https://spanichella.github.io/)
 
 ### License
 
@@ -82,13 +82,12 @@ Thus, we provided [datasets](datasets) for validating the accuracy and usability
 
 ### ACKNOWLEDGMENTS & Credit Author Statement
 We gratefully acknowledge the Innosuisse support for the project *ARIES* (Exploiting User Journeys for Supporting Mobility as a Service Platforms),
-Project No.45548.1. **Web page**: https://www.aries-devops.ch/index.html
+Project No.45548.1. **Web page**: https://www.aries-devops.ch/index.html. We thank [Marcela Ruiz](https://www.zhaw.ch/en/about-us/person/ruiz/) for the review on the original version of the paper.
 
 As follow, the Credit Author Statement for each of the authors. 
 - Nicolas Ganz: Data curation, Software, Writing - review & editing.
 - Christian Aeberhard, Marc Kramer, Janik Lüchinger, Tanzil Mohammed: Software,  Validation.
-- Lukas Ballo: Review.
-- Marcela Ruiz: Review.
+- Andrea Di Sorbo: Methodology, editing, Repository review, Project administration.
 - Sebastiano Panichella: Data curation, Conceptualization, Software, Methodology, Investigation, Validation, Writing - original draft & editing, Project administration.
 
 
