@@ -50,13 +50,13 @@ The set of labeled data sets used to apply to both the ML and DL Pipelines and t
 
 **Overview of _StoryTeller_ Architecture:**
 
-[![_StoryTeller_ Architecture](https://github.com/spanichella/ARIES-story-teller/blob/main/StoryTeller-Architcture.png)](https://github.com/spanichella/ARIES-story-teller/blob/main/StoryTeller-Architcture.png)
+[![_StoryTeller_ Architecture](StoryTeller-Architecture.png)](https://github.com/spanichella/ARIES-story-teller/blob/main/StoryTeller-Architcture.png)
 
 **How to install _StoryTeller_:** see [combined-pipelines/README.md](./combined-pipelines/README.md)
 
 **_StoryTeller_ Demonstration Video:**
 
-[![_StoryTeller_ Demonstration Video](https://github.com/spanichella/ARIES-story-teller/blob/main/StoryTeller-DemonstrationImage.png)](https://youtu.be/nH92738I6lM)
+[![_StoryTeller_ Demonstration Video](StoryTeller-DemonstrationImage.png)](https://youtu.be/nH92738I6lM)
 - [Youtube link](https://youtu.be/nH92738I6lM)
 
 ![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
