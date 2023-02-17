@@ -46,7 +46,7 @@ An industry evaluation was conducted with a UX designer, software engineer, and 
 
 **_StoryTeller_** StoryTeller classifies user stories through three steps: (1) text splitting into sentences, (2) vector representation of sentences, and (3) automated classification using Machine learning (ML) or Deep learning (DL) strategies.
 *_StoryTeller_* acts as a wrapper and combines both a ML and DL component inside a single executable instance.
-The set of labeled data sets used to apply to both the ML and DL Pipelines and to evaluate their resulting precision and accuracy values are provide in this repository.
+The set of labeled data sets used to apply to both the ML and DL Pipelines and to evaluate their resulting precision and accuracy values are provided in this repository.
 
 **Overview of _StoryTeller_ Architecture:**
 
@@ -62,7 +62,7 @@ The set of labeled data sets used to apply to both the ML and DL Pipelines and t
 ![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
 
 ## 3. Our Contributions<a name="section3"></a>
- Research tools have been proposed to analyze user stories to support software evolution activities. However, very few studies investigated the usability, scalability, and accuracy of a tool enabling the analysis of **_user stories in industrial settings_**. To fill this gap, we investigate the usability, scalability, and accuracy of StoryTeller, a tool we designed to analyze user stories, through an industry evaluation involving developers and requirement engineers of a company called SM-company, a leader in employee survey evaluations in Switzerland.
+ Research tools have been proposed to analyze user stories to support software evolution activities. However, very few studies investigated the usability, scalability, and accuracy of a tool enabling the analysis of **_user stories in industrial settings_**. To fill this gap, we investigate the usability, scalability, and accuracy of StoryTeller, a tool we designed to analyze user stories, through an industrial evaluation involving developers and requirement engineers of a company called SM-company, a leader in employee survey evaluations in Switzerland.
 
 ### 4 Evaluation Context<a name="section4"></a>
 
