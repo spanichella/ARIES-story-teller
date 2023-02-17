@@ -10,7 +10,7 @@ _StoryTeller_ is licensed under the GNU Affero General Public License. Every fil
 
 ```
 _StoryTeller_ is a a tool designed to analyze both user reviews and user stories.
-Copyright (C) Nicolas Ganz and Sebastiano Panichella.
+Copyright (C) 2023 Nicolas Ganz and Sebastiano Panichella.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ```
 
-Carefully read the [full license agreement](https://www.gnu.org/licenses/agpl-3.0.en.html).
+Carefully read the [full license agreement](LICENSE.md) or the [online version](https://www.gnu.org/licenses/agpl-3.0.en.html).
 
 > "... [The AGPL-3.0 license] requires the operator of a network server to provide the source code of the modified version running there to the users of that server."
 
