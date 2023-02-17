@@ -38,9 +38,12 @@ Carefully read the [full license agreement](LICENSE.md) or the [online version](
 5. [Datasets](#section5)
 
 ## 1. Summary of the Work<a name="section1"></a>
-User stories play an essential role in software development, but they often vary in quality and structure, making them difficult to analyze. Although there have been studies proposing tools to automate the analysis of user stories, there is a lack of research on their usability, scalability, and accuracy in real-world scenarios.
-This paper investigates the usability, scalability, and accuracy of a tool called _StoryTeller_, designed to analyze user stories in industrial settings.
-An industry evaluation was conducted with a UX designer, software engineer, and project manager from a company with over 20 years of experience in market analysis. The results showed that StoryTeller had high accuracy in categorizing user stories, but low scalability and usability levels. We share our insights on how we adapted and evaluated _StoryTeller_ in the industrial environment, including refactoring the code and designing a user-friendly interface.
+User stories play an essential role in software development, but they often vary in quality and structure, making their analysis laborious.
+Although there have been studies proposing tools automating the inspection of user stories, there is a lack of research on the usability, scalability, and accuracy of such tools in real-world scenarios.
+
+This paper investigates the quality attributes of a tool called StoryTeller, designed to analyze user stories in industrial settings.
+Specifically, with a UX designer, a software engineer, and a project manager from a company with over 20 years of experience in market analysis, we conducted an industrial evaluation of StoryTeller, revealing its low scalability and usability, despite the high accuracy achieved in classifying user stories.
+We share insights on how we adapted and evaluated StoryTeller in the industrial environment, including refactoring the code and designing a user-friendly interface.
 
 ## 2. _StoryTeller_ Tool <a name="section2"></a>
 
@@ -66,8 +69,8 @@ The set of labeled data sets used to apply to both the ML and DL Pipelines and t
 
 ### 4 Evaluation Context<a name="section4"></a>
 
-**SM-company**. For confidentiality reasons, we refer to the  company involved in our industrial evaluation with the Swiss-Marketing Company (*SM-company*) and with the SM Software Project (*SM-Project*), the project that has been considered for the evaluation of StoryTeller.
-The *SM-Project* was launched by the SM-company, an innovative market research company in Switzerland, a leader in employee surveys, leadership feedback, and supervisor evaluation throughout Switzerland. The company was founded in 2002 and has over 20 years of expertise in the field of market and company analysis. Based on well-founded study concepts as well as quick, user-friendly surveys and meaningful reporting, the company offers a broad variety of products in the field of employee satisfaction, customer satisfaction, and leadership feedback.
+**SM-Company**. For confidentiality, the company selected for evaluation is referred to as the Swiss-Marketing Company (SM-Company) and its project as the SM Software Project (SM-Project). The SM-Project is a web-based survey tool launched by the SM-Company to support team and project managers in creating short, easy-to-use pulse surveys. The SM-company was founded in 2002. It has over 20 years of expertise in market and company analysis. Based on well-founded study concepts, user-friendly surveys, and meaningful reporting, the company offers a wide variety of products in the field of employee satisfaction, customer satisfaction, and
+leadership feedback.
 
 ### 5 Datasets <a name="section5"></a>
 Related studies pointed out that the lack of data from requirement elicitation sessions is an obstacle in this type of classification approach.
