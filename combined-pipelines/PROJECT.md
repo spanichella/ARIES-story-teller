@@ -7,7 +7,7 @@
 4. [Future Work](#section4)
 
 ## 1. Introduction <a name="section1"></a>
-_StoryTeller_ is our combined integration of the [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component) and the [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component) used to automatically analyze User Stories and Requirements Specifications.
+_StoryTeller_ is our combined integration of the [ML-Component](https://github.com/spanichella/Requirement-Collector-ML-Component) and the [DL-Component](https://github.com/lmruizcar/Requirements-Collector-DL-Component) used to automatically analyze User Stories.
 During the project, we merged the two pipelines step by step with focus to make them user-friendly to people with no computer science background.
 
 ## 2. Program Description <a name="section2"></a>
@@ -17,7 +17,7 @@ The goal of this part is to give a guide for setup and a brief description of ho
 
 #### Pre-Requisites
 - Java 15
-- The [R language](https://cran.r-project.org/) (version 4.0.3) must be installed and operational 
+- The [R language](https://cran.r-project.org/) (version 4.0.3) must be installed and operational
 - Cores: 4
 - Memory: >6GB (add '-Xmx6G' to the VM options of the run configuration)
 - Download [glove txt file](https://www.kaggle.com/watts2/glove6b50dtxt) and put it into the DL folder located at Combined Project -> Resources
@@ -40,14 +40,12 @@ Hint: It can potentially help to install [RStudio](https://rstudio.com/products/
 #### Pipeline Description
 When launching the program, the simple graphical user interface (GUI) will launch.
 There the user must select the location of the dataset and the type of its content.
-He can further select the desired pipeline, where for User Stories only the ML-pipeline is available, while for Requirement Specifications both the ML and DL pipeline are available.
 Depending on what he selected he can then specify attributes regarding the execution of the chosen pipeline.
 If everything is selected and specified correctly, he can finally click on execute to run the analysis.
 
 On execution, the code will first create an XML-File containing local paths used for reading the existing, or generating the new files.
 After this, the code will start with the generation of the training- and test-set, depending on the selections made previously in the GUI.
 These files are created by the R-scripts located in the [resources](resources) folder.
-There is one script for each type of data (requirement specifications or user reviews).
 
 When this is done, the analysis part begins.
 Again, depending on the selections before, our code will execute the ML or DL pipeline.
@@ -91,7 +89,7 @@ In the end we only had to modify some hard coded values and did not need to touc
 An example would be that we no longer had to get the paths from the XML file, but instead we added the new DL dependencies to our `pom.xml` file.
 
 ## 4. Future Work <a name="section4"></a>
-While making a lot of progress, there remain a lot of features which would potentially improve the project. 
+While making a lot of progress, there remain a lot of features which would potentially improve the project.
 Here are some of them, including some additional enhancement possibilities:
 
 - add possibility to easily add new analyzing algorithms

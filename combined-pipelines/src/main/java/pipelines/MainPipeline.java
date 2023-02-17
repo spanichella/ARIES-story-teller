@@ -14,7 +14,7 @@ import types.StrategyType;
 /**
  * This class extends the Main Program class by supporting the execution of
  * the main steps of the ML- and DL-based classification pipelines
- * concerning User reviews (extracted from App stores).
+ * concerning user stories (extracted from App stores).
  *
  * @author panc
  */

@@ -627,7 +627,7 @@ attach them to the start of each source file to most effectively state
 the exclusion of warranty; and each file should have at least the
 "copyright" line and a pointer to where the full notice is found.
 
-        _StoryTeller_ is a a tool designed to analyze both user reviews and user stories.
+        _StoryTeller_ is a a tool designed to analyze user stories.
         Copyright (C) 2023 Nicolas Ganz and Sebastiano Panichella.
 
         This program is free software: you can redistribute it and/or modify
