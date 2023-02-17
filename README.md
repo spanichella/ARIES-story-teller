@@ -2,7 +2,7 @@
 
 ![](combined-pipelines/images/swmlogo2.jpg)
 
-**Authors:** [Nicolas Ganz](https://www.zhaw.ch/en/about-us/person/gann/), [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm), Andrea Di Sorbo, [Sebastiano Panichella](https://spanichella.github.io/)
+**Authors:** [Nicolas Ganz](https://www.zhaw.ch/en/about-us/person/gann/), [Christian Aeberhard](https://github.com/niddhog), [Marc Kramer](https://github.com/Makram95), [Janik Lüchinger](https://github.com/jluech), [Tanzil K Mohammed](https://github.com/tanzilkm), [Andrea Di Sorbo](https://www.unisannio.it/en/user/9355/curriculum), [Sebastiano Panichella](https://spanichella.github.io/)
 
 ### License
 
@@ -47,7 +47,7 @@ We share insights on how we adapted and evaluated StoryTeller in the industrial 
 
 ## 2. _StoryTeller_ Tool <a name="section2"></a>
 
-**_StoryTeller_** StoryTeller classifies user stories through three steps: (1) text splitting into sentences, (2) vector representation of sentences, and (3) automated classification using Machine learning (ML) or Deep learning (DL) strategies.
+**_StoryTeller_** classifies user stories through three steps: (1) text splitting into sentences, (2) vector representation of sentences, and (3) automated classification using Machine learning (ML) or Deep learning (DL) strategies.
 *_StoryTeller_* acts as a wrapper and combines both a ML and DL component inside a single executable instance.
 The set of labeled data sets used to apply to both the ML and DL Pipelines and to evaluate their resulting precision and accuracy values are provided in this repository.
 
