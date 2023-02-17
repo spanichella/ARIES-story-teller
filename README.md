@@ -57,11 +57,6 @@ The set of labeled data sets used to apply to both the ML and DL Pipelines and t
 
 **How to install _StoryTeller_:** see [combined-pipelines/README.md](./combined-pipelines/README.md)
 
-**_StoryTeller_ Demonstration Video:**
-
-[![_StoryTeller_ Demonstration Video](StoryTeller-DemonstrationImage.png)](https://youtu.be/nH92738I6lM)
-- [Youtube link](https://youtu.be/nH92738I6lM)
-
 ![Pipeline Status](https://github.com/spanichella/ARIES-story-teller/actions/workflows/java_ci.yml/badge.svg)
 
 ## 3. Our Contributions<a name="section3"></a>
